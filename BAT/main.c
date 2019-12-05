@@ -10,6 +10,26 @@
 
 #include <DAVE.h>                 //Declarations from DAVE Code Generation (includes SFR declaration)
 
+XMC_VADC_RESULT_SIZE_t result;
+ void Adc_Measurement_Handler(){
+#if(UC_SERIES != XMC11)
+    result = ADC_MEASUREMENT_GetResult(&ADC_MEASUREMENT_Channel_A);
+#else
+    result = ADC_MEASUREMENT_GetGlobalResult();
+#endif
+
+    if(result >= 2048)
+    {
+     //   DIGITAL_IO_SetOutputLow(&DIGITAL_IO_0);
+    }
+    else
+    {
+       // DIGITAL_IO_SetOutputHigh(&DIGITAL_IO_0);
+    }
+}
+
+
+
 /**
 
  * @brief main() - Application entry point
@@ -44,6 +64,7 @@ int main(void)
 
   delay_count=0;
 
+  ADC_MEASUREMENT_StartConversion(&ADC_MEASUREMENT_0);
   ACIM_FREQ_CTRL_MotorStart(&ACIM_FREQ_CTRL_0);
   ACIM_FREQ_CTRL_SetSpeed(&ACIM_FREQ_CTRL_0, 50);
  // ACIM_FREQ_CTRL_MotorStart(&ACIM_FREQ_CTRL_1);
