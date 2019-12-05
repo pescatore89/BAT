@@ -1,0 +1,552 @@
+package Model.APPS.ACIM_FREQ_CTRL.v4_0_8.Templates;
+
+import Model.APPS.ACIM_FREQ_CTRL.v4_0_8.ACIM_FREQ_CTRL
+
+out.print("""
+/**
+ * @cond
+ ***********************************************************************************************************************
+ *
+ * Copyright (c) 2015, Infineon Technologies AG
+ * All rights reserved.
+ *
+ * Redistribution and use in source and binary forms, with or without modification,are permitted provided that the
+ * following conditions are met:
+ *
+ *   Redistributions of source code must retain the above copyright notice, this list of conditions and the  following
+ *   disclaimer.
+ *
+ *   Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the
+ *   following disclaimer in the documentation and/or other materials provided with the distribution.
+ *
+ *   Neither the name of the copyright holders nor the names of its contributors may be used to endorse or promote
+ *   products derived from this software without specific prior written permission.
+ *
+ * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES,
+ * INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+ * DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE  FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+ * SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
+ * SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+ * WHETHER IN CONTRACT, STRICT LIABILITY,OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT  OF THE
+ * USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+ *
+ * To improve the quality of the software, users are encouraged to share modifications, enhancements or bug fixes
+ * with Infineon Technologies AG (dave@infineon.com).
+ ***********************************************************************************************************************
+ *
+ * Change History
+ * --------------
+ *
+ * 2015-02-16:
+ *     - Initial version
+ * 2015-10-08:
+ *     - Amplitude scaling is matched with PWM_SVM APP amplitude scaling
+ * @endcond
+ *
+ */
+/***********************************************************************************************************************
+ * HEADER FILES
+ **********************************************************************************************************************/
+#include "acim_freq_ctrl.h"
+""");
+
+String appInst  = null;
+for (Object appIns : appInstancesList ) {
+  appInst = appIns.getInstanceLabel()
+  
+out.print("""
+void ${appInst}_PrimaryControlLoop(ACIM_FREQ_CTRL_t*const HandlePtr);  
+void ${appInst}_SetValueProcessing(ACIM_FREQ_CTRL_t*const HandlePtr);
+"""); 
+/* ------------------- Begin : Fast control loop ISR ------------------------------- */
+out.print("""
+void ${appInst}_FastControlLoop_ISR()
+{  
+  int32_t temp_angle;
+""");
+/* --------------------- Begin : Trap Functionality   ------------------------------ */
+if(appIns.gcombo_etrap.options.indexOf(appIns.gcombo_etrap.value) > 0)
+{
+out.print("""
+  /************************* Trap ***************************/
+  if(XMC_CCU8_SLICE_GetEvent(${appInst}.pwm_svm_ptr->phase_ptr[0]->slice_ptr,XMC_CCU8_SLICE_IRQ_ID_EVENT2) == (uint32_t)true)
+  {
+    ${appInst}.operational_error |= (uint32_t)1<<(uint32_t)ACIM_FREQ_CTRL_EID_TRAP_ERROR;
+	${appInst}.error_table_ptr[ACIM_FREQ_CTRL_EID_TRAP_ERROR].error_status = (uint8_t)ACIM_FREQ_CTRL_ERROR_SET;
+    /* Stop the motor */
+    if(${appInst}.error_table_ptr[ACIM_FREQ_CTRL_EID_TRAP_ERROR].error_handler_ptr_t != NULL)
+    {
+      (${appInst}.error_table_ptr[ACIM_FREQ_CTRL_EID_TRAP_ERROR].error_handler_ptr_t)(&${appInst});
+    }
+  }
+  else
+  {
+""");
+}
+/* --------------------- End : Trap Functionality   -------------------------------- */
+println "/************************* Fast Control Loop ***************************/"
+/* ---------------------- Begin : FCL Functionality -------------------------------- */
+/* Don't generate this condition if FCL divider value is 1 */ 
+if(appIns.gint_fcldiv.value != 1)
+{
+out.print("""
+    if(${appInst}.fcl_div_value == ${appInst}.acim_config_ptr->fcl_divider)
+    {
+      ${appInst}.fcl_div_value = 1;
+""");
+}
+out.print("""
+      if(${appInst}.msm_state != ACIM_FREQ_CTRL_MSM_BOOTSTRAP)
+      {
+""");
+    /* Conditional generation for current measurement */
+    if (appIns.gcheck_avg_i_measurement.value == true)
+    {
+out.print("""
+        /*Read current*/
+        ${appInst}.motor_current = ((XMC_VADC_GROUP_GetResult(${appInst}.adc_config_ptr->vadc_group_pointerarray[0],
+			${appInst}.adc_config_ptr->result_num_array[0]))<< 2 & 0x3FFFU) - ${appInst}.ampoffset;
+""");
+    }
+	else
+	{
+out.print("""
+        /*Current is 0 because current measurement is disabled.*/
+        ${appInst}.motor_current = 0U;
+""");
+	}
+    /* Conditional generation for dc link voltage measurement */
+    if (appIns.gcheck_dc_link_measurement.value == true)
+    {
+out.print("""
+	    /*Read voltage*/
+	    ${appInst}.dclink_voltage =((uint32_t)XMC_VADC_GROUP_GetResult(${appInst}.adc_config_ptr->vadc_group_pointerarray[1],
+${appInst}.adc_config_ptr->result_num_array[1])*${appInst}.acim_config_ptr->voltage_adc_scale)>>ACIM_FREQ_CTRL_AMPLITIDESCALE;
+""");
+    }
+    /* Conditional generation for over current detection */
+    if ((appIns.gcombo_curntmsrmnt.options.indexOf(appIns.gcombo_curntmsrmnt.value)!= 0) &&
+		 (appIns.gcheck_eovercrntdet.value == true))
+    {
+out.print("""
+        /* check the over current*/
+        ACIM_FREQ_CTRL_OverCurrentDetection(&${appInst});
+""");
+    }
+    /*For Basic Configuration*/
+    if(appIns.gcombo_ctrlschemeconfig.options.indexOf(appIns.gcombo_ctrlschemeconfig.value) == 0)
+    {	
+      if(appIns.gcheck_basic_crntlimit.value == true)
+      {
+out.print("""
+        /*function call for current limit*/
+        ACIM_FREQ_CTRL_CurrentLimit(&${appInst});
+        /*Updating input of v/f control*/
+        ${appInst}.vf_control_ptr->input = (int32_t)*${appInst}.speed_set_ptr - ${appInst}.current_limit_ptr->output;
+""");
+      } 
+      else
+      {    
+out.print("""
+        /*Updating input of v/f control*/
+        ${appInst}.vf_control_ptr->input = (int32_t)*${appInst}.speed_set_ptr;
+""");
+      }
+    }
+    else /*For Advance Configuration*/
+    { 
+      if((appIns.gcheck_crnt_limit.value == true) ||(appIns.gcheck_opcode_crnt_limit.value == true))	
+      {
+        if((appIns.gcheck_slipctrl.value == true) ||(appIns.gcheck_opcode_slipctrl.value == true))
+	    {
+out.print("""
+        /*Updating input of v/f control*/
+        ${appInst}.vf_control_ptr->input = ((int32_t)*${appInst}.speed_set_ptr + ${appInst}.slip_control_ptr->output) - ${appInst}.current_limit_ptr->output;
+""");
+	    }
+	    else
+	    {
+out.print("""
+        /*Updating input of v/f control*/
+        ${appInst}.vf_control_ptr->input = (int32_t)*${appInst}.speed_set_ptr - (int32_t)${appInst}.current_limit_ptr->output;
+""");
+	    }
+      } 
+      else
+      {
+        if((appIns.gcheck_slipctrl.value == true) ||(appIns.gcheck_opcode_slipctrl.value == true))
+	    {
+out.print("""
+        /*Updating input of v/f control*/
+        ${appInst}.vf_control_ptr->input = (int32_t)*${appInst}.speed_set_ptr + (int32_t)${appInst}.slip_control_ptr->output;
+""");
+	    }
+	    else
+	    {
+out.print("""
+        /*Updating input of v/f control*/
+        ${appInst}.vf_control_ptr->input = (int32_t)*${appInst}.speed_set_ptr;
+""");
+	    }
+      }	
+    }
+	
+	/********************/
+	if (appIns.gcombo_ctrlschemeconfig.options.indexOf(appIns.gcombo_ctrlschemeconfig.value)== 0)
+	{
+out.print("""
+        /*amplitude calculation*/
+        ACIM_FREQ_CTRL_Amplitude_Calculation(&${appInst});
+
+        /*angle calculation*/
+        ACIM_FREQ_CTRL_AngleRamp(&${appInst});
+""");
+	}
+	else
+	{
+	  if (appIns.gcheck_vf_control.value == true)
+	  {
+out.print("""
+        /*amplitude calculation*/
+        ACIM_FREQ_CTRL_Amplitude_Calculation(&${appInst});
+"""); 
+	  }
+	
+	  if(appIns.gcheck_opcode_vf_control.value == true)
+	  {
+out.print("""
+        /*user code for amplitude calculation*/
+        ${appIns.gstring_usercode_vf_control.value.replaceAll("\\s","")}(&${appInst});
+""");
+      }
+	  if (appIns.gcheck_angle_ramp.value == true)
+	  {
+out.print("""
+        /*angle calculation*/
+        ACIM_FREQ_CTRL_AngleRamp(&${appInst});
+"""); 
+	  }
+	  if(appIns.gcheck_opcode_angle_ramp.value == true)
+	  {
+out.print("""
+        /*user code for angle calculation*/
+        ${appIns.gstring_usercode_angle_ramp.value.replaceAll("\\s","")}(&${appInst});
+""");
+	  }
+	  
+	}
+out.print("""
+
+        /*Update Modulation Angle and Amplitude before calling svm*/
+        temp_angle = ${appInst}.vf_control_ptr->output_angle + (${appInst}.angle_offset * ${appInst}.motor_direction);
+        ${appInst}.angle     = (uint32_t)(temp_angle);
+        ${appInst}.amplitude = ${appInst}.vf_control_ptr->output_amplitude;
+""");
+
+      if (appIns.gcheck_evoltcomp.value == true)
+      {
+	    /* Conditional generation for voltage compensation */
+out.print("""
+        /* Voltage compensation*/
+        ACIM_FREQ_CTRL_VoltageCompensation(&${appInst});
+""");
+      }
+out.print("""
+        /*Call SVM*/
+        PWM_SVM_SVMUpdate(${appInst}.pwm_svm_ptr,(uint16_t)${appInst}.amplitude,${appInst}.angle);
+      }
+""");
+/* Don't generate this condition if FCL divider value is 1 */
+if(appIns.gint_fcldiv.value != 1)
+{
+out.print("""
+    }
+    else
+    {
+      ${appInst}.fcl_div_value++;
+    }
+
+""");
+}
+/* ---------------------- End : FCL Functionality ---------------------------------- */
+println "/************************* calling control loops ***************************/"
+/* ---------------------- calling control loops   ---------------------------------- */
+    if (appIns.gcombo_svpmux.options.indexOf(appIns.gcombo_svpmux.value) == 2)
+    {
+out.print("""
+    if(${appInst}.svp_div_value == ${appInst}.acim_config_ptr->svp_divider)
+    {
+      ${appInst}.svp_div_value = 1;
+	  ${appInst}_SetValueProcessing(&${appInst});
+    }
+    else
+    {
+      ${appInst}.svp_div_value++;
+    }
+""");
+    }
+    if (appIns.gcombo_pclmux.options.indexOf(appIns.gcombo_pclmux.value) == 1)
+    {
+out.print("""
+    if(${appInst}.pcl_div_value == ${appInst}.acim_config_ptr->pcl_divider)
+    {
+""");
+      if (appIns.gcombo_svpmux.options.indexOf(appIns.gcombo_svpmux.value) == 1) 
+      {
+	     println "      ${appInst}_SetValueProcessing(&${appInst});"
+      }
+out.print("""
+	  ${appInst}_PrimaryControlLoop(&${appInst}); 
+      ${appInst}.pcl_div_value =(uint8_t)1;
+    }
+    else
+    {
+      ${appInst}.pcl_div_value++;
+    }
+""");
+    }
+    else if (appIns.gcombo_pclmux.options.indexOf(appIns.gcombo_pclmux.value) == 2)
+    {
+out.print("""
+    if(${appInst}.pcl_div_value == ${appInst}.acim_config_ptr->pcl_divider)
+    {
+      ${appInst}.pcl_div_value =(uint8_t)1;
+      NVIC_SetPendingIRQ((IRQn_Type)${appInst}.pcl_config_ptr->node_id);
+    }
+    else
+    {
+      ${appInst}.pcl_div_value++;
+    }
+""");
+    }
+	if(appIns.gcombo_etrap.options.indexOf(appIns.gcombo_etrap.value) > 0)
+	{
+out.print("""
+  }
+""");
+    }
+	out.print("""
+}
+""");
+/* ---------------------- End : Fast control loop ISR ------------------------------ */
+
+/* ------------------- Begin : Primary control loop ISR ---------------------------- */
+if(appIns.gcombo_pclmux.options.indexOf(appIns.gcombo_pclmux.value) == 2)
+{
+out.print("""
+/*************** Primary control loop ISR ****************************/
+/* This is primary control loop(PCL) ISR. It call set value processing and primary control loop 
+   based on user configuration.*/
+void ${appInst}_PrimaryControlLoop_ISR()
+{
+""");
+  if(appIns.gcombo_pclmux.options.indexOf(appIns.gcombo_pclmux.value) == 2)
+  {
+    if (appIns.gcombo_svpmux.options.indexOf(appIns.gcombo_svpmux.value) == 1) 
+    {
+	   println "  ${appInst}_SetValueProcessing(&${appInst});"
+    }
+    println "  ${appInst}_PrimaryControlLoop(&${appInst});"
+  }
+out.print("""
+}
+""");
+}
+/* --------------------- End : Primary control loop ISR ---------------------------- */
+
+/* ------------------- Begin : Primary control loop Function ---------------------------- */
+out.print("""
+/*************** Primary control loop Functions ****************************/
+ /* This Function execute primary control loop functionality*/
+void ${appInst}_PrimaryControlLoop(ACIM_FREQ_CTRL_t*const HandlePtr)
+{
+  if(HandlePtr->msm_state != ACIM_FREQ_CTRL_MSM_BOOTSTRAP)
+  {
+""");
+    /* Call set value processing function when PCL task is called by
+       automation or API call and svp task is pcl task */
+    if (appIns.gcombo_pclmux.options.indexOf(appIns.gcombo_pclmux.value) > 2)
+    {
+      if (appIns.gcombo_svpmux.options.indexOf(appIns.gcombo_svpmux.value) == 1)
+      {
+        println "    ${appInst}_SetValueProcessing(&${appInst});"
+      }
+    }
+	
+	
+  /* Conditional generation for pot measurement, If position control is disabled*/
+	if(appIns.gcheck_epotmeasurement.value == true)
+	{
+out.print("""
+    /* Set the reference speed via pot*/
+    ACIM_FREQ_CTRL_PotMeasurement(HandlePtr);
+""");
+	}
+	 
+  if(appIns.gcombo_ctrlschemeconfig.options.indexOf(appIns.gcombo_ctrlschemeconfig.value) == 1)
+  {
+  if((appIns.gcheck_opcode_positionctrl.value == true)||(appIns.gcheck_positionctrl.value == true))
+  {
+out.print("""
+    HandlePtr->position_control_ptr->position_set = (int32_t)*HandlePtr->position_set_ptr;
+    """);
+    if(appIns.gcheck_positionctrl.value == true)
+    {
+out.print("""
+    /*Position control*/
+    ACIM_FREQ_CTRL_PositionControl(HandlePtr);
+""");
+    }
+    if(appIns.gcheck_opcode_positionctrl.value == true)
+    {
+out.print("""
+    /*User code for position control*/
+    ${appIns.gstring_usercode_position_control.value.replaceAll("\\s","")}(HandlePtr);
+""");
+    }
+    }
+	if((appIns.gcheck_opcode_positionctrl.value == true)||(appIns.gcheck_positionctrl.value == true))
+	{
+      if(appIns.gcheck_positionff.value == true)
+      {
+out.print("""
+    /*position feed forward*/
+    MOTOR_LIB_FeedForwardController(HandlePtr->feed_forward_ptr,(int32_t)HandlePtr->position_control_ptr->position_set);
+""");
+      }
+      if(appIns.gcheck_opcode_positionff.value == true)
+      {
+out.print("""
+    /*User code for position feed forward*/
+    ${appIns.gstring_usercode_position_ff.value.replaceAll("\\s","")}(HandlePtr->feed_forward_ptr);
+""");
+      }
+	}
+/************************************************************************************/
+	if(appIns.gcheck_crnt_limit.value == true)
+	{
+
+out.print("""
+    /*function call for current limit*/
+    ACIM_FREQ_CTRL_CurrentLimit(HandlePtr);
+""");
+	}
+	if(appIns.gcheck_opcode_crnt_limit.value == true)
+	{
+out.print("""
+    /*user function call for current limit*/
+    ${appIns.gstring_usercode_current_limit.value.replaceAll("\\s","")}(HandlePtr);
+""");
+	}
+/************************************************************************************/		
+    if((appIns.gcheck_slipctrl.value == true) || (appIns.gcheck_opcode_slipctrl.value == true))
+    {
+	  if((appIns.gcheck_crnt_limit.value == true) || (appIns.gcheck_opcode_crnt_limit.value == true))
+	  {
+        if(((appIns.gcheck_positionff.value == true) || (appIns.gcheck_opcode_positionff.value == true)) &&
+		    ((appIns.gcheck_positionctrl.value == true) || (appIns.gcheck_opcode_positionctrl.value == true)))
+        {
+out.print("""
+    /*Updating slip control input */
+    HandlePtr->slip_control_ptr->speed_set = (((int32_t)*HandlePtr->speed_set_ptr + 
+                                       HandlePtr->feed_forward_ptr->feedforward_out_val) - HandlePtr->current_limit_ptr->output);
+""");
+        }
+        else
+        {
+out.print("""
+    /*Updating slip control input */
+    HandlePtr->slip_control_ptr->speed_set = (int32_t)*HandlePtr->speed_set_ptr - HandlePtr->current_limit_ptr->output;
+""");
+        }
+	  }
+	  else
+	  {
+	    if(((appIns.gcheck_positionff.value == true) || (appIns.gcheck_opcode_positionff.value == true)) &&
+			  ((appIns.gcheck_positionctrl.value == true) || (appIns.gcheck_opcode_positionctrl.value == true)))
+		{
+  out.print("""
+    /*Updating slip control input */
+    HandlePtr->slip_control_ptr->speed_set = (int32_t)*HandlePtr->speed_set_ptr + HandlePtr->feed_forward_ptr->feedforward_out_val;
+""");
+		}
+		else
+		{
+  out.print("""
+    /*Updating slip control input */
+    HandlePtr->slip_control_ptr->speed_set = (int32_t)*HandlePtr->speed_set_ptr;
+""");
+		}
+	  }
+	  
+      if(appIns.gcheck_slipctrl.value == true)
+      {
+out.print("""
+    /*Slip control*/
+    ACIM_FREQ_CTRL_SlipControl(HandlePtr);
+""");
+      }
+      if(appIns.gcheck_opcode_slipctrl.value == true)
+      {
+out.print("""
+    /*User code for slip control*/
+    ${appIns.gstring_usercode_slip_control.value.replaceAll("\\s","")}(HandlePtr);
+""");
+      }
+    }
+  }  
+out.print("""
+  }
+  /* Call motor control state machine */
+  ACIM_FREQ_CTRL_MSM(HandlePtr);
+}
+""");
+/* --------------------- End : Primary control loop Function ---------------------------- */
+
+/* ------------------- Begin : Set Value Processing Function ---------------------------- */
+out.print("""
+/*************** Set Value Processing Function ****************************/
+/* This Function execute set value processing control loop functionality*/
+void ${appInst}_SetValueProcessing(ACIM_FREQ_CTRL_t*const HandlePtr)
+{
+""");
+
+if(appIns.gcombo_ctrlschemeconfig.options.indexOf(appIns.gcombo_ctrlschemeconfig.value) == 0)
+{
+  if (appIns.gcombo_rampconfig.options.indexOf(appIns.gcombo_rampconfig.value) > 0)
+  {
+out.print("""
+  #if (ACIM_FREQ_CTRL_IS_AUTOMATION_AVAILABLE == 1U)
+  AUTOMATION_FB_RAMPGEN_t* ramp_ptr = (AUTOMATION_FB_RAMPGEN_t*)HandlePtr->ramp_fb_ptr->config_ptr;
+  if(ramp_ptr->config_ptr->callrate == AUTOMATION_FB_RAMP_CALLRATE_SVP_TASK)
+  {
+    HandlePtr->ramp_fb_ptr->function(ramp_ptr);
+  }
+  #endif
+""");
+  }
+}
+else
+{
+  if((appIns.gcheck_positionctrl.value == false) && (appIns.gcheck_opcode_positionctrl.value == false))
+  {
+	if (appIns.gcombo_rampconfig.options.indexOf(appIns.gcombo_rampconfig.value) > 0)
+	{
+out.print("""
+  #if (ACIM_FREQ_CTRL_IS_AUTOMATION_AVAILABLE == 1U)
+  AUTOMATION_FB_RAMPGEN_t* ramp_ptr = (AUTOMATION_FB_RAMPGEN_t*)HandlePtr->ramp_fb_ptr->config_ptr;
+  if(ramp_ptr->config_ptr->callrate == AUTOMATION_FB_RAMP_CALLRATE_SVP_TASK)
+  {
+    HandlePtr->ramp_fb_ptr->function(ramp_ptr);
+  }
+  #endif
+""");
+	}
+  }
+}
+out.print("""
+}
+""");
+/* --------------------- End : Set Value Processing Function ---------------------------- */
+}
+

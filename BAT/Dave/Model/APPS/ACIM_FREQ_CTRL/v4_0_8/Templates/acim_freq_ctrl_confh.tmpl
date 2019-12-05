@@ -1,0 +1,127 @@
+package Model.APPS.ACIM_FREQ_CTRL.v4_0_8.Templates;
+
+import Model.APPS.ACIM_FREQ_CTRL.v4_0_8.ACIM_FREQ_CTRL
+
+out.print("""
+/**
+ * @cond
+ ***********************************************************************************************************************
+ *
+ * Copyright (c) 2015, Infineon Technologies AG
+ * All rights reserved.
+ *
+ * Redistribution and use in source and binary forms, with or without modification,are permitted provided that the
+ * following conditions are met:
+ *
+ *   Redistributions of source code must retain the above copyright notice, this list of conditions and the  following
+ *   disclaimer.
+ *
+ *   Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the
+ *   following disclaimer in the documentation and/or other materials provided with the distribution.
+ *
+ *   Neither the name of the copyright holders nor the names of its contributors may be used to endorse or promote
+ *   products derived from this software without specific prior written permission.
+ *
+ * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES,
+ * INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+ * DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE  FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+ * SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
+ * SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+ * WHETHER IN CONTRACT, STRICT LIABILITY,OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT  OF THE
+ * USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+ *
+ * To improve the quality of the software, users are encouraged to share modifications, enhancements or bug fixes
+ * with Infineon Technologies AG (dave@infineon.com).
+ ***********************************************************************************************************************
+ *
+ * Change History
+ * --------------
+ *
+ * 2015-02-16:
+ *     - Initial version
+ *
+ * @endcond
+ *
+ */
+
+/***********************************************************************************************************************
+ * HEADER FILES
+ **********************************************************************************************************************/
+
+/**********************************************************************************************************************
+ * MACROS
+ **********************************************************************************************************************/
+#ifndef ACIM_FREQ_CTRL_CONF_H_
+#define ACIM_FREQ_CTRL_CONF_H_
+""");
+
+String appInst  = null
+Integer Is_ADC_Available = 0;
+Integer Is_Automation_Available = 0;
+Integer Is_dsm_Available = 0;
+Integer Is_ErrorCallBack_Enable = 0;
+
+for (Object appIns : appInstancesList ) {
+	appInst = appIns.getInstanceLabel()
+	
+  if((appIns.hwres_adcchan1.getSolverUri())||
+	 (appIns.hwres_adcchan2.getSolverUri())||
+	 (appIns.hwres_adcchan3.getSolverUri())||
+	 (appIns.hwres_adcchan4.getSolverUri()))
+  {
+    Is_ADC_Available = 1
+  }	
+   
+   if(appIns.appres_automation.getInstanceLabel())
+   {
+	 Is_Automation_Available = 1  
+	 if((appIns.gcombo_dsmmux.options.indexOf(appIns.gcombo_dsmmux.value) != 0))
+	 {
+	   Is_dsm_Available = 1
+	 }
+   }
+
+   if(appIns.gcheck_udfnenable.value == true)
+   {
+	 Is_ErrorCallBack_Enable = 1
+   }
+   if(appIns.gcombo_pclmux.options.indexOf(appIns.gcombo_pclmux.value)==2) 
+   {
+out.print("""
+  /* Primary Control Loop ISR mapped to IRQ Handler */
+  #define  ${appInst}_PrimaryControlLoop_ISR  IRQ_Hdlr_${appIns.hwres_pcl_nvicnode.getSolverUri()[7]}
+""");
+   }
+     
+out.print("""
+/* Fast Control Loop ISR mapped to IRQ Handler*/
+#define  ${appInst}_FastControlLoop_ISR  IRQ_Hdlr_${appIns.hwres_fcl_nvicnode.getSolverUri()[7]}
+""");
+}
+
+out.print("""
+/* Macro to extract MAJOR, MINOR and PATCH version */
+#define ACIM_FREQ_CTRL_MAJOR_VERSION (${(ACIM_FREQ_CTRL.version).findAll( /\d+/ )*.toInteger()[0]}U)
+#define ACIM_FREQ_CTRL_MINOR_VERSION (${(ACIM_FREQ_CTRL.version).findAll( /\d+/ )*.toInteger()[1]}U)
+#define ACIM_FREQ_CTRL_PATCH_VERSION (${(ACIM_FREQ_CTRL.version).findAll( /\d+/ )*.toInteger()[2]}U)
+
+
+/*Macro specify the presence of ADC resource*/
+#define ACIM_FREQ_CTRL_IS_ADC_AVAILABLE   (${Is_ADC_Available}U)
+
+/*Macro to specify the presence of Automation Framework */
+#define ACIM_FREQ_CTRL_IS_AUTOMATION_AVAILABLE  (${Is_Automation_Available}U)
+
+/*Macro to specify the presence of DSM Framework */
+#define ACIM_FREQ_CTRL_IS_DSM_AVAILABLE  (${Is_dsm_Available}U)
+
+/*Macro to specify the presence of user defined callback function during error */
+#define ACIM_FREQ_CTRL_IS_ERROR_USER_CALLBACK_ENABLE (${Is_ErrorCallBack_Enable}U)
+
+/* ADC calibration is disabled */
+#define ACIM_FREQ_CTRL_ADC_CALIBRATION    (0U)
+
+
+#endif
+
+""");

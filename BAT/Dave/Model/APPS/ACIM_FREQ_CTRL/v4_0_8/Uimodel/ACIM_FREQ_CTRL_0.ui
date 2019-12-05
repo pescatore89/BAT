@@ -1,0 +1,490 @@
+<p1:Tab  xmlns="http://www.eclipse.org/xwt/presentation" xmlns:x="http://www.eclipse.org/xwt" xmlns:p1="clr-namespace:com.ifx.davex.ui.controls.app" x:Class="e" layout="{x:Null}">
+    <p1:TabFolder bounds="5, 5, 1010, 773">
+        <p1:GTab text="Control Algorithm" visible="true" enabled="true" widgetName="gtab_controlalgorithm">
+            <p1:GTab.control>
+                <p1:Tab layout="{x:Null}">
+                    <p1:GGroup widgetName="ggroup_controlalgorithm" text="Control Algorithm Configuration" bounds="10, 10, 431, 90">
+                        <p1:GGroup.layout>
+                            <GridLayout numColumns="2" horizontalSpacing="10" marginBottom="10" marginHeight="0" marginTop="10" marginWidth="10" verticalSpacing="10"/>
+                        </p1:GGroup.layout>
+                        <p1:GLabel text="Control technique:" visible="true" widgetName="glabel_ctrltech" toolTipText="Frequency Control - Constant V/Hz technique is used for this motor control APP."/>
+                        <p1:GString x:Style="BORDER" mandatory="(com.ifx.davex.ui.controls.util.AppUiConstants).FALSE" manifestObj="true" widgetName="gstring_ctrltech" value="Frequency Control - Constant V/Hz" enabled="false" description="Frequency Control - Constant V/Hz technique is used for this motor control APP.">
+                            <p1:GString.layoutData>
+                                <GridData horizontalAlignment="FILL"/>
+                            </p1:GString.layoutData>
+                        </p1:GString>
+                        <p1:GLabel text="Control scheme:                          " visible="true" widgetName="glabel_ctrlschemeconfig"/>
+                            <p1:GCombo mandatory="(com.ifx.davex.ui.controls.util.AppUiConstants).FALSE" manifestObj="true" widgetName="gcombo_ctrlschemeconfig" options="Basic Configuration&#13;&#10;Advanced Configuration" value="Basic Configuration" description="This configuration allows to select among basic and advance functionality of control scheme." toolTipText="Basic configuration - Supports constant v/f control and current limit functionalities.&#13;&#10;Advanced configuration - Supports basic configuration, position and slip control functionalities.&#13;&#10;">
+                            <p1:GCombo.layoutData>
+                                <GridData grabExcessHorizontalSpace="true" horizontalAlignment="FILL"/>
+                            </p1:GCombo.layoutData>
+                        </p1:GCombo>
+                        </p1:GGroup>
+                    <p1:GImage visible="true" widgetName="gimage_6" bounds="453, 17, 420, 290" path="Uimodel/ACIM_FREQ_CTRL_GuiImage/Control_Algorithm.PNG" x:Style="BORDER"/>
+                    <p1:GGroup widgetName="ggroup_svmconfiguration" text="SVM Configuration" bounds="10, 104, 431, 147">
+                        <p1:GGroup.layout>
+                            <GridLayout numColumns="2" horizontalSpacing="10" marginBottom="10" marginHeight="0" marginWidth="10" verticalSpacing="10" marginTop="10"/>
+                        </p1:GGroup.layout>
+                        <p1:GCheck text="Enable over modulation" manifestObj="true" widgetName="gcheck_eovermodulation" toolTipText="Use the overmodulation feature of SVM" description="Use the overmodulation feature of SVM.&#13;&#10;This allows to extend the range of the modulation index beyond 0.866 by increasing max amplitude."/>
+                        <Label/>
+                        <p1:GLabel text="SVM scheme:                         " visible="true" widgetName="glabel_svmscheme"/>
+                        <p1:GCombo mandatory="(com.ifx.davex.ui.controls.util.AppUiConstants).FALSE" manifestObj="true" widgetName="gcombo_svmscheme" options="Standard SVM - 7 Segment Symmetric&#13;&#10;Standard SVM - 5 Segment Symmetric" value="Standard SVM - 7 Segment Symmetric" description="7 Segment Symmetric - Null Vector (000 and 111)is equally distributed in one PWM cycle.&lt;br&gt;&#13;&#10;5 Segment Symmetric - Null Vector Vector(000) is used. &lt;br&gt;&#13;&#10;For more information, please refer to the PWM_SVM APP." toolTipText="7 Segment Symmetric - Null Vector (000 and 111)is equally distributed in one PWM cycle.&#13;&#10;5 Segment Symmetric - Null Vector Vector(000) is used. &#13;&#10;For more information, please refer to the PWM_SVM APP.">
+                                <p1:GCombo.layoutData>
+                                    <GridData grabExcessHorizontalSpace="true" grabExcessVerticalSpace="true" verticalAlignment="FILL" horizontalAlignment="FILL"/>
+                                </p1:GCombo.layoutData>
+                            </p1:GCombo>
+                        <p1:GLabel text="PWM frequency [Hz]:                 " visible="true" widgetName="glabel_acimpwmfreq"/>
+                        <p1:GInteger x:Style="NONE" minValue="100" maxValue="250000" mandatory="(com.ifx.davex.ui.controls.util.AppUiConstants).FALSE" format="(com.ifx.davex.ui.controls.util.AppUiConstants).DEC" manifestObj="true" widgetName="gint_acimpwmfreq" value="20000" description="This is required PWM frequency for motor control. It is use to execute fast control loop, primary control loop, set value processing and motor control state machine." toolTipText="Required modulation frequency for motor control.  Control loop timings are dependent upon this frequency.&#13;&#10;Configure resolution value in PWM_SVM APP to get the desired frequency.">
+                            <p1:GInteger.layoutData>
+                                <GridData horizontalAlignment="FILL"/>
+                            </p1:GInteger.layoutData>
+                        </p1:GInteger>
+                            <p1:GLabel text="CCU8 trap:" visible="true" widgetName="glabel_etrap"/>
+                            <p1:GCombo mandatory="(com.ifx.davex.ui.controls.util.AppUiConstants).FALSE" manifestObj="true" options="Disabled&#13;&#10;Active Low&#13;&#10;Active High" toolTipText="Enable/Disable trap.  PWM outputs are gated when trap condition is detected." value="Active Low" widgetName="gcombo_etrap" description="Allows enable/disable trap.  PWM outputs are stopped, when trap occurs.">
+                                <p1:GCombo.layoutData>
+                                    <GridData grabExcessHorizontalSpace="true" horizontalAlignment="FILL"/>
+                                </p1:GCombo.layoutData>
+                            </p1:GCombo>
+                        </p1:GGroup>
+                    <p1:GGroup widgetName="ggroup_autoconfig" toolTipText="If checked, Automation APP will be consumed to utilize the parameter handler and error handler features" description="" bounds="10, 254, 431, 54">
+                        <p1:GGroup.layout>
+                            <GridLayout horizontalSpacing="10" marginBottom="10" marginHeight="0" marginTop="10" verticalSpacing="10"/>
+                        </p1:GGroup.layout>
+                        <p1:GCheck text="Always connect to automation APP" manifestObj="true" widgetName="gcheck_eparamhandler" toolTipText="Connection to Automation APP is required for Parameter Handler and Error Handler. Independent from other configurations." description="Enable this check box, if automation APP is not inserted and application required parameter and error handler features. Parameter handler and error handler features are enabled by default in automation APP."/>
+                    </p1:GGroup>
+                </p1:Tab>
+            </p1:GTab.control>
+        </p1:GTab>
+        <p1:GTab text="Basic Control Scheme" visible="true" enabled="true" manifestObj="true" widgetName="gtab_basiccontrolscheme">
+            <p1:GTab.control>
+                <p1:Tab widgetName="composite31" layout="{x:Null}">
+                    <p1:GImage visible="true" widgetName="gimage_basic_control_scheme" path="Uimodel/ACIM_FREQ_CTRL_GuiImage/Basic_Control_Scheme.PNG" bounds="8, 12, 501, 301" layout="{x:Null}" x:Style="BORDER">
+                        <p1:GCheck manifestObj="true" widgetName="gcheck_basic_crntlimit" toolTipText="This block reduce the speed set value, if actual current is more than current limit value.&#13;&#10;PI value configuration can be done in &quot;Control Parameters&quot; tap." description="Allows to configure current limit block." bounds="265, 117, 13, 13"/>
+                        <p1:GCombo mandatory="(com.ifx.davex.ui.controls.util.AppUiConstants).FALSE" manifestObj="true" widgetName="gcombo_speedset_opt" options="User Defined&#13;&#10;Speed Set&#13;&#10;FB_RAMP_0&#13;&#10;FB_RAMP_1" value="Speed Set" toolTipText="Select the source of the speed set.  If user defined, &#13;&#10;enter the valid &apos;C&apos; pointer in the string box. " description="Select the source of the speed set.  If user defined, &#13;&#10;enter the valid &apos;C&apos; pointer in the string box. " bounds="14, 206, 121, 21"/>  
+                    </p1:GImage>
+                    <p1:GString x:Style="BORDER" mandatory="(com.ifx.davex.ui.controls.util.AppUiConstants).FALSE" manifestObj="true" widgetName="gstring_ud_speedset_ptr" bounds="240, 325, 248, 21" toolTipText="Enter valid &apos;C&apos; pointer. e.g. &amp;speed_set&#13;&#10;User need to define this variable. " value="&amp;ACIM_FREQ_CTRL_userdefined_speedset" description="Enter valid &apos;C&apos; pointer. e.g. &amp;speed_set&#13;&#10;User need to define this variable. "/>
+                    <p1:GLabel text="Speed set pointer:" visible="true" manifestObj="true" widgetName="glabel_ud_speedset_ptr" bounds="69, 327, 128, 15"/>
+                    <p1:GGroup text="Dummy Group for BCS documents" manifestObj="true" widgetName="ggroup_dummy_basicctlrscheme" bounds="8, 358, 209, 61">
+                    	<p1:GLabel text="Speed set value" visible="true" manifestObj="true" widgetName="glabel_speedset_opt" bounds="9, 18, 113, 15"/>
+                    	<p1:GLabel manifestObj="true" text="Enable current limit" visible="true" widgetName="glabel_basic_crntlimit" bounds="9, 38, 135, 15"/>
+                    </p1:GGroup>
+                </p1:Tab>
+            </p1:GTab.control>
+        </p1:GTab>
+        <p1:GTab text="Advanced Control Scheme" visible="true" enabled="true" manifestObj="true" widgetName="gtab_controlscheme" description="Select the source of the speed set.  If user defined, &#13;&#10;enter the valid &apos;C&apos; pointer in the string box. ">
+            <p1:GTab.control>
+                <p1:Tab widgetName="composite77" layout="{x:Null}">
+                    <p1:GImage visible="true" widgetName="gimage_adv_control_scheme" path="Uimodel/ACIM_FREQ_CTRL_GuiImage/Advance_Control_Scheme.PNG" bounds="0, 11, 858, 454" x:Style="BORDER">
+                        <p1:GCheck manifestObj="true" widgetName="gcheck_slipctrl" bounds="567, 167, 13, 13" toolTipText="Enable slip control block. Configure slip PI&#13;&#10;parameters in the control parameters tab." description="Enable slip control block. Configure slip PI&#13;&#10;parameters in the control parameters tab."/>
+                        <p1:GCheck manifestObj="true" widgetName="gcheck_opcode_angle_ramp" bounds="763, 101, 13, 13" description="Allows to configure user define function call after angle ramp block execution." toolTipText="Enable to call user define function after  angle ramp control block execution."/>
+                        <p1:GCheck manifestObj="true" widgetName="gcheck_opcode_positionctrl" bounds="291, 233, 13, 13" toolTipText="Enable position feed forward user code. User need to &#13;&#10;define the user code API mentioned in the string box." description="Enable position feed forward user code. User need to &#13;&#10;define the user code API mentioned in the string box."/>
+                        <p1:GCheck manifestObj="true" widgetName="gcheck_positionctrl" bounds="258, 233, 13, 13" toolTipText="Enable position control block. Configure position PI&#13;&#10;parameters in the control parameters tab." description="Enable position control block. Configure position PI&#13;&#10;parameters in the control parameters tab."/>
+                        <p1:GCheck manifestObj="true" widgetName="gcheck_opcode_vf_control" bounds="763, 234, 13, 13" toolTipText="Enable to call user define function after  V(f) control block execution." description="Enable to call user define function after  V(f) control block execution."/>
+                        <p1:GCheck manifestObj="true" widgetName="gcheck_opcode_crnt_limit" bounds="450, 167, 13, 13" description="Enable to call user define function after  current limit block execution." toolTipText="Enable to call user define function after  current limit block execution."/>
+                        <p1:GCheck manifestObj="true" widgetName="gcheck_opcode_slipctrl" bounds="600, 167, 13, 13" description="Allows to configure user define function call after slip control block execution." toolTipText="Enable to call user define function after  slip control block execution."/>
+                        <p1:GCheck manifestObj="true" widgetName="gcheck_opcode_positionff" bounds="291, 101, 13, 13" description="Enable position feed forward user code. User need to &#13;&#10;define the user code API mentioned in the string box." toolTipText="Enable position feed forward user code. User need to &#13;&#10;define the user code API mentioned in the string box."/>
+                        <p1:GCheck manifestObj="true" widgetName="gcheck_positionff" bounds="258, 101, 13, 13" toolTipText="Enable position feed forward control. Configure feed forward &#13;&#10;parameters in the control parameters tab." description="Enable position feed forward control. Configure feed forward &#13;&#10;parameters in the control parameters tab."/>
+                        <p1:GCheck manifestObj="true" widgetName="gcheck_crnt_limit" bounds="417, 167, 13, 13" description="This block reduce the speed set value, if actual current is more than current limit value.&#13;&#10;PI value configuration can be done in &quot;Control Parameters&quot; tab." toolTipText="This block reduce the speed set value, if actual current is more than current limit value.&#13;&#10;PI value configuration can be done in &quot;Control Parameters&quot; tab."/>
+                        <p1:GCheck bounds="730, 101, 13, 13" description="Allows to execut angle ramp block.&#13;&#10;Enable angle ramp control block. Configure V(f)&#13;&#10;parameters in the control parameters tab." manifestObj="true" toolTipText="Allows to execut angle ramp block." widgetName="gcheck_angle_ramp" value="true"/>
+                        <p1:GCheck bounds="730, 233, 13, 13" description="Enable V(f) control block. Configure V(f)&#13;&#10;parameters in the control parameters tab." manifestObj="true" toolTipText="Enable V(f) control block. Configure V(f)&#13;&#10;parameters in the control parameters tab." widgetName="gcheck_vf_control" value="true"/>
+                        <p1:GCombo mandatory="(com.ifx.davex.ui.controls.util.AppUiConstants).FALSE" manifestObj="true" widgetName="gcombo_current_actval" bounds="12, 48, 102, 21" options="User Defined&#13;&#10;I_Average" value="User Defined" toolTipText="Provides actual current pointer options,If user defined is selected enter the valid&#13;&#10;&apos;C&apos; pointer in the string box" description="This combo allows user to select actual current pointer, available options are&lt;br&gt;&#13;&#10;1.User Defined&lt;br&gt;&#13;&#10;2.I_Average&lt;br&gt;&#13;&#10;If User Defined is selected user should enter valid pointer in the string Box populated&#13;&#10;below."/>
+                        <p1:GCombo mandatory="(com.ifx.davex.ui.controls.util.AppUiConstants).FALSE" manifestObj="true" widgetName="gcombo_position_ctrl" bounds="13, 165, 101, 21" options="User Defined&#13;&#10;Position Set&#13;&#10;FB_RAMP_0&#13;&#10;FB_RAMP_1" value="Position Set" toolTipText="Select  required position set options, If user defined is selected enter the valid&#13;&#10;&apos;C&apos; pointer in the string box" description="Select the source of the position set. position_set_ptr is updated with the address of the variable.&lt;BR&gt;&#13;&#10;Position Set: Configure in the control parameters tab. &lt;BR&gt;&#13;&#10;User Defined:  Enter the valid &apos;C&apos; pointer in the string box &lt;BR&gt;&#13;&#10;FB_RAMP0 and FB_RAMP1: Position is ramped with the given slew rate till the set value configured in the control parameters tab. Configure slew rate and initial value in automation APP.&lt;BR&gt;"/>
+                        <p1:GCombo mandatory="(com.ifx.davex.ui.controls.util.AppUiConstants).FALSE" manifestObj="true" widgetName="gcombo_position_actval" bounds="11, 204, 103, 21" options="User Defined" value="User Defined" description="This combo allows user to select actual position pointer, available options are&lt;br&gt;&#13;&#10;1.User Defined&lt;br&gt;&#13;&#10;If User Defined is selected user should enter valid pointer in the string Box populated&#13;&#10;below." toolTipText="Provides actual position pointer options,If user defined is selected enter the valid&#13;&#10;&apos;C&apos; pointer in the string box"/>
+                        <p1:GCombo mandatory="(com.ifx.davex.ui.controls.util.AppUiConstants).FALSE" manifestObj="true" widgetName="gcombo_speed_ctrl" bounds="13, 321, 101, 21" options="User Defined&#13;&#10;Speed Set&#13;&#10;FB_RAMP_0&#13;&#10;FB_RAMP_1" value="Speed Set" toolTipText="Select  required speed set options, If user defined is selected enter the valid&#13;&#10;&apos;C&apos; pointer in the string box" description="Select the source of the speed set. speed_set_ptr is updated with the address of the variable.&lt;BR&gt;&#13;&#10;Speed Set: Configure in the control parameters tab. &lt;BR&gt;&#13;&#10;User Defined:  Enter the valid &apos;C&apos; pointer in the string box &lt;BR&gt;&#13;&#10;FB_RAMP0 and FB_RAMP1: Speed is ramped with the given slew rate till the set value configured in the control parameters tab. Configure slew rate and initial value in automation APP.&lt;BR&gt;"/>
+                        <p1:GCombo mandatory="(com.ifx.davex.ui.controls.util.AppUiConstants).FALSE" manifestObj="true" widgetName="gcombo_speed_actval" bounds="13, 360, 101, 21" options="User Defined" value="User Defined" description="This combo allows user to select actual speed pointer, available options are&lt;br&gt;&#13;&#10;1.User Defined&lt;br&gt;&#13;&#10;If User Defined is selected user should enter valid pointer in the string Box populated&#13;&#10;below." toolTipText="Provides actual speed pointer options,If user defined is selected enter the valid&#13;&#10;&apos;C&apos; pointer in the string box"/>
+                    </p1:GImage>
+					<p1:GGroup manifestObj="true" widgetName="ggroup_pclusercode" text="Primary Control Loop Optional User Code " bounds="433, 472, 425, 145" toolTipText="If optional user code is selected for PCL blocks, then entered strings appear as a&#13;&#10;function call. User has to write function declaration and definition or else it will &#13;&#10;throw linker error." layout="{x:Null}">
+                            <p1:GLabel text="Position feed forward:" visible="true" manifestObj="true" widgetName="glabel_usercode_position_ff" bounds="8, 23, 122, 15"/>
+                            <p1:GString x:Style="BORDER" mandatory="(com.ifx.davex.ui.controls.util.AppUiConstants).FALSE" manifestObj="true" widgetName="gstring_usercode_position_ff" value="ACIM_FREQ_CTRL_UserCodePositionFF" toolTipText="Enter valid C API name.&#13;&#10;User need to define this function." description="Enter valid C API name.&#13;&#10;User need to define this function." bounds="139, 20, 264, 21"/>
+                            <p1:GLabel text="Position control:" visible="true" manifestObj="true" widgetName="glabel_usercode_position_control" bounds="8, 54, 95, 15"/>
+                            <p1:GString x:Style="BORDER" mandatory="(com.ifx.davex.ui.controls.util.AppUiConstants).FALSE" manifestObj="true" widgetName="gstring_usercode_position_control" value="ACIM_FREQ_CTRL_UserCodePositionControl" description="Enter valid C API name.&#13;&#10;User need to define this function." toolTipText="Enter valid C API name.&#13;&#10;User need to define this function." bounds="139, 51, 264, 21"/>
+                            <p1:GLabel text="Slip control:" visible="true" manifestObj="true" widgetName="glabel_usercode_slip_control" bounds="8, 85, 73, 15"/>
+                            <p1:GString x:Style="BORDER" mandatory="(com.ifx.davex.ui.controls.util.AppUiConstants).FALSE" manifestObj="true" widgetName="gstring_usercode_slip_control" value="ACIM_FREQ_CTRL_UserCodeSlipControl" description="Enter valid C API name.&#13;&#10;User need to define this function." toolTipText="Enter valid C API name.&#13;&#10;User need to define this function." bounds="139, 82, 264, 21"/>
+							<p1:GLabel text="Current limit:" visible="true" manifestObj="true" widgetName="glabel_usercode_current_limit" bounds="8, 118, 94, 15"/>
+							<p1:GString x:Style="BORDER" mandatory="(com.ifx.davex.ui.controls.util.AppUiConstants).FALSE" manifestObj="true" widgetName="gstring_usercode_current_limit" value="ACIM_FREQ_CTRL_UserCodeCurrentLimit" description="Enter valid C API name.&#13;&#10;User need to define this function." toolTipText="Enter valid C API name.&#13;&#10;User need to define this function." bounds="139, 115, 265, 21"/>
+                        </p1:GGroup>
+					<p1:GGroup manifestObj="true" widgetName="ggroup_fclusercode" text="Fast Control Loop Optional User Code " bounds="433, 625, 425, 87" description="If optional user code is selected for FCL blocks, then entered strings appear as a&#13;&#10;function call. User has to write function declaration and definition or else it will &#13;&#10;throw linker error." toolTipText="If optional user code is selected for FCL blocks, then entered strings appear as a&#13;&#10;function call. User has to write function declaration and definition or else it will &#13;&#10;throw linker error." layout="{x:Null}">
+						<p1:GLabel manifestObj="true" text="Angle ramp:" visible="true" widgetName="glabel_usercode_angle_ramp" bounds="10, 23, 82, 15"/>
+							<p1:GString mandatory="(com.ifx.davex.ui.controls.util.AppUiConstants).FALSE" manifestObj="true" value="ACIM_FREQ_CTRL_UserCodeAngleRamp" widgetName="gstring_usercode_angle_ramp" x:Style="BORDER" toolTipText="Enter valid C API name.&#13;&#10;User need to define this function." description="Enter valid C API name.&#13;&#10;User need to define this function." bounds="141, 20, 265, 21"/>
+							<p1:GLabel text="V(f) control:" visible="true" manifestObj="true" widgetName="glabel_usercode_vf_control" bounds="10, 54, 86, 15"/>
+							<p1:GString x:Style="BORDER" mandatory="(com.ifx.davex.ui.controls.util.AppUiConstants).FALSE" manifestObj="true" widgetName="gstring_usercode_vf_control" value="ACIM_FREQ_CTRL_UserCodeVfControl" toolTipText="Enter valid C API name.&#13;&#10;User need to define this function." description="Enter valid C API name.&#13;&#10;User need to define this function." bounds="141, 51, 265, 21"/>
+                        </p1:GGroup>
+                    <p1:GGroup text="User Defined Parameter Set " manifestObj="true" widgetName="ggroup_user_param_set" bounds="0, 472, 425, 240">
+                        <p1:GLabel text="Speed set pointer:" visible="true" manifestObj="true" widgetName="glabel_speedsetadv_ptr" bounds="13, 65, 119, 15"/>
+                        <p1:GLabel text="Position set pointer:" visible="true" manifestObj="true" widgetName="glabel_positionset_ptr" bounds="13, 25, 111, 15"/>
+						<p1:GString x:Style="BORDER" mandatory="(com.ifx.davex.ui.controls.util.AppUiConstants).FALSE" manifestObj="true" widgetName="gstring_positionset_ptr" bounds="151, 20, 261, 21" value="&amp;ACIM_FREQ_CTRL_userdef_positionset" toolTipText="Enter valid &apos;C&apos; pointer. e.g. &amp;position_set&#13;&#10;User need to define this variable. " description="Enter valid &apos;C&apos; pointer. e.g. &amp;position_set.&#13;&#10;User need to define this variable. "/>
+						<p1:GString x:Style="BORDER" mandatory="(com.ifx.davex.ui.controls.util.AppUiConstants).FALSE" manifestObj="true" widgetName="gstring_speedsetadv_ptr" bounds="151, 61, 261, 21" value="&amp;ACIM_FREQ_CTRL_userdef_speedset" toolTipText="Enter valid &apos;C&apos; pointer. e.g. &amp;speed_set.&#13;&#10;User need to define this variable. " description="Enter valid &apos;C&apos; pointer. e.g. &amp;speed_set.&#13;&#10;User need to define this variable. "/>
+                        <p1:GLabel text="Actual position pointer:" visible="true" manifestObj="true" widgetName="glabel_actpos_ptr" bounds="13, 105, 129, 15"/>
+						<p1:GString x:Style="BORDER" mandatory="(com.ifx.davex.ui.controls.util.AppUiConstants).FALSE" manifestObj="true" widgetName="gstring_actpos_ptr" bounds="151, 102, 261, 21" value="&amp;ACIM_FREQ_CTRL_userdef_actualpos" toolTipText="Enter valid &apos;C&apos; pointer. e.g. &amp;actual_position.&#13;&#10;User need to define this variable. " description="Enter valid &apos;C&apos; pointer. e.g. &amp;actual_position.&#13;&#10;User need to define this variable. "/>
+                        <p1:GLabel text="Actual speed pointer:" visible="true" manifestObj="true" widgetName="glabel_actspeed_ptr" bounds="13, 145, 124, 15"/>
+						<p1:GString x:Style="BORDER" mandatory="(com.ifx.davex.ui.controls.util.AppUiConstants).FALSE" manifestObj="true" widgetName="gstring_actspeed_ptr" bounds="151, 143, 261, 21" value="&amp;ACIM_FREQ_CTRL_userdefined_actualspeed" toolTipText="Enter valid &apos;C&apos; pointer. e.g. &amp;actual_speed.&#13;&#10;User need to define this variable. " description="Enter valid &apos;C&apos; pointer. e.g. &amp;actual_speed.&#13;&#10;User need to define this variable. "/>
+                        <p1:GLabel text="Actual current pointer:" visible="true" manifestObj="true" widgetName="glabel_actcur_ptr" bounds="13, 185, 125, 15"/>
+						<p1:GString x:Style="BORDER" mandatory="(com.ifx.davex.ui.controls.util.AppUiConstants).FALSE" manifestObj="true" widgetName="gstring_actcur_ptr" bounds="151, 184, 261, 21" value="&amp;ACIM_FREQ_CTRL_userdefined_actualcurrent" toolTipText="Enter valid &apos;C&apos; pointer. e.g. &amp;actual_current.&#13;&#10;User need to define this variable. " description="Enter valid &apos;C&apos; pointer. e.g. &amp;actual_current.&#13;&#10;User need to define this variable. "/>
+                    </p1:GGroup>
+                    <p1:GGroup text="Dummy group for document label" manifestObj="true" widgetName="ggroup_dummyadvctrl" bounds="862, 16, 147, 389">
+                    	<p1:GLabel text="Slip Control Actual Value" visible="true" manifestObj="true" widgetName="glabel_speed_actval" bounds="11, 24, 122, 15"/>
+                    	<p1:GLabel text="Slip Control Set Value" visible="true" manifestObj="true" widgetName="glabel_speed_ctrl" bounds="11, 45, 122, 15"/>
+                    	<p1:GLabel text="Position Control Actual Value" visible="true" manifestObj="true" widgetName="glabel_position_actval" bounds="11, 65, 122, 15"/>
+                    	<p1:GLabel text="Position Control Set Value" visible="true" manifestObj="true" widgetName="glabel_position_ctrl" bounds="11, 84, 122, 15"/>
+                    	<p1:GLabel text="Current Control Actual Value" visible="true" manifestObj="true" widgetName="glabel_current_actval" bounds="11, 102, 122, 15"/>
+                    	<p1:GLabel text="Enable V(f) Control" visible="true" manifestObj="true" widgetName="glabel_vf_control" bounds="11, 121, 122, 15"/>
+                    	<p1:GLabel text="Enable Angle Ramp" visible="true" manifestObj="true" widgetName="glabel_angle_ramp" bounds="11, 142, 122, 15"/>
+                    	<p1:GLabel text="Enable angle ramp for user code" visible="true" manifestObj="true" widgetName="glabel_opcode_angle_ramp" bounds="11, 162, 122, 15"/>
+                    	<p1:GLabel text="Enable feed forward for user code" manifestObj="true" widgetName="glabel_opcode_positionff" bounds="11, 183, 122, 15"/>
+                    	<p1:GLabel text="Enable current limit for user code" visible="true" manifestObj="true" widgetName="glabel_opcode_crnt_limit" bounds="11, 205, 122, 15"/>
+                    	<p1:GLabel text="Enable position control for user code" visible="true" manifestObj="true" widgetName="glabel_opcode_positionctrl" bounds="11, 227, 122, 15"/>
+                    	<p1:GLabel text="Enable V(f) control for user code" visible="true" manifestObj="true" widgetName="glabel_opcode_vf_control" bounds="11, 250, 122, 15"/>
+                    	<p1:GLabel manifestObj="true" text="Enable current limit" visible="true" widgetName="glabel_crnt_limit" bounds="11, 272, 122, 15"/>
+                    	<p1:GLabel text="Enable slip control" visible="true" manifestObj="true" widgetName="glabel_slipctrl" bounds="11, 296, 122, 15"/>
+                    	<p1:GLabel text="Enable slip control for user code" visible="true" manifestObj="true" widgetName="glabel_opcode_slipctrl" bounds="11, 318, 122, 15"/>
+                    	<p1:GLabel text="Enable position control" visible="true" manifestObj="true" widgetName="glabel_positionctrl" bounds="11, 341, 122, 15"/>
+                    	<p1:GLabel text="Enable feed forward" manifestObj="true" widgetName="glabel_positionff" bounds="11, 362, 122, 15"/>
+                    </p1:GGroup>
+                </p1:Tab>
+            </p1:GTab.control>
+        </p1:GTab>
+        <p1:GTab text="Control Parameters" visible="true" enabled="true" manifestObj="true" widgetName="gtab_controlpanel">
+        	<p1:GTab.control>
+        		<p1:Tab widgetName="composite3" layout="{x:Null}">
+                    <p1:GGroup text="Control Panel Parameters" widgetName="ggroup_controlparameters" bounds="5, 5, 414, 334" layout="{x:Null}">
+                        <p1:GLabel text="Motor direction:" visible="true" widgetName="glabel_motordirection" bounds="13, 28, 101, 15"/>
+                        <p1:GCombo mandatory="(com.ifx.davex.ui.controls.util.AppUiConstants).FALSE" manifestObj="true" widgetName="gcombo_motordirection" options="Clockwise&#13;&#10;Anticlockwise" value="Clockwise" description="Allows to configure motor direction.&#13;&#10;" toolTipText="Select the direction of rotation" bounds="186, 25, 218, 21"/>
+                        <p1:GLabel text="User speed set [rpm]:" visible="true" widgetName="glabel_speedref" bounds="13, 59, 156, 15"/>
+                        <p1:GInteger x:Style="NONE" minValue="0" maxValue="200000.0" mandatory="(com.ifx.davex.ui.controls.util.AppUiConstants).FALSE" format="(com.ifx.davex.ui.controls.util.AppUiConstants).DEC" manifestObj="true" widgetName="gint_speedref" value="1500" toolTipText="Enter speed set value of the motor. If position control is disabled." description="This is the end speed reference of the motor. If position control is disabled." bounds="186, 56, 218, 23"/>
+                        <p1:GLabel text="Over current limit [mA]:" visible="true" widgetName="glabel_maxcurrentlimit" bounds="13, 91, 141, 15"/>
+                        <p1:GFloat x:Style="BORDER" minValue="0.0" maxValue="5000000.0" mandatory="(com.ifx.davex.ui.controls.util.AppUiConstants).FALSE" format="*,6" manifestObj="true" widgetName="gfloat_maxcurrentlimit" value="500.0" description="Configure over current limit value.&#13;&#10;Motor will be stopped when current exceeds this &#13;&#10;limit if overcurrent detection feature is enabled." toolTipText="Configure over current limit value.&#13;&#10;Motor will be stopped when current exceeds this &#13;&#10;limit if overcurrent detection feature is enabled." bounds="186, 88, 218, 21"/>
+                        <p1:GLabel text="Maximum voltage limit [%]:" visible="true" widgetName="glabel_maxvoltlimit" bounds="13, 122, 165, 15"/>
+                        <p1:GFloat x:Style="BORDER" minValue="0.0" maxValue="100.0" mandatory="(com.ifx.davex.ui.controls.util.AppUiConstants).FALSE" format="*,6" manifestObj="true" widgetName="gfloat_maxvoltlimit" value="100.0" description="Allows to configure maximum voltage limit." toolTipText="Configure maximum voltage limit. Output voltage is limited based on this value." bounds="186, 119, 218, 21"/>
+                        <p1:GGroup widgetName="ggroup_defaultconf" text="V/f Configuration" bounds="12, 147, 390, 168" layout="{x:Null}">
+                        <p1:GLabel text="Default              " visible="true" widgetName="glabel_vf_default" bounds="187, 15, 80, 15"/>
+                        <p1:GCheck text="User defined" manifestObj="true" widgetName="gcheck_userdefconf" description="Allows to configure user defined V/f parameters." bounds="288, 15, 88, 16" toolTipText="If enabled, user defined v/f constant and voltage offset values are used in v/f control loop."/>
+                        <p1:GLabel text="V/f constant [mV/Hz]:                    " visible="true" widgetName="glabel_vfconstant" bounds="11, 44, 151, 15"/>
+                        <p1:GFloat x:Style="BORDER" minValue="0.0" maxValue="40000.0" mandatory="(com.ifx.davex.ui.controls.util.AppUiConstants).FALSE" format="*,6" manifestObj="true" widgetName="gfloat_vfconstant" value="0.0" enabled="false" description="This is default configuration  of V/f constant." bounds="174, 41, 102, 21"/>
+                        <p1:GFloat x:Style="BORDER" minValue="0.0" maxValue="40000.0" mandatory="(com.ifx.davex.ui.controls.util.AppUiConstants).FALSE" format="*,6" manifestObj="true" widgetName="gfloat_udvfconstant" value="0.0" description="Allows to configure user defined V/f constant." bounds="280, 41, 104, 21" toolTipText="Configure user defined V/f constant."/>
+                        <p1:GLabel text="V/f offset [mV]:" visible="true" widgetName="glabel_voltageoffset" bounds="11, 75, 126, 15"/>
+                        <p1:GFloat x:Style="BORDER" minValue="0.0" maxValue="200000.0" mandatory="(com.ifx.davex.ui.controls.util.AppUiConstants).FALSE" format="*,6" manifestObj="true" widgetName="gfloat_voltageoffset" value="0.0" enabled="false" description="This is default configuration  of voltage offset." bounds="174, 72, 103, 21"/>
+                        <p1:GFloat x:Style="BORDER" minValue="0.0" maxValue="200000.0" mandatory="(com.ifx.davex.ui.controls.util.AppUiConstants).FALSE" format="*,6" manifestObj="true" widgetName="gfloat_udvoltageoffset" value="0.0" description="Allows to configure user defined voltage offset." bounds="280, 72, 104, 21" toolTipText="Configure user defined voltage offset."/>
+                        <p1:GLabel manifestObj="true" text="Angle Offset [degrees]:" widgetName="glabel_basic_angleoffset" bounds="10, 104, 123, 15"/>
+                        <p1:GFloat description="Configure offset for angle in degrees.&#13;&#10;This is added in the calculated angle &#13;&#10;and given to SVM. " format="*,6" mandatory="(com.ifx.davex.ui.controls.util.AppUiConstants).FALSE" manifestObj="true" maxValue="360.0" minValue="0.0" toolTipText="Configure offset for angle in degrees.&#13;&#10;This is added in the calculated angle &#13;&#10;and given to SVM. " value="0.0" widgetName="gfloat_basic_angleoffset" x:Style="BORDER" bounds="174, 101, 210, 21"/>
+                        <p1:GLabel manifestObj="true" text="Amplitude offset [V]:" widgetName="glabel_basic_amplitudeoffset" bounds="9, 135, 121, 15"/>
+                        <p1:GFloat description="Configure offset for amplitude in volts. &#13;&#10;This is added in the calculated amplitude &#13;&#10;and given to SVM. " format="*,6" mandatory="(com.ifx.davex.ui.controls.util.AppUiConstants).FALSE" manifestObj="true" maxValue="48.0" minValue="0.0" toolTipText="Configure offset for amplitude in volts. &#13;&#10;This is added in the calculated amplitude &#13;&#10;and given to SVM. " value="0.0" widgetName="gfloat_basic_amplitudeoffset" x:Style="BORDER" bounds="174, 132, 209, 21"/>
+                    </p1:GGroup>
+                    </p1:GGroup>
+                    <p1:GGroup text="Motor Parameters" widgetName="ggroup_motorparameters" bounds="429, 5, 414, 128" layout="{x:Null}">
+                        <p1:GLabel manifestObj="true" text="Nominal voltage [V]:" visible="true" widgetName="glabel_nominalvolt" bounds="8, 23, 109, 15"/>
+                        <p1:GFloat format="*,6" mandatory="(com.ifx.davex.ui.controls.util.AppUiConstants).FALSE" manifestObj="true" maxValue="1005.0" minValue="0" value="24.0" widgetName="gfloat_nominalvolt" x:Style="BORDER" description="Allows to configure nominal motor voltage." toolTipText="Configure nominal motor voltage." bounds="153, 20, 244, 21"/>
+                        <p1:GLabel manifestObj="true" text="No load speed [rpm]:       " visible="true" widgetName="glabel_nominalspeed" bounds="8, 54, 137, 15"/>
+                        <p1:GFloat format="*,6" mandatory="(com.ifx.davex.ui.controls.util.AppUiConstants).FALSE" manifestObj="true" maxValue="200000.0" minValue="1.0" value="4400.0" widgetName="gfloat_nominalspeed" x:Style="BORDER" description="Allows to configure nominal motor speed." toolTipText="Configure nominal motor speed." bounds="153, 51, 244, 21"/>
+                        <p1:GLabel manifestObj="true" text="Pole pair:" visible="true" widgetName="glabel_polepair" bounds="8, 85, 49, 15"/>
+                        <p1:GInteger format="(com.ifx.davex.ui.controls.util.AppUiConstants).DEC" mandatory="(com.ifx.davex.ui.controls.util.AppUiConstants).FALSE" manifestObj="true" maxValue="40" minValue="1" value="4" widgetName="gint_polepair" description="Allows to configure number of pole pairs of motor." toolTipText="Configure number of pole pairs of motor." bounds="153, 82, 244, 23"/>
+                    </p1:GGroup>
+                    <p1:GGroup text="Current Limit Configurations" manifestObj="true" widgetName="ggroup_current_limit_config" bounds="429, 137, 414, 202" layout="{x:Null}">
+                        <p1:GGroup manifestObj="true" text="PI Controller" widgetName="ggroup_currentpi_config" bounds="9, 50, 396, 147" layout="{x:Null}">
+                        <p1:GLabel manifestObj="true" text="Kp:" visible="true" widgetName="glabel_currentkp" bounds="8, 23, 17, 15"/>
+                        <p1:GFloat description="Configure proportional gain for current limit block." format="*,6" mandatory="(com.ifx.davex.ui.controls.util.AppUiConstants).FALSE" manifestObj="true" maxValue="32767.0" minValue="0.0" value="81.0" widgetName="gfloat_currentkp" x:Style="BORDER" toolTipText="Configure proportional gain for current limit block." bounds="144, 20, 244, 21"/>
+                        <p1:GLabel manifestObj="true" text="Ki:" visible="true" widgetName="glabel_currentki" bounds="8, 54, 13, 15"/>
+                        <p1:GFloat description="Configure integral gain for current limit block." format="*,6" mandatory="(com.ifx.davex.ui.controls.util.AppUiConstants).FALSE" manifestObj="true" maxValue="32767.0" minValue="0.0" value="5.0" widgetName="gfloat_currentki" x:Style="BORDER" toolTipText="Configure integral gain for current limit block." bounds="144, 51, 244, 21"/>
+                        <p1:GLabel manifestObj="true" text="Output limit [%]:" visible="true" widgetName="glabel_current_out_limit" bounds="8, 85, 89, 15"/>
+                        <p1:GFloat description="Configure output buffer limit for current limit block." format="*,6" mandatory="(com.ifx.davex.ui.controls.util.AppUiConstants).FALSE" manifestObj="true" maxValue="100.0" minValue="0.0" value="100.0" widgetName="gfloat_current_out_limit" x:Style="BORDER" toolTipText="Configure output buffer limit for current limit block." bounds="144, 82, 244, 21"/>
+                        <p1:GLabel manifestObj="true" text="Integral buffer limit [%]:" visible="true" widgetName="glabel_current_buf_limit" bounds="8, 116, 126, 15"/>
+                        <p1:GFloat description="Configure integral buffer limit for current limit block." format="*,6" mandatory="(com.ifx.davex.ui.controls.util.AppUiConstants).FALSE" manifestObj="true" maxValue="100.0" minValue="0.0" value="100.0" widgetName="gfloat_current_buf_limit" x:Style="BORDER" toolTipText="Configure integral buffer limit for current limit block." bounds="144, 113, 244, 21"/>
+                    </p1:GGroup>
+                        <p1:GFloat description="Allows to configure reference current limit. It is input to the current limit block." format="*,6" mandatory="(com.ifx.davex.ui.controls.util.AppUiConstants).FALSE" manifestObj="true" maxValue="5000.0" minValue="0.0" toolTipText="Configure set current limit.  It is input to the current limit block. " value="0.3" widgetName="gfloat_basic_currentlimit" x:Style="BORDER" bounds="153, 24, 244, 21"/>
+                        <p1:GLabel text="Current limit set [A]:" visible="true" manifestObj="true" widgetName="glabel_basic_currentlimit" bounds="15, 26, 120, 15"/>
+                    </p1:GGroup>
+                    <p1:GGroup text="Slip Control Configurations" manifestObj="true" widgetName="ggroup_slipctrl_config" bounds="429, 350, 414, 242" layout="{x:Null}">
+                        <p1:GGroup manifestObj="true" text="PI Controller" widgetName="ggroup_slippi_config" bounds="9, 51, 396, 147" layout="{x:Null}">
+                            <p1:GLabel manifestObj="true" text="Kp:" widgetName="glabel_slipkp" bounds="8, 23, 17, 15"/>
+                            <p1:GFloat description="Configure proportional gain for slip control block." format="*,6" mandatory="(com.ifx.davex.ui.controls.util.AppUiConstants).FALSE" manifestObj="true" maxValue="32767.0" minValue="0.0" toolTipText="Configure proportional gain for slip control block." value="81.0" widgetName="gfloat_slipkp" x:Style="BORDER" bounds="144, 20, 244, 21"/>
+                            <p1:GLabel manifestObj="true" text="Ki:" widgetName="glabel_slipki" bounds="8, 54, 13, 15"/>
+                            <p1:GFloat description="Configure integral gain for slip control block." format="*,6" mandatory="(com.ifx.davex.ui.controls.util.AppUiConstants).FALSE" manifestObj="true" maxValue="32767.0" minValue="0.0" toolTipText="Configure integral gain for slip control block." value="5.0" widgetName="gfloat_slipki" x:Style="BORDER" bounds="144, 51, 244, 21"/>
+                            <p1:GLabel manifestObj="true" text="Output limit [%]:" widgetName="glabel_slip_out_limit" bounds="8, 85, 89, 15"/>
+                            <p1:GFloat description="Configure output buffer limit for slip control block." format="*,6" mandatory="(com.ifx.davex.ui.controls.util.AppUiConstants).FALSE" manifestObj="true" maxValue="100.0" minValue="0.0" toolTipText="Configure output buffer limit for slip control block." value="100.0" widgetName="gfloat_slip_out_limit" x:Style="BORDER" bounds="144, 82, 244, 21"/>
+                            <p1:GLabel manifestObj="true" text="Integral buffer limit [%]:" widgetName="glabel_slip_buf_limit" bounds="8, 116, 126, 15"/>
+                            <p1:GFloat description="Configure integral buffer limit for slip control block." format="*,6" mandatory="(com.ifx.davex.ui.controls.util.AppUiConstants).FALSE" manifestObj="true" maxValue="100.0" minValue="0.0" toolTipText="Configure integral buffer limit for slip control block." value="100.0" widgetName="gfloat_slip_buf_limit" x:Style="BORDER" bounds="144, 113, 244, 21"/>
+                        </p1:GGroup>
+                        <p1:GFloat description="This is additive input(in rpm), to input speed reference of slip control block." format="*,6" mandatory="(com.ifx.davex.ui.controls.util.AppUiConstants).FALSE" manifestObj="true" maxValue="50000.0" minValue="-50000.0" toolTipText="This is additive input(in rpm), added with speed set value." value="0.0" widgetName="gfloat_additivespeed" x:Style="BORDER" bounds="153, 24, 244, 21"/>
+                        <p1:GLabel text="Additive speed [rpm]:" visible="true" manifestObj="true" widgetName="glabel_additivespeed" bounds="15, 24, 118, 15"/>
+                    </p1:GGroup>
+                    <p1:GGroup text="Position Control Configurations" manifestObj="true" widgetName="ggroup_position_ctrl_config" bounds="5, 350, 414, 242">
+                        <p1:GGroup bounds="221, 80, 187, 153" manifestObj="true" text="Feed Forward Controller" widgetName="ggroup_posff_config">
+                            <p1:GCheck bounds="13, 25, 88, 16" description="Enable one cycle dead time delay for position feed forward." manifestObj="true" text="Enable Delay" toolTipText="Enable one cycle dead time delay for position feed forward." widgetName="gcheck_effdelay"/>
+                            <p1:GLabel bounds="13, 54, 99, 15" manifestObj="true" text="Dead band [rev]:" widgetName="glabel_ffdeadband"/>
+                            <p1:GFloat bounds="122, 51, 57, 21" description="Allows to configure input dead band to avoid LSB flickering." format="*,6" mandatory="(com.ifx.davex.ui.controls.util.AppUiConstants).FALSE" manifestObj="true" maxValue="10" minValue="0.0" toolTipText="Configure input dead band to avoid LSB flickering.&#13;&#10;This is in terms of number of rotation." value="0.005" widgetName="gfloat_ffdeadband" x:Style="BORDER"/>
+                            <p1:GLabel bounds="13, 85, 104, 15" manifestObj="true" text="Feed forward gain:" widgetName="glabel_ffgain"/>
+                            <p1:GFloat bounds="122, 82, 57, 21" description="Allows to configure feed forward gain." format="*,6" mandatory="(com.ifx.davex.ui.controls.util.AppUiConstants).FALSE" manifestObj="true" maxValue="255.0" minValue="0.0" toolTipText="Configure feed forward gain." value="1.0" widgetName="gfloat_ffgain" x:Style="BORDER"/>
+                            <p1:GLabel bounds="13, 116, 96, 15" manifestObj="true" text="Differential gain:" widgetName="glabel_ffdifgain"/>
+                            <p1:GFloat bounds="122, 113, 57, 21" description="Allows to configure feed forward differential gain." format="*,6" mandatory="(com.ifx.davex.ui.controls.util.AppUiConstants).FALSE" manifestObj="true" maxValue="255.0" minValue="0.0" toolTipText="Configure feed forward differential gain." value="1.0" widgetName="gfloat_ffdifgain" x:Style="BORDER"/>
+                        </p1:GGroup>
+                        <p1:GGroup bounds="5, 80, 209, 153" manifestObj="true" text="PI Controller" widgetName="ggroup_positionpi_config">
+                            <p1:GLabel bounds="9, 28, 36, 15" manifestObj="true" text="Kp:" widgetName="glabel_positionkp"/>
+                            <p1:GFloat bounds="145, 25, 57, 21" description="Configure proportional gain for position control block." format="*,6" mandatory="(com.ifx.davex.ui.controls.util.AppUiConstants).FALSE" manifestObj="true" maxValue="32767.0" minValue="0.0" toolTipText="Configure proportional gain for position control block." value="81.0" widgetName="gfloat_positionkp" x:Style="BORDER"/>
+                            <p1:GLabel bounds="9, 59, 30, 15" manifestObj="true" text="Ki:" widgetName="glabel_positionki"/>
+                            <p1:GFloat bounds="145, 56, 57, 21" description="Configure integral gain for position control block." format="*,6" mandatory="(com.ifx.davex.ui.controls.util.AppUiConstants).FALSE" manifestObj="true" maxValue="32767.0" minValue="0.0" toolTipText="Configure integral gain for position control block." value="0.0" widgetName="gfloat_positionki" x:Style="BORDER"/>
+                            <p1:GLabel bounds="9, 90, 111, 15" manifestObj="true" text="Output limit [%]:" widgetName="glabel_position_out_limit"/>
+                            <p1:GFloat bounds="145, 87, 57, 21" description="Configure output buffer limit for position control block." format="*,6" mandatory="(com.ifx.davex.ui.controls.util.AppUiConstants).FALSE" manifestObj="true" maxValue="100.0" minValue="0.0" toolTipText="Configure output limit for position control block." value="100.0" widgetName="gfloat_position_out_limit" x:Style="BORDER"/>
+                            <p1:GLabel bounds="9, 121, 132, 15" manifestObj="true" text="Integral buffer limit [%]:" widgetName="glabel_position_buf_limit"/>
+                            <p1:GFloat bounds="145, 118, 57, 21" description="Configure integral buffer limit for position control block." format="*,6" mandatory="(com.ifx.davex.ui.controls.util.AppUiConstants).FALSE" manifestObj="true" maxValue="100.0" minValue="0.0" toolTipText="Configure integral buffer limit for position control block." value="100.0" widgetName="gfloat_position_buf_limit" x:Style="BORDER"/>
+                        </p1:GGroup>
+						<p1:GFloat bounds="186, 22, 218, 21" description="This is input position reference(degree), to the position control and position feed forward block." format="*,6" mandatory="(com.ifx.davex.ui.controls.util.AppUiConstants).FALSE" manifestObj="true" maxValue="16383" minValue="-16384.0" toolTipText="Enter position set (no of revolution), to the position control and position feed forward block." value="1" widgetName="gfloat_positioninput" x:Style="BORDER"/>
+                        <p1:GLabel text="Position set [rev]:" visible="true" manifestObj="true" widgetName="glabel_positioninput" bounds="8, 27, 114, 15"/>
+						<p1:GFloat bounds="186, 53, 218, 21" description="This is additive input(in degree), to input position reference of position control block." format="*,6" mandatory="(com.ifx.davex.ui.controls.util.AppUiConstants).FALSE" manifestObj="true" maxValue="16383" minValue="-16384.0" toolTipText="Enter additive input(no of revolution), added with poistion set value." value="0.0" widgetName="gfloat_additive_position" x:Style="BORDER"/>
+                        <p1:GLabel text="Additive position [rev]:" visible="true" manifestObj="true" widgetName="glabel_additive_position" bounds="8, 54, 137, 15"/>
+                    </p1:GGroup>
+                    <p1:GCombo mandatory="(com.ifx.davex.ui.controls.util.AppUiConstants).FALSE" manifestObj="true" visible="true" widgetName="gcombo_rampconfig" options="Disable&#13;&#10;FB_RAMP_0&#13;&#10;FB_RAMP_1" value="Disable" description="Allows to select speed ramp. Ramp configuration is part of AUTOMATION frame work. Motor speed reference is input to the ramp function block." toolTipText="Configure  speed ramp. Ramp configuration is part of AUTOMATION frame work. User speed set value is input to the ramp function block." enabled="false" bounds="136, 597, 218, 21"/>
+                    <p1:GLabel text="Ramp configuration:" visible="true" widgetName="glabel_rampconfig" manifestObj="true" enabled="false" bounds="8, 599, 127, 15"/>
+                    <p1:GLabel manifestObj="true" text="User define voltage offset [mV]" visible="true" widgetName="glabel_udvoltageoffset" bounds="553, 599, 167, 15"/>
+                    <p1:GLabel text="User define V/f constant [V/Hz]" visible="true" manifestObj="true" widgetName="glabel_udvfconstant" bounds="379, 598, 167, 15"/>
+                </p1:Tab>
+        	</p1:GTab.control>
+        </p1:GTab>
+        <p1:GTab text="Task Scheduler" visible="true" enabled="true" widgetName="gTab31">
+            <p1:GTab.control>
+                <p1:Tab widgetName="composite11" layout="{x:Null}">
+                    <p1:GImage visible="true" widgetName="gImage3" path="Uimodel/ACIM_FREQ_CTRL_GuiImage/Task_Scheduler.PNG" bounds="5, 5, 705, 390" layout="{x:Null}" x:Style="BORDER">
+                        <p1:GInteger x:Style="NONE" minValue="100" maxValue="250000" mandatory="(com.ifx.davex.ui.controls.util.AppUiConstants).FALSE" format="(com.ifx.davex.ui.controls.util.AppUiConstants).DEC" manifestObj="true" widgetName="gint_ts_acimpwmfreq" value="20000" enabled="false" toolTipText="This is required frequency for task scheduler. It is same as pwm frequency." description="This is required frequency for task scheduler. It is same as pwm frequency." bounds="50, 52, 69, 23"/>
+                        <p1:GCombo mandatory="(com.ifx.davex.ui.controls.util.AppUiConstants).FALSE" manifestObj="true" widgetName="gcombo_pclmux" options="Disabled&#13;&#10;1/PCL_DIV&#13;&#10;PCL ISR&#13;&#10;API Call&#13;&#10;Automation&#13;&#10;" value="1/PCL_DIV" description="Select the source of the execution of the primary control loop task. &lt;BR&gt;&#13;&#10;PCL_DIV: PCL task is called by the fast control loop at the reduced rate decided by the divider. &lt;BR&gt;&#13;&#10;PCL ISR: PCL task is run in separate interrupt service routine . Priority of this interrupt need to be adjusted so that FCL and PCL can run with minimum interruptions.&lt;BR&gt;&#13;&#10;API Call: User need to handle drive state machine in the user code. &lt;BR&gt;&#13;&#10;Automation: Primary control loop is called by the automation APP. Desired time is achieved using system timer interrupt. &lt;BR&gt;" toolTipText="Select the source of the execution of the primary control loop task.&#13;&#10;PCL ISR provides the option to configure priority level for PCL. " bounds="393, 103, 112, 21"/>
+                        <p1:GCombo mandatory="(com.ifx.davex.ui.controls.util.AppUiConstants).FALSE" manifestObj="true" widgetName="gcombo_svpmux" options="Disabled&#13;&#10;PCL Task&#13;&#10;1/SVP_DIV&#13;&#10;API Call&#13;&#10;Automation" value="PCL Task" description="Select the source of the execution of the set value processor task. &lt;BR&gt;&#13;&#10;PCL Task: SVP task is run with the same configuration as primary control loop task. &lt;BR&gt;&#13;&#10;SVP_DIV: SVP task is called by the fast control loop at the reduced rate decided by the divider. &lt;BR&gt;&#13;&#10;API Call: User need to handle drive state machine in the user code. &lt;BR&gt;&#13;&#10;Automation: Set value processor is called by the automation APP. Desired time is achieved using system timer interrupt. &lt;BR&gt;" toolTipText="Select the source of the execution of the set value processor task." bounds="439, 186, 93, 21"/>
+                        <p1:GCombo mandatory="(com.ifx.davex.ui.controls.util.AppUiConstants).FALSE" manifestObj="true" widgetName="gcombo_dsmmux" options="Disabled&#13;&#10;API Call&#13;&#10;Automation" value="Disabled" toolTipText="Select the source of the execution of the drive state machine task. " description="Select the source of the execution of the drive state machine task." bounds="277, 279, 95, 21"/>
+                        <p1:GInteger enabled="false" format="(com.ifx.davex.ui.controls.util.AppUiConstants).DEC" mandatory="(com.ifx.davex.ui.controls.util.AppUiConstants).FALSE" manifestObj="true" maxValue="100000" minValue="1" value="50" widgetName="gint_fcltime" description="This is actual time period to execute fast control loop tasks." toolTipText="This is actual time period to execute fast control loop tasks." bounds="597, 55, 58, 23"/>
+                        <p1:GInteger enabled="false" format="(com.ifx.davex.ui.controls.util.AppUiConstants).DEC" mandatory="(com.ifx.davex.ui.controls.util.AppUiConstants).FALSE" manifestObj="true" maxValue="100000" minValue="1" value="150" widgetName="gint_pcltime" description="This is actual time period to execute primary control loop tasks." toolTipText="This is actual time period to execute primary control loop tasks." bounds="597, 134, 58, 23"/>
+                        <p1:GInteger enabled="false" format="(com.ifx.davex.ui.controls.util.AppUiConstants).DEC" mandatory="(com.ifx.davex.ui.controls.util.AppUiConstants).FALSE" manifestObj="true" maxValue="100000" minValue="1" value="250" widgetName="gint_svptime" description="This is actual time period to execute set value processing tasks." toolTipText="This is actual time period to execute set value processing tasks." bounds="597, 217, 58, 23"/>
+                        <p1:GInteger enabled="false" format="(com.ifx.davex.ui.controls.util.AppUiConstants).DEC" mandatory="(com.ifx.davex.ui.controls.util.AppUiConstants).FALSE" manifestObj="true" maxValue="100000" minValue="1" value="150" widgetName="gint_mcsmtime" description="This is actual time period to execute motor control state machine tasks." toolTipText="This is actual time period to execute motor control state machine tasks." bounds="597, 309, 58, 23"/>
+                        <p1:GInteger x:Style="NONE" minValue="1" maxValue="100000" mandatory="(com.ifx.davex.ui.controls.util.AppUiConstants).FALSE" format="(com.ifx.davex.ui.controls.util.AppUiConstants).DEC" manifestObj="true" widgetName="gint_dsmtime" value="50" enabled="false" toolTipText="This is actual time period to execute drive state machine tasks." description="This is actual time period to execute drive state machine tasks." bounds="429, 310, 58, 23"/>
+                    </p1:GImage>
+                    <p1:GGroup text="Task Configuration" widgetName="ggroup_timeconfiguration" bounds="5, 406, 705, 190" layout="{x:Null}">
+                        <p1:GGroup text="Desired Time Configuration" widgetName="ggroup_timeconf" bounds="13, 25, 334, 150" layout="{x:Null}">
+                        <p1:GLabel text="Fast control loop [us]:" visible="true" widgetName="glabel_fcldesiretime" bounds="8, 23, 124, 15"/>
+                        <p1:GInteger x:Style="NONE" minValue="1" maxValue="100000" mandatory="(com.ifx.davex.ui.controls.util.AppUiConstants).FALSE" format="(com.ifx.davex.ui.controls.util.AppUiConstants).DEC" manifestObj="true" widgetName="gint_fcldesiretime" value="50" bounds="176, 20, 136, 23" description="Execution rate of the fast control loop task. Fast control loop &#13;&#10;is executed when calculated task time (multiple of PWM period) expires." toolTipText="Execution rate of the fast control loop task. Fast control loop &#13;&#10;is executed when calculated task time (multiple of PWM period) expires."/>
+                        <p1:GLabel text="Primary control loop [us]:" visible="true" widgetName="glabel_pcldesiretime" bounds="8, 54, 143, 15"/>
+                        <p1:GInteger format="(com.ifx.davex.ui.controls.util.AppUiConstants).DEC" mandatory="(com.ifx.davex.ui.controls.util.AppUiConstants).FALSE" manifestObj="true" maxValue="100000" minValue="1" value="150" widgetName="gint_pcldesiretime" bounds="176, 51, 136, 23" description="Execution rate of the primary control loop task. Primary control &#13;&#10;loop is executed when calculated task time expires." toolTipText="Execution rate of the primary control loop task. Primary control &#13;&#10;loop is executed when calculated task time expires."/>
+                        <p1:GLabel text="Set value processing [us]:" visible="true" widgetName="glabel_svpdesiretime" bounds="8, 85, 138, 15"/>
+                        <p1:GInteger format="(com.ifx.davex.ui.controls.util.AppUiConstants).DEC" mandatory="(com.ifx.davex.ui.controls.util.AppUiConstants).FALSE" manifestObj="true" maxValue="100000" minValue="1" value="250" widgetName="gint_svpdesiretime" bounds="176, 82, 136, 23" toolTipText="Execution rate of the set value processor task. Set value &#13;&#10;processor is executed when calculated task time expires." description="Execution rate of the set value processor task. Set value &#13;&#10;processor is executed when calculated task time expires."/>
+                        <p1:GLabel text="Drive state machine [us]:" visible="true" widgetName="glabel_dsmdesiretime" bounds="8, 116, 137, 15"/>
+                        <p1:GInteger format="(com.ifx.davex.ui.controls.util.AppUiConstants).DEC" mandatory="(com.ifx.davex.ui.controls.util.AppUiConstants).FALSE" manifestObj="true" maxValue="100000" minValue="1" value="1000" widgetName="gint_dsmdesiretime" bounds="176, 113, 136, 23" description="Execution rate of the drive state machine task. Drive state &#13;&#10;machine is executed when calculated task time expires." toolTipText="Execution rate of the drive state machine task. Drive state &#13;&#10;machine is executed when calculated task time expires."/>
+                    </p1:GGroup>
+                        <p1:GGroup text="Divider Values" widgetName="ggroup_divconf" bounds="366, 25, 306, 150" layout="{x:Null}">
+                        <p1:GLabel text="FCL_DIV:" visible="true" widgetName="glabel_fcldiv" bounds="11, 23, 80, 15"/>
+                        <p1:GInteger format="(com.ifx.davex.ui.controls.util.AppUiConstants).DEC" mandatory="(com.ifx.davex.ui.controls.util.AppUiConstants).FALSE" manifestObj="true" maxValue="255" minValue="1" value="1" widgetName="gint_fcldiv" enabled="false" bounds="119, 20, 136, 23" description="This is fast control loop divider."/>
+                        <p1:GLabel text="PCL_DIV:" visible="true" widgetName="glabel_pcldiv" bounds="11, 54, 80, 15"/>
+                        <p1:GInteger format="(com.ifx.davex.ui.controls.util.AppUiConstants).DEC" mandatory="(com.ifx.davex.ui.controls.util.AppUiConstants).FALSE" manifestObj="true" maxValue="255" minValue="1" value="3" widgetName="gint_pcldiv" enabled="false" bounds="119, 51, 136, 23" description="This is primary control loop divider."/>
+                        <p1:GLabel text="SVP_DIV:" visible="true" widgetName="glabel_svpdiv" bounds="11, 85, 80, 15"/>
+                        <p1:GInteger format="(com.ifx.davex.ui.controls.util.AppUiConstants).DEC" mandatory="(com.ifx.davex.ui.controls.util.AppUiConstants).FALSE" manifestObj="true" maxValue="255" minValue="1" toolTipText="" value="5" widgetName="gint_svpdiv" enabled="false" bounds="119, 82, 136, 23" description="This is set value processing divider."/>
+                    </p1:GGroup>
+                    </p1:GGroup>
+                    <p1:GGroup text="Dummy group for task scheduler documents" manifestObj="true" widgetName="ggroup_dummy_taskscheduler" bounds="723, 34, 153, 218">
+                    	<p1:GLabel text="Task scheduler frequency" visible="true" manifestObj="true" widgetName="glabel_ts_acimpwmfreq" bounds="16, 20, 118, 15"/>
+                    	<p1:GLabel manifestObj="true" text="PCL MUX" visible="true" widgetName="glabel_pclmux" bounds="16, 40, 118, 15"/>
+                    	<p1:GLabel manifestObj="true" text="SVP MUX" visible="true" widgetName="glabel_svpmux" bounds="16, 59, 118, 15"/>
+                    	<p1:GLabel manifestObj="true" text="DSM MUX" visible="true" widgetName="glabel_dsmmux" bounds="16, 79, 118, 15"/>
+                    	<p1:GLabel manifestObj="true" text="Drive State Machine Time (us)" visible="true" widgetName="glabel_dsmtime" bounds="16, 98, 118, 15"/>
+                    	<p1:GLabel manifestObj="true" text="Fast Control Loop Time (us)" visible="true" widgetName="glabel_fcltime" bounds="16, 120, 118, 15"/>
+                    	<p1:GLabel manifestObj="true" text="Primary Control Loop Time (us)" visible="true" widgetName="glabel_pcltime" bounds="16, 144, 118, 15"/>
+                    	<p1:GLabel manifestObj="true" text="Set Value Processing Time (us)" visible="true" widgetName="glabel_svptime" bounds="16, 168, 118, 15"/>
+                    	<p1:GLabel manifestObj="true" text="Machine Control State Machine Time (us)" visible="true" widgetName="glabel_mcsmtime" bounds="16, 191, 118, 15"/>
+                    </p1:GGroup>
+                </p1:Tab>
+            </p1:GTab.control>
+        </p1:GTab>
+        
+        
+        <p1:GTab text="Power Board" visible="true" enabled="true" widgetName="gtab_powerboard">
+            <p1:GTab.control>
+                <p1:Tab widgetName="composite5" bounds="502, 24, 860, 549" layout="{x:Null}">
+                    <p1:GGroup widgetName="ggroup_lowerctrlpanel" text="Power Board Configuration" bounds="5, 6, 351, 298" layout="{x:Null}">
+                        <p1:GLabel text="DC link voltage [V]:" visible="true" widgetName="glabel_dclinkvolt" bounds="8, 23, 105, 15"/>
+                        <p1:GFloat x:Style="BORDER" minValue="12.0" maxValue="32767.0" mandatory="(com.ifx.davex.ui.controls.util.AppUiConstants).FALSE" format="*,6" manifestObj="true" widgetName="gfloat_dclinkvolt" value="24.0" description="Allows to configure dc link voltage." toolTipText="Configure dc link voltage." bounds="168, 20, 165, 21"/>
+                        <p1:GLabel text="Dead time rising edge [ns]:" visible="true" widgetName="glabel_deadtime_rising_edge" bounds="8, 54, 147, 15"/>
+                        <p1:GFloat x:Style="BORDER" minValue="0" maxValue="10000" mandatory="(com.ifx.davex.ui.controls.util.AppUiConstants).FALSE" format="*,6" manifestObj="true" widgetName="gfloat_deadtime_rising_edge" value="500.0" toolTipText="Dead time value for low to high transition. " description="Configure dead time value for low to high transition &#13;&#10;to avoid short on the switches." bounds="168, 51, 165, 21"/>
+                        <p1:GLabel text="Dead time falling edge [ns]:" widgetName="glabel_deadtime_falling_edge" bounds="8, 85, 150, 15"/>
+                        <p1:GFloat description="Configure dead time value for high to low transition. This is needed to avoid short on the switches." format="*,6" mandatory="(com.ifx.davex.ui.controls.util.AppUiConstants).FALSE" manifestObj="true" maxValue="10000" minValue="0" toolTipText="Dead time value for high to low transition. " value="500.0" widgetName="gfloat_deadtime_falling_edge" x:Style="BORDER" bounds="168, 82, 165, 21"/>
+                        <p1:GLabel text="Switch delay [ns]:" visible="true" widgetName="glabel_switchdelay" bounds="8, 116, 93, 15"/>
+                        <p1:GFloat x:Style="BORDER" minValue="0.0" maxValue="10000.0" mandatory="(com.ifx.davex.ui.controls.util.AppUiConstants).FALSE" format="*,6" manifestObj="true" widgetName="gfloat_switchdelay" value="500.0" description="Time to transition from off state to on state." toolTipText="Configure time to transition from off state to on state." bounds="168, 113, 165, 21"/>
+                        <p1:GLabel text="Inverter enable pin: " visible="true" widgetName="glabel_einvterpin" bounds="8, 147, 104, 15"/>
+                        <p1:GCombo mandatory="(com.ifx.davex.ui.controls.util.AppUiConstants).FALSE" manifestObj="true" widgetName="gcombo_einvterpin" options="Disabled&#13;&#10;Active Low&#13;&#10;Active High" value="Active High" toolTipText="Enable pin configuration for the inverter. " description="Allows to configure inverter enable pin." bounds="168, 144, 165, 21"/>
+                        <p1:GLabel text="Bootstrap time [ms]:" visible="true" widgetName="glabel_bootstarpcount" bounds="8, 178, 115, 15"/>
+                        <p1:GInteger x:Style="NONE" minValue="0" maxValue="60000" mandatory="(com.ifx.davex.ui.controls.util.AppUiConstants).FALSE" format="(com.ifx.davex.ui.controls.util.AppUiConstants).DEC" manifestObj="true" widgetName="gint_bootstarpcount" value="0" toolTipText="Time to charge the bootstrap capacitors." description="Allows to configure boot strap time. To disable boot strap configure 0." bounds="168, 175, 165, 23"/>
+                        <p1:GGroup text="Output polarity" widgetName="ggroup_pasivelevel" layout="{x:Null}" bounds="5, 204, 340, 92">
+                        <p1:GLabel text="High side switches:          " visible="true" widgetName="glabel_highsideswitch" bounds="13, 28, 119, 15"/>
+                        <p1:GCombo mandatory="(com.ifx.davex.ui.controls.util.AppUiConstants).FALSE" manifestObj="true" widgetName="gcombo_highsideswitch" options="Active High&#13;&#10;Active Low" value="Active Low" bounds="163, 25, 165, 21" description="Allows to configure passive level of high side switch." toolTipText="Active level of the high side switches. "/>
+                        <p1:GLabel text="Low side switches:" visible="true" widgetName="glabel_lowsideswitch" bounds="13, 59, 109, 15"/>
+                        <p1:GCombo mandatory="(com.ifx.davex.ui.controls.util.AppUiConstants).FALSE" manifestObj="true" widgetName="gcombo_lowsideswitch" options="Active High&#13;&#10;Active Low" value="Active Low" bounds="163, 56, 165, 21" description="Allows to configure passive level of low side switch." toolTipText="Active level of the low side switches. "/>
+                    </p1:GGroup>
+                    </p1:GGroup>
+                    <p1:GImage visible="true" widgetName="gImage5" path="Uimodel/ACIM_FREQ_CTRL_GuiImage/Timing_Digram.PNG" bounds="366, 13, 485, 290" x:Style="BORDER"/>
+                    <p1:GGroup widgetName="ggroup_adcconfig" text="Current Amplifier Configuration" layout="{x:Null}" bounds="5, 310, 351, 209">
+                        <p1:GLabel text="VADC reference [V]:" visible="true" widgetName="glabel_vadcref" bounds="13, 28, 121, 15"/>
+                        <p1:GFloat x:Style="BORDER" minValue="0.0" maxValue="5.0" mandatory="(com.ifx.davex.ui.controls.util.AppUiConstants).FALSE" format="*,6" manifestObj="true" widgetName="gfloat_vadcref" value="3.3" bounds="168, 25, 165, 21" description="Allows to configure VADC reference." toolTipText="Reference value used by VADC for conversion"/>
+                        <p1:GLabel text="Rshunt [mOhms]:" visible="true" widgetName="glabel_rshunt" bounds="13, 59, 111, 15"/>
+                        <p1:GFloat x:Style="BORDER" minValue="1.0" maxValue="10000.0" mandatory="(com.ifx.davex.ui.controls.util.AppUiConstants).FALSE" format="*,6" manifestObj="true" widgetName="gfloat_rshunt" value="10.0" bounds="168, 56, 165, 21" description="Allows to configure Rshunt." toolTipText="Shunt resistor value of the current amplifier"/>
+                        <p1:GLabel text="Amplifier gain:" visible="true" widgetName="glabel_ampgain" bounds="13, 90, 103, 15"/>
+                        <p1:GFloat x:Style="BORDER" minValue="0.001" maxValue="1000.0" mandatory="(com.ifx.davex.ui.controls.util.AppUiConstants).FALSE" format="*,6" manifestObj="true" widgetName="gfloat_ampgain" value="21.0" bounds="168, 87, 165, 21" description="Allows to configure amplifier gain." toolTipText="Configure current amplifier gain."/>
+                        <p1:GLabel text="Maximum current [A]:" visible="true" widgetName="glabel_maxcrnt" bounds="13, 121, 132, 15"/>
+                        <p1:GFloat x:Style="BORDER" minValue="0.0" maxValue="5000.0" mandatory="(com.ifx.davex.ui.controls.util.AppUiConstants).FALSE" format="*,6" manifestObj="true" widgetName="gfloat_maxcrnt" value="0.0" bounds="168, 118, 165, 21" toolTipText="This is the maximum current that can be measured&#13;&#10;with the given motor and VADC parameters." description="This is the maximum current that can be measured with the given motor and VADC parameters."/>
+						<p1:GCheck text="Enable amplifier bias voltage calibration" manifestObj="true" widgetName="gcheck_eampbiasvolt" bounds="13, 149, 236, 16" toolTipText="If this is selected then amplifier bias voltage is calculated during the motor start." description="This configuration enables the amplifier bias voltage calculated in run time." value="true"/>
+                        <p1:GLabel text="Amplifier bias voltage [V]:" visible="true" widgetName="glabel_ampbiasvolt" bounds="13, 178, 151, 15"/>
+                        <p1:GFloat x:Style="BORDER" minValue="0.0" maxValue="5.0" mandatory="(com.ifx.davex.ui.controls.util.AppUiConstants).FALSE" format="*,6" manifestObj="true" widgetName="gfloat_ampbiasvolt" value="0.0" bounds="168, 175, 165, 21" description="Allows to preconfigure amplifier bias voltage. Configured value is substracted from VADC Reference, for other dependent parameter calculation.&#13;&#10;If amplifier bias voltage calibration is enable then this value is calculated in the run time." toolTipText="Configure  current amplifier bias voltage. "/>
+                    </p1:GGroup>
+                    <p1:GImage visible="true" widgetName="gImage14" bounds="366, 317, 485, 235" path="Uimodel/ACIM_FREQ_CTRL_GuiImage/Voltage_Current_Shunt.PNG" x:Style="BORDER"/>
+                    <p1:GLabel text="Voltage divider ratio [%]:" visible="true" widgetName="glabel_voltdidratio" bounds="18, 538, 145, 15"/>
+                    <p1:GFloat x:Style="BORDER" minValue="0.0" maxValue="100.0" mandatory="(com.ifx.davex.ui.controls.util.AppUiConstants).FALSE" format="*,6" manifestObj="true" widgetName="gfloat_voltdidratio" value="9.79" description="This is the DC link voltage divider ratio.&#13;&#10;Entered value should be (R2/(R1+R2))*100." toolTipText="Voltage divider ratio for voltage measurement" bounds="173, 535, 165, 21"/>
+                </p1:Tab>
+            </p1:GTab.control>
+        </p1:GTab>
+
+        <p1:GTab text="Measurements" visible="true" enabled="true" manifestObj="true" widgetName="gtab_adcconfig">
+            <p1:GTab.control>
+                        <p1:Tab layout="{x:Null}">
+                            <p1:GGroup text="Measurement" widgetName="gGroup18" bounds="5, 5, 508, 142">
+                                <p1:GGroup.layout>
+                                    <GridLayout numColumns="2" horizontalSpacing="10" marginBottom="10" marginHeight="0" marginTop="10" marginWidth="10" verticalSpacing="10"/>
+                                </p1:GGroup.layout>
+                                <p1:GLabel text="Current measurement:" visible="true" widgetName="glabel_curntmsrmnt"/>
+                                <p1:GCombo mandatory="(com.ifx.davex.ui.controls.util.AppUiConstants).FALSE" manifestObj="true" options="None&#13;&#10;Average Current" value="None" widgetName="gcombo_curntmsrmnt" description="This allows a user to select type of current measurement." toolTipText="Enable average current measurement.">
+                                    <p1:GCombo.layoutData>
+                                        <GridData horizontalAlignment="FILL" grabExcessHorizontalSpace="true"/>
+                                    </p1:GCombo.layoutData>
+                                </p1:GCombo>
+                                <p1:GCheck manifestObj="true" text="Enable over current detection" widgetName="gcheck_eovercrntdet" description="Enable over current detection.For over current detection, &#13;&#10;current measurement should be enabled." toolTipText="Enable over current detection.&#13;&#10;For over current detection current measurement should be enabled.">
+                                    <p1:GCheck.layoutData>
+                                        <GridData horizontalSpan="2"/>
+                                    </p1:GCheck.layoutData>
+                                </p1:GCheck>
+                                <p1:GCheck manifestObj="true" text="Enable voltage compensation" widgetName="gcheck_evoltcomp" description="Enables voltage compensation.protects system from&#13;&#10;voltage fluctuations" toolTipText="Enables voltage compensation.protects system from&#13;&#10;voltage fluctuations">
+                                    <p1:GCheck.layoutData>
+                                        <GridData horizontalSpan="2"/>
+                                    </p1:GCheck.layoutData>
+                                </p1:GCheck>
+                                <p1:GCheck manifestObj="true" text="Enable speed set via analog input" widgetName="gcheck_epotmeasurement" description="Enable/disable speed set via analog input like potentiometer. &#13;&#10;Applicable only if position control is disabled." toolTipText="Enable/disable speed set via analog input like potentiometer. &#13;&#10;Applicable only if position control is disabled.">
+                                    <p1:GCheck.layoutData>
+                                        <GridData horizontalSpan="2"/>
+                                    </p1:GCheck.layoutData>
+                                </p1:GCheck>
+                            </p1:GGroup>
+                            <p1:GGroup widgetName="ggroup_adcconfiguration" text="ADC Configuration" bounds="5, 155, 508, 177" layout="{x:Null}">
+                                <p1:GLabel manifestObj="true" text="Enable measurement" visible="true" widgetName="glabel_enablemeasurement" bounds="13, 20, 117, 15"/>
+                                <p1:GLabel manifestObj="true" text="Request source" visible="true" widgetName="glabel_requestsrc" bounds="140, 20, 87, 15"/>
+                                <p1:GLabel manifestObj="true" text="Queue position" widgetName="glabel_qpos" bounds="237, 20, 87, 15"/>
+                                <p1:GLabel manifestObj="true" text="Refill" visible="true" widgetName="glabel_qrefill" bounds="334, 20, 62, 15"/>
+                                <p1:GLabel manifestObj="true" text="External trigger" visible="true" widgetName="glabel_exttrigger" bounds="406, 20, 89, 15" description="This allows a user to configure external trigger for measurement.&#13;&#10;If selected then user has to connect the required trigger signal to queue request source."/>
+                                <p1:GCheck manifestObj="true" widgetName="gcheck_avg_i_measurement" bounds="13, 47, 13, 16" description="This allows a user to select current measurement." toolTipText="Enable ADC channel for average current measurement."/>
+                                <p1:GString mandatory="(com.ifx.davex.ui.controls.util.AppUiConstants).FALSE" manifestObj="true" value="I_Average" widgetName="gstring_avg_i_measurement" x:Style="BORDER" bounds="36, 45, 94, 21" description="This is the display name. User can change the names." toolTipText="Enter desired channel name"/>
+                                <p1:GCombo mandatory="(com.ifx.davex.ui.controls.util.AppUiConstants).FALSE" manifestObj="true" options="Queue A&#13;&#10;Queue B&#13;&#10;" value="Queue A" widgetName="gcombo_avg_i_measurement" bounds="140, 45, 87, 21" description="This allows a user to select the queue request source for current measurement." toolTipText="Select the queue request source for current measurement."/>
+                                <p1:GInteger format="(com.ifx.davex.ui.controls.util.AppUiConstants).DEC" mandatory="(com.ifx.davex.ui.controls.util.AppUiConstants).FALSE" manifestObj="true" maxValue="7" minValue="0" value="0" widgetName="gint_avg_i_measurement" bounds="237, 45, 87, 23" description="This allows a user to select the queue position in selected queue request source." toolTipText="Select the queue position in selected queue request source."/>
+                                <p1:GCheck manifestObj="true" text="Enable" widgetName="gcheck_avg_i_refill" bounds="334, 47, 62, 16" description="This allows a user to configure refill mode for selected queue position of current measurement." toolTipText="Enable/Disable refill option for selected measurement"/>
+                                <p1:GCheck manifestObj="true" text="Enable" widgetName="gcheck_avg_i_ext_trigger" bounds="406, 47, 89, 16" description="This allows a user to configure external trigger for current measurement.&#13;&#10;If selected then user has to connect the required trigger signal to queue request source." toolTipText="Enable/Disable external trigger for selected measurement"/>
+                                <p1:GCheck manifestObj="true" widgetName="gcheck_dc_link_measurement" bounds="13, 78, 13, 16" description="This allows a user to select dc link voltage measurement." toolTipText="Enable ADC channel for Vdc link measurement."/>
+                                <p1:GString mandatory="(com.ifx.davex.ui.controls.util.AppUiConstants).FALSE" manifestObj="true" value="V_DCLink" widgetName="gstring_dc_link_measurement" x:Style="BORDER" bounds="36, 76, 94, 21" description="This is the display name. User can change the names." toolTipText="Enter desired channel name"/>
+                                <p1:GCombo mandatory="(com.ifx.davex.ui.controls.util.AppUiConstants).FALSE" manifestObj="true" options="Queue A&#13;&#10;Queue B&#13;&#10;" value="Queue A" widgetName="gcombo_dc_link_measurement" bounds="140, 76, 87, 21" description="This allows a user to select the queue request source for dc link voltage measurement." toolTipText="Select the queue request source for Vdc link measurement."/>
+                                <p1:GInteger format="(com.ifx.davex.ui.controls.util.AppUiConstants).DEC" manifestObj="true" maxValue="7" minValue="0" value="1" widgetName="gint_dc_link_measurement" bounds="237, 76, 87, 23" toolTipText="Select the queue position in selected queue request source." description="This allows a user to select the queue position in selected queue request source."/>
+                                <p1:GCheck manifestObj="true" text="Enable" widgetName="gcheck_dc_link_refill" bounds="334, 78, 62, 16" description="This allows a user to configure refill mode for selected queue position of dc link measurement." toolTipText="Enable/Disable refill option for selected measurement"/>
+                                <p1:GCheck manifestObj="true" text="Enable" widgetName="gcheck_dc_link_ext_trigger" bounds="406, 78, 89, 16" description="This allows a user to configure external trigger for dc link measurement.&#13;&#10;If selected then user has to connect the required trigger signal to queue request source." toolTipText="Enable/Disable external trigger for selected measurement"/>
+                                <p1:GCheck manifestObj="true" widgetName="gcheck_pot_measurement" bounds="13, 109, 13, 16" description="This allows a user to select pot measurement." toolTipText="Enable ADC channel for analog input measurement."/>
+                                <p1:GString mandatory="(com.ifx.davex.ui.controls.util.AppUiConstants).FALSE" manifestObj="true" value="Analog_Input" widgetName="gstring_pot_measurement" x:Style="BORDER" bounds="36, 107, 94, 21" description="This is the display name. User can change the names." toolTipText="Enter desired channel name"/>
+                                <p1:GCombo mandatory="(com.ifx.davex.ui.controls.util.AppUiConstants).FALSE" manifestObj="true" options="Queue A&#13;&#10;Queue B&#13;&#10;" value="Queue A" widgetName="gcombo_pot_measurement" bounds="140, 107, 87, 21" description="This allows a user to select the queue request source for pot measurement." toolTipText="Select the queue request source for analog input measurement."/>
+                                <p1:GInteger format="(com.ifx.davex.ui.controls.util.AppUiConstants).DEC" mandatory="(com.ifx.davex.ui.controls.util.AppUiConstants).FALSE" manifestObj="true" maxValue="7" minValue="0" value="2" widgetName="gint_pot_measurement" bounds="237, 107, 87, 23" description="This allows a user to select the queue position in selected queue request source." toolTipText="Select the queue position in selected queue request source."/>
+                                <p1:GCheck manifestObj="true" text="Enable" widgetName="gcheck_pot_refill" bounds="334, 109, 62, 16" description="This allows a user to configure refill mode for selected queue position of pot measurement." toolTipText="Enable/Disable refill option for selected measurement"/>
+                                <p1:GCheck manifestObj="true" text="Enable" widgetName="gcheck_pot_ext_trigger" bounds="406, 109, 89, 16" description="This allows a user to configure external trigger for pot measurement.&#13;&#10;If selected then user has to connect the required trigger signal to queue request source." toolTipText="Enable/Disable external trigger for selected measurement"/>
+                                <p1:GCheck manifestObj="true" widgetName="gcheck_user_defined_measurement" bounds="13, 140, 13, 16" toolTipText="Enable ADC channel for user defined measurement." description="This allows a user to enable user defined measurement."/>
+                                <p1:GString mandatory="(com.ifx.davex.ui.controls.util.AppUiConstants).FALSE" manifestObj="true" value="User_Defined" widgetName="gstring_user_defined_measurement" x:Style="BORDER" bounds="36, 138, 94, 21" description="This is the display name. User can change the names." toolTipText="Enter desired channel name"/>
+                                <p1:GCombo mandatory="(com.ifx.davex.ui.controls.util.AppUiConstants).FALSE" manifestObj="true" options="Queue A&#13;&#10;Queue B&#13;&#10;" value="Queue A" widgetName="gcombo_user_defined_measurement" bounds="140, 138, 87, 21" description="This allows a user to select the queue request source." toolTipText="Select the queue request source for user defined measurement."/>
+                                <p1:GInteger format="(com.ifx.davex.ui.controls.util.AppUiConstants).DEC" mandatory="(com.ifx.davex.ui.controls.util.AppUiConstants).FALSE" manifestObj="true" maxValue="7" minValue="0" value="3" widgetName="gint_user_defined_measurement" bounds="237, 138, 87, 23" description="This allows a user to select the queue position in selected queue request source." toolTipText="Select the queue position in selected queue request source."/>
+                                <p1:GCheck manifestObj="true" text="Enable" widgetName="gcheck_user_defined_refill" bounds="334, 140, 62, 16" description="Configure refill mode for selected queue position of user defined measurement." toolTipText="Configure refill mode for selected queue position of user defined measurement."/>
+                                <p1:GCheck manifestObj="true" text="Enable" widgetName="gcheck_user_defined_ext_trigger" bounds="406, 140, 89, 16" description="Configure external trigger for user define measurement. If selected then user has to connect the required trigger signal to queue request source." toolTipText="Configure external trigger for user define measurement. If selected then user has to connect the required trigger signal to queue request source."/>
+                            </p1:GGroup>
+                            <p1:GMessage text="Same request source should not have same queue position entry." manifestObj="true" widgetName="gmsg_info" bounds="5, 343, 366, 15"/>
+                            <p1:GGroup text="Dummy for  measurements doc" manifestObj="true" widgetName="ggroup_dummy_measurementsdoc" bounds="534, 175, 183, 100">
+                            	<p1:GLabel text="Current measurement" visible="true" manifestObj="true" widgetName="glabel_avg_i_measurement" bounds="11, 20, 116, 15"/>
+                            	<p1:GLabel manifestObj="true" text="Voltage measurement" visible="true" widgetName="glabel_dc_link_measurement" bounds="11, 39, 116, 15"/>
+                            	<p1:GLabel manifestObj="true" text="Pot measurement" visible="true" widgetName="glabel_pot_measurement" bounds="11, 58, 94, 15"/>
+                            	<p1:GLabel manifestObj="true" text="User define measurement" visible="true" widgetName="glabel_user_defined_measurement" bounds="11, 77, 136, 15"/>
+                            </p1:GGroup>
+                        </p1:Tab>
+                
+                
+                
+            </p1:GTab.control>
+        </p1:GTab>
+        <p1:GTab text="Error Handler" visible="true" enabled="true" manifestObj="true" widgetName="gtab_errorhandler">
+            <p1:GTab.control>
+                <p1:Tab widgetName="composite18">
+                    <p1:Tab.layout>
+                        <GridLayout/>
+                    </p1:Tab.layout>
+                    <p1:GGroup text="Error Table" widgetName="ggroup_errortable" description="This table display the error information.">
+                        <p1:GGroup.layoutData>
+                            <GridData widthHint="508"/>
+                        </p1:GGroup.layoutData>
+                        <p1:GGroup.layout>
+                            <GridLayout numColumns="4" horizontalSpacing="10" marginBottom="10" marginHeight="0" marginTop="10" marginWidth="10" verticalSpacing="10"/>
+                        </p1:GGroup.layout>
+                        <p1:GLabel text="Error Id" visible="true" widgetName="glabel_errorid">
+                            <p1:GLabel.layoutData>
+                                <GridData horizontalAlignment="FILL" grabExcessHorizontalSpace="true"/>
+                            </p1:GLabel.layoutData>
+                        </p1:GLabel>
+                        <p1:GLabel text="Error Type" visible="true" widgetName="gLabel121">
+                            <p1:GLabel.layoutData>
+                                <GridData grabExcessHorizontalSpace="true" grabExcessVerticalSpace="true" verticalAlignment="FILL"/>
+                            </p1:GLabel.layoutData>
+                        </p1:GLabel>
+                        <p1:GLabel text="Error Severity" visible="true" widgetName="glabel_errorseverity">
+                            <p1:GLabel.layoutData>
+                                <GridData horizontalAlignment="FILL" grabExcessHorizontalSpace="true"/>
+                            </p1:GLabel.layoutData>
+                        </p1:GLabel>
+                        <p1:GLabel text="Callback Function" visible="true" widgetName="glabel_errorfncall">
+                            <p1:GLabel.layoutData>
+                                <GridData horizontalAlignment="FILL" grabExcessHorizontalSpace="true"/>
+                            </p1:GLabel.layoutData>
+                        </p1:GLabel>
+                        <p1:GLabel text="0" visible="true" widgetName="gLabel232" toolTipText="ACIM_FREQ_CTRL_EID_INIT_FAILED"/>
+                        <p1:GLabel text="APP initialisation Failed" visible="true" widgetName="gLabel122"/>
+                        <p1:GLabel text="Error" visible="true" widgetName="gLabel235" toolTipText="ACIM_FREQ_CTRL_ERROR"/>
+                        <p1:GLabel text="NULL" visible="true" widgetName="gLabel236"/>
+                        <p1:GLabel text="1" visible="true" widgetName="gLabel231" toolTipText="ACIM_FREQ_CTRL_EID_SVP_REG_FAILED"/>
+                        <p1:GLabel text="SVP task registration failed" visible="true" widgetName="gLabel123"/>
+                        <p1:GLabel text="Error" visible="true" widgetName="gLabel234" toolTipText="ACIM_FREQ_CTRL_ERROR"/>
+                        <p1:GLabel text="NULL" visible="true" widgetName="gLabel237"/>
+                        <p1:GLabel text="2" visible="true" widgetName="gLabel229" toolTipText="ACIM_FREQ_CTRL_EID_PCL_REG_FAILED"/>
+                        <p1:GLabel text="PCL task registration failed" visible="true" widgetName="gLabel125"/>
+                        <p1:GLabel text="Error" visible="true" widgetName="gLabel233" toolTipText="ACIM_FREQ_CTRL_ERROR"/>
+                        <p1:GLabel text="NULL" visible="true" widgetName="gLabel238"/>
+                        <p1:GLabel text="3" visible="true" widgetName="glabel_traperrorid" toolTipText="ACIM_FREQ_CTRL_EID_TRAP_ERROR"/>
+                        <p1:GLabel text="Trap" visible="true" widgetName="gLabel126"/>
+                        <p1:GLabel text="Critical Error" visible="true" widgetName="glabel_traperrorseverity" toolTipText="ACIM_FREQ_CTRL_ERROR_CRITICAL"/>
+                        <p1:GLabel text="ACIM_FREQ_CTRL_MotorStop()" visible="true" widgetName="glabel_trapcallbackfn" toolTipText="Its default callback function. User can change the function.&#13;&#10;Pointer error_handler_ptr_t of error table, points to the required callback function." description="Its default callback function. User can change the function.&#13;&#10;Pointer error_handler_ptr_t of error table, points to the required callback function."/>
+                        <p1:GLabel text="4" visible="true" widgetName="glabel_ocerrorid" toolTipText="ACIM_FREQ_CTRL_EID_OVERCURRENT"/>
+                        <p1:GLabel text="Over current detection" visible="true" widgetName="gLabel127"/>
+                        <p1:GLabel text="Critical Error" visible="true" widgetName="glabel_ocerrorseverity" toolTipText="ACIM_FREQ_CTRL_ERROR_CRITICAL"/>
+                        <p1:GLabel text="ACIM_FREQ_CTRL_MotorStop()" visible="true" widgetName="glabel_occallbackfun" description="Its default callback function. User can change the function.&#13;&#10;Pointer error_handler_ptr_t of error table points to the required callback function." toolTipText="Its default callback function. User can change the function.&#13;&#10;Pointer error_handler_ptr_t of error table, points to the required callback function."/>
+                    </p1:GGroup>
+                    <p1:GGroup text="User defined function call" widgetName="ggroup_uderrorconfig">
+                        <p1:GGroup.layoutData>
+                            <GridData horizontalAlignment="FILL"/>
+                        </p1:GGroup.layoutData>
+                        <p1:GGroup.layout>
+                            <GridLayout numColumns="2" horizontalSpacing="10" marginBottom="10" marginHeight="0" marginTop="10" marginWidth="10" verticalSpacing="10"/>
+                        </p1:GGroup.layout>
+                        <p1:GCheck text="Enable" manifestObj="true" widgetName="gcheck_udfnenable" toolTipText="UserCodeErrorHandler_API () function is called, during any error condition. User has to write function declaration and definition or else it will throw linker error." description="This is user option for error handler. If selected then API UserCodeErrorHandler_API is called whenever an error occur. User has to write function declaration and definition or else it will throw linker error."/>
+                        <Label/>
+                        <p1:GLabel text="Callback function" visible="true" widgetName="glabel_erroruserfnname"/>
+                        <p1:GString x:Style="BORDER" mandatory="(com.ifx.davex.ui.controls.util.AppUiConstants).FALSE" widgetName="gstring_erroruserfnname" enabled="false" value="ACIM_FREQ_CTRL_UserCodeErrorHandler()" description="User need to define this callback function. This is called when error is detected." toolTipText="User need to define this callback function. This is called when error is detected.">
+                            <p1:GString.layoutData>
+                                <GridData grabExcessHorizontalSpace="true" horizontalAlignment="FILL"/>
+                            </p1:GString.layoutData>
+                        </p1:GString>
+                    </p1:GGroup>
+                </p1:Tab>
+            </p1:GTab.control>
+        </p1:GTab>
+        <p1:GTab text="Interrupt Settings" visible="true" enabled="true" manifestObj="true" widgetName="gtab_interrupts">
+            <p1:GTab.control>
+                <p1:Tab widgetName="composite243" layout="{x:Null}">
+                    <p1:GInterruptPrio text="Fast Control Loop ISR" x:Style="NONE" minPriority="0" maxPriority="63" minSubPriority="0" maxSubPriority="63" priorityValue="61" subPriorityValue="0" manifestObj="true" widgetName="ginterruptprio_fast_control_loop" bounds="5, 5, 341, 70" description="Interrupt priority for fast control loop. This is the CCU8 period match interrupt of phase U slice." toolTipText="Interrupt priority for fast control loop. This is the CCU8 period match interrupt of phase U slice."/>
+                    <p1:GInterruptPrio text="Primary Control Loop ISR" x:Style="NONE" minPriority="0" maxPriority="63" minSubPriority="0" maxSubPriority="63" priorityValue="62" subPriorityValue="0" priorityMandatory="false" subPriorityMandatory="false" manifestObj="true" widgetName="ginterruptprio_primary_control_loop" bounds="5, 84, 341, 70" description="Interrupt priority for primary control loop. It has less priority than fast control loop." toolTipText="Interrupt priority for primary control loop. It has less priority than fast control loop."/>
+                </p1:Tab>
+            </p1:GTab.control>
+        </p1:GTab>
+    </p1:TabFolder>
+</p1:Tab>

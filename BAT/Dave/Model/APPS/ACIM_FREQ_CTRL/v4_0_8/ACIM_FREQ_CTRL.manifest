@@ -1,0 +1,1093 @@
+package Model.APPS.ACIM_FREQ_CTRL.v4_0_8;
+
+/*
+ *  * Copyright (c) 2015, Infineon Technologies AG
+ * All rights reserved.
+ *
+ * Redistribution and use in source and binary forms, with or without modification,are permitted provided that the
+ * following conditions are met:
+ *
+ *   Redistributions of source code must retain the above copyright notice, this list of conditions and the  following
+ *   disclaimer.
+ *
+ *   Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the
+ *   following disclaimer in the documentation and/or other materials provided with the distribution.
+ *
+ *   Neither the name of the copyright holders nor the names of its contributors may be used to endorse or promote
+ *   products derived from this software without specific prior written permission.
+ *
+ * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES,
+ * INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+ * DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE  FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+ * SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
+ * SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+ * WHETHER IN CONTRACT, STRICT LIABILITY,OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT  OF THE
+ * USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+ *
+ * To improve the quality of the software, users are encouraged to share modifications, enhancements or bug fixes
+ * with Infineon Technologies AG (dave@infineon.com).
+ */
+/*************** Revision History **********************************************
+ Version      Date          Description
+ 4.0.0        16-Feb-2015   1. Initial version<br/>
+ 4.0.1        20-Feb-2015   1. Help document update<br/>
+                            2. Extern declaration is added for angle ramp user code and v(f) user code<br/>
+                            3. MotorParamInit - reset PI buffer value<br/>
+ 4.0.3        20-Jun-2015   1. Help document update        <br>  
+                            2. Nominal speed changed to No load speed    <br> 
+ 4.0.5        14-July-2015  1. Required APP minimum version updated<br/> 
+ 4.0.7        08-Oct-2015   1. Amplitude scaling is matched with PWM_SVM APP amplitude scaling <br/>
+                            2. CPU_CTRL_XMCx APP init function call removed.
+ 4.0.8        04-Aug-2015   1. APP version updated for PR.<br/> 
+ *******************************************************************************/
+import ifx.davex.app.manifest.*
+import ifx.davex.manifest.enumeration.SDKMessageType;
+
+class  ACIM_FREQ_CTRL extends ACIM_FREQ_CTRL_GUI {
+	
+	
+	/* --------------------------------------------------------------------------------- */
+	/* -------------------- Begin : ACIM_FREQ_CTRL property section -------------------- */
+	/* --------------------------------------------------------------------------------- */
+
+	/**
+	 * App version
+	 * Format: a string with three digit separated by a dot.
+	 */
+	def version            = '4.0.8'
+
+    /**
+	 * App categories declaration. 
+	 * It is list of strings. Subcategories are separated by slash.
+	 * No limits on number of categories and subcategories depth.
+	 */
+	def categoriesDescription = [
+		"Motor Control"
+	]
+
+	/** 
+	 * Minimum DAVE version required for this app.
+	 * It is string with three digit separated by a dot.
+	 */
+	def minDaveVersion           = '4.0.0'
+
+	/** 
+	 * Keywords used by search feature in APPs selection view
+	 * It is a list of string.
+	 */
+	def keywords = [
+		"ACIM_FREQ_CTRL","V/F Control","Motor Control","Motor", "Drive", "ACIM", "Induction", "SVM", "Open Loop", "Sine", "all"
+	]
+
+	/** 
+	 * softwareIDs is used to declare which devices are compatible with this app.
+	 * It is a map with key a string containing a pattern that shall match the SW id of
+	 * the device and as value the minimal version of the app.
+	 *  Any step , any variant and any packages of XMC4500, XMC4400, XMC4200 and XMC4100
+	 *  Any step, any variant of XMC1300 except T016 package
+	 */
+	def softwareIDs   = [
+    "XMC1.3.*.(Q024|Q040|T038).*":"1.0.0", 
+    "XMC4.5.*.*.*":"1.0.0",
+	"XMC4.4.*.*.*":"1.0.0",
+	"XMC4.2.*.*.*":"1.0.0",
+	"XMC4.1.*.*.*":"1.0.0"
+			]
+ 
+
+	/**
+	 * Singleton property:
+	 * When it is true the app can be instantiated only once.
+	 */
+	def singleton     = false
+	/**
+	 * initProvider property
+	 * It shall be true to add a call to <AppName>_Init()
+	 */
+	def initProvider  = true
+	/**
+	 * Deprecated APP
+	 * Set it to true to indicate that the app shall be not used for new projects.
+	 */
+	def deprecated    = false
+	/**
+	 * Sharable property.
+	 * It shall be true to allows multiple apps to require the same instance of this app.
+	 */
+	def sharable      = false
+	/**
+	 *  App function description.
+	 */
+	def description = "Supports frequency control- constant V/f Control\nfor the AC induction motor (ACIM)."
+	
+	/* -------------------- End   : ACIM_FREQ_CTRL property section -------------------- */
+
+	/* --------------------------------------------------------------------------------- */
+	/* ------------------------- Begin : User variable section ------------------------- */
+	/* --------------------------------------------------------------------------------- */
+
+	/**
+	 * Required Hardware Resources.
+	 */
+	/*ADC channel resource*/
+	MVirtualResourceGroup hwres_adcchan1
+	MVirtualResourceGroup hwres_adcchan2
+	MVirtualResourceGroup hwres_adcchan3
+	MVirtualResourceGroup hwres_adcchan4
+	/*Pad resource for input adc channel*/
+	MVirtualResourceGroup hwres_chan_a_pin
+	MVirtualResourceGroup hwres_chan_b_pin
+	MVirtualResourceGroup hwres_chan_c_pin
+	MVirtualResourceGroup hwres_chan_d_pin
+	/*ADC result resource*/
+	MVirtualResourceGroup hwres_result1
+	MVirtualResourceGroup hwres_result2
+	MVirtualResourceGroup hwres_result3
+	MVirtualResourceGroup hwres_result4
+	
+	/*Nvic node for fast control loop isr*/
+	MVirtualResourceGroup hwres_fcl_nvicnode
+	/*Nvic node for primary control loop isr*/
+	MVirtualResourceGroup hwres_pcl_nvicnode
+	
+	/**
+	 * Required APP Resources.
+	 */
+	
+	/*ADC queue app*/
+	MRequiredApp appres_queue_a
+	MRequiredApp appres_queue_b
+	MRequiredApp appres_queue_c
+	MRequiredApp appres_queue_d
+	
+	/*pwm ccu8 svm app*/
+	MRequiredApp appres_pwm_svm
+	/*motor_lib app*/
+	MRequiredApp appres_motor_lib
+	/*cpu app*/
+	MRequiredApp appres_cpu
+	/*automation app*/
+	MRequiredApp appres_automation
+	
+	/**
+	 * Required Virtual Signal.
+	 */
+	MVirtualSignal vs_acim_freq_ctrl_adcch1
+	MVirtualSignal vs_acim_freq_ctrl_adcch1_sel
+	MVirtualSignal vs_acim_freq_ctrl_adcch1_ressel
+	
+	MVirtualSignal vs_acim_freq_ctrl_adcch2
+	MVirtualSignal vs_acim_freq_ctrl_adcch2_sel
+	MVirtualSignal vs_acim_freq_ctrl_adcch2_ressel
+	
+	MVirtualSignal vs_acim_freq_ctrl_adcch3
+	MVirtualSignal vs_acim_freq_ctrl_adcch3_sel
+	MVirtualSignal vs_acim_freq_ctrl_adcch3_ressel
+	
+	MVirtualSignal vs_acim_freq_ctrl_adcch4
+	MVirtualSignal vs_acim_freq_ctrl_adcch4_sel
+	MVirtualSignal vs_acim_freq_ctrl_adcch4_ressel
+	
+	MVirtualSignal vs_acim_freq_ctrl_adcch1_res
+	MVirtualSignal vs_acim_freq_ctrl_adcch2_res
+	MVirtualSignal vs_acim_freq_ctrl_adcch3_res
+	MVirtualSignal vs_acim_freq_ctrl_adcch4_res
+	
+	MVirtualSignal vs_acim_freq_ctrl_adcch1_io
+	MVirtualSignal vs_acim_freq_ctrl_adcch2_io
+	MVirtualSignal vs_acim_freq_ctrl_adcch3_io
+	MVirtualSignal vs_acim_freq_ctrl_adcch4_io
+	
+	MVirtualSignal vs_acim_freq_ctrl_fcl_nvicsignal_in
+	MVirtualSignal vs_acim_freq_ctrl_pcl_nvicsignal_in
+	
+	/**
+	 * Required Local Virtual Signal.
+	 */
+	MVirtualSignalRA vs_adc_queue_queue12channel
+	MVirtualSignalRA vs_adc_queue_queue22channel
+	MVirtualSignalRA vs_adc_queue_queue32channel
+	MVirtualSignalRA vs_adc_queue_queue42channel
+	
+	MVirtualSignalRA vs_svm_phu_periodmatch
+	MVirtualSignalRA vs_svm_phv_periodmatch
+	MVirtualSignalRA vs_svm_phu_trap
+	
+	/**
+	 * Global variable used for internal calculations may used in template.
+	 */
+	GInteger gint_pwmtime        = GInteger(value:0, minValue:0, maxValue:65535)
+	GCheck gcheck_enablepwmint   = GCheck(value:true)
+	GCheck gcheck_eautomation    = GCheck(value:true)
+	GInteger gint_automationtime = GInteger(value:1)
+	
+	/**
+	 * Arrays used to optimised the manifest code.
+	 */
+	RArray<GCheck>           rarray_gcheck_measurement_type   = RArray(5);
+	RArray<GString>          rarray_gstring_measurement_type  = RArray(5);
+	
+	/* -------------------------- End   : User variable section ------------------------ */
+
+	
+	/* --------------------------------------------------------------------------------- */
+	/* -------------------- Begin : ACIM_FREQ_CTRL Constructor ------------------------- */
+	/* --------------------------------------------------------------------------------- */
+
+	public ACIM_FREQ_CTRL(DaveEnv daveEnv)
+	{
+	  /* --------------------------------------------------------------------------------- */
+	  /* -------------- Begin : Initializations - assigning to array --------------------- */
+	  /* --------------------------------------------------------------------------------- */
+	
+	  /* measurement type name from GUI */
+	  rarray_gstring_measurement_type[0] = gstring_avg_i_measurement
+	  rarray_gstring_measurement_type[1] = gstring_avg_i_measurement
+	  rarray_gstring_measurement_type[2] = gstring_dc_link_measurement
+	  rarray_gstring_measurement_type[3] = gstring_pot_measurement
+	  rarray_gstring_measurement_type[4] = gstring_user_defined_measurement
+	
+	  /* Different types of ADC measurement from GUI */
+	  rarray_gcheck_measurement_type[0]  = gcheck_avg_i_measurement
+	  rarray_gcheck_measurement_type[1]  = gcheck_avg_i_measurement
+	  rarray_gcheck_measurement_type[2]  = gcheck_dc_link_measurement
+	  rarray_gcheck_measurement_type[3]  = gcheck_pot_measurement
+	  rarray_gcheck_measurement_type[4]  = gcheck_user_defined_measurement
+	  
+	  /* -------------- End : Initializations - assigning to array ----------------------- */
+	  
+	  /* --------------------------------------------------------------------------------- */
+	  /* -------------------- Target Specific User Variable Initialization. -------------- */
+	  /* --------------------------------------------------------------------------------- */
+	  boolean device_4x = false
+	  /* Set device variable true, if device belongs to XMC4 family  */
+	  if(daveEnv.project.selectedDevice.deviceId.family == 'XMC4')
+	  {
+	    device_4x = true
+
+		/*Queue Initialization for xmc45 and xmc44 device*/ 
+		if((daveEnv.project.selectedDevice.deviceId.series == "5") || (daveEnv.project.selectedDevice.deviceId.series == "4"))
+		{
+		  gcombo_avg_i_measurement.options        = ["Queue A","Queue B","Queue C","Queue D"]
+		  gcombo_dc_link_measurement.options      = ["Queue A","Queue B","Queue C","Queue D"]
+		  gcombo_pot_measurement.options          = ["Queue A","Queue B","Queue C","Queue D"]
+		  gcombo_user_defined_measurement.options = ["Queue A","Queue B","Queue C","Queue D"]
+		}
+	  }
+
+	  /* --------------------------------------------------------------------------------- */
+	  /* --------------------------------- App consumption Block. ------------------------ */
+	  /* --------------------------------------------------------------------------------- */
+		 /* PWM CCU8 SVM App */
+		appres_pwm_svm = MRequiredApp("PWM_SVM","PWM SVM App", RNOTSHARABLE, "4.0.18")
+		
+		/* MOTOR_LIB App */
+		appres_motor_lib    = MRequiredApp("MOTOR_LIB","Motor Control Library", RSHARABLE, "4.0.6")
+		
+		/* Consume CPU App to set the min max value*/
+		if (device_4x == true)
+		{
+		  appres_cpu =  MRequiredApp("CPU_CTRL_XMC4", "CPU App", RSHARABLE, "4.0.2")
+		}
+		else
+		{
+		  appres_cpu =  MRequiredApp("CPU_CTRL_XMC1", "CPU App", RSHARABLE, "4.0.2")
+		}
+		
+		/* ---------- Automation App ------ */
+		/*Consume automation app, if
+		 * ramp is not disable,
+		 * pcl/svp/dsm mux selects automation
+		 * enable parameter handler registration or
+		 * enable error handler registration
+		 */
+		appres_automation = MRequiredApp("AUTOMATION","Automation Framework", RSHARABLE, "4.0.10",
+			MF({
+				return((gcombo_rampconfig.options.indexOf(gcombo_rampconfig.value) > 0)||
+				(gcombo_pclmux.options.indexOf(gcombo_pclmux.value) == 4) ||
+				(gcombo_svpmux.options.indexOf(gcombo_svpmux.value) == 4) ||
+				(gcombo_dsmmux.options.indexOf(gcombo_dsmmux.value) != 0)||
+				(gcheck_eparamhandler.value == true))
+			},Boolean))
+		
+		/* ---------- 4 ADC QUEUE App ------ */
+		/*Consume queue APP based on GUI constraint */
+		for(String index in 'a' .. 'd')
+		{
+			String queue_no = index
+			this."appres_queue_${index}" = MRequiredApp("ADC_QUEUE","QUEUE ${index}".toUpperCase(),RNOTSHARABLE,"4.0.2",
+				MF({return(
+				((gcombo_avg_i_measurement.value.equalsIgnoreCase("Queue "+queue_no)) && (gcheck_avg_i_measurement.value == true)) ||
+				((gcombo_dc_link_measurement.value.equalsIgnoreCase("Queue "+queue_no))&& (gcheck_dc_link_measurement.value == true)) ||
+				((gcombo_pot_measurement.value.equalsIgnoreCase("Queue "+queue_no)) && (gcheck_pot_measurement.value == true)) ||
+				((gcombo_user_defined_measurement.value.equalsIgnoreCase("Queue "+queue_no)) && (gcheck_user_defined_measurement.value == true))
+			)},Boolean))
+		}
+
+		/* --------------------------------------------------------------------------------- */
+		/* -------------- Hardware resource consumption block ------------------------------ */
+		/* --------------------------------------------------------------------------------- */
+		/* Consumed nvic node for fast control loop*/
+		 hwres_fcl_nvicnode = MVirtualResourceGroup("FCL nvic node" , ["peripheral", "cpu" ,  "0" , "nvic", "interrupt", "*"])
+		 
+		 /* Consumed nvic node for primary control loop*/
+		 hwres_pcl_nvicnode = MVirtualResourceGroup("PCL nvic node" , ["peripheral", "cpu" ,  "0" , "nvic", "interrupt", "*"],MF({return(gcombo_pclmux.value == "PCL ISR")},Boolean))
+		 
+		 for (e in ['a':1, 'b':2, 'c':3, 'd':4]) {
+		   Integer index = e.value
+		   String  str   = e.key
+		   String  pos   = index.toString()
+			 
+   		   /* Conditionally consume 4 ADC Channel resource */
+   		   this."hwres_adcchan${pos}" =  MVirtualResourceGroup(MF({return(rarray_gstring_measurement_type[index].value)},String),["peripheral", "vadc", "0", "group", "*", "ch","*"],
+   			  MF({return(rarray_gcheck_measurement_type[index].value == true)},Boolean))
+   
+   		   /* Conditionally consume 4 ADC result resource  */
+   		   this."hwres_result${pos}" =  MVirtualResourceGroup(MF({return(rarray_gstring_measurement_type[index].value + " Result")},String),["peripheral", "vadc", "0", "group","*","result","*"],MF({
+   			   return(rarray_gcheck_measurement_type[index].value == true)},Boolean))
+			  
+  		   /* Conditionally consume 4 IO pad resource (channel pin)  */
+  		   this."hwres_chan_${str}_pin" = MVirtualResourceGroup(MF({return(rarray_gstring_measurement_type[index].value + " pin")},String),["port", "p", "*", "pad", "*"], MF({
+			 return(rarray_gcheck_measurement_type[index].value == true)}, Boolean))
+			 
+		  }
+		  		 
+		 /* --------------------------------------------------------------------------------- */
+		 /* -------------------------- App IO Signals. -------------------------------------- */
+		 /* --------------------------------------------------------------------------------- */
+		 vs_acim_freq_ctrl_fcl_nvicsignal_in  = MVirtualSignal(hwres_fcl_nvicnode, "sr_fast_control_loop", "signal_in", true, true)
+		 vs_acim_freq_ctrl_pcl_nvicsignal_in  = MVirtualSignal(hwres_pcl_nvicnode, "sr_primary_control_loop", "signal_in",MF({return(gcombo_pclmux.value == "PCL ISR")},Boolean), true)
+		 
+		 /*Local instance of virtual signal from low level app*/
+		 vs_svm_phu_periodmatch     = MVirtualSignalRA(appres_pwm_svm, "vs_pwm_svm_pmus_omds_phu")
+		 vs_svm_phv_periodmatch     = MVirtualSignalRA(appres_pwm_svm, "vs_pwm_svm_pmus_omds_phv")
+		  
+		 
+		 @AddPin
+		 vs_acim_freq_ctrl_adcch1_io = MVirtualSignal( hwres_chan_a_pin,MF({return(gstring_avg_i_measurement.value.toLowerCase() + "_pad")},String), "pad",
+			 MF({
+			 (gcheck_avg_i_measurement.value == true)
+			}, Boolean), false)
+		 @AddPin
+		 vs_acim_freq_ctrl_adcch2_io = MVirtualSignal( hwres_chan_b_pin,MF({return(gstring_dc_link_measurement.value.toLowerCase() + "_pad")},String), "pad",
+			MF({
+			 (gcheck_dc_link_measurement.value == true)
+		 }, Boolean), false)
+		 @AddPin
+		 vs_acim_freq_ctrl_adcch3_io = MVirtualSignal( hwres_chan_c_pin,MF({return(gstring_pot_measurement.value.toLowerCase() + "_pad")},String), "pad",
+			MF({
+			 (gcheck_pot_measurement.value == true)
+		 }, Boolean), false)
+		 @AddPin
+		 vs_acim_freq_ctrl_adcch4_io = MVirtualSignal( hwres_chan_d_pin,MF({return(gstring_user_defined_measurement.value.toLowerCase() + "_pad")},String), "pad",
+			MF({
+			  (gcheck_user_defined_measurement.value == true)
+		 }, Boolean), false)		 
+		 
+ 		 vs_acim_freq_ctrl_adcch1        =  MVirtualSignal(hwres_adcchan1,MF({gstring_avg_i_measurement.value.toLowerCase() + "_channel"},String),  "gch", true, false) /* required{}, exposeToUser{} */
+ 		 vs_acim_freq_ctrl_adcch1_sel    =  MVirtualSignal(hwres_adcchan1,MF({gstring_avg_i_measurement.value.toLowerCase() + "_channel_select"},String) ,  "select", true, false)
+ 		 vs_acim_freq_ctrl_adcch1_ressel =  MVirtualSignal(hwres_adcchan1,MF({gstring_avg_i_measurement.value.toLowerCase() + "_result_select"},String),  "res_sel", true, false)
+ 
+ 		 vs_acim_freq_ctrl_adcch2        =  MVirtualSignal(hwres_adcchan2,MF({gstring_dc_link_measurement.value.toLowerCase() + "_channel"},String), "gch", true, false) /* required{}, exposeToUser{} */
+ 		 vs_acim_freq_ctrl_adcch2_sel    =  MVirtualSignal(hwres_adcchan2,MF({gstring_dc_link_measurement.value.toLowerCase() + "_channel_select"},String),  "select", true, false)
+ 		 vs_acim_freq_ctrl_adcch2_ressel =  MVirtualSignal(hwres_adcchan2,MF({gstring_dc_link_measurement.value.toLowerCase() + "_result_select"},String),  "res_sel", true, false)
+ 
+ 		 vs_acim_freq_ctrl_adcch3        =  MVirtualSignal(hwres_adcchan3,MF({gstring_pot_measurement.value.toLowerCase() + "_channel"},String),  "gch", true, false) /* required{}, exposeToUser{} */
+ 		 vs_acim_freq_ctrl_adcch3_sel    =  MVirtualSignal(hwres_adcchan3,MF({gstring_pot_measurement.value.toLowerCase() + "_channel_select"},String),  "select", true, false)
+ 		 vs_acim_freq_ctrl_adcch3_ressel =  MVirtualSignal(hwres_adcchan3,MF({gstring_pot_measurement.value.toLowerCase() + "_result_select"},String),  "res_sel", true, false)
+ 
+ 		 vs_acim_freq_ctrl_adcch4        =  MVirtualSignal(hwres_adcchan4,MF({gstring_user_defined_measurement.value.toLowerCase() + "_channel"},String),  "gch", true, false) /* required{}, exposeToUser{} */
+ 		 vs_acim_freq_ctrl_adcch4_sel    =  MVirtualSignal(hwres_adcchan4,MF({gstring_user_defined_measurement.value.toLowerCase() + "_channel_select"},String),  "select", true, false)
+ 		 vs_acim_freq_ctrl_adcch4_ressel =  MVirtualSignal(hwres_adcchan4,MF({gstring_user_defined_measurement.value.toLowerCase() + "_result_select"},String),  "res_sel", true, false)
+		  
+		 vs_acim_freq_ctrl_adcch1_res    =  MVirtualSignal(hwres_result1,MF({gstring_avg_i_measurement.value.toLowerCase() + "_result"},String),  "res_sel", true, false)
+		 vs_acim_freq_ctrl_adcch2_res    =  MVirtualSignal(hwres_result2,MF({gstring_dc_link_measurement.value.toLowerCase() + "_result"},String),  "res_sel", true, false)
+		 vs_acim_freq_ctrl_adcch3_res    =  MVirtualSignal(hwres_result3,MF({gstring_pot_measurement.value.toLowerCase() + "_result"},String),  "res_sel", true, false)
+		 vs_acim_freq_ctrl_adcch4_res    =  MVirtualSignal(hwres_result4,MF({gstring_user_defined_measurement.value.toLowerCase() + "_result"},String),  "res_sel", true, false)
+		 
+		 vs_adc_queue_queue12channel = MVirtualSignalRA(appres_queue_a,"vs_adc_queue_queue2channel")
+		 vs_adc_queue_queue22channel = MVirtualSignalRA(appres_queue_b,"vs_adc_queue_queue2channel")
+		 vs_adc_queue_queue32channel = MVirtualSignalRA(appres_queue_c,"vs_adc_queue_queue2channel")
+		 vs_adc_queue_queue42channel = MVirtualSignalRA(appres_queue_d,"vs_adc_queue_queue2channel")
+		 
+		 /* --------------------------------------------------------------------------------- */
+		 /* -------------------------- App IO Signals connections. -------------------------- */
+		 /* --------------------------------------------------------------------------------- */
+		 addConnectionConstraint(vs_svm_phu_periodmatch, vs_acim_freq_ctrl_fcl_nvicsignal_in)
+		 addConnectionConstraint(vs_svm_phv_periodmatch, vs_acim_freq_ctrl_pcl_nvicsignal_in, MF({return(gcombo_pclmux.value == "PCL ISR")},Boolean))
+			
+		 addConnectionConstraint(vs_acim_freq_ctrl_adcch1_io,vs_acim_freq_ctrl_adcch1, MF({return(gcheck_avg_i_measurement.value == true)}, Boolean))
+		 addConnectionConstraint(vs_acim_freq_ctrl_adcch2_io,vs_acim_freq_ctrl_adcch2, MF({return(gcheck_dc_link_measurement.value == true)}, Boolean))
+		 addConnectionConstraint(vs_acim_freq_ctrl_adcch3_io,vs_acim_freq_ctrl_adcch3, MF({return(gcheck_pot_measurement.value == true)}, Boolean))
+		 addConnectionConstraint(vs_acim_freq_ctrl_adcch4_io,vs_acim_freq_ctrl_adcch4, MF({return(gcheck_user_defined_measurement.value == true)}, Boolean))
+
+		 addConnectionConstraint (vs_adc_queue_queue12channel,vs_acim_freq_ctrl_adcch1_sel, MF({
+			 return((gcombo_avg_i_measurement.value == "Queue A") && (gcheck_avg_i_measurement.value == true)
+											  )},Boolean))
+		 addConnectionConstraint (vs_adc_queue_queue12channel,vs_acim_freq_ctrl_adcch2_sel, MF({
+			 return((gcombo_dc_link_measurement.value == "Queue A") && (gcheck_dc_link_measurement.value == true)
+			)},Boolean))
+		 addConnectionConstraint (vs_adc_queue_queue12channel,vs_acim_freq_ctrl_adcch3_sel, MF({return(
+			 (gcombo_pot_measurement.value == "Queue A") && (gcheck_pot_measurement.value == true)
+			)},Boolean))
+		 addConnectionConstraint (vs_adc_queue_queue12channel,vs_acim_freq_ctrl_adcch4_sel, MF({return(
+			 (gcombo_user_defined_measurement.value == "Queue A") && (gcheck_user_defined_measurement.value == true)
+			)},Boolean))
+		 
+		 addConnectionConstraint (vs_adc_queue_queue22channel,vs_acim_freq_ctrl_adcch1_sel, MF({return(
+			 ((gcombo_avg_i_measurement.value == "Queue B") && (gcheck_avg_i_measurement.value == true))
+											  )},Boolean))
+		 addConnectionConstraint (vs_adc_queue_queue22channel,vs_acim_freq_ctrl_adcch2_sel, MF({return(
+			 ((gcombo_dc_link_measurement.value == "Queue B") && (gcheck_dc_link_measurement.value == true))
+			)},Boolean))
+		 addConnectionConstraint (vs_adc_queue_queue22channel,vs_acim_freq_ctrl_adcch3_sel, MF({return(
+			 ((gcombo_pot_measurement.value == "Queue B") && (gcheck_pot_measurement.value == true))
+			)},Boolean))
+		 addConnectionConstraint (vs_adc_queue_queue22channel,vs_acim_freq_ctrl_adcch4_sel, MF({return(
+			 ((gcombo_user_defined_measurement.value == "Queue B") && (gcheck_user_defined_measurement.value == true))
+			)},Boolean))
+		 
+		 addConnectionConstraint (vs_adc_queue_queue32channel,vs_acim_freq_ctrl_adcch1_sel, MF({return(
+			 ((gcombo_avg_i_measurement.value == "Queue C") && (gcheck_avg_i_measurement.value == true))
+											  )},Boolean))
+		 addConnectionConstraint (vs_adc_queue_queue32channel,vs_acim_freq_ctrl_adcch2_sel, MF({return(
+			 ((gcombo_dc_link_measurement.value == "Queue C") && (gcheck_dc_link_measurement.value == true))
+			)},Boolean))
+		 addConnectionConstraint (vs_adc_queue_queue32channel,vs_acim_freq_ctrl_adcch3_sel, MF({return(
+			 ((gcombo_pot_measurement.value == "Queue C") && (gcheck_pot_measurement.value == true))
+			)},Boolean))
+		 addConnectionConstraint (vs_adc_queue_queue32channel,vs_acim_freq_ctrl_adcch4_sel, MF({return(
+			 ((gcombo_user_defined_measurement.value == "Queue C") && (gcheck_user_defined_measurement.value == true))
+			)},Boolean))
+		 
+		 addConnectionConstraint (vs_adc_queue_queue42channel,vs_acim_freq_ctrl_adcch1_sel, MF({return(
+			 ((gcombo_avg_i_measurement.value == "Queue D") && (gcheck_avg_i_measurement.value == true))
+											  )},Boolean))
+		 addConnectionConstraint (vs_adc_queue_queue42channel,vs_acim_freq_ctrl_adcch2_sel, MF({return(
+			 ((gcombo_dc_link_measurement.value == "Queue D") && (gcheck_dc_link_measurement.value == true))
+			)},Boolean))
+		 addConnectionConstraint (vs_adc_queue_queue42channel,vs_acim_freq_ctrl_adcch3_sel, MF({return(
+			 ((gcombo_pot_measurement.value == "Queue D") && (gcheck_pot_measurement.value == true))
+			)},Boolean))
+		 addConnectionConstraint (vs_adc_queue_queue42channel,vs_acim_freq_ctrl_adcch4_sel, MF({return(
+			 ((gcombo_user_defined_measurement.value == "Queue D") && (gcheck_user_defined_measurement.value == true))
+			)},Boolean))
+		 
+		 addConnectionConstraint (vs_acim_freq_ctrl_adcch1_ressel,vs_acim_freq_ctrl_adcch1_res, MF({return(
+			 (gcheck_avg_i_measurement.value == true)
+									  )},Boolean))
+		 addConnectionConstraint (vs_acim_freq_ctrl_adcch2_ressel,vs_acim_freq_ctrl_adcch2_res, MF({return(
+			  (gcheck_dc_link_measurement.value == true)
+			)},Boolean))
+		 addConnectionConstraint (vs_acim_freq_ctrl_adcch3_ressel,vs_acim_freq_ctrl_adcch3_res, MF({return(
+			  (gcheck_pot_measurement.value == true)
+			)},Boolean))
+		 addConnectionConstraint (vs_acim_freq_ctrl_adcch4_ressel,vs_acim_freq_ctrl_adcch4_res, MF({return(
+			  (gcheck_user_defined_measurement.value == true)
+			)},Boolean))
+
+		 /* --------------------------------------------------------------------------------- */
+		 /* -------------------------------- App Configuration ------------------------------ */
+		 /* --------------------------------------------------------------------------------- */
+		 /*
+		  * App GUI default configuration is for XMC4x device.
+		  * For other device update the default configuration.
+		  */
+		 if(device_4x == false)
+		 {
+		   /* Default Passive level setting for 1x device */
+		   gcombo_highsideswitch.value = "Active High"
+		   gcombo_lowsideswitch.value  = "Active High"
+			 
+		   /* Default priority setting for Fast control loop ISR*/
+		   ginterruptprio_fast_control_loop.priorityValue = 1
+		   ginterruptprio_fast_control_loop.subPriorityVisible = false
+			 
+		   /* Default priority setting for Primary control loop ISR*/
+		   ginterruptprio_primary_control_loop.priorityValue = 2
+		   ginterruptprio_primary_control_loop.subPriorityVisible = false
+			 
+		   /*Power board default configuration */
+		   gfloat_vadcref.value = 5
+		   gfloat_rshunt.value  = 150
+		   gfloat_ampgain.value = 33
+		   gfloat_ampbiasvolt.value = 2.5
+		 }
+
+		 
+		/* V/F constant value based on Motor parameters,Multiply by 1000 to convert in mV */
+		gfloat_vfconstant.value = MF({return ((gfloat_nominalvolt.value*1000 * 60)/(gfloat_nominalspeed.value * gint_polepair.value))},Float)
+		
+		/* Voltage offset value based on Motor parameters */
+		gfloat_voltageoffset.value = MF({return (gfloat_nominalvolt.value * 1000 * 0.05)},Float)
+		
+		/* Max. current calculations. Multiply by 1000 to convert in mV*/
+		gfloat_maxcrnt.value = MF({return (((gfloat_vadcref.value - gfloat_ampbiasvolt.value)*1000)/(gfloat_rshunt.value * gfloat_ampgain.value))},Float)
+		
+		/* ADC related configuration */
+		gcheck_avg_i_measurement.value = MF({return(gcombo_curntmsrmnt.value != "None")},Boolean)
+		
+		/* If voltage compensation enabled then add entry in ADC queue for DC link current measurement */
+		gcheck_dc_link_measurement.value     = MF({return(gcheck_evoltcomp.value == true)},Boolean)
+		
+		gcheck_avg_i_refill.value       = MF({return(gcombo_curntmsrmnt.value != "None")},Boolean)
+		gcheck_dc_link_refill.value     = MF({return(gcheck_evoltcomp.value == true)},Boolean)
+		gcheck_pot_refill.value         = MF({return(gcheck_epotmeasurement.value == true)},Boolean)
+		
+		gcheck_pot_measurement.value    = MF({return(gcheck_epotmeasurement.value == true)},Boolean)
+		
+		gstring_avg_i_measurement.enabled = MF({return(gcombo_curntmsrmnt.value != "None")},Boolean)
+		gcombo_avg_i_measurement.enabled = MF({return(gcombo_curntmsrmnt.value != "None")},Boolean)
+		gint_avg_i_measurement.enabled = MF({return(gcombo_curntmsrmnt.value != "None")},Boolean)
+		gcheck_avg_i_ext_trigger.enabled = MF({return(gcombo_curntmsrmnt.value != "None")},Boolean)
+		
+		gstring_dc_link_measurement.enabled = MF({return(gcheck_dc_link_measurement.value == true)},Boolean)
+		gcombo_dc_link_measurement.enabled = MF({return(gcheck_dc_link_measurement.value == true)},Boolean)
+		gint_dc_link_measurement.enabled = MF({return(gcheck_dc_link_measurement.value == true)},Boolean)
+		gcheck_dc_link_ext_trigger.enabled = MF({return(gcheck_dc_link_measurement.value == true)},Boolean)
+		
+		gstring_pot_measurement.enabled = MF({return(gcheck_pot_measurement.value == true)},Boolean)
+		gcombo_pot_measurement.enabled  = MF({return(gcheck_pot_measurement.value == true)},Boolean)
+		gint_pot_measurement.enabled    = MF({return(gcheck_pot_measurement.value == true)},Boolean)
+		gcheck_pot_ext_trigger.enabled  = MF({return(gcheck_pot_measurement.value == true)},Boolean)
+				
+		gstring_user_defined_measurement.enabled = MF({return(gcheck_user_defined_measurement.value == true)},Boolean)
+		gcombo_user_defined_measurement.enabled  = MF({return(gcheck_user_defined_measurement.value == true)},Boolean)
+		gint_user_defined_measurement.enabled    = MF({return(gcheck_user_defined_measurement.value == true)},Boolean)
+		gcheck_user_defined_refill.enabled       = MF({return(gcheck_user_defined_measurement.value == true)},Boolean)
+		gcheck_user_defined_ext_trigger.enabled  = MF({return(gcheck_user_defined_measurement.value == true)},Boolean)
+		
+		/* adc external trigger configuration*/
+		for(String index in 'a'..'d')
+		{
+			String queue_no = index
+			this."appres_queue_${index}".setVal(["gcombo_trigger_edge_sel", "value"],
+				MF({
+					if(((gcombo_avg_i_measurement.value .equalsIgnoreCase("Queue "+queue_no)) && (gcheck_avg_i_ext_trigger.value == true))||
+						((gcombo_dc_link_measurement.value.equalsIgnoreCase("Queue "+queue_no)) && (gcheck_dc_link_ext_trigger.value == true))||
+						((gcombo_pot_measurement.value.equalsIgnoreCase("Queue "+queue_no)) && (gcheck_pot_ext_trigger.value == true))||
+						((gcombo_user_defined_measurement.value.equalsIgnoreCase("Queue "+queue_no)) && (gcheck_user_defined_ext_trigger.value == true)))
+					{
+						return "External Trigger Upon Rising Edge"
+					}
+					else
+					{
+						return "No External Trigger"
+					}
+					}, String))
+		}
+		
+		/* Error message disply configuration for ADC measurements*/
+		gmsg_info.visible  =  MF({
+			if(((gcombo_avg_i_measurement.options.indexOf(gcombo_avg_i_measurement.value) == gcombo_dc_link_measurement.options.indexOf(gcombo_dc_link_measurement.value))&&
+				(gint_avg_i_measurement.value == gint_dc_link_measurement.value))||
+				((gcombo_avg_i_measurement.options.indexOf(gcombo_avg_i_measurement.value) == gcombo_pot_measurement.options.indexOf(gcombo_pot_measurement.value))&&
+				(gint_avg_i_measurement.value == gint_pot_measurement.value))||
+				((gcombo_avg_i_measurement.options.indexOf(gcombo_avg_i_measurement.value) == gcombo_user_defined_measurement.options.indexOf(gcombo_user_defined_measurement.value)) &&
+				(gint_avg_i_measurement.value == gint_user_defined_measurement.value)))
+			{
+			  return true
+			}
+			else if(((gcombo_dc_link_measurement.options.indexOf(gcombo_dc_link_measurement.value) == gcombo_pot_measurement.options.indexOf(gcombo_pot_measurement.value))&&
+				(gint_dc_link_measurement.value == gint_pot_measurement.value))||
+				((gcombo_dc_link_measurement.options.indexOf(gcombo_dc_link_measurement.value) == gcombo_user_defined_measurement.options.indexOf(gcombo_user_defined_measurement.value))&&
+				(gint_dc_link_measurement.value == gint_user_defined_measurement.value)))
+			{
+				return true
+			}
+			else if(((gcombo_pot_measurement.options.indexOf(gcombo_pot_measurement.value) == gcombo_user_defined_measurement.options.indexOf(gcombo_user_defined_measurement.value))&&
+				(gint_pot_measurement.value == gint_user_defined_measurement.value)))
+			{
+				return true
+			}
+			else
+			{
+			  return false
+			}
+			},Boolean)
+		gmsg_info.isError = MF({return (gmsg_info.visible)},Boolean)
+		
+		/* --------------------------------------------------------------------------------- */
+		/* -------- Force configuration from ACIM_FREQ_CTRL to PWM_SVM lower level app ----- */
+		/* --------------------------------------------------------------------------------- */
+		appres_pwm_svm.setVal(["gint_pwmfreq", "value"],MF({return (gint_acimpwmfreq.value)},Integer))		 //PWM Freq.
+		appres_pwm_svm.setVal(["gfloat_deadtime_rising_edge", "value"],MF({return(gfloat_deadtime_rising_edge.value)},Float))       // Dead Time
+		appres_pwm_svm.setVal(["gfloat_deadtime_falling_edge", "value"],MF({return(gfloat_deadtime_falling_edge.value)},Float))       // Dead Time
+		
+		//appres_pwm_svm.setVal(["gfloat_tmin", "value"],MF({(gfloat_deadtime.value + gfloat_switchdelay.value)},Float)) // Tmin.
+		
+		appres_pwm_svm.setVal(["gcombo_highsideswitch","value"],MF({return(gcombo_highsideswitch.value)}, String))
+		appres_pwm_svm.setVal(["gcombo_lowsideswitch","value"],MF({return(gcombo_lowsideswitch.value)}, String))
+		
+		appres_pwm_svm.setVal(["gcombo_invlevelsel", "value"],MF({return(gcombo_einvterpin.value)}, String)) //Inverter enable.
+		appres_pwm_svm.setVal(["gcombo_traplevelsel", "value"],MF({return(gcombo_etrap.value)}, String)) //Trap enable.
+		appres_pwm_svm.setVal(["gcombo_svm_schemeselect", "value"],MF({return(gcombo_svmscheme.value)}, String)) //Trap level.
+		
+		appres_pwm_svm.setVal(["gcheck_periodmatchintenable", "value"],MF({return(gcheck_enablepwmint.value)}, Boolean)) //Period match Interrupt always enable.
+		appres_pwm_svm.setVal(["gcheck_trapintenable", "value"],MF({return(gcombo_etrap.options.indexOf(gcombo_etrap.value) > 0)}, Boolean)) //Trap Interrupt enable.
+		appres_pwm_svm.setVal(["gcheck_overmodulation", "value"],MF({return(gcheck_eovermodulation.value)}, Boolean)) //Configuring over modulation in svm app
+		/* ---------------------------------------------------------------------------------- */
+		
+		/* Control Algorithm Tab Control */
+		gcheck_eautomation.value = MF({
+				return ((gcombo_rampconfig.options.indexOf(gcombo_rampconfig.value) > 0)||
+				(gcombo_pclmux.options.indexOf(gcombo_pclmux.value) == 4) ||
+				(gcombo_svpmux.options.indexOf(gcombo_svpmux.value) == 4) ||
+				(gcombo_dsmmux.options.indexOf(gcombo_dsmmux.value) != 0)||
+				(gcheck_eparamhandler.value == true))
+			},Boolean)
+		/* Control Parameters Tab Control */
+		gcombo_rampconfig.value  = MF({
+			if(gcombo_ctrlschemeconfig.options.indexOf(gcombo_ctrlschemeconfig.value) == 0)
+			{
+			  if(gcombo_speedset_opt.options.indexOf(gcombo_speedset_opt.value) > 1)
+			  {
+				return (gcombo_speedset_opt.value)
+			  }
+			  else
+			  {
+				  return "Disable"
+			  }
+			}
+			else
+			{
+			  if((gcheck_positionctrl.value ==true) || (gcheck_opcode_positionctrl.value == true))
+			  {
+			   if(gcombo_position_ctrl.options.indexOf(gcombo_position_ctrl.value) > 1)
+			   {
+				 return (gcombo_position_ctrl.value)
+			   }
+			   else
+			   {
+				 return "Disable"
+			   }
+			  }
+			  else
+			  {
+				if(gcombo_speed_ctrl.options.indexOf(gcombo_speed_ctrl.value) > 1)
+				{
+				  return (gcombo_speed_ctrl.value)
+				}
+				else
+				{
+				  return "Disable"
+				}
+			  }
+			}
+			
+			},String)
+		 /*v/f constant and voltage offset*/
+		gfloat_udvfconstant.enabled = MF({return(gcheck_userdefconf.value)},Boolean)
+		gfloat_udvoltageoffset.enabled = MF({return(gcheck_userdefconf.value)},Boolean)
+		gint_speedref.enabled = MF({
+			if(gcombo_ctrlschemeconfig.options.indexOf(gcombo_ctrlschemeconfig.value) == 0)
+			{
+			  return (gcheck_epotmeasurement.value == false)
+			}
+			else
+			{
+			  if(gcheck_positionctrl.value || gcheck_opcode_positionctrl.value )
+			  {
+				return false
+			  }
+			  else
+			  {
+				return (gcheck_epotmeasurement.value == false)
+			  }
+			}
+			},Boolean)
+		
+		/*Position Pi visibility Configuration*/
+		ggroup_position_ctrl_config.visible =  MF({
+			if(gcombo_ctrlschemeconfig.options.indexOf(gcombo_ctrlschemeconfig.value) == 0)
+			{
+				return false
+			}
+			else
+			{
+			  if(gcheck_positionctrl.value || gcheck_opcode_positionctrl.value)
+			  {
+				  return true
+			  }
+			  else
+			  {
+				  return false
+			  }
+			}
+			
+		  },Boolean)
+		/*Position feed forward visibility Configuration*/
+		ggroup_posff_config.visible =  MF({
+			if(gcombo_ctrlschemeconfig.options.indexOf(gcombo_ctrlschemeconfig.value) == 0)
+			{
+				return false
+			}
+			else
+			{
+			  if((gcheck_positionff.value || gcheck_opcode_positionff.value)&&
+				  (gcheck_positionctrl.value || gcheck_opcode_positionctrl.value))
+			  {
+				  return true
+			  }
+			  else
+			  {
+				  return false
+			  }
+			}
+			
+		  },Boolean)
+
+		/*Slip Pi visibility Configuration*/
+		ggroup_slipctrl_config.visible =  MF({
+			if(gcombo_ctrlschemeconfig.options.indexOf(gcombo_ctrlschemeconfig.value) == 0)
+			{
+				return false
+			}
+			else
+			{
+			  if(gcheck_slipctrl.value || gcheck_opcode_slipctrl.value)
+			  {
+				  return true
+			  }
+			  else
+			  {
+				  return false
+			  }
+			}
+		  },Boolean)
+		
+		/*Current Limit Pi visibility Configuration*/
+		ggroup_current_limit_config.visible =  MF({
+			if(gcombo_ctrlschemeconfig.options.indexOf(gcombo_ctrlschemeconfig.value) == 0)
+			{
+			  return (gcheck_basic_crntlimit.value)
+			}
+			else
+			{
+			  if(gcheck_crnt_limit.value || gcheck_opcode_crnt_limit.value)
+			  {
+				  return true
+			  }
+			  else
+			  {
+				  return false
+			  }
+			}
+		  },Boolean)
+							
+		/* Basic Control Scheme Tab Control */
+		gtab_basiccontrolscheme.visible = MF({return(gcombo_ctrlschemeconfig.options.indexOf(gcombo_ctrlschemeconfig.value) == 0)},Boolean)
+
+		gstring_ud_speedset_ptr.visible = MF({return(gcombo_speedset_opt.options.indexOf(gcombo_speedset_opt.value) == 0)},Boolean)
+		glabel_ud_speedset_ptr.visible = MF({return(gcombo_speedset_opt.options.indexOf(gcombo_speedset_opt.value) == 0)},Boolean)
+		
+		/*Advance Control Scheme Tab Control */
+		
+		gcombo_position_ctrl.enabled =  MF({return(gcheck_positionctrl.value || gcheck_opcode_positionctrl.value)},Boolean)
+		gcombo_position_actval.enabled =  MF({return(gcheck_positionctrl.value || gcheck_opcode_positionctrl.value)},Boolean)
+		
+		gcombo_speed_ctrl.enabled =  MF({return (!(gcheck_positionctrl.value || gcheck_opcode_positionctrl.value))},Boolean)
+		gcombo_speed_actval.enabled =  MF({return (gcheck_slipctrl.value || gcheck_opcode_slipctrl.value)},Boolean)
+		
+		gcombo_current_actval.enabled = MF({return (gcheck_crnt_limit.value || gcheck_opcode_crnt_limit.value)},Boolean)
+		
+		glabel_positionset_ptr.visible = MF({return ((gcombo_position_ctrl.options.indexOf(gcombo_position_ctrl.value) == 0) &&
+			(gcombo_position_ctrl.enabled == true))
+		},Boolean)
+		gstring_positionset_ptr.visible = MF({return ((gcombo_position_ctrl.options.indexOf(gcombo_position_ctrl.value) == 0) &&
+			(gcombo_position_ctrl.enabled == true))
+		},Boolean)
+		
+		glabel_speedsetadv_ptr.visible = MF({((gcombo_speed_ctrl.options.indexOf(gcombo_speed_ctrl.value) == 0) &&
+			(gcombo_speed_ctrl.enabled == true))
+		},Boolean)
+		gstring_speedsetadv_ptr.visible = MF({return ((gcombo_speed_ctrl.options.indexOf(gcombo_speed_ctrl.value) == 0) &&
+			(gcombo_speed_ctrl.enabled == true))
+		},Boolean)
+		
+		glabel_actpos_ptr.visible = MF({return ((gcombo_position_actval.options.indexOf(gcombo_position_actval.value) == 0) &&
+			(gcombo_position_actval.enabled == true))
+		},Boolean)
+		gstring_actpos_ptr.visible = MF({return ((gcombo_position_actval.options.indexOf(gcombo_position_actval.value) == 0) &&
+			(gcombo_position_actval.enabled == true))
+		},Boolean)
+		
+		glabel_actspeed_ptr.visible = MF({return ((gcombo_speed_actval.options.indexOf(gcombo_speed_actval.value) == 0) &&
+			(gcombo_speed_actval.enabled == true))
+		},Boolean)
+		gstring_actspeed_ptr.visible = MF({return ((gcombo_speed_actval.options.indexOf(gcombo_speed_actval.value) == 0) &&
+			(gcombo_speed_actval.enabled == true))
+		},Boolean)
+		
+		glabel_actcur_ptr.visible = MF({return ((gcombo_current_actval.options.indexOf(gcombo_current_actval.value) == 0) &&
+			(gcombo_current_actval.enabled == true))
+		},Boolean)
+		gstring_actcur_ptr.visible = MF({return ((gcombo_current_actval.options.indexOf(gcombo_current_actval.value) == 0) &&
+			(gcombo_current_actval.enabled == true))
+		},Boolean)
+		
+		gcombo_current_actval.options = MF({
+			if(gcombo_curntmsrmnt.options.indexOf(gcombo_curntmsrmnt.value) != 0)
+			{
+				return ["User Defined","I_Average"]
+			}
+			else
+			{
+				return ["User Defined"]
+			}
+		},List)
+		
+		ggroup_user_param_set.visible = MF({return (
+			((gcombo_current_actval.options.indexOf(gcombo_current_actval.value) == 0) && (gcombo_current_actval.enabled == true)) ||
+			((gcombo_speed_actval.options.indexOf(gcombo_speed_actval.value) == 0) && (gcombo_speed_actval.enabled == true)) ||
+			((gcombo_position_actval.options.indexOf(gcombo_position_actval.value) == 0) && (gcombo_position_actval.enabled == true)) ||
+			((gcombo_speed_ctrl.options.indexOf(gcombo_speed_ctrl.value) == 0) && (gcombo_position_actval.enabled == false)) ||
+			((gcombo_position_ctrl.options.indexOf(gcombo_position_ctrl.value) == 0) && (gcombo_position_ctrl.enabled == true)))
+		},Boolean)
+		
+		gtab_controlscheme.visible               = MF({return(gcombo_ctrlschemeconfig.options.indexOf(gcombo_ctrlschemeconfig.value) == 1)},Boolean)
+		ggroup_pclusercode.visible               = MF({return(gcheck_opcode_positionctrl.value || gcheck_opcode_slipctrl.value || (gcheck_opcode_crnt_limit.value)|| (gcheck_positionctrl.value && gcheck_opcode_positionff.value))},Boolean) 
+		
+		gstring_usercode_position_ff.visible     = MF({return(gcheck_opcode_positionff.value && (gcheck_positionctrl.value || gcheck_opcode_positionctrl.value))},Boolean)
+		glabel_usercode_position_ff.visible      = MF({return(gstring_usercode_position_ff.visible)},Boolean)
+		
+
+		glabel_usercode_position_control.visible = MF({return(gcheck_opcode_positionctrl.value)},Boolean)
+		gstring_usercode_position_control.visible= MF({return(gcheck_opcode_positionctrl.value)},Boolean)
+		
+		gstring_usercode_slip_control.visible    = MF({return(gcheck_opcode_slipctrl.value)},Boolean)
+		glabel_usercode_slip_control.visible     = MF({return(gcheck_opcode_slipctrl.value)},Boolean)
+		
+		gstring_usercode_current_limit.visible   = MF({return(gcheck_opcode_crnt_limit.value)},Boolean)
+		glabel_usercode_current_limit.visible    = MF({return(gcheck_opcode_crnt_limit.value)},Boolean)
+		
+		gstring_usercode_angle_ramp.visible   = MF({return(gcheck_opcode_angle_ramp.value)},Boolean)
+		glabel_usercode_angle_ramp.visible    = MF({return(gcheck_opcode_angle_ramp.value)},Boolean)
+		
+		gstring_usercode_vf_control.visible   = MF({return(gcheck_opcode_vf_control.value)},Boolean)
+		glabel_usercode_vf_control.visible    = MF({return(gcheck_opcode_vf_control.value)},Boolean)
+
+		ggroup_fclusercode.visible            = MF({return((gcheck_opcode_vf_control.value)|| (gcheck_opcode_angle_ramp.value))},Boolean)
+		
+		gcheck_positionff.visible        = MF({return(gcheck_positionctrl.value || gcheck_opcode_positionctrl.value)},Boolean)
+		gcheck_opcode_positionff.visible = MF({return(gcheck_positionff.visible)},Boolean)
+
+		gfloat_additive_position.enabled  = MF({return(gcheck_positionctrl.value || gcheck_opcode_positionctrl.value)},Boolean)
+		gfloat_positioninput.enabled     = MF({return(gcheck_positionctrl.value || gcheck_opcode_positionctrl.value)},Boolean)
+		gfloat_additivespeed.enabled     = MF({return(gcheck_slipctrl.value || gcheck_opcode_slipctrl.value)},Boolean)
+		
+		
+		/* Task Scheduler Tab Control */
+		gint_automationtime.value = MF({
+			if((gcombo_rampconfig.options.indexOf(gcombo_rampconfig.value) > 0)||
+				(gcombo_pclmux.options.indexOf(gcombo_pclmux.value) == 4) ||
+				(gcombo_svpmux.options.indexOf(gcombo_svpmux.value) == 4) ||
+				(gcombo_dsmmux.options.indexOf(gcombo_dsmmux.value) != 0)||
+				(gcheck_eparamhandler.value == true))
+			{
+			  return appres_automation.getVal(["gint_scheduler", "value"])
+			}
+			else
+			{
+			  return 1
+			}
+			},Integer)
+		
+		gint_pwmtime.value = MF({(int)(1000000/gint_acimpwmfreq.value)},Integer)
+		
+		/*Setting minimum value for desired time*/
+		gint_fcldesiretime.minValue = MF({return(gint_pwmtime.value)},Integer)
+		gint_pcldesiretime.minValue = MF({
+			if(gcombo_pclmux.options.indexOf(gcombo_pclmux.value) == 4)
+			{
+			 return 1
+			}
+			else
+			{
+			  return (gint_pwmtime.value)
+			}
+		},Integer)
+		
+		gint_svpdesiretime.minValue = MF({
+			if(gcombo_svpmux.options.indexOf(gcombo_svpmux.value) == 4)
+			{
+			 return 1
+			}
+			else
+			{
+			  return (gint_pwmtime.value)
+			}
+		},Integer)
+		
+		gint_dsmdesiretime.minValue = MF({
+		    if(gcombo_dsmmux.options.indexOf(gcombo_dsmmux.value) == 2)
+			{
+			 return 1
+			}
+			else
+			{
+			  return (gint_pwmtime.value)
+			}
+		},Integer)
+
+			
+		gint_ts_acimpwmfreq.value = MF({return(gint_acimpwmfreq.value)},Integer)
+		
+		gint_fcldiv.value = MF({
+			  return (int)Math.ceil(gint_fcldesiretime.value/gint_pwmtime.value)
+			},Integer)
+		
+		gint_fcltime.value = MF({
+			return (int)((gint_pwmtime.value)*(gint_fcldiv.value))
+		  },Integer)
+		
+		
+		gint_pcldiv.value = MF({return (int)Math.ceil(gint_pcldesiretime.value/gint_pwmtime.value)},Integer)
+		
+		gint_svpdiv.value= MF({return (int)Math.ceil(gint_svpdesiretime.value/gint_pwmtime.value)},Integer)
+		
+		gint_pcltime.value = MF({
+			Integer divider
+			  if(gcombo_pclmux.options.indexOf(gcombo_pclmux.value) == 4)
+			  {
+				divider = (int)Math.ceil(gint_pcldesiretime.value/gint_automationtime.value)
+				if(divider == 0)
+				{
+				  return (int)gint_automationtime.value
+				}
+				else
+				{
+				  return (int)(gint_automationtime.value * divider)
+				}
+			  }
+			  else if(gcombo_pclmux.options.indexOf(gcombo_pclmux.value) == 3)
+			  {
+				return (int)gint_pcldesiretime.value
+			  }
+			  else
+			  {
+				return (int)(gint_pwmtime.value*gint_pcldiv.value)
+			  }
+			},Integer)
+				
+		gint_svptime.value = MF({
+			Integer divider
+			  if(gcombo_svpmux.options.indexOf(gcombo_svpmux.value) == 4)
+			  {
+				divider = (int)Math.ceil(gint_svpdesiretime.value/gint_automationtime.value)
+				if(divider == 0)
+				{
+				  return (int)gint_automationtime.value
+				}
+				else
+				{
+				  return (int)(gint_automationtime.value * divider)
+				}
+			  }
+			  else if(gcombo_svpmux.options.indexOf(gcombo_svpmux.value) == 3)
+			  {
+				return (int)gint_svpdesiretime.value
+			  }
+			  else if(gcombo_svpmux.options.indexOf(gcombo_svpmux.value) == 1)
+			  {
+				return (gint_pcltime.value)
+			  }
+			  else
+			  {
+				return (int)((gint_pwmtime.value*gint_svpdiv.value))
+			  }
+			},Integer)
+
+		gint_mcsmtime.value = MF({return (gint_pcltime.value)},Integer)
+		
+		gint_dsmtime.value = MF({
+			Integer divider
+			  if(gcombo_dsmmux.options.indexOf(gcombo_dsmmux.value) == 2)
+			  {
+				divider = (int)Math.ceil(gint_dsmdesiretime.value/gint_automationtime.value)
+				if(divider == 0)
+				{
+				  return (int)gint_automationtime.value
+				}
+				else
+				{
+				  return (int)(gint_automationtime.value * divider)
+				}
+			  }
+			  else
+			  {
+				return gint_dsmdesiretime.value
+			  }
+			},Integer)
+	
+		/* Power board Tab Control */
+		gfloat_ampbiasvolt.enabled = MF({return (gcheck_eampbiasvolt.value == false)},Boolean)
+
+		/* Measurement Tab Control */
+		gcheck_eovercrntdet.enabled    = MF({return (gcombo_curntmsrmnt.options.indexOf(gcombo_curntmsrmnt.value) == 1)},Boolean)
+		gcheck_epotmeasurement.enabled = MF({
+			if(gcombo_ctrlschemeconfig.options.indexOf(gcombo_ctrlschemeconfig.value) == 1)
+			{
+			  return ((gcheck_positionctrl.value || gcheck_opcode_positionctrl.value )== false)
+			}
+			else
+			{
+			  return true
+			}
+			},Boolean)
+		
+			
+		/*Interrupt Tab Control */
+		ginterruptprio_primary_control_loop.visible     = MF({return (gcombo_pclmux.options.indexOf(gcombo_pclmux.value) == 2)},Boolean)
+		
+		/*Configure priority based on cpu app*/
+		ginterruptprio_fast_control_loop.maxPriority    = MF({return ((int)(Math.pow(2,appres_cpu.getVal(["gint_preemptPriorityBits", "value"]))-1))},Integer)
+		
+		ginterruptprio_primary_control_loop.maxPriority = MF({
+			  Integer maxpriority = 63
+			  if (gcombo_pclmux.options.indexOf(gcombo_pclmux.value) == 2)
+			  {
+				maxpriority = (int)(Math.pow(2,appres_cpu.getVal(["gint_preemptPriorityBits", "value"]))-1)
+			  }
+			  return maxpriority
+	    },Integer)
+				  
+         /* Configure subpriority based on CPU APP */
+	     if(device_4x == true)
+		 {
+		   ginterruptprio_fast_control_loop.maxSubPriority = MF({appres_cpu.getVal(["gint_maxInterruptSubPriority", "value"])},Integer)					
+		   ginterruptprio_primary_control_loop.maxSubPriority = MF({
+		            Integer subpriority = 63
+					if (gcombo_pclmux.options.indexOf(gcombo_pclmux.value) == 2)
+					{
+					  subpriority = appres_cpu.getVal(["gint_maxInterruptSubPriority", "value"])
+					}
+					return subpriority
+		   },Integer)
+	     }
+				
+		/* This is dummy control to hide the unwanted label from gui */
+			  		
+		glabel_udvfconstant.visible               = false
+		glabel_udvoltageoffset.visible            = false
+				
+		glabel_rampconfig.visible                 = false
+		gcombo_rampconfig.visible                 = false
+		
+		ggroup_dummyadvctrl.visible               = false
+		ggroup_dummy_taskscheduler.visible        = false
+		ggroup_dummy_basicctlrscheme.visible      = false
+		ggroup_dummy_measurementsdoc.visible      = false
+				
+	  /*************************************************************/
+	}
+	/* ----------------------- File Generation ------------------- */
+	def generateFiles(){
+		copy("acim_freq_ctrl.c", "acim_freq_ctrl.c")
+		copy("acim_freq_ctrl.h", "acim_freq_ctrl.h")
+		generate("acim_freq_ctrl_control.tmpl", "acim_freq_ctrl_control.c")
+		generate("acim_freq_ctrl_confc.tmpl", "acim_freq_ctrl_conf.c")
+		generate("acim_freq_ctrl_confh.tmpl", "acim_freq_ctrl_conf.h")
+		generate("acim_freq_ctrl_extern.tmpl", "acim_freq_ctrl_extern.h")
+	}
+}

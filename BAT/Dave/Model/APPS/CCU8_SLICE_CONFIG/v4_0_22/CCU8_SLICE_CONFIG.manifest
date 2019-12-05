@@ -1,0 +1,445 @@
+package Model.APPS.CCU8_SLICE_CONFIG.v4_0_22;
+
+/*
+ Copyright (c) 2015-2018, Infineon Technologies AG
+ All rights reserved.
+											
+ Redistribution and use in source and binary forms, with or without modification, are permitted provided that the
+ following conditions are met:
+																			 
+ Redistributions of source code must retain the above copyright notice, this list of conditions and the following
+ disclaimer.
+  
+ Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following
+ disclaimer in the documentation and/or other materials provided with the distribution.
+  
+ Neither the name of the copyright holders nor the names of its contributors may be used to endorse or promote
+ products derived from this software without specific prior written permission.
+																			 
+ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES,
+ INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+ DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE  FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+ SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
+ SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+ WHETHER IN CONTRACT, STRICT LIABILITY,OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+																			 
+ To improve the quality of the software, users are encouraged to share modifications, enhancements or bug fixes with
+ Infineon Technologies AG: dave@infineon.com. */
+
+/*************** Revision History **********************************************
+  Version     Date           Description 
+
+  4.0.0       05-Feb-2016   Initial version for DAVEv4
+  4.0.1       18-Apr-2016   Missing code generation for external event 
+                            configuration is fixed 
+  4.0.3       25-Apr-2016   In the APP help documentation under the contents pane
+                            Main Page is added. 
+  4.0.5       29-Apr-2016   ccu8_cc8_capture_ptr has been renamed to ccu8_cc8_slice_capture_ptr
+                            in the config structure
+  4.0.6       12-Jul-2016   Release version.
+  4.0.8       29-Jul-2016   Mandatory feature is added for event signals.
+                            DAVE 4.3.2 onwards this feature is supported.
+  4.0.10      03-Aug-2016   Output path options are extended for XMC14 devices in GUI.                            
+  4.0.12      09-Mar-2017   Fix channel output inversion control.                            
+  4.0.14      04-Apr-2017   Added GPy outputs.<br>
+  4.0.16      05-Apr-2017   Added Timer Load selector for External Timer Load Functionality <br>
+                            Added initial timer value in General Settings tab <br>
+  4.0.18      11-Apr-2017   Generate initialization of input events independently of whether they are used for any timer function     
+  4.0.20      10-Nov-2017   Fix C++ compilation problems <br>
+                            Fix status output when channel two is selected    
+  4.0.22      24-May-2018   Fix timer initial value not being set correctly<br>
+*******************************************************************************/
+
+// Import statements
+import ifx.davex.app.manifest.*
+
+class  CCU8_SLICE_CONFIG extends CCU8_SLICE_CONFIG_GUI {
+
+	/* Note  : Following App properties are mandatory and important */
+
+	/* Begin : APP property section */
+
+	/**
+	 * App version
+	 * Format: a string with three digit separated by a dot.
+	 */
+	def version            = '4.0.22'
+
+	/**
+	 * App categories declaration. 
+	 * It is list of strings. Subcategories are separated by slash.
+	 * No limits on number of categories and subcategories depth.
+	 */
+	def categoriesDescription = ["Peripheral Configuration"]
+
+	/** 
+	 * Minimum DAVE version required for this app.
+	 * 
+	 * It is string with three digit separated by a dot.
+	 */
+	def minDaveVersion           = '4.3.2'
+
+	/** 
+	 * Keywords used by search feature in Apps selection view
+	 * 
+	 * It is a list of string.
+	 */
+	def keywords = [
+		'Configuration',
+		'CCU8',
+		'Industrial Control',
+		'Peripheral Configuration',
+		'CCU8_SLICE_CONFIG',
+		'ALL'
+	]
+	
+	/** 
+	 * softwareIDs is used to declare which devices are compatible with this APP.
+	 * It is a map with key a string containing a pattern that shall match the SW id of
+	 * the device and as value the minimal version of the APP.
+	 */
+
+	/**
+	 * Any step of XMC4500F144 and XMC4400F144
+	 * Any step of XMC4400F100 and XMC4400F64
+	 * Any step, any variant and any packages of XMC1300
+	 */
+		def softwareIDs = [
+		"XMC1.3.*.*.*":"4.0.1",		
+		"XMC1.4.04.*.*":"4.0.1",
+		"XMC1.4.02.*.*":"4.0.1",		
+		"XMC4.1.*.*.*":"4.0.1",
+		"XMC4.2.*.*.*":"4.0.1",
+		"XMC4.3.*.*.*":"4.0.1",
+		"XMC4.4.*.*.*":"4.0.1",
+		"XMC4.5.*.*.*":"4.0.1",
+		"XMC4.7.*.*.*":"4.0.1",
+		"XMC4.8.*.*.*":"4.0.1"
+	]
+	/**
+	 * Singleton property:
+	 * When it is true the app can be instantiated only once. 
+	 */
+	def singleton     = false
+
+
+	/**
+	 * initProvider property
+	 * It shall be true to add a call to <AppName>_Init() 
+	 */
+	def initProvider  = true
+
+	/**
+	 * Deprecated app
+	 * Set it to true to indicate that the app shall be not used for new projects.
+	 */
+	def deprecated    = false
+
+	/**
+	 * Sharable property.
+	 * It shall be true to allows multiple apps to require the same instance of this app.
+	 */
+	def sharable      = false
+
+	/**
+	 *  App function description.
+	 */
+
+	def description = "The CCU8_SLICE_CONFIG configures and initializes a CCU8 timer slice.\nThe Capture/Compare Unit 8 (CCU8) peripheral functions play a major role in applications that need complex Pulse Width Modulation (PWM) signal generation, with complementary high side and low side switches or multi phase control."
+
+	/* End   : App property section */
+
+	/* Begin : User app property section */
+
+	/* End   : User app property section */
+
+	/* App Constructor */
+
+	MRequiredApp  app_global_ccu8
+
+	MVirtualResourceGroup hwres_ccu8_cc8_slice
+		
+	MVirtualSignalRA vs_ccu8_cc8_global
+
+	/* APP IO signals */
+	
+	MVirtualSignal vs_ccu8_cc8_config_global				/* link to CCU8x module */
+	MVirtualSignal vs_ccu8_cc8_period_match_interrupt		/* period match event */
+	MVirtualSignal vs_ccu8_cc8_ch1_compare_match_interrupt  /* compare1 match event */
+	MVirtualSignal vs_ccu8_cc8_ch2_compare_match_interrupt  /* compare2 match event */
+	MVirtualSignal vs_event0_interrupt					    /* external input 0 event */
+	MVirtualSignal vs_event1_interrupt						/* external input 1 event */
+	MVirtualSignal vs_event2_interrupt 						/* external input 2 event */
+	MVirtualSignal vs_ccu8_cc8_st							/* This signal can be the slice comparison status value of channel 1, channel 2 or a AND between both */
+	MVirtualSignal vs_ccu8_cc8_sta							/* Slice comparison status value of channel 1 */
+	MVirtualSignal vs_ccu8_cc8_stb							/* Slice comparison status value of channel 2 */
+	MVirtualSignal vs_ccu8_cc8_ch1_out_0					/* Slice dedicated output pins */
+	MVirtualSignal vs_ccu8_cc8_ch1_out_1					/* Slice dedicated output pins */
+	MVirtualSignal vs_ccu8_cc8_ch2_out_2					/* Slice dedicated output pins */
+	MVirtualSignal vs_ccu8_cc8_ch2_out_3					/* Slice dedicated output pins */
+	MVirtualSignal vs_ccu8_cc8_ps	   				        /* Period match */
+	MVirtualSignal vs_ccu8_cc8_gp0_unsync					/* slice functional input */
+	MVirtualSignal vs_ccu8_cc8_gp1_unsync					/* slice functional input */
+	MVirtualSignal vs_ccu8_cc8_gp2_unsync					/* slice functional input */
+	MVirtualSignal vs_ccu8_cc8_gp0							/* slice Selected signal for event 0 */
+	MVirtualSignal vs_ccu8_cc8_gp1							/* slice Selected signal for event 1 */
+	MVirtualSignal vs_ccu8_cc8_gp2							/* slice Selected signal for event 2 */
+	MVirtualSignal vs_ccu8_cc8_mci00						/* multi channel mode inputs */
+	MVirtualSignal vs_ccu8_cc8_mci10						/* multi channel mode inputs */
+	MVirtualSignal vs_ccu8_cc8_mci20						/* multi channel mode inputs */
+	MVirtualSignal vs_ccu8_cc8_mci30						/* multi channel mode inputs */
+	MVirtualSignal vs_ccu8_cc8_mcss  						/* multi channel shadow transfer trigger */
+	MVirtualSignal vs_ccu8_concat_bus_out					/* output concatenation link signal */
+	MVirtualSignal vs_ccu8_concat_bus_in					/* input concatenation link signal */
+	
+	public CCU8_SLICE_CONFIG(DaveEnv daveEnv) {
+
+		String series = (daveEnv.project.selectedDevice.deviceId.family + daveEnv.project.selectedDevice.deviceId.series)
+		
+		/* ---------------------------------------------------------- */
+		/* ------------ Hardware resource consumption block --------- */
+		/* ---------------------------------------------------------- */
+		hwres_ccu8_cc8_slice   = MVirtualResourceGroup("CCU80 Config", ["peripheral", "ccu8", "*", "cc8", "*"], true );
+
+
+		/* ---------------------------------------------------------- */
+		/* ------------ App consumption Block ----------------------- */
+		/* ---------------------------------------------------------- */
+		app_global_ccu8 =  MRequiredApp("GLOBAL_CCU8", "GLOBAL_CCU8",  RSHARABLE, "4.1.6", true);
+
+		/* ---------------------------------------------------------- */
+		/* -------------- APP IO Signals ---------------------------- */
+		/* ---------------------------------------------------------- */
+		vs_ccu8_cc8_global =                          MVirtualSignalRA(app_global_ccu8,     "vs_global_ccu8_globalsignal" );
+		
+		/*--- Slice  ---*/		
+		vs_ccu8_cc8_config_global =                   MVirtualSignal(hwres_ccu8_cc8_slice,  "global_signal",        "global_signal",  true, false)
+		vs_ccu8_cc8_period_match_interrupt =          MVirtualSignal(hwres_ccu8_cc8_slice,  "event_period_match",   "pmus_omds",   	  MF({(gcheck_enable_period_match_event.value || gcheck_enable_one_match_event.value)},  Boolean), 
+			                                                                                                                          MF({(gcheck_enable_period_match_event.value || gcheck_enable_one_match_event.value)},  Boolean),
+																		  'Signal is not connected to any target signal. Use HW signal connections dialog to establish connection.')
+		vs_ccu8_cc8_ch1_compare_match_interrupt =     MVirtualSignal(hwres_ccu8_cc8_slice,  "event_ch1_cmp_match", 	"cmd1s_cmu1s",    MF({(gcheck_enable_compare1_up_event.value || gcheck_enable_compare1_down_event.value)},  Boolean),
+			                                                                                                                          MF({(gcheck_enable_compare1_up_event.value || gcheck_enable_compare1_down_event.value)},  Boolean),
+																		  'Signal is not connected to any target signal. Use HW signal connections dialog to establish connection.')
+		vs_ccu8_cc8_ch2_compare_match_interrupt =     MVirtualSignal(hwres_ccu8_cc8_slice,  "event_ch2_cmp_match", 	"cmd2s_cmu2s",    MF({(gcheck_enable_compare2_up_event.value || gcheck_enable_compare2_down_event.value)},  Boolean), 
+			                                                                                                                          MF({(gcheck_enable_compare2_up_event.value || gcheck_enable_compare2_down_event.value)},  Boolean),
+																		  'Signal is not connected to any target signal. Use HW signal connections dialog to establish connection.')
+		vs_event0_interrupt =                         MVirtualSignal(hwres_ccu8_cc8_slice,  "event_in0",            "e0as",        	  MF({(gcheck_enable_external_event0.value)},  Boolean),
+			                                                                                                                          MF({(gcheck_enable_external_event0.value)},  Boolean),
+																		  'Signal is not connected to any target signal. Use HW signal connections dialog to establish connection.')
+		vs_event1_interrupt =                         MVirtualSignal(hwres_ccu8_cc8_slice,  "event_in1",            "e1as",        	  MF({(gcheck_enable_external_event1.value)},  Boolean),
+			                                                                                                                          MF({(gcheck_enable_external_event1.value)},  Boolean),
+																	          'Signal is not connected to any target signal. Use HW signal connections dialog to establish connection.')
+		vs_event2_interrupt =                         MVirtualSignal(hwres_ccu8_cc8_slice,  "event_in2",            "e2as",        	  MF({(gcheck_enable_external_event2.value)},  Boolean),
+			                                                                                                                          MF({(gcheck_enable_external_event2.value)},  Boolean),
+																		  'Signal is not connected to any target signal. Use HW signal connections dialog to establish connection.')		
+		vs_ccu8_cc8_st =                              MVirtualSignal(hwres_ccu8_cc8_slice,  "st",                   "st",             true, true)
+		vs_ccu8_cc8_sta =                             MVirtualSignal(hwres_ccu8_cc8_slice,  "st1",                  "sta",            true, true)
+		vs_ccu8_cc8_stb =                             MVirtualSignal(hwres_ccu8_cc8_slice,  "st2",                  "stb",            true, true)
+		vs_ccu8_cc8_gp0_unsync =                      MVirtualSignal(hwres_ccu8_cc8_slice,  "in0",                  "gp0_unsync",     true, true)
+		vs_ccu8_cc8_gp1_unsync =                      MVirtualSignal(hwres_ccu8_cc8_slice,  "in1",                  "gp1_unsync",     true, true)
+		vs_ccu8_cc8_gp2_unsync =                      MVirtualSignal(hwres_ccu8_cc8_slice,  "in2",                  "gp2_unsync",     true, true)
+		vs_ccu8_cc8_gp0 =                             MVirtualSignal(hwres_ccu8_cc8_slice,  "gp0",                  "gp0",            true, true)
+		vs_ccu8_cc8_gp1 =                             MVirtualSignal(hwres_ccu8_cc8_slice,  "gp1",                  "gp1",            true, true)
+		vs_ccu8_cc8_gp2 =                             MVirtualSignal(hwres_ccu8_cc8_slice,  "gp2",                  "gp2",            true, true)
+		vs_ccu8_cc8_mci00 =                           MVirtualSignal(hwres_ccu8_cc8_slice,  "mci0",                 "mci0",           true, true)
+		vs_ccu8_cc8_mci10 =                           MVirtualSignal(hwres_ccu8_cc8_slice,  "mci1",                 "mci1",           true, true)
+		vs_ccu8_cc8_mci20 =                           MVirtualSignal(hwres_ccu8_cc8_slice,  "mci2",                 "mci2",           true, true)
+		vs_ccu8_cc8_mci30 =                           MVirtualSignal(hwres_ccu8_cc8_slice,  "mci3",                 "mci3",           true, true)
+		vs_ccu8_cc8_mcss =                            MVirtualSignal(hwres_ccu8_cc8_slice,  "mcss",                 "mcss",           true, true)
+		vs_ccu8_concat_bus_out =                      MVirtualSignal(hwres_ccu8_cc8_slice,  "link_out",             "concat_bus_out", true, true)
+		vs_ccu8_concat_bus_in =                       MVirtualSignal(hwres_ccu8_cc8_slice,  "link_in",              "concat_bus_in",  true, true)
+		vs_ccu8_cc8_ch1_out_0 =                       MVirtualSignal(hwres_ccu8_cc8_slice,  "out0",                 "out0",           true, true)
+		vs_ccu8_cc8_ch1_out_1 =                       MVirtualSignal(hwres_ccu8_cc8_slice,  "out1",                 "out1",           true, true)
+		vs_ccu8_cc8_ch2_out_2 =                       MVirtualSignal(hwres_ccu8_cc8_slice,  "out2",                 "out2",           true, true)
+		vs_ccu8_cc8_ch2_out_3 =                       MVirtualSignal(hwres_ccu8_cc8_slice,  "out3",                 "out3",           true, true)
+
+		/* ---------------------------------------------------------- */
+		/* ---------------- APP IO Connections ---------------------- */
+		/* ---------------------------------------------------------- */
+		addConnectionConstraint(vs_ccu8_cc8_global, vs_ccu8_cc8_config_global, true )
+	
+		/* -------------------------------------------------------- */
+		/* ------------ APP Configuration ------------------------- */
+		/* -------------------------------------------------------- */
+		
+		gfloat_tick_resolution.value = MF({((gcombo_prescaler_initial.value as int) / (app_global_ccu8.getVal(["gfloat_clkFreq", "value"]) * 1.0E6)) * 1.0E9}, Float) // in ns unit
+		
+		
+		gcombo_floating_prescaler_maximum.enabled   =   MF({gcombo_prescaler_mode.value == "Floating Mode"},  Boolean)
+					
+		/* Compare mode settings */
+		gtab_compare_mode_settings.visible          =   MF({gcombo_operation_mode.value == "Compare Mode"},  Boolean)
+		ginteger_dither_compare_value.enabled       =   MF({(gcombo_operation_mode.value == "Compare Mode") && (gcombo_dither_mode.value != "Dither is disabled")},  Boolean)
+		ginteger_channel1_dead_time_passive_active.enabled  =   MF({(gcombo_operation_mode.value == "Compare Mode") && gcheck_enable_dead_time_channel1.value},  Boolean)
+		ginteger_channel2_dead_time_passive_active.enabled  =   MF({(gcombo_operation_mode.value == "Compare Mode") && gcheck_enable_dead_time_channel2.value},  Boolean)
+		ginteger_channel1_dead_time_active_passive.enabled  =   MF({(gcombo_operation_mode.value == "Compare Mode") && gcheck_enable_dead_time_channel1.value},  Boolean)
+		ginteger_channel2_dead_time_active_passive.enabled  =   MF({(gcombo_operation_mode.value == "Compare Mode") && gcheck_enable_dead_time_channel2.value},  Boolean)
+		
+		/* Capture mode settings */
+		gtab_capture_mode_settings.visible          =	MF({gcombo_operation_mode.value == "Capture Mode"},  Boolean)
+		
+		/* Update settings */
+		gcheck_enable_cascade_shadow_transfer.visible  = MF({series != "XMC45"}, Boolean)
+		glabel_shadow_transfer_mode.visible  = MF({(series != "XMC45") && (gcombo_compare_counting_mode.value == "Center Aligned")}, Boolean)
+		gcombo_shadow_transfer_mode.visible  = MF({(series != "XMC45") && (gcombo_compare_counting_mode.value == "Center Aligned")}, Boolean)
+		ggroup_register_value_update_mode.visible  = MF({series == "XMC14"}, Boolean)
+		ggroup_shadow_transfer_request.visible  = MF({series == "XMC14"}, Boolean)
+		
+		/* Function configurations */
+		gcombo_start_function_mode.enabled          =   MF({gcombo_start_function.value != "Disabled"},  Boolean)
+		gcombo_stop_function_mode.enabled           =   MF({gcombo_stop_function.value != "Disabled"},  Boolean)
+		gcombo_load_function_mode.enabled           =   MF({gcombo_load_function.value != "Disabled"},  Boolean)
+		gcombo_capture0_function.enabled            =	MF({gcombo_operation_mode.value == "Capture Mode"},  Boolean)
+		gcombo_capture1_function.enabled            =	MF({gcombo_operation_mode.value == "Capture Mode"},  Boolean)
+		gcombo_exit_trap_state_mode.enabled         =   MF({gcombo_trap_function.value != "Disabled"},  Boolean)
+		gcheck_trap_out00.enabled                   =   MF({gcombo_trap_function.value != "Disabled"},  Boolean)
+		gcheck_trap_out01.enabled                   =   MF({gcombo_trap_function.value != "Disabled"},  Boolean)
+		gcheck_trap_out02.enabled                   =   MF({gcombo_trap_function.value != "Disabled"},  Boolean)
+		gcheck_trap_out03.enabled                   =   MF({gcombo_trap_function.value != "Disabled"},  Boolean)
+		gcheck_enable_trap_during_initialization.enabled = MF({gcombo_trap_function.value != "Disabled"},  Boolean)
+		gcheck_enable_modulation_sync_with_pwm.enabled = MF({gcombo_modulation_function.value != "Disabled"},  Boolean)
+		gcombo_modulation_channel.enabled           =    MF({gcombo_modulation_function.value != "Disabled"},  Boolean)
+		gcombo_modulation_function_mode.enabled     =  MF({gcombo_modulation_function.value != "Disabled"},  Boolean)
+		
+		gmessage_function_settings.visible = MF({(((gcombo_start_function.value == "Triggered by Event 0") && (rArraygindexgroup_input_event_configuration[0].gcombo_event_edge_selection.value == "No action")) ||
+			                                      ((gcombo_start_function.value == "Triggered by Event 1") && (rArraygindexgroup_input_event_configuration[1].gcombo_event_edge_selection.value == "No action")) ||
+			                                      ((gcombo_start_function.value == "Triggered by Event 2") && (rArraygindexgroup_input_event_configuration[2].gcombo_event_edge_selection.value == "No action"))) ||
+		   
+		                                         (((gcombo_stop_function.value == "Triggered by Event 0") && (rArraygindexgroup_input_event_configuration[0].gcombo_event_edge_selection.value == "No action")) ||
+			                                      ((gcombo_stop_function.value == "Triggered by Event 1") && (rArraygindexgroup_input_event_configuration[1].gcombo_event_edge_selection.value == "No action")) ||
+			                                      ((gcombo_stop_function.value == "Triggered by Event 2") && (rArraygindexgroup_input_event_configuration[2].gcombo_event_edge_selection.value == "No action"))) ||
+
+		                                         (((gcombo_count_function.value == "Triggered by Event 0") && (rArraygindexgroup_input_event_configuration[0].gcombo_event_edge_selection.value == "No action")) ||
+			                                      ((gcombo_count_function.value == "Triggered by Event 1") && (rArraygindexgroup_input_event_configuration[1].gcombo_event_edge_selection.value == "No action")) ||
+			                                      ((gcombo_count_function.value == "Triggered by Event 2") && (rArraygindexgroup_input_event_configuration[2].gcombo_event_edge_selection.value == "No action"))) ||
+		   
+		                                         (((gcombo_load_function.value == "Triggered by Event 0") && (rArraygindexgroup_input_event_configuration[0].gcombo_event_edge_selection.value == "No action")) ||
+			                                      ((gcombo_load_function.value == "Triggered by Event 1") && (rArraygindexgroup_input_event_configuration[1].gcombo_event_edge_selection.value == "No action")) ||
+			                                      ((gcombo_load_function.value == "Triggered by Event 2") && (rArraygindexgroup_input_event_configuration[2].gcombo_event_edge_selection.value == "No action"))) ||
+
+		                                         ((gcombo_operation_mode.value == "Capture Mode") &&
+			                                      (((gcombo_capture0_function.value == "Triggered by Event 0") && (rArraygindexgroup_input_event_configuration[0].gcombo_event_edge_selection.value == "No action")) ||
+			                                       ((gcombo_capture0_function.value == "Triggered by Event 1") && (rArraygindexgroup_input_event_configuration[1].gcombo_event_edge_selection.value == "No action")) ||
+			                                       ((gcombo_capture0_function.value == "Triggered by Event 2") && (rArraygindexgroup_input_event_configuration[2].gcombo_event_edge_selection.value == "No action")))) ||
+
+		                                         ((gcombo_operation_mode.value == "Capture Mode") &&
+			                                      (((gcombo_capture1_function.value == "Triggered by Event 0") && (rArraygindexgroup_input_event_configuration[0].gcombo_event_edge_selection.value == "No action")) ||
+			                                       ((gcombo_capture1_function.value == "Triggered by Event 1") && (rArraygindexgroup_input_event_configuration[1].gcombo_event_edge_selection.value == "No action")) ||
+			                                       ((gcombo_capture1_function.value == "Triggered by Event 2") && (rArraygindexgroup_input_event_configuration[2].gcombo_event_edge_selection.value == "No action")))) ||
+
+		                                         (((gcombo_override_trigger_function.value == "Triggered by Event 0") && (rArraygindexgroup_input_event_configuration[0].gcombo_event_edge_selection.value == "No action")) ||
+			                                      ((gcombo_override_trigger_function.value == "Triggered by Event 1") && (rArraygindexgroup_input_event_configuration[1].gcombo_event_edge_selection.value == "No action")) ||
+			                                      ((gcombo_override_trigger_function.value == "Triggered by Event 2") && (rArraygindexgroup_input_event_configuration[2].gcombo_event_edge_selection.value == "No action")))
+
+		                                        },  Boolean)
+
+        gmessage_function_settings.text = MF({if (((gcombo_start_function.value == "Triggered by Event 0") && (rArraygindexgroup_input_event_configuration[0].gcombo_event_edge_selection.value == "No action")) ||
+			                                      ((gcombo_start_function.value == "Triggered by Event 1") && (rArraygindexgroup_input_event_configuration[1].gcombo_event_edge_selection.value == "No action")) ||
+			                                      ((gcombo_start_function.value == "Triggered by Event 2") && (rArraygindexgroup_input_event_configuration[2].gcombo_event_edge_selection.value == "No action")))
+		                                      {
+                                                     "Selected event for start function is not properly configured. Please review edge selection"
+		                                      }
+
+		                                      else if (((gcombo_stop_function.value == "Triggered by Event 0") && (rArraygindexgroup_input_event_configuration[0].gcombo_event_edge_selection.value == "No action")) ||
+				                                       ((gcombo_stop_function.value == "Triggered by Event 1") && (rArraygindexgroup_input_event_configuration[1].gcombo_event_edge_selection.value == "No action")) ||
+				                                       ((gcombo_stop_function.value == "Triggered by Event 2") && (rArraygindexgroup_input_event_configuration[2].gcombo_event_edge_selection.value == "No action")))
+		                                      {
+                                                          "Selected event for stop function is not properly configured. Please review edge selection"
+	                                          }
+		
+		                                      else if (((gcombo_count_function.value == "Triggered by Event 0") && (rArraygindexgroup_input_event_configuration[0].gcombo_event_edge_selection.value == "No action")) ||
+				                                       ((gcombo_count_function.value == "Triggered by Event 1") && (rArraygindexgroup_input_event_configuration[1].gcombo_event_edge_selection.value == "No action")) ||
+				                                       ((gcombo_count_function.value == "Triggered by Event 2") && (rArraygindexgroup_input_event_configuration[2].gcombo_event_edge_selection.value == "No action")))
+		                                      {
+			                                              "Selected event for count function is not properly configured. Please review edge selection"
+		                                      }
+		
+		                                      else if (((gcombo_load_function.value == "Triggered by Event 0") && (rArraygindexgroup_input_event_configuration[0].gcombo_event_edge_selection.value == "No action")) ||
+				                                       ((gcombo_load_function.value == "Triggered by Event 1") && (rArraygindexgroup_input_event_configuration[1].gcombo_event_edge_selection.value == "No action")) ||
+				                                       ((gcombo_load_function.value == "Triggered by Event 2") && (rArraygindexgroup_input_event_configuration[2].gcombo_event_edge_selection.value == "No action")))
+		                                      {
+			                                              "Selected event for load function is not properly configured. Please review edge selection"
+		                                      }
+
+		                                      else if ((gcombo_operation_mode.value == "Capture Mode") &&
+				                                       (((gcombo_capture0_function.value == "Triggered by Event 0") && (rArraygindexgroup_input_event_configuration[0].gcombo_event_edge_selection.value == "No action")) ||
+				                                        ((gcombo_capture0_function.value == "Triggered by Event 1") && (rArraygindexgroup_input_event_configuration[1].gcombo_event_edge_selection.value == "No action")) ||
+				                                        ((gcombo_capture0_function.value == "Triggered by Event 2") && (rArraygindexgroup_input_event_configuration[2].gcombo_event_edge_selection.value == "No action"))))
+		                                      {
+			                                              "Selected event for capture 0 function is not properly configured. Please review edge selection"
+		                                      }
+
+		                                      else if ((gcombo_operation_mode.value == "Capture Mode") &&
+				                                       (((gcombo_capture1_function.value == "Triggered by Event 0") && (rArraygindexgroup_input_event_configuration[0].gcombo_event_edge_selection.value == "No action")) ||
+				                                        ((gcombo_capture1_function.value == "Triggered by Event 1") && (rArraygindexgroup_input_event_configuration[1].gcombo_event_edge_selection.value == "No action")) ||
+				                                        ((gcombo_capture1_function.value == "Triggered by Event 2") && (rArraygindexgroup_input_event_configuration[2].gcombo_event_edge_selection.value == "No action"))))
+		                                      {
+			                                              "Selected event for capture 1 function is not properly configured. Please review edge selection"
+		                                      }
+
+		                                      else if (((gcombo_override_trigger_function.value == "Triggered by Event 0") && (rArraygindexgroup_input_event_configuration[0].gcombo_event_edge_selection.value == "No action")) ||
+				                                       ((gcombo_override_trigger_function.value == "Triggered by Event 1") && (rArraygindexgroup_input_event_configuration[1].gcombo_event_edge_selection.value == "No action")) ||
+				                                       ((gcombo_override_trigger_function.value == "Triggered by Event 2") && (rArraygindexgroup_input_event_configuration[2].gcombo_event_edge_selection.value == "No action")))
+		                                      {
+			                                              "Selected event for load function is not properly configured. Please review edge selection"
+		                                      }
+		
+                                              else
+		                                      {
+			                                      "Everything looks ok"
+		                                      }
+
+		                                     },  String)
+
+		/* Future products will be able to use all triggers */
+		gcombo_trap_function.options = ["Disabled", "Triggered by Event 2"]
+		gcombo_override_trigger_function.options = ["Disabled", "Triggered by Event 1"]
+		gcombo_override_value_function.options = ["Disabled", "Triggered by Event 2"]
+		
+		gcheck_enable_one_match_event.enabled    = MF({(gcombo_operation_mode.value == "Compare Mode") && (gcombo_compare_counting_mode.value == "Center Aligned")},  Boolean)
+		gcheck_enable_compare1_down_event.enabled = MF({(gcombo_operation_mode.value == "Compare Mode") && (gcombo_compare_counting_mode.value == "Center Aligned")},  Boolean)
+		gcheck_enable_compare2_down_event.enabled = MF({(gcombo_operation_mode.value == "Compare Mode") && (gcombo_compare_counting_mode.value == "Center Aligned")},  Boolean)
+
+		gcombo_output0_st.options = MF({
+			                            if (series == "XMC14")
+                                            ["ST1", "Inverted ST1", "ST2", "Inverted ST2"]
+										else
+										    ["ST1", "Inverted ST1"]
+		                                },  List)
+		
+		gcombo_output1_st.options = MF({
+										if (series == "XMC14")
+											["ST1", "Inverted ST1", "ST2", "Inverted ST2"]
+										else
+											["ST1", "Inverted ST1"]
+										},  List)
+		
+		gcombo_output2_st.options = MF({
+										if (series == "XMC14")
+											["ST1", "Inverted ST1", "ST2", "Inverted ST2"]
+										else
+											["ST2", "Inverted ST2"]
+										},  List)
+		
+		gcombo_output3_st.options = MF({
+										if (series == "XMC14")
+											["ST1", "Inverted ST1", "ST2", "Inverted ST2"]
+										else
+											["ST2", "Inverted ST2"]
+										},  List)
+	}
+
+	// File Generation
+	def generateFiles(){
+		copy("ccu8_slice_config.c", "ccu8_slice_config.c")
+		copy("ccu8_slice_config.h", "ccu8_slice_config.h")
+		generate("ccu8_slice_config_confc.tmpl", "ccu8_slice_config_conf.c")
+		generate("ccu8_slice_config_confh.tmpl", "ccu8_slice_config_conf.h")
+		generate("ccu8_slice_config_externh.tmpl", "ccu8_slice_config_extern.h")
+	}
+
+	/**
+	 * Add main code here
+	 */
+}

@@ -1,0 +1,189 @@
+package Model.APPS.ACIM_FREQ_CTRL.v4_0_8.Templates;
+
+import Model.APPS.ACIM_FREQ_CTRL.v4_0_8.ACIM_FREQ_CTRL
+
+out.print("""
+/**
+ * @cond
+ ***********************************************************************************************************************
+ *
+ * Copyright (c) 2015, Infineon Technologies AG
+ * All rights reserved.
+ *
+ * Redistribution and use in source and binary forms, with or without modification,are permitted provided that the
+ * following conditions are met:
+ *
+ *   Redistributions of source code must retain the above copyright notice, this list of conditions and the  following
+ *   disclaimer.
+ *
+ *   Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the
+ *   following disclaimer in the documentation and/or other materials provided with the distribution.
+ *
+ *   Neither the name of the copyright holders nor the names of its contributors may be used to endorse or promote
+ *   products derived from this software without specific prior written permission.
+ *
+ * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES,
+ * INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+ * DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE  FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+ * SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
+ * SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+ * WHETHER IN CONTRACT, STRICT LIABILITY,OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT  OF THE
+ * USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+ *
+ * To improve the quality of the software, users are encouraged to share modifications, enhancements or bug fixes
+ * with Infineon Technologies AG (dave@infineon.com).
+ ***********************************************************************************************************************
+ *
+ * Change History
+ * --------------
+ *
+ * 2015-02-16:
+ *     - Initial version
+ * 2015-02-20:
+ *     - Extern declaration is added for angle ramp user code and v(f) user code<br
+ *
+ * @endcond
+ *
+ */
+
+#ifndef ACIM_FREQ_CTRL_EXTERN_H_
+#define ACIM_FREQ_CTRL_EXTERN_H_
+
+
+/***********************************************************************************************************************
+ * HEADER FILES
+ **********************************************************************************************************************/
+
+/**********************************************************************************************************************
+ * MACROS
+ **********************************************************************************************************************/
+
+/***********************************************************************************************************************
+ * EXTERN DECLARATIONS
+***********************************************************************************************************************/
+""");
+
+def appInst  = null;
+
+for (Object appIns : appInstancesList ) {
+  appInst = appIns.getInstanceLabel()
+
+out.print("""
+  extern ACIM_FREQ_CTRL_PT_ENTRY_t ${appInst}_PT_Entry[ACIM_FREQ_CTRL_PID_MAX];
+  extern ACIM_FREQ_CTRL_ET_ENTRY_t ${appInst}_ET_Entry[ACIM_FREQ_CTRL_EID_MAX];
+  extern ACIM_FREQ_CTRL_t ${appInst};
+
+  #if (ACIM_FREQ_CTRL_IS_ERROR_USER_CALLBACK_ENABLE == 1U)
+  extern void ACIM_FREQ_CTRL_UserCodeErrorHandler(ACIM_FREQ_CTRL_t*const HandlePtr);
+  #endif
+
+  #if (ACIM_FREQ_CTRL_IS_AUTOMATION_AVAILABLE == 1U)
+  extern AUTOMATION_FB_HANDLE_t ${appInst}_FB;
+  #endif
+
+  extern void ${appInst}_PrimaryControlLoop(ACIM_FREQ_CTRL_t*const HandlePtr);  
+  extern void ${appInst}_SetValueProcessing(ACIM_FREQ_CTRL_t*const HandlePtr);
+""");
+if(appIns.gcombo_ctrlschemeconfig.options.indexOf(appIns.gcombo_ctrlschemeconfig.value) == 0)
+{
+if(appIns.gcombo_speedset_opt.options.indexOf(appIns.gcombo_speedset_opt.value) == 0)
+{
+    out.print("""
+  extern int32_t ${appIns.gstring_ud_speedset_ptr.value.replaceAll("&","")};
+""");
+}
+}
+else if(appIns.gcombo_ctrlschemeconfig.options.indexOf(appIns.gcombo_ctrlschemeconfig.value) == 1)
+{
+if(
+    ((appIns.gcheck_positionctrl.value == false) && (appIns.gcheck_opcode_positionctrl.value == false))
+  ){
+  if(appIns.gcombo_speed_ctrl.options.indexOf(appIns.gcombo_speed_ctrl.value) == 0)
+  {
+      out.print("""
+  extern int32_t ${appIns.gstring_speedsetadv_ptr.value.replaceAll("&","")};
+""");
+  }
+}
+if(
+    (appIns.gcheck_slipctrl.value == true) || (appIns.gcheck_opcode_slipctrl.value == true)
+){
+  if(appIns.gcombo_speed_actval.options.indexOf(appIns.gcombo_speed_actval.value) == 0)
+  {
+      out.print("""
+  extern int32_t ${appIns.gstring_actspeed_ptr.value.replaceAll("&","")};
+""");
+  }
+  }
+if(
+	(appIns.gcheck_positionctrl.value == true) || (appIns.gcheck_opcode_positionctrl.value == true)
+){
+if(appIns.gcombo_position_ctrl.options.indexOf(appIns.gcombo_position_ctrl.value) == 0)
+{
+	out.print("""
+  extern int32_t ${appIns.gstring_positionset_ptr.value.replaceAll("&","")};
+""");
+}
+if(appIns.gcombo_position_actval.options.indexOf(appIns.gcombo_position_actval.value) == 0)
+{
+	out.print("""
+  extern int32_t ${appIns.gstring_actpos_ptr.value.replaceAll("&","")};
+""");
+}
+}
+
+  if(
+      ((appIns.gcheck_crnt_limit.value == true) || (appIns.gcheck_opcode_crnt_limit.value == true))
+    ){
+  if(appIns.gcombo_current_actval.options.indexOf(appIns.gcombo_current_actval.value) == 0)
+  {
+      out.print("""
+  extern int32_t ${appIns.gstring_actcur_ptr.value.replaceAll("&","")};
+""");
+  }
+ }
+}
+  if(appIns.gcombo_ctrlschemeconfig.options.indexOf(appIns.gcombo_ctrlschemeconfig.value)== 1) 
+  {
+	if(appIns.gcheck_opcode_vf_control.value == true)
+	{
+	  println  "  extern void ${appIns.gstring_usercode_vf_control.value.replaceAll("\\s","")}(ACIM_FREQ_CTRL_t*const HandlePtr);"
+	}
+	if(appIns.gcheck_opcode_angle_ramp.value == true)
+	{
+	  println  "  extern void ${appIns.gstring_usercode_angle_ramp.value.replaceAll("\\s","")}(ACIM_FREQ_CTRL_t*const HandlePtr);"
+	}
+  }
+  if(appIns.gcheck_opcode_crnt_limit.value == true)
+  {
+    println  "  extern void ${appIns.gstring_usercode_current_limit.value.replaceAll("\\s","")}(ACIM_FREQ_CTRL_t*const HandlePtr);"
+  }
+  if(appIns.gcombo_ctrlschemeconfig.options.indexOf(appIns.gcombo_ctrlschemeconfig.value) == 1)
+  {
+    if((appIns.gcheck_opcode_positionff.value == true) && 
+		((appIns.gcheck_opcode_positionctrl.value == true)||(appIns.gcheck_positionctrl.value == true)))
+    {
+out.print("""
+  extern void ${appIns.gstring_usercode_position_ff.value.replaceAll("\\s","")}(MOTOR_LIB_FeedForwardHandle_t *const feed_forward_ptr);
+""");
+    }
+    if(appIns.gcheck_opcode_slipctrl.value == true)
+    {
+      println  "  extern void ${appIns.gstring_usercode_slip_control.value.replaceAll("\\s","")}(ACIM_FREQ_CTRL_t*const HandlePtr);"
+    }
+	if(appIns.gcheck_opcode_positionctrl.value == true)
+	{
+	  println  "  extern void ${appIns.gstring_usercode_position_control.value.replaceAll("\\s","")}(ACIM_FREQ_CTRL_t*const HandlePtr);"
+	}
+  }
+}
+
+out.print("""
+
+
+#endif
+""");
+
+
+
+

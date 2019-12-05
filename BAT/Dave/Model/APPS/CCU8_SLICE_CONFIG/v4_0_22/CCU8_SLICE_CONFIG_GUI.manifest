@@ -1,0 +1,210 @@
+package Model.APPS.CCU8_SLICE_CONFIG.v4_0_22;
+
+// Import statements
+import ifx.davex.app.manifest.*
+
+abstract class CCU8_SLICE_CONFIG_GUI extends AppManifest {
+	/* Begin : UI variable section */
+	 public GTab gtab_capture_mode_settings;
+	 public GTab gtab_compare_mode_settings;
+	 public GTab gtab_value_update_settings;
+	 public GInteger ginteger_timer_initial_value;
+	 public GInteger ginteger_max_count_value;
+	 public GInteger ginteger_timer_period_value;
+	 public GInteger ginteger_timer_compare1_value;
+	 public GInteger ginteger_timer_compare2_value;
+	 public GInteger ginteger_dither_compare_value;
+	 public GInteger ginteger_channel1_dead_time_passive_active;
+	 public GInteger ginteger_channel1_dead_time_active_passive;
+	 public GInteger ginteger_channel2_dead_time_active_passive;
+	 public GInteger ginteger_channel2_dead_time_passive_active;
+	 public GCombo gcombo_operation_mode;
+	 public GCombo gcombo_prescaler_mode;
+	 public GCombo gcombo_prescaler_initial;
+	 public GCombo gcombo_floating_prescaler_maximum;
+	 public GCombo gcombo_multi_channel_control;
+	 public GCombo gcombo_timer_clear_control;
+	 public GCombo gcombo_compare_counting_mode;
+	 public GCombo gcombo_status_output;
+	 public GCombo gcombo_output0_st;
+	 public GCombo gcombo_output0_passive_level;
+	 public GCombo gcombo_output1_st;
+	 public GCombo gcombo_output1_passive_level;
+	 public GCombo gcombo_output2_st;
+	 public GCombo gcombo_output2_passive_level;
+	 public GCombo gcombo_output3_st;
+	 public GCombo gcombo_output3_passive_level;
+	 public GCombo gcombo_dither_mode;
+	 public GCombo gcombo_dead_time_clock_divider;
+	 public GCombo gcombo_shadow_transfer_mode;
+	 public GCombo gcombo_start_function;
+	 public GCombo gcombo_start_function_mode;
+	 public GCombo gcombo_stop_function;
+	 public GCombo gcombo_stop_function_mode;
+	 public GCombo gcombo_count_function;
+	 public GCombo gcombo_direction_function;
+	 public GCombo gcombo_capture0_function;
+	 public GCombo gcombo_capture1_function;
+	 public GCombo gcombo_gate_function;
+	 public GCombo gcombo_load_function;
+	 public GCombo gcombo_load_function_mode;
+	 public GCombo gcombo_trap_function;
+	 public GCombo gcombo_exit_trap_state_mode;
+	 public GCombo gcombo_modulation_function;
+	 public GCombo gcombo_modulation_channel;
+	 public GCombo gcombo_modulation_function_mode;
+	 public GCombo gcombo_override_trigger_function;
+	 public GCombo gcombo_override_value_function;
+	 public GFloat gfloat_tick_resolution;
+	 public GCheck gcheck_init_start;
+	 public GCheck gcheck_enable_same_capture_event;
+	 public GCheck gcheck_enable_extended_capture_mode;
+	 public GCheck gcheck_ignore_full_flag_rules;
+	 public GCheck gcheck_single_shot_mode;
+	 public GCheck gcheck_asymmetric_output;
+	 public GCheck gcheck_enable_dead_time_channel1;
+	 public GCheck gcheck_enable_dead_time_channel2;
+	 public GCheck gcheck_enable_shadow_transfer_on_clear;
+	 public GCheck gcheck_enable_mcss_input;
+	 public GCheck gcheck_enable_cascade_shadow_transfer;
+	 public GCheck gcheck_enable_period_immediate_update;
+	 public GCheck gcheck_enable_compare1_immediate_update;
+	 public GCheck gcheck_enable_compare2_immediate_update;
+	 public GCheck gcheck_enable_psl_immediate_update;
+	 public GCheck gcheck_enable_dither_immediate_update;
+	 public GCheck gcheck_enable_prescaler_immediate_update;
+	 public GCheck gcheck_automatic_shadow_transfer_request_on_period_write;
+	 public GCheck gcheck_automatic_shadow_transfer_request_on_compare1_write;
+	 public GCheck gcheck_automatic_shadow_transfer_request_on_compare2_write;
+	 public GCheck gcheck_automatic_shadow_transfer_request_on_psl_write;
+	 public GCheck gcheck_automatic_shadow_transfer_request_on_dither_write;
+	 public GCheck gcheck_automatic_shadow_transfer_request_on_prescaler_write;
+	 public GCheck gcheck_enable_trap_during_initialization;
+	 public GCheck gcheck_trap_out00;
+	 public GCheck gcheck_trap_out01;
+	 public GCheck gcheck_trap_out02;
+	 public GCheck gcheck_trap_out03;
+	 public GCheck gcheck_enable_modulation_sync_with_pwm;
+	 public GCheck gcheck_enable_period_match_event;
+	 public GCheck gcheck_enable_one_match_event;
+	 public GCheck gcheck_enable_compare1_up_event;
+	 public GCheck gcheck_enable_compare1_down_event;
+	 public GCheck gcheck_enable_compare2_up_event;
+	 public GCheck gcheck_enable_compare2_down_event;
+	 public GCheck gcheck_enable_external_event0;
+	 public GCheck gcheck_enable_external_event1;
+	 public GCheck gcheck_enable_external_event2;
+	 public GLabel glabel_shadow_transfer_mode;
+	 public GGroup ggroup_register_value_update_mode;
+	 public GGroup ggroup_shadow_transfer_request;
+	 public GMessage gmessage_function_settings;
+	 public GIndexCombo gindexcombo_event_selection;
+	 public GIndexGroup gindexgroup_input_event_configuration;
+	 public RArray<Gindexgroup_input_event_configuration> rArraygindexgroup_input_event_configuration = RArray(3);
+
+
+	 public CCU8_SLICE_CONFIG_GUI(DaveEnv daveEnv){
+
+	 gtab_capture_mode_settings = GTab(widgetName:"gtab_capture_mode_settings", text:"Capture Mode Settings", enabled:true, visible:true)
+	 gtab_compare_mode_settings = GTab(widgetName:"gtab_compare_mode_settings", text:"Compare Mode Settings", enabled:true, visible:true)
+	 gtab_value_update_settings = GTab(widgetName:"gtab_value_update_settings", text:"Value Update Settings", enabled:true, visible:true)
+	 ginteger_timer_initial_value = GInteger(widgetName:"ginteger_timer_initial_value", value:0, minValue:0, maxValue:65535, enabled:true, visible:true, isMandatoryValue:false)
+	 ginteger_max_count_value = GInteger(widgetName:"ginteger_max_count_value", value:65535, minValue:0, maxValue:65535, enabled:true, visible:true, isMandatoryValue:false)
+	 ginteger_timer_period_value = GInteger(widgetName:"ginteger_timer_period_value", value:65535, minValue:0, maxValue:65535, enabled:true, visible:true, isMandatoryValue:false)
+	 ginteger_timer_compare1_value = GInteger(widgetName:"ginteger_timer_compare1_value", value:32768, minValue:0, maxValue:65535, enabled:true, visible:true, isMandatoryValue:false)
+	 ginteger_timer_compare2_value = GInteger(widgetName:"ginteger_timer_compare2_value", value:32768, minValue:0, maxValue:65535, enabled:true, visible:true, isMandatoryValue:false)
+	 ginteger_dither_compare_value = GInteger(widgetName:"ginteger_dither_compare_value", value:0, minValue:0, maxValue:15, enabled:true, visible:true, isMandatoryValue:false)
+	 ginteger_channel1_dead_time_passive_active = GInteger(widgetName:"ginteger_channel1_dead_time_passive_active", value:0, minValue:0, maxValue:255, enabled:true, visible:true, isMandatoryValue:false)
+	 ginteger_channel1_dead_time_active_passive = GInteger(widgetName:"ginteger_channel1_dead_time_active_passive", value:0, minValue:0, maxValue:255, enabled:true, visible:true, isMandatoryValue:false)
+	 ginteger_channel2_dead_time_active_passive = GInteger(widgetName:"ginteger_channel2_dead_time_active_passive", value:0, minValue:0, maxValue:255, enabled:true, visible:true, isMandatoryValue:false)
+	 ginteger_channel2_dead_time_passive_active = GInteger(widgetName:"ginteger_channel2_dead_time_passive_active", value:0, minValue:0, maxValue:255, enabled:true, visible:true, isMandatoryValue:false)
+	 gcombo_operation_mode = GCombo(widgetName:"gcombo_operation_mode", options:["Compare Mode","Capture Mode"], value:"Compare Mode", enabled:true, visible:true, isMandatoryValue:false)
+	 gcombo_prescaler_mode = GCombo(widgetName:"gcombo_prescaler_mode", options:["Normal Mode","Floating Mode"], value:"Normal Mode", enabled:true, visible:true, isMandatoryValue:false)
+	 gcombo_prescaler_initial = GCombo(widgetName:"gcombo_prescaler_initial", options:["1","2","4","8","16","32","64","128","256","512","1024","2048","4096","8192","16384","32768"], value:"1", enabled:true, visible:true, isMandatoryValue:false)
+	 gcombo_floating_prescaler_maximum = GCombo(widgetName:"gcombo_floating_prescaler_maximum", options:["1","2","4","8","16","32","64","128","256","512","1024","2048","4096","8192","16384","32768"], value:"32768", enabled:true, visible:true, isMandatoryValue:false)
+	 gcombo_multi_channel_control = GCombo(widgetName:"gcombo_multi_channel_control", options:["Disabled","Applied on compare channel 1","Applied on compare channel 2","Applied on both compare channels"], value:"Disabled", enabled:true, visible:true, isMandatoryValue:false)
+	 gcombo_timer_clear_control = GCombo(widgetName:"gcombo_timer_clear_control", options:["Never cleared","Cleared on capture into reg 2 and 3 (trigger 1)","Cleared on capture into reg 0 and 1 (trigger 0)","Always in a capture event"], value:"Never cleared", enabled:true, visible:true, isMandatoryValue:false)
+	 gcombo_compare_counting_mode = GCombo(widgetName:"gcombo_compare_counting_mode", options:["Edge Aligned","Center Aligned"], value:"Edge Aligned", enabled:true, visible:true, isMandatoryValue:false)
+	 gcombo_status_output = GCombo(widgetName:"gcombo_status_output", options:["Compare channel 1","Compare channel 2","Compare channel 1 AND 2","Compare channel 1 OR 2"], value:"Compare channel 1", enabled:true, visible:true, isMandatoryValue:false)
+	 gcombo_output0_st = GCombo(widgetName:"gcombo_output0_st", options:["ST1","Inverted ST1"], value:"ST1", enabled:true, visible:true, isMandatoryValue:false)
+	 gcombo_output0_passive_level = GCombo(widgetName:"gcombo_output0_passive_level", options:["Low","High"], value:"Low", enabled:true, visible:true, isMandatoryValue:false)
+	 gcombo_output1_st = GCombo(widgetName:"gcombo_output1_st", options:["ST1","Inverted ST1"], value:"Inverted ST1", enabled:true, visible:true, isMandatoryValue:false)
+	 gcombo_output1_passive_level = GCombo(widgetName:"gcombo_output1_passive_level", options:["Low","High"], value:"Low", enabled:true, visible:true, isMandatoryValue:false)
+	 gcombo_output2_st = GCombo(widgetName:"gcombo_output2_st", options:["ST2","Inverted ST2"], value:"ST2", enabled:true, visible:true, isMandatoryValue:false)
+	 gcombo_output2_passive_level = GCombo(widgetName:"gcombo_output2_passive_level", options:["Low","High"], value:"Low", enabled:true, visible:true, isMandatoryValue:false)
+	 gcombo_output3_st = GCombo(widgetName:"gcombo_output3_st", options:["ST2","Inverted ST2"], value:"Inverted ST2", enabled:true, visible:true, isMandatoryValue:false)
+	 gcombo_output3_passive_level = GCombo(widgetName:"gcombo_output3_passive_level", options:["Low","High"], value:"Low", enabled:true, visible:true, isMandatoryValue:false)
+	 gcombo_dither_mode = GCombo(widgetName:"gcombo_dither_mode", options:["Dither is disabled","Period is increased by 1 cycle","Compare match is delayed by 1 cycle","Period is increased by 1 cycle and compare match is delayed by 1 cycle"], value:"Dither is disabled", enabled:true, visible:true, isMandatoryValue:false)
+	 gcombo_dead_time_clock_divider = GCombo(widgetName:"gcombo_dead_time_clock_divider", options:["1","2","4","8"], value:"1", enabled:true, visible:true, isMandatoryValue:false)
+	 gcombo_shadow_transfer_mode = GCombo(widgetName:"gcombo_shadow_transfer_mode", options:["In Period Match and One Match","Only in Period Match","Only in One Match"], value:"In Period Match and One Match", enabled:true, visible:true, isMandatoryValue:false)
+	 gcombo_start_function = GCombo(widgetName:"gcombo_start_function", options:["Disabled","Triggered by Event 0","Triggered by Event 1","Triggered by Event 2"], value:"Disabled", enabled:true, visible:true, isMandatoryValue:false)
+	 gcombo_start_function_mode = GCombo(widgetName:"gcombo_start_function_mode", options:["Start timer","Clear and Start timer"], value:"Start timer", enabled:true, visible:true, isMandatoryValue:false)
+	 gcombo_stop_function = GCombo(widgetName:"gcombo_stop_function", options:["Disabled","Triggered by Event 0","Triggered by Event 1","Triggered by Event 2"], value:"Disabled", enabled:true, visible:true, isMandatoryValue:false)
+	 gcombo_stop_function_mode = GCombo(widgetName:"gcombo_stop_function_mode", options:["Stop timer","Clear timer","Clear and Stop timer"], value:"Stop timer", enabled:true, visible:true, isMandatoryValue:false)
+	 gcombo_count_function = GCombo(widgetName:"gcombo_count_function", options:["Disabled","Triggered by Event 0","Triggered by Event 1","Triggered by Event 2"], value:"Disabled", enabled:true, visible:true, isMandatoryValue:false)
+	 gcombo_direction_function = GCombo(widgetName:"gcombo_direction_function", options:["Disabled","Triggered by Event 0","Triggered by Event 1","Triggered by Event 2"], value:"Disabled", enabled:true, visible:true, isMandatoryValue:false)
+	 gcombo_capture0_function = GCombo(widgetName:"gcombo_capture0_function", options:["Disabled","Triggered by Event 0","Triggered by Event 1","Triggered by Event 2"], value:"Disabled", enabled:true, visible:true, isMandatoryValue:false)
+	 gcombo_capture1_function = GCombo(widgetName:"gcombo_capture1_function", options:["Disabled","Triggered by Event 0","Triggered by Event 1","Triggered by Event 2"], value:"Disabled", enabled:true, visible:true, isMandatoryValue:false)
+	 gcombo_gate_function = GCombo(widgetName:"gcombo_gate_function", options:["Disabled","Triggered by Event 0","Triggered by Event 1","Triggered by Event 2"], value:"Disabled", enabled:true, visible:true, isMandatoryValue:false)
+	 gcombo_load_function = GCombo(widgetName:"gcombo_load_function", options:["Disabled","Triggered by Event 0","Triggered by Event 1","Triggered by Event 2"], value:"Disabled", enabled:true, visible:true, isMandatoryValue:false)
+	 gcombo_load_function_mode = GCombo(widgetName:"gcombo_load_function_mode", options:["Timer is loaded with the value of CR1","Timer is loaded with the value of CR2"], value:"Timer is loaded with the value of CR1", enabled:true, visible:true, isMandatoryValue:false)
+	 gcombo_trap_function = GCombo(widgetName:"gcombo_trap_function", options:["Disabled","Triggered by Event 0","Triggered by Event 1","Triggered by Event 2"], value:"Disabled", enabled:true, visible:true, isMandatoryValue:false)
+	 gcombo_exit_trap_state_mode = GCombo(widgetName:"gcombo_exit_trap_state_mode", options:["Automatic","Automatic synchronous with PWM","Software","Software synchronous with PWM "], value:"Automatic", enabled:true, visible:true, isMandatoryValue:false)
+	 gcombo_modulation_function = GCombo(widgetName:"gcombo_modulation_function", options:["Disabled","Triggered by Event 0","Triggered by Event 1","Triggered by Event 2"], value:"Disabled", enabled:true, visible:true, isMandatoryValue:false)
+	 gcombo_modulation_channel = GCombo(widgetName:"gcombo_modulation_channel", options:["None","Channel 1","Channel 2","Both channels"], value:"None", enabled:true, visible:true, isMandatoryValue:false)
+	 gcombo_modulation_function_mode = GCombo(widgetName:"gcombo_modulation_function_mode", options:["Clear ST and OUT signals","Clear only the OUT signal"], value:"Clear ST and OUT signals", enabled:true, visible:true, isMandatoryValue:false)
+	 gcombo_override_trigger_function = GCombo(widgetName:"gcombo_override_trigger_function", options:["Disabled","Triggered by Event 0","Triggered by Event 1","Triggered by Event 2"], value:"Disabled", enabled:true, visible:true, isMandatoryValue:false)
+	 gcombo_override_value_function = GCombo(widgetName:"gcombo_override_value_function", options:["Disabled","Triggered by Event 0","Triggered by Event 1","Triggered by Event 2"], value:"Disabled", enabled:true, visible:true, isMandatoryValue:false)
+	 gfloat_tick_resolution = GFloat(widgetName:"gfloat_tick_resolution", value:0, minValue:Double.NEGATIVE_INFINITY, maxValue:Double.POSITIVE_INFINITY, enabled:false, visible:true, isMandatoryValue:false)
+	 gcheck_init_start = GCheck(widgetName:"gcheck_init_start", value:false, enabled:true, visible:true)
+	 gcheck_enable_same_capture_event = GCheck(widgetName:"gcheck_enable_same_capture_event", value:false, enabled:true, visible:true)
+	 gcheck_enable_extended_capture_mode = GCheck(widgetName:"gcheck_enable_extended_capture_mode", value:false, enabled:true, visible:true)
+	 gcheck_ignore_full_flag_rules = GCheck(widgetName:"gcheck_ignore_full_flag_rules", value:false, enabled:true, visible:true)
+	 gcheck_single_shot_mode = GCheck(widgetName:"gcheck_single_shot_mode", value:false, enabled:true, visible:true)
+	 gcheck_asymmetric_output = GCheck(widgetName:"gcheck_asymmetric_output", value:false, enabled:true, visible:true)
+	 gcheck_enable_dead_time_channel1 = GCheck(widgetName:"gcheck_enable_dead_time_channel1", value:false, enabled:true, visible:true)
+	 gcheck_enable_dead_time_channel2 = GCheck(widgetName:"gcheck_enable_dead_time_channel2", value:false, enabled:true, visible:true)
+	 gcheck_enable_shadow_transfer_on_clear = GCheck(widgetName:"gcheck_enable_shadow_transfer_on_clear", value:false, enabled:true, visible:true)
+	 gcheck_enable_mcss_input = GCheck(widgetName:"gcheck_enable_mcss_input", value:false, enabled:true, visible:true)
+	 gcheck_enable_cascade_shadow_transfer = GCheck(widgetName:"gcheck_enable_cascade_shadow_transfer", value:false, enabled:true, visible:true)
+	 gcheck_enable_period_immediate_update = GCheck(widgetName:"gcheck_enable_period_immediate_update", value:false, enabled:true, visible:true)
+	 gcheck_enable_compare1_immediate_update = GCheck(widgetName:"gcheck_enable_compare1_immediate_update", value:false, enabled:true, visible:true)
+	 gcheck_enable_compare2_immediate_update = GCheck(widgetName:"gcheck_enable_compare2_immediate_update", value:false, enabled:true, visible:true)
+	 gcheck_enable_psl_immediate_update = GCheck(widgetName:"gcheck_enable_psl_immediate_update", value:false, enabled:true, visible:true)
+	 gcheck_enable_dither_immediate_update = GCheck(widgetName:"gcheck_enable_dither_immediate_update", value:false, enabled:true, visible:true)
+	 gcheck_enable_prescaler_immediate_update = GCheck(widgetName:"gcheck_enable_prescaler_immediate_update", value:false, enabled:true, visible:true)
+	 gcheck_automatic_shadow_transfer_request_on_period_write = GCheck(widgetName:"gcheck_automatic_shadow_transfer_request_on_period_write", value:false, enabled:true, visible:true)
+	 gcheck_automatic_shadow_transfer_request_on_compare1_write = GCheck(widgetName:"gcheck_automatic_shadow_transfer_request_on_compare1_write", value:false, enabled:true, visible:true)
+	 gcheck_automatic_shadow_transfer_request_on_compare2_write = GCheck(widgetName:"gcheck_automatic_shadow_transfer_request_on_compare2_write", value:false, enabled:true, visible:true)
+	 gcheck_automatic_shadow_transfer_request_on_psl_write = GCheck(widgetName:"gcheck_automatic_shadow_transfer_request_on_psl_write", value:false, enabled:true, visible:true)
+	 gcheck_automatic_shadow_transfer_request_on_dither_write = GCheck(widgetName:"gcheck_automatic_shadow_transfer_request_on_dither_write", value:false, enabled:true, visible:true)
+	 gcheck_automatic_shadow_transfer_request_on_prescaler_write = GCheck(widgetName:"gcheck_automatic_shadow_transfer_request_on_prescaler_write", value:false, enabled:true, visible:true)
+	 gcheck_enable_trap_during_initialization = GCheck(widgetName:"gcheck_enable_trap_during_initialization", value:false, enabled:true, visible:true)
+	 gcheck_trap_out00 = GCheck(widgetName:"gcheck_trap_out00", value:false, enabled:true, visible:true)
+	 gcheck_trap_out01 = GCheck(widgetName:"gcheck_trap_out01", value:false, enabled:true, visible:true)
+	 gcheck_trap_out02 = GCheck(widgetName:"gcheck_trap_out02", value:false, enabled:true, visible:true)
+	 gcheck_trap_out03 = GCheck(widgetName:"gcheck_trap_out03", value:false, enabled:true, visible:true)
+	 gcheck_enable_modulation_sync_with_pwm = GCheck(widgetName:"gcheck_enable_modulation_sync_with_pwm", value:false, enabled:true, visible:true)
+	 gcheck_enable_period_match_event = GCheck(widgetName:"gcheck_enable_period_match_event", value:false, enabled:true, visible:true)
+	 gcheck_enable_one_match_event = GCheck(widgetName:"gcheck_enable_one_match_event", value:false, enabled:true, visible:true)
+	 gcheck_enable_compare1_up_event = GCheck(widgetName:"gcheck_enable_compare1_up_event", value:false, enabled:true, visible:true)
+	 gcheck_enable_compare1_down_event = GCheck(widgetName:"gcheck_enable_compare1_down_event", value:false, enabled:true, visible:true)
+	 gcheck_enable_compare2_up_event = GCheck(widgetName:"gcheck_enable_compare2_up_event", value:false, enabled:true, visible:true)
+	 gcheck_enable_compare2_down_event = GCheck(widgetName:"gcheck_enable_compare2_down_event", value:false, enabled:true, visible:true)
+	 gcheck_enable_external_event0 = GCheck(widgetName:"gcheck_enable_external_event0", value:false, enabled:true, visible:true)
+	 gcheck_enable_external_event1 = GCheck(widgetName:"gcheck_enable_external_event1", value:false, enabled:true, visible:true)
+	 gcheck_enable_external_event2 = GCheck(widgetName:"gcheck_enable_external_event2", value:false, enabled:true, visible:true)
+	 glabel_shadow_transfer_mode = GLabel(widgetName:"glabel_shadow_transfer_mode", text:"Shadow transfer mode:", enabled:true, visible:true)
+	 ggroup_register_value_update_mode = GGroup(widgetName:"ggroup_register_value_update_mode", text:"Register Value Update Mode", enabled:true, visible:true)
+	 ggroup_shadow_transfer_request = GGroup(widgetName:"ggroup_shadow_transfer_request", text:"Shadow Transfer Request", enabled:true, visible:true)
+	 gmessage_function_settings = GMessage(widgetName:"gmessage_function_settings", text:"New Message", isError:true, visible:true)
+	 gindexcombo_event_selection = GIndexCombo(widgetName:"gindexcombo_event_selection", options:["Event 0","Event 1","Event 2"], value:"Event 0")
+	 gindexgroup_input_event_configuration = GIndexGroup(widgetName:"gindexgroup_input_event_configuration", text:"Input Event Configuration", enabled:true, visible:true, gIndexCombo:gindexcombo_event_selection, rArray:rArraygindexgroup_input_event_configuration)
+	 for(int i=0; i<3; i++){
+		rArraygindexgroup_input_event_configuration[i] = new Gindexgroup_input_event_configuration(daveEnv, "gindexgroup_input_event_configuration", i)
+	 }
+
+
+	 }
+	/* End : UI variable section */
+}

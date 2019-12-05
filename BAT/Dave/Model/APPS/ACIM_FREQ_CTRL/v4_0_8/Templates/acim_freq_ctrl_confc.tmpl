@@ -1,0 +1,1352 @@
+package Model.APPS.ACIM_FREQ_CTRL.v4_0_8.Templates;
+
+import Model.APPS.ACIM_FREQ_CTRL.v4_0_8.ACIM_FREQ_CTRL
+
+out.print("""
+/**
+ * @cond
+ ***********************************************************************************************************************
+ *
+ * Copyright (c) 2015, Infineon Technologies AG
+ * All rights reserved.
+ *
+ * Redistribution and use in source and binary forms, with or without modification,are permitted provided that the
+ * following conditions are met:
+ *
+ *   Redistributions of source code must retain the above copyright notice, this list of conditions and the  following
+ *   disclaimer.
+ *
+ *   Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the
+ *   following disclaimer in the documentation and/or other materials provided with the distribution.
+ *
+ *   Neither the name of the copyright holders nor the names of its contributors may be used to endorse or promote
+ *   products derived from this software without specific prior written permission.
+ *
+ * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES,
+ * INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+ * DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE  FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+ * SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
+ * SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+ * WHETHER IN CONTRACT, STRICT LIABILITY,OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT  OF THE
+ * USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+ *
+ * To improve the quality of the software, users are encouraged to share modifications, enhancements or bug fixes
+ * with Infineon Technologies AG (dave@infineon.com).
+ ***********************************************************************************************************************
+ *
+ * Change History
+ * --------------
+ *
+ * 2015-02-16:
+ *     - Initial version
+ * 2015-10-08:
+ *     - Solver variable reading of NVIC node added
+ *
+ * @endcond
+ *
+ */
+/***********************************************************************************************************************
+ * HEADER FILES
+ **********************************************************************************************************************/
+#include "acim_freq_ctrl.h"
+/**********************************************************************************************************************
+* DATA STRUCTURES
+**********************************************************************************************************************/
+""");
+
+String appInst  = null
+String fb_ramp = null
+String alias_channel = "-1"
+String basic_speed_userd = "NULL"
+String position_userd = "NULL"
+String position_actval_ud = "NULL"
+String speed_actval_ud = "NULL"
+String current_actval_ud = "NULL"
+Float VoltOffset     = 0
+Float VF_Const       = 0
+Float VFConst_min    = 0
+Float VFConst_max    = 0
+Float VoltOffset_min = 0
+Float VoltOffset_max = 0
+
+Integer scalling     = 1024
+Integer POW_15       = 32767  /*2^15-1*/
+Integer POW_16       = 65534  /*2^16-1*/
+Integer POW_8        = 256
+Integer POW_12       = 4096
+Integer TARGET_VALUE = 16383   /*2^14-1*/
+Integer ANG_TAR_VAL  = 16777215   /*2^24-1*/
+
+
+/*This function return 1 if argument is true else return 0*/
+def boolvalreturn = {def arg -> (arg == false ? 0 : 1)}
+
+for (Object appIns : appInstancesList ) {
+  appInst = appIns.getInstanceLabel()
+  
+  /**********************************ADC Start********************************/
+  
+  List pin             = ["0xFF","0xFF","0xFF","0xFF"]
+  List port            = ["NULL","NULL","NULL","NULL"]
+  List req_source      = ["Queue A","Queue B","Queue C","Queue D"]
+  List queueapp_handle = ["NULL","NULL","NULL","NULL"]
+  
+  List chan_active     = ["NULL","NULL","NULL","NULL"]
+  List res_active      = ["NULL","NULL","NULL","NULL"]
+  List list_groupnum   = ["NULL","NULL","NULL","NULL"]
+  List qapp_handle     = ["NULL","NULL","NULL","NULL"]
+  
+  List entry_handle1   = ["NULL","NULL","NULL","NULL"]
+  List entry_handle2   = ["NULL","NULL","NULL","NULL"]
+  List entry_handle3   = ["NULL","NULL","NULL","NULL"]
+  List entry_handle4   = ["NULL","NULL","NULL","NULL"]
+  List entry_handle    = [entry_handle1,entry_handle2,entry_handle3,entry_handle4]
+  
+  List pinio_handle    = ["NULL","NULL","NULL","NULL"]
+  
+  List active_queue = ["ACIM_FREQ_CTRL_QUEUE_INACTIVE","ACIM_FREQ_CTRL_QUEUE_INACTIVE","ACIM_FREQ_CTRL_QUEUE_INACTIVE","ACIM_FREQ_CTRL_QUEUE_INACTIVE"]
+  
+  List list_queue_inst = ["NULL","NULL","NULL","NULL"]
+  
+  List list_actualchannel =[ "0xFF","0xFF","0xFF","0xFF"]
+  List list_resreg        =[ "0xFF","0xFF","0xFF","0xFF"]
+  List list_mappedgrp     = ["NULL","NULL","NULL","NULL"]
+  
+  Integer index = 0
+  Integer pos_index = 0
+  
+  /**********************************ADC END**********************************/
+  List parameter = 
+  [appIns.gstring_avg_i_measurement.value.replaceAll("\\s",""),appIns.gstring_dc_link_measurement.value.replaceAll("\\s",""),
+	  appIns.gstring_pot_measurement.value.replaceAll("\\s",""),appIns.gstring_user_defined_measurement.value.replaceAll("\\s","")]
+  
+  List list_chanstring =
+  [ appIns.gstring_avg_i_measurement.value.replaceAll("\\s","")+"Chan",appIns.gstring_dc_link_measurement.value.replaceAll("\\s","")+"Chan",
+	  appIns.gstring_pot_measurement.value.replaceAll("\\s","")+"Chan",appIns.gstring_user_defined_measurement.value.replaceAll("\\s","")+"Chan"];
+ 
+   List list_resregstring =
+  [ appIns.gstring_avg_i_measurement.value.replaceAll("\\s","") +"Res",appIns.gstring_dc_link_measurement.value.replaceAll("\\s","")+"Res",
+	  appIns.gstring_pot_measurement.value.replaceAll("\\s","")+"Res",appIns.gstring_user_defined_measurement.value.replaceAll("\\s","")+"Res"];
+  
+  /* --------------------------------------------------------------------------------- */
+  /* -------------------- Begin : ACIM_FREQ_CTRL Scalling  ------------------------------- */
+  /* --------------------------------------------------------------------------------- */
+  /* Parameters reading from Control Algorithm Tab */
+  Integer PWM_Freq = (appIns.gint_acimpwmfreq.value)
+	
+  /* Parameters reading from Basic Control Scheme Tab */
+  Float ang_offset = appIns.gfloat_basic_angleoffset.value
+  Float amp_offset = appIns.gfloat_basic_amplitudeoffset.value *1000  /* converting to mV*/
+  Float crnt_limit = appIns.gfloat_basic_currentlimit.value * 1000 /* converting to mA*/
+ 
+  Float ang_offset_min = appIns.gfloat_basic_angleoffset.minValue 
+  Float ang_offset_max = appIns.gfloat_basic_angleoffset.maxValue 
+  Float amp_offset_min = (appIns.gfloat_basic_amplitudeoffset.minValue*1000) 
+  Float amp_offset_max = (appIns.gfloat_basic_amplitudeoffset.maxValue*1000)
+    
+  Float additive_position = appIns.gfloat_additive_position.value
+   
+  /* Parameters reading from Control Parameters Tab */
+  Integer PolePair = appIns.gint_polepair.value
+  
+  if(appIns.gcheck_userdefconf.value == false ) 
+  {
+    VoltOffset     = appIns.gfloat_voltageoffset.value
+	VF_Const       = appIns.gfloat_vfconstant.value
+	VFConst_min    = appIns.gfloat_vfconstant.minValue 
+	VFConst_max    = appIns.gfloat_vfconstant.maxValue
+	VoltOffset_min = appIns.gfloat_voltageoffset.minValue
+	VoltOffset_max = appIns.gfloat_voltageoffset.maxValue
+  }
+  else
+  {
+	VoltOffset     = appIns.gfloat_udvoltageoffset.value
+	VF_Const       = appIns.gfloat_udvfconstant.value
+	VFConst_min    = appIns.gfloat_udvfconstant.minValue 
+	VFConst_max    = appIns.gfloat_udvfconstant.maxValue
+	VoltOffset_min = appIns.gfloat_udvoltageoffset.minValue
+	VoltOffset_max = appIns.gfloat_udvoltageoffset.maxValue
+  }
+  
+  /* Parameters reading from power board Tab */
+  Float DClink_Volt = appIns.gfloat_dclinkvolt.value 
+  Float Vadc_Ref = (appIns.gfloat_vadcref.value * 1000)
+  Float amp_bias_volt = (appIns.gfloat_ampbiasvolt.value * 1000)
+  Float VoltDividerRatio = appIns.gfloat_voltdidratio.value
+  
+  /*Updated Parameters based on different conditions */ 
+  /*PWM Period value in us*/
+  Float PWM_Period   = (1000000/PWM_Freq)
+  
+  /**********Scaling***********/
+  /* Voltage Scale*/
+  Float N_V = ((DClink_Volt * POW_15)/TARGET_VALUE)
+  
+  /*Speed*/
+  Float Speed_Scale = (appIns.gfloat_nominalspeed.value * POW_15)/TARGET_VALUE
+  Float Inv_Speed_Scale   = (TARGET_VALUE * POW_15)/appIns.gfloat_nominalspeed.value
+  
+  /*Current*/
+  Float Current_Scale     = (appIns.gfloat_maxcrnt.value*1000 * POW_15)/TARGET_VALUE
+  Float Inv_Current_Scale = (TARGET_VALUE * POW_15)/(appIns.gfloat_maxcrnt.value*1000)
+  
+  /*Angle*/
+  Float Angle_Scale = (360 * POW_15)/TARGET_VALUE
+  Float Inv_Angle_Scale = (TARGET_VALUE * POW_15)/360
+  
+  /* Angle Scale target value used from speed to angle conversion*/
+  Float Angle_Scale_T = (((appIns.gfloat_nominalspeed.value *  appIns.gint_fcldiv.value * PolePair *(ANG_TAR_VAL/TARGET_VALUE))/(PWM_Freq*60))*POW_8)
+
+ 
+  Integer Voltlimt_Scale = ((100 *POW_15)/TARGET_VALUE)
+  Integer Inv_Voltlimt_Scale = ((TARGET_VALUE * POW_15)/100)
+  if(appIns.gcheck_eovermodulation.value == true)
+  {
+    Voltlimt_Scale = ((100 *POW_15)/(TARGET_VALUE * 1.1547)) /*1.1547 = 2/sqrt(3); if over modulation is enabled*/
+    Inv_Voltlimt_Scale = ((TARGET_VALUE*1.1547* POW_15)/100)
+  }
+  Integer Voltlimt  = ((appIns.gfloat_maxvoltlimit.value * Inv_Voltlimt_Scale)/POW_15)
+  
+  Float N_VDC = (N_V * 1000) /* Multiply by 1000, since voltage limit is in mV. */
+  Integer VF_Offset_T = ((VoltOffset * POW_15)/(N_VDC));  /* VoltOffset is in mV. It is normalized by N_VDC */
+  
+  /* V/F normalization Value*/
+  Float N_VF = ((N_V*POW_15*60)/(Speed_Scale*PolePair*scalling))*1000  /*Multiply by 1000 because vf_const is in mV/Hz */
+  
+  Integer VF_Const_T    = ((VF_Const * POW_15)/(N_VF));
+    
+  if(VF_Const_T > POW_15)
+	VF_Const_T = POW_15
+	
+  /*Current*/
+ /* MaxCurrent = (Vadc_Ref-amp_bias_volt)/(Rshunt*Current_Gain), Its done in menifest file.*/
+  Float MaxCurrent = appIns.gfloat_maxcrnt.value
+  
+  /* Current normalization Value*/
+  Float N_I =  (MaxCurrent*1000*2); /* 2   =2^15/2^14
+                                       1000= Since current is mA */
+  Float MAX_Motor_Current = ((appIns.gfloat_maxcurrentlimit.value *POW_15 )/(N_I)) /* Its over current limit */
+  if(MAX_Motor_Current > 0x7FFF)
+    MAX_Motor_Current = 0x7FFF
+	
+  Float current_limit     = ((crnt_limit*POW_15)/(N_I)) 
+  if(current_limit > TARGET_VALUE)
+	current_limit = TARGET_VALUE
+	    
+  /*Variable for PI Scaling */
+  Float kp       = 0
+  Float ki       = 0
+  Float olim     = 0
+  Float intbuf   = 0	
+   
+  /* Speed */
+  Integer SpeedRef_T = ((appIns.gint_speedref.value *POW_15)/Speed_Scale)
+
+  Float Voltage_ADC_Scale  = (TARGET_VALUE *Vadc_Ref*TARGET_VALUE)/((DClink_Volt * VoltDividerRatio * POW_12 * 10))
+
+  
+  /* --------------------------------------------------------------------------------- */
+  /* -------------------- End : ACIM_FREQ_CTRL Scalling    ------------------------------- */
+  /* --------------------------------------------------------------------------------- */
+  
+  Integer speed_wr_access = 1
+  Integer pos_wr_access = 0
+
+  if(appIns.gcombo_ctrlschemeconfig.options.indexOf(appIns.gcombo_ctrlschemeconfig.value) == 0 )
+  {
+	if(appIns.gcombo_speedset_opt.options.indexOf(appIns.gcombo_speedset_opt.value) == 0 )
+	{
+		speed_wr_access = 0
+		basic_speed_userd = appIns.gstring_ud_speedset_ptr.value..replaceAll("\\s","")
+	}
+	else
+	{
+		basic_speed_userd = "&${appInst}.user_speed_set"
+	}
+	
+	if(appIns.gcheck_epotmeasurement.value == true )
+	{
+	  speed_wr_access = 0
+	}	
+  }
+  else
+  {
+	if((appIns.gcheck_crnt_limit.value == true) || (appIns.gcheck_opcode_crnt_limit.value == true))
+	{
+	  if(appIns.gcombo_current_actval.options.indexOf(appIns.gcombo_current_actval.value) == 0 )
+	  {
+	    current_actval_ud = appIns.gstring_actcur_ptr.value.replaceAll("\\s","")
+   	  }
+	  else
+	  {
+	    current_actval_ud = "&${appInst}.motor_current"
+      }
+	}
+	
+	if((appIns.gcheck_positionctrl.value == true) || (appIns.gcheck_opcode_positionctrl.value == true))
+	{
+	 if(appIns.gcombo_position_ctrl.options.indexOf(appIns.gcombo_position_ctrl.value) == 0 )
+	 {
+		pos_wr_access = 0
+		position_userd = appIns.gstring_positionset_ptr.value.replaceAll("\\s","")
+	 }
+	 else
+	 {
+		 pos_wr_access = 1
+		position_userd = "&${appInst}.user_position_set"
+	 }	  
+	 
+	 if(appIns.gcombo_position_actval.options.indexOf(appIns.gcombo_position_actval.value) == 0 )
+	 {
+		 position_actval_ud = appIns.gstring_actpos_ptr.value.replaceAll("\\s","")
+	 }
+	 else
+	 {
+		 position_actval_ud = "&${appInst}_position_control.actual_position"
+	 }
+	}
+	else
+	{
+	  if(appIns.gcombo_speed_ctrl.options.indexOf(appIns.gcombo_speed_ctrl.value) == 0 )
+	  {
+		speed_wr_access = 0
+		basic_speed_userd = appIns.gstring_speedsetadv_ptr.value.replaceAll("\\s","")
+	  }
+	  else
+	  {
+	    basic_speed_userd = "&${appInst}.user_speed_set"
+   	  }	  
+	  if(appIns.gcheck_epotmeasurement.value == true )
+	  {
+	    speed_wr_access = 0
+	  }  
+	  if(appIns.gcombo_speed_actval.options.indexOf(appIns.gcombo_speed_actval.value) == 0 )
+	  {
+		  speed_actval_ud = appIns.gstring_actspeed_ptr.value.replaceAll("\\s","")
+	  }
+
+	}
+  }
+/* ------------------- Begin : ADC Configuration ----------------------------------- */
+  /*Start: This is dummy read to avoid unwanted popup */
+  
+  (appIns.hwres_chan_a_pin.getRegValue("pdisc","pdisc_pdis"))
+  (appIns.hwres_chan_b_pin.getRegValue("pdisc","pdisc_pdis"))
+  
+  (appIns.hwres_chan_c_pin.getRegValue("pdisc","pdisc_pdis"))
+  (appIns.hwres_chan_d_pin.getRegValue("pdisc","pdisc_pdis"))
+  
+  (appIns.hwres_chan_a_pin.getRegValue("","hwsel_hw"))
+  (appIns.hwres_chan_b_pin.getRegValue("","hwsel_hw"))
+  
+  (appIns.hwres_chan_c_pin.getRegValue("","hwsel_hw"))
+  (appIns.hwres_chan_d_pin.getRegValue("","hwsel_hw"))
+  
+  appIns.hwres_fcl_nvicnode.getRegValue("","iser_setena") //dummy read
+  appIns.hwres_pcl_nvicnode.getRegValue("","iser_setena") //dummy read
+  
+   
+  /*End: This is dummy read to avoid unwanted popup */
+  
+  list_queue_inst  =  [appIns.appres_queue_a.getInstanceLabel(),appIns.appres_queue_b.getInstanceLabel(),
+	                   appIns.appres_queue_c.getInstanceLabel(),appIns.appres_queue_d.getInstanceLabel()]
+  
+  List list_channeluri = [appIns.hwres_adcchan1.getSolverUri(),appIns.hwres_adcchan2.getSolverUri(),appIns.hwres_adcchan3.getSolverUri(),appIns.hwres_adcchan4.getSolverUri()];
+  List list_iouri = [appIns.hwres_chan_a_pin.getSolverUri(),appIns.hwres_chan_b_pin.getSolverUri(),appIns.hwres_chan_c_pin.getSolverUri(),appIns.hwres_chan_d_pin.getSolverUri()];
+  List list_resreg_mux_Dummy =
+  [
+	appIns.hwres_adcchan1.getRegValue("gchctr","gchctr_resreg"),appIns.hwres_adcchan2.getRegValue("gchctr","gchctr_resreg"),
+	appIns.hwres_adcchan3.getRegValue("gchctr","gchctr_resreg"),appIns.hwres_adcchan4.getRegValue("gchctr","gchctr_resreg")
+  ];
+  List list_adcalias0 =  [appIns.hwres_adcchan1.getRegValue("galias","galias_alias0"),
+	                      appIns.hwres_adcchan2.getRegValue("galias","galias_alias0"),
+						  appIns.hwres_adcchan3.getRegValue("galias","galias_alias0"),
+						  appIns.hwres_adcchan4.getRegValue("galias","galias_alias0")
+						 ]
+
+ List list_adcalias1 =  [ appIns.hwres_adcchan1.getRegValue("galias","galias_alias1"),
+	 					  appIns.hwres_adcchan2.getRegValue("galias","galias_alias1"),
+						  appIns.hwres_adcchan3.getRegValue("galias","galias_alias1"),
+						  appIns.hwres_adcchan4.getRegValue("galias","galias_alias1")
+ 						]
+
+
+
+  List list_resreg_mux =
+  [
+    appIns.hwres_result1.getSolverUri(),appIns.hwres_result2.getSolverUri(),
+    appIns.hwres_result3.getSolverUri(),appIns.hwres_result4.getSolverUri()
+  ];
+
+  
+  for(pos_index = 0;pos_index<=3;pos_index++)
+  {
+    if(list_channeluri[pos_index] != null)
+	{
+	  list_mappedgrp[pos_index] = list_channeluri[pos_index][6]
+	  list_actualchannel[pos_index] = list_channeluri[pos_index][8]
+	  list_resreg[pos_index]     = list_resreg_mux[pos_index][8]
+	  pin[pos_index] = "${list_iouri[pos_index][6]}"
+	  port[pos_index] = "PORT${list_iouri[pos_index][4]}_BASE"
+	}
+  }
+  
+  List list_positions =
+  [ appIns.gint_avg_i_measurement.value,appIns.gint_dc_link_measurement.value, appIns.gint_pot_measurement.value, appIns.gint_user_defined_measurement.value];
+  
+  List list_reqsel =
+  [ appIns.gcombo_avg_i_measurement.value,appIns.gcombo_dc_link_measurement.value, appIns.gcombo_pot_measurement.value, appIns.gcombo_user_defined_measurement.value];
+ 
+  List list_enablemeas =
+  [ appIns.gcheck_avg_i_measurement.value,appIns.gcheck_dc_link_measurement.value, appIns.gcheck_pot_measurement.value, appIns.gcheck_user_defined_measurement.value];
+  
+  List list_refill =
+  [ appIns.gcheck_avg_i_refill.value,appIns.gcheck_dc_link_refill.value, appIns.gcheck_pot_refill.value, appIns.gcheck_user_defined_refill.value];
+  
+  List list_externaltrig =
+  [ appIns.gcheck_avg_i_ext_trigger.value,appIns.gcheck_dc_link_ext_trigger.value, appIns.gcheck_pot_ext_trigger.value, appIns.gcheck_user_defined_ext_trigger.value];
+    
+for(index = 0;index<=3;index++)
+{
+  for(pos_index = 0;pos_index<=3;pos_index++)
+  {
+    /*Segregating Queue related configurations*/
+    /*Checking for Queue 1 ,if yes acquire list of queue channels and its config*/
+	  
+      if((list_reqsel[pos_index] == req_source[index]) && (list_enablemeas[pos_index] == true))
+      {
+	    active_queue[index] = "ACIM_FREQ_CTRL_QUEUE_ACTIVE"
+	    qapp_handle[index] = "(ADC_QUEUE_t *)(void*)&"+list_queue_inst[index];  		
+	    entry_handle[index][pos_index] = "&${list_queue_inst[index]}_QEntry_${parameter[pos_index]}"		
+out.print("""
+ADC_QUEUE_ENTRY_t ${list_queue_inst[index]}_QEntry_${parameter[pos_index]} = 
+{
+  .adc_event_callback    = NULL,
+  .queue_position        = (uint32_t)${list_positions[pos_index]},
+  .channel_number        = (uint32_t)${list_actualchannel[pos_index]},
+  .trigger_needed        = (bool)${list_externaltrig[pos_index]},
+  .refill_needed         = (bool)${list_refill[pos_index]},
+  .ch_event_notification = (bool)false,
+  .rs_event_notification = (bool)false
+};
+""");
+      }
+    }
+  } 
+
+  for(active_chan = 0;active_chan<=3;active_chan++)
+  {
+	if(list_channeluri[active_chan] != null)
+	{
+	  chan_active[active_chan] = "&${appInst}_${list_chanstring[active_chan]}_InitHandle"
+	  list_groupnum[active_chan] = "(XMC_VADC_GROUP_t*)(void*)VADC_G" + "${list_mappedgrp[active_chan]}"
+	}
+	else
+	{
+	  chan_active[active_chan] = "NULL"
+	  list_groupnum[active_chan]   = "NULL"
+	}
+	  
+	if([appIns.hwres_result1.getSolverUri(),appIns.hwres_result2.getSolverUri(),appIns.hwres_result3.getSolverUri(),appIns.hwres_result4.getSolverUri()][active_chan] != null)
+	{
+	  res_active[active_chan] = "&${appInst}_${list_resregstring[active_chan]}_InitHandle "
+	}
+	else
+	{
+	  res_active[active_chan] = "NULL"
+	}
+	
+  if((list_reqsel[active_chan] != "None") && (list_enablemeas[active_chan] == true))
+  {
+pinio_handle[active_chan] = "&${appInst}_${list_chanstring[active_chan]}_IO"
+/*if alias is not enabled*/
+if((list_actualchannel[active_chan]=="0") && (list_adcalias0[active_chan] != 0))
+{
+  alias_channel = list_adcalias0[active_chan]
+}
+else if((list_actualchannel[active_chan]=="1") && (list_adcalias1[active_chan] != 1))
+{
+  alias_channel = list_adcalias1[active_chan]
+}
+else
+{
+	alias_channel = "-1"
+}
+
+out.print("""
+XMC_VADC_CHANNEL_CONFIG_t ${appInst}_${list_chanstring[active_chan]}_InitHandle =
+{
+  .input_class         = (XMC_VADC_CHANNEL_CONV_t)XMC_VADC_CHANNEL_CONV_GROUP_CLASS0,
+  .channel_priority    = (uint32_t)1,
+  .alternate_reference = (XMC_VADC_CHANNEL_REF_t)XMC_VADC_CHANNEL_REF_INTREF,
+  .result_reg_number   = (uint32_t)${list_resreg[active_chan]},
+  .alias_channel       = ${alias_channel}
+};
+
+XMC_VADC_RESULT_CONFIG_t ${appInst}_${list_resregstring[active_chan]}_InitHandle = 
+{
+  .wait_for_read_mode     = (bool)true,
+  .part_of_fifo           = (bool)false,
+};
+""");
+  }
+  }
+  
+/*Extracting App config structures*/
+if((appIns.hwres_adcchan1.getSolverUri())||
+	(appIns.hwres_adcchan2.getSolverUri())||
+	(appIns.hwres_adcchan3.getSolverUri())||
+	(appIns.hwres_adcchan4.getSolverUri()))
+ {
+out.print("""
+ACIM_FREQ_CTRL_ADCConfig_t ${appInst}_ADCConfig =
+{
+  .queue_entry_hdlarray   = {
+                              {${entry_handle[0][0]},${entry_handle[1][0]},${entry_handle[2][0]},${entry_handle[3][0]}},
+                              {${entry_handle[0][1]},${entry_handle[1][1]},${entry_handle[2][1]},${entry_handle[3][1]}},
+                              {${entry_handle[0][2]},${entry_handle[1][2]},${entry_handle[2][2]},${entry_handle[3][2]}},
+                              {${entry_handle[0][3]},${entry_handle[1][3]},${entry_handle[2][3]},${entry_handle[3][3]}}                             
+                            },
+  .queue_active           = {
+                              (uint8_t)${active_queue[0]},
+                              (uint8_t)${active_queue[1]},
+                              (uint8_t)${active_queue[2]},
+                              (uint8_t)${active_queue[3]}                             
+                            },
+  .qapp_handlearray       = {
+                              ${qapp_handle[0]},
+                              ${qapp_handle[1]},
+                              ${qapp_handle[2]},
+                              ${qapp_handle[3]}
+                            },
+
+  .vadc_reshandle_array   = {
+                              ${res_active[0]},
+                              ${res_active[1]},
+                              ${res_active[2]},
+                              ${res_active[3]}
+						    },
+  .vadc_chhandle_array    = {
+                              ${chan_active[0]},
+                              ${chan_active[1]},
+                              ${chan_active[2]},
+                              ${chan_active[3]}
+						    },
+  .channel_num_array      = {
+                              ${list_actualchannel[0]}U,
+                              ${list_actualchannel[1]}U,
+                              ${list_actualchannel[2]}U,
+                              ${list_actualchannel[3]}U
+                            },
+  .result_num_array      = {
+                              ${list_resreg[0]}U,
+                              ${list_resreg[1]}U,
+                              ${list_resreg[2]}U,
+                              ${list_resreg[3]}U
+                            },
+  .vadc_group_pointerarray= {
+                              ${list_groupnum[0]},
+                              ${list_groupnum[1]},
+                              ${list_groupnum[2]},
+                              ${list_groupnum[3]}
+                            }
+};
+""");
+ } 
+/* ------------------- END : ADC Configuration ------------------------------------- */
+ out.print("""
+ /*Scaling Details*/
+ /*-------------------------------------------------------------------------------------------------
+ *            | Physical value  |  Target Value |            Comments                              |
+ * -------------------------------------------------------------------------------------------------
+ * Speed      | 0 - Max Speed   | 0-  0x3FFF    |  Speed (mech ) - 200% to 200%  represented  as   |
+			  |                 |               |  0x8001 to 0x7FFF                                |
+ * Current    | 0 - Max Current | 0-  0x3FFF    |  Current - 200% to 200%  represented  as         |
+			  |                 |               |  0x8001 to 0x7FFF                                |
+ * Voltage    | 0 - Vdc         | 0-  0x3FFF    |  Voltage- 200% to 200%  represented  as          |
+			  |                 |               |  0x8001 to 0x7FFF                                |
+ * Position   | 0 - 360 		| 0 - 0xFFFF	|  Position is a 32 bit value, MSB two bytes holds |
+			  |                 |               |  the number of revolution and Last two bytes     |
+			  |                 |               |  holds the angle                                 |
+ * Kp 	      | 0 - 64		    | 0 - 0x7FFF    |  Get and Set API for Kp only handle target value.|
+ * Ki         | 0 - 1	        | 0 - 0x7FFF    |  Get and Set API for Ki only handle target value.|
+ *--------------------------------------------------------------------------------------------------
+ */
+""");
+if(appIns.gcombo_ctrlschemeconfig.options.indexOf(appIns.gcombo_ctrlschemeconfig.value) == 0 )
+{
+  if(boolvalreturn(appIns.gcheck_basic_crntlimit.value) == 1 )
+  {
+out.print("""
+
+MOTOR_LIB_PIHandle_t  ${appInst}_Current_Limit_PI =
+{
+  .kp     = (uint16_t)${(int)appIns.gfloat_currentkp.value},
+  .ki     = (uint16_t)${(int)appIns.gfloat_currentki.value},
+  .y_max  = 0,
+  .y_min  = -${(int)((appIns.gfloat_current_out_limit.value * TARGET_VALUE)/100)},
+  .y_imax = 0,
+  .y_imin = -${(int)(((appIns.gfloat_current_buf_limit.value * TARGET_VALUE)/100)*POW_15)}
+};
+ACIM_FREQ_CTRL_CL_t ${appInst}_current_limit =
+{
+  .pi_ptr            = &${appInst}_Current_Limit_PI,
+  .current_limit     = ${(int)current_limit}U,
+  .input_ptr         = NULL,
+  .output            = 0
+};
+""");
+  }
+}
+else
+{	
+  if((boolvalreturn(appIns.gcheck_crnt_limit.value) == 1 ) ||
+		(boolvalreturn(appIns.gcheck_opcode_crnt_limit.value) == 1 ))
+  {
+out.print("""
+
+MOTOR_LIB_PIHandle_t  ${appInst}_Current_Limit_PI =
+{
+  .kp     = (uint16_t)${(int)appIns.gfloat_currentkp.value},
+  .ki     = (uint16_t)${(int)appIns.gfloat_currentki.value},
+  .y_max  = 0,
+  .y_min  = -${(int)((appIns.gfloat_current_out_limit.value * TARGET_VALUE)/100)},
+  .y_imax = 0,
+  .y_imin = -${(int)(((appIns.gfloat_current_buf_limit.value * TARGET_VALUE)/100)*POW_15)}
+};
+ACIM_FREQ_CTRL_CL_t ${appInst}_current_limit =
+{
+  .pi_ptr            = &${appInst}_Current_Limit_PI,
+  .current_limit     = ${(int)current_limit}U,
+  .input_ptr         = ${current_actval_ud},
+  .output            = 0
+};
+""");
+  }
+  if((boolvalreturn(appIns.gcheck_positionctrl.value) == 1 ) ||
+	  (boolvalreturn(appIns.gcheck_opcode_positionctrl.value) == 1 ))
+  { 
+out.print("""
+MOTOR_LIB_PIHandle_t  ${appInst}_Position_PI =
+{
+  .kp     = (uint16_t)${(int)appIns.gfloat_positionkp.value},
+  .ki     = (uint16_t)${(int)appIns.gfloat_positionki.value},
+  .y_max  = ${(int)((appIns.gfloat_position_out_limit.value * POW_15)/100)},
+  .y_min  = -${(int)((appIns.gfloat_position_out_limit.value * POW_15)/100)},
+  .y_imax = ${(int)(((appIns.gfloat_position_buf_limit.value * POW_15)/100)*POW_15)},
+  .y_imin = -${(int)(((appIns.gfloat_position_buf_limit.value * POW_15)/100)*POW_15)}
+};
+ACIM_FREQ_CTRL_PC_t ${appInst}_position_control =
+{
+  .pi_ptr              = &${appInst}_Position_PI,
+  .position_set        = ${(int)appIns.gfloat_positioninput.value *0xFFFF},
+  .input_ptr           = ${position_actval_ud},
+  .output              = 0,
+  .additive_position   = ${(int)appIns.gfloat_additive_position.value*0xFFFF},
+  .actual_position     = 0
+};
+""");
+
+    if((boolvalreturn(appIns.gcheck_positionff.value) == 1 ) ||
+	  (boolvalreturn(appIns.gcheck_opcode_positionff.value) == 1 ))
+    {
+out.print("""
+MOTOR_LIB_PT1Handle_t ${appInst}_PT1Filter =
+{
+  .z1          = 50,
+  .y_max       = 0x7FFFFFFF,
+  .y_min       = 0x80000001,
+  .pt1_buf     = 0,
+  .pt1_out_val = 0
+};
+MOTOR_LIB_FeedForwardHandle_t ${appInst}_Feed_Forward =
+{
+  .pt1_filter_ptr          = &${appInst}_PT1Filter,
+  .feedforward_out_val     = 0,
+  .antinoise_filter_buffer = 0,
+  .dead_time_buffer        = 0,
+  .differential_buffer     = 0,
+  .feedforward_gain        = (uint16_t)${(int)appIns.gfloat_ffgain.value},
+  .differential_gain       = (uint16_t)${(int)appIns.gfloat_ffdifgain.value},
+  .dead_band               = (uint16_t)${(int)appIns.gfloat_ffdeadband.value * POW_16},
+  .y_max                   = ${(int)((appIns.gfloat_position_out_limit.value * TARGET_VALUE)/100)},
+  .y_min                   = -${(int)((appIns.gfloat_position_out_limit.value * TARGET_VALUE)/100)},
+  .dead_time_enable        = (uint8_t)${boolvalreturn(appIns.gcheck_effdelay.value)}
+};
+""");		  
+    }
+  }
+  if((boolvalreturn(appIns.gcheck_slipctrl.value) == 1 ) ||
+	  (boolvalreturn(appIns.gcheck_opcode_slipctrl.value) == 1 ))
+  {
+out.print("""
+MOTOR_LIB_PIHandle_t ${appInst}_Slip_PI =
+{
+  .kp     = (uint16_t)${(int)appIns.gfloat_slipkp.value},
+  .ki     = (uint16_t)${(int)appIns.gfloat_slipki.value},
+  .y_max  = ${(int)((appIns.gfloat_slip_out_limit.value * TARGET_VALUE)/100)},
+  .y_min  = -${(int)((appIns.gfloat_slip_out_limit.value * TARGET_VALUE)/100)},
+  .y_imax = ${(int)(((appIns.gfloat_slip_buf_limit.value * TARGET_VALUE)/100)*POW_16)},
+  .y_imin = -${(int)(((appIns.gfloat_slip_buf_limit.value * TARGET_VALUE)/100)*POW_16)}
+};
+ACIM_FREQ_CTRL_SC_t ${appInst}_slip_control =
+{
+  .pi_ptr          = &${appInst}_Slip_PI,
+  .speed_set       = 0,
+  .input_ptr       = ${speed_actval_ud},
+  .output          = 0,
+  .additive_speed  = ${(int)(appIns.gfloat_additivespeed.value *POW_15/Speed_Scale)}  /*!<(additive speed * 2^15)/(Speed Scale)*/
+};
+""");
+  }  
+}
+if(appIns.gcombo_pclmux.options.indexOf(appIns.gcombo_pclmux.value)==2)
+{
+out.print("""
+ACIM_FREQ_CTRL_ISRHandle_t ${appInst}_PCL_InterruptConfig =
+{
+  .node_id      = (uint8_t)${appIns.hwres_pcl_nvicnode.getSolverUri()[7]},
+  .priority     = (uint8_t)${appIns.ginterruptprio_primary_control_loop.priorityValue.value},
+  .sub_priority = (uint8_t)${appIns.ginterruptprio_primary_control_loop.subPriorityValue.value}
+};
+""")
+}
+
+if(appIns.gcheck_evoltcomp.value == true)
+{
+out.print("""
+MOTOR_LIB_PT1Handle_t ${appInst}_voltcompFilter =
+{
+  .z1          = 50,
+  .y_max       = 0x7FFFFFFF,
+  .y_min       = 0x80000001,
+  .pt1_buf     = ${(int)TARGET_VALUE<<16},
+  .pt1_out_val = 0
+};
+""")
+}
+
+out.print("""
+#if (ACIM_FREQ_CTRL_IS_DSM_AVAILABLE == 1U) 
+const AUTOMATION_SM_STATES_t ${appInst}_STATES[]=
+{
+  /*ACIM_FREQ_CTRL_DSM_SWITCHED_OFF*/
+  { "off", ACIM_FREQ_CTRL_DSM_SwitchedOff_Entry, ACIM_FREQ_CTRL_DSM_SwitchedOff_Action, ACIM_FREQ_CTRL_DSM_SwitchedOff_Exit},
+  /*ACIM_FREQ_CTRL_DSM_ENABLED*/
+  { "enabled", NULL, ACIM_FREQ_CTRL_DSM_Enabled_Action, ACIM_FREQ_CTRL_DSM_Enabled_Exit},
+  /*ACIM_FREQ_CTRL_DSM_SWITCHED_ON*/
+  { "on", NULL, ACIM_FREQ_CTRL_DSM_Switched_On_Action, NULL},
+  /*ACIM_FREQ_CTRL_DSM_OPERATION*/
+  { "operation", ACIM_FREQ_CTRL_DSM_Operation_Entry, ACIM_FREQ_CTRL_DSM_Operation_Action, ACIM_FREQ_CTRL_DSM_Operation_Exit},
+  /*ACIM_FREQ_CTRL_DSM_COAST_STOP*/
+  { "coast stop", ACIM_FREQ_CTRL_DSM_Coast_Stop_Entry, ACIM_FREQ_CTRL_DSM_Coast_Stop_Action, ACIM_FREQ_CTRL_DSM_Coast_Stop_Exit},
+  /*ACIM_FREQ_CTRL_DSM_QUICK_STOP*/
+  { "quick stop", ACIM_FREQ_CTRL_DSM_Quick_Stop_Entry, ACIM_FREQ_CTRL_DSM_Quick_Stop_Action, ACIM_FREQ_CTRL_DSM_Quick_Stop_Exit},
+  /*ACIM_FREQ_CTRL_DSM_RAMP_DOWN*/
+  { "ramp down", ACIM_FREQ_CTRL_DSM_Rampdown_Entry, ACIM_FREQ_CTRL_DSM_Rampdown_Action, NULL},
+  /*ACIM_FREQ_CTRL_DSM_ERROR*/
+  { "error", ACIM_FREQ_CTRL_DSM_Error_Entry, ACIM_FREQ_CTRL_DSM_Error_Action, ACIM_FREQ_CTRL_DSM_Error_Exit},
+  /*ACIM_FREQ_CTRL_DSM_SAFE_TORQUE_OFF*/
+  { "safe", ACIM_FREQ_CTRL_DSM_Safe_Torque_Off_Entry, ACIM_FREQ_CTRL_DSM_Safe_Torque_Off_Action, ACIM_FREQ_CTRL_DSM_Safe_Torque_Off_Exit},
+  /*ACIM_FREQ_CTRL_DSM_RESERVE_9*/
+  { "reserve", NULL, NULL, NULL},
+  /*ACIM_FREQ_CTRL_DSM_RESERVE_10*/
+  { "reserve", NULL, NULL, NULL},
+  /*ACIM_FREQ_CTRL_DSM_USER_DEFINE_11*/
+  { "user define", NULL, NULL, NULL},
+  /*ACIM_FREQ_CTRL_DSM_USER_DEFINE_12*/
+  { "user define", NULL, NULL, NULL},
+  /*ACIM_FREQ_CTRL_DSM_RESERVE_13*/
+  { "reserve", NULL, NULL, NULL},
+  /*ACIM_FREQ_CTRL_DSM_RESERVE_14*/
+  { "reserve", NULL, NULL, NULL},
+  /*ACIM_FREQ_CTRL_DSM_TROUBLE*/
+  { "trouble", NULL, ACIM_FREQ_CTRL_DSM_Trouble_Action, NULL}
+};
+AUTOMATION_SM_t ${appInst}_DSM =
+{
+  .states = ${appInst}_STATES,
+  .app_handler = (void*)&${appInst},
+  .current_state = (uint8_t)ACIM_FREQ_CTRL_DSM_SWITCHED_OFF,
+  .requested_state = 0U,
+  .transition_request =0U,
+  .execute_action =0U
+};
+#endif
+""")
+out.print("""
+ACIM_FREQ_CTRL_ISRHandle_t ${appInst}_FCL_InterruptConfig =
+{
+  .node_id      = (uint8_t)${appIns.hwres_fcl_nvicnode.getSolverUri()[7]}, 
+  .priority     = (uint8_t)${appIns.ginterruptprio_fast_control_loop.priorityValue.value},
+  .sub_priority = (uint8_t)${appIns.ginterruptprio_fast_control_loop.subPriorityValue.value}
+};
+ACIM_FREQ_CTRL_VF_t ${appInst}_vf_control =
+{ 
+  .vf_constant       = ${VF_Const_T}U,                   /*!<(V/f constant * 2^15)/(V/f Scale) , Maximum value is limited to 2^15*/            
+  .vf_offset         = ${VF_Offset_T}U,                  /*!<(voltage offset * 2^15)/(offset scale)*/ 
+  .input             = 0,                                 
+  .output_angle      = 0,
+  .output_amplitude  = 0U    
+};
+const ACIM_FREQ_CTRL_Config_t ${appInst}_Config =
+{  
+  .nominal_speed              = (uint32_t)${(int)appIns.gfloat_nominalspeed.value},
+  .voltage_adc_scale          = (uint32_t)${(int)Voltage_ADC_Scale},             
+  .dclink_voltage             = (uint16_t)${(int)DClink_Volt},   
+  .current_amplifier_offset   = (uint16_t)${(int)((amp_bias_volt* TARGET_VALUE)/Vadc_Ref)},            /*!<(Amplifier Bias Voltage * 0x3FFF)/(Vadc reference)*/ 
+  .bootstrap_time             = (uint16_t)${(int)appIns.gint_bootstarpcount.value},  
+  .specified_volt             = (uint16_t)${(int)TARGET_VALUE},
+  .pole_pair                  = (uint8_t)${PolePair},
+  .pcl_task_conf              = (uint8_t)${["ACIM_FREQ_CTRL_TS_DISABLED","ACIM_FREQ_CTRL_TS_SW_DIV","ACIM_FREQ_CTRL_TS_PCL_ISR","ACIM_FREQ_CTRL_TS_USER_CALL","ACIM_FREQ_CTRL_TS_AUTOMATION"][appIns.gcombo_pclmux.options.indexOf(appIns.gcombo_pclmux.value)]},
+  .svp_task_conf              = (uint8_t)${["ACIM_FREQ_CTRL_TS_DISABLED","ACIM_FREQ_CTRL_TS_PCL_TASK","ACIM_FREQ_CTRL_TS_SW_DIV","ACIM_FREQ_CTRL_TS_USER_CALL","ACIM_FREQ_CTRL_TS_AUTOMATION"][appIns.gcombo_svpmux.options.indexOf(appIns.gcombo_svpmux.value)]},
+  .dsm_task_conf              = (uint8_t)${["ACIM_FREQ_CTRL_TS_DISABLED","ACIM_FREQ_CTRL_TS_USER_CALL","ACIM_FREQ_CTRL_TS_AUTOMATION"][appIns.gcombo_dsmmux.options.indexOf(appIns.gcombo_dsmmux.value)]},
+  .fcl_divider                = (uint8_t)${appIns.gint_fcldiv.value},
+  .pcl_divider                = (uint8_t)${appIns.gint_pcldiv.value},
+  .svp_divider                = (uint8_t)${appIns.gint_svpdiv.value},
+  .enable_automation          = ${boolvalreturn(appIns.gcheck_eautomation.value)}U,
+""");
+
+  if(appIns.gcombo_ctrlschemeconfig.options.indexOf(appIns.gcombo_ctrlschemeconfig.value)==1)
+  {
+	if((appIns.gcheck_positionctrl.value==true) || (appIns.gcheck_opcode_positionctrl.value==true))
+	{
+	  println "  .enable_position_control    = 1U,"
+	}
+	else
+	{
+	  println "  .enable_position_control    = 0U,"
+	}
+	if((appIns.gcheck_slipctrl.value==true) || (appIns.gcheck_opcode_slipctrl.value==true))
+	{
+	  println "  .enable_slip_control        = 1U,"
+	}
+	else
+	{
+	  println "  .enable_slip_control        = 0U,"
+	}
+	if((appIns.gcheck_crnt_limit.value==true) || (appIns.gcheck_opcode_crnt_limit.value==true))
+	{
+	  println "  .enable_current_limit       = 1U,"
+	}
+	else
+	{
+	  println "  .enable_current_limit       = 0U,"
+	}
+  }
+  else
+  {
+    println "  .enable_position_control    = 0U,"
+	println "  .enable_slip_control        = 0U,"
+	println "  .enable_current_limit       = ${boolvalreturn(appIns.gcheck_basic_crntlimit.value)}U,"
+  }
+  if(appIns.gcombo_ctrlschemeconfig.options.indexOf(appIns.gcombo_ctrlschemeconfig.value)==1)
+  {
+    if(appIns.gcombo_current_actval.options.indexOf(appIns.gcombo_current_actval.value) == 1)
+	{
+    println "  .enable_iavg_actcurrent    = 1U,"
+	}
+	else
+	{
+    println "  .enable_iavg_actcurrent    = 0U,"
+	}
+  }
+  else
+  {	
+	println "  .enable_iavg_actcurrent    = ${boolvalreturn(appIns.gcheck_basic_crntlimit.value)}U,"
+  }
+  
+  out.print("""
+  .enable_biasvoltage         = ${boolvalreturn(appIns.gcheck_eampbiasvolt.value)}U,                             
+  .enable_over_current        = ${boolvalreturn(appIns.gcheck_eovercrntdet.value)}U,           
+  .enable_avg_current         = ${boolvalreturn(appIns.gcheck_avg_i_measurement.value)}U,                                           
+  .enable_voltage_compensation= ${boolvalreturn(appIns.gcheck_evoltcomp.value)}U,
+  .enable_pot_measurement     = ${boolvalreturn(appIns.gcheck_epotmeasurement.value)}U,
+  .enable_error_callback      = ${boolvalreturn(appIns.gcheck_udfnenable.value)}U
+};
+
+ACIM_FREQ_CTRL_t ${appInst} =
+{
+  .pwm_svm_ptr        = &${appIns.appres_pwm_svm.getInstanceLabel()},
+  .acim_config_ptr    = &${appInst}_Config,
+  .vf_control_ptr     = &${appInst}_vf_control,
+  .fcl_config_ptr     = &${appInst}_FCL_InterruptConfig,
+""");
+if((appIns.gcombo_ctrlschemeconfig.options.indexOf(appIns.gcombo_ctrlschemeconfig.value) == 0 ) ||
+	((appIns.gcombo_ctrlschemeconfig.options.indexOf(appIns.gcombo_ctrlschemeconfig.value) == 1 ) &&
+	(appIns.gcheck_positionctrl.value == false)))
+  {
+  out.print("""
+  .speed_set_ptr      = ${basic_speed_userd},
+"""); 
+  }
+  else
+  {
+  out.print("""
+  .position_set_ptr   = ${position_userd},
+"""); 
+  }
+  
+if(appIns.gcombo_pclmux.options.indexOf(appIns.gcombo_pclmux.value)==2)
+{
+  println "  .pcl_config_ptr          = &${appInst}_PCL_InterruptConfig,"
+}
+if((appIns.hwres_adcchan1.getSolverUri())||
+	(appIns.hwres_adcchan2.getSolverUri())||
+	(appIns.hwres_adcchan3.getSolverUri())||
+	(appIns.hwres_adcchan4.getSolverUri()))
+ {
+   println "  .adc_config_ptr          = &${appInst}_ADCConfig,"
+ }
+if(appIns.gcombo_ctrlschemeconfig.options.indexOf(appIns.gcombo_ctrlschemeconfig.value) == 0 )
+{
+  if(boolvalreturn(appIns.gcheck_basic_crntlimit.value) == 1 )
+  {
+    println "  .current_limit_ptr        = &${appInst}_current_limit,"
+  }
+}
+else
+{
+  if((boolvalreturn(appIns.gcheck_crnt_limit.value) == 1 ) ||
+		(boolvalreturn(appIns.gcheck_opcode_crnt_limit.value) == 1 ))
+   {
+	 println "  .current_limit_ptr        = &${appInst}_current_limit,"
+   }
+   if((boolvalreturn(appIns.gcheck_positionctrl.value) == 1 ) ||
+	   (boolvalreturn(appIns.gcheck_opcode_positionctrl.value) == 1 ))
+   {
+	 println "  .position_control_ptr    = &${appInst}_position_control,"
+	 if((boolvalreturn(appIns.gcheck_positionff.value) == 1 ) ||
+		 (boolvalreturn(appIns.gcheck_opcode_positionff.value) == 1 ))
+	 {
+out.print("""
+  .feed_forward_ptr        = &${appInst}_Feed_Forward,
+""")
+	 }
+   }
+   if((boolvalreturn(appIns.gcheck_slipctrl.value) == 1 ) ||
+	   (boolvalreturn(appIns.gcheck_opcode_slipctrl.value) == 1 ))
+   {
+     println "  .slip_control_ptr        = &${appInst}_slip_control,"
+   } 
+}
+out.print("""
+  .param_table_ptr         = &${appInst}_PT_Entry[0],
+  .error_table_ptr         = &${appInst}_ET_Entry[0],
+""")
+if(appIns.gcombo_rampconfig.options.indexOf(appIns.gcombo_rampconfig.value) > 0) {
+  fb_ramp = "&AUTOMATION_" + appIns.gcombo_rampconfig.value
+out.print("""
+#if (ACIM_FREQ_CTRL_IS_AUTOMATION_AVAILABLE == 1U)
+  .ramp_fb_ptr       = ${fb_ramp},
+#endif
+""");
+}
+out.print("""
+  #if (ACIM_FREQ_CTRL_IS_AUTOMATION_AVAILABLE == 1U)
+  .automation_ptr    = &AUTOMATION_Handle,
+  .acim_freq_ctrl_fb_ptr = &${appInst}_FB,
+#endif
+#if (ACIM_FREQ_CTRL_IS_DSM_AVAILABLE == 1U) 
+  .acim_statemachine       = &${appInst}_DSM,
+  #endif
+""");
+if(appIns.gcheck_evoltcomp.value == true)
+{
+out.print("""
+  .voltcomp_filter_ptr     = &${appInst}_voltcompFilter,
+""")
+}
+out.print("""
+  .voltage_limit           = ${(int)Voltlimt}U,          /*!((voltage limit in % * Maximum amplitude)/100), Multiplied by (2/sqrt3) if over modulation is enabled*/ 
+  .bootstrap_count         = (uint16_t)${(int)appIns.gint_bootstarpcount.value *1000/PWM_Period}, 
+  .pwm_frequency           = ${(int)PWM_Freq}U, 
+  .angle_scale             = ${(int)Angle_Scale_T}U, 
+  .overcurrent_limit       = ${(int)MAX_Motor_Current}U,            /*!((over current limit * 2^15)/( current scale)) , Maximum value is limited to 2^12*/ 
+"""); 
+if((appIns.gcombo_ctrlschemeconfig.options.indexOf(appIns.gcombo_ctrlschemeconfig.value) == 0 ) ||
+  ((appIns.gcombo_ctrlschemeconfig.options.indexOf(appIns.gcombo_ctrlschemeconfig.value) == 1 ) &&
+  (appIns.gcheck_positionctrl.value == false)))
+{
+out.print("""
+  .user_speed_set          = ${SpeedRef_T * ([1,-1][appIns.gcombo_motordirection.options.indexOf(appIns.gcombo_motordirection.value)])},                        /*!<(motor speed reference * 2^15)/(speed scale) , Sign depends on direction*/ 
+"""); 
+}
+else
+{
+out.print("""
+  .user_position_set       = ${(int)appIns.gfloat_positioninput.value *0xFFFF},
+"""); 
+}
+  out.print("""
+  .msm_state               = ACIM_FREQ_CTRL_MSM_STOP,
+  .operational_error       = (uint32_t)0,
+  .cw_state                = ACIM_FREQ_CTRL_CW_SWITCHED_OFF,
+  .angle_offset            = ${(int)ang_offset * ANG_TAR_VAL/360}U,                      
+  .amplitude_offset        = ${(int)amp_offset* POW_15/N_VDC}U,
+  .amplitude               = 0U,                  
+  .angle                   = 0U,                      
+  .overcurrent_counter     = 0U,                              
+  .motor_direction         = (int8_t)${["ACIM_FREQ_CTRL_CLOCKWISE_DIR","ACIM_FREQ_CTRL_ANTICLOCKWISE_DIR"][appIns.gcombo_motordirection.options.indexOf(appIns.gcombo_motordirection.value)]},
+  .motor_current           = 0,
+  .dclink_voltage          = 0,
+  .bootstrap_index         = 0U,
+  .pcl_function_ptr        = (ACIM_FREQ_CTRL_TASKREGISTER_PTR_t)${appInst}_PrimaryControlLoop,
+  .svp_function_ptr        = (ACIM_FREQ_CTRL_TASKREGISTER_PTR_t)${appInst}_SetValueProcessing,
+  .dsm_function_ptr        = ${["NULL","NULL","(ACIM_FREQ_CTRL_TASKREGISTER_PTR_t)AUTOMATION_SM_Handler"][appIns.gcombo_dsmmux.options.indexOf(appIns.gcombo_dsmmux.value)]},
+  .pcl_time                = ${appIns.gint_pcltime.value}U,
+  .svp_time                = ${appIns.gint_svptime.value}U,
+  .dsm_time                = ${appIns.gint_dsmtime.value}U,
+  .msm_time                = ${appIns.gint_mcsmtime.value}U,
+  .app_id                  = (uint8_t)0,
+  .fcl_div_value           = (uint8_t)1,
+  .pcl_div_value           = (uint8_t)1,
+  .svp_div_value           = (uint8_t)1,
+  .state                   = (uint8_t)ACIM_FREQ_CTRL_UNINITIALISED   
+};
+""");
+
+/* ------------------- Begin : Parameter table configuration --------------------- */
+ out.print("""
+
+/* Parameter table */
+ACIM_FREQ_CTRL_PT_ENTRY_t ${appInst}_PT_Entry[ACIM_FREQ_CTRL_PID_MAX] =
+{
+/*Parameter table entry for control word state */
+  {
+    .param_value           = (int32_t*)(void*)&${appInst}.cw_state,
+    .minval                = 0,                                                    
+    .maxval                = 31,                                   
+    .scale  	           = 32767U,					               
+    .inv_scale             = 32767U,                                                         
+    .set_paramvalue_ptr    = (ACIM_FREQ_CTRL_SETPARAMVALUE_PTR)ACIM_FREQ_CTRL_SetControlWordState,
+    .write_access          = (uint8_t)ACIM_FREQ_CTRL_PH_WA_ALLOWED,                      
+    .size                  = (uint8_t)4                          /*!< Unused*/ 
+  },
+/*Parameter table entry for user speed set */
+  {
+    .param_value           = (int32_t*)(void*)&${appInst}.user_speed_set,
+    .minval                = -${(int)appIns.gint_speedref.maxValue},                           
+    .maxval                = ${(int)appIns.gint_speedref.maxValue},             
+    .scale  	           = ${(int)Speed_Scale}U,					     
+    .inv_scale             = ${(int)Inv_Speed_Scale}U,                                            
+    .set_paramvalue_ptr    = NULL,
+    .write_access          = (uint8_t)${["ACIM_FREQ_CTRL_PH_WA_NOT_ALLOWED","ACIM_FREQ_CTRL_PH_WA_ALLOWED"][speed_wr_access]},                     
+    .size                  = (uint8_t)4                          /*!< Unused*/
+  },
+/*Parameter table entry for vf constant */
+  {
+    .param_value           = (int32_t*)(void*)&${appInst}_vf_control.vf_constant,
+    .minval                = ${(int)VFConst_min},                           
+    .maxval                = ${(int)VFConst_max},             
+    .scale  	           = ${(int)N_VF}U,					     
+    .inv_scale             = ${(int)(POW_15*POW_15/N_VF)}U,                                             
+    .set_paramvalue_ptr    = NULL,
+    .write_access          = (uint8_t)ACIM_FREQ_CTRL_PH_WA_ALLOWED,                      
+    .size                  = (uint8_t)4                        /*!< Unused*/
+  },
+/*Parameter table entry for vf offset */
+  {
+    .param_value           = (int32_t*)(void*)&${appInst}_vf_control.vf_offset,
+    .minval                = ${(int)VoltOffset_min},                          
+    .maxval                = ${(int)VoltOffset_max},             
+    .scale  	           = ${(int)N_VDC}U,					     
+    .inv_scale             = ${(int)(POW_15*POW_15/N_VDC)}U,                                            
+    .set_paramvalue_ptr    = NULL,
+    .write_access          = (uint8_t)ACIM_FREQ_CTRL_PH_WA_ALLOWED,                      
+    .size                  = (uint8_t)4                       /*!< Unused*/
+  },
+/*Parameter table entry for motor direction */
+  {
+    .param_value           = (int32_t*)(void*)&${appInst}.motor_direction,
+    .minval                = 0,                                          /*!< Not Applicable*/                          
+    .maxval                = 0,                                          /*!< Not Applicable*/             
+    .scale  	           = 32767U,	                                       				     
+    .inv_scale             = 32767U,                                            
+    .set_paramvalue_ptr    = (ACIM_FREQ_CTRL_SETPARAMVALUE_PTR)ACIM_FREQ_CTRL_SetMotorDirection,                    
+    .write_access          = (uint8_t)ACIM_FREQ_CTRL_PH_WA_ALLOWED,                       
+    .size                  = (uint8_t)4                                  /*!< Unused*/
+  },
+/*Parameter table entry for pwm frequency */
+  {
+    .param_value        = (int32_t*)(void*)&${appInst}.pwm_frequency,
+    .minval             = ${(int)appIns.gint_acimpwmfreq.minValue},                           
+    .maxval             = ${(int)appIns.gint_acimpwmfreq.maxValue},             
+    .scale  	        = 32767U,                                            					     
+    .inv_scale          = 32767U,                                                                 
+    .set_paramvalue_ptr = (ACIM_FREQ_CTRL_SETPARAMVALUE_PTR)ACIM_FREQ_CTRL_SetPWMFrequency,
+    .write_access       = (uint8_t)ACIM_FREQ_CTRL_PH_WA_ALLOWED,                      
+    .size               = (uint8_t)4                                     /*!< Unused*/
+  },
+/*Parameter table entry for over current limit */
+  {
+    .param_value        = (int32_t*)(void*)&${appInst}.overcurrent_limit,
+    .minval             = ${(int)appIns.gfloat_maxcurrentlimit.minValue},                           
+    .maxval             = ${(int)appIns.gfloat_maxcurrentlimit.maxValue},             
+    .scale  	        = ${(int)N_I}U,					     
+    .inv_scale          = ${(int)(POW_15*POW_15/N_I)}U,    
+    .set_paramvalue_ptr = NULL,                  
+    .write_access       = (uint8_t)ACIM_FREQ_CTRL_PH_WA_ALLOWED,                      
+    .size               = (uint8_t)4                                   /*!< Unused*/                  
+  },
+/*Parameter table entry for voltage limit */
+  {
+    .param_value        = (int32_t*)(void*)&${appInst}.voltage_limit,
+    .minval             = ${(int)appIns.gfloat_maxvoltlimit.minValue},   /* Value is in % */                       
+    .maxval             = ${(int)appIns.gfloat_maxvoltlimit.maxValue},   /* Value is in % */           
+    .scale  	        = ${Voltlimt_Scale}U,        					             
+    .inv_scale          = ${Inv_Voltlimt_Scale}U,                               
+    .set_paramvalue_ptr = NULL,                    
+    .write_access       = (uint8_t)ACIM_FREQ_CTRL_PH_WA_ALLOWED,                      
+    .size               = (uint8_t)4                                 /*!< Unused*/        
+  },
+/* Parameter table entry for position proportional gain(kp) */
+  {
+    .param_value        = (int32_t*)(void*)${["NULL","(uint32_t*)&${appInst}_Position_PI.kp"][((appIns.gcombo_ctrlschemeconfig.options.indexOf(appIns.gcombo_ctrlschemeconfig.value)) & 
+(boolvalreturn(appIns.gcheck_positionctrl.value)|boolvalreturn(appIns.gcheck_opcode_positionctrl.value)))]}, 
+    .minval             = ${(int)appIns.gfloat_positionkp.minValue},                           
+    .maxval             = ${(int)appIns.gfloat_positionkp.maxValue},             
+    .scale  	        = 32767U,					     
+    .inv_scale          = 32767U, 
+    .set_paramvalue_ptr = NULL,                     
+    .write_access       = (uint8_t)${["ACIM_FREQ_CTRL_PH_WA_NOT_ALLOWED","ACIM_FREQ_CTRL_PH_WA_ALLOWED"][((appIns.gcombo_ctrlschemeconfig.options.indexOf(appIns.gcombo_ctrlschemeconfig.value)) & 
+(boolvalreturn(appIns.gcheck_positionctrl.value)|boolvalreturn(appIns.gcheck_opcode_positionctrl.value)))]},                      
+    .size               = (uint8_t)4                               /*!< Unused*/
+  },
+/* Parameter table entry for position integral gain(ki) */
+  {
+    .param_value        = (int32_t*)(void*)${["NULL","(uint32_t*)&${appInst}_Position_PI.ki"][((appIns.gcombo_ctrlschemeconfig.options.indexOf(appIns.gcombo_ctrlschemeconfig.value)) & 
+(boolvalreturn(appIns.gcheck_positionctrl.value)|boolvalreturn(appIns.gcheck_opcode_positionctrl.value)))]}, 
+    .minval             = ${(int)appIns.gfloat_positionki.minValue},                           
+    .maxval             = ${(int)appIns.gfloat_positionki.maxValue},             
+    .scale  	        = 32767U,					     
+    .inv_scale          = 32767U, 
+    .set_paramvalue_ptr = NULL,                     
+    .write_access       = (uint8_t)${["ACIM_FREQ_CTRL_PH_WA_NOT_ALLOWED","ACIM_FREQ_CTRL_PH_WA_ALLOWED"][((appIns.gcombo_ctrlschemeconfig.options.indexOf(appIns.gcombo_ctrlschemeconfig.value)) & 
+(boolvalreturn(appIns.gcheck_positionctrl.value)|boolvalreturn(appIns.gcheck_opcode_positionctrl.value)))]},                      
+    .size               = (uint8_t)4                              /*!< Unused*/                 
+  },
+/* Parameter table entry for slip proportional gain(kp) */
+  {
+    .param_value        = (int32_t*)(void*)${["NULL","(uint32_t*)&${appInst}_Slip_PI.kp"][((appIns.gcombo_ctrlschemeconfig.options.indexOf(appIns.gcombo_ctrlschemeconfig.value)) & 
+(boolvalreturn(appIns.gcheck_slipctrl.value)|boolvalreturn(appIns.gcheck_opcode_slipctrl.value)))]}, 
+    .minval             = ${(int)appIns.gfloat_slipkp.minValue},                           
+    .maxval             = ${(int)appIns.gfloat_slipkp.maxValue},             
+    .scale  	        = 32767U,					     
+    .inv_scale          = 32767U,  
+    .set_paramvalue_ptr = NULL,                    
+    .write_access       = (uint8_t)${["ACIM_FREQ_CTRL_PH_WA_NOT_ALLOWED","ACIM_FREQ_CTRL_PH_WA_ALLOWED"][((appIns.gcombo_ctrlschemeconfig.options.indexOf(appIns.gcombo_ctrlschemeconfig.value)) & 
+(boolvalreturn(appIns.gcheck_slipctrl.value)|boolvalreturn(appIns.gcheck_opcode_slipctrl.value)))]},                     
+    .size               = (uint8_t)4                             /*!< Unused*/           
+  },
+/* Parameter table entry for slip integral gain(ki) */
+  {
+    .param_value        = (int32_t*)(void*)${["NULL","(uint32_t*)&${appInst}_Slip_PI.ki"][((appIns.gcombo_ctrlschemeconfig.options.indexOf(appIns.gcombo_ctrlschemeconfig.value)) & 
+(boolvalreturn(appIns.gcheck_slipctrl.value)|boolvalreturn(appIns.gcheck_opcode_slipctrl.value)))]}, 
+    .minval             = ${(int)appIns.gfloat_slipki.minValue},                           
+    .maxval             = ${(int)appIns.gfloat_slipki.maxValue},             
+    .scale  	        = 32767U,					     
+    .inv_scale          = 32767U,  
+    .set_paramvalue_ptr = NULL,                    
+    .write_access       = (uint8_t)${["ACIM_FREQ_CTRL_PH_WA_NOT_ALLOWED","ACIM_FREQ_CTRL_PH_WA_ALLOWED"][((appIns.gcombo_ctrlschemeconfig.options.indexOf(appIns.gcombo_ctrlschemeconfig.value)) & 
+(boolvalreturn(appIns.gcheck_slipctrl.value)|boolvalreturn(appIns.gcheck_opcode_slipctrl.value)))]},                    
+    .size               = (uint8_t)4                           /*!< Unused*/ 
+  },
+/*Parameter table entry for reference input position of position control */
+  {
+    .param_value        = (int32_t*)(void*)${["NULL","&${appInst}.user_position_set"][((appIns.gcombo_ctrlschemeconfig.options.indexOf(appIns.gcombo_ctrlschemeconfig.value)) & (boolvalreturn(appIns.gcheck_positionctrl.value)|boolvalreturn(appIns.gcheck_opcode_positionctrl.value)))]},     
+    .minval             = (int32_t)0x80000001,                          
+    .maxval             = (int32_t)0x7FFF0000,             
+    .scale  	        = 1U,					     
+    .inv_scale          = 32767U, 
+    .set_paramvalue_ptr = NULL,                     
+    .write_access       = (uint8_t)${["ACIM_FREQ_CTRL_PH_WA_NOT_ALLOWED","ACIM_FREQ_CTRL_PH_WA_ALLOWED"][pos_wr_access]},                     
+    .size               = (uint8_t)4                          /*!< Unused*/
+  },
+/*Parameter table entry for current limit */
+  {
+    .param_value        = (int32_t*)(void*)${["NULL","&${appInst}_current_limit.current_limit"][
+     (appIns.gcombo_ctrlschemeconfig.options.indexOf(appIns.gcombo_ctrlschemeconfig.value) & (boolvalreturn(appIns.gcheck_crnt_limit.value) | boolvalreturn(appIns.gcheck_opcode_crnt_limit.value))) | 
+     (boolvalreturn(appIns.gcombo_ctrlschemeconfig.value == "Basic Configuration") & boolvalreturn(appIns.gcheck_basic_crntlimit.value))]},
+    .minval             = ${(int)appIns.gfloat_basic_currentlimit.minValue},                           
+    .maxval             = ${(int)appIns.gfloat_basic_currentlimit.maxValue},             
+    .scale  	        = ${(int)N_I}U,					     
+    .inv_scale          = ${(int)(POW_15*POW_15/N_I)}U, 
+    .set_paramvalue_ptr = NULL,                     
+    .write_access       = (uint8_t)${["ACIM_FREQ_CTRL_PH_WA_NOT_ALLOWED","ACIM_FREQ_CTRL_PH_WA_ALLOWED"][
+     (appIns.gcombo_ctrlschemeconfig.options.indexOf(appIns.gcombo_ctrlschemeconfig.value) & (boolvalreturn(appIns.gcheck_crnt_limit.value) | boolvalreturn(appIns.gcheck_opcode_crnt_limit.value))) | 
+     (boolvalreturn(appIns.gcombo_ctrlschemeconfig.value == "Basic Configuration") & boolvalreturn(appIns.gcheck_basic_crntlimit.value))]},                      
+    .size               = (uint8_t)4                        /*!< Unused*/       
+  },
+/* Parameter table entry for current limit proportional gain(kp) */
+  {
+    .param_value        = (int32_t*)(void*)${["NULL","(uint32_t*)&${appInst}_Current_Limit_PI.kp"][
+     (appIns.gcombo_ctrlschemeconfig.options.indexOf(appIns.gcombo_ctrlschemeconfig.value) & (boolvalreturn(appIns.gcheck_crnt_limit.value) | boolvalreturn(appIns.gcheck_opcode_crnt_limit.value))) | 
+     (boolvalreturn(appIns.gcombo_ctrlschemeconfig.value == "Basic Configuration") & boolvalreturn(appIns.gcheck_basic_crntlimit.value))]},
+
+    .minval             = ${(int)appIns.gfloat_basic_currentlimit.minValue},                           
+    .maxval             = ${(int)appIns.gfloat_basic_currentlimit.maxValue},             
+    .scale  	        = 32767U,					     
+    .inv_scale          = 32767U,  
+    .set_paramvalue_ptr = NULL,                    
+    .write_access       = (uint8_t)${["ACIM_FREQ_CTRL_PH_WA_NOT_ALLOWED","ACIM_FREQ_CTRL_PH_WA_ALLOWED"][
+     (appIns.gcombo_ctrlschemeconfig.options.indexOf(appIns.gcombo_ctrlschemeconfig.value) & (boolvalreturn(appIns.gcheck_crnt_limit.value) | boolvalreturn(appIns.gcheck_opcode_crnt_limit.value))) | 
+     (boolvalreturn(appIns.gcombo_ctrlschemeconfig.value == "Basic Configuration") & boolvalreturn(appIns.gcheck_basic_crntlimit.value))]},                      
+    .size               = (uint8_t)4                      /*!< Unused*/           
+  },
+/* Parameter table entry for current limit integral gain(ki) */
+  {
+    .param_value        = (int32_t*)(void*)${["NULL","(uint32_t*)&${appInst}_Current_Limit_PI.ki"][
+     (appIns.gcombo_ctrlschemeconfig.options.indexOf(appIns.gcombo_ctrlschemeconfig.value) & (boolvalreturn(appIns.gcheck_crnt_limit.value) | boolvalreturn(appIns.gcheck_opcode_crnt_limit.value))) | 
+     (boolvalreturn(appIns.gcombo_ctrlschemeconfig.value == "Basic Configuration") & boolvalreturn(appIns.gcheck_basic_crntlimit.value))]},
+
+    .minval             = ${(int)appIns.gfloat_basic_currentlimit.minValue},                           
+    .maxval             = ${(int)appIns.gfloat_basic_currentlimit.maxValue},             
+    .scale  	        = 32767U,					     
+    .inv_scale          = 32767U, 
+    .set_paramvalue_ptr = NULL,                    
+    .write_access       = (uint8_t)${["ACIM_FREQ_CTRL_PH_WA_NOT_ALLOWED","ACIM_FREQ_CTRL_PH_WA_ALLOWED"][
+     (appIns.gcombo_ctrlschemeconfig.options.indexOf(appIns.gcombo_ctrlschemeconfig.value) & (boolvalreturn(appIns.gcheck_crnt_limit.value) | boolvalreturn(appIns.gcheck_opcode_crnt_limit.value))) | 
+     (boolvalreturn(appIns.gcombo_ctrlschemeconfig.value == "Basic Configuration") & boolvalreturn(appIns.gcheck_basic_crntlimit.value))]},                      
+    .size               = (uint8_t)4                   /*!< Unused*/      
+  },
+/*Parameter table entry for angle offset */
+  {
+    .param_value        = (int32_t*)(void*)&${appInst}.angle_offset,
+    .minval             = ${(int)ang_offset_min},                           
+    .maxval             = ${(int)ang_offset_max},             
+    .scale  	        = 360U,					     
+    .inv_scale          = 46603U,                     /*2^24/360*/                                   
+    .set_paramvalue_ptr = (ACIM_FREQ_CTRL_SETPARAMVALUE_PTR)ACIM_FREQ_CTRL_SetAngleoffset,
+    .write_access       = (uint8_t)ACIM_FREQ_CTRL_PH_WA_ALLOWED,                      
+    .size               = (uint8_t)4                 /*!< Unused*/
+  },
+/*Parameter table entry for amplitude offset */
+  {
+    .param_value        = (int32_t*)(void*)&${appInst}.amplitude_offset,
+    .minval             = ${(int)amp_offset_min},                           
+    .maxval             = ${(int)amp_offset_max},             
+    .scale  	        = ${(int)N_VDC}U,					     
+    .inv_scale          = ${(int)(POW_15*POW_15/N_VDC)}U,                                         
+    .set_paramvalue_ptr = NULL,
+    .write_access       = (uint8_t)ACIM_FREQ_CTRL_PH_WA_ALLOWED,                      
+    .size               = (uint8_t)4               /*!< Unused*/
+  },
+/*Parameter table entry for additive position of position control */
+  {
+    .param_value        = (int32_t*)(void*)${["NULL","&${appInst}_position_control.additive_position"][((appIns.gcombo_ctrlschemeconfig.options.indexOf(appIns.gcombo_ctrlschemeconfig.value)) & 
+(boolvalreturn(appIns.gcheck_positionctrl.value)|boolvalreturn(appIns.gcheck_opcode_positionctrl.value)))]}, 
+    .minval             = (int32_t)0x80000001,                       
+    .maxval             = (int32_t)0x7FFF0000,               
+    .scale  	        = 32767U,					     
+    .inv_scale          = 32767U,   
+    .set_paramvalue_ptr = NULL,                   
+    .write_access       = (uint8_t)${["ACIM_FREQ_CTRL_PH_WA_NOT_ALLOWED","ACIM_FREQ_CTRL_PH_WA_ALLOWED"][((appIns.gcombo_ctrlschemeconfig.options.indexOf(appIns.gcombo_ctrlschemeconfig.value)) & 
+(boolvalreturn(appIns.gcheck_positionctrl.value)|boolvalreturn(appIns.gcheck_opcode_positionctrl.value)))]},                      
+    .size               = (uint8_t)4             /*!< Unused*/          
+  },
+/*Parameter table entry for additive speed of slip control */
+  {
+    .param_value        = (int32_t*)(void*)${["NULL","(uint32_t*)&${appInst}_slip_control.additive_speed"][((appIns.gcombo_ctrlschemeconfig.options.indexOf(appIns.gcombo_ctrlschemeconfig.value)) & 
+(boolvalreturn(appIns.gcheck_slipctrl.value)|boolvalreturn(appIns.gcheck_opcode_slipctrl.value)))]}, 
+    .minval             = ${(int)appIns.gfloat_additivespeed.minValue},                           
+    .maxval             = ${(int)appIns.gfloat_additivespeed.maxValue},             
+    .scale  	        = ${(int)Speed_Scale}U,					     
+    .inv_scale          = ${(int)Inv_Speed_Scale}U,  
+    .set_paramvalue_ptr = NULL,                    
+    .write_access       = (uint8_t)${["ACIM_FREQ_CTRL_PH_WA_NOT_ALLOWED","ACIM_FREQ_CTRL_PH_WA_ALLOWED"][((appIns.gcombo_ctrlschemeconfig.options.indexOf(appIns.gcombo_ctrlschemeconfig.value)) & 
+(boolvalreturn(appIns.gcheck_slipctrl.value)|boolvalreturn(appIns.gcheck_opcode_slipctrl.value)))]},                     
+    .size               = (uint8_t)4           /*!< Unused*/          
+  }
+};
+ """);
+/* ------------------- END : Parameter Table configuration --------------------- */
+
+/* ------------------- Begin : Error table configuration --------------------- */
+out.print("""
+/* Error table */
+ACIM_FREQ_CTRL_ET_ENTRY_t ${appInst}_ET_Entry[ACIM_FREQ_CTRL_EID_MAX] =
+{
+/*Error table entry for App initialisation failed */
+  {
+    .error_handler_ptr_t    = NULL,
+    .error_id  	            = (uint8_t)ACIM_FREQ_CTRL_EID_INIT_FAILED,					                
+    .error_status           = (uint8_t)ACIM_FREQ_CTRL_ERROR_CLEARED,                                 
+    .error_severity         = (uint8_t)ACIM_FREQ_CTRL_ERROR                     
+  },
+/*Error table entry for SVP registration failed */
+  {  
+    .error_handler_ptr_t    = NULL,           
+    .error_id  	            = (uint8_t)ACIM_FREQ_CTRL_EID_SVP_REG_FAILED,					                
+    .error_status           = (uint8_t)ACIM_FREQ_CTRL_ERROR_CLEARED,                                 
+    .error_severity         = (uint8_t)ACIM_FREQ_CTRL_ERROR                    
+  },
+/*Error table entry for PCL registration failed */
+  {  
+    .error_handler_ptr_t    = NULL,         
+    .error_id  	            = (uint8_t)ACIM_FREQ_CTRL_EID_PCL_REG_FAILED,					                
+    .error_status           = (uint8_t)ACIM_FREQ_CTRL_ERROR_CLEARED,                                 
+    .error_severity         = (uint8_t)ACIM_FREQ_CTRL_ERROR                    
+  },
+/*Error table entry for trap detection */
+  {  
+    .error_handler_ptr_t    = (ACIM_FREQ_CTRL_ERRORHANDLER_PTR_t)ACIM_FREQ_CTRL_MotorStop,        
+    .error_id  	            = (uint8_t)ACIM_FREQ_CTRL_EID_TRAP_ERROR,					                
+    .error_status           = (uint8_t)ACIM_FREQ_CTRL_ERROR_CLEARED,                                 
+    .error_severity         = (uint8_t)ACIM_FREQ_CTRL_ERROR_CRITICAL                     
+  },
+/*Error table entry for over current detection */
+  {  
+    .error_handler_ptr_t    = (ACIM_FREQ_CTRL_ERRORHANDLER_PTR_t)ACIM_FREQ_CTRL_MotorStop,        
+    .error_id  	            = (uint8_t)ACIM_FREQ_CTRL_EID_OVERCURRENT,					                
+    .error_status           = (uint8_t)ACIM_FREQ_CTRL_ERROR_CLEARED,                                 
+    .error_severity         = (uint8_t)ACIM_FREQ_CTRL_ERROR_CRITICAL                     
+  }
+};
+ """);
+/* ------------------- END : Error table configuration --------------------- */
+
+/* -------------------- Begin : Function Block Handler ----------------------------*/
+if((appIns.gcombo_ctrlschemeconfig.options.indexOf(appIns.gcombo_ctrlschemeconfig.value) == 1 ) &&
+((appIns.gcheck_positionctrl.value == true) || (appIns.gcheck_opcode_positionctrl.value == true)))
+{
+out.print("""
+#if (ACIM_FREQ_CTRL_IS_AUTOMATION_AVAILABLE == 1U)
+int32_t ** ${appInst}_input_array[] = {(int32_t**)&${appInst}.position_set_ptr};
+int32_t * ${appInst}_output_array[] = {(int32_t*)(void*)&${appInst}.user_position_set, 
+                                        (int32_t*)(void*)&${appInst}_PT_Entry[ACIM_FREQ_CTRL_PID_POSITION_REF].scale,
+                                        (int32_t*)(void*)&${appInst}.angle,
+                                        (int32_t*)(void*)&${appInst}.amplitude};
+AUTOMATION_FB_HANDLE_t ${appInst}_FB =
+{
+  .input_ptr  = ${appInst}_input_array,
+  .output_ptr = ${appInst}_output_array,
+  .config_ptr = &${appInst},
+  .name       = "${appInst}",
+  .function   = NULL
+};
+#endif
+  """);
+}
+else
+{
+	out.print("""
+#if (ACIM_FREQ_CTRL_IS_AUTOMATION_AVAILABLE == 1U)
+int32_t ** ${appInst}_input_array[] = {(int32_t**)&${appInst}.speed_set_ptr};
+int32_t * ${appInst}_output_array[] = {(int32_t*)(void*)&${appInst}.user_speed_set, 
+                                        (int32_t*)(void*)&${appInst}_PT_Entry[ACIM_FREQ_CTRL_PID_SPEED_REF].scale,
+                                        (int32_t*)(void*)&${appInst}.angle,
+                                        (int32_t*)(void*)&${appInst}.amplitude};
+AUTOMATION_FB_HANDLE_t ${appInst}_FB =
+{
+  .input_ptr  = ${appInst}_input_array,
+  .output_ptr = ${appInst}_output_array,
+  .config_ptr = &${appInst},
+  .name       = "${appInst}",
+  .function   = NULL
+};
+#endif
+  """);
+}
+/* -------------------- END : Function Block Handler ----------------------------*/
+}

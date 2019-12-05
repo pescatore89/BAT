@@ -1,0 +1,479 @@
+package Model.APPS.ACIM_FREQ_CTRL.v4_0_8;
+
+// Import statements
+import ifx.davex.app.manifest.*
+
+abstract class ACIM_FREQ_CTRL_GUI extends AppManifest {
+	/*Begin : UI variable section */
+	 public GTab gtab_basiccontrolscheme;
+	 public GTab gtab_controlscheme;
+	 public GTab gtab_controlpanel;
+	 public GTab gtab_adcconfig;
+	 public GTab gtab_errorhandler;
+	 public GTab gtab_interrupts;
+	 public GInteger gint_acimpwmfreq;
+	 public GInteger gint_speedref;
+	 public GInteger gint_polepair;
+	 public GInteger gint_ts_acimpwmfreq;
+	 public GInteger gint_fcltime;
+	 public GInteger gint_pcltime;
+	 public GInteger gint_svptime;
+	 public GInteger gint_mcsmtime;
+	 public GInteger gint_dsmtime;
+	 public GInteger gint_fcldesiretime;
+	 public GInteger gint_pcldesiretime;
+	 public GInteger gint_svpdesiretime;
+	 public GInteger gint_dsmdesiretime;
+	 public GInteger gint_fcldiv;
+	 public GInteger gint_pcldiv;
+	 public GInteger gint_svpdiv;
+	 public GInteger gint_bootstarpcount;
+	 public GInteger gint_avg_i_measurement;
+	 public GInteger gint_dc_link_measurement;
+	 public GInteger gint_pot_measurement;
+	 public GInteger gint_user_defined_measurement;
+	 public GCombo gcombo_ctrlschemeconfig;
+	 public GCombo gcombo_svmscheme;
+	 public GCombo gcombo_etrap;
+	 public GCombo gcombo_speedset_opt;
+	 public GCombo gcombo_current_actval;
+	 public GCombo gcombo_position_ctrl;
+	 public GCombo gcombo_position_actval;
+	 public GCombo gcombo_speed_ctrl;
+	 public GCombo gcombo_speed_actval;
+	 public GCombo gcombo_motordirection;
+	 public GCombo gcombo_rampconfig;
+	 public GCombo gcombo_pclmux;
+	 public GCombo gcombo_svpmux;
+	 public GCombo gcombo_dsmmux;
+	 public GCombo gcombo_einvterpin;
+	 public GCombo gcombo_highsideswitch;
+	 public GCombo gcombo_lowsideswitch;
+	 public GCombo gcombo_curntmsrmnt;
+	 public GCombo gcombo_avg_i_measurement;
+	 public GCombo gcombo_dc_link_measurement;
+	 public GCombo gcombo_pot_measurement;
+	 public GCombo gcombo_user_defined_measurement;
+	 public GFloat gfloat_maxcurrentlimit;
+	 public GFloat gfloat_maxvoltlimit;
+	 public GFloat gfloat_vfconstant;
+	 public GFloat gfloat_udvfconstant;
+	 public GFloat gfloat_voltageoffset;
+	 public GFloat gfloat_udvoltageoffset;
+	 public GFloat gfloat_basic_angleoffset;
+	 public GFloat gfloat_basic_amplitudeoffset;
+	 public GFloat gfloat_nominalvolt;
+	 public GFloat gfloat_nominalspeed;
+	 public GFloat gfloat_currentkp;
+	 public GFloat gfloat_currentki;
+	 public GFloat gfloat_current_out_limit;
+	 public GFloat gfloat_current_buf_limit;
+	 public GFloat gfloat_basic_currentlimit;
+	 public GFloat gfloat_slipkp;
+	 public GFloat gfloat_slipki;
+	 public GFloat gfloat_slip_out_limit;
+	 public GFloat gfloat_slip_buf_limit;
+	 public GFloat gfloat_additivespeed;
+	 public GFloat gfloat_ffdeadband;
+	 public GFloat gfloat_ffgain;
+	 public GFloat gfloat_ffdifgain;
+	 public GFloat gfloat_positionkp;
+	 public GFloat gfloat_positionki;
+	 public GFloat gfloat_position_out_limit;
+	 public GFloat gfloat_position_buf_limit;
+	 public GFloat gfloat_positioninput;
+	 public GFloat gfloat_additive_position;
+	 public GFloat gfloat_dclinkvolt;
+	 public GFloat gfloat_deadtime_rising_edge;
+	 public GFloat gfloat_deadtime_falling_edge;
+	 public GFloat gfloat_switchdelay;
+	 public GFloat gfloat_vadcref;
+	 public GFloat gfloat_rshunt;
+	 public GFloat gfloat_ampgain;
+	 public GFloat gfloat_maxcrnt;
+	 public GFloat gfloat_ampbiasvolt;
+	 public GFloat gfloat_voltdidratio;
+	 public GString gstring_ctrltech;
+	 public GString gstring_ud_speedset_ptr;
+	 public GString gstring_usercode_position_ff;
+	 public GString gstring_usercode_position_control;
+	 public GString gstring_usercode_slip_control;
+	 public GString gstring_usercode_current_limit;
+	 public GString gstring_usercode_angle_ramp;
+	 public GString gstring_usercode_vf_control;
+	 public GString gstring_positionset_ptr;
+	 public GString gstring_speedsetadv_ptr;
+	 public GString gstring_actpos_ptr;
+	 public GString gstring_actspeed_ptr;
+	 public GString gstring_actcur_ptr;
+	 public GString gstring_avg_i_measurement;
+	 public GString gstring_dc_link_measurement;
+	 public GString gstring_pot_measurement;
+	 public GString gstring_user_defined_measurement;
+	 public GCheck gcheck_eovermodulation;
+	 public GCheck gcheck_eparamhandler;
+	 public GCheck gcheck_basic_crntlimit;
+	 public GCheck gcheck_slipctrl;
+	 public GCheck gcheck_opcode_angle_ramp;
+	 public GCheck gcheck_opcode_positionctrl;
+	 public GCheck gcheck_positionctrl;
+	 public GCheck gcheck_opcode_vf_control;
+	 public GCheck gcheck_opcode_crnt_limit;
+	 public GCheck gcheck_opcode_slipctrl;
+	 public GCheck gcheck_opcode_positionff;
+	 public GCheck gcheck_positionff;
+	 public GCheck gcheck_crnt_limit;
+	 public GCheck gcheck_angle_ramp;
+	 public GCheck gcheck_vf_control;
+	 public GCheck gcheck_userdefconf;
+	 public GCheck gcheck_effdelay;
+	 public GCheck gcheck_eampbiasvolt;
+	 public GCheck gcheck_eovercrntdet;
+	 public GCheck gcheck_evoltcomp;
+	 public GCheck gcheck_epotmeasurement;
+	 public GCheck gcheck_avg_i_measurement;
+	 public GCheck gcheck_avg_i_refill;
+	 public GCheck gcheck_avg_i_ext_trigger;
+	 public GCheck gcheck_dc_link_measurement;
+	 public GCheck gcheck_dc_link_refill;
+	 public GCheck gcheck_dc_link_ext_trigger;
+	 public GCheck gcheck_pot_measurement;
+	 public GCheck gcheck_pot_refill;
+	 public GCheck gcheck_pot_ext_trigger;
+	 public GCheck gcheck_user_defined_measurement;
+	 public GCheck gcheck_user_defined_refill;
+	 public GCheck gcheck_user_defined_ext_trigger;
+	 public GCheck gcheck_udfnenable;
+	 public GLabel glabel_ud_speedset_ptr;
+	 public GLabel glabel_speedset_opt;
+	 public GLabel glabel_basic_crntlimit;
+	 public GLabel glabel_usercode_position_ff;
+	 public GLabel glabel_usercode_position_control;
+	 public GLabel glabel_usercode_slip_control;
+	 public GLabel glabel_usercode_current_limit;
+	 public GLabel glabel_usercode_angle_ramp;
+	 public GLabel glabel_usercode_vf_control;
+	 public GLabel glabel_speedsetadv_ptr;
+	 public GLabel glabel_positionset_ptr;
+	 public GLabel glabel_actpos_ptr;
+	 public GLabel glabel_actspeed_ptr;
+	 public GLabel glabel_actcur_ptr;
+	 public GLabel glabel_speed_actval;
+	 public GLabel glabel_speed_ctrl;
+	 public GLabel glabel_position_actval;
+	 public GLabel glabel_position_ctrl;
+	 public GLabel glabel_current_actval;
+	 public GLabel glabel_vf_control;
+	 public GLabel glabel_angle_ramp;
+	 public GLabel glabel_opcode_angle_ramp;
+	 public GLabel glabel_opcode_positionff;
+	 public GLabel glabel_opcode_crnt_limit;
+	 public GLabel glabel_opcode_positionctrl;
+	 public GLabel glabel_opcode_vf_control;
+	 public GLabel glabel_crnt_limit;
+	 public GLabel glabel_slipctrl;
+	 public GLabel glabel_opcode_slipctrl;
+	 public GLabel glabel_positionctrl;
+	 public GLabel glabel_positionff;
+	 public GLabel glabel_basic_angleoffset;
+	 public GLabel glabel_basic_amplitudeoffset;
+	 public GLabel glabel_nominalvolt;
+	 public GLabel glabel_nominalspeed;
+	 public GLabel glabel_polepair;
+	 public GLabel glabel_currentkp;
+	 public GLabel glabel_currentki;
+	 public GLabel glabel_current_out_limit;
+	 public GLabel glabel_current_buf_limit;
+	 public GLabel glabel_basic_currentlimit;
+	 public GLabel glabel_slipkp;
+	 public GLabel glabel_slipki;
+	 public GLabel glabel_slip_out_limit;
+	 public GLabel glabel_slip_buf_limit;
+	 public GLabel glabel_additivespeed;
+	 public GLabel glabel_ffdeadband;
+	 public GLabel glabel_ffgain;
+	 public GLabel glabel_ffdifgain;
+	 public GLabel glabel_positionkp;
+	 public GLabel glabel_positionki;
+	 public GLabel glabel_position_out_limit;
+	 public GLabel glabel_position_buf_limit;
+	 public GLabel glabel_positioninput;
+	 public GLabel glabel_additive_position;
+	 public GLabel glabel_rampconfig;
+	 public GLabel glabel_udvoltageoffset;
+	 public GLabel glabel_udvfconstant;
+	 public GLabel glabel_ts_acimpwmfreq;
+	 public GLabel glabel_pclmux;
+	 public GLabel glabel_svpmux;
+	 public GLabel glabel_dsmmux;
+	 public GLabel glabel_dsmtime;
+	 public GLabel glabel_fcltime;
+	 public GLabel glabel_pcltime;
+	 public GLabel glabel_svptime;
+	 public GLabel glabel_mcsmtime;
+	 public GLabel glabel_enablemeasurement;
+	 public GLabel glabel_requestsrc;
+	 public GLabel glabel_qpos;
+	 public GLabel glabel_qrefill;
+	 public GLabel glabel_exttrigger;
+	 public GLabel glabel_avg_i_measurement;
+	 public GLabel glabel_dc_link_measurement;
+	 public GLabel glabel_pot_measurement;
+	 public GLabel glabel_user_defined_measurement;
+	 public GGroup ggroup_dummy_basicctlrscheme;
+	 public GGroup ggroup_pclusercode;
+	 public GGroup ggroup_fclusercode;
+	 public GGroup ggroup_user_param_set;
+	 public GGroup ggroup_dummyadvctrl;
+	 public GGroup ggroup_current_limit_config;
+	 public GGroup ggroup_currentpi_config;
+	 public GGroup ggroup_slipctrl_config;
+	 public GGroup ggroup_slippi_config;
+	 public GGroup ggroup_position_ctrl_config;
+	 public GGroup ggroup_posff_config;
+	 public GGroup ggroup_positionpi_config;
+	 public GGroup ggroup_dummy_taskscheduler;
+	 public GGroup ggroup_dummy_measurementsdoc;
+	 public GInterruptPrio ginterruptprio_fast_control_loop;
+	 public GInterruptPrio ginterruptprio_primary_control_loop;
+	 public GMessage gmsg_info;
+
+	 public ACIM_FREQ_CTRL_GUI(DaveEnv daveEnv){
+
+	 gtab_basiccontrolscheme = GTab(widgetName:"gtab_basiccontrolscheme", text:"Basic Control Scheme", enabled:true, visible:true)
+	 gtab_controlscheme = GTab(widgetName:"gtab_controlscheme", text:"Advanced Control Scheme", enabled:true, visible:true)
+	 gtab_controlpanel = GTab(widgetName:"gtab_controlpanel", text:"Control Parameters", enabled:true, visible:true)
+	 gtab_adcconfig = GTab(widgetName:"gtab_adcconfig", text:"Measurements", enabled:true, visible:true)
+	 gtab_errorhandler = GTab(widgetName:"gtab_errorhandler", text:"Error Handler", enabled:true, visible:true)
+	 gtab_interrupts = GTab(widgetName:"gtab_interrupts", text:"Interrupt Settings", enabled:true, visible:true)
+	 gint_acimpwmfreq = GInteger(widgetName:"gint_acimpwmfreq", value:20000, minValue:100, maxValue:250000, enabled:true, visible:true, isMandatoryValue:false)
+	 gint_speedref = GInteger(widgetName:"gint_speedref", value:1500, minValue:0, maxValue:200000.0, enabled:true, visible:true, isMandatoryValue:false)
+	 gint_polepair = GInteger(widgetName:"gint_polepair", value:4, minValue:1, maxValue:40, enabled:true, visible:true, isMandatoryValue:false)
+	 gint_ts_acimpwmfreq = GInteger(widgetName:"gint_ts_acimpwmfreq", value:20000, minValue:100, maxValue:250000, enabled:false, visible:true, isMandatoryValue:false)
+	 gint_fcltime = GInteger(widgetName:"gint_fcltime", value:50, minValue:1, maxValue:100000, enabled:false, visible:true, isMandatoryValue:false)
+	 gint_pcltime = GInteger(widgetName:"gint_pcltime", value:150, minValue:1, maxValue:100000, enabled:false, visible:true, isMandatoryValue:false)
+	 gint_svptime = GInteger(widgetName:"gint_svptime", value:250, minValue:1, maxValue:100000, enabled:false, visible:true, isMandatoryValue:false)
+	 gint_mcsmtime = GInteger(widgetName:"gint_mcsmtime", value:150, minValue:1, maxValue:100000, enabled:false, visible:true, isMandatoryValue:false)
+	 gint_dsmtime = GInteger(widgetName:"gint_dsmtime", value:50, minValue:1, maxValue:100000, enabled:false, visible:true, isMandatoryValue:false)
+	 gint_fcldesiretime = GInteger(widgetName:"gint_fcldesiretime", value:50, minValue:1, maxValue:100000, enabled:true, visible:true, isMandatoryValue:false)
+	 gint_pcldesiretime = GInteger(widgetName:"gint_pcldesiretime", value:150, minValue:1, maxValue:100000, enabled:true, visible:true, isMandatoryValue:false)
+	 gint_svpdesiretime = GInteger(widgetName:"gint_svpdesiretime", value:250, minValue:1, maxValue:100000, enabled:true, visible:true, isMandatoryValue:false)
+	 gint_dsmdesiretime = GInteger(widgetName:"gint_dsmdesiretime", value:1000, minValue:1, maxValue:100000, enabled:true, visible:true, isMandatoryValue:false)
+	 gint_fcldiv = GInteger(widgetName:"gint_fcldiv", value:1, minValue:1, maxValue:255, enabled:false, visible:true, isMandatoryValue:false)
+	 gint_pcldiv = GInteger(widgetName:"gint_pcldiv", value:3, minValue:1, maxValue:255, enabled:false, visible:true, isMandatoryValue:false)
+	 gint_svpdiv = GInteger(widgetName:"gint_svpdiv", value:5, minValue:1, maxValue:255, enabled:false, visible:true, isMandatoryValue:false)
+	 gint_bootstarpcount = GInteger(widgetName:"gint_bootstarpcount", value:0, minValue:0, maxValue:60000, enabled:true, visible:true, isMandatoryValue:false)
+	 gint_avg_i_measurement = GInteger(widgetName:"gint_avg_i_measurement", value:0, minValue:0, maxValue:7, enabled:true, visible:true, isMandatoryValue:false)
+	 gint_dc_link_measurement = GInteger(widgetName:"gint_dc_link_measurement", value:1, minValue:0, maxValue:7, enabled:true, visible:true, isMandatoryValue:false)
+	 gint_pot_measurement = GInteger(widgetName:"gint_pot_measurement", value:2, minValue:0, maxValue:7, enabled:true, visible:true, isMandatoryValue:false)
+	 gint_user_defined_measurement = GInteger(widgetName:"gint_user_defined_measurement", value:3, minValue:0, maxValue:7, enabled:true, visible:true, isMandatoryValue:false)
+	 gcombo_ctrlschemeconfig = GCombo(widgetName:"gcombo_ctrlschemeconfig", options:["Basic Configuration","Advanced Configuration"], value:"Basic Configuration", enabled:true, visible:true, isMandatoryValue:false)
+	 gcombo_svmscheme = GCombo(widgetName:"gcombo_svmscheme", options:["Standard SVM - 7 Segment Symmetric","Standard SVM - 5 Segment Symmetric"], value:"Standard SVM - 7 Segment Symmetric", enabled:true, visible:true, isMandatoryValue:false)
+	 gcombo_etrap = GCombo(widgetName:"gcombo_etrap", options:["Disabled","Active Low","Active High"], value:"Active Low", enabled:true, visible:true, isMandatoryValue:false)
+	 gcombo_speedset_opt = GCombo(widgetName:"gcombo_speedset_opt", options:["User Defined","Speed Set","FB_RAMP_0","FB_RAMP_1"], value:"Speed Set", enabled:true, visible:true, isMandatoryValue:false)
+	 gcombo_current_actval = GCombo(widgetName:"gcombo_current_actval", options:["User Defined","I_Average"], value:"User Defined", enabled:true, visible:true, isMandatoryValue:false)
+	 gcombo_position_ctrl = GCombo(widgetName:"gcombo_position_ctrl", options:["User Defined","Position Set","FB_RAMP_0","FB_RAMP_1"], value:"Position Set", enabled:true, visible:true, isMandatoryValue:false)
+	 gcombo_position_actval = GCombo(widgetName:"gcombo_position_actval", options:["User Defined"], value:"User Defined", enabled:true, visible:true, isMandatoryValue:false)
+	 gcombo_speed_ctrl = GCombo(widgetName:"gcombo_speed_ctrl", options:["User Defined","Speed Set","FB_RAMP_0","FB_RAMP_1"], value:"Speed Set", enabled:true, visible:true, isMandatoryValue:false)
+	 gcombo_speed_actval = GCombo(widgetName:"gcombo_speed_actval", options:["User Defined"], value:"User Defined", enabled:true, visible:true, isMandatoryValue:false)
+	 gcombo_motordirection = GCombo(widgetName:"gcombo_motordirection", options:["Clockwise","Anticlockwise"], value:"Clockwise", enabled:true, visible:true, isMandatoryValue:false)
+	 gcombo_rampconfig = GCombo(widgetName:"gcombo_rampconfig", options:["Disable","FB_RAMP_0","FB_RAMP_1"], value:"Disable", enabled:false, visible:true, isMandatoryValue:false)
+	 gcombo_pclmux = GCombo(widgetName:"gcombo_pclmux", options:["Disabled","1/PCL_DIV","PCL ISR","API Call","Automation"], value:"1/PCL_DIV", enabled:true, visible:true, isMandatoryValue:false)
+	 gcombo_svpmux = GCombo(widgetName:"gcombo_svpmux", options:["Disabled","PCL Task","1/SVP_DIV","API Call","Automation"], value:"PCL Task", enabled:true, visible:true, isMandatoryValue:false)
+	 gcombo_dsmmux = GCombo(widgetName:"gcombo_dsmmux", options:["Disabled","API Call","Automation"], value:"Disabled", enabled:true, visible:true, isMandatoryValue:false)
+	 gcombo_einvterpin = GCombo(widgetName:"gcombo_einvterpin", options:["Disabled","Active Low","Active High"], value:"Active High", enabled:true, visible:true, isMandatoryValue:false)
+	 gcombo_highsideswitch = GCombo(widgetName:"gcombo_highsideswitch", options:["Active High","Active Low"], value:"Active Low", enabled:true, visible:true, isMandatoryValue:false)
+	 gcombo_lowsideswitch = GCombo(widgetName:"gcombo_lowsideswitch", options:["Active High","Active Low"], value:"Active Low", enabled:true, visible:true, isMandatoryValue:false)
+	 gcombo_curntmsrmnt = GCombo(widgetName:"gcombo_curntmsrmnt", options:["None","Average Current"], value:"None", enabled:true, visible:true, isMandatoryValue:false)
+	 gcombo_avg_i_measurement = GCombo(widgetName:"gcombo_avg_i_measurement", options:["Queue A","Queue B"], value:"Queue A", enabled:true, visible:true, isMandatoryValue:false)
+	 gcombo_dc_link_measurement = GCombo(widgetName:"gcombo_dc_link_measurement", options:["Queue A","Queue B"], value:"Queue A", enabled:true, visible:true, isMandatoryValue:false)
+	 gcombo_pot_measurement = GCombo(widgetName:"gcombo_pot_measurement", options:["Queue A","Queue B"], value:"Queue A", enabled:true, visible:true, isMandatoryValue:false)
+	 gcombo_user_defined_measurement = GCombo(widgetName:"gcombo_user_defined_measurement", options:["Queue A","Queue B"], value:"Queue A", enabled:true, visible:true, isMandatoryValue:false)
+	 gfloat_maxcurrentlimit = GFloat(widgetName:"gfloat_maxcurrentlimit", value:500.0, minValue:0.0, maxValue:5000000.0, enabled:true, visible:true, isMandatoryValue:false)
+	 gfloat_maxvoltlimit = GFloat(widgetName:"gfloat_maxvoltlimit", value:100.0, minValue:0.0, maxValue:100.0, enabled:true, visible:true, isMandatoryValue:false)
+	 gfloat_vfconstant = GFloat(widgetName:"gfloat_vfconstant", value:0.0, minValue:0.0, maxValue:40000.0, enabled:false, visible:true, isMandatoryValue:false)
+	 gfloat_udvfconstant = GFloat(widgetName:"gfloat_udvfconstant", value:0.0, minValue:0.0, maxValue:40000.0, enabled:true, visible:true, isMandatoryValue:false)
+	 gfloat_voltageoffset = GFloat(widgetName:"gfloat_voltageoffset", value:0.0, minValue:0.0, maxValue:200000.0, enabled:false, visible:true, isMandatoryValue:false)
+	 gfloat_udvoltageoffset = GFloat(widgetName:"gfloat_udvoltageoffset", value:0.0, minValue:0.0, maxValue:200000.0, enabled:true, visible:true, isMandatoryValue:false)
+	 gfloat_basic_angleoffset = GFloat(widgetName:"gfloat_basic_angleoffset", value:0.0, minValue:0.0, maxValue:360.0, enabled:true, visible:true, isMandatoryValue:false)
+	 gfloat_basic_amplitudeoffset = GFloat(widgetName:"gfloat_basic_amplitudeoffset", value:0.0, minValue:0.0, maxValue:48.0, enabled:true, visible:true, isMandatoryValue:false)
+	 gfloat_nominalvolt = GFloat(widgetName:"gfloat_nominalvolt", value:24.0, minValue:0, maxValue:1005.0, enabled:true, visible:true, isMandatoryValue:false)
+	 gfloat_nominalspeed = GFloat(widgetName:"gfloat_nominalspeed", value:4400.0, minValue:1.0, maxValue:200000.0, enabled:true, visible:true, isMandatoryValue:false)
+	 gfloat_currentkp = GFloat(widgetName:"gfloat_currentkp", value:81.0, minValue:0.0, maxValue:32767.0, enabled:true, visible:true, isMandatoryValue:false)
+	 gfloat_currentki = GFloat(widgetName:"gfloat_currentki", value:5.0, minValue:0.0, maxValue:32767.0, enabled:true, visible:true, isMandatoryValue:false)
+	 gfloat_current_out_limit = GFloat(widgetName:"gfloat_current_out_limit", value:100.0, minValue:0.0, maxValue:100.0, enabled:true, visible:true, isMandatoryValue:false)
+	 gfloat_current_buf_limit = GFloat(widgetName:"gfloat_current_buf_limit", value:100.0, minValue:0.0, maxValue:100.0, enabled:true, visible:true, isMandatoryValue:false)
+	 gfloat_basic_currentlimit = GFloat(widgetName:"gfloat_basic_currentlimit", value:0.3, minValue:0.0, maxValue:5000.0, enabled:true, visible:true, isMandatoryValue:false)
+	 gfloat_slipkp = GFloat(widgetName:"gfloat_slipkp", value:81.0, minValue:0.0, maxValue:32767.0, enabled:true, visible:true, isMandatoryValue:false)
+	 gfloat_slipki = GFloat(widgetName:"gfloat_slipki", value:5.0, minValue:0.0, maxValue:32767.0, enabled:true, visible:true, isMandatoryValue:false)
+	 gfloat_slip_out_limit = GFloat(widgetName:"gfloat_slip_out_limit", value:100.0, minValue:0.0, maxValue:100.0, enabled:true, visible:true, isMandatoryValue:false)
+	 gfloat_slip_buf_limit = GFloat(widgetName:"gfloat_slip_buf_limit", value:100.0, minValue:0.0, maxValue:100.0, enabled:true, visible:true, isMandatoryValue:false)
+	 gfloat_additivespeed = GFloat(widgetName:"gfloat_additivespeed", value:0.0, minValue:-50000.0, maxValue:50000.0, enabled:true, visible:true, isMandatoryValue:false)
+	 gfloat_ffdeadband = GFloat(widgetName:"gfloat_ffdeadband", value:0.005, minValue:0.0, maxValue:10, enabled:true, visible:true, isMandatoryValue:false)
+	 gfloat_ffgain = GFloat(widgetName:"gfloat_ffgain", value:1.0, minValue:0.0, maxValue:255.0, enabled:true, visible:true, isMandatoryValue:false)
+	 gfloat_ffdifgain = GFloat(widgetName:"gfloat_ffdifgain", value:1.0, minValue:0.0, maxValue:255.0, enabled:true, visible:true, isMandatoryValue:false)
+	 gfloat_positionkp = GFloat(widgetName:"gfloat_positionkp", value:81.0, minValue:0.0, maxValue:32767.0, enabled:true, visible:true, isMandatoryValue:false)
+	 gfloat_positionki = GFloat(widgetName:"gfloat_positionki", value:0.0, minValue:0.0, maxValue:32767.0, enabled:true, visible:true, isMandatoryValue:false)
+	 gfloat_position_out_limit = GFloat(widgetName:"gfloat_position_out_limit", value:100.0, minValue:0.0, maxValue:100.0, enabled:true, visible:true, isMandatoryValue:false)
+	 gfloat_position_buf_limit = GFloat(widgetName:"gfloat_position_buf_limit", value:100.0, minValue:0.0, maxValue:100.0, enabled:true, visible:true, isMandatoryValue:false)
+	 gfloat_positioninput = GFloat(widgetName:"gfloat_positioninput", value:1, minValue:-16384.0, maxValue:16383, enabled:true, visible:true, isMandatoryValue:false)
+	 gfloat_additive_position = GFloat(widgetName:"gfloat_additive_position", value:0.0, minValue:-16384.0, maxValue:16383, enabled:true, visible:true, isMandatoryValue:false)
+	 gfloat_dclinkvolt = GFloat(widgetName:"gfloat_dclinkvolt", value:24.0, minValue:12.0, maxValue:32767.0, enabled:true, visible:true, isMandatoryValue:false)
+	 gfloat_deadtime_rising_edge = GFloat(widgetName:"gfloat_deadtime_rising_edge", value:500.0, minValue:0, maxValue:10000, enabled:true, visible:true, isMandatoryValue:false)
+	 gfloat_deadtime_falling_edge = GFloat(widgetName:"gfloat_deadtime_falling_edge", value:500.0, minValue:0, maxValue:10000, enabled:true, visible:true, isMandatoryValue:false)
+	 gfloat_switchdelay = GFloat(widgetName:"gfloat_switchdelay", value:500.0, minValue:0.0, maxValue:10000.0, enabled:true, visible:true, isMandatoryValue:false)
+	 gfloat_vadcref = GFloat(widgetName:"gfloat_vadcref", value:3.3, minValue:0.0, maxValue:5.0, enabled:true, visible:true, isMandatoryValue:false)
+	 gfloat_rshunt = GFloat(widgetName:"gfloat_rshunt", value:10.0, minValue:1.0, maxValue:10000.0, enabled:true, visible:true, isMandatoryValue:false)
+	 gfloat_ampgain = GFloat(widgetName:"gfloat_ampgain", value:21.0, minValue:0.001, maxValue:1000.0, enabled:true, visible:true, isMandatoryValue:false)
+	 gfloat_maxcrnt = GFloat(widgetName:"gfloat_maxcrnt", value:0.0, minValue:0.0, maxValue:5000.0, enabled:true, visible:true, isMandatoryValue:false)
+	 gfloat_ampbiasvolt = GFloat(widgetName:"gfloat_ampbiasvolt", value:0.0, minValue:0.0, maxValue:5.0, enabled:true, visible:true, isMandatoryValue:false)
+	 gfloat_voltdidratio = GFloat(widgetName:"gfloat_voltdidratio", value:9.79, minValue:0.0, maxValue:100.0, enabled:true, visible:true, isMandatoryValue:false)
+	 gstring_ctrltech = GString(widgetName:"gstring_ctrltech", value:"Frequency Control - Constant V/Hz", enabled:false, visible:true, isMandatoryValue:false)
+	 gstring_ud_speedset_ptr = GString(widgetName:"gstring_ud_speedset_ptr", value:"&ACIM_FREQ_CTRL_userdefined_speedset", enabled:true, visible:true, isMandatoryValue:false)
+	 gstring_usercode_position_ff = GString(widgetName:"gstring_usercode_position_ff", value:"ACIM_FREQ_CTRL_UserCodePositionFF", enabled:true, visible:true, isMandatoryValue:false)
+	 gstring_usercode_position_control = GString(widgetName:"gstring_usercode_position_control", value:"ACIM_FREQ_CTRL_UserCodePositionControl", enabled:true, visible:true, isMandatoryValue:false)
+	 gstring_usercode_slip_control = GString(widgetName:"gstring_usercode_slip_control", value:"ACIM_FREQ_CTRL_UserCodeSlipControl", enabled:true, visible:true, isMandatoryValue:false)
+	 gstring_usercode_current_limit = GString(widgetName:"gstring_usercode_current_limit", value:"ACIM_FREQ_CTRL_UserCodeCurrentLimit", enabled:true, visible:true, isMandatoryValue:false)
+	 gstring_usercode_angle_ramp = GString(widgetName:"gstring_usercode_angle_ramp", value:"ACIM_FREQ_CTRL_UserCodeAngleRamp", enabled:true, visible:true, isMandatoryValue:false)
+	 gstring_usercode_vf_control = GString(widgetName:"gstring_usercode_vf_control", value:"ACIM_FREQ_CTRL_UserCodeVfControl", enabled:true, visible:true, isMandatoryValue:false)
+	 gstring_positionset_ptr = GString(widgetName:"gstring_positionset_ptr", value:"&ACIM_FREQ_CTRL_userdef_positionset", enabled:true, visible:true, isMandatoryValue:false)
+	 gstring_speedsetadv_ptr = GString(widgetName:"gstring_speedsetadv_ptr", value:"&ACIM_FREQ_CTRL_userdef_speedset", enabled:true, visible:true, isMandatoryValue:false)
+	 gstring_actpos_ptr = GString(widgetName:"gstring_actpos_ptr", value:"&ACIM_FREQ_CTRL_userdef_actualpos", enabled:true, visible:true, isMandatoryValue:false)
+	 gstring_actspeed_ptr = GString(widgetName:"gstring_actspeed_ptr", value:"&ACIM_FREQ_CTRL_userdefined_actualspeed", enabled:true, visible:true, isMandatoryValue:false)
+	 gstring_actcur_ptr = GString(widgetName:"gstring_actcur_ptr", value:"&ACIM_FREQ_CTRL_userdefined_actualcurrent", enabled:true, visible:true, isMandatoryValue:false)
+	 gstring_avg_i_measurement = GString(widgetName:"gstring_avg_i_measurement", value:"I_Average", enabled:true, visible:true, isMandatoryValue:false)
+	 gstring_dc_link_measurement = GString(widgetName:"gstring_dc_link_measurement", value:"V_DCLink", enabled:true, visible:true, isMandatoryValue:false)
+	 gstring_pot_measurement = GString(widgetName:"gstring_pot_measurement", value:"Analog_Input", enabled:true, visible:true, isMandatoryValue:false)
+	 gstring_user_defined_measurement = GString(widgetName:"gstring_user_defined_measurement", value:"User_Defined", enabled:true, visible:true, isMandatoryValue:false)
+	 gcheck_eovermodulation = GCheck(widgetName:"gcheck_eovermodulation", value:false, enabled:true, visible:true)
+	 gcheck_eparamhandler = GCheck(widgetName:"gcheck_eparamhandler", value:false, enabled:true, visible:true)
+	 gcheck_basic_crntlimit = GCheck(widgetName:"gcheck_basic_crntlimit", value:false, enabled:true, visible:true)
+	 gcheck_slipctrl = GCheck(widgetName:"gcheck_slipctrl", value:false, enabled:true, visible:true)
+	 gcheck_opcode_angle_ramp = GCheck(widgetName:"gcheck_opcode_angle_ramp", value:false, enabled:true, visible:true)
+	 gcheck_opcode_positionctrl = GCheck(widgetName:"gcheck_opcode_positionctrl", value:false, enabled:true, visible:true)
+	 gcheck_positionctrl = GCheck(widgetName:"gcheck_positionctrl", value:false, enabled:true, visible:true)
+	 gcheck_opcode_vf_control = GCheck(widgetName:"gcheck_opcode_vf_control", value:false, enabled:true, visible:true)
+	 gcheck_opcode_crnt_limit = GCheck(widgetName:"gcheck_opcode_crnt_limit", value:false, enabled:true, visible:true)
+	 gcheck_opcode_slipctrl = GCheck(widgetName:"gcheck_opcode_slipctrl", value:false, enabled:true, visible:true)
+	 gcheck_opcode_positionff = GCheck(widgetName:"gcheck_opcode_positionff", value:false, enabled:true, visible:true)
+	 gcheck_positionff = GCheck(widgetName:"gcheck_positionff", value:false, enabled:true, visible:true)
+	 gcheck_crnt_limit = GCheck(widgetName:"gcheck_crnt_limit", value:false, enabled:true, visible:true)
+	 gcheck_angle_ramp = GCheck(widgetName:"gcheck_angle_ramp", value:true, enabled:true, visible:true)
+	 gcheck_vf_control = GCheck(widgetName:"gcheck_vf_control", value:true, enabled:true, visible:true)
+	 gcheck_userdefconf = GCheck(widgetName:"gcheck_userdefconf", value:false, enabled:true, visible:true)
+	 gcheck_effdelay = GCheck(widgetName:"gcheck_effdelay", value:false, enabled:true, visible:true)
+	 gcheck_eampbiasvolt = GCheck(widgetName:"gcheck_eampbiasvolt", value:true, enabled:true, visible:true)
+	 gcheck_eovercrntdet = GCheck(widgetName:"gcheck_eovercrntdet", value:false, enabled:true, visible:true)
+	 gcheck_evoltcomp = GCheck(widgetName:"gcheck_evoltcomp", value:false, enabled:true, visible:true)
+	 gcheck_epotmeasurement = GCheck(widgetName:"gcheck_epotmeasurement", value:false, enabled:true, visible:true)
+	 gcheck_avg_i_measurement = GCheck(widgetName:"gcheck_avg_i_measurement", value:false, enabled:true, visible:true)
+	 gcheck_avg_i_refill = GCheck(widgetName:"gcheck_avg_i_refill", value:false, enabled:true, visible:true)
+	 gcheck_avg_i_ext_trigger = GCheck(widgetName:"gcheck_avg_i_ext_trigger", value:false, enabled:true, visible:true)
+	 gcheck_dc_link_measurement = GCheck(widgetName:"gcheck_dc_link_measurement", value:false, enabled:true, visible:true)
+	 gcheck_dc_link_refill = GCheck(widgetName:"gcheck_dc_link_refill", value:false, enabled:true, visible:true)
+	 gcheck_dc_link_ext_trigger = GCheck(widgetName:"gcheck_dc_link_ext_trigger", value:false, enabled:true, visible:true)
+	 gcheck_pot_measurement = GCheck(widgetName:"gcheck_pot_measurement", value:false, enabled:true, visible:true)
+	 gcheck_pot_refill = GCheck(widgetName:"gcheck_pot_refill", value:false, enabled:true, visible:true)
+	 gcheck_pot_ext_trigger = GCheck(widgetName:"gcheck_pot_ext_trigger", value:false, enabled:true, visible:true)
+	 gcheck_user_defined_measurement = GCheck(widgetName:"gcheck_user_defined_measurement", value:false, enabled:true, visible:true)
+	 gcheck_user_defined_refill = GCheck(widgetName:"gcheck_user_defined_refill", value:false, enabled:true, visible:true)
+	 gcheck_user_defined_ext_trigger = GCheck(widgetName:"gcheck_user_defined_ext_trigger", value:false, enabled:true, visible:true)
+	 gcheck_udfnenable = GCheck(widgetName:"gcheck_udfnenable", value:false, enabled:true, visible:true)
+	 glabel_ud_speedset_ptr = GLabel(widgetName:"glabel_ud_speedset_ptr", text:"Speed set pointer:", enabled:true, visible:true)
+	 glabel_speedset_opt = GLabel(widgetName:"glabel_speedset_opt", text:"Speed set value", enabled:true, visible:true)
+	 glabel_basic_crntlimit = GLabel(widgetName:"glabel_basic_crntlimit", text:"Enable current limit", enabled:true, visible:true)
+	 glabel_usercode_position_ff = GLabel(widgetName:"glabel_usercode_position_ff", text:"Position feed forward:", enabled:true, visible:true)
+	 glabel_usercode_position_control = GLabel(widgetName:"glabel_usercode_position_control", text:"Position control:", enabled:true, visible:true)
+	 glabel_usercode_slip_control = GLabel(widgetName:"glabel_usercode_slip_control", text:"Slip control:", enabled:true, visible:true)
+	 glabel_usercode_current_limit = GLabel(widgetName:"glabel_usercode_current_limit", text:"Current limit:", enabled:true, visible:true)
+	 glabel_usercode_angle_ramp = GLabel(widgetName:"glabel_usercode_angle_ramp", text:"Angle ramp:", enabled:true, visible:true)
+	 glabel_usercode_vf_control = GLabel(widgetName:"glabel_usercode_vf_control", text:"V(f) control:", enabled:true, visible:true)
+	 glabel_speedsetadv_ptr = GLabel(widgetName:"glabel_speedsetadv_ptr", text:"Speed set pointer:", enabled:true, visible:true)
+	 glabel_positionset_ptr = GLabel(widgetName:"glabel_positionset_ptr", text:"Position set pointer:", enabled:true, visible:true)
+	 glabel_actpos_ptr = GLabel(widgetName:"glabel_actpos_ptr", text:"Actual position pointer:", enabled:true, visible:true)
+	 glabel_actspeed_ptr = GLabel(widgetName:"glabel_actspeed_ptr", text:"Actual speed pointer:", enabled:true, visible:true)
+	 glabel_actcur_ptr = GLabel(widgetName:"glabel_actcur_ptr", text:"Actual current pointer:", enabled:true, visible:true)
+	 glabel_speed_actval = GLabel(widgetName:"glabel_speed_actval", text:"Slip Control Actual Value", enabled:true, visible:true)
+	 glabel_speed_ctrl = GLabel(widgetName:"glabel_speed_ctrl", text:"Slip Control Set Value", enabled:true, visible:true)
+	 glabel_position_actval = GLabel(widgetName:"glabel_position_actval", text:"Position Control Actual Value", enabled:true, visible:true)
+	 glabel_position_ctrl = GLabel(widgetName:"glabel_position_ctrl", text:"Position Control Set Value", enabled:true, visible:true)
+	 glabel_current_actval = GLabel(widgetName:"glabel_current_actval", text:"Current Control Actual Value", enabled:true, visible:true)
+	 glabel_vf_control = GLabel(widgetName:"glabel_vf_control", text:"Enable V(f) Control", enabled:true, visible:true)
+	 glabel_angle_ramp = GLabel(widgetName:"glabel_angle_ramp", text:"Enable Angle Ramp", enabled:true, visible:true)
+	 glabel_opcode_angle_ramp = GLabel(widgetName:"glabel_opcode_angle_ramp", text:"Enable angle ramp for user code", enabled:true, visible:true)
+	 glabel_opcode_positionff = GLabel(widgetName:"glabel_opcode_positionff", text:"Enable feed forward for user code", enabled:true, visible:true)
+	 glabel_opcode_crnt_limit = GLabel(widgetName:"glabel_opcode_crnt_limit", text:"Enable current limit for user code", enabled:true, visible:true)
+	 glabel_opcode_positionctrl = GLabel(widgetName:"glabel_opcode_positionctrl", text:"Enable position control for user code", enabled:true, visible:true)
+	 glabel_opcode_vf_control = GLabel(widgetName:"glabel_opcode_vf_control", text:"Enable V(f) control for user code", enabled:true, visible:true)
+	 glabel_crnt_limit = GLabel(widgetName:"glabel_crnt_limit", text:"Enable current limit", enabled:true, visible:true)
+	 glabel_slipctrl = GLabel(widgetName:"glabel_slipctrl", text:"Enable slip control", enabled:true, visible:true)
+	 glabel_opcode_slipctrl = GLabel(widgetName:"glabel_opcode_slipctrl", text:"Enable slip control for user code", enabled:true, visible:true)
+	 glabel_positionctrl = GLabel(widgetName:"glabel_positionctrl", text:"Enable position control", enabled:true, visible:true)
+	 glabel_positionff = GLabel(widgetName:"glabel_positionff", text:"Enable feed forward", enabled:true, visible:true)
+	 glabel_basic_angleoffset = GLabel(widgetName:"glabel_basic_angleoffset", text:"Angle Offset [degrees]:", enabled:true, visible:true)
+	 glabel_basic_amplitudeoffset = GLabel(widgetName:"glabel_basic_amplitudeoffset", text:"Amplitude offset [V]:", enabled:true, visible:true)
+	 glabel_nominalvolt = GLabel(widgetName:"glabel_nominalvolt", text:"Nominal voltage [V]:", enabled:true, visible:true)
+	 glabel_nominalspeed = GLabel(widgetName:"glabel_nominalspeed", text:"No load speed [rpm]:       ", enabled:true, visible:true)
+	 glabel_polepair = GLabel(widgetName:"glabel_polepair", text:"Pole pair:", enabled:true, visible:true)
+	 glabel_currentkp = GLabel(widgetName:"glabel_currentkp", text:"Kp:", enabled:true, visible:true)
+	 glabel_currentki = GLabel(widgetName:"glabel_currentki", text:"Ki:", enabled:true, visible:true)
+	 glabel_current_out_limit = GLabel(widgetName:"glabel_current_out_limit", text:"Output limit [%]:", enabled:true, visible:true)
+	 glabel_current_buf_limit = GLabel(widgetName:"glabel_current_buf_limit", text:"Integral buffer limit [%]:", enabled:true, visible:true)
+	 glabel_basic_currentlimit = GLabel(widgetName:"glabel_basic_currentlimit", text:"Current limit set [A]:", enabled:true, visible:true)
+	 glabel_slipkp = GLabel(widgetName:"glabel_slipkp", text:"Kp:", enabled:true, visible:true)
+	 glabel_slipki = GLabel(widgetName:"glabel_slipki", text:"Ki:", enabled:true, visible:true)
+	 glabel_slip_out_limit = GLabel(widgetName:"glabel_slip_out_limit", text:"Output limit [%]:", enabled:true, visible:true)
+	 glabel_slip_buf_limit = GLabel(widgetName:"glabel_slip_buf_limit", text:"Integral buffer limit [%]:", enabled:true, visible:true)
+	 glabel_additivespeed = GLabel(widgetName:"glabel_additivespeed", text:"Additive speed [rpm]:", enabled:true, visible:true)
+	 glabel_ffdeadband = GLabel(widgetName:"glabel_ffdeadband", text:"Dead band [rev]:", enabled:true, visible:true)
+	 glabel_ffgain = GLabel(widgetName:"glabel_ffgain", text:"Feed forward gain:", enabled:true, visible:true)
+	 glabel_ffdifgain = GLabel(widgetName:"glabel_ffdifgain", text:"Differential gain:", enabled:true, visible:true)
+	 glabel_positionkp = GLabel(widgetName:"glabel_positionkp", text:"Kp:", enabled:true, visible:true)
+	 glabel_positionki = GLabel(widgetName:"glabel_positionki", text:"Ki:", enabled:true, visible:true)
+	 glabel_position_out_limit = GLabel(widgetName:"glabel_position_out_limit", text:"Output limit [%]:", enabled:true, visible:true)
+	 glabel_position_buf_limit = GLabel(widgetName:"glabel_position_buf_limit", text:"Integral buffer limit [%]:", enabled:true, visible:true)
+	 glabel_positioninput = GLabel(widgetName:"glabel_positioninput", text:"Position set [rev]:", enabled:true, visible:true)
+	 glabel_additive_position = GLabel(widgetName:"glabel_additive_position", text:"Additive position [rev]:", enabled:true, visible:true)
+	 glabel_rampconfig = GLabel(widgetName:"glabel_rampconfig", text:"Ramp configuration:", enabled:false, visible:true)
+	 glabel_udvoltageoffset = GLabel(widgetName:"glabel_udvoltageoffset", text:"User define voltage offset [mV]", enabled:true, visible:true)
+	 glabel_udvfconstant = GLabel(widgetName:"glabel_udvfconstant", text:"User define V/f constant [V/Hz]", enabled:true, visible:true)
+	 glabel_ts_acimpwmfreq = GLabel(widgetName:"glabel_ts_acimpwmfreq", text:"Task scheduler frequency", enabled:true, visible:true)
+	 glabel_pclmux = GLabel(widgetName:"glabel_pclmux", text:"PCL MUX", enabled:true, visible:true)
+	 glabel_svpmux = GLabel(widgetName:"glabel_svpmux", text:"SVP MUX", enabled:true, visible:true)
+	 glabel_dsmmux = GLabel(widgetName:"glabel_dsmmux", text:"DSM MUX", enabled:true, visible:true)
+	 glabel_dsmtime = GLabel(widgetName:"glabel_dsmtime", text:"Drive State Machine Time (us)", enabled:true, visible:true)
+	 glabel_fcltime = GLabel(widgetName:"glabel_fcltime", text:"Fast Control Loop Time (us)", enabled:true, visible:true)
+	 glabel_pcltime = GLabel(widgetName:"glabel_pcltime", text:"Primary Control Loop Time (us)", enabled:true, visible:true)
+	 glabel_svptime = GLabel(widgetName:"glabel_svptime", text:"Set Value Processing Time (us)", enabled:true, visible:true)
+	 glabel_mcsmtime = GLabel(widgetName:"glabel_mcsmtime", text:"Machine Control State Machine Time (us)", enabled:true, visible:true)
+	 glabel_enablemeasurement = GLabel(widgetName:"glabel_enablemeasurement", text:"Enable measurement", enabled:true, visible:true)
+	 glabel_requestsrc = GLabel(widgetName:"glabel_requestsrc", text:"Request source", enabled:true, visible:true)
+	 glabel_qpos = GLabel(widgetName:"glabel_qpos", text:"Queue position", enabled:true, visible:true)
+	 glabel_qrefill = GLabel(widgetName:"glabel_qrefill", text:"Refill", enabled:true, visible:true)
+	 glabel_exttrigger = GLabel(widgetName:"glabel_exttrigger", text:"External trigger", enabled:true, visible:true)
+	 glabel_avg_i_measurement = GLabel(widgetName:"glabel_avg_i_measurement", text:"Current measurement", enabled:true, visible:true)
+	 glabel_dc_link_measurement = GLabel(widgetName:"glabel_dc_link_measurement", text:"Voltage measurement", enabled:true, visible:true)
+	 glabel_pot_measurement = GLabel(widgetName:"glabel_pot_measurement", text:"Pot measurement", enabled:true, visible:true)
+	 glabel_user_defined_measurement = GLabel(widgetName:"glabel_user_defined_measurement", text:"User define measurement", enabled:true, visible:true)
+	 ggroup_dummy_basicctlrscheme = GGroup(widgetName:"ggroup_dummy_basicctlrscheme", text:"Dummy Group for BCS documents", enabled:true, visible:true)
+	 ggroup_pclusercode = GGroup(widgetName:"ggroup_pclusercode", text:"Primary Control Loop Optional User Code ", enabled:true, visible:true)
+	 ggroup_fclusercode = GGroup(widgetName:"ggroup_fclusercode", text:"Fast Control Loop Optional User Code ", enabled:true, visible:true)
+	 ggroup_user_param_set = GGroup(widgetName:"ggroup_user_param_set", text:"User Defined Parameter Set ", enabled:true, visible:true)
+	 ggroup_dummyadvctrl = GGroup(widgetName:"ggroup_dummyadvctrl", text:"Dummy group for document label", enabled:true, visible:true)
+	 ggroup_current_limit_config = GGroup(widgetName:"ggroup_current_limit_config", text:"Current Limit Configurations", enabled:true, visible:true)
+	 ggroup_currentpi_config = GGroup(widgetName:"ggroup_currentpi_config", text:"PI Controller", enabled:true, visible:true)
+	 ggroup_slipctrl_config = GGroup(widgetName:"ggroup_slipctrl_config", text:"Slip Control Configurations", enabled:true, visible:true)
+	 ggroup_slippi_config = GGroup(widgetName:"ggroup_slippi_config", text:"PI Controller", enabled:true, visible:true)
+	 ggroup_position_ctrl_config = GGroup(widgetName:"ggroup_position_ctrl_config", text:"Position Control Configurations", enabled:true, visible:true)
+	 ggroup_posff_config = GGroup(widgetName:"ggroup_posff_config", text:"Feed Forward Controller", enabled:true, visible:true)
+	 ggroup_positionpi_config = GGroup(widgetName:"ggroup_positionpi_config", text:"PI Controller", enabled:true, visible:true)
+	 ggroup_dummy_taskscheduler = GGroup(widgetName:"ggroup_dummy_taskscheduler", text:"Dummy group for task scheduler documents", enabled:true, visible:true)
+	 ggroup_dummy_measurementsdoc = GGroup(widgetName:"ggroup_dummy_measurementsdoc", text:"Dummy for  measurements doc", enabled:true, visible:true)
+	 ginterruptprio_fast_control_loop = GInterruptPrio(widgetName:"ginterruptprio_fast_control_loop", priorityValue:61, minPriority:0, maxPriority:63, subPriorityValue:0, minSubPriority:0, maxSubPriority:63, subPriorityVisible:true, enabled:true, visible:true)
+	 ginterruptprio_primary_control_loop = GInterruptPrio(widgetName:"ginterruptprio_primary_control_loop", priorityValue:62, minPriority:0, maxPriority:63, subPriorityValue:0, minSubPriority:0, maxSubPriority:63, subPriorityVisible:true, enabled:true, visible:true)
+	 gmsg_info = GMessage(widgetName:"gmsg_info", text:"Same request source should not have same queue position entry.", isError:false, visible:true)
+
+
+	 }
+	/* End : UI variable section */
+}
