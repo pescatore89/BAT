@@ -40,7 +40,9 @@
   <requiredApps URI="http://resources/4.0.8/app/ACIM_FREQ_CTRL/0/appres_cpu" requiredAppName="CPU_CTRL_XMC4" requiringMode="SHARABLE">
     <downwardMapList xsi:type="ResourceModel:App" href="../../CPU_CTRL_XMC4/v4_0_14/CPU_CTRL_XMC4_0.app#/"/>
   </requiredApps>
-  <requiredApps URI="http://resources/4.0.8/app/ACIM_FREQ_CTRL/0/appres_automation" requiredAppName="AUTOMATION" required="false" requiringMode="SHARABLE"/>
+  <requiredApps URI="http://resources/4.0.8/app/ACIM_FREQ_CTRL/0/appres_automation" requiredAppName="AUTOMATION" requiringMode="SHARABLE">
+    <downwardMapList xsi:type="ResourceModel:App" href="../../AUTOMATION/v4_0_10/AUTOMATION_0.app#/"/>
+  </requiredApps>
   <hwResources name="I_Average" URI="http://resources/4.0.8/app/ACIM_FREQ_CTRL/0/hwres_adcchan1" resourceGroupUri="" required="false" mResGrpUri="peripheral/vadc/0/group/*/ch/*"/>
   <hwResources name="V_DCLink" URI="http://resources/4.0.8/app/ACIM_FREQ_CTRL/0/hwres_adcchan2" resourceGroupUri="" required="false" mResGrpUri="peripheral/vadc/0/group/*/ch/*"/>
   <hwResources name="Analog_Input" URI="http://resources/4.0.8/app/ACIM_FREQ_CTRL/0/hwres_adcchan3" resourceGroupUri="" required="false" mResGrpUri="peripheral/vadc/0/group/*/ch/*"/>

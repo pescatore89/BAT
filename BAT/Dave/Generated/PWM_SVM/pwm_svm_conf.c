@@ -187,10 +187,10 @@ XMC_CCU8_SLICE_DEAD_TIME_CONFIG_t PWM_SVM_0_DeadTimeConfig =
  .channel2_st_path                  = 1U,
  .channel2_inv_st_path              = 1U,  
  .div                               = 0U,
- .channel1_st_rising_edge_counter   = 0x3cU,
- .channel1_st_falling_edge_counter  = 0x3cU,
- .channel2_st_rising_edge_counter   = 0x3cU,
- .channel2_st_falling_edge_counter  = 0x3cU   
+ .channel1_st_rising_edge_counter   = 0x6U,
+ .channel1_st_falling_edge_counter  = 0x6U,
+ .channel2_st_rising_edge_counter   = 0x6U,
+ .channel2_st_falling_edge_counter  = 0x6U   
 };
 
 /* External Start event for all slices */

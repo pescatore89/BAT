@@ -75,7 +75,7 @@
 #define ACIM_FREQ_CTRL_IS_AUTOMATION_AVAILABLE  (1U)
 
 /*Macro to specify the presence of DSM Framework */
-#define ACIM_FREQ_CTRL_IS_DSM_AVAILABLE  (0U)
+#define ACIM_FREQ_CTRL_IS_DSM_AVAILABLE  (1U)
 
 /*Macro to specify the presence of user defined callback function during error */
 #define ACIM_FREQ_CTRL_IS_ERROR_USER_CALLBACK_ENABLE (0U)

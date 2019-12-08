@@ -74,11 +74,11 @@ int main(void)
   delay_count=0;
 
   //ADC_MEASUREMENT_StartConversion(&ADC_MEASUREMENT_0);
-  //ACIM_FREQ_CTRL_MotorStart(&ACIM_FREQ_CTRL_0);
+  ACIM_FREQ_CTRL_MotorStart(&ACIM_FREQ_CTRL_0);
   //ACIM_FREQ_CTRL_SetSpeed(&ACIM_FREQ_CTRL_0, 50);
-   ACIM_FREQ_CTRL_MotorStart(&ACIM_FREQ_CTRL_1);
+  ACIM_FREQ_CTRL_MotorStart(&ACIM_FREQ_CTRL_1);
   //ACIM_FREQ_CTRL_SetSpeed(&ACIM_FREQ_CTRL_1, 10);
-   ACIM_FREQ_CTRL_MotorStop(&ACIM_FREQ_CTRL_1);
+  // ACIM_FREQ_CTRL_MotorStop(&ACIM_FREQ_CTRL_1);
   /* Placeholder for user application code. The while loop below can be replaced with user application code. */
    int outputBit0 = 0;
   while(1U)
@@ -94,17 +94,6 @@ int main(void)
 	 // DIGITAL_IO_ToggleOutput(&DIGITAL_IO_22); // toggle PIN 1
 	 // DIGITAL_IO_ToggleOutput(&DIGITAL_IO_21); // toggle PIN 2
 	 // DIGITAL_IO_ToggleOutput(&DIGITAL_IO_24); // toggle PIN 3
-
-	     if(pin_status == 1)
-	     {
-	       outputBit0 = outputBit0+1;
-
-	     }
-	     else
-	     {
-	       // Add application code here
-	     }
-
 
 
 
