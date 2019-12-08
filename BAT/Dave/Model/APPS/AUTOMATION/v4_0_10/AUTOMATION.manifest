@@ -1,0 +1,378 @@
+package Model.APPS.AUTOMATION.v4_0_10;
+
+/*
+ *  * Copyright (c) 2015, Infineon Technologies AG
+ * All rights reserved.
+ *
+ * Redistribution and use in source and binary forms, with or without modification,are permitted provided that the
+ * following conditions are met:
+ *
+ *   Redistributions of source code must retain the above copyright notice, this list of conditions and the  following
+ *   disclaimer.
+ *
+ *   Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the
+ *   following disclaimer in the documentation and/or other materials provided with the distribution.
+ *
+ *   Neither the name of the copyright holders nor the names of its contributors may be used to endorse or promote
+ *   products derived from this software without specific prior written permission.
+ *
+ * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES,
+ * INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+ * DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE  FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+ * SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
+ * SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+ * WHETHER IN CONTRACT, STRICT LIABILITY,OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT  OF THE
+ * USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+ *
+ * To improve the quality of the software, users are encouraged to share modifications, enhancements or bug fixes
+ * with Infineon Technologies AG (dave@infineon.com).
+ */
+
+/*Import statements*/
+import ifx.davex.app.manifest.*
+
+/*************** Revision History **********************************************
+ Version       Date        Description //Retain this format
+ 4.0.0    15-Feb-2015     1. Initial version<br>        
+ 4.0.1    20-Feb-2015     1. Help document update <br> 
+ 4.0.5    20-Jun-2015     1. APIs added to set and get ramp parameters <br>
+                          2. Aligned with change in SYSTIMER APP
+ 4.0.7    14-July-2015    1. Required APP minimum version updated<br/>
+ 4.0.9    08-Oct-2015     1. Copyright information is added in manifest.<br/>
+ 4.0.10   04-Aug-2015     1. APP version updated for PR.<br/>
+ *******************************************************************************/
+class  AUTOMATION extends AUTOMATION_GUI {
+
+	 /* Note  : Following App properties are mandatory and important */
+	 
+	 /* Begin : APP property section */
+	/**
+	 * App version
+	 * Format: a string with three digit separated by a dot.
+	 */
+	def version            = '4.0.10'
+	
+	/**
+	 * App categories declaration.
+	 * It is list of strings. Subcategories are separated by slash.
+	 * No limits on number of categories and subcategories depth.
+	 */
+	def categoriesDescription = ["Motor Control/Automation"] 
+
+	/** 
+	 * Minimum DAVE version required for this APP.
+	 * 
+	 * It is string with three digit separated by a dot.
+	 */
+	def minDaveVersion           = '4.0.0'
+	
+	/**
+	 * Keywords used by search feature in Apps selection view
+	 *
+	 * It is a list of string.
+	 */
+	def keywords      = ["Automation", "Parameter Handler", "Error Handler", "Function Block", "Ramp", "Task Scheduler", "State Machine", "all"]
+
+
+	/**
+	 * softwareIDs is used to declare which devices are compatible with this APP.
+	 * It is a map with key a string containing a pattern that shall match the SW id of
+	 * the device and as value the minimal version of the APP.
+	 */
+	
+	/**
+	 * Any step , any variant and any packages of XMC4500, XMC4400, XMC4200 and XMC4100
+	 * Any step, any variant of XMC1300 except T016 package
+	 */
+    def softwareIDs   = [
+    "XMC1.3.*.(Q024|Q040|T038).*":"1.0.0", 
+    "XMC4.5.*.*.*":"1.0.0",
+	"XMC4.4.*.*.*":"1.0.0",
+	"XMC4.2.*.*.*":"1.0.0",
+	"XMC4.1.*.*.*":"1.0.0"]
+
+	  /**
+	   * Singleton property:
+	   * When it is true the APP can be instantiated only once.
+	   */
+	def singleton     = true
+	/**
+	 * initProvider property
+	 * It shall be true to add a call to <AppName>_Init()
+	 */
+	def initProvider  = true
+	/**
+	 * Deprecated APP
+	 * Set it to true to indicate that the APP shall be not used for new projects.
+	 */
+	def deprecated    = false
+	/**
+	 * Sharable property.
+	 * It shall be true to allow multiple APPs to require the same instance of this APP.
+	 */
+	def sharable      = true
+
+	/**
+	 *  App function description.
+	 */
+	def description = "Provides mechanism to connect two APPs using \n function block processor. This supports online parameter update and \n error logging.  This consumes System Timer APP and provides task \n registration feature. It also provides state machine."
+	
+	/* End   : App property section */
+	
+	/* Begin : User APP property section */
+
+	/** System Timer APP to configure systick for the automation tasks*/ 
+	MRequiredApp appres_systimer_0
+
+	/**To count function blocks which are executed in the function block task */
+	GInteger gint_executeddfb = GInteger (value: 0)
+	/**Ramp0 function block enable*/
+	GCheck gcheck_fb_ramp0 = GCheck (value: false)
+	/**Ramp1 function block enable*/
+	GCheck gcheck_fb_ramp1 = GCheck (value: false)
+
+	/* End   : User APP property section */
+
+	// AUTOMATION Constructor
+	public AUTOMATION(DaveEnv daveEnv) {
+		/* ---------------------------------------------------------- */
+		/* ------------ App consumption Block ----------------------- */
+		/* ---------------------------------------------------------- */
+		/* System Timer APP to configure systick for the automation tasks*/
+		appres_systimer_0    = MRequiredApp("SYSTIMER","System Timer APP", RSHARABLE, "4.0.2")
+		
+		
+		/* -------------------------------------------------------- */
+		/* ------------ APP Configuration ------------------------- */
+		/* -------------------------------------------------------- */
+		gint_ehdesiredtime.enabled = MF({gcheck_error_handler_enable.value}, Boolean)
+		
+		
+		/* ------ TAB : Error Handler related configuration ---------- */
+		gint_eh_logbook_size.enabled = MF({gcheck_error_handler_enable.value}, Boolean)
+		gint_bit_interface_words.enabled = MF({gcheck_error_handler_enable.value}, Boolean)
+		
+		/* ------ TAB : Configuration related configuration ---------- */
+		/* Read systick time from SYSTIMER APP */
+		gint_scheduler.value = MF({appres_systimer_0.getVal(["ginteger_systickinterval", "value"])}, Integer)
+		
+		
+		gint_fbdesiredtime.minValue = MF({
+			if (gint_executeddfb.value > 0)
+			{
+				return gint_scheduler.value
+			}
+			else
+			{
+				return 1
+			}
+			
+			}, Integer)
+		
+		
+		gint_ehdesiredtime.minValue = MF({
+			if(gcheck_error_handler_enable.value)
+			{
+				return gint_scheduler.value
+			}
+			else
+			{
+				return 1
+			}
+			
+			}, Integer)
+		/* Function block task time calculation */
+		gint_fbactualtime.value = MF({
+			Float divider = 1.0
+			
+			if(gint_fbdesiredtime.value < gint_scheduler.value)
+			{
+				return gint_scheduler.value
+			}
+			else 
+			{
+				divider = gint_fbdesiredtime.value/gint_scheduler.value
+				return (Integer)(gint_scheduler.value * Math.ceil(divider))
+			}
+		},Integer)
+		/* Error Handler task time calculation */
+		gint_ehactualtime.value = MF({
+			Float divider = 1.0
+			if(gint_ehdesiredtime.value < gint_scheduler.value)
+			{
+				return gint_scheduler.value
+			}
+			else
+			{
+				divider = gint_ehdesiredtime.value/gint_scheduler.value
+				return (Integer)(gint_scheduler.value * Math.ceil(divider))
+			}
+		},Integer)
+
+	
+		/* ------ TAB : Ramp Generator 0 related configuration ---------- */
+		/* Disable all controls when Ramp0 is disabled */
+		gcombo_r0executiontime.enabled = MF({gcheck_r0enable.value}, Boolean)
+		gcombo_r0ramptype.enabled = MF({gcheck_r0enable.value}, Boolean)
+		gcombo_r0inputconn.enabled = MF({gcheck_r0enable.value}, Boolean)
+		gfloat_r0acceleration.enabled = MF({gcheck_r0enable.value}, Boolean)
+		gfloat_r0initvalue.enabled = MF({gcheck_r0enable.value}, Boolean)
+		gfloat_r0targetvalue.enabled = MF({gcheck_r0enable.value}, Boolean)
+		gfloat_r0exetime.enabled = MF({gcheck_r0enable.value}, Boolean)
+		gfloat_r0targetslewrate.enabled = MF({gcheck_r0enable.value}, Boolean)
+		gfloat_r0jerk.enabled = MF({gcheck_r0enable.value}, Boolean)
+		gfloat_r0ratio.enabled = MF({gcheck_r0enable.value}, Boolean)
+		
+		glabel_r0targetvalue.visible = MF({gcombo_r0inputconn.options.indexOf(gcombo_r0inputconn.value) == 0},Boolean)
+		gfloat_r0targetvalue.visible = MF({gcombo_r0inputconn.options.indexOf(gcombo_r0inputconn.value) == 0},Boolean)
+		
+		gfloat_r0exetime.visible = MF({gcombo_r0executiontime.options.indexOf(gcombo_r0executiontime.value) != 1},Boolean)
+		glabel_r0exetime.visible = MF({gcombo_r0executiontime.options.indexOf(gcombo_r0executiontime.value) != 1},Boolean)
+		
+		gimage_r0scurve.visible = MF({gcombo_r0ramptype.options.indexOf(gcombo_r0ramptype.value) == 1},Boolean)
+		glabel_r0targetslewrate.visible = MF({gcombo_r0ramptype.options.indexOf(gcombo_r0ramptype.value) == 1},Boolean)
+		gfloat_r0targetslewrate.visible = MF({gcombo_r0ramptype.options.indexOf(gcombo_r0ramptype.value) == 1},Boolean)
+		glabel_r0jerk.visible = MF({gcombo_r0ramptype.options.indexOf(gcombo_r0ramptype.value) == 1},Boolean)
+		gfloat_r0jerk.visible = MF({gcombo_r0ramptype.options.indexOf(gcombo_r0ramptype.value) == 1},Boolean)
+		glabel_r0ratio.visible = MF({gcombo_r0ramptype.options.indexOf(gcombo_r0ramptype.value) == 1},Boolean)
+		gfloat_r0ratio.visible = MF({gcombo_r0ramptype.options.indexOf(gcombo_r0ramptype.value) == 1},Boolean)
+		
+
+		
+		
+		/* ------ TAB : Ramp Generator 1 related configuration ---------- */
+		/* Disable all controls when Ramp1 is disabled */
+		gcombo_r1executiontime.enabled = MF({gcheck_r1enable.value}, Boolean)
+		gcombo_r1ramptype.enabled = MF({gcheck_r1enable.value}, Boolean)
+		gcombo_r1inputconn.enabled = MF({gcheck_r1enable.value}, Boolean)
+		gfloat_r1acceleration.enabled = MF({gcheck_r1enable.value}, Boolean)
+		gfloat_r1initvalue.enabled = MF({gcheck_r1enable.value}, Boolean)
+		gfloat_r1targetvalue.enabled = MF({gcheck_r1enable.value}, Boolean)
+		gfloat_r1exetime.enabled = MF({gcheck_r1enable.value}, Boolean)
+		gfloat_r1targetslewrate.enabled = MF({gcheck_r1enable.value}, Boolean)
+		gfloat_r1jerk.enabled = MF({gcheck_r1enable.value}, Boolean)
+		gfloat_r1ratio.enabled = MF({gcheck_r1enable.value}, Boolean)
+		
+		glabel_r1targetvalue.visible = MF({gcombo_r1inputconn.options.indexOf(gcombo_r1inputconn.value) == 0},Boolean)
+		gfloat_r1targetvalue.visible = MF({gcombo_r1inputconn.options.indexOf(gcombo_r1inputconn.value) == 0},Boolean)
+		
+		gfloat_r1exetime.visible = MF({gcombo_r1executiontime.options.indexOf(gcombo_r1executiontime.value) != 1},Boolean)
+		glabel_r1exetime.visible = MF({gcombo_r1executiontime.options.indexOf(gcombo_r1executiontime.value) != 1},Boolean)
+		
+		gimage_r1scurve.visible = MF({gcombo_r1ramptype.options.indexOf(gcombo_r1ramptype.value) == 1},Boolean)
+		glabel_r1targetslewrate.visible = MF({gcombo_r1ramptype.options.indexOf(gcombo_r1ramptype.value) == 1},Boolean)
+		gfloat_r1targetslewrate.visible = MF({gcombo_r1ramptype.options.indexOf(gcombo_r1ramptype.value) == 1},Boolean)
+		glabel_r1jerk.visible = MF({gcombo_r1ramptype.options.indexOf(gcombo_r1ramptype.value) == 1},Boolean)
+		gfloat_r1jerk.visible = MF({gcombo_r1ramptype.options.indexOf(gcombo_r1ramptype.value) == 1},Boolean)
+		glabel_r1ratio.visible = MF({gcombo_r1ramptype.options.indexOf(gcombo_r1ramptype.value) == 1},Boolean)
+		gfloat_r1ratio.visible = MF({gcombo_r1ramptype.options.indexOf(gcombo_r1ramptype.value) == 1},Boolean)
+
+
+		/* ------ TAB : Function Block Processor related configuration ---------- */
+		gcheck_fb_ramp0.value = MF({(gcheck_r0enable.value == true) && (gcombo_r0executiontime.options.indexOf(gcombo_r0executiontime.value) == 1)},Boolean)
+		gcheck_fb_ramp1.value = MF({(gcheck_r1enable.value == true) && (gcombo_r1executiontime.options.indexOf(gcombo_r1executiontime.value) == 1)},Boolean)
+		
+		gint_enabledfb.value = MF({
+									Integer temp = 0
+									if(gcheck_r0enable.value == true)
+									{
+										temp = temp +1
+									}
+									if(gcheck_r1enable.value == true)
+									{
+										temp = temp +1
+									}
+									return temp
+									 },Integer)
+		
+		gint_executeddfb.value = MF({
+									Integer temp = 0
+									if((gcheck_r0enable.value == true) && (gcombo_r0executiontime.options.indexOf(gcombo_r0executiontime.value) == 1))
+									{
+										temp = temp +1
+									}
+									if((gcheck_r1enable.value == true) && (gcombo_r1executiontime.options.indexOf(gcombo_r1executiontime.value) == 1))
+									{
+										temp = temp +1
+									}
+									return temp
+									 },Integer)
+		
+		ggroup_exeorder.visible = MF({(gint_executeddfb.value != 0)}, Boolean)
+		glabel_fbr0.visible =   MF({(gint_executeddfb.value > 0)}, Boolean)
+		gcombo_fbr0.visible =   MF({(gint_executeddfb.value > 0)}, Boolean)
+		glabel_fbr1.visible =   MF({(gint_executeddfb.value > 1)}, Boolean)
+		gcombo_fbr1.visible =   MF({(gint_executeddfb.value > 1)}, Boolean)
+		
+		/* task time */
+		gint_fbdesiredtime.enabled = MF({(gint_executeddfb.value != 0)}, Boolean)
+			
+		/* Filtering the combo options based on the function blocks to be executed from the Automation framework
+		 * function block processor task
+		 */
+		gcombo_fbr0.options = MF({
+			if(gcombo_fbr0.visible == true)
+			{
+				if(gcheck_fb_ramp0.value == true && gcheck_fb_ramp1.value == true)
+				{
+					return ["FB_RAMP_0", "FB_RAMP_1"]
+				}
+				else if(gcheck_fb_ramp0.value == true)
+				{
+					return ["FB_RAMP_0"]
+				}
+				else if(gcheck_fb_ramp1.value == true)
+				{
+					return ["FB_RAMP_1"]
+				}
+				else
+				{
+					return [" "]
+				}
+			}
+			else
+			{
+				return ["FB_RAMP_0", "FB_RAMP_1"]
+			}
+		},List)
+		
+		gcombo_fbr1.options = MF({
+			if(gcombo_fbr1.visible == true)
+			{
+				if(gcheck_fb_ramp0.value == true && gcheck_fb_ramp1.value == true)
+				{
+					return ["FB_RAMP_0", "FB_RAMP_1"]
+				}
+				else if(gcheck_fb_ramp0.value == true)
+				{
+					return ["FB_RAMP_0"]
+				}
+				else if(gcheck_fb_ramp1.value == true)
+				{
+					return ["FB_RAMP_1"]
+				}
+				else
+				{
+					return [" "]
+				}
+			}
+			else
+			{
+				return ["FB_RAMP_0", "FB_RAMP_1"]
+			}
+			
+		},List)
+		
+	}
+	
+	// File Generation
+	def generateFiles()
+	{
+		copy("automation.c", "automation.c")
+		copy("automation.h", "automation.h")
+		generate("automation_extern.tmpl", "automation_extern.h")
+		generate("automation_confc.tmpl", "automation_conf.c")
+		generate("automation_confh.tmpl", "automation_conf.h")
+	}
+
+}

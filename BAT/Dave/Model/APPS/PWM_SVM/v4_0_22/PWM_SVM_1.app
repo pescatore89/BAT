@@ -10,8 +10,8 @@
   <virtualSignals name="ph_v_external_start" URI="http://resources/4.0.22/app/PWM_SVM/1/vs_pwm_svm_gp0_unsync_phv" hwSignal="gp0_unsync" hwResource="//@hwResources.1" visible="true"/>
   <virtualSignals name="ph_w_external_start" URI="http://resources/4.0.22/app/PWM_SVM/1/vs_pwm_svm_gp0_unsync_phw" hwSignal="gp0_unsync" hwResource="//@hwResources.2" visible="true"/>
   <virtualSignals name="current_trigger_external_start" URI="http://resources/4.0.22/app/PWM_SVM/1/vs_pwm_svm_gp0_unsync_currenttrig" hwSignal="gp0_unsync" hwResource="//@hwResources.3" required="false" visible="true"/>
-  <virtualSignals name="ph_u_trap" URI="http://resources/4.0.22/app/PWM_SVM/1/vs_pwm_svm_gp2_unsync_phu" hwSignal="gp2_unsync" hwResource="//@hwResources.0"/>
-  <virtualSignals name="ph_v_trap" URI="http://resources/4.0.22/app/PWM_SVM/1/vs_pwm_svm_gp2_unsync_phv" hwSignal="gp2_unsync" hwResource="//@hwResources.1"/>
+  <virtualSignals name="ph_u_trap" URI="http://resources/4.0.22/app/PWM_SVM/1/vs_pwm_svm_gp2_unsync_phu" hwSignal="gp2_unsync" hwResource="//@hwResources.0" required="false"/>
+  <virtualSignals name="ph_v_trap" URI="http://resources/4.0.22/app/PWM_SVM/1/vs_pwm_svm_gp2_unsync_phv" hwSignal="gp2_unsync" hwResource="//@hwResources.1" required="false"/>
   <virtualSignals name="ph_w_trap" URI="http://resources/4.0.22/app/PWM_SVM/1/vs_pwm_svm_gp2_unsync_phw" hwSignal="gp2_unsync" hwResource="//@hwResources.2"/>
   <virtualSignals name="trigger_trap" URI="http://resources/4.0.22/app/PWM_SVM/1/vs_pwm_svm_gp2_unsync_currenttrig" hwSignal="gp2_unsync" hwResource="//@hwResources.3" required="false" visible="true"/>
   <virtualSignals name="event_ph_u_period/one_match" URI="http://resources/4.0.22/app/PWM_SVM/1/vs_pwm_svm_pmus_omds_phu" hwSignal="pmus_omds" hwResource="//@hwResources.0" visible="true">
@@ -30,8 +30,8 @@
   <virtualSignals name="event_ph_v_compare_match2_up/down" URI="http://resources/4.0.22/app/PWM_SVM/1/vs_pwm_svm_cmds_cmus_cmpch2_phv" hwSignal="cmd2s_cmu2s" hwResource="//@hwResources.1" required="false" visible="true"/>
   <virtualSignals name="event_ph_w_compare_match2_up/down" URI="http://resources/4.0.22/app/PWM_SVM/1/vs_pwm_svm_cmds_cmus_cmpch2_phw" hwSignal="cmd2s_cmu2s" hwResource="//@hwResources.2" required="false" visible="true"/>
   <virtualSignals name="event_current_trigger_compare_match2_up/down" URI="http://resources/4.0.22/app/PWM_SVM/1/vs_pwm_svm_cmds_cmus_cmpch2_currenttrig" hwSignal="cmd2s_cmu2s" hwResource="//@hwResources.3" required="false" visible="true"/>
-  <virtualSignals name="event_ph_u_trap" URI="http://resources/4.0.22/app/PWM_SVM/1/vs_pwm_svm_e2as_phu" hwSignal="e2as" hwResource="//@hwResources.0" visible="true"/>
-  <virtualSignals name="event_ph_v_trap" URI="http://resources/4.0.22/app/PWM_SVM/1/vs_pwm_svm_e2as_phv" hwSignal="e2as" hwResource="//@hwResources.1" visible="true"/>
+  <virtualSignals name="event_ph_u_trap" URI="http://resources/4.0.22/app/PWM_SVM/1/vs_pwm_svm_e2as_phu" hwSignal="e2as" hwResource="//@hwResources.0" required="false" visible="true"/>
+  <virtualSignals name="event_ph_v_trap" URI="http://resources/4.0.22/app/PWM_SVM/1/vs_pwm_svm_e2as_phv" hwSignal="e2as" hwResource="//@hwResources.1" required="false" visible="true"/>
   <virtualSignals name="event_ph_w_trap" URI="http://resources/4.0.22/app/PWM_SVM/1/vs_pwm_svm_e2as_phw" hwSignal="e2as" hwResource="//@hwResources.2" visible="true"/>
   <virtualSignals name="event_trigger_trap" URI="http://resources/4.0.22/app/PWM_SVM/1/vs_pwm_svm_e2as_currenttrig" hwSignal="e2as" hwResource="//@hwResources.3" required="false" visible="true"/>
   <virtualSignals name="ph_u_ch_status" URI="http://resources/4.0.22/app/PWM_SVM/1/vs_pwm_svm_sta_phu" hwResource="//@hwResources.0" visible="true" solverVariableName="sv3" solverVariableValue="sta"/>
@@ -64,7 +64,7 @@
   <virtualSignals name="ph_v_low_pad" URI="http://resources/4.0.22/app/PWM_SVM/1/vs_pwm_svm_pin_phv_low" hwSignal="pad" hwResource="//@hwResources.7"/>
   <virtualSignals name="ph_w_high_pad" URI="http://resources/4.0.22/app/PWM_SVM/1/vs_pwm_svm_pin_phw_high" hwSignal="pad" hwResource="//@hwResources.8"/>
   <virtualSignals name="ph_w_low_pad" URI="http://resources/4.0.22/app/PWM_SVM/1/vs_pwm_svm_pin_phw_low" hwSignal="pad" hwResource="//@hwResources.9"/>
-  <virtualSignals name="trap_pad" URI="http://resources/4.0.22/app/PWM_SVM/1/vs_pwm_svm_pin_trap" hwSignal="pad" hwResource="//@hwResources.10"/>
+  <virtualSignals name="trap_pad" URI="http://resources/4.0.22/app/PWM_SVM/1/vs_pwm_svm_pin_trap" hwSignal="pad" hwResource="//@hwResources.10" required="false"/>
   <virtualSignals name="inverter_enable_pad" URI="http://resources/4.0.22/app/PWM_SVM/1/vs_pwm_svm_pin_inverter" hwSignal="pad" hwResource="//@hwResources.11"/>
   <virtualSignals name="PhaseU_High Pin_signal" URI="http://resources/4.0.22/app/PWM_SVM/1/__pin_vs_pwm_svm_pin_phu_high" hwSignal="pin" hwResource="//@hwResources.12"/>
   <virtualSignals name="PhaseV_High Pin_signal" URI="http://resources/4.0.22/app/PWM_SVM/1/__pin_vs_pwm_svm_pin_phv_high" hwSignal="pin" hwResource="//@hwResources.13"/>
@@ -105,11 +105,9 @@
   <hwResources name="PhaseW_Low Pin" URI="http://resources/4.0.22/app/PWM_SVM/1/hwres_port_pad_phwlow" resourceGroupUri="port/p/*/pad/*" mResGrpUri="port/p/*/pad/*">
     <downwardMapList xsi:type="ResourceModel:ResourceGroup" href="../../../HW_RESOURCES/Port1/Port1_1.dd#//@provided.15"/>
   </hwResources>
-  <hwResources name="Trap Pin" URI="http://resources/4.0.22/app/PWM_SVM/1/hwres_port_pad_trap" resourceGroupUri="port/p/*/pad/*" mResGrpUri="port/p/*/pad/*">
-    <downwardMapList xsi:type="ResourceModel:ResourceGroup" href="../../../HW_RESOURCES/Port5/Port5_5.dd#//@provided.6"/>
-  </hwResources>
-  <hwResources name="Inverter Enable Pin" URI="http://resources/4.0.22/app/PWM_SVM/1/hwres_port_pad_inverterenable" resourceGroupUri="port/p/*/pad/*" mResGrpUri="port/p/*/pad/*">
-    <downwardMapList xsi:type="ResourceModel:ResourceGroup" href="../../../HW_RESOURCES/Port0/Port0_0.dd#//@provided.36"/>
+  <hwResources name="Trap Pin" URI="http://resources/4.0.22/app/PWM_SVM/1/hwres_port_pad_trap" resourceGroupUri="" required="false" mResGrpUri="port/p/*/pad/*"/>
+  <hwResources name="Inverter Enable Pin" URI="http://resources/4.0.22/app/PWM_SVM/1/hwres_port_pad_inverterenable" resourceGroupUri="resources/0.4.1/port/p/0/pad/6" mResGrpUri="port/p/*/pad/*">
+    <downwardMapList xsi:type="ResourceModel:ResourceGroup" href="../../../HW_RESOURCES/Port15/Port15_15.dd#//@provided.5"/>
   </hwResources>
   <hwResources name="PhaseU_High Pin" URI="http://resources/4.0.22/app/PWM_SVM/1/__pin_hwres_port_pad_phuhigh" resourceGroupUri="devicepackage/0/75" constraintType="GLOBAL_RESOURCE" mResGrpUri="devicepackage/0/*">
     <downwardMapList xsi:type="ResourceModel:ResourceGroup" href="../../../HW_RESOURCES/DEVICEPACKAGE/DEVICEPACKAGE_0.dd#//@provided.18"/>
@@ -129,11 +127,9 @@
   <hwResources name="PhaseW_Low Pin" URI="http://resources/4.0.22/app/PWM_SVM/1/__pin_hwres_port_pad_phwlow" resourceGroupUri="devicepackage/0/71" constraintType="GLOBAL_RESOURCE" mResGrpUri="devicepackage/0/*">
     <downwardMapList xsi:type="ResourceModel:ResourceGroup" href="../../../HW_RESOURCES/DEVICEPACKAGE/DEVICEPACKAGE_0.dd#//@provided.15"/>
   </hwResources>
-  <hwResources name="Trap Pin" URI="http://resources/4.0.22/app/PWM_SVM/1/__pin_hwres_port_pad_trap" resourceGroupUri="devicepackage/0/*" constraintType="NONE" mResGrpUri="devicepackage/0/*">
-    <downwardMapList xsi:type="ResourceModel:ResourceGroup" href="../../../HW_RESOURCES/DEVICEPACKAGE/DEVICEPACKAGE_0.dd#//@provided.11"/>
-  </hwResources>
-  <hwResources name="Inverter Enable Pin" URI="http://resources/4.0.22/app/PWM_SVM/1/__pin_hwres_port_pad_inverterenable" resourceGroupUri="devicepackage/0/96" constraintType="GLOBAL_RESOURCE" mResGrpUri="devicepackage/0/*">
-    <downwardMapList xsi:type="ResourceModel:ResourceGroup" href="../../../HW_RESOURCES/DEVICEPACKAGE/DEVICEPACKAGE_0.dd#//@provided.21"/>
+  <hwResources name="Trap Pin" URI="http://resources/4.0.22/app/PWM_SVM/1/__pin_hwres_port_pad_trap" resourceGroupUri="" required="false" mResGrpUri="devicepackage/0/*"/>
+  <hwResources name="Inverter Enable Pin" URI="http://resources/4.0.22/app/PWM_SVM/1/__pin_hwres_port_pad_inverterenable" resourceGroupUri="resources/lqfp100.0.0/devicepackage/0/96" mResGrpUri="devicepackage/0/*">
+    <downwardMapList xsi:type="ResourceModel:ResourceGroup" href="../../../HW_RESOURCES/DEVICEPACKAGE/DEVICEPACKAGE_0.dd#//@provided.34"/>
   </hwResources>
   <connections URI="http://resources/4.0.22/app/PWM_SVM/1/http://resources/4.0.22/app/PWM_SVM/1/vs_global_ccu8_global/http://resources/4.0.22/app/PWM_SVM/1/vs_pwm_svm_globalsignal_phu" systemDefined="true" sourceSignal="ccu8_global" targetSignal="ph_u_global_signal" targetVirtualSignal="//@virtualSignals.0" proxySrcVirtualSignalUri="http://resources/4.1.12/app/GLOBAL_CCU8/1/vs_global_ccu8_globalsignal" containingProxySignal="true">
     <downwardMapList xsi:type="ResourceModel:VirtualSignal" href="../../GLOBAL_CCU8/v4_1_12/GLOBAL_CCU8_1.app#//@virtualSignals.0"/>
@@ -160,9 +156,9 @@
   <connections URI="http://resources/4.0.22/app/PWM_SVM/1/http://resources/4.0.22/app/PWM_SVM/1/vs_pwm_svm_out1_phw/http://resources/4.0.22/app/PWM_SVM/1/vs_pwm_svm_pin_phw_low" systemDefined="true" sourceSignal="ph_w_low" targetSignal="ph_w_low_pad" srcVirtualSignal="//@virtualSignals.51" targetVirtualSignal="//@virtualSignals.59"/>
   <connections URI="http://resources/4.0.22/app/PWM_SVM/1/http://resources/4.0.22/app/PWM_SVM/1/vs_pwm_svm_out1_op_phv/http://resources/4.0.22/app/PWM_SVM/1/vs_pwm_svm_pin_phv_low" systemDefined="true" sourceSignal="ph_v_low" targetSignal="ph_v_low_pad" required="false" srcVirtualSignal="//@virtualSignals.52" targetVirtualSignal="//@virtualSignals.57"/>
   <connections URI="http://resources/4.0.22/app/PWM_SVM/1/http://resources/4.0.22/app/PWM_SVM/1/vs_pwm_svm_out1_op_phw/http://resources/4.0.22/app/PWM_SVM/1/vs_pwm_svm_pin_phw_low" systemDefined="true" sourceSignal="ph_w_low" targetSignal="ph_w_low_pad" required="false" srcVirtualSignal="//@virtualSignals.53" targetVirtualSignal="//@virtualSignals.59"/>
-  <connections URI="http://resources/4.0.22/app/PWM_SVM/1/http://resources/4.0.22/app/PWM_SVM/1/vs_pwm_svm_pin_trap/http://resources/4.0.22/app/PWM_SVM/1/vs_pwm_svm_gp2_unsync_phu" systemDefined="true" sourceSignal="trap_pad" targetSignal="ph_u_trap" srcVirtualSignal="//@virtualSignals.60" targetVirtualSignal="//@virtualSignals.8"/>
-  <connections URI="http://resources/4.0.22/app/PWM_SVM/1/http://resources/4.0.22/app/PWM_SVM/1/vs_pwm_svm_pin_trap/http://resources/4.0.22/app/PWM_SVM/1/vs_pwm_svm_gp2_unsync_phv" systemDefined="true" sourceSignal="trap_pad" targetSignal="ph_v_trap" srcVirtualSignal="//@virtualSignals.60" targetVirtualSignal="//@virtualSignals.9"/>
-  <connections URI="http://resources/4.0.22/app/PWM_SVM/1/http://resources/4.0.22/app/PWM_SVM/1/vs_pwm_svm_pin_trap/http://resources/4.0.22/app/PWM_SVM/1/vs_pwm_svm_gp2_unsync_phw" systemDefined="true" sourceSignal="trap_pad" targetSignal="ph_w_trap" srcVirtualSignal="//@virtualSignals.60" targetVirtualSignal="//@virtualSignals.10"/>
+  <connections URI="http://resources/4.0.22/app/PWM_SVM/1/http://resources/4.0.22/app/PWM_SVM/1/vs_pwm_svm_pin_trap/http://resources/4.0.22/app/PWM_SVM/1/vs_pwm_svm_gp2_unsync_phu" systemDefined="true" sourceSignal="trap_pad" targetSignal="ph_u_trap" required="false" srcVirtualSignal="//@virtualSignals.60" targetVirtualSignal="//@virtualSignals.8"/>
+  <connections URI="http://resources/4.0.22/app/PWM_SVM/1/http://resources/4.0.22/app/PWM_SVM/1/vs_pwm_svm_pin_trap/http://resources/4.0.22/app/PWM_SVM/1/vs_pwm_svm_gp2_unsync_phv" systemDefined="true" sourceSignal="trap_pad" targetSignal="ph_v_trap" required="false" srcVirtualSignal="//@virtualSignals.60" targetVirtualSignal="//@virtualSignals.9"/>
+  <connections URI="http://resources/4.0.22/app/PWM_SVM/1/http://resources/4.0.22/app/PWM_SVM/1/vs_pwm_svm_pin_trap/http://resources/4.0.22/app/PWM_SVM/1/vs_pwm_svm_gp2_unsync_phw" systemDefined="true" sourceSignal="trap_pad" targetSignal="ph_w_trap" required="false" srcVirtualSignal="//@virtualSignals.60" targetVirtualSignal="//@virtualSignals.10"/>
   <connections URI="http://resources/4.0.22/app/PWM_SVM/1/http://resources/4.0.22/app/PWM_SVM/1/vs_global_ccu8_gsc_enable/http://resources/4.0.22/app/PWM_SVM/1/vs_pwm_svm_gp0_unsync_phu" systemDefined="true" sourceSignal="ccu8_global_start" targetSignal="ph_u_external_start" targetVirtualSignal="//@virtualSignals.4" proxySrcVirtualSignalUri="http://resources/4.1.12/app/GLOBAL_CCU8/1/vs_global_ccu8_gsc_enable" containingProxySignal="true">
     <downwardMapList xsi:type="ResourceModel:VirtualSignal" href="../../GLOBAL_CCU8/v4_1_12/GLOBAL_CCU8_1.app#//@virtualSignals.2"/>
     <srcVirtualSignal href="../../GLOBAL_CCU8/v4_1_12/GLOBAL_CCU8_1.app#//@virtualSignals.2"/>

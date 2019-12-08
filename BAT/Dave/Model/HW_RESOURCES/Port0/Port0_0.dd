@@ -183,7 +183,6 @@
     <enumValues xsi:type="ResourceModel:RegEnumValue" value="0b11" description="Reserved."/>
   </provided>
   <provided xsi:type="ResourceModel:ResourceGroup" name="P0.7 / #89" URI="http://resources/0.4.1/port/p/0/pad/7">
-    <upwardMapList xsi:type="ResourceModel:HWResource" href="../../APPS/PWM_SVM/v4_0_22/PWM_SVM_0.app#//@hwResources.10"/>
     <resourcesList name="out_p" requiredResourceUri="http://resources/0.4.1/port/p/0/out/p7"/>
     <resourcesList name="omr_ps" requiredResourceUri="http://resources/0.4.1/port/p/0/omr/ps7"/>
     <resourcesList name="omr_pr" requiredResourceUri="http://resources/0.4.1/port/p/0/omr/pr7"/>
@@ -422,7 +421,6 @@
     <enumValues xsi:type="ResourceModel:RegEnumValue" value="0b11" description="Reserved."/>
   </provided>
   <provided xsi:type="ResourceModel:ResourceGroup" name="P0.6 / #96" URI="http://resources/0.4.1/port/p/0/pad/6">
-    <upwardMapList xsi:type="ResourceModel:HWResource" href="../../APPS/PWM_SVM/v4_0_22/PWM_SVM_1.app#//@hwResources.11"/>
     <resourcesList name="out_p" requiredResourceUri="http://resources/0.4.1/port/p/0/out/p6"/>
     <resourcesList name="omr_ps" requiredResourceUri="http://resources/0.4.1/port/p/0/omr/ps6"/>
     <resourcesList name="omr_pr" requiredResourceUri="http://resources/0.4.1/port/p/0/omr/pr6"/>

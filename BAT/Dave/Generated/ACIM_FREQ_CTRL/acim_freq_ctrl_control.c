@@ -57,20 +57,6 @@ void ACIM_FREQ_CTRL_0_SetValueProcessing(ACIM_FREQ_CTRL_t*const HandlePtr);
 void ACIM_FREQ_CTRL_0_FastControlLoop_ISR()
 {  
   int32_t temp_angle;
-
-  /************************* Trap ***************************/
-  if(XMC_CCU8_SLICE_GetEvent(ACIM_FREQ_CTRL_0.pwm_svm_ptr->phase_ptr[0]->slice_ptr,XMC_CCU8_SLICE_IRQ_ID_EVENT2) == (uint32_t)true)
-  {
-    ACIM_FREQ_CTRL_0.operational_error |= (uint32_t)1<<(uint32_t)ACIM_FREQ_CTRL_EID_TRAP_ERROR;
-	ACIM_FREQ_CTRL_0.error_table_ptr[ACIM_FREQ_CTRL_EID_TRAP_ERROR].error_status = (uint8_t)ACIM_FREQ_CTRL_ERROR_SET;
-    /* Stop the motor */
-    if(ACIM_FREQ_CTRL_0.error_table_ptr[ACIM_FREQ_CTRL_EID_TRAP_ERROR].error_handler_ptr_t != NULL)
-    {
-      (ACIM_FREQ_CTRL_0.error_table_ptr[ACIM_FREQ_CTRL_EID_TRAP_ERROR].error_handler_ptr_t)(&ACIM_FREQ_CTRL_0);
-    }
-  }
-  else
-  {
 /************************* Fast Control Loop ***************************/
 
     if(ACIM_FREQ_CTRL_0.fcl_div_value == ACIM_FREQ_CTRL_0.acim_config_ptr->fcl_divider)
@@ -122,8 +108,6 @@ void ACIM_FREQ_CTRL_0_FastControlLoop_ISR()
       ACIM_FREQ_CTRL_0.pcl_div_value++;
     }
 
-  }
-
 }
 
 /*************** Primary control loop Functions ****************************/
@@ -151,21 +135,11 @@ void ACIM_FREQ_CTRL_1_SetValueProcessing(ACIM_FREQ_CTRL_t*const HandlePtr);
 void ACIM_FREQ_CTRL_1_FastControlLoop_ISR()
 {  
   int32_t temp_angle;
-
-  /************************* Trap ***************************/
-  if(XMC_CCU8_SLICE_GetEvent(ACIM_FREQ_CTRL_1.pwm_svm_ptr->phase_ptr[0]->slice_ptr,XMC_CCU8_SLICE_IRQ_ID_EVENT2) == (uint32_t)true)
-  {
-    ACIM_FREQ_CTRL_1.operational_error |= (uint32_t)1<<(uint32_t)ACIM_FREQ_CTRL_EID_TRAP_ERROR;
-	ACIM_FREQ_CTRL_1.error_table_ptr[ACIM_FREQ_CTRL_EID_TRAP_ERROR].error_status = (uint8_t)ACIM_FREQ_CTRL_ERROR_SET;
-    /* Stop the motor */
-    if(ACIM_FREQ_CTRL_1.error_table_ptr[ACIM_FREQ_CTRL_EID_TRAP_ERROR].error_handler_ptr_t != NULL)
-    {
-      (ACIM_FREQ_CTRL_1.error_table_ptr[ACIM_FREQ_CTRL_EID_TRAP_ERROR].error_handler_ptr_t)(&ACIM_FREQ_CTRL_1);
-    }
-  }
-  else
-  {
 /************************* Fast Control Loop ***************************/
+
+    if(ACIM_FREQ_CTRL_1.fcl_div_value == ACIM_FREQ_CTRL_1.acim_config_ptr->fcl_divider)
+    {
+      ACIM_FREQ_CTRL_1.fcl_div_value = 1;
 
       if(ACIM_FREQ_CTRL_1.msm_state != ACIM_FREQ_CTRL_MSM_BOOTSTRAP)
       {
@@ -191,6 +165,13 @@ void ACIM_FREQ_CTRL_1_FastControlLoop_ISR()
         /*Call SVM*/
         PWM_SVM_SVMUpdate(ACIM_FREQ_CTRL_1.pwm_svm_ptr,(uint16_t)ACIM_FREQ_CTRL_1.amplitude,ACIM_FREQ_CTRL_1.angle);
       }
+
+    }
+    else
+    {
+      ACIM_FREQ_CTRL_1.fcl_div_value++;
+    }
+
 /************************* calling control loops ***************************/
 
     if(ACIM_FREQ_CTRL_1.pcl_div_value == ACIM_FREQ_CTRL_1.acim_config_ptr->pcl_divider)
@@ -204,8 +185,6 @@ void ACIM_FREQ_CTRL_1_FastControlLoop_ISR()
     {
       ACIM_FREQ_CTRL_1.pcl_div_value++;
     }
-
-  }
 
 }
 

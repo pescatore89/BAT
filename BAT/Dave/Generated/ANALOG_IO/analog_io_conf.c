@@ -95,3 +95,22 @@ const ANALOG_IO_t ANALOG_IO_1 =
   .pin = 0U  
 };
 
+/**********************************************************************************************************************
+ * DATA STRUCTURES
+ **********************************************************************************************************************/
+/**
+ * Instance specific initialization state variable.
+ */
+static ANALOG_IO_STATE_t ANALOG_IO_2_state = ANALOG_IO_STATE_NOT_INITIALIZED;
+
+/**
+ * Instance specific data structure of ANALOG_IO APP.
+ */
+const ANALOG_IO_t ANALOG_IO_2 =
+{
+  .config_ptr = NULL,
+  .state  = &ANALOG_IO_2_state,
+  .port = XMC_GPIO_PORT15,
+  .pin = 2U  
+};
+

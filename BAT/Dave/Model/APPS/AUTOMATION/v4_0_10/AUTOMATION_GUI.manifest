@@ -1,0 +1,199 @@
+package Model.APPS.AUTOMATION.v4_0_10;
+
+// Import statements
+import ifx.davex.app.manifest.*
+
+abstract class AUTOMATION_GUI extends AppManifest {
+	/* Begin : UI variable section */
+	 public GTab gtab_configuration;
+	 public GTab gtab_error_handler;
+	 public GTab gtab_fb;
+	 public GTab gtab_ramp0;
+	 public GTab gtab_ramp1;
+	 public GImage gimage_tasksheduler;
+	 public GImage gimage_r0linear;
+	 public GImage gimage_r0scurve;
+	 public GImage gimage_r1linear;
+	 public GImage gimage_r1scurve;
+	 public GInteger gint_num_ext_interface;
+	 public GInteger gint_max_app_register;
+	 public GInteger gint_fbactualtime;
+	 public GInteger gint_ehactualtime;
+	 public GInteger gint_scheduler;
+	 public GInteger gint_fbdesiredtime;
+	 public GInteger gint_ehdesiredtime;
+	 public GInteger gint_eh_logbook_size;
+	 public GInteger gint_bit_interface_words;
+	 public GInteger gint_enabledfb;
+	 public GInteger gint_numappfb;
+	 public GCombo gcombo_fbr0;
+	 public GCombo gcombo_fbr1;
+	 public GCombo gcombo_r0executiontime;
+	 public GCombo gcombo_r0ramptype;
+	 public GCombo gcombo_r0inputconn;
+	 public GCombo gcombo_r1executiontime;
+	 public GCombo gcombo_r1ramptype;
+	 public GCombo gcombo_r1inputconn;
+	 public GFloat gfloat_r0exetime;
+	 public GFloat gfloat_r0acceleration;
+	 public GFloat gfloat_r0initvalue;
+	 public GFloat gfloat_r0targetvalue;
+	 public GFloat gfloat_r0targetslewrate;
+	 public GFloat gfloat_r0jerk;
+	 public GFloat gfloat_r0ratio;
+	 public GFloat gfloat_r1exetime;
+	 public GFloat gfloat_r1acceleration;
+	 public GFloat gfloat_r1initvalue;
+	 public GFloat gfloat_r1targetvalue;
+	 public GFloat gfloat_r1targetslewrate;
+	 public GFloat gfloat_r1jerk;
+	 public GFloat gfloat_r1ratio;
+	 public GString gstring_r0fbid;
+	 public GString gstring_r1fbid;
+	 public GCheck gcheck_error_handler_enable;
+	 public GCheck gcheck_r0enable;
+	 public GCheck gcheck_r1enable;
+	 public GLabel glabel_num_ext_interface;
+	 public GLabel glabel_max_app_register;
+	 public GLabel glabel_fbdesiredtime;
+	 public GLabel glabel_ehdesiredtime;
+	 public GLabel glabel_scheduler;
+	 public GLabel glabel_fbactualtime;
+	 public GLabel glabel_ehactualtime;
+	 public GLabel glabel_eh_logbook_size;
+	 public GLabel glabel_bit_interface_words;
+	 public GLabel glabel_enabledfb;
+	 public GLabel glabel_numappfb;
+	 public GLabel glabel_fbr0;
+	 public GLabel glabel_fbr1;
+	 public GLabel glabel_r0fbid;
+	 public GLabel glabel_r0executiontime;
+	 public GLabel glabel_r0exetime;
+	 public GLabel glabel_r0ramptype;
+	 public GLabel glabel_r0inputconn;
+	 public GLabel glabel_r0acceleration;
+	 public GLabel glabel_r0initvalue;
+	 public GLabel glabel_r0targetvalue;
+	 public GLabel glabel_r0targetslewrate;
+	 public GLabel glabel_r0jerk;
+	 public GLabel glabel_r0ratio;
+	 public GLabel glabel_r1fbid;
+	 public GLabel glabel_r1executiontime;
+	 public GLabel glabel_r1exetime;
+	 public GLabel glabel_r1ramptype;
+	 public GLabel glabel_r1inputconn;
+	 public GLabel glabel_r1acceleration;
+	 public GLabel glabel_r1initvalue;
+	 public GLabel glabel_r1targetvalue;
+	 public GLabel glabel_r1targetslewrate;
+	 public GLabel glabel_r1jerk;
+	 public GLabel glabel_r1ratio;
+	 public GGroup ggroup_configuration;
+	 public GGroup ggroup_tasktime;
+	 public GGroup ggroup_error_handler_config;
+	 public GGroup ggroup_fb;
+	 public GGroup ggroup_exeorder;
+	 public GGroup ggroup_r0;
+	 public GGroup ggroup_r0config;
+	 public GGroup ggroup_r1;
+	 public GGroup ggroup_r1config;
+
+	 public AUTOMATION_GUI(DaveEnv daveEnv){
+
+	 gtab_configuration = GTab(widgetName:"gtab_configuration", text:"General Settings", enabled:true, visible:true)
+	 gtab_error_handler = GTab(widgetName:"gtab_error_handler", text:"Error Handler", enabled:true, visible:true)
+	 gtab_fb = GTab(widgetName:"gtab_fb", text:"Function Block Processor", enabled:true, visible:true)
+	 gtab_ramp0 = GTab(widgetName:"gtab_ramp0", text:"Ramp Generator 0", enabled:true, visible:true)
+	 gtab_ramp1 = GTab(widgetName:"gtab_ramp1", text:"Ramp Generator 1", enabled:true, visible:true)
+	 gimage_tasksheduler = GImage(widgetName:"gimage_tasksheduler", path: "Uimodel/task_scheduler.png", enabled:true, visible:true)
+	 gimage_r0linear = GImage(widgetName:"gimage_r0linear", path: "Uimodel/ramp_linear.PNG", enabled:true, visible:true)
+	 gimage_r0scurve = GImage(widgetName:"gimage_r0scurve", path: "Uimodel/ramp_s.PNG", enabled:true, visible:true)
+	 gimage_r1linear = GImage(widgetName:"gimage_r1linear", path: "Uimodel/ramp_linear.PNG", enabled:true, visible:true)
+	 gimage_r1scurve = GImage(widgetName:"gimage_r1scurve", path: "Uimodel/ramp_s.PNG", enabled:true, visible:true)
+	 gint_num_ext_interface = GInteger(widgetName:"gint_num_ext_interface", value:1, minValue:1, maxValue:4, enabled:true, visible:true, isMandatoryValue:false)
+	 gint_max_app_register = GInteger(widgetName:"gint_max_app_register", value:1, minValue:1, maxValue:10, enabled:true, visible:true, isMandatoryValue:false)
+	 gint_fbactualtime = GInteger(widgetName:"gint_fbactualtime", value:300, minValue:1, maxValue:100000, enabled:false, visible:true, isMandatoryValue:false)
+	 gint_ehactualtime = GInteger(widgetName:"gint_ehactualtime", value:1000, minValue:1, maxValue:100000, enabled:false, visible:true, isMandatoryValue:false)
+	 gint_scheduler = GInteger(widgetName:"gint_scheduler", value:250, minValue:1, maxValue:100000, enabled:false, visible:true, isMandatoryValue:false)
+	 gint_fbdesiredtime = GInteger(widgetName:"gint_fbdesiredtime", value:1000, minValue:1, maxValue:100000, enabled:true, visible:true, isMandatoryValue:false)
+	 gint_ehdesiredtime = GInteger(widgetName:"gint_ehdesiredtime", value:2000, minValue:1, maxValue:100000, enabled:true, visible:true, isMandatoryValue:false)
+	 gint_eh_logbook_size = GInteger(widgetName:"gint_eh_logbook_size", value:20, minValue:1, maxValue:255, enabled:true, visible:true, isMandatoryValue:false)
+	 gint_bit_interface_words = GInteger(widgetName:"gint_bit_interface_words", value:1, minValue:1, maxValue:2, enabled:true, visible:true, isMandatoryValue:false)
+	 gint_enabledfb = GInteger(widgetName:"gint_enabledfb", value:0, minValue:0, maxValue:5, enabled:false, visible:true, isMandatoryValue:false)
+	 gint_numappfb = GInteger(widgetName:"gint_numappfb", value:1, minValue:0, maxValue:16, enabled:true, visible:true, isMandatoryValue:false)
+	 gcombo_fbr0 = GCombo(widgetName:"gcombo_fbr0", options:["FB_RAMP_0","FB_RAMP_1"], value:"FB_RAMP_0", enabled:true, visible:true, isMandatoryValue:false)
+	 gcombo_fbr1 = GCombo(widgetName:"gcombo_fbr1", options:["FB_RAMP_0","FB_RAMP_1"], value:"FB_RAMP_1", enabled:true, visible:true, isMandatoryValue:false)
+	 gcombo_r0executiontime = GCombo(widgetName:"gcombo_r0executiontime", options:["Set Value Processor Task","Function Block Processor Task","External"], value:"Set Value Processor Task", enabled:true, visible:true, isMandatoryValue:false)
+	 gcombo_r0ramptype = GCombo(widgetName:"gcombo_r0ramptype", options:["Linear","S-Curve"], value:"Linear", enabled:true, visible:true, isMandatoryValue:false)
+	 gcombo_r0inputconn = GCombo(widgetName:"gcombo_r0inputconn", options:["No Connection","Connected to Motor APP"], value:"Connected to Motor APP", enabled:true, visible:true, isMandatoryValue:false)
+	 gcombo_r1executiontime = GCombo(widgetName:"gcombo_r1executiontime", options:["Set Value Processor Task","Function Block Processor Task","External"], value:"Set Value Processor Task", enabled:true, visible:true, isMandatoryValue:false)
+	 gcombo_r1ramptype = GCombo(widgetName:"gcombo_r1ramptype", options:["Linear","S-Curve"], value:"Linear", enabled:true, visible:true, isMandatoryValue:false)
+	 gcombo_r1inputconn = GCombo(widgetName:"gcombo_r1inputconn", options:["No Connection","Connected to Motor APP"], value:"Connected to Motor APP", enabled:true, visible:true, isMandatoryValue:false)
+	 gfloat_r0exetime = GFloat(widgetName:"gfloat_r0exetime", value:150, minValue:25, maxValue:100000, enabled:true, visible:true, isMandatoryValue:false)
+	 gfloat_r0acceleration = GFloat(widgetName:"gfloat_r0acceleration", value:100, minValue:1, maxValue:1000000, enabled:true, visible:true, isMandatoryValue:false)
+	 gfloat_r0initvalue = GFloat(widgetName:"gfloat_r0initvalue", value:0, minValue:-65535, maxValue:65535, enabled:true, visible:true, isMandatoryValue:false)
+	 gfloat_r0targetvalue = GFloat(widgetName:"gfloat_r0targetvalue", value:1500, minValue:-65535, maxValue:65535, enabled:true, visible:true, isMandatoryValue:false)
+	 gfloat_r0targetslewrate = GFloat(widgetName:"gfloat_r0targetslewrate", value:200, minValue:1, maxValue:1000000, enabled:true, visible:true, isMandatoryValue:false)
+	 gfloat_r0jerk = GFloat(widgetName:"gfloat_r0jerk", value:10, minValue:1, maxValue:1000000, enabled:true, visible:true, isMandatoryValue:false)
+	 gfloat_r0ratio = GFloat(widgetName:"gfloat_r0ratio", value:20, minValue:0, maxValue:100, enabled:true, visible:true, isMandatoryValue:false)
+	 gfloat_r1exetime = GFloat(widgetName:"gfloat_r1exetime", value:150, minValue:25, maxValue:100000, enabled:true, visible:true, isMandatoryValue:false)
+	 gfloat_r1acceleration = GFloat(widgetName:"gfloat_r1acceleration", value:100, minValue:1, maxValue:1000000, enabled:true, visible:true, isMandatoryValue:false)
+	 gfloat_r1initvalue = GFloat(widgetName:"gfloat_r1initvalue", value:0, minValue:-65535, maxValue:65535, enabled:true, visible:true, isMandatoryValue:false)
+	 gfloat_r1targetvalue = GFloat(widgetName:"gfloat_r1targetvalue", value:1500, minValue:-65535, maxValue:65535, enabled:true, visible:true, isMandatoryValue:false)
+	 gfloat_r1targetslewrate = GFloat(widgetName:"gfloat_r1targetslewrate", value:200, minValue:1, maxValue:1000000, enabled:true, visible:true, isMandatoryValue:false)
+	 gfloat_r1jerk = GFloat(widgetName:"gfloat_r1jerk", value:10, minValue:1, maxValue:1000000, enabled:true, visible:true, isMandatoryValue:false)
+	 gfloat_r1ratio = GFloat(widgetName:"gfloat_r1ratio", value:20, minValue:0, maxValue:100, enabled:true, visible:true, isMandatoryValue:false)
+	 gstring_r0fbid = GString(widgetName:"gstring_r0fbid", value:"FB_RAMP_0", enabled:false, visible:true, isMandatoryValue:false)
+	 gstring_r1fbid = GString(widgetName:"gstring_r1fbid", value:"FB_RAMP_1", enabled:false, visible:true, isMandatoryValue:false)
+	 gcheck_error_handler_enable = GCheck(widgetName:"gcheck_error_handler_enable", value:true, enabled:true, visible:true)
+	 gcheck_r0enable = GCheck(widgetName:"gcheck_r0enable", value:true, enabled:true, visible:true)
+	 gcheck_r1enable = GCheck(widgetName:"gcheck_r1enable", value:true, enabled:true, visible:true)
+	 glabel_num_ext_interface = GLabel(widgetName:"glabel_num_ext_interface", text:"Number of external interfaces:  ", enabled:true, visible:true)
+	 glabel_max_app_register = GLabel(widgetName:"glabel_max_app_register", text:"Number of APPs:", enabled:true, visible:true)
+	 glabel_fbdesiredtime = GLabel(widgetName:"glabel_fbdesiredtime", text:"Function block processor task [us]:", enabled:true, visible:true)
+	 glabel_ehdesiredtime = GLabel(widgetName:"glabel_ehdesiredtime", text:"Error handler task [us]:", enabled:true, visible:true)
+	 glabel_scheduler = GLabel(widgetName:"glabel_scheduler", text:"Task time", enabled:false, visible:false)
+	 glabel_fbactualtime = GLabel(widgetName:"glabel_fbactualtime", text:"FB task time", enabled:false, visible:false)
+	 glabel_ehactualtime = GLabel(widgetName:"glabel_ehactualtime", text:"EH task time", enabled:false, visible:false)
+	 glabel_eh_logbook_size = GLabel(widgetName:"glabel_eh_logbook_size", text:"Error logbook size:", enabled:true, visible:true)
+	 glabel_bit_interface_words = GLabel(widgetName:"glabel_bit_interface_words", text:"Bit interface error words:    ", enabled:true, visible:true)
+	 glabel_enabledfb = GLabel(widgetName:"glabel_enabledfb", text:"Number of enabled automation function blocks:", enabled:true, visible:true)
+	 glabel_numappfb = GLabel(widgetName:"glabel_numappfb", text:"Number of external function blocks:", enabled:true, visible:true)
+	 glabel_fbr0 = GLabel(widgetName:"glabel_fbr0", text:"1:", enabled:true, visible:true)
+	 glabel_fbr1 = GLabel(widgetName:"glabel_fbr1", text:"2:                       ", enabled:true, visible:true)
+	 glabel_r0fbid = GLabel(widgetName:"glabel_r0fbid", text:"Function block:   ", enabled:true, visible:true)
+	 glabel_r0executiontime = GLabel(widgetName:"glabel_r0executiontime", text:"Clock source:", enabled:true, visible:true)
+	 glabel_r0exetime = GLabel(widgetName:"glabel_r0exetime", text:"Execution time [us]:                  \r\n", enabled:true, visible:true)
+	 glabel_r0ramptype = GLabel(widgetName:"glabel_r0ramptype", text:"Ramp type:", enabled:true, visible:true)
+	 glabel_r0inputconn = GLabel(widgetName:"glabel_r0inputconn", text:"Input:", enabled:true, visible:true)
+	 glabel_r0acceleration = GLabel(widgetName:"glabel_r0acceleration", text:"Slew rate [unit/s]: ", enabled:true, visible:true)
+	 glabel_r0initvalue = GLabel(widgetName:"glabel_r0initvalue", text:"Initial value [unit]:     ", enabled:true, visible:true)
+	 glabel_r0targetvalue = GLabel(widgetName:"glabel_r0targetvalue", text:"Target value [unit]:", enabled:true, visible:true)
+	 glabel_r0targetslewrate = GLabel(widgetName:"glabel_r0targetslewrate", text:"Target slew rate [unit/s]:", enabled:true, visible:true)
+	 glabel_r0jerk = GLabel(widgetName:"glabel_r0jerk", text:"Change of slew rate [unit/s/s]:", enabled:true, visible:true)
+	 glabel_r0ratio = GLabel(widgetName:"glabel_r0ratio", text:"Ratio 2*S/T [%]:", enabled:true, visible:true)
+	 glabel_r1fbid = GLabel(widgetName:"glabel_r1fbid", text:"Function block:                                       ", enabled:true, visible:true)
+	 glabel_r1executiontime = GLabel(widgetName:"glabel_r1executiontime", text:"Clock source:", enabled:true, visible:true)
+	 glabel_r1exetime = GLabel(widgetName:"glabel_r1exetime", text:"Execution time [us]:                  ", enabled:true, visible:true)
+	 glabel_r1ramptype = GLabel(widgetName:"glabel_r1ramptype", text:"Ramp type:", enabled:true, visible:true)
+	 glabel_r1inputconn = GLabel(widgetName:"glabel_r1inputconn", text:"Input:", enabled:true, visible:true)
+	 glabel_r1acceleration = GLabel(widgetName:"glabel_r1acceleration", text:"Slew rate [unit/s]:", enabled:true, visible:true)
+	 glabel_r1initvalue = GLabel(widgetName:"glabel_r1initvalue", text:"Initial value [unit]:        ", enabled:true, visible:true)
+	 glabel_r1targetvalue = GLabel(widgetName:"glabel_r1targetvalue", text:"Target value [unit]:", enabled:true, visible:true)
+	 glabel_r1targetslewrate = GLabel(widgetName:"glabel_r1targetslewrate", text:"Target slew rate [unit/s]:", enabled:true, visible:true)
+	 glabel_r1jerk = GLabel(widgetName:"glabel_r1jerk", text:"Change of slew rate [unit/s/s]:", enabled:true, visible:true)
+	 glabel_r1ratio = GLabel(widgetName:"glabel_r1ratio", text:"Ratio 2*S/T [%]:", enabled:true, visible:true)
+	 ggroup_configuration = GGroup(widgetName:"ggroup_configuration", text:"", enabled:true, visible:true)
+	 ggroup_tasktime = GGroup(widgetName:"ggroup_tasktime", text:"Desired Task Timings", enabled:true, visible:true)
+	 ggroup_error_handler_config = GGroup(widgetName:"ggroup_error_handler_config", text:"Error Handler Configuration", enabled:true, visible:true)
+	 ggroup_fb = GGroup(widgetName:"ggroup_fb", text:"Function Block Processor Configuration", enabled:true, visible:true)
+	 ggroup_exeorder = GGroup(widgetName:"ggroup_exeorder", text:"Execution Order for Function Block Processor Task\r\n", enabled:true, visible:true)
+	 ggroup_r0 = GGroup(widgetName:"ggroup_r0", text:"", enabled:true, visible:true)
+	 ggroup_r0config = GGroup(widgetName:"ggroup_r0config", text:"Ramp Configuration", enabled:true, visible:true)
+	 ggroup_r1 = GGroup(widgetName:"ggroup_r1", text:"", enabled:true, visible:true)
+	 ggroup_r1config = GGroup(widgetName:"ggroup_r1config", text:"Ramp configuration", enabled:true, visible:true)
+
+
+	 }
+	/* End : UI variable section */
+}

@@ -265,6 +265,11 @@ DAVE_STATUS_t DAVE_Init(void)
   {
 	 /**  Initialization of I2C_MASTER APP instance I2C_MASTER_0 */
 	 init_status = (DAVE_STATUS_t)I2C_MASTER_Init(&I2C_MASTER_0); 
+   } 
+  if (init_status == DAVE_STATUS_SUCCESS)
+  {
+	 /**  Initialization of ANALOG_IO APP instance ANALOG_IO_2 */
+	 init_status = (DAVE_STATUS_t)ANALOG_IO_Init(&ANALOG_IO_2); 
    }  
   return init_status;
 } /**  End of function DAVE_Init */

@@ -72,6 +72,8 @@ extern const ANALOG_IO_t ANALOG_IO_0;
 	
 extern const ANALOG_IO_t ANALOG_IO_1; 
 	
+extern const ANALOG_IO_t ANALOG_IO_2; 
+	
  
 #endif  /* ANALOG_IO_EXTERN_H */
 

@@ -126,9 +126,9 @@
 
     const PWM_CCU4_CONFIG_t  PWM_CCU4_0_config_handle =
     {
-      .start_control                       = true,      
-      .period_value                        = 1199U,
-      .compare_value                       = 600U,
+      .start_control                       = false,      
+      .period_value                        = 599U,
+      .compare_value                       = 300U,
 
       .int_per_match                       = false,
       .int_cmp_match_up                    = false,
@@ -287,9 +287,9 @@
 
     const PWM_CCU4_CONFIG_t  PWM_CCU4_2_config_handle =
     {
-      .start_control                       = true,      
+      .start_control                       = false,      
       .period_value                        = 599U,
-      .compare_value                       = 120U,
+      .compare_value                       = 300U,
 
       .int_per_match                       = false,
       .int_cmp_match_up                    = false,
@@ -374,7 +374,7 @@
       .prescaler_shadow_txfr_msk           = (uint32_t)XMC_CCU4_SHADOW_TRANSFER_PRESCALER_SLICE_0,
 
       .state                               = PWM_CCU4_STATE_UNINITIALIZED,
-      .sym_duty                            = 8000U,
+      .sym_duty                            = 5000U,
 
     };
 

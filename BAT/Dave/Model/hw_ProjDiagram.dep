@@ -48,7 +48,7 @@
   <children xsi:type="pi:ContainerShape" visible="true" active="true">
     <properties key="uri" value="http://resources/4.0.22/app/PWM_SVM/0"/>
     <properties key="APP_NAME_ID" value="PWM_SVM/0"/>
-    <graphicsAlgorithm xsi:type="al:Rectangle" lineWidth="1" filled="false" lineVisible="false" transparency="0.0" width="281" height="701" x="740" y="3140">
+    <graphicsAlgorithm xsi:type="al:Rectangle" lineWidth="1" filled="false" lineVisible="false" transparency="0.0" width="281" height="701" x="720" y="2770">
       <graphicsAlgorithmChildren xsi:type="al:RoundedRectangle" lineWidth="2" transparency="0.0" width="241" height="701" x="20" style="//@styles.0/@styles.3" cornerHeight="5" cornerWidth="5"/>
     </graphicsAlgorithm>
     <anchors xsi:type="pi:BoxRelativeAnchor" visible="true" active="true" incomingConnections="//@connections.0" referencedGraphicsAlgorithm="//@children.1/@graphicsAlgorithm/@graphicsAlgorithmChildren.0">
@@ -246,12 +246,12 @@
       <properties key="uri" value="http://resources/4.0.22/app/PWM_SVM/0/vs_pwm_svm_cmds_cmus_cmpch2_currenttrig"/>
       <graphicsAlgorithm xsi:type="al:Rectangle" background="//@colors.2" lineStyle="UNSPECIFIED" width="20" height="10" x="240" y="246"/>
     </anchors>
-    <anchors xsi:type="pi:BoxRelativeAnchor" visible="true" active="true" referencedGraphicsAlgorithm="//@children.1/@graphicsAlgorithm/@graphicsAlgorithmChildren.0">
+    <anchors xsi:type="pi:BoxRelativeAnchor" active="true" referencedGraphicsAlgorithm="//@children.1/@graphicsAlgorithm/@graphicsAlgorithmChildren.0">
       <properties key="SignalName" value="event_ph_u_trap"/>
       <properties key="uri" value="http://resources/4.0.22/app/PWM_SVM/0/vs_pwm_svm_e2as_phu"/>
       <graphicsAlgorithm xsi:type="al:Rectangle" background="//@colors.2" lineStyle="UNSPECIFIED" width="20" height="10" x="240" y="261"/>
     </anchors>
-    <anchors xsi:type="pi:BoxRelativeAnchor" visible="true" active="true" referencedGraphicsAlgorithm="//@children.1/@graphicsAlgorithm/@graphicsAlgorithmChildren.0">
+    <anchors xsi:type="pi:BoxRelativeAnchor" active="true" referencedGraphicsAlgorithm="//@children.1/@graphicsAlgorithm/@graphicsAlgorithmChildren.0">
       <properties key="SignalName" value="event_ph_v_trap"/>
       <properties key="uri" value="http://resources/4.0.22/app/PWM_SVM/0/vs_pwm_svm_e2as_phv"/>
       <graphicsAlgorithm xsi:type="al:Rectangle" background="//@colors.2" lineStyle="UNSPECIFIED" width="20" height="10" x="240" y="276"/>
@@ -777,7 +777,7 @@
       <properties key="uri" value="http://resources/4.0.22/app/PWM_SVM/0/vs_pwm_svm_e2as_phu"/>
       <graphicsAlgorithm xsi:type="al:Rectangle" lineWidth="1" filled="false" lineVisible="false" transparency="0.0" width="20" height="10" x="-20" y="241"/>
     </children>
-    <children visible="true">
+    <children>
       <properties key="uri" value="http://resources/4.0.22/app/PWM_SVM/0/vs_pwm_svm_e2as_phu"/>
       <graphicsAlgorithm xsi:type="al:Text" foreground="//@colors.2" lineStyle="UNSPECIFIED" width="105" height="20" x="150" y="256" style="//@styles.0/@styles.2" horizontalAlignment="ALIGNMENT_RIGHT" value="event_ph_u_trap"/>
     </children>
@@ -786,7 +786,7 @@
       <properties key="uri" value="http://resources/4.0.22/app/PWM_SVM/0/vs_pwm_svm_e2as_phv"/>
       <graphicsAlgorithm xsi:type="al:Rectangle" lineWidth="1" filled="false" lineVisible="false" transparency="0.0" width="20" height="10" x="-20" y="256"/>
     </children>
-    <children visible="true">
+    <children>
       <properties key="uri" value="http://resources/4.0.22/app/PWM_SVM/0/vs_pwm_svm_e2as_phv"/>
       <graphicsAlgorithm xsi:type="al:Text" foreground="//@colors.2" lineStyle="UNSPECIFIED" width="105" height="20" x="150" y="271" style="//@styles.0/@styles.2" horizontalAlignment="ALIGNMENT_RIGHT" value="event_ph_v_trap"/>
     </children>
@@ -1055,7 +1055,7 @@
   <children xsi:type="pi:ContainerShape" visible="true" active="true">
     <properties key="uri" value="http://resources/4.1.12/app/GLOBAL_CCU8/0"/>
     <properties key="APP_NAME_ID" value="GLOBAL_CCU8/0"/>
-    <graphicsAlgorithm xsi:type="al:Rectangle" lineWidth="1" filled="false" lineVisible="false" transparency="0.0" width="261" height="91" x="360" y="3250">
+    <graphicsAlgorithm xsi:type="al:Rectangle" lineWidth="1" filled="false" lineVisible="false" transparency="0.0" width="261" height="91" x="360" y="3310">
       <graphicsAlgorithmChildren xsi:type="al:RoundedRectangle" lineWidth="2" transparency="0.0" width="221" height="91" x="20" style="//@styles.0/@styles.3" cornerHeight="5" cornerWidth="5"/>
     </graphicsAlgorithm>
     <anchors xsi:type="pi:BoxRelativeAnchor" visible="true" active="true" outgoingConnections="//@connections.0 //@connections.1 //@connections.7 //@connections.18" referencedGraphicsAlgorithm="//@children.2/@graphicsAlgorithm/@graphicsAlgorithmChildren.0">
@@ -1263,7 +1263,7 @@
   <children xsi:type="pi:ContainerShape" visible="true" active="true">
     <properties key="uri" value="http://resources/4.0.8/app/ACIM_FREQ_CTRL/0"/>
     <properties key="APP_NAME_ID" value="ACIM_FREQ_CTRL/0"/>
-    <graphicsAlgorithm xsi:type="al:Rectangle" lineWidth="1" filled="false" lineVisible="false" transparency="0.0" width="271" height="261" x="1060" y="2909">
+    <graphicsAlgorithm xsi:type="al:Rectangle" lineWidth="1" filled="false" lineVisible="false" transparency="0.0" width="271" height="261" x="1040" y="2669">
       <graphicsAlgorithmChildren xsi:type="al:RoundedRectangle" lineWidth="2" transparency="0.0" width="231" height="261" x="20" style="//@styles.0/@styles.3" cornerHeight="5" cornerWidth="5"/>
     </graphicsAlgorithm>
     <anchors xsi:type="pi:BoxRelativeAnchor" visible="true" active="true" incomingConnections="//@connections.6" referencedGraphicsAlgorithm="//@children.4/@graphicsAlgorithm/@graphicsAlgorithmChildren.0">
@@ -1975,7 +1975,7 @@
   <children xsi:type="pi:ContainerShape" visible="true" active="true">
     <properties key="uri" value="http://resources/4.0.22/app/PWM_SVM/1"/>
     <properties key="APP_NAME_ID" value="PWM_SVM/1"/>
-    <graphicsAlgorithm xsi:type="al:Rectangle" lineWidth="1" filled="false" lineVisible="false" transparency="0.0" width="281" height="701" x="740" y="1938">
+    <graphicsAlgorithm xsi:type="al:Rectangle" lineWidth="1" filled="false" lineVisible="false" transparency="0.0" width="281" height="701" x="720" y="3511">
       <graphicsAlgorithmChildren xsi:type="al:RoundedRectangle" lineWidth="2" transparency="0.0" width="241" height="701" x="20" style="//@styles.0/@styles.3" cornerHeight="5" cornerWidth="5"/>
     </graphicsAlgorithm>
     <anchors xsi:type="pi:BoxRelativeAnchor" visible="true" active="true" incomingConnections="//@connections.8" referencedGraphicsAlgorithm="//@children.6/@graphicsAlgorithm/@graphicsAlgorithmChildren.0">
@@ -2173,12 +2173,12 @@
       <properties key="uri" value="http://resources/4.0.22/app/PWM_SVM/1/vs_pwm_svm_cmds_cmus_cmpch2_currenttrig"/>
       <graphicsAlgorithm xsi:type="al:Rectangle" background="//@colors.2" lineStyle="UNSPECIFIED" width="20" height="10" x="240" y="246"/>
     </anchors>
-    <anchors xsi:type="pi:BoxRelativeAnchor" visible="true" active="true" referencedGraphicsAlgorithm="//@children.6/@graphicsAlgorithm/@graphicsAlgorithmChildren.0">
+    <anchors xsi:type="pi:BoxRelativeAnchor" active="true" referencedGraphicsAlgorithm="//@children.6/@graphicsAlgorithm/@graphicsAlgorithmChildren.0">
       <properties key="SignalName" value="event_ph_u_trap"/>
       <properties key="uri" value="http://resources/4.0.22/app/PWM_SVM/1/vs_pwm_svm_e2as_phu"/>
       <graphicsAlgorithm xsi:type="al:Rectangle" background="//@colors.2" lineStyle="UNSPECIFIED" width="20" height="10" x="240" y="261"/>
     </anchors>
-    <anchors xsi:type="pi:BoxRelativeAnchor" visible="true" active="true" referencedGraphicsAlgorithm="//@children.6/@graphicsAlgorithm/@graphicsAlgorithmChildren.0">
+    <anchors xsi:type="pi:BoxRelativeAnchor" active="true" referencedGraphicsAlgorithm="//@children.6/@graphicsAlgorithm/@graphicsAlgorithmChildren.0">
       <properties key="SignalName" value="event_ph_v_trap"/>
       <properties key="uri" value="http://resources/4.0.22/app/PWM_SVM/1/vs_pwm_svm_e2as_phv"/>
       <graphicsAlgorithm xsi:type="al:Rectangle" background="//@colors.2" lineStyle="UNSPECIFIED" width="20" height="10" x="240" y="276"/>
@@ -2704,7 +2704,7 @@
       <properties key="uri" value="http://resources/4.0.22/app/PWM_SVM/1/vs_pwm_svm_e2as_phu"/>
       <graphicsAlgorithm xsi:type="al:Rectangle" lineWidth="1" filled="false" lineVisible="false" transparency="0.0" width="20" height="10" x="-20" y="241"/>
     </children>
-    <children visible="true">
+    <children>
       <properties key="uri" value="http://resources/4.0.22/app/PWM_SVM/1/vs_pwm_svm_e2as_phu"/>
       <graphicsAlgorithm xsi:type="al:Text" foreground="//@colors.2" lineStyle="UNSPECIFIED" width="105" height="20" x="150" y="256" style="//@styles.0/@styles.2" horizontalAlignment="ALIGNMENT_RIGHT" value="event_ph_u_trap"/>
     </children>
@@ -2713,7 +2713,7 @@
       <properties key="uri" value="http://resources/4.0.22/app/PWM_SVM/1/vs_pwm_svm_e2as_phv"/>
       <graphicsAlgorithm xsi:type="al:Rectangle" lineWidth="1" filled="false" lineVisible="false" transparency="0.0" width="20" height="10" x="-20" y="256"/>
     </children>
-    <children visible="true">
+    <children>
       <properties key="uri" value="http://resources/4.0.22/app/PWM_SVM/1/vs_pwm_svm_e2as_phv"/>
       <graphicsAlgorithm xsi:type="al:Text" foreground="//@colors.2" lineStyle="UNSPECIFIED" width="105" height="20" x="150" y="271" style="//@styles.0/@styles.2" horizontalAlignment="ALIGNMENT_RIGHT" value="event_ph_v_trap"/>
     </children>
@@ -2982,7 +2982,7 @@
   <children xsi:type="pi:ContainerShape" visible="true" active="true">
     <properties key="uri" value="http://resources/4.1.12/app/GLOBAL_CCU8/1"/>
     <properties key="APP_NAME_ID" value="GLOBAL_CCU8/1"/>
-    <graphicsAlgorithm xsi:type="al:Rectangle" lineWidth="1" filled="false" lineVisible="false" transparency="0.0" width="261" height="91" x="360" y="3119">
+    <graphicsAlgorithm xsi:type="al:Rectangle" lineWidth="1" filled="false" lineVisible="false" transparency="0.0" width="261" height="91" x="360" y="3441">
       <graphicsAlgorithmChildren xsi:type="al:RoundedRectangle" lineWidth="2" transparency="0.0" width="221" height="91" x="20" style="//@styles.0/@styles.3" cornerHeight="5" cornerWidth="5"/>
     </graphicsAlgorithm>
     <anchors xsi:type="pi:BoxRelativeAnchor" visible="true" active="true" outgoingConnections="//@connections.8 //@connections.9 //@connections.10" referencedGraphicsAlgorithm="//@children.7/@graphicsAlgorithm/@graphicsAlgorithmChildren.0">
@@ -3051,7 +3051,7 @@
   <children xsi:type="pi:ContainerShape" visible="true" active="true">
     <properties key="uri" value="http://resources/4.0.8/app/ACIM_FREQ_CTRL/1"/>
     <properties key="APP_NAME_ID" value="ACIM_FREQ_CTRL/1"/>
-    <graphicsAlgorithm xsi:type="al:Rectangle" lineWidth="1" filled="false" lineVisible="false" transparency="0.0" width="271" height="261" x="1060" y="2608">
+    <graphicsAlgorithm xsi:type="al:Rectangle" lineWidth="1" filled="false" lineVisible="false" transparency="0.0" width="271" height="261" x="1040" y="2970">
       <graphicsAlgorithmChildren xsi:type="al:RoundedRectangle" lineWidth="2" transparency="0.0" width="231" height="261" x="20" style="//@styles.0/@styles.3" cornerHeight="5" cornerWidth="5"/>
     </graphicsAlgorithm>
     <anchors xsi:type="pi:BoxRelativeAnchor" visible="true" active="true" incomingConnections="//@connections.15" referencedGraphicsAlgorithm="//@children.8/@graphicsAlgorithm/@graphicsAlgorithmChildren.0">
@@ -3552,7 +3552,7 @@
   <children xsi:type="pi:ContainerShape" visible="true" active="true">
     <properties key="uri" value="http://resources/4.0.16/app/DIGITAL_IO/2"/>
     <properties key="APP_NAME_ID" value="DIGITAL_IO/2"/>
-    <graphicsAlgorithm xsi:type="al:Rectangle" lineWidth="1" filled="false" lineVisible="false" transparency="0.0" width="161" height="91" x="95" y="5667">
+    <graphicsAlgorithm xsi:type="al:Rectangle" lineWidth="1" filled="false" lineVisible="false" transparency="0.0" width="161" height="91" x="95" y="5788">
       <graphicsAlgorithmChildren xsi:type="al:RoundedRectangle" lineWidth="2" transparency="0.0" width="121" height="91" x="20" style="//@styles.0/@styles.3" cornerHeight="5" cornerWidth="5"/>
     </graphicsAlgorithm>
     <anchors xsi:type="pi:BoxRelativeAnchor" visible="true" active="true" referencedGraphicsAlgorithm="//@children.11/@graphicsAlgorithm/@graphicsAlgorithmChildren.0">
@@ -3607,7 +3607,7 @@
   <children xsi:type="pi:ContainerShape" visible="true" active="true">
     <properties key="uri" value="http://resources/4.0.16/app/DIGITAL_IO/3"/>
     <properties key="APP_NAME_ID" value="DIGITAL_IO/3"/>
-    <graphicsAlgorithm xsi:type="al:Rectangle" lineWidth="1" filled="false" lineVisible="false" transparency="0.0" width="161" height="91" x="95" y="4116">
+    <graphicsAlgorithm xsi:type="al:Rectangle" lineWidth="1" filled="false" lineVisible="false" transparency="0.0" width="161" height="91" x="95" y="4237">
       <graphicsAlgorithmChildren xsi:type="al:RoundedRectangle" lineWidth="2" transparency="0.0" width="121" height="91" x="20" style="//@styles.0/@styles.3" cornerHeight="5" cornerWidth="5"/>
     </graphicsAlgorithm>
     <anchors xsi:type="pi:BoxRelativeAnchor" visible="true" active="true" referencedGraphicsAlgorithm="//@children.12/@graphicsAlgorithm/@graphicsAlgorithmChildren.0">
@@ -3772,7 +3772,7 @@
   <children xsi:type="pi:ContainerShape" visible="true" active="true">
     <properties key="uri" value="http://resources/4.0.16/app/DIGITAL_IO/6"/>
     <properties key="APP_NAME_ID" value="DIGITAL_IO/6"/>
-    <graphicsAlgorithm xsi:type="al:Rectangle" lineWidth="1" filled="false" lineVisible="false" transparency="0.0" width="161" height="91" x="95" y="5536">
+    <graphicsAlgorithm xsi:type="al:Rectangle" lineWidth="1" filled="false" lineVisible="false" transparency="0.0" width="161" height="91" x="95" y="5657">
       <graphicsAlgorithmChildren xsi:type="al:RoundedRectangle" lineWidth="2" transparency="0.0" width="121" height="91" x="20" style="//@styles.0/@styles.3" cornerHeight="5" cornerWidth="5"/>
     </graphicsAlgorithm>
     <anchors xsi:type="pi:BoxRelativeAnchor" visible="true" active="true" referencedGraphicsAlgorithm="//@children.15/@graphicsAlgorithm/@graphicsAlgorithmChildren.0">
@@ -3882,7 +3882,7 @@
   <children xsi:type="pi:ContainerShape" visible="true" active="true">
     <properties key="uri" value="http://resources/4.0.16/app/DIGITAL_IO/8"/>
     <properties key="APP_NAME_ID" value="DIGITAL_IO/8"/>
-    <graphicsAlgorithm xsi:type="al:Rectangle" lineWidth="1" filled="false" lineVisible="false" transparency="0.0" width="161" height="91" x="95" y="5274">
+    <graphicsAlgorithm xsi:type="al:Rectangle" lineWidth="1" filled="false" lineVisible="false" transparency="0.0" width="161" height="91" x="95" y="5395">
       <graphicsAlgorithmChildren xsi:type="al:RoundedRectangle" lineWidth="2" transparency="0.0" width="121" height="91" x="20" style="//@styles.0/@styles.3" cornerHeight="5" cornerWidth="5"/>
     </graphicsAlgorithm>
     <anchors xsi:type="pi:BoxRelativeAnchor" visible="true" active="true" referencedGraphicsAlgorithm="//@children.17/@graphicsAlgorithm/@graphicsAlgorithmChildren.0">
@@ -3992,7 +3992,7 @@
   <children xsi:type="pi:ContainerShape" visible="true" active="true">
     <properties key="uri" value="http://resources/4.0.16/app/DIGITAL_IO/10"/>
     <properties key="APP_NAME_ID" value="DIGITAL_IO/10"/>
-    <graphicsAlgorithm xsi:type="al:Rectangle" lineWidth="1" filled="false" lineVisible="false" transparency="0.0" width="161" height="91" x="95" y="5405">
+    <graphicsAlgorithm xsi:type="al:Rectangle" lineWidth="1" filled="false" lineVisible="false" transparency="0.0" width="161" height="91" x="95" y="5526">
       <graphicsAlgorithmChildren xsi:type="al:RoundedRectangle" lineWidth="2" transparency="0.0" width="121" height="91" x="20" style="//@styles.0/@styles.3" cornerHeight="5" cornerWidth="5"/>
     </graphicsAlgorithm>
     <anchors xsi:type="pi:BoxRelativeAnchor" visible="true" active="true" referencedGraphicsAlgorithm="//@children.19/@graphicsAlgorithm/@graphicsAlgorithmChildren.0">
@@ -4047,7 +4047,7 @@
   <children xsi:type="pi:ContainerShape" visible="true" active="true">
     <properties key="uri" value="http://resources/4.0.16/app/DIGITAL_IO/11"/>
     <properties key="APP_NAME_ID" value="DIGITAL_IO/11"/>
-    <graphicsAlgorithm xsi:type="al:Rectangle" lineWidth="1" filled="false" lineVisible="false" transparency="0.0" width="161" height="91" x="95" y="4881">
+    <graphicsAlgorithm xsi:type="al:Rectangle" lineWidth="1" filled="false" lineVisible="false" transparency="0.0" width="161" height="91" x="95" y="5002">
       <graphicsAlgorithmChildren xsi:type="al:RoundedRectangle" lineWidth="2" transparency="0.0" width="121" height="91" x="20" style="//@styles.0/@styles.3" cornerHeight="5" cornerWidth="5"/>
     </graphicsAlgorithm>
     <anchors xsi:type="pi:BoxRelativeAnchor" visible="true" active="true" referencedGraphicsAlgorithm="//@children.20/@graphicsAlgorithm/@graphicsAlgorithmChildren.0">
@@ -4102,7 +4102,7 @@
   <children xsi:type="pi:ContainerShape" visible="true" active="true">
     <properties key="uri" value="http://resources/4.0.16/app/DIGITAL_IO/12"/>
     <properties key="APP_NAME_ID" value="DIGITAL_IO/12"/>
-    <graphicsAlgorithm xsi:type="al:Rectangle" lineWidth="1" filled="false" lineVisible="false" transparency="0.0" width="161" height="91" x="95" y="5143">
+    <graphicsAlgorithm xsi:type="al:Rectangle" lineWidth="1" filled="false" lineVisible="false" transparency="0.0" width="161" height="91" x="95" y="5264">
       <graphicsAlgorithmChildren xsi:type="al:RoundedRectangle" lineWidth="2" transparency="0.0" width="121" height="91" x="20" style="//@styles.0/@styles.3" cornerHeight="5" cornerWidth="5"/>
     </graphicsAlgorithm>
     <anchors xsi:type="pi:BoxRelativeAnchor" visible="true" active="true" referencedGraphicsAlgorithm="//@children.21/@graphicsAlgorithm/@graphicsAlgorithmChildren.0">
@@ -4267,7 +4267,7 @@
   <children xsi:type="pi:ContainerShape" visible="true" active="true">
     <properties key="uri" value="http://resources/4.0.16/app/DIGITAL_IO/15"/>
     <properties key="APP_NAME_ID" value="DIGITAL_IO/15"/>
-    <graphicsAlgorithm xsi:type="al:Rectangle" lineWidth="1" filled="false" lineVisible="false" transparency="0.0" width="161" height="91" x="95" y="5012">
+    <graphicsAlgorithm xsi:type="al:Rectangle" lineWidth="1" filled="false" lineVisible="false" transparency="0.0" width="161" height="91" x="95" y="5133">
       <graphicsAlgorithmChildren xsi:type="al:RoundedRectangle" lineWidth="2" transparency="0.0" width="121" height="91" x="20" style="//@styles.0/@styles.3" cornerHeight="5" cornerWidth="5"/>
     </graphicsAlgorithm>
     <anchors xsi:type="pi:BoxRelativeAnchor" visible="true" active="true" referencedGraphicsAlgorithm="//@children.24/@graphicsAlgorithm/@graphicsAlgorithmChildren.0">
@@ -4597,7 +4597,7 @@
   <children xsi:type="pi:ContainerShape" visible="true" active="true">
     <properties key="uri" value="http://resources/4.0.16/app/DIGITAL_IO/21"/>
     <properties key="APP_NAME_ID" value="DIGITAL_IO/21"/>
-    <graphicsAlgorithm xsi:type="al:Rectangle" lineWidth="1" filled="false" lineVisible="false" transparency="0.0" width="161" height="91" x="95" y="4509">
+    <graphicsAlgorithm xsi:type="al:Rectangle" lineWidth="1" filled="false" lineVisible="false" transparency="0.0" width="161" height="91" x="95" y="4630">
       <graphicsAlgorithmChildren xsi:type="al:RoundedRectangle" lineWidth="2" transparency="0.0" width="121" height="91" x="20" style="//@styles.0/@styles.3" cornerHeight="5" cornerWidth="5"/>
     </graphicsAlgorithm>
     <anchors xsi:type="pi:BoxRelativeAnchor" visible="true" active="true" referencedGraphicsAlgorithm="//@children.30/@graphicsAlgorithm/@graphicsAlgorithmChildren.0">
@@ -4762,7 +4762,7 @@
   <children xsi:type="pi:ContainerShape" visible="true" active="true">
     <properties key="uri" value="http://resources/4.0.16/app/DIGITAL_IO/24"/>
     <properties key="APP_NAME_ID" value="DIGITAL_IO/24"/>
-    <graphicsAlgorithm xsi:type="al:Rectangle" lineWidth="1" filled="false" lineVisible="false" transparency="0.0" width="161" height="91" x="95" y="4378">
+    <graphicsAlgorithm xsi:type="al:Rectangle" lineWidth="1" filled="false" lineVisible="false" transparency="0.0" width="161" height="91" x="95" y="4499">
       <graphicsAlgorithmChildren xsi:type="al:RoundedRectangle" lineWidth="2" transparency="0.0" width="121" height="91" x="20" style="//@styles.0/@styles.3" cornerHeight="5" cornerWidth="5"/>
     </graphicsAlgorithm>
     <anchors xsi:type="pi:BoxRelativeAnchor" visible="true" active="true" referencedGraphicsAlgorithm="//@children.33/@graphicsAlgorithm/@graphicsAlgorithmChildren.0">
@@ -5037,7 +5037,7 @@
   <children xsi:type="pi:ContainerShape" visible="true" active="true">
     <properties key="uri" value="http://resources/4.0.16/app/DIGITAL_IO/29"/>
     <properties key="APP_NAME_ID" value="DIGITAL_IO/29"/>
-    <graphicsAlgorithm xsi:type="al:Rectangle" lineWidth="1" filled="false" lineVisible="false" transparency="0.0" width="161" height="91" x="95" y="4247">
+    <graphicsAlgorithm xsi:type="al:Rectangle" lineWidth="1" filled="false" lineVisible="false" transparency="0.0" width="161" height="91" x="95" y="4368">
       <graphicsAlgorithmChildren xsi:type="al:RoundedRectangle" lineWidth="2" transparency="0.0" width="121" height="91" x="20" style="//@styles.0/@styles.3" cornerHeight="5" cornerWidth="5"/>
     </graphicsAlgorithm>
     <anchors xsi:type="pi:BoxRelativeAnchor" visible="true" active="true" referencedGraphicsAlgorithm="//@children.38/@graphicsAlgorithm/@graphicsAlgorithmChildren.0">
@@ -5300,7 +5300,7 @@
   <children xsi:type="pi:ContainerShape" visible="true" active="true">
     <properties key="uri" value="http://resources/4.1.22/app/ADC_MEASUREMENT/0"/>
     <properties key="APP_NAME_ID" value="ADC_MEASUREMENT/0"/>
-    <graphicsAlgorithm xsi:type="al:Rectangle" lineWidth="1" filled="false" lineVisible="false" transparency="0.0" width="271" height="641" x="350" y="2307">
+    <graphicsAlgorithm xsi:type="al:Rectangle" lineWidth="1" filled="false" lineVisible="false" transparency="0.0" width="271" height="641" x="350" y="2367">
       <graphicsAlgorithmChildren xsi:type="al:RoundedRectangle" lineWidth="2" transparency="0.0" width="231" height="641" x="20" style="//@styles.0/@styles.3" cornerHeight="5" cornerWidth="5"/>
     </graphicsAlgorithm>
     <anchors xsi:type="pi:BoxRelativeAnchor" visible="true" active="true" incomingConnections="//@connections.16" referencedGraphicsAlgorithm="//@children.41/@graphicsAlgorithm/@graphicsAlgorithmChildren.0">
@@ -6431,7 +6431,7 @@
   <children xsi:type="pi:ContainerShape" visible="true" active="true">
     <properties key="uri" value="http://resources/4.0.22/app/CCU8_SLICE_CONFIG/0"/>
     <properties key="APP_NAME_ID" value="CCU8_SLICE_CONFIG/0"/>
-    <graphicsAlgorithm xsi:type="al:Rectangle" lineWidth="1" filled="false" lineVisible="false" transparency="0.0" width="261" height="421" x="740" y="2679">
+    <graphicsAlgorithm xsi:type="al:Rectangle" lineWidth="1" filled="false" lineVisible="false" transparency="0.0" width="261" height="421" x="720" y="2309">
       <graphicsAlgorithmChildren xsi:type="al:RoundedRectangle" lineWidth="2" transparency="0.0" width="221" height="421" x="20" style="//@styles.0/@styles.3" cornerHeight="5" cornerWidth="5"/>
     </graphicsAlgorithm>
     <anchors xsi:type="pi:BoxRelativeAnchor" visible="true" active="true" incomingConnections="//@connections.18" referencedGraphicsAlgorithm="//@children.44/@graphicsAlgorithm/@graphicsAlgorithmChildren.0">
@@ -6836,7 +6836,7 @@
   <children xsi:type="pi:ContainerShape" visible="true" active="true">
     <properties key="uri" value="http://resources/4.1.12/app/GLOBAL_CCU4/0"/>
     <properties key="APP_NAME_ID" value="GLOBAL_CCU4/0"/>
-    <graphicsAlgorithm xsi:type="al:Rectangle" lineWidth="1" filled="false" lineVisible="false" transparency="0.0" width="261" height="91" x="360" y="3381">
+    <graphicsAlgorithm xsi:type="al:Rectangle" lineWidth="1" filled="false" lineVisible="false" transparency="0.0" width="261" height="91" x="360" y="3048">
       <graphicsAlgorithmChildren xsi:type="al:RoundedRectangle" lineWidth="2" transparency="0.0" width="221" height="91" x="20" style="//@styles.0/@styles.3" cornerHeight="5" cornerWidth="5"/>
     </graphicsAlgorithm>
     <anchors xsi:type="pi:BoxRelativeAnchor" visible="true" active="true" outgoingConnections="//@connections.20" referencedGraphicsAlgorithm="//@children.45/@graphicsAlgorithm/@graphicsAlgorithmChildren.0">
@@ -6905,7 +6905,7 @@
   <children xsi:type="pi:ContainerShape" visible="true" active="true">
     <properties key="uri" value="http://resources/4.1.26/app/PWM_CCU4/0"/>
     <properties key="APP_NAME_ID" value="PWM_CCU4/0"/>
-    <graphicsAlgorithm xsi:type="al:Rectangle" lineWidth="1" filled="false" lineVisible="false" transparency="0.0" width="261" height="271" x="740" y="3881">
+    <graphicsAlgorithm xsi:type="al:Rectangle" lineWidth="1" filled="false" lineVisible="false" transparency="0.0" width="261" height="271" x="720" y="1687">
       <graphicsAlgorithmChildren xsi:type="al:RoundedRectangle" lineWidth="2" transparency="0.0" width="221" height="271" x="20" style="//@styles.0/@styles.3" cornerHeight="5" cornerWidth="5"/>
     </graphicsAlgorithm>
     <anchors xsi:type="pi:BoxRelativeAnchor" visible="true" active="true" incomingConnections="//@connections.20" referencedGraphicsAlgorithm="//@children.46/@graphicsAlgorithm/@graphicsAlgorithmChildren.0">
@@ -7170,7 +7170,7 @@
   <children xsi:type="pi:ContainerShape" visible="true" active="true">
     <properties key="uri" value="http://resources/4.1.12/app/GLOBAL_CCU4/2"/>
     <properties key="APP_NAME_ID" value="GLOBAL_CCU4/2"/>
-    <graphicsAlgorithm xsi:type="al:Rectangle" lineWidth="1" filled="false" lineVisible="false" transparency="0.0" width="261" height="91" x="360" y="2988">
+    <graphicsAlgorithm xsi:type="al:Rectangle" lineWidth="1" filled="false" lineVisible="false" transparency="0.0" width="261" height="91" x="360" y="3179">
       <graphicsAlgorithmChildren xsi:type="al:RoundedRectangle" lineWidth="2" transparency="0.0" width="221" height="91" x="20" style="//@styles.0/@styles.3" cornerHeight="5" cornerWidth="5"/>
     </graphicsAlgorithm>
     <anchors xsi:type="pi:BoxRelativeAnchor" visible="true" active="true" outgoingConnections="//@connections.22" referencedGraphicsAlgorithm="//@children.47/@graphicsAlgorithm/@graphicsAlgorithmChildren.0">
@@ -7239,7 +7239,7 @@
   <children xsi:type="pi:ContainerShape" visible="true" active="true">
     <properties key="uri" value="http://resources/4.1.26/app/PWM_CCU4/2"/>
     <properties key="APP_NAME_ID" value="PWM_CCU4/2"/>
-    <graphicsAlgorithm xsi:type="al:Rectangle" lineWidth="1" filled="false" lineVisible="false" transparency="0.0" width="261" height="271" x="740" y="1627">
+    <graphicsAlgorithm xsi:type="al:Rectangle" lineWidth="1" filled="false" lineVisible="false" transparency="0.0" width="261" height="271" x="720" y="1998">
       <graphicsAlgorithmChildren xsi:type="al:RoundedRectangle" lineWidth="2" transparency="0.0" width="221" height="271" x="20" style="//@styles.0/@styles.3" cornerHeight="5" cornerWidth="5"/>
     </graphicsAlgorithm>
     <anchors xsi:type="pi:BoxRelativeAnchor" visible="true" active="true" incomingConnections="//@connections.22" referencedGraphicsAlgorithm="//@children.48/@graphicsAlgorithm/@graphicsAlgorithmChildren.0">
@@ -7504,7 +7504,7 @@
   <children xsi:type="pi:ContainerShape" visible="true" active="true">
     <properties key="uri" value="http://resources/4.1.30/app/I2C_MASTER/0"/>
     <properties key="APP_NAME_ID" value="I2C_MASTER/0"/>
-    <graphicsAlgorithm xsi:type="al:Rectangle" lineWidth="1" filled="false" lineVisible="false" transparency="0.0" width="171" height="201" x="90" y="4640">
+    <graphicsAlgorithm xsi:type="al:Rectangle" lineWidth="1" filled="false" lineVisible="false" transparency="0.0" width="171" height="201" x="90" y="4761">
       <graphicsAlgorithmChildren xsi:type="al:RoundedRectangle" lineWidth="2" transparency="0.0" width="131" height="201" x="20" style="//@styles.0/@styles.3" cornerHeight="5" cornerWidth="5"/>
     </graphicsAlgorithm>
     <anchors xsi:type="pi:BoxRelativeAnchor" active="true" referencedGraphicsAlgorithm="//@children.49/@graphicsAlgorithm/@graphicsAlgorithmChildren.0">
@@ -7641,74 +7641,129 @@
     </children>
   </children>
   <children xsi:type="pi:ContainerShape" visible="true" active="true">
+    <properties key="uri" value="http://resources/4.0.10/app/ANALOG_IO/2"/>
+    <properties key="APP_NAME_ID" value="ANALOG_IO/2"/>
+    <graphicsAlgorithm xsi:type="al:Rectangle" lineWidth="1" filled="false" lineVisible="false" transparency="0.0" width="261" height="81" x="30" y="4116">
+      <graphicsAlgorithmChildren xsi:type="al:RoundedRectangle" lineWidth="2" transparency="0.0" width="221" height="81" x="20" style="//@styles.0/@styles.3" cornerHeight="5" cornerWidth="5"/>
+    </graphicsAlgorithm>
+    <anchors xsi:type="pi:BoxRelativeAnchor" visible="true" active="true" referencedGraphicsAlgorithm="//@children.50/@graphicsAlgorithm/@graphicsAlgorithmChildren.0">
+      <properties key="SignalName" value="pin"/>
+      <properties key="uri" value="http://resources/4.0.10/app/ANALOG_IO/2/vs_analog_io_pad_pin"/>
+      <graphicsAlgorithm xsi:type="al:Rectangle" background="//@colors.2" lineStyle="UNSPECIFIED" width="20" height="10" x="220" y="55"/>
+    </anchors>
+    <anchors xsi:type="pi:BoxRelativeAnchor" active="true" referencedGraphicsAlgorithm="//@children.50/@graphicsAlgorithm/@graphicsAlgorithmChildren.0">
+      <properties key="SignalName" value="hw_pull_ctrl"/>
+      <properties key="uri" value="http://resources/4.0.10/app/ANALOG_IO/2/vs_analog_io_hwp"/>
+      <graphicsAlgorithm xsi:type="al:Rectangle" background="//@colors.2" lineStyle="UNSPECIFIED" width="20" height="10" x="-20" y="55"/>
+    </anchors>
+    <children visible="true">
+      <graphicsAlgorithm xsi:type="al:Polyline" lineStyle="UNSPECIFIED" style="//@styles.0">
+        <points x="20" y="40"/>
+        <points x="241" y="40"/>
+      </graphicsAlgorithm>
+    </children>
+    <children xsi:type="pi:ContainerShape" visible="true">
+      <graphicsAlgorithm xsi:type="al:Rectangle" lineWidth="1" filled="false" lineVisible="false" transparency="0.0" width="221" height="20" x="20"/>
+      <children visible="true">
+        <graphicsAlgorithm xsi:type="al:Text" lineStyle="UNSPECIFIED" width="219" height="20" x="2" style="//@styles.0/@styles.0" horizontalAlignment="ALIGNMENT_CENTER" value="ANALOG_IO"/>
+      </children>
+    </children>
+    <children xsi:type="pi:ContainerShape" visible="true">
+      <graphicsAlgorithm xsi:type="al:Rectangle" lineWidth="1" filled="false" lineVisible="false" transparency="0.0" width="221" height="20" x="20" y="20"/>
+      <children visible="true">
+        <graphicsAlgorithm xsi:type="al:Text" lineStyle="UNSPECIFIED" width="219" height="20" x="2" style="//@styles.0/@styles.1" horizontalAlignment="ALIGNMENT_CENTER" value="ANALOG_IO_2">
+          <properties key="AppInstanceLabel" value="ANALOG_IO_2"/>
+        </graphicsAlgorithm>
+      </children>
+    </children>
+    <children visible="true" active="true">
+      <properties key="SignalName" value="pin"/>
+      <properties key="uri" value="http://resources/4.0.10/app/ANALOG_IO/2/vs_analog_io_pad_pin"/>
+      <graphicsAlgorithm xsi:type="al:Rectangle" lineWidth="1" filled="false" lineVisible="false" transparency="0.0" width="20" height="10" x="-20" y="35"/>
+    </children>
+    <children visible="true">
+      <properties key="uri" value="http://resources/4.0.10/app/ANALOG_IO/2/vs_analog_io_pad_pin"/>
+      <graphicsAlgorithm xsi:type="al:Text" foreground="//@colors.2" lineStyle="UNSPECIFIED" width="115" height="20" x="120" y="50" style="//@styles.0/@styles.2" horizontalAlignment="ALIGNMENT_RIGHT" value="pin"/>
+    </children>
+    <children visible="true" active="true">
+      <properties key="SignalName" value="hw_pull_ctrl"/>
+      <properties key="uri" value="http://resources/4.0.10/app/ANALOG_IO/2/vs_analog_io_hwp"/>
+      <graphicsAlgorithm xsi:type="al:Rectangle" lineWidth="1" filled="false" lineVisible="false" transparency="0.0" width="20" height="10" x="-20" y="35"/>
+    </children>
+    <children>
+      <properties key="uri" value="http://resources/4.0.10/app/ANALOG_IO/2/vs_analog_io_hwp"/>
+      <graphicsAlgorithm xsi:type="al:Text" lineStyle="UNSPECIFIED" width="106" height="20" x="25" y="50" value="hw_pull_ctrl"/>
+    </children>
+  </children>
+  <children xsi:type="pi:ContainerShape" visible="true" active="true">
     <properties key="junctionPoint"/>
-    <graphicsAlgorithm xsi:type="al:Ellipse" lineStyle="UNSPECIFIED" width="6" height="6" x="697" y="3191">
+    <graphicsAlgorithm xsi:type="al:Ellipse" lineStyle="UNSPECIFIED" width="6" height="6" x="677" y="2822">
       <graphicsAlgorithmChildren xsi:type="al:Ellipse" background="//@colors.5" foreground="//@colors.5" lineWidth="1" transparency="0.0" width="5" height="5"/>
     </graphicsAlgorithm>
   </children>
   <children xsi:type="pi:ContainerShape" visible="true" active="true">
     <properties key="junctionPoint"/>
-    <graphicsAlgorithm xsi:type="al:Ellipse" lineStyle="UNSPECIFIED" width="6" height="6" x="697" y="3206">
+    <graphicsAlgorithm xsi:type="al:Ellipse" lineStyle="UNSPECIFIED" width="6" height="6" x="677" y="2837">
       <graphicsAlgorithmChildren xsi:type="al:Ellipse" background="//@colors.5" foreground="//@colors.5" lineWidth="1" transparency="0.0" width="5" height="5"/>
     </graphicsAlgorithm>
   </children>
   <children xsi:type="pi:ContainerShape" visible="true" active="true">
     <properties key="junctionPoint"/>
-    <graphicsAlgorithm xsi:type="al:Ellipse" lineStyle="UNSPECIFIED" width="6" height="6" x="697" y="3221">
+    <graphicsAlgorithm xsi:type="al:Ellipse" lineStyle="UNSPECIFIED" width="6" height="6" x="677" y="2852">
       <graphicsAlgorithmChildren xsi:type="al:Ellipse" background="//@colors.5" foreground="//@colors.5" lineWidth="1" transparency="0.0" width="5" height="5"/>
     </graphicsAlgorithm>
   </children>
   <children xsi:type="pi:ContainerShape" visible="true" active="true">
     <properties key="junctionPoint"/>
-    <graphicsAlgorithm xsi:type="al:Ellipse" lineStyle="UNSPECIFIED" width="6" height="6" x="717" y="3266">
+    <graphicsAlgorithm xsi:type="al:Ellipse" lineStyle="UNSPECIFIED" width="6" height="6" x="697" y="2897">
       <graphicsAlgorithmChildren xsi:type="al:Ellipse" background="//@colors.5" foreground="//@colors.5" lineWidth="1" transparency="0.0" width="5" height="5"/>
     </graphicsAlgorithm>
   </children>
   <children xsi:type="pi:ContainerShape" visible="true" active="true">
     <properties key="junctionPoint"/>
-    <graphicsAlgorithm xsi:type="al:Ellipse" lineStyle="UNSPECIFIED" width="6" height="6" x="717" y="3281">
+    <graphicsAlgorithm xsi:type="al:Ellipse" lineStyle="UNSPECIFIED" width="6" height="6" x="697" y="2912">
       <graphicsAlgorithmChildren xsi:type="al:Ellipse" background="//@colors.5" foreground="//@colors.5" lineWidth="1" transparency="0.0" width="5" height="5"/>
     </graphicsAlgorithm>
   </children>
   <children xsi:type="pi:ContainerShape" visible="true" active="true">
     <properties key="junctionPoint"/>
-    <graphicsAlgorithm xsi:type="al:Ellipse" lineStyle="UNSPECIFIED" width="6" height="6" x="307" y="3310">
+    <graphicsAlgorithm xsi:type="al:Ellipse" lineStyle="UNSPECIFIED" width="6" height="6" x="307" y="3371">
       <graphicsAlgorithmChildren xsi:type="al:Ellipse" background="//@colors.5" foreground="//@colors.5" lineWidth="1" transparency="0.0" width="5" height="5"/>
     </graphicsAlgorithm>
   </children>
   <children xsi:type="pi:ContainerShape" visible="true" active="true">
     <properties key="junctionPoint"/>
-    <graphicsAlgorithm xsi:type="al:Ellipse" lineStyle="UNSPECIFIED" width="6" height="6" x="307" y="3179">
+    <graphicsAlgorithm xsi:type="al:Ellipse" lineStyle="UNSPECIFIED" width="6" height="6" x="307" y="3115">
       <graphicsAlgorithmChildren xsi:type="al:Ellipse" background="//@colors.5" foreground="//@colors.5" lineWidth="1" transparency="0.0" width="5" height="5"/>
     </graphicsAlgorithm>
   </children>
   <children xsi:type="pi:ContainerShape" visible="true" active="true">
     <properties key="junctionPoint"/>
-    <graphicsAlgorithm xsi:type="al:Ellipse" lineStyle="UNSPECIFIED" width="6" height="6" x="307" y="3054">
+    <graphicsAlgorithm xsi:type="al:Ellipse" lineStyle="UNSPECIFIED" width="6" height="6" x="307" y="3246">
       <graphicsAlgorithmChildren xsi:type="al:Ellipse" background="//@colors.5" foreground="//@colors.5" lineWidth="1" transparency="0.0" width="5" height="5"/>
     </graphicsAlgorithm>
   </children>
   <children xsi:type="pi:ContainerShape" visible="true" active="true">
     <properties key="junctionPoint"/>
-    <graphicsAlgorithm xsi:type="al:Ellipse" lineStyle="UNSPECIFIED" width="6" height="6" x="657" y="2004">
+    <graphicsAlgorithm xsi:type="al:Ellipse" lineStyle="UNSPECIFIED" width="6" height="6" x="657" y="3563">
       <graphicsAlgorithmChildren xsi:type="al:Ellipse" background="//@colors.5" foreground="//@colors.5" lineWidth="1" transparency="0.0" width="5" height="5"/>
     </graphicsAlgorithm>
   </children>
   <children xsi:type="pi:ContainerShape" visible="true" active="true">
     <properties key="junctionPoint"/>
-    <graphicsAlgorithm xsi:type="al:Ellipse" lineStyle="UNSPECIFIED" width="6" height="6" x="657" y="2019">
+    <graphicsAlgorithm xsi:type="al:Ellipse" lineStyle="UNSPECIFIED" width="6" height="6" x="657" y="3578">
       <graphicsAlgorithmChildren xsi:type="al:Ellipse" background="//@colors.5" foreground="//@colors.5" lineWidth="1" transparency="0.0" width="5" height="5"/>
     </graphicsAlgorithm>
   </children>
   <children xsi:type="pi:ContainerShape" visible="true" active="true">
     <properties key="junctionPoint"/>
-    <graphicsAlgorithm xsi:type="al:Ellipse" lineStyle="UNSPECIFIED" width="6" height="6" x="677" y="2064">
+    <graphicsAlgorithm xsi:type="al:Ellipse" lineStyle="UNSPECIFIED" width="6" height="6" x="637" y="3623">
       <graphicsAlgorithmChildren xsi:type="al:Ellipse" background="//@colors.5" foreground="//@colors.5" lineWidth="1" transparency="0.0" width="5" height="5"/>
     </graphicsAlgorithm>
   </children>
   <children xsi:type="pi:ContainerShape" visible="true" active="true">
     <properties key="junctionPoint"/>
-    <graphicsAlgorithm xsi:type="al:Ellipse" lineStyle="UNSPECIFIED" width="6" height="6" x="677" y="2079">
+    <graphicsAlgorithm xsi:type="al:Ellipse" lineStyle="UNSPECIFIED" width="6" height="6" x="637" y="3638">
       <graphicsAlgorithmChildren xsi:type="al:Ellipse" background="//@colors.5" foreground="//@colors.5" lineWidth="1" transparency="0.0" width="5" height="5"/>
     </graphicsAlgorithm>
   </children>
@@ -7915,8 +7970,8 @@
         <points x="-10" y="-5"/>
       </graphicsAlgorithm>
     </connectionDecorators>
-    <bendpoints x="700" y="3305"/>
-    <bendpoints x="700" y="3195"/>
+    <bendpoints x="680" y="3365"/>
+    <bendpoints x="680" y="2825"/>
   </connections>
   <connections xsi:type="pi:FreeFormConnection" visible="true" active="true" start="//@children.2/@anchors.0" end="//@children.1/@anchors.1">
     <properties key="uri" value="http://resources/4.0.22/app/PWM_SVM/0/http://resources/4.0.22/app/PWM_SVM/0/vs_global_ccu8_global/http://resources/4.0.22/app/PWM_SVM/0/vs_pwm_svm_globalsignal_phv"/>
@@ -7928,8 +7983,8 @@
         <points x="-10" y="-5"/>
       </graphicsAlgorithm>
     </connectionDecorators>
-    <bendpoints x="700" y="3305"/>
-    <bendpoints x="700" y="3210"/>
+    <bendpoints x="680" y="3365"/>
+    <bendpoints x="680" y="2840"/>
   </connections>
   <connections xsi:type="pi:FreeFormConnection" visible="true" active="true" start="//@children.2/@anchors.1" end="//@children.1/@anchors.3">
     <properties key="uri" value="http://resources/4.0.22/app/PWM_SVM/0/http://resources/4.0.22/app/PWM_SVM/0/vs_global_ccu8_gsc_enable/http://resources/4.0.22/app/PWM_SVM/0/vs_pwm_svm_gp0_unsync_phu"/>
@@ -7941,8 +7996,8 @@
         <points x="-10" y="-5"/>
       </graphicsAlgorithm>
     </connectionDecorators>
-    <bendpoints x="720" y="3323"/>
-    <bendpoints x="720" y="3255"/>
+    <bendpoints x="700" y="3383"/>
+    <bendpoints x="700" y="2885"/>
   </connections>
   <connections xsi:type="pi:FreeFormConnection" visible="true" active="true" start="//@children.2/@anchors.1" end="//@children.1/@anchors.4">
     <properties key="uri" value="http://resources/4.0.22/app/PWM_SVM/0/http://resources/4.0.22/app/PWM_SVM/0/vs_global_ccu8_gsc_enable/http://resources/4.0.22/app/PWM_SVM/0/vs_pwm_svm_gp0_unsync_phv"/>
@@ -7954,8 +8009,8 @@
         <points x="-10" y="-5"/>
       </graphicsAlgorithm>
     </connectionDecorators>
-    <bendpoints x="720" y="3323"/>
-    <bendpoints x="720" y="3270"/>
+    <bendpoints x="700" y="3383"/>
+    <bendpoints x="700" y="2900"/>
   </connections>
   <connections xsi:type="pi:FreeFormConnection" visible="true" active="true" start="//@children.2/@anchors.1" end="//@children.1/@anchors.5">
     <properties key="uri" value="http://resources/4.0.22/app/PWM_SVM/0/http://resources/4.0.22/app/PWM_SVM/0/vs_global_ccu8_gsc_enable/http://resources/4.0.22/app/PWM_SVM/0/vs_pwm_svm_gp0_unsync_phw"/>
@@ -7967,8 +8022,8 @@
         <points x="-10" y="-5"/>
       </graphicsAlgorithm>
     </connectionDecorators>
-    <bendpoints x="720" y="3323"/>
-    <bendpoints x="720" y="3285"/>
+    <bendpoints x="700" y="3383"/>
+    <bendpoints x="700" y="2915"/>
   </connections>
   <connections xsi:type="pi:FreeFormConnection" visible="true" active="true" start="//@children.3/@anchors.1" end="//@children.2/@anchors.2">
     <properties key="uri" value="http://resources/4.1.12/app/GLOBAL_CCU8/0/http://resources/4.1.12/app/GLOBAL_CCU8/0/vs_clock_fccu/http://resources/4.1.12/app/GLOBAL_CCU8/0/vs_global_ccu8_clk"/>
@@ -7981,7 +8036,7 @@
       </graphicsAlgorithm>
     </connectionDecorators>
     <bendpoints x="310" y="2892"/>
-    <bendpoints x="310" y="3314"/>
+    <bendpoints x="310" y="3374"/>
   </connections>
   <connections xsi:type="pi:FreeFormConnection" visible="true" active="true" start="//@children.1/@anchors.27" end="//@children.4/@anchors.0">
     <properties key="uri" value="http://resources/4.0.8/app/ACIM_FREQ_CTRL/0/http://resources/4.0.8/app/ACIM_FREQ_CTRL/0/vs_svm_phu_periodmatch/http://resources/4.0.8/app/ACIM_FREQ_CTRL/0/vs_acim_freq_ctrl_fcl_nvicsignal_in"/>
@@ -7993,8 +8048,8 @@
         <points x="-10" y="-5"/>
       </graphicsAlgorithm>
     </connectionDecorators>
-    <bendpoints x="1040" y="3195"/>
-    <bendpoints x="1040" y="2964"/>
+    <bendpoints x="1020" y="2825"/>
+    <bendpoints x="1020" y="2724"/>
   </connections>
   <connections xsi:type="pi:FreeFormConnection" visible="true" active="true" start="//@children.2/@anchors.0" end="//@children.1/@anchors.2">
     <properties key="uri" value="http://resources/4.0.22/app/PWM_SVM/0/http://resources/4.0.22/app/PWM_SVM/0/vs_global_ccu8_global/http://resources/4.0.22/app/PWM_SVM/0/vs_pwm_svm_globalsignal_phw"/>
@@ -8006,8 +8061,8 @@
         <points x="-10" y="-5"/>
       </graphicsAlgorithm>
     </connectionDecorators>
-    <bendpoints x="700" y="3305"/>
-    <bendpoints x="700" y="3225"/>
+    <bendpoints x="680" y="3365"/>
+    <bendpoints x="680" y="2855"/>
   </connections>
   <connections xsi:type="pi:FreeFormConnection" visible="true" active="true" start="//@children.7/@anchors.0" end="//@children.6/@anchors.0">
     <properties key="uri" value="http://resources/4.0.22/app/PWM_SVM/1/http://resources/4.0.22/app/PWM_SVM/1/vs_global_ccu8_global/http://resources/4.0.22/app/PWM_SVM/1/vs_pwm_svm_globalsignal_phu"/>
@@ -8019,8 +8074,8 @@
         <points x="-10" y="-5"/>
       </graphicsAlgorithm>
     </connectionDecorators>
-    <bendpoints x="660" y="3174"/>
-    <bendpoints x="660" y="1993"/>
+    <bendpoints x="660" y="3496"/>
+    <bendpoints x="660" y="3566"/>
   </connections>
   <connections xsi:type="pi:FreeFormConnection" visible="true" active="true" start="//@children.7/@anchors.0" end="//@children.6/@anchors.1">
     <properties key="uri" value="http://resources/4.0.22/app/PWM_SVM/1/http://resources/4.0.22/app/PWM_SVM/1/vs_global_ccu8_global/http://resources/4.0.22/app/PWM_SVM/1/vs_pwm_svm_globalsignal_phv"/>
@@ -8032,8 +8087,8 @@
         <points x="-10" y="-5"/>
       </graphicsAlgorithm>
     </connectionDecorators>
-    <bendpoints x="660" y="3174"/>
-    <bendpoints x="660" y="2008"/>
+    <bendpoints x="660" y="3496"/>
+    <bendpoints x="660" y="3581"/>
   </connections>
   <connections xsi:type="pi:FreeFormConnection" visible="true" active="true" start="//@children.7/@anchors.0" end="//@children.6/@anchors.2">
     <properties key="uri" value="http://resources/4.0.22/app/PWM_SVM/1/http://resources/4.0.22/app/PWM_SVM/1/vs_global_ccu8_global/http://resources/4.0.22/app/PWM_SVM/1/vs_pwm_svm_globalsignal_phw"/>
@@ -8045,8 +8100,8 @@
         <points x="-10" y="-5"/>
       </graphicsAlgorithm>
     </connectionDecorators>
-    <bendpoints x="660" y="3174"/>
-    <bendpoints x="660" y="2023"/>
+    <bendpoints x="660" y="3496"/>
+    <bendpoints x="660" y="3596"/>
   </connections>
   <connections xsi:type="pi:FreeFormConnection" visible="true" active="true" start="//@children.7/@anchors.1" end="//@children.6/@anchors.3">
     <properties key="uri" value="http://resources/4.0.22/app/PWM_SVM/1/http://resources/4.0.22/app/PWM_SVM/1/vs_global_ccu8_gsc_enable/http://resources/4.0.22/app/PWM_SVM/1/vs_pwm_svm_gp0_unsync_phu"/>
@@ -8058,8 +8113,8 @@
         <points x="-10" y="-5"/>
       </graphicsAlgorithm>
     </connectionDecorators>
-    <bendpoints x="680" y="3192"/>
-    <bendpoints x="680" y="2053"/>
+    <bendpoints x="640" y="3514"/>
+    <bendpoints x="640" y="3626"/>
   </connections>
   <connections xsi:type="pi:FreeFormConnection" visible="true" active="true" start="//@children.7/@anchors.1" end="//@children.6/@anchors.4">
     <properties key="uri" value="http://resources/4.0.22/app/PWM_SVM/1/http://resources/4.0.22/app/PWM_SVM/1/vs_global_ccu8_gsc_enable/http://resources/4.0.22/app/PWM_SVM/1/vs_pwm_svm_gp0_unsync_phv"/>
@@ -8071,8 +8126,8 @@
         <points x="-10" y="-5"/>
       </graphicsAlgorithm>
     </connectionDecorators>
-    <bendpoints x="680" y="3192"/>
-    <bendpoints x="680" y="2068"/>
+    <bendpoints x="640" y="3514"/>
+    <bendpoints x="640" y="3641"/>
   </connections>
   <connections xsi:type="pi:FreeFormConnection" visible="true" active="true" start="//@children.7/@anchors.1" end="//@children.6/@anchors.5">
     <properties key="uri" value="http://resources/4.0.22/app/PWM_SVM/1/http://resources/4.0.22/app/PWM_SVM/1/vs_global_ccu8_gsc_enable/http://resources/4.0.22/app/PWM_SVM/1/vs_pwm_svm_gp0_unsync_phw"/>
@@ -8084,8 +8139,8 @@
         <points x="-10" y="-5"/>
       </graphicsAlgorithm>
     </connectionDecorators>
-    <bendpoints x="680" y="3192"/>
-    <bendpoints x="680" y="2083"/>
+    <bendpoints x="640" y="3514"/>
+    <bendpoints x="640" y="3656"/>
   </connections>
   <connections xsi:type="pi:FreeFormConnection" visible="true" active="true" start="//@children.3/@anchors.1" end="//@children.7/@anchors.2">
     <properties key="uri" value="http://resources/4.1.12/app/GLOBAL_CCU8/1/http://resources/4.1.12/app/GLOBAL_CCU8/1/vs_clock_fccu/http://resources/4.1.12/app/GLOBAL_CCU8/1/vs_global_ccu8_clk"/>
@@ -8098,7 +8153,7 @@
       </graphicsAlgorithm>
     </connectionDecorators>
     <bendpoints x="310" y="2892"/>
-    <bendpoints x="310" y="3183"/>
+    <bendpoints x="310" y="3505"/>
   </connections>
   <connections xsi:type="pi:FreeFormConnection" visible="true" active="true" start="//@children.6/@anchors.27" end="//@children.8/@anchors.0">
     <properties key="uri" value="http://resources/4.0.8/app/ACIM_FREQ_CTRL/1/http://resources/4.0.8/app/ACIM_FREQ_CTRL/1/vs_svm_phu_periodmatch/http://resources/4.0.8/app/ACIM_FREQ_CTRL/1/vs_acim_freq_ctrl_fcl_nvicsignal_in"/>
@@ -8110,8 +8165,8 @@
         <points x="-10" y="-5"/>
       </graphicsAlgorithm>
     </connectionDecorators>
-    <bendpoints x="1040" y="1993"/>
-    <bendpoints x="1040" y="2663"/>
+    <bendpoints x="1020" y="3566"/>
+    <bendpoints x="1020" y="3025"/>
   </connections>
   <connections xsi:type="pi:FreeFormConnection" visible="true" active="true" start="//@children.5/@anchors.0" end="//@children.41/@anchors.0">
     <properties key="uri" value="http://resources/4.1.22/app/ADC_MEASUREMENT/0/http://resources/4.1.22/app/ADC_MEASUREMENT/0/vs_adc_measurement_global_adc_global_signal/http://resources/4.1.22/app/ADC_MEASUREMENT/0/vs_adc_measurement_global"/>
@@ -8124,7 +8179,7 @@
       </graphicsAlgorithm>
     </connectionDecorators>
     <bendpoints x="330" y="211"/>
-    <bendpoints x="330" y="2362"/>
+    <bendpoints x="330" y="2422"/>
   </connections>
   <connections xsi:type="pi:FreeFormConnection" visible="true" active="true" start="//@children.39/@anchors.0" end="//@children.41/@anchors.3">
     <properties key="uri" value="http://resources/4.1.22/app/ADC_MEASUREMENT/0/http://resources/4.1.22/app/ADC_MEASUREMENT/0/vs_adc_measurement_channel_a_analog_io_pin/http://resources/4.1.22/app/ADC_MEASUREMENT/0/vs_adc_measurement_channel_a"/>
@@ -8137,7 +8192,7 @@
       </graphicsAlgorithm>
     </connectionDecorators>
     <bendpoints x="310" y="1729"/>
-    <bendpoints x="310" y="2422"/>
+    <bendpoints x="310" y="2482"/>
   </connections>
   <connections xsi:type="pi:FreeFormConnection" visible="true" active="true" start="//@children.2/@anchors.0" end="//@children.44/@anchors.0">
     <properties key="uri" value="http://resources/4.0.22/app/CCU8_SLICE_CONFIG/0/http://resources/4.0.22/app/CCU8_SLICE_CONFIG/0/vs_ccu8_cc8_global/http://resources/4.0.22/app/CCU8_SLICE_CONFIG/0/vs_ccu8_cc8_config_global"/>
@@ -8149,8 +8204,8 @@
         <points x="-10" y="-5"/>
       </graphicsAlgorithm>
     </connectionDecorators>
-    <bendpoints x="700" y="3305"/>
-    <bendpoints x="700" y="2734"/>
+    <bendpoints x="680" y="3365"/>
+    <bendpoints x="680" y="2364"/>
   </connections>
   <connections xsi:type="pi:FreeFormConnection" visible="true" active="true" start="//@children.3/@anchors.1" end="//@children.45/@anchors.1">
     <properties key="uri" value="http://resources/4.1.12/app/GLOBAL_CCU4/0/http://resources/4.1.12/app/GLOBAL_CCU4/0/vs_clock_fccu/http://resources/4.1.12/app/GLOBAL_CCU4/0/vs_global_ccu4_clk"/>
@@ -8163,7 +8218,7 @@
       </graphicsAlgorithm>
     </connectionDecorators>
     <bendpoints x="310" y="2892"/>
-    <bendpoints x="310" y="3451"/>
+    <bendpoints x="310" y="3118"/>
   </connections>
   <connections xsi:type="pi:FreeFormConnection" visible="true" active="true" start="//@children.45/@anchors.0" end="//@children.46/@anchors.0">
     <properties key="uri" value="http://resources/4.1.26/app/PWM_CCU4/0/http://resources/4.1.26/app/PWM_CCU4/0/vs_ccu4_cc4_global/http://resources/4.1.26/app/PWM_CCU4/0/vs_ccu4_cc4_global_signal"/>
@@ -8175,8 +8230,8 @@
         <points x="-10" y="-5"/>
       </graphicsAlgorithm>
     </connectionDecorators>
-    <bendpoints x="640" y="3436"/>
-    <bendpoints x="640" y="3936"/>
+    <bendpoints x="640" y="3103"/>
+    <bendpoints x="640" y="1742"/>
   </connections>
   <connections xsi:type="pi:FreeFormConnection" visible="true" active="true" start="//@children.3/@anchors.1" end="//@children.47/@anchors.1">
     <properties key="uri" value="http://resources/4.1.12/app/GLOBAL_CCU4/2/http://resources/4.1.12/app/GLOBAL_CCU4/2/vs_clock_fccu/http://resources/4.1.12/app/GLOBAL_CCU4/2/vs_global_ccu4_clk"/>
@@ -8189,7 +8244,7 @@
       </graphicsAlgorithm>
     </connectionDecorators>
     <bendpoints x="310" y="2892"/>
-    <bendpoints x="310" y="3058"/>
+    <bendpoints x="310" y="3249"/>
   </connections>
   <connections xsi:type="pi:FreeFormConnection" visible="true" active="true" start="//@children.47/@anchors.0" end="//@children.48/@anchors.0">
     <properties key="uri" value="http://resources/4.1.26/app/PWM_CCU4/2/http://resources/4.1.26/app/PWM_CCU4/2/vs_ccu4_cc4_global/http://resources/4.1.26/app/PWM_CCU4/2/vs_ccu4_cc4_global_signal"/>
@@ -8201,8 +8256,8 @@
         <points x="-10" y="-5"/>
       </graphicsAlgorithm>
     </connectionDecorators>
-    <bendpoints x="640" y="3043"/>
-    <bendpoints x="640" y="1682"/>
+    <bendpoints x="660" y="3234"/>
+    <bendpoints x="660" y="2053"/>
   </connections>
   <colors red="227" green="238" blue="249"/>
   <colors red="255" green="255" blue="255"/>

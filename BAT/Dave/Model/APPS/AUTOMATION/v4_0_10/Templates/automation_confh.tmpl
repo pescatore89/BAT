@@ -1,0 +1,168 @@
+package Model.APPS.AUTOMATION.v4_0_10.Templates;
+
+import Model.APPS.AUTOMATION.v4_0_10.AUTOMATION
+
+out.print("""
+/**
+ * @cond
+ ***********************************************************************************************************************
+ *
+ * Copyright (c) 2015, Infineon Technologies AG
+ * All rights reserved.
+ *
+ * Redistribution and use in source and binary forms, with or without modification,are permitted provided that the
+ * following conditions are met:
+ *
+ *   Redistributions of source code must retain the above copyright notice, this list of conditions and the  following
+ *   disclaimer.
+ *
+ *   Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the
+ *   following disclaimer in the documentation and/or other materials provided with the distribution.
+ *
+ *   Neither the name of the copyright holders nor the names of its contributors may be used to endorse or promote
+ *   products derived from this software without specific prior written permission.
+ *
+ * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES,
+ * INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+ * DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE  FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+ * SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
+ * SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+ * WHETHER IN CONTRACT, STRICT LIABILITY,OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT  OF THE
+ * USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+ *
+ * To improve the quality of the software, users are encouraged to share modifications, enhancements or bug fixes
+ * with Infineon Technologies AG (dave@infineon.com).
+ ***********************************************************************************************************************
+ *
+ * Change History
+ * --------------
+ *
+ * 2015-02-20:
+ *     - Initial version
+ *
+ * @endcond
+ *
+ */
+/***********************************************************************************************************************
+ * HEADER FILES
+ **********************************************************************************************************************/
+/**********************************************************************************************************************
+ * MACROS
+ **********************************************************************************************************************/
+ #ifndef AUTOMATION_CONF_H_
+ #define AUTOMATION_CONF_H_
+""");
+Integer executed_fb = 0 ;
+
+out.print("""
+/* App version */
+#define AUTOMATION_MAJOR_VERSION (${(AUTOMATION.version).findAll( /\d+/ )*.toInteger()[0]}U)
+#define AUTOMATION_MINOR_VERSION (${(AUTOMATION.version).findAll( /\d+/ )*.toInteger()[1]}U)
+#define AUTOMATION_PATCH_VERSION (${(AUTOMATION.version).findAll( /\d+/ )*.toInteger()[2]}U)
+""");
+
+for (Object appIns : appInstancesList )
+{
+  appInst = appIns.getInstanceLabel()
+  if ((appIns.gcheck_r0enable.value == true) && (appIns.gcombo_r0executiontime.options.indexOf(appIns.gcombo_r0executiontime.value) == 1))
+  {
+    executed_fb++
+  }
+  if ((appIns.gcheck_r1enable.value == true) && (appIns.gcombo_r1executiontime.options.indexOf(appIns.gcombo_r1executiontime.value) == 1))
+  {
+    executed_fb++
+  }
+  
+  out.print("""
+#define AUTOMATION_Handle             ${appInst}
+#define AUTOMATION_NUM_APPS           (${appIns.gint_max_app_register.value}U)   /**<Dave Apps which use the automation framework. AUTOMATION assigns app_id */
+#define AUTOMATION_NUM_INTERFACES     (${appIns.gint_num_ext_interface.value}U)  /**<External interface which talks to automation framework. AUTOMATION assigns interface_id */
+#define AUTOMATION_NUM_TASKS          ((AUTOMATION_NUM_APPS) * 6U)               /**< Number of tasks that can be registered with the automation framework*/
+""");  
+
+out.print("""
+#define AUTOMATION_PH_ENABLE             (1U)                                             /**<Automation Parameter Handler Disabled */
+
+""");
+
+if(appIns.gcheck_error_handler_enable.value == true)
+{
+out.print("""
+/* AUTOMATION FrameWork Error Handler Configuration */
+#define AUTOMATION_EH_ENABLE             (1U)                                     /**<Automation Error Handler Enabled */
+#define AUTOMATION_EH_LOGBOOK_SIZE       (${appIns.gint_eh_logbook_size.value}U)  /**<Error logbook in which errors are logged. 
+                                                                                      Size is fixed and once filled entries are overwritten*/
+#define AUTOMATION_EH_PERIOD             (${(Integer)appIns.gint_ehactualtime.value}U)  /**< Execution time for the error handler */
+#define AUTOMATION_EH_BITINTERFACE_MAX_ERRORS  (${appIns.gint_bit_interface_words.value * 32}U)    /**< Max. register errors with Bit Interface  */
+""");
+}
+else
+{
+out.print("""
+#define AUTOMATION_EH_ENABLE             (0U)                                    /**<Automation Error Handler Disabled */
+
+""");
+}
+
+if(executed_fb != 0)
+{
+out.print("""
+#define AUTOMATION_FB_TASK_ENABLE                   (1U)                                /**< Function block processor enabled */
+""");
+}
+else
+{
+out.print("""
+#define AUTOMATION_FB_TASK_ENABLE             (0U)                                    /**<Function block processor Disabled */
+""");
+executed_fb = 1;
+}
+
+out.print("""
+
+#define AUTOMATION_FB_APP_FUNCTION_BLOCKS      (${appIns.gint_numappfb.value}U)    /**<Number of external function blocks */
+#define AUTOMATION_FB_ENABLED_FUNCTION_BLOCKS  (${appIns.gint_enabledfb.value}U)  /**< Number of enabled function blocks from automation framework */
+#define AUTOMATION_FB_EXECUTED_FUNCTION_BLOCKS (${executed_fb}U)                 /**< number of function blocks executed from automation framework */
+#define AUTOMATION_FB_CONNECT_TABLE_SIZE       (6U * (AUTOMATION_FB_APP_FUNCTION_BLOCKS + AUTOMATION_FB_ENABLED_FUNCTION_BLOCKS))
+                                                  /**< Size of the function block connection table size */
+#define AUTOMATION_FB_PERIOD                   (${(Integer)appIns.gint_fbactualtime.value}U)    /**< Execution time for the function block processor */
+"""); 
+  
+if(appIns.gcheck_r0enable.value == true)
+{
+out.print("""
+#define AUTOMATION_FB_RAMP_GEN_0_ENABLED       (1U)   /**< Ramp Generator 0 Function Block is enabled */
+""");
+}
+else
+{
+	out.print("""
+#define AUTOMATION_FB_RAMP_GEN_0_ENABLED       (0U)  /**< Ramp Generator 0 Function Block is disabled */
+""");
+}
+
+if(appIns.gcheck_r1enable.value == true)
+{
+out.print("""
+#define AUTOMATION_FB_RAMP_GEN_1_ENABLED       (1U)  /**< Ramp Generator 1 Function Block is enabled */
+""");
+}
+else
+{
+out.print("""
+#define AUTOMATION_FB_RAMP_GEN_1_ENABLED       (0U)  /**< Ramp Generator 1 Function Block is disabled */
+""");
+}
+
+
+
+}
+
+out.print("""
+ 
+
+ 
+ #endif  /* ifndef AUTOMATION_CONF_H_ */
+
+""");
+

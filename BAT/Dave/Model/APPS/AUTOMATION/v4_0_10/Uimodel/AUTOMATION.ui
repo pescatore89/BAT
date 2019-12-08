@@ -1,0 +1,280 @@
+<p1:Tab  xmlns="http://www.eclipse.org/xwt/presentation" xmlns:x="http://www.eclipse.org/xwt" xmlns:p1="clr-namespace:com.ifx.davex.ui.controls.app" x:Class="e" layout="{x:Null}">
+	<p1:TabFolder bounds="5, 5, 766, 634">
+		<p1:GTab text="General Settings" visible="true" enabled="true" manifestObj="true" widgetName="gtab_configuration">
+			<p1:GTab.control>
+				<p1:Tab widgetName="composite7" layout="{x:Null}">
+					<p1:GGroup manifestObj="true" widgetName="ggroup_configuration" bounds="6, 5, 499, 84">
+						<p1:GGroup.layout>
+							<GridLayout numColumns="2"/>
+						</p1:GGroup.layout>
+						<p1:GLabel text="Number of external interfaces:  " visible="true" manifestObj="true" widgetName="glabel_num_ext_interface" size="161, 15">
+							<p1:GLabel.layoutData>
+								<GridData widthHint="170"/>
+							</p1:GLabel.layoutData>
+						</p1:GLabel>
+						<p1:GInteger x:Style="NONE" minValue="1" maxValue="4" mandatory="(com.ifx.davex.ui.controls.util.AppUiConstants).FALSE" format="(com.ifx.davex.ui.controls.util.AppUiConstants).DEC" formatVisible="true" manifestObj="true" widgetName="gint_num_ext_interface" value="1" toolTipText="Enter number of hosts that will communicate to the automation APP." size="165, 23" description="Enter number of hosts that will communicate to the automation APP.">
+							<p1:GInteger.layoutData>
+								<GridData widthHint="185" horizontalAlignment="FILL" grabExcessHorizontalSpace="true"/>
+							</p1:GInteger.layoutData>
+						</p1:GInteger>
+						<p1:GLabel text="Number of APPs:" visible="true" manifestObj="true" widgetName="glabel_max_app_register" size="188, 15"/>
+						<p1:GInteger x:Style="NONE" minValue="1" maxValue="10" mandatory="(com.ifx.davex.ui.controls.util.AppUiConstants).FALSE" format="(com.ifx.davex.ui.controls.util.AppUiConstants).DEC" formatVisible="true" manifestObj="true" widgetName="gint_max_app_register" value="1" toolTipText="Enter number of DAVE APPs that will communicate to the automation APP." size="165, 23" description="Enter number of DAVE APPs that will communicate to the automation APP.">
+							<p1:GInteger.layoutData>
+								<GridData horizontalAlignment="FILL" grabExcessHorizontalSpace="true"/>
+							</p1:GInteger.layoutData>
+						</p1:GInteger>
+					</p1:GGroup>
+					<p1:GImage visible="true" manifestObj="true" widgetName="gimage_tasksheduler" path="Uimodel/task_scheduler.png" bounds="5, 99, 500, 220">
+						<p1:GInteger x:Style="NONE" minValue="1" maxValue="100000" mandatory="(com.ifx.davex.ui.controls.util.AppUiConstants).FALSE" format="(com.ifx.davex.ui.controls.util.AppUiConstants).DEC" manifestObj="true" widgetName="gint_fbactualtime" bounds="379, 71, 71, 23" value="300" toolTipText="Actual function block processor task time&#13;&#10;This time is in multiple of the systick time interval. " enabled="false" description="Actual function block processor task time&#13;&#10;This time is in multiple of the systick time interval. "/>
+						<p1:GInteger x:Style="NONE" minValue="1" maxValue="100000" mandatory="(com.ifx.davex.ui.controls.util.AppUiConstants).FALSE" format="(com.ifx.davex.ui.controls.util.AppUiConstants).DEC" manifestObj="true" widgetName="gint_ehactualtime" bounds="382, 126, 66, 23" value="1000" toolTipText="Actual error handler task time&#13;&#10;This time is in multiple of the systick time interval. " enabled="false" description="Actual error handler task time&#13;&#10;This time is in multiple of the systick time interval. "/>
+						<p1:GInteger x:Style="NONE" minValue="1" maxValue="100000" mandatory="(com.ifx.davex.ui.controls.util.AppUiConstants).FALSE" format="(com.ifx.davex.ui.controls.util.AppUiConstants).DEC" manifestObj="true" widgetName="gint_scheduler" bounds="17, 85, 69, 23" value="250" toolTipText="Reads the systick time from system timer app.&#13;&#10;To change the resolution, please change the systick interval parameter in  the system timer app." enabled="false" description="Reads the systick time from system timer app.&#13;&#10;To change the resolution, please change the systick interval parameter in  the system timer app."/>
+					</p1:GImage>
+					<p1:GGroup text="Desired Task Timings" manifestObj="true" widgetName="ggroup_tasktime" bounds="4, 336, 501, 80">
+						<p1:GGroup.layout>
+							<GridLayout numColumns="2"/>
+						</p1:GGroup.layout>
+						<p1:GLabel text="Function block processor task [us]:" visible="true" manifestObj="true" widgetName="glabel_fbdesiredtime">
+							<p1:GLabel.layoutData>
+								<GridData horizontalAlignment="FILL"/>
+							</p1:GLabel.layoutData>
+						</p1:GLabel>
+						<p1:GInteger x:Style="NONE" minValue="1" maxValue="100000" mandatory="(com.ifx.davex.ui.controls.util.AppUiConstants).FALSE" format="(com.ifx.davex.ui.controls.util.AppUiConstants).DEC" manifestObj="true" widgetName="gint_fbdesiredtime" value="1000" description="Required function block processor task time in us&#13;&#10;FunctionBlockSequencer is executed every time task timer expires.&#13;&#10;Actual timing depends upon the systick resolution.&#13;&#10;To change the resolution, please change the systick interval parameter in  the system timer app." toolTipText="Rate of execution of FunctionBlockSequencer task">
+							<p1:GInteger.layoutData>
+								<GridData horizontalAlignment="FILL" grabExcessHorizontalSpace="true"/>
+							</p1:GInteger.layoutData>
+						</p1:GInteger>
+						<p1:GLabel text="Error handler task [us]:" visible="true" manifestObj="true" widgetName="glabel_ehdesiredtime">
+							<p1:GLabel.layoutData>
+								<GridData horizontalAlignment="FILL"/>
+							</p1:GLabel.layoutData>
+						</p1:GLabel>
+						<p1:GInteger x:Style="NONE" minValue="1" maxValue="100000" mandatory="(com.ifx.davex.ui.controls.util.AppUiConstants).FALSE" format="(com.ifx.davex.ui.controls.util.AppUiConstants).DEC" manifestObj="true" widgetName="gint_ehdesiredtime" value="2000" description="Required error handler processor task time.&#13;&#10;ErrorSequencer is executed every time task timer expires.&#13;&#10;Actual timing depends upon the systick resolution.&#13;&#10;To change the resolution, please change the systick interval parameter in  the system timer app." toolTipText="Rate of execution of error handler task">
+							<p1:GInteger.layoutData>
+								<GridData horizontalAlignment="FILL" grabExcessHorizontalSpace="true"/>
+							</p1:GInteger.layoutData>
+						</p1:GInteger>
+					</p1:GGroup>
+					<p1:GLabel text="Task time" visible="false" manifestObj="true" widgetName="glabel_scheduler" bounds="519, 16, 55, 15" enabled="false"/>
+					<p1:GLabel text="FB task time" visible="false" manifestObj="true" widgetName="glabel_fbactualtime" bounds="518, 42, 55, 15" enabled="false"/>
+					<p1:GLabel text="EH task time" visible="false" manifestObj="true" widgetName="glabel_ehactualtime" bounds="519, 68, 55, 15" enabled="false"/>
+				</p1:Tab>
+			</p1:GTab.control>
+		</p1:GTab>
+		<p1:GTab text="Error Handler" visible="true" manifestObj="true" widgetName="gtab_error_handler" enabled="true">
+			<p1:GTab.control>
+				<p1:Tab widgetName="composite3">
+					<p1:Tab.layout>
+						<GridLayout/>
+					</p1:Tab.layout>
+					<p1:GGroup text="Error Handler Configuration" manifestObj="true" widgetName="ggroup_error_handler_config">
+						<p1:GGroup.layoutData>
+							<GridData widthHint="363"/>
+						</p1:GGroup.layoutData>
+						<p1:GGroup.layout>
+							<GridLayout numColumns="2"/>
+						</p1:GGroup.layout>
+						<p1:GCheck text="Enable error handler" manifestObj="true" widgetName="gcheck_error_handler_enable" toolTipText="Use the error handler feature" value="true" description="Use the error handler feature"/>
+						<Label/>
+						<p1:GLabel text="Error logbook size:" visible="true" manifestObj="true" widgetName="glabel_eh_logbook_size" toolTipText="Error Logbook Maximum Possible Entries"/>
+						<p1:GInteger x:Style="NONE" minValue="1" maxValue="255" mandatory="(com.ifx.davex.ui.controls.util.AppUiConstants).FALSE" format="(com.ifx.davex.ui.controls.util.AppUiConstants).DEC" formatVisible="true" manifestObj="true" widgetName="gint_eh_logbook_size" value="20" toolTipText="Error handler saves these number of errors in logbook without losing data" description="Error handler saves these number of errors in logbook without losing data.&#13;&#10;Enter the size considering logbook reading rate and memory configuration of the system">
+							<p1:GInteger.layoutData>
+								<GridData horizontalAlignment="FILL" widthHint="186"/>
+							</p1:GInteger.layoutData>
+						</p1:GInteger>
+						<p1:GLabel manifestObj="true" text="Bit interface error words:    " visible="true" widgetName="glabel_bit_interface_words"/>
+						<p1:GInteger description="Number of bit interface words required per interface. &#13;&#10;One interface word handles 32 erros. " format="(com.ifx.davex.ui.controls.util.AppUiConstants).DEC" mandatory="(com.ifx.davex.ui.controls.util.AppUiConstants).FALSE" manifestObj="true" maxValue="2" minValue="1" toolTipText="Number of bit interface words required per interface" value="1" widgetName="gint_bit_interface_words" formatVisible="true">
+							<p1:GInteger.layoutData>
+								<GridData horizontalAlignment="FILL"/>
+							</p1:GInteger.layoutData>
+						</p1:GInteger>
+					</p1:GGroup>
+				</p1:Tab>
+			</p1:GTab.control>
+		</p1:GTab>
+		<p1:GTab text="Function Block Processor" visible="true" enabled="true" manifestObj="true" widgetName="gtab_fb">
+			<p1:GTab.control>
+				<p1:Tab widgetName="composite9">
+					<p1:Tab.layout>
+						<GridLayout/>
+					</p1:Tab.layout>
+					<p1:GGroup manifestObj="true" widgetName="ggroup_fb" text="Function Block Processor Configuration">
+						<p1:GGroup.layout>
+							<GridLayout numColumns="2"/>
+						</p1:GGroup.layout>
+						<p1:GLabel text="Number of enabled automation function blocks:" visible="true" manifestObj="true" widgetName="glabel_enabledfb" toolTipText="Shows the number of function blocks of automation that are active"/>
+						<p1:GInteger x:Style="NONE" minValue="0" maxValue="5" mandatory="(com.ifx.davex.ui.controls.util.AppUiConstants).FALSE" format="(com.ifx.davex.ui.controls.util.AppUiConstants).DEC" formatVisible="true" manifestObj="true" widgetName="gint_enabledfb" value="0" enabled="false" description="Number of automation function blocks that are active" toolTipText="Number of automation function blocks that are active">
+							<p1:GInteger.layoutData>
+								<GridData horizontalAlignment="FILL" widthHint="142"/>
+							</p1:GInteger.layoutData>
+						</p1:GInteger>
+						<p1:GLabel text="Number of external function blocks:" visible="true" manifestObj="true" widgetName="glabel_numappfb"/>
+						<p1:GInteger x:Style="NONE" minValue="0" maxValue="16" mandatory="(com.ifx.davex.ui.controls.util.AppUiConstants).FALSE" format="(com.ifx.davex.ui.controls.util.AppUiConstants).DEC" formatVisible="true" manifestObj="true" widgetName="gint_numappfb" value="1" toolTipText="Number of function blocks defined outside automation APP" description="Number of function blocks defined outside automation APP">
+							<p1:GInteger.layoutData>
+								<GridData horizontalAlignment="FILL"/>
+							</p1:GInteger.layoutData>
+						</p1:GInteger>
+					</p1:GGroup>
+					<p1:GGroup text="Execution Order for Function Block Processor Task&#13;&#10;" manifestObj="true" widgetName="ggroup_exeorder">
+						<p1:GGroup.layoutData>
+							<GridData widthHint="407" horizontalAlignment="FILL"/>
+						</p1:GGroup.layoutData>
+						<p1:GGroup.layout>
+							<GridLayout numColumns="2"/>
+						</p1:GGroup.layout>
+						<p1:GLabel text="1:" visible="true" manifestObj="true" widgetName="glabel_fbr0"/>
+						<p1:GCombo mandatory="(com.ifx.davex.ui.controls.util.AppUiConstants).FALSE" manifestObj="true" widgetName="gcombo_fbr0" options="FB_RAMP_0&#13;&#10;FB_RAMP_1" value="FB_RAMP_0" toolTipText="Select function block to be executed first" description="Select the function block to be executed as first function block">
+							<p1:GCombo.layoutData>
+								<GridData grabExcessHorizontalSpace="true" horizontalAlignment="FILL"/>
+							</p1:GCombo.layoutData>
+						</p1:GCombo>
+						<p1:GLabel manifestObj="true" text="2:                       " visible="true" widgetName="glabel_fbr1">
+							<p1:GLabel.layoutData>
+								<GridData horizontalAlignment="RIGHT"/>
+							</p1:GLabel.layoutData>
+						</p1:GLabel>
+						<p1:GCombo mandatory="(com.ifx.davex.ui.controls.util.AppUiConstants).FALSE" manifestObj="true" options="FB_RAMP_0&#13;&#10;FB_RAMP_1" value="FB_RAMP_1" widgetName="gcombo_fbr1" toolTipText="Select function block to be executed next" description="Select the function block to be executed as second function block">
+							<p1:GCombo.layoutData>
+								<GridData grabExcessHorizontalSpace="true" horizontalAlignment="FILL"/>
+							</p1:GCombo.layoutData>
+						</p1:GCombo>
+					</p1:GGroup>
+				</p1:Tab>
+			</p1:GTab.control>
+		</p1:GTab>
+		<p1:GTab text="Ramp Generator 0" widgetName="gtab_ramp0" visible="true" enabled="true" manifestObj="true">
+			<p1:GTab.control>
+				<p1:Tab layout="{x:Null}">
+					<p1:GGroup manifestObj="true" widgetName="ggroup_r0" bounds="5, 5, 356, 137" layout="{x:Null}">
+						<p1:GCheck text="Enable" manifestObj="true" widgetName="gcheck_r0enable" value="true" toolTipText="Enable function block RAMP_0" description="Enable function block FB_RAMP_0" bounds="8, 20, 56, 16"/>
+						<p1:GLabel text="Function block:   " visible="true" manifestObj="true" widgetName="glabel_r0fbid" toolTipText="Unique name of the function block" bounds="8, 49, 91, 15"/>
+						<p1:GString x:Style="BORDER" mandatory="(com.ifx.davex.ui.controls.util.AppUiConstants).FALSE" manifestObj="true" widgetName="gstring_r0fbid" value="FB_RAMP_0" enabled="false" toolTipText="Name of the function block" description="Unique name of the function block" bounds="176, 46, 169, 21"/>
+						<p1:GLabel text="Clock source:" visible="true" manifestObj="true" widgetName="glabel_r0executiontime" bounds="8, 80, 71, 15"/>
+						<p1:GCombo mandatory="(com.ifx.davex.ui.controls.util.AppUiConstants).FALSE" manifestObj="true" widgetName="gcombo_r0executiontime" value="Set Value Processor Task" options="Set Value Processor Task&#13;&#10;Function Block Processor Task&#13;&#10;External&#13;&#10;" toolTipText="Select the source of execution of function block. &#13;&#10;Set Value Processor Task: Task defined in motor APP. &#13;&#10;Function Block Processor Task: Task defined in the automation APP.&#13;&#10;External: User need to define the external task. &#13;&#10;&#13;&#10;" description="Select the source of execution of function block. &lt;BR&gt;&#13;&#10;&lt;OL&gt;&#13;&#10;&lt;LI&gt;Set Value Processor Task: Ramp_0 function is called in set value processor task. This task is defined in motor APP. &lt;/LI&gt;&lt;BR&gt;&#13;&#10;&lt;LI&gt;Function Block Processor Task: Ramp_0 function is called in function block processor task which is defined in the automation APP. Timing of this task can be adjusted in the General Settings tab. &lt;/LI&gt;&lt;BR&gt;&#13;&#10;&lt;LI&gt;External: User need to define the external task and timing of the task and call Ramp_0 function. &lt;/LI&gt;&#13;&#10;&lt;/OL&gt;&#13;&#10;" bounds="176, 77, 169, 21"/>
+						<p1:GLabel text="Execution time [us]:                  &#13;&#10;" visible="true" manifestObj="true" widgetName="glabel_r0exetime" bounds="8, 111, 158, 15"/>
+						<p1:GFloat x:Style="BORDER" minValue="25" maxValue="100000" mandatory="(com.ifx.davex.ui.controls.util.AppUiConstants).FALSE" format="*,6" manifestObj="true" widgetName="gfloat_r0exetime" value="150" toolTipText="Enter execution time of the task selected in the clock source. &#13;&#10;" description="Enter execution time of the task selected in the clock source. &#13;&#10;This time should match to actual execution time of task to get the correct behaviour of the ramp function." bounds="176, 108, 169, 21"/>
+					</p1:GGroup>
+					<p1:GGroup text="Ramp Configuration" manifestObj="true" widgetName="ggroup_r0config" bounds="5, 152, 356, 271" layout="{x:Null}">
+						<p1:GLabel text="Ramp type:" visible="true" manifestObj="true" widgetName="glabel_r0ramptype" bounds="8, 23, 60, 15"/>
+						<p1:GCombo mandatory="(com.ifx.davex.ui.controls.util.AppUiConstants).FALSE" manifestObj="true" widgetName="gcombo_r0ramptype" options="Linear&#13;&#10;S-Curve" value="Linear" toolTipText="Select the ramp type - linear or s-curve" description="Select the ramp type - linear or s-curve" bounds="177, 20, 171, 21"/>
+						<p1:GLabel text="Input:" visible="true" manifestObj="true" widgetName="glabel_r0inputconn" bounds="8, 54, 31, 15"/>
+						<p1:GCombo mandatory="(com.ifx.davex.ui.controls.util.AppUiConstants).FALSE" manifestObj="true" widgetName="gcombo_r0inputconn" options="No Connection&#13;&#10;Connected to Motor APP&#13;&#10;" value="Connected to Motor APP" toolTipText="Select the input source for target ramp value " description="Select the input source for target ramp value.&#13;&#10;This decides the end value of the ramp. &lt;BR&gt;&#13;&#10;No connection: Enter end value of the ramp in the GUI. &lt;BR&gt;&#13;&#10;Connected to motor APP: Function block input signal gets connected to the end value data signal run time. &#13;&#10;" bounds="177, 51, 171, 21"/>
+						<p1:GLabel text="Slew rate [unit/s]: " visible="true" manifestObj="true" widgetName="glabel_r0acceleration" bounds="8, 85, 95, 15"/>
+						<p1:GFloat x:Style="BORDER" minValue="1" maxValue="1000000" mandatory="(com.ifx.davex.ui.controls.util.AppUiConstants).FALSE" format="*,6" manifestObj="true" widgetName="gfloat_r0acceleration" value="100" toolTipText="Slew rate of the ramp - defines the slope of the ramp" description="Slew rate of the ramp - defines the slope of the ramp" bounds="177, 82, 171, 21"/>
+						<p1:GLabel text="Initial value [unit]:     " visible="true" manifestObj="true" widgetName="glabel_r0initvalue" bounds="8, 116, 110, 15"/>
+						<p1:GFloat x:Style="BORDER" minValue="-65535" maxValue="65535" mandatory="(com.ifx.davex.ui.controls.util.AppUiConstants).FALSE" format="*,6" manifestObj="true" widgetName="gfloat_r0initvalue" value="0" description="Start value of the ramp. &lt;BR&gt;&#13;&#10;-ve value is not applicable to voltage and current ramp." toolTipText="Start value of the ramp" bounds="177, 113, 171, 21"/>
+						<p1:GLabel text="Target value [unit]:" visible="true" manifestObj="true" widgetName="glabel_r0targetvalue" bounds="8, 147, 100, 15"/>
+						<p1:GFloat x:Style="BORDER" minValue="-65535" maxValue="65535" mandatory="(com.ifx.davex.ui.controls.util.AppUiConstants).FALSE" format="*,6" manifestObj="true" widgetName="gfloat_r0targetvalue" value="1500" description="End value of the ramp. &lt;BR&gt;&#13;&#10;-ve value is not applicable to voltage and current ramp." toolTipText="End value of the ramp" bounds="177, 144, 171, 21"/>
+						<p1:GLabel text="Target slew rate [unit/s]:" visible="true" manifestObj="true" widgetName="glabel_r0targetslewrate" bounds="8, 178, 128, 15"/>
+						<p1:GFloat x:Style="BORDER" minValue="1" maxValue="1000000" mandatory="(com.ifx.davex.ui.controls.util.AppUiConstants).FALSE" format="*,6" manifestObj="true" widgetName="gfloat_r0targetslewrate" value="200" description="End value of the slew rate for S-curve." toolTipText="End value of the slew rate for S-curve." bounds="177, 175, 171, 21"/>
+						<p1:GLabel text="Change of slew rate [unit/s/s]:" visible="true" manifestObj="true" widgetName="glabel_r0jerk" bounds="8, 209, 159, 15"/>
+						<p1:GFloat x:Style="BORDER" minValue="1" maxValue="1000000" mandatory="(com.ifx.davex.ui.controls.util.AppUiConstants).FALSE" format="*,6" manifestObj="true" widgetName="gfloat_r0jerk" value="10" description="Slew rate of the S-region" toolTipText="Slew rate of the S-region" bounds="177, 206, 171, 21"/>
+						<p1:GLabel text="Ratio 2*S/T [%]:" visible="true" manifestObj="true" widgetName="glabel_r0ratio" bounds="8, 240, 83, 15"/>
+						<p1:GFloat x:Style="BORDER" minValue="0" maxValue="100" mandatory="(com.ifx.davex.ui.controls.util.AppUiConstants).FALSE" format="*,6" manifestObj="true" widgetName="gfloat_r0ratio" value="20" description="Ratio of the quantity to switch the region from s-region to linear region" toolTipText="Ratio of the quantity to switch the region from s-region to linear region" bounds="177, 237, 171, 21"/>
+					</p1:GGroup>
+					<p1:GImage visible="true" manifestObj="true" widgetName="gimage_r0linear" path="Uimodel/ramp_linear.PNG" x:Style="BORDER" bounds="372, 12, 360, 418">
+						<p1:GImage visible="true" manifestObj="true" widgetName="gimage_r0scurve" bounds="-2, -2, 360, 418" path="Uimodel/ramp_s.PNG" x:Style="BORDER" layout="{x:Null}"/>
+					</p1:GImage>
+				</p1:Tab>
+			</p1:GTab.control>
+		</p1:GTab>
+		<p1:GTab text="Ramp Generator 1" visible="true" enabled="true" manifestObj="true" widgetName="gtab_ramp1">
+			<p1:GTab.control>
+				<p1:Tab widgetName="composite10" layout="{x:Null}">
+					<p1:GGroup manifestObj="true" widgetName="ggroup_r1" bounds="5, 5, 356, 137">
+						<p1:GGroup.layout>
+							<GridLayout numColumns="2"/>
+						</p1:GGroup.layout>
+						<p1:GCheck manifestObj="true" text="Enable" value="true" widgetName="gcheck_r1enable" toolTipText="Enable function block RAMP_GENERATOR_1" description="Enable function block RAMP_1"/>
+						<Label/>
+						<p1:GLabel manifestObj="true" text="Function block:                                       " visible="true" widgetName="glabel_r1fbid" toolTipText="Unique name of the function block">
+							<p1:GLabel.layoutData>
+								<GridData widthHint="134" horizontalAlignment="FILL"/>
+							</p1:GLabel.layoutData>
+						</p1:GLabel>
+						<p1:GString description="Unique name of the function block" enabled="false" mandatory="(com.ifx.davex.ui.controls.util.AppUiConstants).FALSE" manifestObj="true" toolTipText="Name of the function block" value="FB_RAMP_1" widgetName="gstring_r1fbid" x:Style="BORDER">
+							<p1:GString.layoutData>
+								<GridData grabExcessHorizontalSpace="true" horizontalAlignment="FILL"/>
+							</p1:GString.layoutData>
+						</p1:GString>
+						<p1:GLabel manifestObj="true" text="Clock source:" visible="true" widgetName="glabel_r1executiontime">
+							<p1:GLabel.layoutData>
+								<GridData horizontalAlignment="FILL"/>
+							</p1:GLabel.layoutData>
+						</p1:GLabel>
+						<p1:GCombo mandatory="(com.ifx.davex.ui.controls.util.AppUiConstants).FALSE" manifestObj="true" options="Set Value Processor Task&#13;&#10;Function Block Processor Task&#13;&#10;External&#13;&#10;" value="Set Value Processor Task" widgetName="gcombo_r1executiontime" toolTipText="Select the source of execution of function block. &#13;&#10;Set Value Processor Task: Task defined in motor APP. &#13;&#10;Function Block Processor Task: Task defined in the automation APP.&#13;&#10;External: User need to define the external task. &#13;&#10;&#13;&#10;" description="Select the source of execution of function block. &lt;BR&gt;&#13;&#10;&lt;OL&gt;&#13;&#10;&lt;LI&gt;Set Value Processor Task: Ramp_0 function is called in set value processor task. This task is defined in motor APP. &lt;/LI&gt;&lt;BR&gt;&#13;&#10;&lt;LI&gt;Function Block Processor Task: Ramp_0 function is called in function block processor task which is defined in the automation APP. Timing of this task can be adjusted in the General Settings tab. &lt;/LI&gt;&lt;BR&gt;&#13;&#10;&lt;LI&gt;External: User need to define the external task and timing of the task and call Ramp_0 function. &lt;/LI&gt;&#13;&#10;&lt;/OL&gt;&#13;&#10;">
+							<p1:GCombo.layoutData>
+								<GridData horizontalAlignment="FILL" widthHint="150"/>
+							</p1:GCombo.layoutData>
+						</p1:GCombo>
+						<p1:GLabel manifestObj="true" text="Execution time [us]:                  " visible="true" widgetName="glabel_r1exetime">
+							<p1:GLabel.layoutData>
+								<GridData horizontalAlignment="FILL"/>
+							</p1:GLabel.layoutData>
+						</p1:GLabel>
+						<p1:GFloat format="*,6" mandatory="(com.ifx.davex.ui.controls.util.AppUiConstants).FALSE" manifestObj="true" maxValue="100000" minValue="25" value="150" widgetName="gfloat_r1exetime" x:Style="BORDER" toolTipText="Enter execution time of the task selected in the clock source. &#13;&#10;" description="Enter execution time if &apos;Clock Source&apos; is not same as &apos;Function Block Processor Task&apos;">
+							<p1:GFloat.layoutData>
+								<GridData widthHint="153" horizontalAlignment="FILL"/>
+							</p1:GFloat.layoutData>
+						</p1:GFloat>
+					</p1:GGroup>
+					<p1:GGroup manifestObj="true" text="Ramp configuration" widgetName="ggroup_r1config" bounds="5, 152, 356, 271">
+						<p1:GGroup.layout>
+							<GridLayout numColumns="2"/>
+						</p1:GGroup.layout>
+						<p1:GLabel manifestObj="true" text="Ramp type:" visible="true" widgetName="glabel_r1ramptype"/>
+						<p1:GCombo mandatory="(com.ifx.davex.ui.controls.util.AppUiConstants).FALSE" manifestObj="true" options="Linear&#13;&#10;S-Curve" value="Linear" widgetName="gcombo_r1ramptype" toolTipText="Select the ramp type - linear or s-curve" description="Select the ramp type - linear or s-curve">
+							<p1:GCombo.layoutData>
+								<GridData horizontalAlignment="FILL"/>
+							</p1:GCombo.layoutData>
+						</p1:GCombo>
+						<p1:GLabel manifestObj="true" text="Input:" visible="true" widgetName="glabel_r1inputconn"/>
+						<p1:GCombo mandatory="(com.ifx.davex.ui.controls.util.AppUiConstants).FALSE" manifestObj="true" options="No Connection&#13;&#10;Connected to Motor APP&#13;&#10;" value="Connected to Motor APP" widgetName="gcombo_r1inputconn" toolTipText="Select the input source for target ramp value " description="Select the input source for target ramp value.&#13;&#10;This decides the end value of the ramp. &lt;BR&gt;&#13;&#10;No connection: Enter end value of the ramp in the GUI. &lt;BR&gt;&#13;&#10;Connected to motor APP: Function block input signal gets connected to the end value data signal run time. &#13;&#10;">
+							<p1:GCombo.layoutData>
+								<GridData horizontalAlignment="FILL"/>
+							</p1:GCombo.layoutData>
+						</p1:GCombo>
+						<p1:GLabel manifestObj="true" text="Slew rate [unit/s]:" visible="true" widgetName="glabel_r1acceleration"/>
+						<p1:GFloat format="*,6" mandatory="(com.ifx.davex.ui.controls.util.AppUiConstants).FALSE" manifestObj="true" maxValue="1000000" minValue="1" value="100" widgetName="gfloat_r1acceleration" x:Style="BORDER" toolTipText="Slew rate of the ramp - defines the slope of the ramp" description="Slew rate for the linear ramp">
+							<p1:GFloat.layoutData>
+								<GridData horizontalAlignment="FILL"/>
+							</p1:GFloat.layoutData>
+						</p1:GFloat>
+						<p1:GLabel manifestObj="true" text="Initial value [unit]:        " visible="true" widgetName="glabel_r1initvalue"/>
+						<p1:GFloat x:Style="BORDER" minValue="-65535" maxValue="65535" mandatory="(com.ifx.davex.ui.controls.util.AppUiConstants).FALSE" format="*,6" manifestObj="true" widgetName="gfloat_r1initvalue" value="0" description="Start value of the ramp. &lt;BR&gt;&#13;&#10;-ve value is not applicable to voltage and current ramp." toolTipText="Start value of the ramp">
+							<p1:GFloat.layoutData>
+								<GridData grabExcessHorizontalSpace="true" horizontalAlignment="FILL"/>
+							</p1:GFloat.layoutData>
+						</p1:GFloat>
+						<p1:GLabel manifestObj="true" text="Target value [unit]:" visible="true" widgetName="glabel_r1targetvalue"/>
+						<p1:GFloat x:Style="BORDER" minValue="-65535" maxValue="65535" mandatory="(com.ifx.davex.ui.controls.util.AppUiConstants).FALSE" format="*,6" manifestObj="true" widgetName="gfloat_r1targetvalue" value="1500" description="End value of the ramp &lt;BR&gt;&#13;&#10;-ve value is not applicable to voltage and current ramp." toolTipText="End value of the ramp">
+							<p1:GFloat.layoutData>
+								<GridData grabExcessHorizontalSpace="true" horizontalAlignment="FILL"/>
+							</p1:GFloat.layoutData>
+						</p1:GFloat>
+						<p1:GLabel manifestObj="true" text="Target slew rate [unit/s]:" visible="true" widgetName="glabel_r1targetslewrate"/>
+						<p1:GFloat format="*,6" mandatory="(com.ifx.davex.ui.controls.util.AppUiConstants).FALSE" manifestObj="true" maxValue="1000000" minValue="1" widgetName="gfloat_r1targetslewrate" x:Style="BORDER" value="200" description="End value of the slew rate for S-curve." toolTipText="End value of the slew rate for S-curve.">
+							<p1:GFloat.layoutData>
+								<GridData grabExcessHorizontalSpace="true" horizontalAlignment="FILL"/>
+							</p1:GFloat.layoutData>
+						</p1:GFloat>
+						<p1:GLabel manifestObj="true" text="Change of slew rate [unit/s/s]:" visible="true" widgetName="glabel_r1jerk"/>
+						<p1:GFloat format="*,6" mandatory="(com.ifx.davex.ui.controls.util.AppUiConstants).FALSE" manifestObj="true" maxValue="1000000" minValue="1" widgetName="gfloat_r1jerk" x:Style="BORDER" value="10" description="Slew rate of the S-region" toolTipText="Slew rate of the S-region">
+							<p1:GFloat.layoutData>
+								<GridData grabExcessHorizontalSpace="true" horizontalAlignment="FILL"/>
+							</p1:GFloat.layoutData>
+						</p1:GFloat>
+						<p1:GLabel manifestObj="true" text="Ratio 2*S/T [%]:" visible="true" widgetName="glabel_r1ratio"/>
+						<p1:GFloat format="*,6" mandatory="(com.ifx.davex.ui.controls.util.AppUiConstants).FALSE" manifestObj="true" maxValue="100" minValue="0" widgetName="gfloat_r1ratio" x:Style="BORDER" value="20" toolTipText="Ratio of the quantity to switch the region from s-region to linear region" description="Ratio of the quantity to switch the region from s-region to linear region">
+							<p1:GFloat.layoutData>
+								<GridData grabExcessHorizontalSpace="true" horizontalAlignment="FILL"/>
+							</p1:GFloat.layoutData>
+						</p1:GFloat>
+					</p1:GGroup>
+					<p1:GImage visible="true" manifestObj="true" widgetName="gimage_r1linear" bounds="372, 12, 360, 418" path="Uimodel/ramp_linear.PNG" x:Style="BORDER">
+						<p1:GImage visible="true" manifestObj="true" widgetName="gimage_r1scurve" bounds="-2, -2, 360, 418" path="Uimodel/ramp_s.PNG" x:Style="BORDER"/>
+					</p1:GImage>
+				</p1:Tab>
+			</p1:GTab.control>
+		</p1:GTab>		
+	</p1:TabFolder>
+</p1:Tab>

@@ -59,7 +59,8 @@ const DIGITAL_IO_t DIGITAL_IO_0 =
   .gpio_port = XMC_GPIO_PORT0,
   .gpio_pin = 10U,
   .gpio_config = {
-    .mode = XMC_GPIO_MODE_INPUT_TRISTATE,
+    .mode = XMC_GPIO_MODE_OUTPUT_PUSH_PULL,
+    .output_level = XMC_GPIO_OUTPUT_LEVEL_LOW,
 
   },
   .hwctrl = XMC_GPIO_HWCTRL_DISABLED
@@ -92,7 +93,8 @@ const DIGITAL_IO_t DIGITAL_IO_3 =
   .gpio_port = XMC_GPIO_PORT1,
   .gpio_pin = 1U,
   .gpio_config = {
-    .mode = XMC_GPIO_MODE_INPUT_TRISTATE,
+    .mode = XMC_GPIO_MODE_OUTPUT_PUSH_PULL,
+    .output_level = XMC_GPIO_OUTPUT_LEVEL_LOW,
 
   },
   .hwctrl = XMC_GPIO_HWCTRL_DISABLED
@@ -103,7 +105,8 @@ const DIGITAL_IO_t DIGITAL_IO_4 =
   .gpio_port = XMC_GPIO_PORT1,
   .gpio_pin = 13U,
   .gpio_config = {
-    .mode = XMC_GPIO_MODE_INPUT_TRISTATE,
+    .mode = XMC_GPIO_MODE_OUTPUT_PUSH_PULL,
+    .output_level = XMC_GPIO_OUTPUT_LEVEL_LOW,
 
   },
   .hwctrl = XMC_GPIO_HWCTRL_DISABLED
@@ -114,7 +117,8 @@ const DIGITAL_IO_t DIGITAL_IO_5 =
   .gpio_port = XMC_GPIO_PORT1,
   .gpio_pin = 14U,
   .gpio_config = {
-    .mode = XMC_GPIO_MODE_INPUT_TRISTATE,
+    .mode = XMC_GPIO_MODE_OUTPUT_PUSH_PULL,
+    .output_level = XMC_GPIO_OUTPUT_LEVEL_LOW,
 
   },
   .hwctrl = XMC_GPIO_HWCTRL_DISABLED
@@ -236,7 +240,8 @@ const DIGITAL_IO_t DIGITAL_IO_16 =
   .gpio_port = XMC_GPIO_PORT3,
   .gpio_pin = 3U,
   .gpio_config = {
-    .mode = XMC_GPIO_MODE_INPUT_TRISTATE,
+    .mode = XMC_GPIO_MODE_OUTPUT_PUSH_PULL,
+    .output_level = XMC_GPIO_OUTPUT_LEVEL_LOW,
 
   },
   .hwctrl = XMC_GPIO_HWCTRL_DISABLED
@@ -247,7 +252,8 @@ const DIGITAL_IO_t DIGITAL_IO_17 =
   .gpio_port = XMC_GPIO_PORT3,
   .gpio_pin = 4U,
   .gpio_config = {
-    .mode = XMC_GPIO_MODE_INPUT_TRISTATE,
+    .mode = XMC_GPIO_MODE_OUTPUT_PUSH_PULL,
+    .output_level = XMC_GPIO_OUTPUT_LEVEL_LOW,
 
   },
   .hwctrl = XMC_GPIO_HWCTRL_DISABLED
@@ -269,7 +275,8 @@ const DIGITAL_IO_t DIGITAL_IO_19 =
   .gpio_port = XMC_GPIO_PORT4,
   .gpio_pin = 0U,
   .gpio_config = {
-    .mode = XMC_GPIO_MODE_INPUT_TRISTATE,
+    .mode = XMC_GPIO_MODE_OUTPUT_PUSH_PULL,
+    .output_level = XMC_GPIO_OUTPUT_LEVEL_LOW,
 
   },
   .hwctrl = XMC_GPIO_HWCTRL_DISABLED
@@ -280,7 +287,8 @@ const DIGITAL_IO_t DIGITAL_IO_20 =
   .gpio_port = XMC_GPIO_PORT4,
   .gpio_pin = 1U,
   .gpio_config = {
-    .mode = XMC_GPIO_MODE_INPUT_TRISTATE,
+    .mode = XMC_GPIO_MODE_OUTPUT_PUSH_PULL,
+    .output_level = XMC_GPIO_OUTPUT_LEVEL_LOW,
 
   },
   .hwctrl = XMC_GPIO_HWCTRL_DISABLED
@@ -291,7 +299,8 @@ const DIGITAL_IO_t DIGITAL_IO_21 =
   .gpio_port = XMC_GPIO_PORT5,
   .gpio_pin = 1U,
   .gpio_config = {
-    .mode = XMC_GPIO_MODE_INPUT_TRISTATE,
+    .mode = XMC_GPIO_MODE_OUTPUT_PUSH_PULL,
+    .output_level = XMC_GPIO_OUTPUT_LEVEL_LOW,
 
   },
   .hwctrl = XMC_GPIO_HWCTRL_DISABLED
@@ -302,7 +311,8 @@ const DIGITAL_IO_t DIGITAL_IO_22 =
   .gpio_port = XMC_GPIO_PORT5,
   .gpio_pin = 2U,
   .gpio_config = {
-    .mode = XMC_GPIO_MODE_INPUT_TRISTATE,
+    .mode = XMC_GPIO_MODE_OUTPUT_PUSH_PULL,
+    .output_level = XMC_GPIO_OUTPUT_LEVEL_LOW,
 
   },
   .hwctrl = XMC_GPIO_HWCTRL_DISABLED
@@ -313,7 +323,8 @@ const DIGITAL_IO_t DIGITAL_IO_23 =
   .gpio_port = XMC_GPIO_PORT5,
   .gpio_pin = 7U,
   .gpio_config = {
-    .mode = XMC_GPIO_MODE_INPUT_TRISTATE,
+    .mode = XMC_GPIO_MODE_OUTPUT_PUSH_PULL,
+    .output_level = XMC_GPIO_OUTPUT_LEVEL_LOW,
 
   },
   .hwctrl = XMC_GPIO_HWCTRL_DISABLED
@@ -321,49 +332,17 @@ const DIGITAL_IO_t DIGITAL_IO_23 =
 		
 const DIGITAL_IO_t DIGITAL_IO_24 =
 {
-  .gpio_port = XMC_GPIO_PORT15,
-  .gpio_pin = 8U,
+  .gpio_port = XMC_GPIO_PORT5,
+  .gpio_pin = 0U,
   .gpio_config = {
-    .mode = XMC_GPIO_MODE_INPUT_TRISTATE,
+    .mode = XMC_GPIO_MODE_OUTPUT_PUSH_PULL,
+    .output_level = XMC_GPIO_OUTPUT_LEVEL_LOW,
 
   },
   .hwctrl = XMC_GPIO_HWCTRL_DISABLED
 };
 		
 const DIGITAL_IO_t DIGITAL_IO_25 =
-{
-  .gpio_port = XMC_GPIO_PORT15,
-  .gpio_pin = 9U,
-  .gpio_config = {
-    .mode = XMC_GPIO_MODE_INPUT_TRISTATE,
-
-  },
-  .hwctrl = XMC_GPIO_HWCTRL_DISABLED
-};
-		
-const DIGITAL_IO_t DIGITAL_IO_26 =
-{
-  .gpio_port = XMC_GPIO_PORT15,
-  .gpio_pin = 2U,
-  .gpio_config = {
-    .mode = XMC_GPIO_MODE_INPUT_TRISTATE,
-
-  },
-  .hwctrl = XMC_GPIO_HWCTRL_DISABLED
-};
-		
-const DIGITAL_IO_t DIGITAL_IO_27 =
-{
-  .gpio_port = XMC_GPIO_PORT1,
-  .gpio_pin = 0U,
-  .gpio_config = {
-    .mode = XMC_GPIO_MODE_INPUT_TRISTATE,
-
-  },
-  .hwctrl = XMC_GPIO_HWCTRL_DISABLED
-};
-		
-const DIGITAL_IO_t DIGITAL_IO_28 =
 {
   .gpio_port = XMC_GPIO_PORT15,
   .gpio_pin = 3U,
@@ -374,10 +353,43 @@ const DIGITAL_IO_t DIGITAL_IO_28 =
   .hwctrl = XMC_GPIO_HWCTRL_DISABLED
 };
 		
-const DIGITAL_IO_t DIGITAL_IO_29 =
+const DIGITAL_IO_t DIGITAL_IO_26 =
+{
+  .gpio_port = XMC_GPIO_PORT15,
+  .gpio_pin = 8U,
+  .gpio_config = {
+    .mode = XMC_GPIO_MODE_INPUT_TRISTATE,
+
+  },
+  .hwctrl = XMC_GPIO_HWCTRL_DISABLED
+};
+		
+const DIGITAL_IO_t DIGITAL_IO_27 =
 {
   .gpio_port = XMC_GPIO_PORT1,
   .gpio_pin = 9U,
+  .gpio_config = {
+    .mode = XMC_GPIO_MODE_INPUT_TRISTATE,
+
+  },
+  .hwctrl = XMC_GPIO_HWCTRL_DISABLED
+};
+		
+const DIGITAL_IO_t DIGITAL_IO_28 =
+{
+  .gpio_port = XMC_GPIO_PORT1,
+  .gpio_pin = 0U,
+  .gpio_config = {
+    .mode = XMC_GPIO_MODE_INPUT_TRISTATE,
+
+  },
+  .hwctrl = XMC_GPIO_HWCTRL_DISABLED
+};
+		
+const DIGITAL_IO_t DIGITAL_IO_29 =
+{
+  .gpio_port = XMC_GPIO_PORT1,
+  .gpio_pin = 8U,
   .gpio_config = {
     .mode = XMC_GPIO_MODE_INPUT_TRISTATE,
 

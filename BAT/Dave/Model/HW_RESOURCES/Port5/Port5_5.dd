@@ -148,7 +148,7 @@
   <provided xsi:type="ResourceModel:BitField" name="PC7_2_0" URI="http://resources/0.4.1/port/p/5/iocr4/pc7_2_0" value="0" toolTipHelpDescription="Port Control for Port n Pin 4 to 7" defaultValue="0" startPos="27" stopPos="29" accessPermission="rw" maxValue="7" minValue="0"/>
   <provided xsi:type="ResourceModel:BitField" name="PC7_4" URI="http://resources/0.4.1/port/p/5/iocr4/pc7_4" value="0" toolTipHelpDescription="Port Control for Port n Pin 4 to 7" defaultValue="0" startPos="31" stopPos="31" accessPermission="rw" maxValue="1" minValue="0"/>
   <provided xsi:type="ResourceModel:ResourceGroup" name="P5.0 / #58" URI="http://resources/0.4.1/port/p/5/pad/0">
-    <upwardMapList xsi:type="ResourceModel:HWResource" href="../../APPS/PWM_SVM/v4_0_22/PWM_SVM_1.app#//@hwResources.10"/>
+    <upwardMapList xsi:type="ResourceModel:HWResource" href="../../APPS/DIGITAL_IO/v4_0_16/DIGITAL_IO_24.app#//@hwResources.0"/>
     <resourcesList name="out_p" requiredResourceUri="http://resources/0.4.1/port/p/5/out/p0"/>
     <resourcesList name="omr_ps" requiredResourceUri="http://resources/0.4.1/port/p/5/omr/ps0"/>
     <resourcesList name="omr_pr" requiredResourceUri="http://resources/0.4.1/port/p/5/omr/pr0"/>

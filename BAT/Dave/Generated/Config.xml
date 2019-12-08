@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<Project MotherSystem_Version="" Name="killme" Path="C:\Users\Pescatore\switchdrive\Private\Konzept\MCU for Gate driver\DAVE_4-4-2_64bit_2018-02-23\DAVE-IDE-4.4.2-64Bit\eclipse\workspace\killme">
+<Project MotherSystem_Version="" Name="BAT" Path="F:\GitHub Projects\FH Luzern\BAT\BAT">
     <COMPILER>
         <Name>ARM_GCC_HOME</Name>
         <Version/>
@@ -44,6 +44,16 @@
             <Source_File>
                 <File_Name>analog_io_conf.c</File_Name>
                 <Path>\Dave\Generated\ANALOG_IO\analog_io_conf.c</Path>
+                <Type>C File</Type>
+            </Source_File>
+            <Source_File>
+                <File_Name>automation.c</File_Name>
+                <Path>\Dave\Generated\AUTOMATION\automation.c</Path>
+                <Type>C File</Type>
+            </Source_File>
+            <Source_File>
+                <File_Name>automation_conf.c</File_Name>
+                <Path>\Dave\Generated\AUTOMATION\automation_conf.c</Path>
                 <Type>C File</Type>
             </Source_File>
             <Source_File>
@@ -162,6 +172,16 @@
                 <Type>C File</Type>
             </Source_File>
             <Source_File>
+                <File_Name>systimer.c</File_Name>
+                <Path>\Dave\Generated\SYSTIMER\systimer.c</Path>
+                <Type>C File</Type>
+            </Source_File>
+            <Source_File>
+                <File_Name>systimer_conf.c</File_Name>
+                <Path>\Dave\Generated\SYSTIMER\systimer_conf.c</Path>
+                <Type>C File</Type>
+            </Source_File>
+            <Source_File>
                 <File_Name>uart.c</File_Name>
                 <Path>\Dave\Generated\UART\uart.c</Path>
                 <Type>C File</Type>
@@ -226,6 +246,21 @@
             <Header_File>
                 <File_Name>analog_io_extern.h</File_Name>
                 <Path>\Dave\Generated\ANALOG_IO\analog_io_extern.h</Path>
+                <Type>H File</Type>
+            </Header_File>
+            <Header_File>
+                <File_Name>automation.h</File_Name>
+                <Path>\Dave\Generated\AUTOMATION\automation.h</Path>
+                <Type>H File</Type>
+            </Header_File>
+            <Header_File>
+                <File_Name>automation_conf.h</File_Name>
+                <Path>\Dave\Generated\AUTOMATION\automation_conf.h</Path>
+                <Type>H File</Type>
+            </Header_File>
+            <Header_File>
+                <File_Name>automation_extern.h</File_Name>
+                <Path>\Dave\Generated\AUTOMATION\automation_extern.h</Path>
                 <Type>H File</Type>
             </Header_File>
             <Header_File>
@@ -396,6 +431,21 @@
             <Header_File>
                 <File_Name>pwm_svm_extern.h</File_Name>
                 <Path>\Dave\Generated\PWM_SVM\pwm_svm_extern.h</Path>
+                <Type>H File</Type>
+            </Header_File>
+            <Header_File>
+                <File_Name>systimer.h</File_Name>
+                <Path>\Dave\Generated\SYSTIMER\systimer.h</Path>
+                <Type>H File</Type>
+            </Header_File>
+            <Header_File>
+                <File_Name>systimer_conf.h</File_Name>
+                <Path>\Dave\Generated\SYSTIMER\systimer_conf.h</Path>
+                <Type>H File</Type>
+            </Header_File>
+            <Header_File>
+                <File_Name>systimer_extern.h</File_Name>
+                <Path>\Dave\Generated\SYSTIMER\systimer_extern.h</Path>
                 <Type>H File</Type>
             </Header_File>
             <Header_File>

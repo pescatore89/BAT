@@ -470,7 +470,7 @@
   <provided xsi:type="ResourceModel:BitField" name="PC1_2_0" URI="http://resources/0.4.1/port/p/1/iocr0/pc1_2_0" value="0" toolTipHelpDescription="Port Control for Port n Pin 0 to 3" defaultValue="0" startPos="11" stopPos="13" accessPermission="rw" maxValue="7" minValue="0"/>
   <provided xsi:type="ResourceModel:BitField" name="PC1_4" URI="http://resources/0.4.1/port/p/1/iocr0/pc1_4" value="0" toolTipHelpDescription="Port Control for Port n Pin 0 to 3" defaultValue="0" startPos="15" stopPos="15" accessPermission="rw" maxValue="1" minValue="0"/>
   <provided xsi:type="ResourceModel:ResourceGroup" name="P1.0 / #79" URI="http://resources/0.4.1/port/p/1/pad/0">
-    <upwardMapList xsi:type="ResourceModel:HWResource" href="../../APPS/DIGITAL_IO/v4_0_16/DIGITAL_IO_27.app#//@hwResources.0"/>
+    <upwardMapList xsi:type="ResourceModel:HWResource" href="../../APPS/DIGITAL_IO/v4_0_16/DIGITAL_IO_28.app#//@hwResources.0"/>
     <resourcesList name="out_p" requiredResourceUri="http://resources/0.4.1/port/p/1/out/p0"/>
     <resourcesList name="omr_ps" requiredResourceUri="http://resources/0.4.1/port/p/1/omr/ps0"/>
     <resourcesList name="omr_pr" requiredResourceUri="http://resources/0.4.1/port/p/1/omr/pr0"/>
@@ -540,7 +540,7 @@
     <enumValues xsi:type="ResourceModel:RegEnumValue" value="0b11" description="Reserved."/>
   </provided>
   <provided xsi:type="ResourceModel:ResourceGroup" name="P1.9 / #80" URI="http://resources/0.4.1/port/p/1/pad/9">
-    <upwardMapList xsi:type="ResourceModel:HWResource" href="../../APPS/DIGITAL_IO/v4_0_16/DIGITAL_IO_29.app#//@hwResources.0"/>
+    <upwardMapList xsi:type="ResourceModel:HWResource" href="../../APPS/DIGITAL_IO/v4_0_16/DIGITAL_IO_27.app#//@hwResources.0"/>
     <resourcesList name="out_p" requiredResourceUri="http://resources/0.4.1/port/p/1/out/p9"/>
     <resourcesList name="omr_ps" requiredResourceUri="http://resources/0.4.1/port/p/1/omr/ps9"/>
     <resourcesList name="omr_pr" requiredResourceUri="http://resources/0.4.1/port/p/1/omr/pr9"/>
@@ -575,6 +575,7 @@
     <enumValues xsi:type="ResourceModel:RegEnumValue" value="0b11" description="Reserved."/>
   </provided>
   <provided xsi:type="ResourceModel:ResourceGroup" name="P1.8 / #81" URI="http://resources/0.4.1/port/p/1/pad/8">
+    <upwardMapList xsi:type="ResourceModel:HWResource" href="../../APPS/DIGITAL_IO/v4_0_16/DIGITAL_IO_29.app#//@hwResources.0"/>
     <resourcesList name="out_p" requiredResourceUri="http://resources/0.4.1/port/p/1/out/p8"/>
     <resourcesList name="omr_ps" requiredResourceUri="http://resources/0.4.1/port/p/1/omr/ps8"/>
     <resourcesList name="omr_pr" requiredResourceUri="http://resources/0.4.1/port/p/1/omr/pr8"/>

@@ -67,6 +67,12 @@
 #include "ACIM_FREQ_CTRL/acim_freq_ctrl.h"
   
 
+#include "SYSTIMER/systimer.h"
+  
+
+#include "AUTOMATION/automation.h"
+  
+
 #include "DIGITAL_IO/digital_io.h"
   
 

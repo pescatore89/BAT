@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="ASCII"?>
 <ResourceModel:Port xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ResourceModel="http://www.infineon.com/Davex/Resource.ecore" URI="http://resources/0.4.1/port/p/15" description="Port 15" baseAddress="0x48028F00">
   <provided xsi:type="ResourceModel:ResourceGroup" name="P15.2 / #19" URI="http://resources/0.4.1/port/p/15/pad/2">
-    <upwardMapList xsi:type="ResourceModel:HWResource" href="../../APPS/DIGITAL_IO/v4_0_16/DIGITAL_IO_26.app#//@hwResources.0"/>
+    <upwardMapList xsi:type="ResourceModel:HWResource" href="../../APPS/ANALOG_IO/v4_0_10/ANALOG_IO_2.app#//@hwResources.0"/>
     <resourcesList name="out_p" requiredResourceUri="http://resources/0.4.1/port/p/15/out/p2"/>
     <resourcesList name="omr_ps" requiredResourceUri="http://resources/0.4.1/port/p/15/omr/ps2"/>
     <resourcesList name="omr_pr" requiredResourceUri="http://resources/0.4.1/port/p/15/omr/pr2"/>
@@ -89,7 +89,7 @@
     <enumValues xsi:type="ResourceModel:RegEnumValue" value="0b1" description="Pad is disabled, ADC 2 analog input 2."/>
   </provided>
   <provided xsi:type="ResourceModel:ResourceGroup" name="P15.9 / #38" URI="http://resources/0.4.1/port/p/15/pad/9">
-    <upwardMapList xsi:type="ResourceModel:HWResource" href="../../APPS/DIGITAL_IO/v4_0_16/DIGITAL_IO_25.app#//@hwResources.0"/>
+    <upwardMapList xsi:type="ResourceModel:HWResource" href="../../APPS/PWM_SVM/v4_0_22/PWM_SVM_1.app#//@hwResources.11"/>
     <resourcesList name="out_p" requiredResourceUri="http://resources/0.4.1/port/p/15/out/p9"/>
     <resourcesList name="omr_ps" requiredResourceUri="http://resources/0.4.1/port/p/15/omr/ps9"/>
     <resourcesList name="omr_pr" requiredResourceUri="http://resources/0.4.1/port/p/15/omr/pr9"/>
@@ -127,7 +127,7 @@
   </provided>
   <provided xsi:type="ResourceModel:BitField" name="PC9_4" URI="http://resources/0.4.1/port/p/15/iocr8/pc9_4" value="0" toolTipHelpDescription="Port Control for Port n Pin 8 to 11" defaultValue="0" startPos="15" stopPos="15" accessPermission="rw" maxValue="1" minValue="0"/>
   <provided xsi:type="ResourceModel:ResourceGroup" name="P15.8 / #39" URI="http://resources/0.4.1/port/p/15/pad/8">
-    <upwardMapList xsi:type="ResourceModel:HWResource" href="../../APPS/DIGITAL_IO/v4_0_16/DIGITAL_IO_24.app#//@hwResources.0"/>
+    <upwardMapList xsi:type="ResourceModel:HWResource" href="../../APPS/DIGITAL_IO/v4_0_16/DIGITAL_IO_26.app#//@hwResources.0"/>
     <resourcesList name="out_p" requiredResourceUri="http://resources/0.4.1/port/p/15/out/p8"/>
     <resourcesList name="omr_ps" requiredResourceUri="http://resources/0.4.1/port/p/15/omr/ps8"/>
     <resourcesList name="omr_pr" requiredResourceUri="http://resources/0.4.1/port/p/15/omr/pr8"/>
@@ -151,7 +151,7 @@
   </provided>
   <provided xsi:type="ResourceModel:BitField" name="PC8_4" URI="http://resources/0.4.1/port/p/15/iocr8/pc8_4" value="0" toolTipHelpDescription="Port Control for Port n Pin 8 to 11" defaultValue="0" startPos="7" stopPos="7" accessPermission="rw" maxValue="1" minValue="0"/>
   <provided xsi:type="ResourceModel:ResourceGroup" name="P15.3 / #18" URI="http://resources/0.4.1/port/p/15/pad/3">
-    <upwardMapList xsi:type="ResourceModel:HWResource" href="../../APPS/DIGITAL_IO/v4_0_16/DIGITAL_IO_28.app#//@hwResources.0"/>
+    <upwardMapList xsi:type="ResourceModel:HWResource" href="../../APPS/DIGITAL_IO/v4_0_16/DIGITAL_IO_25.app#//@hwResources.0"/>
     <resourcesList name="out_p" requiredResourceUri="http://resources/0.4.1/port/p/15/out/p3"/>
     <resourcesList name="omr_ps" requiredResourceUri="http://resources/0.4.1/port/p/15/omr/ps3"/>
     <resourcesList name="omr_pr" requiredResourceUri="http://resources/0.4.1/port/p/15/omr/pr3"/>

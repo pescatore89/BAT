@@ -72,7 +72,7 @@
 #define ACIM_FREQ_CTRL_IS_ADC_AVAILABLE   (0U)
 
 /*Macro to specify the presence of Automation Framework */
-#define ACIM_FREQ_CTRL_IS_AUTOMATION_AVAILABLE  (0U)
+#define ACIM_FREQ_CTRL_IS_AUTOMATION_AVAILABLE  (1U)
 
 /*Macro to specify the presence of DSM Framework */
 #define ACIM_FREQ_CTRL_IS_DSM_AVAILABLE  (0U)
