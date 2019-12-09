@@ -70,7 +70,7 @@ int main(void)
   DIGITAL_IO_SetOutputHigh(&DIGITAL_IO_19); // Set Output enable for IO Pin 3
   DIGITAL_IO_SetOutputHigh(&DIGITAL_IO_20); // Set Output enable for IO Pin 2
 
-  //DIGITAL_IO_SetOutputHigh(&DIGITAL_IO_23); // Set Output Pin 0 high
+  DIGITAL_IO_SetOutputHigh(&DIGITAL_IO_23); // Set Output Pin 0 high
   //DIGITAL_IO_SetOutputHigh(&DIGITAL_IO_21); // Set Output Pin 2 high
   //DIGITAL_IO_SetOutputHigh(&DIGITAL_IO_22); // Set Output Pin 1 high
   //DIGITAL_IO_SetOutputHigh(&DIGITAL_IO_24); // Set Output Pin 3 high
