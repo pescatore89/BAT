@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="ASCII"?>
 <ResourceModel:App xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ResourceModel="http://www.infineon.com/Davex/Resource.ecore" name="CLOCK_XMC4" URI="http://resources/4.0.22/app/CLOCK_XMC4/0" description="CLOCK_XMC4 APP configures system and peripheral clocks." version="4.0.22" minDaveVersion="4.0.0" instanceLabel="CLOCK_XMC4_0" appLabel="">
-  <upwardMapList xsi:type="ResourceModel:RequiredApp" href="../../GLOBAL_CCU8/v4_1_12/GLOBAL_CCU8_0.app#//@requiredApps.0"/>
+  <upwardMapList xsi:type="ResourceModel:RequiredApp" href="../../GLOBAL_CCU8/v4_1_12/GLOBAL_CCU8_0.app#/0/@requiredApps.0"/>
   <upwardMapList xsi:type="ResourceModel:RequiredApp" href="../../GLOBAL_ADC/v4_0_18/GLOBAL_ADC_0.app#//@requiredApps.0"/>
   <upwardMapList xsi:type="ResourceModel:RequiredApp" href="../../GLOBAL_CCU8/v4_1_12/GLOBAL_CCU8_1.app#//@requiredApps.0"/>
   <upwardMapList xsi:type="ResourceModel:RequiredApp" href="../../UART/v4_1_12/UART_0.app#//@requiredApps.0"/>
@@ -12,7 +12,7 @@
   <properties singleton="true" provideInit="true" sharable="true"/>
   <virtualSignals name="clk_perbridge_output" URI="http://resources/4.0.22/app/CLOCK_XMC4/0/vs_fpb" hwSignal="fpb" hwResource="//@hwResources.3" visible="true"/>
   <virtualSignals name="clk_ccu_output" URI="http://resources/4.0.22/app/CLOCK_XMC4/0/vs_fccu" hwSignal="fccu" hwResource="//@hwResources.4" visible="true">
-    <upwardMapList xsi:type="ResourceModel:Connections" href="../../GLOBAL_CCU8/v4_1_12/GLOBAL_CCU8_0.app#//@connections.0"/>
+    <upwardMapList xsi:type="ResourceModel:Connections" href="../../GLOBAL_CCU8/v4_1_12/GLOBAL_CCU8_0.app#/0/@connections.0"/>
     <upwardMapList xsi:type="ResourceModel:Connections" href="../../GLOBAL_CCU8/v4_1_12/GLOBAL_CCU8_1.app#//@connections.0"/>
     <upwardMapList xsi:type="ResourceModel:Connections" href="../../GLOBAL_CCU4/v4_1_12/GLOBAL_CCU4_0.app#//@connections.0"/>
     <upwardMapList xsi:type="ResourceModel:Connections" href="../../GLOBAL_CCU4/v4_1_12/GLOBAL_CCU4_2.app#//@connections.0"/>

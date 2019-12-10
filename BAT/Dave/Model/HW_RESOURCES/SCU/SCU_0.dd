@@ -22,7 +22,7 @@
     <resourcesList name="usbpllstat" requiredResourceUri="http://resources/44.100.1/peripheral/scu/0/usbpllstat"/>
   </provided>
   <provided xsi:type="ResourceModel:ResourceGroup" name="CCU8_GLOBAL_ENABLE 0" URI="http://resources/44.100.1/peripheral/scu/0/gcu/ccu8_global_enable/0">
-    <upwardMapList xsi:type="ResourceModel:HWResource" href="../../APPS/GLOBAL_CCU8/v4_1_12/GLOBAL_CCU8_0.app#//@hwResources.1"/>
+    <upwardMapList xsi:type="ResourceModel:HWResource" href="../../APPS/GLOBAL_CCU8/v4_1_12/GLOBAL_CCU8_0.app#/0/@hwResources.1"/>
     <resourcesList name="ccucon_gsc" requiredResourceUri="http://resources/44.100.1/peripheral/scu/0/ccucon/gsc80"/>
     <resourcesList name="gsc_enable" requiredResourceUri="http://resources/44.100.1/peripheral/scu/0/gsc80_enable"/>
   </provided>

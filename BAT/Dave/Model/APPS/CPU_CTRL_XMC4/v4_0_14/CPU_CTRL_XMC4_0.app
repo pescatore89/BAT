@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="ASCII"?>
 <ResourceModel:App xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ResourceModel="http://www.infineon.com/Davex/Resource.ecore" name="CPU_CTRL_XMC4" URI="http://resources/4.0.14/app/CPU_CTRL_XMC4/0" description="Defines the number of bits for priority grouping.&#xA; Handles NMI, memmanage, usage, bus &amp; hard fault exceptions and MPU settings." version="4.0.14" minDaveVersion="4.0.0" instanceLabel="CPU_CTRL_XMC4_0" appLabel="">
-  <upwardMapList xsi:type="ResourceModel:RequiredApp" href="../../ACIM_FREQ_CTRL/v4_0_8/ACIM_FREQ_CTRL_0.app#//@requiredApps.6"/>
+  <upwardMapList xsi:type="ResourceModel:RequiredApp" href="../../ACIM_FREQ_CTRL/v4_0_8/ACIM_FREQ_CTRL_0.app#/0/@requiredApps.6"/>
   <upwardMapList xsi:type="ResourceModel:RequiredApp" href="../../ACIM_FREQ_CTRL/v4_0_8/ACIM_FREQ_CTRL_1.app#//@requiredApps.6"/>
   <upwardMapList xsi:type="ResourceModel:RequiredApp" href="../../UART/v4_1_12/UART_0.app#//@requiredApps.1"/>
   <upwardMapList xsi:type="ResourceModel:RequiredApp" href="../../ADC_MEASUREMENT/v4_1_22/ADC_MEASUREMENT_0.app#//@requiredApps.1"/>

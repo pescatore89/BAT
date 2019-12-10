@@ -7,7 +7,7 @@
     <resource xsi:type="ResourceModel:App" href="APPS/PWM_SVM/v4_0_22/PWM_SVM_0.app#/"/>
   </nodes>
   <nodes xsi:type="ApplicationModel:AppNode">
-    <resource xsi:type="ResourceModel:App" href="APPS/GLOBAL_CCU8/v4_1_12/GLOBAL_CCU8_0.app#/"/>
+    <resource xsi:type="ResourceModel:App" href="APPS/GLOBAL_CCU8/v4_1_12/GLOBAL_CCU8_0.app#/0"/>
   </nodes>
   <nodes xsi:type="ApplicationModel:AppNode">
     <resource xsi:type="ResourceModel:App" href="APPS/CLOCK_XMC4/v4_0_22/CLOCK_XMC4_0.app#/"/>
@@ -16,7 +16,7 @@
     <resource xsi:type="ResourceModel:App" href="APPS/MOTOR_LIB/v4_0_8/MOTOR_LIB_0.app#/"/>
   </nodes>
   <nodes xsi:type="ApplicationModel:AppNode">
-    <resource xsi:type="ResourceModel:App" href="APPS/ACIM_FREQ_CTRL/v4_0_8/ACIM_FREQ_CTRL_0.app#/"/>
+    <resource xsi:type="ResourceModel:App" href="APPS/ACIM_FREQ_CTRL/v4_0_8/ACIM_FREQ_CTRL_0.app#/0"/>
   </nodes>
   <nodes xsi:type="ApplicationModel:DevicePackageNode">
     <resource xsi:type="ResourceModel:DevicePackage" href="HW_RESOURCES/DEVICEPACKAGE/DEVICEPACKAGE_0.dd#/"/>
@@ -295,19 +295,19 @@
   <hwConnections href="APPS/PWM_SVM/v4_0_22/PWM_SVM_0.app#//@connections.34"/>
   <hwConnections href="APPS/PWM_SVM/v4_0_22/PWM_SVM_0.app#//@connections.35"/>
   <hwConnections href="APPS/PWM_SVM/v4_0_22/PWM_SVM_0.app#//@connections.36"/>
-  <hwConnections href="APPS/GLOBAL_CCU8/v4_1_12/GLOBAL_CCU8_0.app#//@connections.0"/>
+  <hwConnections href="APPS/GLOBAL_CCU8/v4_1_12/GLOBAL_CCU8_0.app#/0/@connections.0"/>
   <hwConnections href="APPS/CLOCK_XMC4/v4_0_22/CLOCK_XMC4_0.app#//@connections.0"/>
   <hwConnections href="APPS/CLOCK_XMC4/v4_0_22/CLOCK_XMC4_0.app#//@connections.5"/>
   <hwConnections href="APPS/CLOCK_XMC4/v4_0_22/CLOCK_XMC4_0.app#//@connections.6"/>
-  <hwConnections href="APPS/ACIM_FREQ_CTRL/v4_0_8/ACIM_FREQ_CTRL_0.app#//@connections.0"/>
-  <hwConnections href="APPS/ACIM_FREQ_CTRL/v4_0_8/ACIM_FREQ_CTRL_0.app#//@connections.26"/>
-  <hwConnections href="APPS/ACIM_FREQ_CTRL/v4_0_8/ACIM_FREQ_CTRL_0.app#//@connections.27"/>
-  <hwConnections href="APPS/ACIM_FREQ_CTRL/v4_0_8/ACIM_FREQ_CTRL_0.app#//@connections.28"/>
-  <hwConnections href="APPS/ACIM_FREQ_CTRL/v4_0_8/ACIM_FREQ_CTRL_0.app#//@connections.29"/>
-  <hwConnections href="APPS/ACIM_FREQ_CTRL/v4_0_8/ACIM_FREQ_CTRL_0.app#//@connections.30"/>
-  <hwConnections href="APPS/ACIM_FREQ_CTRL/v4_0_8/ACIM_FREQ_CTRL_0.app#//@connections.31"/>
-  <hwConnections href="APPS/ACIM_FREQ_CTRL/v4_0_8/ACIM_FREQ_CTRL_0.app#//@connections.32"/>
-  <hwConnections href="APPS/ACIM_FREQ_CTRL/v4_0_8/ACIM_FREQ_CTRL_0.app#//@connections.33"/>
+  <hwConnections href="APPS/ACIM_FREQ_CTRL/v4_0_8/ACIM_FREQ_CTRL_0.app#/0/@connections.0"/>
+  <hwConnections href="APPS/ACIM_FREQ_CTRL/v4_0_8/ACIM_FREQ_CTRL_0.app#/0/@connections.26"/>
+  <hwConnections href="APPS/ACIM_FREQ_CTRL/v4_0_8/ACIM_FREQ_CTRL_0.app#/0/@connections.27"/>
+  <hwConnections href="APPS/ACIM_FREQ_CTRL/v4_0_8/ACIM_FREQ_CTRL_0.app#/0/@connections.28"/>
+  <hwConnections href="APPS/ACIM_FREQ_CTRL/v4_0_8/ACIM_FREQ_CTRL_0.app#/0/@connections.29"/>
+  <hwConnections href="APPS/ACIM_FREQ_CTRL/v4_0_8/ACIM_FREQ_CTRL_0.app#/0/@connections.30"/>
+  <hwConnections href="APPS/ACIM_FREQ_CTRL/v4_0_8/ACIM_FREQ_CTRL_0.app#/0/@connections.31"/>
+  <hwConnections href="APPS/ACIM_FREQ_CTRL/v4_0_8/ACIM_FREQ_CTRL_0.app#/0/@connections.32"/>
+  <hwConnections href="APPS/ACIM_FREQ_CTRL/v4_0_8/ACIM_FREQ_CTRL_0.app#/0/@connections.33"/>
   <hwConnections href="APPS/PWM_SVM/v4_0_22/PWM_SVM_0.app#//@connections.5"/>
   <hwConnections href="APPS/PWM_SVM/v4_0_22/PWM_SVM_0.app#//@connections.11"/>
   <hwConnections href="APPS/PWM_SVM/v4_0_22/PWM_SVM_0.app#//@connections.10"/>

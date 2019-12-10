@@ -29,13 +29,13 @@
   <virtualSignals name="link_out" URI="http://resources/4.0.22/app/CCU8_SLICE_CONFIG/0/vs_ccu8_concat_bus_out" hwSignal="concat_bus_out" hwResource="//@hwResources.0" visible="true"/>
   <virtualSignals name="link_in" URI="http://resources/4.0.22/app/CCU8_SLICE_CONFIG/0/vs_ccu8_concat_bus_in" hwSignal="concat_bus_in" hwResource="//@hwResources.0" visible="true"/>
   <requiredApps URI="http://resources/4.0.22/app/CCU8_SLICE_CONFIG/0/app_global_ccu8" requiredAppName="GLOBAL_CCU8" requiringMode="SHARABLE">
-    <downwardMapList xsi:type="ResourceModel:App" href="../../GLOBAL_CCU8/v4_1_12/GLOBAL_CCU8_0.app#/"/>
+    <downwardMapList xsi:type="ResourceModel:App" href="../../GLOBAL_CCU8/v4_1_12/GLOBAL_CCU8_0.app#/0"/>
   </requiredApps>
   <hwResources name="CCU80 Config" URI="http://resources/4.0.22/app/CCU8_SLICE_CONFIG/0/hwres_ccu8_cc8_slice" resourceGroupUri="peripheral/ccu8/*/cc8/*" mResGrpUri="peripheral/ccu8/*/cc8/*">
     <downwardMapList xsi:type="ResourceModel:ResourceGroup" href="../../../HW_RESOURCES/CCU80/CCU80_0.dd#//@provided.43"/>
   </hwResources>
   <connections URI="http://resources/4.0.22/app/CCU8_SLICE_CONFIG/0/http://resources/4.0.22/app/CCU8_SLICE_CONFIG/0/vs_ccu8_cc8_global/http://resources/4.0.22/app/CCU8_SLICE_CONFIG/0/vs_ccu8_cc8_config_global" systemDefined="true" sourceSignal="ccu8_global" targetSignal="global_signal" targetVirtualSignal="//@virtualSignals.0" proxySrcVirtualSignalUri="http://resources/4.1.12/app/GLOBAL_CCU8/0/vs_global_ccu8_globalsignal" containingProxySignal="true">
-    <downwardMapList xsi:type="ResourceModel:VirtualSignal" href="../../GLOBAL_CCU8/v4_1_12/GLOBAL_CCU8_0.app#//@virtualSignals.0"/>
-    <srcVirtualSignal href="../../GLOBAL_CCU8/v4_1_12/GLOBAL_CCU8_0.app#//@virtualSignals.0"/>
+    <downwardMapList xsi:type="ResourceModel:VirtualSignal" href="../../GLOBAL_CCU8/v4_1_12/GLOBAL_CCU8_0.app#/0/@virtualSignals.0"/>
+    <srcVirtualSignal href="../../GLOBAL_CCU8/v4_1_12/GLOBAL_CCU8_0.app#/0/@virtualSignals.0"/>
   </connections>
 </ResourceModel:App>

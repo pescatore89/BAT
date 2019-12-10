@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="ASCII"?>
 <ResourceModel:App xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ResourceModel="http://www.infineon.com/Davex/Resource.ecore" name="PWM_SVM" URI="http://resources/4.0.22/app/PWM_SVM/0" description="Generates 3-phase space vector pulse width modulated &#xA;outputs using CCU8. It supports symmetric &#xA; 7-segment/5-segment SVM algorithm." mode="NOTSHARABLE" version="4.0.22" minDaveVersion="4.0.0" instanceLabel="PWM_SVM_0" appLabel="" containingProxySignal="true">
-  <upwardMapList xsi:type="ResourceModel:RequiredApp" href="../../ACIM_FREQ_CTRL/v4_0_8/ACIM_FREQ_CTRL_0.app#//@requiredApps.4"/>
+  <upwardMapList xsi:type="ResourceModel:RequiredApp" href="../../ACIM_FREQ_CTRL/v4_0_8/ACIM_FREQ_CTRL_0.app#/0/@requiredApps.4"/>
   <properties provideInit="true" sharable="true"/>
   <virtualSignals name="ph_u_global_signal" URI="http://resources/4.0.22/app/PWM_SVM/0/vs_pwm_svm_globalsignal_phu" hwSignal="global_signal" hwResource="//@hwResources.0"/>
   <virtualSignals name="ph_v_global_signal" URI="http://resources/4.0.22/app/PWM_SVM/0/vs_pwm_svm_globalsignal_phv" hwSignal="global_signal" hwResource="//@hwResources.1"/>
@@ -15,7 +15,7 @@
   <virtualSignals name="ph_w_trap" URI="http://resources/4.0.22/app/PWM_SVM/0/vs_pwm_svm_gp2_unsync_phw" hwSignal="gp2_unsync" hwResource="//@hwResources.2"/>
   <virtualSignals name="trigger_trap" URI="http://resources/4.0.22/app/PWM_SVM/0/vs_pwm_svm_gp2_unsync_currenttrig" hwSignal="gp2_unsync" hwResource="//@hwResources.3" required="false" visible="true"/>
   <virtualSignals name="event_ph_u_period/one_match" URI="http://resources/4.0.22/app/PWM_SVM/0/vs_pwm_svm_pmus_omds_phu" hwSignal="pmus_omds" hwResource="//@hwResources.0" visible="true">
-    <upwardMapList xsi:type="ResourceModel:Connections" href="../../ACIM_FREQ_CTRL/v4_0_8/ACIM_FREQ_CTRL_0.app#//@connections.0"/>
+    <upwardMapList xsi:type="ResourceModel:Connections" href="../../ACIM_FREQ_CTRL/v4_0_8/ACIM_FREQ_CTRL_0.app#/0/@connections.0"/>
   </virtualSignals>
   <virtualSignals name="event_ph_v_period/one_match" URI="http://resources/4.0.22/app/PWM_SVM/0/vs_pwm_svm_pmus_omds_phv" hwSignal="pmus_omds" hwResource="//@hwResources.1" visible="true"/>
   <virtualSignals name="event_ph_w_period/one_match" URI="http://resources/4.0.22/app/PWM_SVM/0/vs_pwm_svm_pmus_omds_phw" hwSignal="pmus_omds" hwResource="//@hwResources.2" visible="true"/>
@@ -75,7 +75,7 @@
   <virtualSignals name="Trap Pin_signal" URI="http://resources/4.0.22/app/PWM_SVM/0/__pin_vs_pwm_svm_pin_trap" hwSignal="pin" hwResource="//@hwResources.18"/>
   <virtualSignals name="Inverter Enable Pin_signal" URI="http://resources/4.0.22/app/PWM_SVM/0/__pin_vs_pwm_svm_pin_inverter" hwSignal="pin" hwResource="//@hwResources.19"/>
   <requiredApps URI="http://resources/4.0.22/app/PWM_SVM/0/appres_global_ccu8_app0" requiredAppName="GLOBAL_CCU8" requiringMode="SHARABLE">
-    <downwardMapList xsi:type="ResourceModel:App" href="../../GLOBAL_CCU8/v4_1_12/GLOBAL_CCU8_0.app#/"/>
+    <downwardMapList xsi:type="ResourceModel:App" href="../../GLOBAL_CCU8/v4_1_12/GLOBAL_CCU8_0.app#/0"/>
   </requiredApps>
   <hwResources name="PhU Slice" URI="http://resources/4.0.22/app/PWM_SVM/0/hwres_ccu8_config_a" resourceGroupUri="resources/0.1.31/peripheral/ccu8/0/cc8/0" mResGrpUri="peripheral/ccu8/*/cc8/*">
     <downwardMapList xsi:type="ResourceModel:ResourceGroup" href="../../../HW_RESOURCES/CCU80/CCU80_0.dd#//@provided.14"/>
@@ -132,19 +132,19 @@
     <downwardMapList xsi:type="ResourceModel:ResourceGroup" href="../../../HW_RESOURCES/DEVICEPACKAGE/DEVICEPACKAGE_0.dd#//@provided.27"/>
   </hwResources>
   <connections URI="http://resources/4.0.22/app/PWM_SVM/0/http://resources/4.0.22/app/PWM_SVM/0/vs_global_ccu8_global/http://resources/4.0.22/app/PWM_SVM/0/vs_pwm_svm_globalsignal_phu" systemDefined="true" sourceSignal="ccu8_global" targetSignal="ph_u_global_signal" targetVirtualSignal="//@virtualSignals.0" proxySrcVirtualSignalUri="http://resources/4.1.12/app/GLOBAL_CCU8/0/vs_global_ccu8_globalsignal" containingProxySignal="true">
-    <downwardMapList xsi:type="ResourceModel:VirtualSignal" href="../../GLOBAL_CCU8/v4_1_12/GLOBAL_CCU8_0.app#//@virtualSignals.0"/>
-    <srcVirtualSignal href="../../GLOBAL_CCU8/v4_1_12/GLOBAL_CCU8_0.app#//@virtualSignals.0"/>
+    <downwardMapList xsi:type="ResourceModel:VirtualSignal" href="../../GLOBAL_CCU8/v4_1_12/GLOBAL_CCU8_0.app#/0/@virtualSignals.0"/>
+    <srcVirtualSignal href="../../GLOBAL_CCU8/v4_1_12/GLOBAL_CCU8_0.app#/0/@virtualSignals.0"/>
   </connections>
   <connections URI="http://resources/4.0.22/app/PWM_SVM/0/http://resources/4.0.22/app/PWM_SVM/0/vs_global_ccu8_global/http://resources/4.0.22/app/PWM_SVM/0/vs_pwm_svm_globalsignal_phv" systemDefined="true" sourceSignal="ccu8_global" targetSignal="ph_v_global_signal" targetVirtualSignal="//@virtualSignals.1" proxySrcVirtualSignalUri="http://resources/4.1.12/app/GLOBAL_CCU8/0/vs_global_ccu8_globalsignal" containingProxySignal="true">
-    <downwardMapList xsi:type="ResourceModel:VirtualSignal" href="../../GLOBAL_CCU8/v4_1_12/GLOBAL_CCU8_0.app#//@virtualSignals.0"/>
-    <srcVirtualSignal href="../../GLOBAL_CCU8/v4_1_12/GLOBAL_CCU8_0.app#//@virtualSignals.0"/>
+    <downwardMapList xsi:type="ResourceModel:VirtualSignal" href="../../GLOBAL_CCU8/v4_1_12/GLOBAL_CCU8_0.app#/0/@virtualSignals.0"/>
+    <srcVirtualSignal href="../../GLOBAL_CCU8/v4_1_12/GLOBAL_CCU8_0.app#/0/@virtualSignals.0"/>
   </connections>
   <connections URI="http://resources/4.0.22/app/PWM_SVM/0/http://resources/4.0.22/app/PWM_SVM/0/vs_global_ccu8_global/http://resources/4.0.22/app/PWM_SVM/0/vs_pwm_svm_globalsignal_phw" systemDefined="true" sourceSignal="ccu8_global" targetSignal="ph_w_global_signal" targetVirtualSignal="//@virtualSignals.2" proxySrcVirtualSignalUri="http://resources/4.1.12/app/GLOBAL_CCU8/0/vs_global_ccu8_globalsignal" containingProxySignal="true">
-    <downwardMapList xsi:type="ResourceModel:VirtualSignal" href="../../GLOBAL_CCU8/v4_1_12/GLOBAL_CCU8_0.app#//@virtualSignals.0"/>
-    <srcVirtualSignal href="../../GLOBAL_CCU8/v4_1_12/GLOBAL_CCU8_0.app#//@virtualSignals.0"/>
+    <downwardMapList xsi:type="ResourceModel:VirtualSignal" href="../../GLOBAL_CCU8/v4_1_12/GLOBAL_CCU8_0.app#/0/@virtualSignals.0"/>
+    <srcVirtualSignal href="../../GLOBAL_CCU8/v4_1_12/GLOBAL_CCU8_0.app#/0/@virtualSignals.0"/>
   </connections>
   <connections URI="http://resources/4.0.22/app/PWM_SVM/0/http://resources/4.0.22/app/PWM_SVM/0/vs_global_ccu8_global/http://resources/4.0.22/app/PWM_SVM/0/vs_pwm_svm_globalsignal_currenttrig" systemDefined="true" sourceSignal="ccu8_global" targetSignal="adc_trigger_global_signal" required="false" targetVirtualSignal="//@virtualSignals.3" proxySrcVirtualSignalUri="http://resources/4.1.12/app/GLOBAL_CCU8/0/vs_global_ccu8_globalsignal" containingProxySignal="true">
-    <srcVirtualSignal href="../../GLOBAL_CCU8/v4_1_12/GLOBAL_CCU8_0.app#//@virtualSignals.0"/>
+    <srcVirtualSignal href="../../GLOBAL_CCU8/v4_1_12/GLOBAL_CCU8_0.app#/0/@virtualSignals.0"/>
   </connections>
   <connections URI="http://resources/4.0.22/app/PWM_SVM/0/http://resources/4.0.22/app/PWM_SVM/0/vs_pwm_svm_out0_phu/http://resources/4.0.22/app/PWM_SVM/0/vs_pwm_svm_pin_phu_high" systemDefined="true" sourceSignal="ph_u_high" targetSignal="ph_u_high_pad" srcVirtualSignal="//@virtualSignals.44" targetVirtualSignal="//@virtualSignals.54"/>
   <connections URI="http://resources/4.0.22/app/PWM_SVM/0/http://resources/4.0.22/app/PWM_SVM/0/vs_pwm_svm_out0_phv/http://resources/4.0.22/app/PWM_SVM/0/vs_pwm_svm_pin_phv_high" systemDefined="true" sourceSignal="ph_v_high" targetSignal="ph_v_high_pad" srcVirtualSignal="//@virtualSignals.45" targetVirtualSignal="//@virtualSignals.56"/>
@@ -160,20 +160,20 @@
   <connections URI="http://resources/4.0.22/app/PWM_SVM/0/http://resources/4.0.22/app/PWM_SVM/0/vs_pwm_svm_pin_trap/http://resources/4.0.22/app/PWM_SVM/0/vs_pwm_svm_gp2_unsync_phv" systemDefined="true" sourceSignal="trap_pad" targetSignal="ph_v_trap" required="false" srcVirtualSignal="//@virtualSignals.60" targetVirtualSignal="//@virtualSignals.9"/>
   <connections URI="http://resources/4.0.22/app/PWM_SVM/0/http://resources/4.0.22/app/PWM_SVM/0/vs_pwm_svm_pin_trap/http://resources/4.0.22/app/PWM_SVM/0/vs_pwm_svm_gp2_unsync_phw" systemDefined="true" sourceSignal="trap_pad" targetSignal="ph_w_trap" required="false" srcVirtualSignal="//@virtualSignals.60" targetVirtualSignal="//@virtualSignals.10"/>
   <connections URI="http://resources/4.0.22/app/PWM_SVM/0/http://resources/4.0.22/app/PWM_SVM/0/vs_global_ccu8_gsc_enable/http://resources/4.0.22/app/PWM_SVM/0/vs_pwm_svm_gp0_unsync_phu" systemDefined="true" sourceSignal="ccu8_global_start" targetSignal="ph_u_external_start" targetVirtualSignal="//@virtualSignals.4" proxySrcVirtualSignalUri="http://resources/4.1.12/app/GLOBAL_CCU8/0/vs_global_ccu8_gsc_enable" containingProxySignal="true">
-    <downwardMapList xsi:type="ResourceModel:VirtualSignal" href="../../GLOBAL_CCU8/v4_1_12/GLOBAL_CCU8_0.app#//@virtualSignals.2"/>
-    <srcVirtualSignal href="../../GLOBAL_CCU8/v4_1_12/GLOBAL_CCU8_0.app#//@virtualSignals.2"/>
+    <downwardMapList xsi:type="ResourceModel:VirtualSignal" href="../../GLOBAL_CCU8/v4_1_12/GLOBAL_CCU8_0.app#/0/@virtualSignals.2"/>
+    <srcVirtualSignal href="../../GLOBAL_CCU8/v4_1_12/GLOBAL_CCU8_0.app#/0/@virtualSignals.2"/>
   </connections>
   <connections URI="http://resources/4.0.22/app/PWM_SVM/0/http://resources/4.0.22/app/PWM_SVM/0/vs_global_ccu8_gsc_enable/http://resources/4.0.22/app/PWM_SVM/0/vs_pwm_svm_gp0_unsync_phv" systemDefined="true" sourceSignal="ccu8_global_start" targetSignal="ph_v_external_start" targetVirtualSignal="//@virtualSignals.5" proxySrcVirtualSignalUri="http://resources/4.1.12/app/GLOBAL_CCU8/0/vs_global_ccu8_gsc_enable" containingProxySignal="true">
-    <downwardMapList xsi:type="ResourceModel:VirtualSignal" href="../../GLOBAL_CCU8/v4_1_12/GLOBAL_CCU8_0.app#//@virtualSignals.2"/>
-    <srcVirtualSignal href="../../GLOBAL_CCU8/v4_1_12/GLOBAL_CCU8_0.app#//@virtualSignals.2"/>
+    <downwardMapList xsi:type="ResourceModel:VirtualSignal" href="../../GLOBAL_CCU8/v4_1_12/GLOBAL_CCU8_0.app#/0/@virtualSignals.2"/>
+    <srcVirtualSignal href="../../GLOBAL_CCU8/v4_1_12/GLOBAL_CCU8_0.app#/0/@virtualSignals.2"/>
   </connections>
   <connections URI="http://resources/4.0.22/app/PWM_SVM/0/http://resources/4.0.22/app/PWM_SVM/0/vs_global_ccu8_gsc_enable/http://resources/4.0.22/app/PWM_SVM/0/vs_pwm_svm_gp0_unsync_phw" systemDefined="true" sourceSignal="ccu8_global_start" targetSignal="ph_w_external_start" targetVirtualSignal="//@virtualSignals.6" proxySrcVirtualSignalUri="http://resources/4.1.12/app/GLOBAL_CCU8/0/vs_global_ccu8_gsc_enable" containingProxySignal="true">
-    <downwardMapList xsi:type="ResourceModel:VirtualSignal" href="../../GLOBAL_CCU8/v4_1_12/GLOBAL_CCU8_0.app#//@virtualSignals.2"/>
-    <srcVirtualSignal href="../../GLOBAL_CCU8/v4_1_12/GLOBAL_CCU8_0.app#//@virtualSignals.2"/>
+    <downwardMapList xsi:type="ResourceModel:VirtualSignal" href="../../GLOBAL_CCU8/v4_1_12/GLOBAL_CCU8_0.app#/0/@virtualSignals.2"/>
+    <srcVirtualSignal href="../../GLOBAL_CCU8/v4_1_12/GLOBAL_CCU8_0.app#/0/@virtualSignals.2"/>
   </connections>
   <connections URI="http://resources/4.0.22/app/PWM_SVM/0/http://resources/4.0.22/app/PWM_SVM/0/vs_global_ccu8_gsc_enable/http://resources/4.0.22/app/PWM_SVM/0/vs_pwm_svm_gp0_unsync_currenttrig" systemDefined="true" sourceSignal="ccu8_global_start" targetSignal="current_trigger_external_start" targetVirtualSignal="//@virtualSignals.7" proxySrcVirtualSignalUri="http://resources/4.1.12/app/GLOBAL_CCU8/0/vs_global_ccu8_gsc_enable" containingProxySignal="true">
-    <downwardMapList xsi:type="ResourceModel:VirtualSignal" href="../../GLOBAL_CCU8/v4_1_12/GLOBAL_CCU8_0.app#//@virtualSignals.2"/>
-    <srcVirtualSignal href="../../GLOBAL_CCU8/v4_1_12/GLOBAL_CCU8_0.app#//@virtualSignals.2"/>
+    <downwardMapList xsi:type="ResourceModel:VirtualSignal" href="../../GLOBAL_CCU8/v4_1_12/GLOBAL_CCU8_0.app#/0/@virtualSignals.2"/>
+    <srcVirtualSignal href="../../GLOBAL_CCU8/v4_1_12/GLOBAL_CCU8_0.app#/0/@virtualSignals.2"/>
   </connections>
   <connections URI="http://resources/4.0.22/app/PWM_SVM/0/http://resources/4.0.22/app/PWM_SVM/0/vs_pwm_svm_pin_phu_high/http://resources/4.0.22/app/PWM_SVM/0/__pin_vs_pwm_svm_pin_phu_high" systemDefined="true" sourceSignal="ph_u_high_pad" targetSignal="PhaseU_High Pin_signal" srcVirtualSignal="//@virtualSignals.54" targetVirtualSignal="//@virtualSignals.62"/>
   <connections URI="http://resources/4.0.22/app/PWM_SVM/0/http://resources/4.0.22/app/PWM_SVM/0/__pin_vs_pwm_svm_pin_phu_high/http://resources/4.0.22/app/PWM_SVM/0/vs_pwm_svm_pin_phu_high" systemDefined="true" sourceSignal="PhaseU_High Pin_signal" targetSignal="ph_u_high_pad" srcVirtualSignal="//@virtualSignals.62" targetVirtualSignal="//@virtualSignals.54"/>

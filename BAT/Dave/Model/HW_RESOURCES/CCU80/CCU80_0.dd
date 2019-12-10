@@ -813,7 +813,7 @@
     <enumValues xsi:type="ResourceModel:RegEnumValue" value="0b1111" description="CCU8xINy[P]"/>
   </provided>
   <provided xsi:type="ResourceModel:ResourceGroup" name="global" URI="http://resources/0.1.31/peripheral/ccu8/0/global">
-    <upwardMapList xsi:type="ResourceModel:HWResource" href="../../APPS/GLOBAL_CCU8/v4_1_12/GLOBAL_CCU8_0.app#//@hwResources.0"/>
+    <upwardMapList xsi:type="ResourceModel:HWResource" href="../../APPS/GLOBAL_CCU8/v4_1_12/GLOBAL_CCU8_0.app#/0/@hwResources.0"/>
     <resourcesList name="gctrl" requiredResourceUri="http://resources/0.1.31/peripheral/ccu8/0/gctrl"/>
     <resourcesList name="gctrl_pcis" requiredResourceUri="http://resources/0.1.31/peripheral/ccu8/0/gctrl/pcis"/>
     <resourcesList name="gstat" requiredResourceUri="http://resources/0.1.31/peripheral/ccu8/0/gstat"/>
