@@ -67,7 +67,7 @@
 
 extern const DIGITAL_IO_t DIGITAL_IO_0; 
 	
-extern const DIGITAL_IO_t DIGITAL_IO_1; 
+extern const DIGITAL_IO_t Disable_Gate_Driver_M3; 
 	
 extern const DIGITAL_IO_t DIGITAL_IO_2; 
 	
@@ -115,7 +115,7 @@ extern const DIGITAL_IO_t DIGITAL_IO_23;
 	
 extern const DIGITAL_IO_t DIGITAL_IO_24; 
 	
-extern const DIGITAL_IO_t DIGITAL_IO_25; 
+extern const DIGITAL_IO_t Disable_Gate_Driver_M1_M2; 
 	
 extern const DIGITAL_IO_t DIGITAL_IO_26; 
 	

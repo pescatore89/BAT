@@ -83,6 +83,7 @@
     <resourcesList name="pin" requiredResourceUri="http://resources/LQFP100.0.0/devicepackage/0/pin98"/>
   </provided>
   <provided xsi:type="ResourceModel:ResourceGroup" name="96" URI="http://resources/lqfp100.0.0/devicepackage/0/96">
+    <upwardMapList xsi:type="ResourceModel:HWResource" href="../../APPS/DIGITAL_IO/v4_0_16/DIGITAL_IO_25.app#//@hwResources.1"/>
     <resourcesList name="pin" requiredResourceUri="http://resources/LQFP100.0.0/devicepackage/0/pin96"/>
   </provided>
   <provided xsi:type="ResourceModel:ResourceGroup" name="27" URI="http://resources/lqfp100.0.0/devicepackage/0/27">
@@ -141,7 +142,7 @@
     <resourcesList name="pin" requiredResourceUri="http://resources/LQFP100.0.0/devicepackage/0/pin39"/>
   </provided>
   <provided xsi:type="ResourceModel:ResourceGroup" name="18" URI="http://resources/lqfp100.0.0/devicepackage/0/18">
-    <upwardMapList xsi:type="ResourceModel:HWResource" href="../../APPS/DIGITAL_IO/v4_0_16/DIGITAL_IO_25.app#//@hwResources.1"/>
+    <upwardMapList xsi:type="ResourceModel:HWResource" href="../../APPS/DIGITAL_IO/v4_0_16/DIGITAL_IO_28.app#//@hwResources.1"/>
     <resourcesList name="pin" requiredResourceUri="http://resources/LQFP100.0.0/devicepackage/0/pin18"/>
   </provided>
   <provided xsi:type="ResourceModel:ResourceGroup" name="84" URI="http://resources/lqfp100.0.0/devicepackage/0/84">
@@ -157,7 +158,7 @@
     <resourcesList name="pin" requiredResourceUri="http://resources/LQFP100.0.0/devicepackage/0/pin78"/>
   </provided>
   <provided xsi:type="ResourceModel:ResourceGroup" name="79" URI="http://resources/lqfp100.0.0/devicepackage/0/79">
-    <upwardMapList xsi:type="ResourceModel:HWResource" href="../../APPS/DIGITAL_IO/v4_0_16/DIGITAL_IO_28.app#//@hwResources.1"/>
+    <upwardMapList xsi:type="ResourceModel:HWResource" href="../../APPS/DIGITAL_IO/v4_0_16/DIGITAL_IO_27.app#//@hwResources.1"/>
     <resourcesList name="pin" requiredResourceUri="http://resources/LQFP100.0.0/devicepackage/0/pin79"/>
   </provided>
   <provided xsi:type="ResourceModel:ResourceGroup" name="76" URI="http://resources/lqfp100.0.0/devicepackage/0/76">
@@ -165,11 +166,10 @@
     <resourcesList name="pin" requiredResourceUri="http://resources/LQFP100.0.0/devicepackage/0/pin76"/>
   </provided>
   <provided xsi:type="ResourceModel:ResourceGroup" name="80" URI="http://resources/lqfp100.0.0/devicepackage/0/80">
-    <upwardMapList xsi:type="ResourceModel:HWResource" href="../../APPS/DIGITAL_IO/v4_0_16/DIGITAL_IO_27.app#//@hwResources.1"/>
+    <upwardMapList xsi:type="ResourceModel:HWResource" href="../../APPS/DIGITAL_IO/v4_0_16/DIGITAL_IO_29.app#//@hwResources.1"/>
     <resourcesList name="pin" requiredResourceUri="http://resources/LQFP100.0.0/devicepackage/0/pin80"/>
   </provided>
   <provided xsi:type="ResourceModel:ResourceGroup" name="81" URI="http://resources/lqfp100.0.0/devicepackage/0/81">
-    <upwardMapList xsi:type="ResourceModel:HWResource" href="../../APPS/DIGITAL_IO/v4_0_16/DIGITAL_IO_29.app#//@hwResources.1"/>
     <resourcesList name="pin" requiredResourceUri="http://resources/LQFP100.0.0/devicepackage/0/pin81"/>
   </provided>
   <provided xsi:type="ResourceModel:ResourceGroup" name="82" URI="http://resources/lqfp100.0.0/devicepackage/0/82">

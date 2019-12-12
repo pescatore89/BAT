@@ -83,8 +83,8 @@ DAVE_STATUS_t DAVE_Init(void)
    } 
   if (init_status == DAVE_STATUS_SUCCESS)
   {
-	 /**  Initialization of DIGITAL_IO APP instance DIGITAL_IO_1 */
-	 init_status = (DAVE_STATUS_t)DIGITAL_IO_Init(&DIGITAL_IO_1); 
+	 /**  Initialization of DIGITAL_IO APP instance Disable_Gate_Driver_M3 */
+	 init_status = (DAVE_STATUS_t)DIGITAL_IO_Init(&Disable_Gate_Driver_M3); 
    } 
   if (init_status == DAVE_STATUS_SUCCESS)
   {
@@ -203,8 +203,8 @@ DAVE_STATUS_t DAVE_Init(void)
    } 
   if (init_status == DAVE_STATUS_SUCCESS)
   {
-	 /**  Initialization of DIGITAL_IO APP instance DIGITAL_IO_25 */
-	 init_status = (DAVE_STATUS_t)DIGITAL_IO_Init(&DIGITAL_IO_25); 
+	 /**  Initialization of DIGITAL_IO APP instance Disable_Gate_Driver_M1_M2 */
+	 init_status = (DAVE_STATUS_t)DIGITAL_IO_Init(&Disable_Gate_Driver_M1_M2); 
    } 
   if (init_status == DAVE_STATUS_SUCCESS)
   {

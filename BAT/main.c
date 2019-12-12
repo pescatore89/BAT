@@ -97,13 +97,17 @@ DIGITAL_IO_SetOutputHigh(&DIGITAL_IO_23);// Set Output Pin 0 high
 
 delay_count = 0;
 
-//ADC_MEASUREMENT_StartConversion(&ADC_MEASUREMENT_0);
-ACIM_FREQ_CTRL_MotorStart(&ACIM_FREQ_CTRL_0);
-//ACIM_FREQ_CTRL_SetSpeed(&ACIM_FREQ_CTRL_0, 50);
-ACIM_FREQ_CTRL_MotorStart(&ACIM_FREQ_CTRL_1);
-//ACIM_FREQ_CTRL_SetSpeed(&ACIM_FREQ_CTRL_1, 10);
-// ACIM_FREQ_CTRL_MotorStop(&ACIM_FREQ_CTRL_1);
+
+
+
+//ACIM_FREQ_CTRL_MotorStart(&ACIM_FREQ_CTRL_1);
+
 /* Placeholder for user application code. The while loop below can be replaced with user application code. */
+
+DIGITAL_IO_SetOutputHigh(&Disable_Gate_Driver_M1_M2);// Set Output Pin 0 high
+DIGITAL_IO_SetOutputHigh(&Disable_Gate_Driver_M3);// Set Output Pin 0 high
+
+//ACIM_FREQ_CTRL_MotorStart(&ACIM_FREQ_CTRL_0);
 
 while(1U)
 {

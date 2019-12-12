@@ -4,7 +4,7 @@
     <Solver>
         <SolverBndMap>
             <BindMap MUri="port/p/2/pad/7" Proxy="app/DIGITAL_IO/13/hwres_port_pin"/>
-            <BindMap MUri="devicepackage/0/18" Proxy="app/DIGITAL_IO/25/__pin_hwres_port_pin"/>
+            <BindMap MUri="devicepackage/0/96" Proxy="app/DIGITAL_IO/25/__pin_hwres_port_pin"/>
             <BindMap MUri="devicepackage/0/7" Proxy="app/PWM_CCU4/2/__pin_hwres_port_channel_out"/>
             <BindMap MUri="peripheral/cpu/0/systick" Proxy="app/SYSTIMER/0/hwres_syst"/>
             <BindMap MUri="devicepackage/0/41" Proxy="app/PWM_SVM/0/__pin_hwres_port_pad_phulow"/>
@@ -31,7 +31,7 @@
             <BindMap MUri="devicepackage/0/30" Proxy="app/ANALOG_IO/0/__pin_hwres_port_pin"/>
             <BindMap MUri="peripheral/ccu8/0/cc8/2" Proxy="app/PWM_SVM/0/hwres_ccu8_config_a"/>
             <BindMap MUri="peripheral/scu/0/clkctrl/0/usb" Proxy="app/CLOCK_XMC4/0/hwres_usb"/>
-            <BindMap MUri="port/p/15/pad/3" Proxy="app/DIGITAL_IO/25/hwres_port_pin"/>
+            <BindMap MUri="port/p/0/pad/6" Proxy="app/DIGITAL_IO/25/hwres_port_pin"/>
             <BindMap MUri="peripheral/vadc/0/backgnd" Proxy="app/ADC_MEASUREMENT/0/hwres_adc_measurement_background"/>
             <BindMap MUri="devicepackage/0/71" Proxy="app/PWM_SVM/1/__pin_hwres_port_pad_phwlow"/>
             <BindMap MUri="peripheral/ccu8/0/cc8/0" Proxy="app/PWM_SVM/0/hwres_ccu8_config_c"/>
@@ -41,7 +41,7 @@
             <BindMap MUri="devicepackage/0/77" Proxy="app/DIGITAL_IO/6/__pin_hwres_port_pin"/>
             <BindMap MUri="devicepackage/0/48" Proxy="app/I2C_MASTER/0/__pin_hwres_i2c_scl"/>
             <BindMap MUri="peripheral/cpu/0/exception/memmanage" Proxy="app/CPU_CTRL_XMC4/0/hwres_exception_memmanage"/>
-            <BindMap MUri="devicepackage/0/80" Proxy="app/DIGITAL_IO/27/__pin_hwres_port_pin"/>
+            <BindMap MUri="devicepackage/0/79" Proxy="app/DIGITAL_IO/27/__pin_hwres_port_pin"/>
             <BindMap MUri="port/p/3/pad/1" Proxy="app/DIGITAL_IO/14/hwres_port_pin"/>
             <BindMap MUri="port/p/0/pad/10" Proxy="app/DIGITAL_IO/0/hwres_port_pin"/>
             <BindMap MUri="peripheral/scu/0/rtcclksel" Proxy="app/CLOCK_XMC4/0/hwres_rtcclksel"/>
@@ -65,7 +65,7 @@
             <BindMap MUri="devicepackage/0/85" Proxy="app/DIGITAL_IO/19/__pin_hwres_port_pin"/>
             <BindMap MUri="peripheral/scu/0/clkctrl/0/sys" Proxy="app/CLOCK_XMC4/0/hwres_sys"/>
             <BindMap MUri="devicepackage/0/39" Proxy="app/DIGITAL_IO/26/__pin_hwres_port_pin"/>
-            <BindMap MUri="port/p/1/pad/8" Proxy="app/DIGITAL_IO/29/hwres_port_pin"/>
+            <BindMap MUri="port/p/1/pad/9" Proxy="app/DIGITAL_IO/29/hwres_port_pin"/>
             <BindMap MUri="peripheral/cpu/0/exception/hardfault" Proxy="app/CPU_CTRL_XMC4/0/hwres_exception_hardfault"/>
             <BindMap MUri="port/p/0/pad/9" Proxy="app/DIGITAL_IO/2/hwres_port_pin"/>
             <BindMap MUri="devicepackage/0/69" Proxy="app/DIGITAL_IO/5/__pin_hwres_port_pin"/>
@@ -87,7 +87,7 @@
             <BindMap MUri="peripheral/ccu8/1/global" Proxy="app/GLOBAL_CCU8/1/hwres_peripheral_ccu8_global"/>
             <BindMap MUri="peripheral/scu/0/clkctrl/0/pll" Proxy="app/CLOCK_XMC4/0/hwres_pll"/>
             <BindMap MUri="port/p/1/pad/13" Proxy="app/DIGITAL_IO/4/hwres_port_pin"/>
-            <BindMap MUri="port/p/1/pad/9" Proxy="app/DIGITAL_IO/27/hwres_port_pin"/>
+            <BindMap MUri="port/p/1/pad/0" Proxy="app/DIGITAL_IO/27/hwres_port_pin"/>
             <BindMap MUri="devicepackage/0/84" Proxy="app/DIGITAL_IO/20/__pin_hwres_port_pin"/>
             <BindMap MUri="peripheral/usic/1/channel/0" Proxy="app/UART_CONFIG/0/hwres_usic_channel"/>
             <BindMap MUri="devicepackage/0/88" Proxy="app/PWM_SVM/0/__pin_hwres_port_pad_inverterenable"/>
@@ -96,7 +96,7 @@
             <BindMap MUri="port/p/0/pad/11" Proxy="app/DIGITAL_IO/1/hwres_port_pin"/>
             <BindMap MUri="port/p/0/pad/0" Proxy="app/UART/0/hwres_port_pad_uart_rx"/>
             <BindMap MUri="devicepackage/0/70" Proxy="app/DIGITAL_IO/4/__pin_hwres_port_pin"/>
-            <BindMap MUri="devicepackage/0/81" Proxy="app/DIGITAL_IO/29/__pin_hwres_port_pin"/>
+            <BindMap MUri="devicepackage/0/80" Proxy="app/DIGITAL_IO/29/__pin_hwres_port_pin"/>
             <BindMap MUri="peripheral/scu/0/gcu/ccu8_global_enable/1" Proxy="app/GLOBAL_CCU8/1/hwres_peripheral_scu_gcu_ccu8_global_enable"/>
             <BindMap MUri="devicepackage/0/72" Proxy="app/PWM_SVM/1/__pin_hwres_port_pad_phvlow"/>
             <BindMap MUri="port/p/15/pad/9" Proxy="app/PWM_SVM/1/hwres_port_pad_inverterenable"/>
@@ -116,7 +116,7 @@
             <BindMap MUri="devicepackage/0/1" Proxy="app/UART/0/__pin_hwres_port_pad_uart_tx"/>
             <BindMap MUri="peripheral/cpu/0/nvic/interrupt/63" Proxy="app/ACIM_FREQ_CTRL/0/hwres_fcl_nvicnode"/>
             <BindMap MUri="peripheral/cpu/0/nvic/interrupt/64" Proxy="app/ACIM_FREQ_CTRL/1/hwres_fcl_nvicnode"/>
-            <BindMap MUri="devicepackage/0/79" Proxy="app/DIGITAL_IO/28/__pin_hwres_port_pin"/>
+            <BindMap MUri="devicepackage/0/18" Proxy="app/DIGITAL_IO/28/__pin_hwres_port_pin"/>
             <BindMap MUri="peripheral/cpu/0/nvic/interrupt/89" Proxy="app/I2C_MASTER/0/hwres_nvic_node_i2c_rx"/>
             <BindMap MUri="devicepackage/0/49" Proxy="app/DIGITAL_IO/11/__pin_hwres_port_pin"/>
             <BindMap MUri="peripheral/vadc/0/group/0/result_filter/15" Proxy="app/ADC_MEASUREMENT/0/rarray_hwres_adc_measurement_result_reg#1"/>
@@ -138,7 +138,7 @@
             <BindMap MUri="port/p/0/pad/1" Proxy="app/UART/0/hwres_port_pad_uart_tx"/>
             <BindMap MUri="devicepackage/0/3" Proxy="app/DIGITAL_IO/0/__pin_hwres_port_pin"/>
             <BindMap MUri="port/p/5/pad/7" Proxy="app/DIGITAL_IO/23/hwres_port_pin"/>
-            <BindMap MUri="port/p/1/pad/0" Proxy="app/DIGITAL_IO/28/hwres_port_pin"/>
+            <BindMap MUri="port/p/15/pad/3" Proxy="app/DIGITAL_IO/28/hwres_port_pin"/>
             <BindMap MUri="devicepackage/0/56" Proxy="app/DIGITAL_IO/22/__pin_hwres_port_pin"/>
             <BindMap MUri="devicepackage/0/92" Proxy="app/DIGITAL_IO/17/__pin_hwres_port_pin"/>
             <BindMap MUri="port/p/2/pad/4" Proxy="app/I2C_MASTER/0/hwres_i2c_scl"/>

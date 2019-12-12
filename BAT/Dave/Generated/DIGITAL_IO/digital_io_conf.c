@@ -66,12 +66,13 @@ const DIGITAL_IO_t DIGITAL_IO_0 =
   .hwctrl = XMC_GPIO_HWCTRL_DISABLED
 };
 		
-const DIGITAL_IO_t DIGITAL_IO_1 =
+const DIGITAL_IO_t Disable_Gate_Driver_M3 =
 {
   .gpio_port = XMC_GPIO_PORT0,
   .gpio_pin = 11U,
   .gpio_config = {
-    .mode = XMC_GPIO_MODE_INPUT_TRISTATE,
+    .mode = XMC_GPIO_MODE_OUTPUT_PUSH_PULL,
+    .output_level = XMC_GPIO_OUTPUT_LEVEL_LOW,
 
   },
   .hwctrl = XMC_GPIO_HWCTRL_DISABLED
@@ -345,12 +346,13 @@ const DIGITAL_IO_t DIGITAL_IO_24 =
   .hwctrl = XMC_GPIO_HWCTRL_DISABLED
 };
 		
-const DIGITAL_IO_t DIGITAL_IO_25 =
+const DIGITAL_IO_t Disable_Gate_Driver_M1_M2 =
 {
-  .gpio_port = XMC_GPIO_PORT15,
-  .gpio_pin = 3U,
+  .gpio_port = XMC_GPIO_PORT0,
+  .gpio_pin = 6U,
   .gpio_config = {
-    .mode = XMC_GPIO_MODE_INPUT_TRISTATE,
+    .mode = XMC_GPIO_MODE_OUTPUT_PUSH_PULL,
+    .output_level = XMC_GPIO_OUTPUT_LEVEL_LOW,
 
   },
   .hwctrl = XMC_GPIO_HWCTRL_DISABLED
@@ -370,7 +372,7 @@ const DIGITAL_IO_t DIGITAL_IO_26 =
 const DIGITAL_IO_t DIGITAL_IO_27 =
 {
   .gpio_port = XMC_GPIO_PORT1,
-  .gpio_pin = 9U,
+  .gpio_pin = 0U,
   .gpio_config = {
     .mode = XMC_GPIO_MODE_INPUT_TRISTATE,
 
@@ -380,8 +382,8 @@ const DIGITAL_IO_t DIGITAL_IO_27 =
 		
 const DIGITAL_IO_t DIGITAL_IO_28 =
 {
-  .gpio_port = XMC_GPIO_PORT1,
-  .gpio_pin = 0U,
+  .gpio_port = XMC_GPIO_PORT15,
+  .gpio_pin = 3U,
   .gpio_config = {
     .mode = XMC_GPIO_MODE_INPUT_TRISTATE,
 
@@ -392,7 +394,7 @@ const DIGITAL_IO_t DIGITAL_IO_28 =
 const DIGITAL_IO_t DIGITAL_IO_29 =
 {
   .gpio_port = XMC_GPIO_PORT1,
-  .gpio_pin = 8U,
+  .gpio_pin = 9U,
   .gpio_config = {
     .mode = XMC_GPIO_MODE_INPUT_TRISTATE,
 

@@ -151,7 +151,7 @@
   </provided>
   <provided xsi:type="ResourceModel:BitField" name="PC8_4" URI="http://resources/0.4.1/port/p/15/iocr8/pc8_4" value="0" toolTipHelpDescription="Port Control for Port n Pin 8 to 11" defaultValue="0" startPos="7" stopPos="7" accessPermission="rw" maxValue="1" minValue="0"/>
   <provided xsi:type="ResourceModel:ResourceGroup" name="P15.3 / #18" URI="http://resources/0.4.1/port/p/15/pad/3">
-    <upwardMapList xsi:type="ResourceModel:HWResource" href="../../APPS/DIGITAL_IO/v4_0_16/DIGITAL_IO_25.app#//@hwResources.0"/>
+    <upwardMapList xsi:type="ResourceModel:HWResource" href="../../APPS/DIGITAL_IO/v4_0_16/DIGITAL_IO_28.app#//@hwResources.0"/>
     <resourcesList name="out_p" requiredResourceUri="http://resources/0.4.1/port/p/15/out/p3"/>
     <resourcesList name="omr_ps" requiredResourceUri="http://resources/0.4.1/port/p/15/omr/ps3"/>
     <resourcesList name="omr_pr" requiredResourceUri="http://resources/0.4.1/port/p/15/omr/pr3"/>

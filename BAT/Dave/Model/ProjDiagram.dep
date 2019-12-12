@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="ASCII"?>
 <pi:Diagram xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:al="http://eclipse.org/graphiti/mm/algorithms" xmlns:pi="http://eclipse.org/graphiti/mm/pictograms" visible="true" gridUnit="10" diagramTypeId="dependencydiagramType" name="ceProject" snapToGrid="true" pictogramLinks="//@link //@connections.0/@link //@connections.0/@connectionDecorators.0/@link //@connections.1/@link //@connections.1/@connectionDecorators.0/@link //@connections.2/@link //@connections.2/@connectionDecorators.0/@link //@connections.3/@link //@connections.3/@connectionDecorators.0/@link //@connections.4/@link //@connections.4/@connectionDecorators.0/@link //@connections.5/@link //@connections.5/@connectionDecorators.0/@link //@connections.6/@link //@connections.6/@connectionDecorators.0/@link //@connections.7/@link //@connections.7/@connectionDecorators.0/@link //@connections.8/@link //@connections.8/@connectionDecorators.0/@link //@connections.9/@link //@connections.9/@connectionDecorators.0/@link //@connections.10/@link //@connections.10/@connectionDecorators.0/@link //@connections.11/@link //@connections.11/@connectionDecorators.0/@link //@connections.12/@link //@connections.12/@connectionDecorators.0/@link //@connections.13/@link //@connections.13/@connectionDecorators.0/@link //@connections.14/@link //@connections.14/@connectionDecorators.0/@link //@connections.15/@link //@connections.15/@connectionDecorators.0/@link //@connections.16/@link //@connections.16/@connectionDecorators.0/@link //@connections.17/@link //@connections.17/@connectionDecorators.0/@link //@connections.18/@link //@connections.18/@connectionDecorators.0/@link //@connections.19/@link //@connections.19/@connectionDecorators.0/@link //@connections.20/@link //@connections.20/@connectionDecorators.0/@link //@connections.21/@link //@connections.21/@connectionDecorators.0/@link //@connections.22/@link //@connections.22/@connectionDecorators.0/@link //@connections.23/@link //@connections.23/@connectionDecorators.0/@link //@connections.24/@link //@connections.24/@connectionDecorators.0/@link //@connections.25/@link //@connections.25/@connectionDecorators.0/@link //@connections.26/@link //@connections.26/@connectionDecorators.0/@link //@connections.27/@link //@connections.27/@connectionDecorators.0/@link //@connections.28/@link //@connections.28/@connectionDecorators.0/@link" version="0.10.0">
-  <graphicsAlgorithm xsi:type="al:Rectangle" background="//@colors.1" foreground="//@colors.0" lineWidth="1" transparency="0.0" width="6818" height="560"/>
+  <graphicsAlgorithm xsi:type="al:Rectangle" background="//@colors.1" foreground="//@colors.0" lineWidth="1" transparency="0.0" width="6841" height="560"/>
   <link>
     <businessObjects href="ModelConfigData.data#/"/>
   </link>
   <children xsi:type="pi:ContainerShape" visible="true" active="true">
     <properties key="uri" value="http://resources/4.0.16/app/DIGITAL_IO/7"/>
     <properties key="APP_NAME_ID" value="DIGITAL_IO/7"/>
-    <graphicsAlgorithm xsi:type="al:Rectangle" lineWidth="1" filled="false" lineVisible="false" transparency="0.0" width="127" height="40" x="5181">
+    <graphicsAlgorithm xsi:type="al:Rectangle" lineWidth="1" filled="false" lineVisible="false" transparency="0.0" width="127" height="40" x="5229">
       <graphicsAlgorithmChildren xsi:type="al:RoundedRectangle" lineWidth="1" transparency="0.0" width="127" height="40" style="//@styles.0/@styles.17" cornerHeight="5" cornerWidth="5"/>
     </graphicsAlgorithm>
     <anchors xsi:type="pi:ChopboxAnchor"/>
@@ -27,7 +27,7 @@
   <children xsi:type="pi:ContainerShape" visible="true" active="true">
     <properties key="uri" value="http://resources/4.0.16/app/DIGITAL_IO/8"/>
     <properties key="APP_NAME_ID" value="DIGITAL_IO/8"/>
-    <graphicsAlgorithm xsi:type="al:Rectangle" lineWidth="1" filled="false" lineVisible="false" transparency="0.0" width="127" height="40" x="5034">
+    <graphicsAlgorithm xsi:type="al:Rectangle" lineWidth="1" filled="false" lineVisible="false" transparency="0.0" width="127" height="40" x="5082">
       <graphicsAlgorithmChildren xsi:type="al:RoundedRectangle" lineWidth="1" transparency="0.0" width="127" height="40" style="//@styles.0/@styles.18" cornerHeight="5" cornerWidth="5"/>
     </graphicsAlgorithm>
     <anchors xsi:type="pi:ChopboxAnchor"/>
@@ -67,7 +67,7 @@
   <children xsi:type="pi:ContainerShape" visible="true" active="true">
     <properties key="uri" value="http://resources/4.0.8/app/ACIM_FREQ_CTRL/0"/>
     <properties key="APP_NAME_ID" value="ACIM_FREQ_CTRL/0"/>
-    <graphicsAlgorithm xsi:type="al:Rectangle" lineWidth="1" filled="false" lineVisible="false" transparency="0.0" width="162" height="40" x="6616">
+    <graphicsAlgorithm xsi:type="al:Rectangle" lineWidth="1" filled="false" lineVisible="false" transparency="0.0" width="162" height="40" x="6639">
       <graphicsAlgorithmChildren xsi:type="al:RoundedRectangle" lineWidth="1" transparency="0.0" width="162" height="40" style="//@styles.0/@styles.5" cornerHeight="5" cornerWidth="5"/>
     </graphicsAlgorithm>
     <anchors xsi:type="pi:ChopboxAnchor" outgoingConnections="//@connections.2 //@connections.3 //@connections.4 //@connections.28"/>
@@ -147,7 +147,7 @@
   <children xsi:type="pi:ContainerShape" visible="true" active="true">
     <properties key="uri" value="http://resources/4.0.16/app/DIGITAL_IO/10"/>
     <properties key="APP_NAME_ID" value="DIGITAL_IO/10"/>
-    <graphicsAlgorithm xsi:type="al:Rectangle" lineWidth="1" filled="false" lineVisible="false" transparency="0.0" width="133" height="40" x="4881">
+    <graphicsAlgorithm xsi:type="al:Rectangle" lineWidth="1" filled="false" lineVisible="false" transparency="0.0" width="133" height="40" x="4929">
       <graphicsAlgorithmChildren xsi:type="al:RoundedRectangle" lineWidth="1" transparency="0.0" width="133" height="40" style="//@styles.0/@styles.20" cornerHeight="5" cornerWidth="5"/>
     </graphicsAlgorithm>
     <anchors xsi:type="pi:ChopboxAnchor"/>
@@ -187,7 +187,7 @@
   <children xsi:type="pi:ContainerShape" visible="true" active="true">
     <properties key="uri" value="http://resources/4.0.16/app/DIGITAL_IO/11"/>
     <properties key="APP_NAME_ID" value="DIGITAL_IO/11"/>
-    <graphicsAlgorithm xsi:type="al:Rectangle" lineWidth="1" filled="false" lineVisible="false" transparency="0.0" width="133" height="40" x="4728">
+    <graphicsAlgorithm xsi:type="al:Rectangle" lineWidth="1" filled="false" lineVisible="false" transparency="0.0" width="133" height="40" x="4776">
       <graphicsAlgorithmChildren xsi:type="al:RoundedRectangle" lineWidth="1" transparency="0.0" width="133" height="40" style="//@styles.0/@styles.21" cornerHeight="5" cornerWidth="5"/>
     </graphicsAlgorithm>
     <anchors xsi:type="pi:ChopboxAnchor"/>
@@ -207,7 +207,7 @@
   <children xsi:type="pi:ContainerShape" visible="true" active="true">
     <properties key="uri" value="http://resources/4.0.16/app/DIGITAL_IO/12"/>
     <properties key="APP_NAME_ID" value="DIGITAL_IO/12"/>
-    <graphicsAlgorithm xsi:type="al:Rectangle" lineWidth="1" filled="false" lineVisible="false" transparency="0.0" width="133" height="40" x="4575">
+    <graphicsAlgorithm xsi:type="al:Rectangle" lineWidth="1" filled="false" lineVisible="false" transparency="0.0" width="133" height="40" x="4623">
       <graphicsAlgorithmChildren xsi:type="al:RoundedRectangle" lineWidth="1" transparency="0.0" width="133" height="40" style="//@styles.0/@styles.22" cornerHeight="5" cornerWidth="5"/>
     </graphicsAlgorithm>
     <anchors xsi:type="pi:ChopboxAnchor"/>
@@ -227,7 +227,7 @@
   <children xsi:type="pi:ContainerShape" visible="true" active="true">
     <properties key="uri" value="http://resources/4.0.16/app/DIGITAL_IO/13"/>
     <properties key="APP_NAME_ID" value="DIGITAL_IO/13"/>
-    <graphicsAlgorithm xsi:type="al:Rectangle" lineWidth="1" filled="false" lineVisible="false" transparency="0.0" width="133" height="40" x="4422">
+    <graphicsAlgorithm xsi:type="al:Rectangle" lineWidth="1" filled="false" lineVisible="false" transparency="0.0" width="133" height="40" x="4470">
       <graphicsAlgorithmChildren xsi:type="al:RoundedRectangle" lineWidth="1" transparency="0.0" width="133" height="40" style="//@styles.0/@styles.23" cornerHeight="5" cornerWidth="5"/>
     </graphicsAlgorithm>
     <anchors xsi:type="pi:ChopboxAnchor"/>
@@ -267,7 +267,7 @@
   <children xsi:type="pi:ContainerShape" visible="true" active="true">
     <properties key="uri" value="http://resources/4.0.16/app/DIGITAL_IO/14"/>
     <properties key="APP_NAME_ID" value="DIGITAL_IO/14"/>
-    <graphicsAlgorithm xsi:type="al:Rectangle" lineWidth="1" filled="false" lineVisible="false" transparency="0.0" width="115" height="40" x="4269">
+    <graphicsAlgorithm xsi:type="al:Rectangle" lineWidth="1" filled="false" lineVisible="false" transparency="0.0" width="115" height="40" x="4335">
       <graphicsAlgorithmChildren xsi:type="al:RoundedRectangle" lineWidth="1" transparency="0.0" width="115" height="40" style="//@styles.0/@styles.24" cornerHeight="5" cornerWidth="5"/>
     </graphicsAlgorithm>
     <anchors xsi:type="pi:ChopboxAnchor"/>
@@ -307,7 +307,7 @@
   <children xsi:type="pi:ContainerShape" visible="true" active="true">
     <properties key="uri" value="http://resources/4.0.16/app/DIGITAL_IO/15"/>
     <properties key="APP_NAME_ID" value="DIGITAL_IO/15"/>
-    <graphicsAlgorithm xsi:type="al:Rectangle" lineWidth="1" filled="false" lineVisible="false" transparency="0.0" width="133" height="40" x="4116">
+    <graphicsAlgorithm xsi:type="al:Rectangle" lineWidth="1" filled="false" lineVisible="false" transparency="0.0" width="133" height="40" x="4182">
       <graphicsAlgorithmChildren xsi:type="al:RoundedRectangle" lineWidth="1" transparency="0.0" width="133" height="40" style="//@styles.0/@styles.25" cornerHeight="5" cornerWidth="5"/>
     </graphicsAlgorithm>
     <anchors xsi:type="pi:ChopboxAnchor"/>
@@ -347,7 +347,7 @@
   <children xsi:type="pi:ContainerShape" visible="true" active="true">
     <properties key="uri" value="http://resources/4.0.16/app/DIGITAL_IO/16"/>
     <properties key="APP_NAME_ID" value="DIGITAL_IO/16"/>
-    <graphicsAlgorithm xsi:type="al:Rectangle" lineWidth="1" filled="false" lineVisible="false" transparency="0.0" width="133" height="40" x="3963">
+    <graphicsAlgorithm xsi:type="al:Rectangle" lineWidth="1" filled="false" lineVisible="false" transparency="0.0" width="133" height="40" x="4029">
       <graphicsAlgorithmChildren xsi:type="al:RoundedRectangle" lineWidth="1" transparency="0.0" width="133" height="40" style="//@styles.0/@styles.26" cornerHeight="5" cornerWidth="5"/>
     </graphicsAlgorithm>
     <anchors xsi:type="pi:ChopboxAnchor"/>
@@ -387,7 +387,7 @@
   <children xsi:type="pi:ContainerShape" visible="true" active="true">
     <properties key="uri" value="http://resources/4.0.16/app/DIGITAL_IO/17"/>
     <properties key="APP_NAME_ID" value="DIGITAL_IO/17"/>
-    <graphicsAlgorithm xsi:type="al:Rectangle" lineWidth="1" filled="false" lineVisible="false" transparency="0.0" width="133" height="40" x="3810">
+    <graphicsAlgorithm xsi:type="al:Rectangle" lineWidth="1" filled="false" lineVisible="false" transparency="0.0" width="133" height="40" x="3876">
       <graphicsAlgorithmChildren xsi:type="al:RoundedRectangle" lineWidth="1" transparency="0.0" width="133" height="40" style="//@styles.0/@styles.27" cornerHeight="5" cornerWidth="5"/>
     </graphicsAlgorithm>
     <anchors xsi:type="pi:ChopboxAnchor"/>
@@ -407,7 +407,7 @@
   <children xsi:type="pi:ContainerShape" visible="true" active="true">
     <properties key="uri" value="http://resources/4.0.16/app/DIGITAL_IO/0"/>
     <properties key="APP_NAME_ID" value="DIGITAL_IO/0"/>
-    <graphicsAlgorithm xsi:type="al:Rectangle" lineWidth="1" filled="false" lineVisible="false" transparency="0.0" width="127" height="40" x="6210">
+    <graphicsAlgorithm xsi:type="al:Rectangle" lineWidth="1" filled="false" lineVisible="false" transparency="0.0" width="127" height="40" x="6310">
       <graphicsAlgorithmChildren xsi:type="al:RoundedRectangle" lineWidth="1" transparency="0.0" width="127" height="40" style="//@styles.0/@styles.10" cornerHeight="5" cornerWidth="5"/>
     </graphicsAlgorithm>
     <anchors xsi:type="pi:ChopboxAnchor"/>
@@ -427,7 +427,7 @@
   <children xsi:type="pi:ContainerShape" visible="true" active="true">
     <properties key="uri" value="http://resources/4.0.16/app/DIGITAL_IO/18"/>
     <properties key="APP_NAME_ID" value="DIGITAL_IO/18"/>
-    <graphicsAlgorithm xsi:type="al:Rectangle" lineWidth="1" filled="false" lineVisible="false" transparency="0.0" width="133" height="40" x="3657">
+    <graphicsAlgorithm xsi:type="al:Rectangle" lineWidth="1" filled="false" lineVisible="false" transparency="0.0" width="133" height="40" x="3723">
       <graphicsAlgorithmChildren xsi:type="al:RoundedRectangle" lineWidth="1" transparency="0.0" width="133" height="40" style="//@styles.0/@styles.28" cornerHeight="5" cornerWidth="5"/>
     </graphicsAlgorithm>
     <anchors xsi:type="pi:ChopboxAnchor"/>
@@ -467,7 +467,7 @@
   <children xsi:type="pi:ContainerShape" visible="true" active="true">
     <properties key="uri" value="http://resources/4.0.16/app/DIGITAL_IO/19"/>
     <properties key="APP_NAME_ID" value="DIGITAL_IO/19"/>
-    <graphicsAlgorithm xsi:type="al:Rectangle" lineWidth="1" filled="false" lineVisible="false" transparency="0.0" width="133" height="40" x="3504">
+    <graphicsAlgorithm xsi:type="al:Rectangle" lineWidth="1" filled="false" lineVisible="false" transparency="0.0" width="133" height="40" x="3570">
       <graphicsAlgorithmChildren xsi:type="al:RoundedRectangle" lineWidth="1" transparency="0.0" width="133" height="40" style="//@styles.0/@styles.29" cornerHeight="5" cornerWidth="5"/>
     </graphicsAlgorithm>
     <anchors xsi:type="pi:ChopboxAnchor"/>
@@ -487,8 +487,8 @@
   <children xsi:type="pi:ContainerShape" visible="true" active="true">
     <properties key="uri" value="http://resources/4.0.16/app/DIGITAL_IO/1"/>
     <properties key="APP_NAME_ID" value="DIGITAL_IO/1"/>
-    <graphicsAlgorithm xsi:type="al:Rectangle" lineWidth="1" filled="false" lineVisible="false" transparency="0.0" width="127" height="40" x="6063">
-      <graphicsAlgorithmChildren xsi:type="al:RoundedRectangle" lineWidth="1" transparency="0.0" width="127" height="40" style="//@styles.0/@styles.11" cornerHeight="5" cornerWidth="5"/>
+    <graphicsAlgorithm xsi:type="al:Rectangle" lineWidth="1" filled="false" lineVisible="false" transparency="0.0" width="179" height="40" x="6111">
+      <graphicsAlgorithmChildren xsi:type="al:RoundedRectangle" lineWidth="1" transparency="0.0" width="179" height="40" style="//@styles.0/@styles.11" cornerHeight="5" cornerWidth="5"/>
     </graphicsAlgorithm>
     <anchors xsi:type="pi:ChopboxAnchor"/>
     <children>
@@ -501,13 +501,13 @@
     </children>
     <children visible="true">
       <properties key="uri" value="http://resources/4.0.16/app/DIGITAL_IO/1"/>
-      <graphicsAlgorithm xsi:type="al:Text" lineWidth="1" filled="false" transparency="0.0" width="127" height="20" x="25" y="17" font="//@fonts.1" value="DIGITAL_IO_1"/>
+      <graphicsAlgorithm xsi:type="al:Text" lineWidth="1" filled="false" transparency="0.0" width="179" height="20" x="25" y="17" font="//@fonts.1" value="Disable_Gate_Driver_M3"/>
     </children>
   </children>
   <children xsi:type="pi:ContainerShape" visible="true" active="true">
     <properties key="uri" value="http://resources/4.1.12/app/GLOBAL_CCU4/0"/>
     <properties key="APP_NAME_ID" value="GLOBAL_CCU4/0"/>
-    <graphicsAlgorithm xsi:type="al:Rectangle" lineWidth="1" filled="false" lineVisible="false" transparency="0.0" width="148" height="40" x="808" y="320">
+    <graphicsAlgorithm xsi:type="al:Rectangle" lineWidth="1" filled="false" lineVisible="false" transparency="0.0" width="148" height="40" x="898" y="320">
       <graphicsAlgorithmChildren xsi:type="al:RoundedRectangle" lineWidth="1" transparency="0.0" width="148" height="40" style="//@styles.0/@styles.46" cornerHeight="5" cornerWidth="5"/>
     </graphicsAlgorithm>
     <anchors xsi:type="pi:ChopboxAnchor" outgoingConnections="//@connections.18" incomingConnections="//@connections.19"/>
@@ -527,7 +527,7 @@
   <children xsi:type="pi:ContainerShape" visible="true" active="true">
     <properties key="uri" value="http://resources/4.0.16/app/DIGITAL_IO/20"/>
     <properties key="APP_NAME_ID" value="DIGITAL_IO/20"/>
-    <graphicsAlgorithm xsi:type="al:Rectangle" lineWidth="1" filled="false" lineVisible="false" transparency="0.0" width="133" height="40" x="3351">
+    <graphicsAlgorithm xsi:type="al:Rectangle" lineWidth="1" filled="false" lineVisible="false" transparency="0.0" width="133" height="40" x="3417">
       <graphicsAlgorithmChildren xsi:type="al:RoundedRectangle" lineWidth="1" transparency="0.0" width="133" height="40" style="//@styles.0/@styles.30" cornerHeight="5" cornerWidth="5"/>
     </graphicsAlgorithm>
     <anchors xsi:type="pi:ChopboxAnchor"/>
@@ -567,7 +567,7 @@
   <children xsi:type="pi:ContainerShape" visible="true" active="true">
     <properties key="uri" value="http://resources/4.0.8/app/ACIM_FREQ_CTRL/1"/>
     <properties key="APP_NAME_ID" value="ACIM_FREQ_CTRL/1"/>
-    <graphicsAlgorithm xsi:type="al:Rectangle" lineWidth="1" filled="false" lineVisible="false" transparency="0.0" width="162" height="40" x="6434">
+    <graphicsAlgorithm xsi:type="al:Rectangle" lineWidth="1" filled="false" lineVisible="false" transparency="0.0" width="162" height="40" x="6457">
       <graphicsAlgorithmChildren xsi:type="al:RoundedRectangle" lineWidth="1" transparency="0.0" width="162" height="40" style="//@styles.0/@styles.9" cornerHeight="5" cornerWidth="5"/>
     </graphicsAlgorithm>
     <anchors xsi:type="pi:ChopboxAnchor" outgoingConnections="//@connections.8 //@connections.9 //@connections.10 //@connections.24"/>
@@ -587,7 +587,7 @@
   <children xsi:type="pi:ContainerShape" visible="true" active="true">
     <properties key="uri" value="http://resources/4.0.16/app/DIGITAL_IO/21"/>
     <properties key="APP_NAME_ID" value="DIGITAL_IO/21"/>
-    <graphicsAlgorithm xsi:type="al:Rectangle" lineWidth="1" filled="false" lineVisible="false" transparency="0.0" width="133" height="40" x="3198">
+    <graphicsAlgorithm xsi:type="al:Rectangle" lineWidth="1" filled="false" lineVisible="false" transparency="0.0" width="133" height="40" x="3264">
       <graphicsAlgorithmChildren xsi:type="al:RoundedRectangle" lineWidth="1" transparency="0.0" width="133" height="40" style="//@styles.0/@styles.31" cornerHeight="5" cornerWidth="5"/>
     </graphicsAlgorithm>
     <anchors xsi:type="pi:ChopboxAnchor"/>
@@ -607,7 +607,7 @@
   <children xsi:type="pi:ContainerShape" visible="true" active="true">
     <properties key="uri" value="http://resources/4.0.16/app/DIGITAL_IO/2"/>
     <properties key="APP_NAME_ID" value="DIGITAL_IO/2"/>
-    <graphicsAlgorithm xsi:type="al:Rectangle" lineWidth="1" filled="false" lineVisible="false" transparency="0.0" width="127" height="40" x="5916">
+    <graphicsAlgorithm xsi:type="al:Rectangle" lineWidth="1" filled="false" lineVisible="false" transparency="0.0" width="127" height="40" x="5964">
       <graphicsAlgorithmChildren xsi:type="al:RoundedRectangle" lineWidth="1" transparency="0.0" width="127" height="40" style="//@styles.0/@styles.12" cornerHeight="5" cornerWidth="5"/>
     </graphicsAlgorithm>
     <anchors xsi:type="pi:ChopboxAnchor"/>
@@ -647,7 +647,7 @@
   <children xsi:type="pi:ContainerShape" visible="true" active="true">
     <properties key="uri" value="http://resources/4.0.16/app/DIGITAL_IO/22"/>
     <properties key="APP_NAME_ID" value="DIGITAL_IO/22"/>
-    <graphicsAlgorithm xsi:type="al:Rectangle" lineWidth="1" filled="false" lineVisible="false" transparency="0.0" width="133" height="40" x="3045">
+    <graphicsAlgorithm xsi:type="al:Rectangle" lineWidth="1" filled="false" lineVisible="false" transparency="0.0" width="133" height="40" x="3111">
       <graphicsAlgorithmChildren xsi:type="al:RoundedRectangle" lineWidth="1" transparency="0.0" width="133" height="40" style="//@styles.0/@styles.32" cornerHeight="5" cornerWidth="5"/>
     </graphicsAlgorithm>
     <anchors xsi:type="pi:ChopboxAnchor"/>
@@ -707,7 +707,7 @@
   <children xsi:type="pi:ContainerShape" visible="true" active="true">
     <properties key="uri" value="http://resources/4.0.16/app/DIGITAL_IO/23"/>
     <properties key="APP_NAME_ID" value="DIGITAL_IO/23"/>
-    <graphicsAlgorithm xsi:type="al:Rectangle" lineWidth="1" filled="false" lineVisible="false" transparency="0.0" width="133" height="40" x="2892">
+    <graphicsAlgorithm xsi:type="al:Rectangle" lineWidth="1" filled="false" lineVisible="false" transparency="0.0" width="133" height="40" x="2958">
       <graphicsAlgorithmChildren xsi:type="al:RoundedRectangle" lineWidth="1" transparency="0.0" width="133" height="40" style="//@styles.0/@styles.33" cornerHeight="5" cornerWidth="5"/>
     </graphicsAlgorithm>
     <anchors xsi:type="pi:ChopboxAnchor"/>
@@ -747,7 +747,7 @@
   <children xsi:type="pi:ContainerShape" visible="true" active="true">
     <properties key="uri" value="http://resources/4.0.16/app/DIGITAL_IO/3"/>
     <properties key="APP_NAME_ID" value="DIGITAL_IO/3"/>
-    <graphicsAlgorithm xsi:type="al:Rectangle" lineWidth="1" filled="false" lineVisible="false" transparency="0.0" width="127" height="40" x="5769">
+    <graphicsAlgorithm xsi:type="al:Rectangle" lineWidth="1" filled="false" lineVisible="false" transparency="0.0" width="127" height="40" x="5817">
       <graphicsAlgorithmChildren xsi:type="al:RoundedRectangle" lineWidth="1" transparency="0.0" width="127" height="40" style="//@styles.0/@styles.13" cornerHeight="5" cornerWidth="5"/>
     </graphicsAlgorithm>
     <anchors xsi:type="pi:ChopboxAnchor"/>
@@ -767,7 +767,7 @@
   <children xsi:type="pi:ContainerShape" visible="true" active="true">
     <properties key="uri" value="http://resources/4.0.16/app/DIGITAL_IO/24"/>
     <properties key="APP_NAME_ID" value="DIGITAL_IO/24"/>
-    <graphicsAlgorithm xsi:type="al:Rectangle" lineWidth="1" filled="false" lineVisible="false" transparency="0.0" width="133" height="40" x="2739">
+    <graphicsAlgorithm xsi:type="al:Rectangle" lineWidth="1" filled="false" lineVisible="false" transparency="0.0" width="133" height="40" x="2805">
       <graphicsAlgorithmChildren xsi:type="al:RoundedRectangle" lineWidth="1" transparency="0.0" width="133" height="40" style="//@styles.0/@styles.34" cornerHeight="5" cornerWidth="5"/>
     </graphicsAlgorithm>
     <anchors xsi:type="pi:ChopboxAnchor"/>
@@ -787,8 +787,8 @@
   <children xsi:type="pi:ContainerShape" visible="true" active="true">
     <properties key="uri" value="http://resources/4.0.16/app/DIGITAL_IO/25"/>
     <properties key="APP_NAME_ID" value="DIGITAL_IO/25"/>
-    <graphicsAlgorithm xsi:type="al:Rectangle" lineWidth="1" filled="false" lineVisible="false" transparency="0.0" width="133" height="40" x="2586">
-      <graphicsAlgorithmChildren xsi:type="al:RoundedRectangle" lineWidth="1" transparency="0.0" width="133" height="40" style="//@styles.0/@styles.35" cornerHeight="5" cornerWidth="5"/>
+    <graphicsAlgorithm xsi:type="al:Rectangle" lineWidth="1" filled="false" lineVisible="false" transparency="0.0" width="199" height="40" x="2586">
+      <graphicsAlgorithmChildren xsi:type="al:RoundedRectangle" lineWidth="1" transparency="0.0" width="199" height="40" style="//@styles.0/@styles.35" cornerHeight="5" cornerWidth="5"/>
     </graphicsAlgorithm>
     <anchors xsi:type="pi:ChopboxAnchor"/>
     <children>
@@ -801,13 +801,13 @@
     </children>
     <children visible="true">
       <properties key="uri" value="http://resources/4.0.16/app/DIGITAL_IO/25"/>
-      <graphicsAlgorithm xsi:type="al:Text" lineWidth="1" filled="false" transparency="0.0" width="133" height="20" x="25" y="17" font="//@fonts.1" value="DIGITAL_IO_25"/>
+      <graphicsAlgorithm xsi:type="al:Text" lineWidth="1" filled="false" transparency="0.0" width="199" height="20" x="25" y="17" font="//@fonts.1" value="Disable_Gate_Driver_M1_M2"/>
     </children>
   </children>
   <children xsi:type="pi:ContainerShape" visible="true" active="true">
     <properties key="uri" value="http://resources/4.0.16/app/DIGITAL_IO/4"/>
     <properties key="APP_NAME_ID" value="DIGITAL_IO/4"/>
-    <graphicsAlgorithm xsi:type="al:Rectangle" lineWidth="1" filled="false" lineVisible="false" transparency="0.0" width="127" height="40" x="5622">
+    <graphicsAlgorithm xsi:type="al:Rectangle" lineWidth="1" filled="false" lineVisible="false" transparency="0.0" width="127" height="40" x="5670">
       <graphicsAlgorithmChildren xsi:type="al:RoundedRectangle" lineWidth="1" transparency="0.0" width="127" height="40" style="//@styles.0/@styles.14" cornerHeight="5" cornerWidth="5"/>
     </graphicsAlgorithm>
     <anchors xsi:type="pi:ChopboxAnchor"/>
@@ -947,7 +947,7 @@
   <children xsi:type="pi:ContainerShape" visible="true" active="true">
     <properties key="uri" value="http://resources/4.0.16/app/DIGITAL_IO/5"/>
     <properties key="APP_NAME_ID" value="DIGITAL_IO/5"/>
-    <graphicsAlgorithm xsi:type="al:Rectangle" lineWidth="1" filled="false" lineVisible="false" transparency="0.0" width="127" height="40" x="5475">
+    <graphicsAlgorithm xsi:type="al:Rectangle" lineWidth="1" filled="false" lineVisible="false" transparency="0.0" width="127" height="40" x="5523">
       <graphicsAlgorithmChildren xsi:type="al:RoundedRectangle" lineWidth="1" transparency="0.0" width="127" height="40" style="//@styles.0/@styles.15" cornerHeight="5" cornerWidth="5"/>
     </graphicsAlgorithm>
     <anchors xsi:type="pi:ChopboxAnchor"/>
@@ -1007,7 +1007,7 @@
   <children xsi:type="pi:ContainerShape" visible="true" active="true">
     <properties key="uri" value="http://resources/4.0.16/app/DIGITAL_IO/6"/>
     <properties key="APP_NAME_ID" value="DIGITAL_IO/6"/>
-    <graphicsAlgorithm xsi:type="al:Rectangle" lineWidth="1" filled="false" lineVisible="false" transparency="0.0" width="127" height="40" x="5328">
+    <graphicsAlgorithm xsi:type="al:Rectangle" lineWidth="1" filled="false" lineVisible="false" transparency="0.0" width="127" height="40" x="5376">
       <graphicsAlgorithmChildren xsi:type="al:RoundedRectangle" lineWidth="1" transparency="0.0" width="127" height="40" style="//@styles.0/@styles.16" cornerHeight="5" cornerWidth="5"/>
     </graphicsAlgorithm>
     <anchors xsi:type="pi:ChopboxAnchor"/>
@@ -9374,7 +9374,7 @@
         <businessObjects href="ModelConfigData.data#//@connections.2"/>
       </link>
     </connectionDecorators>
-    <bendpoints x="6681" y="170"/>
+    <bendpoints x="6704" y="170"/>
     <bendpoints x="1245" y="170"/>
   </connections>
   <connections xsi:type="pi:FreeFormConnection" visible="true" active="true" start="//@children.3/@anchors.0" end="//@children.43/@anchors.0">
@@ -9392,11 +9392,11 @@
         <businessObjects href="ModelConfigData.data#//@connections.3"/>
       </link>
     </connectionDecorators>
-    <bendpoints x="6713" y="190"/>
-    <bendpoints x="6424" y="190"/>
-    <bendpoints x="6424" y="260"/>
-    <bendpoints x="6327" y="260"/>
-    <bendpoints x="6327" y="480"/>
+    <bendpoints x="6736" y="190"/>
+    <bendpoints x="6396" y="190"/>
+    <bendpoints x="6396" y="260"/>
+    <bendpoints x="6291" y="260"/>
+    <bendpoints x="6291" y="480"/>
     <bendpoints x="128" y="480"/>
   </connections>
   <connections xsi:type="pi:FreeFormConnection" visible="true" active="true" start="//@children.3/@anchors.0" end="//@children.34/@anchors.0">
@@ -9414,11 +9414,11 @@
         <businessObjects href="ModelConfigData.data#//@connections.4"/>
       </link>
     </connectionDecorators>
-    <bendpoints x="6746" y="200"/>
-    <bendpoints x="6425" y="200"/>
-    <bendpoints x="6425" y="270"/>
-    <bendpoints x="6329" y="270"/>
-    <bendpoints x="6329" y="500"/>
+    <bendpoints x="6769" y="200"/>
+    <bendpoints x="6397" y="200"/>
+    <bendpoints x="6397" y="270"/>
+    <bendpoints x="6293" y="270"/>
+    <bendpoints x="6293" y="500"/>
     <bendpoints x="487" y="500"/>
   </connections>
   <connections xsi:type="pi:FreeFormConnection" visible="true" active="true" start="//@children.22/@anchors.0" end="//@children.16/@anchors.0">
@@ -9490,7 +9490,7 @@
         <businessObjects href="ModelConfigData.data#//@connections.8"/>
       </link>
     </connectionDecorators>
-    <bendpoints x="6499" y="140"/>
+    <bendpoints x="6522" y="140"/>
     <bendpoints x="1058" y="140"/>
   </connections>
   <connections xsi:type="pi:FreeFormConnection" visible="true" active="true" start="//@children.28/@anchors.0" end="//@children.43/@anchors.0">
@@ -9508,11 +9508,11 @@
         <businessObjects href="ModelConfigData.data#//@connections.9"/>
       </link>
     </connectionDecorators>
-    <bendpoints x="6531" y="160"/>
-    <bendpoints x="6241" y="160"/>
-    <bendpoints x="6241" y="260"/>
-    <bendpoints x="6144" y="260"/>
-    <bendpoints x="6144" y="390"/>
+    <bendpoints x="6554" y="160"/>
+    <bendpoints x="6213" y="160"/>
+    <bendpoints x="6213" y="260"/>
+    <bendpoints x="6107" y="260"/>
+    <bendpoints x="6107" y="390"/>
     <bendpoints x="84" y="390"/>
   </connections>
   <connections xsi:type="pi:FreeFormConnection" visible="true" active="true" start="//@children.28/@anchors.0" end="//@children.34/@anchors.0">
@@ -9530,11 +9530,11 @@
         <businessObjects href="ModelConfigData.data#//@connections.10"/>
       </link>
     </connectionDecorators>
-    <bendpoints x="6564" y="180"/>
-    <bendpoints x="6243" y="180"/>
-    <bendpoints x="6243" y="270"/>
-    <bendpoints x="6147" y="270"/>
-    <bendpoints x="6147" y="490"/>
+    <bendpoints x="6587" y="180"/>
+    <bendpoints x="6215" y="180"/>
+    <bendpoints x="6215" y="270"/>
+    <bendpoints x="6110" y="270"/>
+    <bendpoints x="6110" y="490"/>
     <bendpoints x="465" y="490"/>
   </connections>
   <connections xsi:type="pi:FreeFormConnection" visible="true" active="true" start="//@children.53/@anchors.0" end="//@children.16/@anchors.0">
@@ -9553,10 +9553,10 @@
       </link>
     </connectionDecorators>
     <bendpoints x="1074" y="100"/>
-    <bendpoints x="858" y="100"/>
-    <bendpoints x="858" y="260"/>
-    <bendpoints x="767" y="260"/>
-    <bendpoints x="767" y="400"/>
+    <bendpoints x="839" y="100"/>
+    <bendpoints x="839" y="260"/>
+    <bendpoints x="743" y="260"/>
+    <bendpoints x="743" y="400"/>
     <bendpoints x="247" y="400"/>
   </connections>
   <connections xsi:type="pi:FreeFormConnection" visible="true" active="true" start="//@children.53/@anchors.0" end="//@children.34/@anchors.0">
@@ -9575,10 +9575,10 @@
       </link>
     </connectionDecorators>
     <bendpoints x="1108" y="110"/>
-    <bendpoints x="866" y="110"/>
-    <bendpoints x="866" y="300"/>
-    <bendpoints x="778" y="300"/>
-    <bendpoints x="778" y="450"/>
+    <bendpoints x="848" y="110"/>
+    <bendpoints x="848" y="300"/>
+    <bendpoints x="755" y="300"/>
+    <bendpoints x="755" y="450"/>
     <bendpoints x="420" y="450"/>
   </connections>
   <connections xsi:type="pi:FreeFormConnection" visible="true" active="true" start="//@children.2/@anchors.0" end="//@children.22/@anchors.0">
@@ -9619,8 +9619,8 @@
     <bendpoints x="1566" y="180"/>
     <bendpoints x="1338" y="180"/>
     <bendpoints x="1338" y="290"/>
-    <bendpoints x="1224" y="290"/>
-    <bendpoints x="1224" y="510"/>
+    <bendpoints x="1196" y="290"/>
+    <bendpoints x="1196" y="510"/>
     <bendpoints x="700" y="510"/>
   </connections>
   <connections xsi:type="pi:FreeFormConnection" visible="true" active="true" start="//@children.2/@anchors.0" end="//@children.34/@anchors.0">
@@ -9641,8 +9641,8 @@
     <bendpoints x="1522" y="50"/>
     <bendpoints x="1327" y="50"/>
     <bendpoints x="1327" y="270"/>
-    <bendpoints x="1197" y="270"/>
-    <bendpoints x="1197" y="470"/>
+    <bendpoints x="1159" y="270"/>
+    <bendpoints x="1159" y="470"/>
     <bendpoints x="442" y="470"/>
   </connections>
   <connections xsi:type="pi:FreeFormConnection" visible="true" active="true" start="//@children.6/@anchors.0" end="//@children.16/@anchors.0">
@@ -9661,11 +9661,11 @@
       </link>
     </connectionDecorators>
     <bendpoints x="1233" y="130"/>
-    <bendpoints x="989" y="130"/>
-    <bendpoints x="989" y="290"/>
-    <bendpoints x="976" y="290"/>
-    <bendpoints x="976" y="420"/>
-    <bendpoints x="276" y="420"/>
+    <bendpoints x="969" y="130"/>
+    <bendpoints x="969" y="300"/>
+    <bendpoints x="877" y="300"/>
+    <bendpoints x="877" y="410"/>
+    <bendpoints x="262" y="410"/>
   </connections>
   <connections xsi:type="pi:FreeFormConnection" visible="true" active="true" start="//@children.14/@anchors.0" end="//@children.52/@anchors.0">
     <graphicsAlgorithm xsi:type="al:Polyline" lineWidth="1" filled="false" transparency="0.0" style="//@styles.18"/>
@@ -9683,8 +9683,8 @@
       </link>
     </connectionDecorators>
     <bendpoints x="933" y="90"/>
-    <bendpoints x="674" y="90"/>
-    <bendpoints x="674" y="280"/>
+    <bendpoints x="658" y="90"/>
+    <bendpoints x="658" y="280"/>
     <bendpoints x="1783" y="280"/>
   </connections>
   <connections xsi:type="pi:FreeFormConnection" visible="true" active="true" start="//@children.25/@anchors.0" end="//@children.16/@anchors.0">
@@ -9702,8 +9702,8 @@
         <businessObjects href="ModelConfigData.data#//@connections.18"/>
       </link>
     </connectionDecorators>
-    <bendpoints x="882" y="410"/>
-    <bendpoints x="262" y="410"/>
+    <bendpoints x="972" y="420"/>
+    <bendpoints x="276" y="420"/>
   </connections>
   <connections xsi:type="pi:FreeFormConnection" visible="true" active="true" start="//@children.27/@anchors.0" end="//@children.25/@anchors.0">
     <graphicsAlgorithm xsi:type="al:Polyline" lineWidth="1" filled="false" transparency="0.0" style="//@styles.20"/>
@@ -9721,9 +9721,9 @@
       </link>
     </connectionDecorators>
     <bendpoints x="691" y="80"/>
-    <bendpoints x="468" y="80"/>
-    <bendpoints x="468" y="290"/>
-    <bendpoints x="882" y="290"/>
+    <bendpoints x="444" y="80"/>
+    <bendpoints x="444" y="290"/>
+    <bendpoints x="972" y="290"/>
   </connections>
   <connections xsi:type="pi:FreeFormConnection" visible="true" active="true" start="//@children.31/@anchors.0" end="//@children.16/@anchors.0">
     <graphicsAlgorithm xsi:type="al:Polyline" lineWidth="1" filled="false" transparency="0.0" style="//@styles.21"/>
@@ -9759,8 +9759,8 @@
       </link>
     </connectionDecorators>
     <bendpoints x="542" y="70"/>
-    <bendpoints x="327" y="70"/>
-    <bendpoints x="327" y="310"/>
+    <bendpoints x="304" y="70"/>
+    <bendpoints x="304" y="310"/>
     <bendpoints x="474" y="310"/>
   </connections>
   <connections xsi:type="pi:FreeFormConnection" visible="true" active="true" start="//@children.36/@anchors.0" end="//@children.16/@anchors.0">
@@ -9779,10 +9779,10 @@
       </link>
     </connectionDecorators>
     <bendpoints x="367" y="50"/>
-    <bendpoints x="174" y="50"/>
-    <bendpoints x="174" y="260"/>
-    <bendpoints x="100" y="260"/>
-    <bendpoints x="100" y="500"/>
+    <bendpoints x="152" y="50"/>
+    <bendpoints x="152" y="260"/>
+    <bendpoints x="70" y="260"/>
+    <bendpoints x="70" y="500"/>
     <bendpoints x="205" y="500"/>
   </connections>
   <connections xsi:type="pi:FreeFormConnection" visible="true" active="true" start="//@children.36/@anchors.0" end="//@children.34/@anchors.0">
@@ -9801,10 +9801,10 @@
       </link>
     </connectionDecorators>
     <bendpoints x="412" y="60"/>
-    <bendpoints x="195" y="60"/>
-    <bendpoints x="195" y="270"/>
-    <bendpoints x="131" y="270"/>
-    <bendpoints x="131" y="490"/>
+    <bendpoints x="176" y="60"/>
+    <bendpoints x="176" y="270"/>
+    <bendpoints x="106" y="270"/>
+    <bendpoints x="106" y="490"/>
     <bendpoints x="375" y="490"/>
   </connections>
   <connections xsi:type="pi:FreeFormConnection" visible="true" active="true" start="//@children.28/@anchors.0" end="//@children.42/@anchors.0">
@@ -9822,7 +9822,7 @@
         <businessObjects href="ModelConfigData.data#//@connections.24"/>
       </link>
     </connectionDecorators>
-    <bendpoints x="6466" y="120"/>
+    <bendpoints x="6489" y="120"/>
     <bendpoints x="545" y="120"/>
   </connections>
   <connections xsi:type="pi:FreeFormConnection" visible="true" active="true" start="//@children.42/@anchors.0" end="//@children.44/@anchors.0">
@@ -9894,7 +9894,7 @@
         <businessObjects href="ModelConfigData.data#//@connections.28"/>
       </link>
     </connectionDecorators>
-    <bendpoints x="6648" y="150"/>
+    <bendpoints x="6671" y="150"/>
     <bendpoints x="591" y="150"/>
   </connections>
   <colors red="227" green="238" blue="249"/>
