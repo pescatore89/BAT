@@ -148,8 +148,8 @@ DAVE_STATUS_t DAVE_Init(void)
    } 
   if (init_status == DAVE_STATUS_SUCCESS)
   {
-	 /**  Initialization of DIGITAL_IO APP instance DIGITAL_IO_14 */
-	 init_status = (DAVE_STATUS_t)DIGITAL_IO_Init(&DIGITAL_IO_14); 
+	 /**  Initialization of DIGITAL_IO APP instance RS485_DIR */
+	 init_status = (DAVE_STATUS_t)DIGITAL_IO_Init(&RS485_DIR); 
    } 
   if (init_status == DAVE_STATUS_SUCCESS)
   {

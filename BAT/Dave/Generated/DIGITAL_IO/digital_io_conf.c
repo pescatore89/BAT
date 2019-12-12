@@ -215,7 +215,7 @@ const DIGITAL_IO_t DIGITAL_IO_13 =
   .hwctrl = XMC_GPIO_HWCTRL_DISABLED
 };
 		
-const DIGITAL_IO_t DIGITAL_IO_14 =
+const DIGITAL_IO_t RS485_DIR =
 {
   .gpio_port = XMC_GPIO_PORT3,
   .gpio_pin = 1U,

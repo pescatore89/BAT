@@ -93,7 +93,7 @@ extern const DIGITAL_IO_t DIGITAL_IO_12;
 	
 extern const DIGITAL_IO_t DIGITAL_IO_13; 
 	
-extern const DIGITAL_IO_t DIGITAL_IO_14; 
+extern const DIGITAL_IO_t RS485_DIR; 
 	
 extern const DIGITAL_IO_t DIGITAL_IO_15; 
 	

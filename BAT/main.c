@@ -37,25 +37,22 @@ uint8_t data[] = "BDA Andy Fischer";
 uint8_t rec_data[10];
 
 
-void EndofTransmit() //Callback functin for "End of transmit" event.
+void EndofTransmit() //Callback function for "End of transmit" event.
 
 {
-
 	UART_Receive(&UART_0, rec_data, sizeof(rec_data));
-	DIGITAL_IO_SetOutputLow(&DIGITAL_IO_14);
+	DIGITAL_IO_SetOutputLow(&RS485_DIR); // ready to receive
 }
 
 void EndofReceive() //Callback function for "End of receive" event.
 
 {
-	DIGITAL_IO_SetOutputHigh(&DIGITAL_IO_14);
+	DIGITAL_IO_SetOutputHigh(&RS485_DIR);
     char value = rec_data[0];
 	if(value='a'){
     	DIGITAL_IO_SetOutputHigh(&DIGITAL_IO_21);
     }
 	UART_Transmit(&UART_0, rec_data, sizeof(rec_data));
-
-	//DIGITAL_IO_SetOutputHigh(&DIGITAL_IO_14);
 }
 
 
@@ -78,7 +75,7 @@ int main(void) {
 
 
 DIGITAL_IO_SetOutputHigh(&DIGITAL_IO_6); // Enable RS485 Pin
-DIGITAL_IO_SetOutputHigh(&DIGITAL_IO_14); // Direction RS485 Pin set to High to indicate that MCU wants to send data
+DIGITAL_IO_SetOutputHigh(&RS485_DIR); // Direction RS485 Pin set to High to indicate that MCU wants to send data
 UART_Transmit(&UART_0, data, sizeof(data) - 1); //Transmit the string "Infineon Technologies".
 
 
