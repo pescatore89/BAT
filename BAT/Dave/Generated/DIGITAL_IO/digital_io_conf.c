@@ -54,7 +54,7 @@
  **********************************************************************************************************************/
 #include "digital_io.h"
 
-const DIGITAL_IO_t DIGITAL_IO_0 =
+const DIGITAL_IO_t Cooling_FAN =
 {
   .gpio_port = XMC_GPIO_PORT0,
   .gpio_pin = 10U,
@@ -239,7 +239,7 @@ const DIGITAL_IO_t DIGITAL_IO_15 =
   .hwctrl = XMC_GPIO_HWCTRL_DISABLED
 };
 		
-const DIGITAL_IO_t DIGITAL_IO_16 =
+const DIGITAL_IO_t IO_Bit1_DIR =
 {
   .gpio_port = XMC_GPIO_PORT3,
   .gpio_pin = 3U,
@@ -251,7 +251,7 @@ const DIGITAL_IO_t DIGITAL_IO_16 =
   .hwctrl = XMC_GPIO_HWCTRL_DISABLED
 };
 		
-const DIGITAL_IO_t DIGITAL_IO_17 =
+const DIGITAL_IO_t IO_Bit0_DIR =
 {
   .gpio_port = XMC_GPIO_PORT3,
   .gpio_pin = 4U,
@@ -274,7 +274,7 @@ const DIGITAL_IO_t DIGITAL_IO_18 =
   .hwctrl = XMC_GPIO_HWCTRL_DISABLED
 };
 		
-const DIGITAL_IO_t DIGITAL_IO_19 =
+const DIGITAL_IO_t IO_Bit3_DIR =
 {
   .gpio_port = XMC_GPIO_PORT4,
   .gpio_pin = 0U,
@@ -286,7 +286,7 @@ const DIGITAL_IO_t DIGITAL_IO_19 =
   .hwctrl = XMC_GPIO_HWCTRL_DISABLED
 };
 		
-const DIGITAL_IO_t DIGITAL_IO_20 =
+const DIGITAL_IO_t IO_Bit2_DIR =
 {
   .gpio_port = XMC_GPIO_PORT4,
   .gpio_pin = 1U,
@@ -298,7 +298,7 @@ const DIGITAL_IO_t DIGITAL_IO_20 =
   .hwctrl = XMC_GPIO_HWCTRL_DISABLED
 };
 		
-const DIGITAL_IO_t DIGITAL_IO_21 =
+const DIGITAL_IO_t IO_Bit2 =
 {
   .gpio_port = XMC_GPIO_PORT5,
   .gpio_pin = 1U,
@@ -310,31 +310,29 @@ const DIGITAL_IO_t DIGITAL_IO_21 =
   .hwctrl = XMC_GPIO_HWCTRL_DISABLED
 };
 		
-const DIGITAL_IO_t DIGITAL_IO_22 =
+const DIGITAL_IO_t IO_Bit1 =
 {
   .gpio_port = XMC_GPIO_PORT5,
   .gpio_pin = 2U,
   .gpio_config = {
-    .mode = XMC_GPIO_MODE_OUTPUT_PUSH_PULL,
-    .output_level = XMC_GPIO_OUTPUT_LEVEL_LOW,
+    .mode = XMC_GPIO_MODE_INPUT_TRISTATE,
 
   },
   .hwctrl = XMC_GPIO_HWCTRL_DISABLED
 };
 		
-const DIGITAL_IO_t DIGITAL_IO_23 =
+const DIGITAL_IO_t IO_Bit0 =
 {
   .gpio_port = XMC_GPIO_PORT5,
   .gpio_pin = 7U,
   .gpio_config = {
-    .mode = XMC_GPIO_MODE_OUTPUT_PUSH_PULL,
-    .output_level = XMC_GPIO_OUTPUT_LEVEL_LOW,
+    .mode = XMC_GPIO_MODE_INPUT_TRISTATE,
 
   },
   .hwctrl = XMC_GPIO_HWCTRL_DISABLED
 };
 		
-const DIGITAL_IO_t DIGITAL_IO_24 =
+const DIGITAL_IO_t IO_Bit3 =
 {
   .gpio_port = XMC_GPIO_PORT5,
   .gpio_pin = 0U,

@@ -50,13 +50,14 @@ void EndofReceive() //Callback function for "End of receive" event.
 	DIGITAL_IO_SetOutputHigh(&RS485_DIR);
     char value = rec_data[0];
 	if(value='a'){
-    	DIGITAL_IO_SetOutputHigh(&DIGITAL_IO_21);
+    	DIGITAL_IO_SetOutputHigh(&IO_Bit2);
     }
 	UART_Transmit(&UART_0, rec_data, sizeof(rec_data));
 }
 
 
-
+int fan_flag = 0;
+int io_status = -1;
 int main(void) {
 	DAVE_STATUS_t status;
 	uint32_t pin_status;
@@ -76,29 +77,25 @@ int main(void) {
 
 DIGITAL_IO_SetOutputHigh(&DIGITAL_IO_6); // Enable RS485 Pin
 DIGITAL_IO_SetOutputHigh(&RS485_DIR); // Direction RS485 Pin set to High to indicate that MCU wants to send data
-UART_Transmit(&UART_0, data, sizeof(data) - 1); //Transmit the string "Infineon Technologies".
+//UART_Transmit(&UART_0, data, sizeof(data) - 1); //Transmit the string "Infineon Technologies".
 
 
-//DIGITAL_IO_SetOutputHigh(&DIGITAL_IO_0); // Power up cooling fan
+
 //DIGITAL_IO_SetOutputHigh(&DIGITAL_IO_4); // Power up Main heating
 //DIGITAL_IO_SetOutputHigh(&DIGITAL_IO_5); // Power up aux heating
 
-DIGITAL_IO_SetOutputHigh(&DIGITAL_IO_17);// Set Output enable for IO Pin 0
-DIGITAL_IO_SetOutputHigh(&DIGITAL_IO_16);// Set Output enable for IO Pin 1
-DIGITAL_IO_SetOutputHigh(&DIGITAL_IO_19);// Set Output enable for IO Pin 3
-DIGITAL_IO_SetOutputHigh(&DIGITAL_IO_20);// Set Output enable for IO Pin 2
+DIGITAL_IO_SetOutputLow(&IO_Bit0_DIR);// Set Input enable for IO Pin 0
+DIGITAL_IO_SetOutputLow(&IO_Bit1_DIR);// Set Input enable for IO Pin 1
+DIGITAL_IO_SetOutputLow(&IO_Bit3_DIR);// Set Input enable for IO Pin 3
+DIGITAL_IO_SetOutputLow(&IO_Bit2_DIR);// Set Input enable for IO Pin 2
 
-DIGITAL_IO_SetOutputHigh(&DIGITAL_IO_23);// Set Output Pin 0 high
-//DIGITAL_IO_SetOutputHigh(&DIGITAL_IO_21); // Set Output Pin 2 high
+//DIGITAL_IO_SetOutputHigh(&DIGITAL_IO_23);// Set Output Pin 0 high
 //DIGITAL_IO_SetOutputHigh(&DIGITAL_IO_22); // Set Output Pin 1 high
+//DIGITAL_IO_SetOutputHigh(&DIGITAL_IO_21); // Set Output Pin 2 high
 //DIGITAL_IO_SetOutputHigh(&DIGITAL_IO_24); // Set Output Pin 3 high
 
-// DIGITAL_IO_ToggleOutput(&DIGITAL_IO_23); // toggle PIN 0
 
 delay_count = 0;
-
-
-
 
 //ACIM_FREQ_CTRL_MotorStart(&ACIM_FREQ_CTRL_1);
 
@@ -116,6 +113,19 @@ while(1U)
 	// for(delay_count = 0;delay_count<0xfffff;delay_count++);
 	//    delay_count = delay_count + 10;
 	// pin_status = DIGITAL_IO_GetInput(&DIGITAL_IO_23);
+
+	if((!fan_flag) && DIGITAL_IO_GetInput(&IO_Bit0)){
+		fan_flag=1;
+		DIGITAL_IO_SetOutputHigh(&Cooling_FAN); // Power up cooling fan
+	}
+
+	else if(fan_flag && DIGITAL_IO_GetInput(&IO_Bit1)){
+		fan_flag=0;
+		DIGITAL_IO_SetOutputLow(&Cooling_FAN); // Power down cooling fan
+	}
+
+
+
 
 	// DIGITAL_IO_ToggleOutput(&DIGITAL_IO_23); // toggle PIN 0
 	// DIGITAL_IO_ToggleOutput(&DIGITAL_IO_22); // toggle PIN 1

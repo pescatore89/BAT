@@ -65,7 +65,7 @@
 #ifndef DIGITAL_IO_EXTERN_H
 #define DIGITAL_IO_EXTERN_H
 
-extern const DIGITAL_IO_t DIGITAL_IO_0; 
+extern const DIGITAL_IO_t Cooling_FAN; 
 	
 extern const DIGITAL_IO_t Disable_Gate_Driver_M3; 
 	
@@ -97,23 +97,23 @@ extern const DIGITAL_IO_t RS485_DIR;
 	
 extern const DIGITAL_IO_t DIGITAL_IO_15; 
 	
-extern const DIGITAL_IO_t DIGITAL_IO_16; 
+extern const DIGITAL_IO_t IO_Bit1_DIR; 
 	
-extern const DIGITAL_IO_t DIGITAL_IO_17; 
+extern const DIGITAL_IO_t IO_Bit0_DIR; 
 	
 extern const DIGITAL_IO_t DIGITAL_IO_18; 
 	
-extern const DIGITAL_IO_t DIGITAL_IO_19; 
+extern const DIGITAL_IO_t IO_Bit3_DIR; 
 	
-extern const DIGITAL_IO_t DIGITAL_IO_20; 
+extern const DIGITAL_IO_t IO_Bit2_DIR; 
 	
-extern const DIGITAL_IO_t DIGITAL_IO_21; 
+extern const DIGITAL_IO_t IO_Bit2; 
 	
-extern const DIGITAL_IO_t DIGITAL_IO_22; 
+extern const DIGITAL_IO_t IO_Bit1; 
 	
-extern const DIGITAL_IO_t DIGITAL_IO_23; 
+extern const DIGITAL_IO_t IO_Bit0; 
 	
-extern const DIGITAL_IO_t DIGITAL_IO_24; 
+extern const DIGITAL_IO_t IO_Bit3; 
 	
 extern const DIGITAL_IO_t Disable_Gate_Driver_M1_M2; 
 	

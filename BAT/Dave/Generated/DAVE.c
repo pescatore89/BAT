@@ -78,8 +78,8 @@ DAVE_STATUS_t DAVE_Init(void)
    } 
   if (init_status == DAVE_STATUS_SUCCESS)
   {
-	 /**  Initialization of DIGITAL_IO APP instance DIGITAL_IO_0 */
-	 init_status = (DAVE_STATUS_t)DIGITAL_IO_Init(&DIGITAL_IO_0); 
+	 /**  Initialization of DIGITAL_IO APP instance Cooling_FAN */
+	 init_status = (DAVE_STATUS_t)DIGITAL_IO_Init(&Cooling_FAN); 
    } 
   if (init_status == DAVE_STATUS_SUCCESS)
   {
@@ -158,13 +158,13 @@ DAVE_STATUS_t DAVE_Init(void)
    } 
   if (init_status == DAVE_STATUS_SUCCESS)
   {
-	 /**  Initialization of DIGITAL_IO APP instance DIGITAL_IO_16 */
-	 init_status = (DAVE_STATUS_t)DIGITAL_IO_Init(&DIGITAL_IO_16); 
+	 /**  Initialization of DIGITAL_IO APP instance IO_Bit1_DIR */
+	 init_status = (DAVE_STATUS_t)DIGITAL_IO_Init(&IO_Bit1_DIR); 
    } 
   if (init_status == DAVE_STATUS_SUCCESS)
   {
-	 /**  Initialization of DIGITAL_IO APP instance DIGITAL_IO_17 */
-	 init_status = (DAVE_STATUS_t)DIGITAL_IO_Init(&DIGITAL_IO_17); 
+	 /**  Initialization of DIGITAL_IO APP instance IO_Bit0_DIR */
+	 init_status = (DAVE_STATUS_t)DIGITAL_IO_Init(&IO_Bit0_DIR); 
    } 
   if (init_status == DAVE_STATUS_SUCCESS)
   {
@@ -173,33 +173,33 @@ DAVE_STATUS_t DAVE_Init(void)
    } 
   if (init_status == DAVE_STATUS_SUCCESS)
   {
-	 /**  Initialization of DIGITAL_IO APP instance DIGITAL_IO_19 */
-	 init_status = (DAVE_STATUS_t)DIGITAL_IO_Init(&DIGITAL_IO_19); 
+	 /**  Initialization of DIGITAL_IO APP instance IO_Bit3_DIR */
+	 init_status = (DAVE_STATUS_t)DIGITAL_IO_Init(&IO_Bit3_DIR); 
    } 
   if (init_status == DAVE_STATUS_SUCCESS)
   {
-	 /**  Initialization of DIGITAL_IO APP instance DIGITAL_IO_20 */
-	 init_status = (DAVE_STATUS_t)DIGITAL_IO_Init(&DIGITAL_IO_20); 
+	 /**  Initialization of DIGITAL_IO APP instance IO_Bit2_DIR */
+	 init_status = (DAVE_STATUS_t)DIGITAL_IO_Init(&IO_Bit2_DIR); 
    } 
   if (init_status == DAVE_STATUS_SUCCESS)
   {
-	 /**  Initialization of DIGITAL_IO APP instance DIGITAL_IO_21 */
-	 init_status = (DAVE_STATUS_t)DIGITAL_IO_Init(&DIGITAL_IO_21); 
+	 /**  Initialization of DIGITAL_IO APP instance IO_Bit2 */
+	 init_status = (DAVE_STATUS_t)DIGITAL_IO_Init(&IO_Bit2); 
    } 
   if (init_status == DAVE_STATUS_SUCCESS)
   {
-	 /**  Initialization of DIGITAL_IO APP instance DIGITAL_IO_22 */
-	 init_status = (DAVE_STATUS_t)DIGITAL_IO_Init(&DIGITAL_IO_22); 
+	 /**  Initialization of DIGITAL_IO APP instance IO_Bit1 */
+	 init_status = (DAVE_STATUS_t)DIGITAL_IO_Init(&IO_Bit1); 
    } 
   if (init_status == DAVE_STATUS_SUCCESS)
   {
-	 /**  Initialization of DIGITAL_IO APP instance DIGITAL_IO_23 */
-	 init_status = (DAVE_STATUS_t)DIGITAL_IO_Init(&DIGITAL_IO_23); 
+	 /**  Initialization of DIGITAL_IO APP instance IO_Bit0 */
+	 init_status = (DAVE_STATUS_t)DIGITAL_IO_Init(&IO_Bit0); 
    } 
   if (init_status == DAVE_STATUS_SUCCESS)
   {
-	 /**  Initialization of DIGITAL_IO APP instance DIGITAL_IO_24 */
-	 init_status = (DAVE_STATUS_t)DIGITAL_IO_Init(&DIGITAL_IO_24); 
+	 /**  Initialization of DIGITAL_IO APP instance IO_Bit3 */
+	 init_status = (DAVE_STATUS_t)DIGITAL_IO_Init(&IO_Bit3); 
    } 
   if (init_status == DAVE_STATUS_SUCCESS)
   {
