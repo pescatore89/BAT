@@ -1,0 +1,451 @@
+   1              	 .syntax unified
+   2              	 .cpu cortex-m4
+   3              	 .eabi_attribute 27,3
+   4              	 .fpu fpv4-sp-d16
+   5              	 .eabi_attribute 20,1
+   6              	 .eabi_attribute 21,1
+   7              	 .eabi_attribute 23,3
+   8              	 .eabi_attribute 24,1
+   9              	 .eabi_attribute 25,1
+  10              	 .eabi_attribute 26,1
+  11              	 .eabi_attribute 30,6
+  12              	 .eabi_attribute 34,1
+  13              	 .eabi_attribute 18,4
+  14              	 .thumb
+  15              	 .file "digital_io_conf.c"
+  16              	 .text
+  17              	.Ltext0:
+  18              	 .cfi_sections .debug_frame
+  19              	 .global Cooling_FAN
+  20              	 .section .rodata.Cooling_FAN,"a",%progbits
+  21              	 .align 2
+  24              	Cooling_FAN:
+  25 0000 00800248 	 .word 1208123392
+  26 0004 80       	 .byte -128
+  27 0005 000000   	 .space 3
+  28 0008 00000100 	 .word 65536
+  29 000c 00000000 	 .space 4
+  30 0010 0A       	 .byte 10
+  31 0011 00       	 .byte 0
+  32 0012 0000     	 .space 2
+  33              	 .global Disable_Gate_Driver_M3
+  34              	 .section .rodata.Disable_Gate_Driver_M3,"a",%progbits
+  35              	 .align 2
+  38              	Disable_Gate_Driver_M3:
+  39 0000 00800248 	 .word 1208123392
+  40 0004 80       	 .byte -128
+  41 0005 000000   	 .space 3
+  42 0008 00000100 	 .word 65536
+  43 000c 00000000 	 .space 4
+  44 0010 0B       	 .byte 11
+  45 0011 00       	 .byte 0
+  46 0012 0000     	 .space 2
+  47              	 .global DIGITAL_IO_2
+  48              	 .section .rodata.DIGITAL_IO_2,"a",%progbits
+  49              	 .align 2
+  52              	DIGITAL_IO_2:
+  53 0000 00800248 	 .word 1208123392
+  54 0004 00       	 .byte 0
+  55 0005 00000000 	 .space 11
+  55      00000000 
+  55      000000
+  56 0010 09       	 .byte 9
+  57 0011 00       	 .byte 0
+  58 0012 0000     	 .space 2
+  59              	 .global DIGITAL_IO_3
+  60              	 .section .rodata.DIGITAL_IO_3,"a",%progbits
+  61              	 .align 2
+  64              	DIGITAL_IO_3:
+  65 0000 00810248 	 .word 1208123648
+  66 0004 80       	 .byte -128
+  67 0005 000000   	 .space 3
+  68 0008 00000100 	 .word 65536
+  69 000c 00000000 	 .space 4
+  70 0010 01       	 .byte 1
+  71 0011 00       	 .byte 0
+  72 0012 0000     	 .space 2
+  73              	 .global DIGITAL_IO_4
+  74              	 .section .rodata.DIGITAL_IO_4,"a",%progbits
+  75              	 .align 2
+  78              	DIGITAL_IO_4:
+  79 0000 00810248 	 .word 1208123648
+  80 0004 80       	 .byte -128
+  81 0005 000000   	 .space 3
+  82 0008 00000100 	 .word 65536
+  83 000c 00000000 	 .space 4
+  84 0010 0D       	 .byte 13
+  85 0011 00       	 .byte 0
+  86 0012 0000     	 .space 2
+  87              	 .global DIGITAL_IO_5
+  88              	 .section .rodata.DIGITAL_IO_5,"a",%progbits
+  89              	 .align 2
+  92              	DIGITAL_IO_5:
+  93 0000 00810248 	 .word 1208123648
+  94 0004 80       	 .byte -128
+  95 0005 000000   	 .space 3
+  96 0008 00000100 	 .word 65536
+  97 000c 00000000 	 .space 4
+  98 0010 0E       	 .byte 14
+  99 0011 00       	 .byte 0
+ 100 0012 0000     	 .space 2
+ 101              	 .global DIGITAL_IO_6
+ 102              	 .section .rodata.DIGITAL_IO_6,"a",%progbits
+ 103              	 .align 2
+ 106              	DIGITAL_IO_6:
+ 107 0000 00810248 	 .word 1208123648
+ 108 0004 80       	 .byte -128
+ 109 0005 000000   	 .space 3
+ 110 0008 00000100 	 .word 65536
+ 111 000c 00000000 	 .space 4
+ 112 0010 02       	 .byte 2
+ 113 0011 00       	 .byte 0
+ 114 0012 0000     	 .space 2
+ 115              	 .global DIGITAL_IO_7
+ 116              	 .section .rodata.DIGITAL_IO_7,"a",%progbits
+ 117              	 .align 2
+ 120              	DIGITAL_IO_7:
+ 121 0000 00810248 	 .word 1208123648
+ 122 0004 00       	 .byte 0
+ 123 0005 00000000 	 .space 11
+ 123      00000000 
+ 123      000000
+ 124 0010 03       	 .byte 3
+ 125 0011 00       	 .byte 0
+ 126 0012 0000     	 .space 2
+ 127              	 .global DIGITAL_IO_8
+ 128              	 .section .rodata.DIGITAL_IO_8,"a",%progbits
+ 129              	 .align 2
+ 132              	DIGITAL_IO_8:
+ 133 0000 00820248 	 .word 1208123904
+ 134 0004 80       	 .byte -128
+ 135 0005 000000   	 .space 3
+ 136 0008 01000000 	 .word 1
+ 137 000c 00000000 	 .space 4
+ 138 0010 00       	 .byte 0
+ 139 0011 00       	 .byte 0
+ 140 0012 0000     	 .space 2
+ 141              	 .global DIGITAL_IO_9
+ 142              	 .section .rodata.DIGITAL_IO_9,"a",%progbits
+ 143              	 .align 2
+ 146              	DIGITAL_IO_9:
+ 147 0000 00820248 	 .word 1208123904
+ 148 0004 80       	 .byte -128
+ 149 0005 000000   	 .space 3
+ 150 0008 00000100 	 .word 65536
+ 151 000c 00000000 	 .space 4
+ 152 0010 0A       	 .byte 10
+ 153 0011 00       	 .byte 0
+ 154 0012 0000     	 .space 2
+ 155              	 .global DIGITAL_IO_10
+ 156              	 .section .rodata.DIGITAL_IO_10,"a",%progbits
+ 157              	 .align 2
+ 160              	DIGITAL_IO_10:
+ 161 0000 00820248 	 .word 1208123904
+ 162 0004 00       	 .byte 0
+ 163 0005 00000000 	 .space 11
+ 163      00000000 
+ 163      000000
+ 164 0010 02       	 .byte 2
+ 165 0011 00       	 .byte 0
+ 166 0012 0000     	 .space 2
+ 167              	 .global DIGITAL_IO_11
+ 168              	 .section .rodata.DIGITAL_IO_11,"a",%progbits
+ 169              	 .align 2
+ 172              	DIGITAL_IO_11:
+ 173 0000 00820248 	 .word 1208123904
+ 174 0004 00       	 .byte 0
+ 175 0005 00000000 	 .space 11
+ 175      00000000 
+ 175      000000
+ 176 0010 03       	 .byte 3
+ 177 0011 00       	 .byte 0
+ 178 0012 0000     	 .space 2
+ 179              	 .global DIGITAL_IO_12
+ 180              	 .section .rodata.DIGITAL_IO_12,"a",%progbits
+ 181              	 .align 2
+ 184              	DIGITAL_IO_12:
+ 185 0000 00820248 	 .word 1208123904
+ 186 0004 00       	 .byte 0
+ 187 0005 00000000 	 .space 11
+ 187      00000000 
+ 187      000000
+ 188 0010 06       	 .byte 6
+ 189 0011 00       	 .byte 0
+ 190 0012 0000     	 .space 2
+ 191              	 .global DIGITAL_IO_13
+ 192              	 .section .rodata.DIGITAL_IO_13,"a",%progbits
+ 193              	 .align 2
+ 196              	DIGITAL_IO_13:
+ 197 0000 00820248 	 .word 1208123904
+ 198 0004 00       	 .byte 0
+ 199 0005 00000000 	 .space 11
+ 199      00000000 
+ 199      000000
+ 200 0010 07       	 .byte 7
+ 201 0011 00       	 .byte 0
+ 202 0012 0000     	 .space 2
+ 203              	 .global RS485_DIR
+ 204              	 .section .rodata.RS485_DIR,"a",%progbits
+ 205              	 .align 2
+ 208              	RS485_DIR:
+ 209 0000 00830248 	 .word 1208124160
+ 210 0004 80       	 .byte -128
+ 211 0005 000000   	 .space 3
+ 212 0008 00000100 	 .word 65536
+ 213 000c 00000000 	 .space 4
+ 214 0010 01       	 .byte 1
+ 215 0011 00       	 .byte 0
+ 216 0012 0000     	 .space 2
+ 217              	 .global DIGITAL_IO_15
+ 218              	 .section .rodata.DIGITAL_IO_15,"a",%progbits
+ 219              	 .align 2
+ 222              	DIGITAL_IO_15:
+ 223 0000 00830248 	 .word 1208124160
+ 224 0004 00       	 .byte 0
+ 225 0005 00000000 	 .space 11
+ 225      00000000 
+ 225      000000
+ 226 0010 02       	 .byte 2
+ 227 0011 00       	 .byte 0
+ 228 0012 0000     	 .space 2
+ 229              	 .global IO_Bit1_DIR
+ 230              	 .section .rodata.IO_Bit1_DIR,"a",%progbits
+ 231              	 .align 2
+ 234              	IO_Bit1_DIR:
+ 235 0000 00830248 	 .word 1208124160
+ 236 0004 80       	 .byte -128
+ 237 0005 000000   	 .space 3
+ 238 0008 00000100 	 .word 65536
+ 239 000c 00000000 	 .space 4
+ 240 0010 03       	 .byte 3
+ 241 0011 00       	 .byte 0
+ 242 0012 0000     	 .space 2
+ 243              	 .global IO_Bit0_DIR
+ 244              	 .section .rodata.IO_Bit0_DIR,"a",%progbits
+ 245              	 .align 2
+ 248              	IO_Bit0_DIR:
+ 249 0000 00830248 	 .word 1208124160
+ 250 0004 80       	 .byte -128
+ 251 0005 000000   	 .space 3
+ 252 0008 00000100 	 .word 65536
+ 253 000c 00000000 	 .space 4
+ 254 0010 04       	 .byte 4
+ 255 0011 00       	 .byte 0
+ 256 0012 0000     	 .space 2
+ 257              	 .global DIGITAL_IO_18
+ 258              	 .section .rodata.DIGITAL_IO_18,"a",%progbits
+ 259              	 .align 2
+ 262              	DIGITAL_IO_18:
+ 263 0000 00830248 	 .word 1208124160
+ 264 0004 00       	 .byte 0
+ 265 0005 00000000 	 .space 11
+ 265      00000000 
+ 265      000000
+ 266 0010 05       	 .byte 5
+ 267 0011 00       	 .byte 0
+ 268 0012 0000     	 .space 2
+ 269              	 .global IO_Bit3_DIR
+ 270              	 .section .rodata.IO_Bit3_DIR,"a",%progbits
+ 271              	 .align 2
+ 274              	IO_Bit3_DIR:
+ 275 0000 00840248 	 .word 1208124416
+ 276 0004 80       	 .byte -128
+ 277 0005 000000   	 .space 3
+ 278 0008 00000100 	 .word 65536
+ 279 000c 00000000 	 .space 4
+ 280 0010 00       	 .byte 0
+ 281 0011 00       	 .byte 0
+ 282 0012 0000     	 .space 2
+ 283              	 .global IO_Bit2_DIR
+ 284              	 .section .rodata.IO_Bit2_DIR,"a",%progbits
+ 285              	 .align 2
+ 288              	IO_Bit2_DIR:
+ 289 0000 00840248 	 .word 1208124416
+ 290 0004 80       	 .byte -128
+ 291 0005 000000   	 .space 3
+ 292 0008 00000100 	 .word 65536
+ 293 000c 00000000 	 .space 4
+ 294 0010 01       	 .byte 1
+ 295 0011 00       	 .byte 0
+ 296 0012 0000     	 .space 2
+ 297              	 .global IO_Bit2
+ 298              	 .section .rodata.IO_Bit2,"a",%progbits
+ 299              	 .align 2
+ 302              	IO_Bit2:
+ 303 0000 00850248 	 .word 1208124672
+ 304 0004 80       	 .byte -128
+ 305 0005 000000   	 .space 3
+ 306 0008 00000100 	 .word 65536
+ 307 000c 00000000 	 .space 4
+ 308 0010 01       	 .byte 1
+ 309 0011 00       	 .byte 0
+ 310 0012 0000     	 .space 2
+ 311              	 .global IO_Bit1
+ 312              	 .section .rodata.IO_Bit1,"a",%progbits
+ 313              	 .align 2
+ 316              	IO_Bit1:
+ 317 0000 00850248 	 .word 1208124672
+ 318 0004 00       	 .byte 0
+ 319 0005 00000000 	 .space 11
+ 319      00000000 
+ 319      000000
+ 320 0010 02       	 .byte 2
+ 321 0011 00       	 .byte 0
+ 322 0012 0000     	 .space 2
+ 323              	 .global IO_Bit0
+ 324              	 .section .rodata.IO_Bit0,"a",%progbits
+ 325              	 .align 2
+ 328              	IO_Bit0:
+ 329 0000 00850248 	 .word 1208124672
+ 330 0004 00       	 .byte 0
+ 331 0005 00000000 	 .space 11
+ 331      00000000 
+ 331      000000
+ 332 0010 07       	 .byte 7
+ 333 0011 00       	 .byte 0
+ 334 0012 0000     	 .space 2
+ 335              	 .global IO_Bit3
+ 336              	 .section .rodata.IO_Bit3,"a",%progbits
+ 337              	 .align 2
+ 340              	IO_Bit3:
+ 341 0000 00850248 	 .word 1208124672
+ 342 0004 80       	 .byte -128
+ 343 0005 000000   	 .space 3
+ 344 0008 00000100 	 .word 65536
+ 345 000c 00000000 	 .space 4
+ 346 0010 00       	 .byte 0
+ 347 0011 00       	 .byte 0
+ 348 0012 0000     	 .space 2
+ 349              	 .global Disable_Gate_Driver_M1_M2
+ 350              	 .section .rodata.Disable_Gate_Driver_M1_M2,"a",%progbits
+ 351              	 .align 2
+ 354              	Disable_Gate_Driver_M1_M2:
+ 355 0000 00800248 	 .word 1208123392
+ 356 0004 80       	 .byte -128
+ 357 0005 000000   	 .space 3
+ 358 0008 00000100 	 .word 65536
+ 359 000c 00000000 	 .space 4
+ 360 0010 06       	 .byte 6
+ 361 0011 00       	 .byte 0
+ 362 0012 0000     	 .space 2
+ 363              	 .global DIGITAL_IO_26
+ 364              	 .section .rodata.DIGITAL_IO_26,"a",%progbits
+ 365              	 .align 2
+ 368              	DIGITAL_IO_26:
+ 369 0000 008F0248 	 .word 1208127232
+ 370 0004 00       	 .byte 0
+ 371 0005 00000000 	 .space 11
+ 371      00000000 
+ 371      000000
+ 372 0010 08       	 .byte 8
+ 373 0011 00       	 .byte 0
+ 374 0012 0000     	 .space 2
+ 375              	 .global DIGITAL_IO_27
+ 376              	 .section .rodata.DIGITAL_IO_27,"a",%progbits
+ 377              	 .align 2
+ 380              	DIGITAL_IO_27:
+ 381 0000 00810248 	 .word 1208123648
+ 382 0004 00       	 .byte 0
+ 383 0005 00000000 	 .space 11
+ 383      00000000 
+ 383      000000
+ 384 0010 00       	 .byte 0
+ 385 0011 00       	 .byte 0
+ 386 0012 0000     	 .space 2
+ 387              	 .global DIGITAL_IO_28
+ 388              	 .section .rodata.DIGITAL_IO_28,"a",%progbits
+ 389              	 .align 2
+ 392              	DIGITAL_IO_28:
+ 393 0000 008F0248 	 .word 1208127232
+ 394 0004 00       	 .byte 0
+ 395 0005 00000000 	 .space 11
+ 395      00000000 
+ 395      000000
+ 396 0010 03       	 .byte 3
+ 397 0011 00       	 .byte 0
+ 398 0012 0000     	 .space 2
+ 399              	 .global DIGITAL_IO_29
+ 400              	 .section .rodata.DIGITAL_IO_29,"a",%progbits
+ 401              	 .align 2
+ 404              	DIGITAL_IO_29:
+ 405 0000 00810248 	 .word 1208123648
+ 406 0004 00       	 .byte 0
+ 407 0005 00000000 	 .space 11
+ 407      00000000 
+ 407      000000
+ 408 0010 09       	 .byte 9
+ 409 0011 00       	 .byte 0
+ 410 0012 0000     	 .space 2
+ 411              	 .text
+ 412              	.Letext0:
+ 413              	 .file 1 "c:\\users\\pescatore\\switchdrive\\private\\konzept\\mcu for gate driver\\dave_4-4-2_64bit_2018-02-23\\dave-ide-4.4.2-64bit\\eclipse\\arm-gcc-49\\arm-none-eabi\\include\\machine\\_default_types.h"
+ 414              	 .file 2 "c:\\users\\pescatore\\switchdrive\\private\\konzept\\mcu for gate driver\\dave_4-4-2_64bit_2018-02-23\\dave-ide-4.4.2-64bit\\eclipse\\arm-gcc-49\\arm-none-eabi\\include\\stdint.h"
+ 415              	 .file 3 "F:/GitHub Projects/FH Luzern/BAT/BAT/Libraries/XMCLib/inc/xmc_gpio.h"
+ 416              	 .file 4 "F:/GitHub Projects/FH Luzern/BAT/BAT/Libraries/XMCLib/inc/xmc4_gpio.h"
+ 417              	 .file 5 "../Dave/Generated/DIGITAL_IO/digital_io.h"
+ 418              	 .file 6 "F:/GitHub Projects/FH Luzern/BAT/BAT/Libraries/CMSIS/Include/core_cm4.h"
+ 419              	 .file 7 "../Dave/Generated/DIGITAL_IO/digital_io_conf.c"
+DEFINED SYMBOLS
+                            *ABS*:00000000 digital_io_conf.c
+    {standard input}:24     .rodata.Cooling_FAN:00000000 Cooling_FAN
+    {standard input}:21     .rodata.Cooling_FAN:00000000 $d
+    {standard input}:38     .rodata.Disable_Gate_Driver_M3:00000000 Disable_Gate_Driver_M3
+    {standard input}:35     .rodata.Disable_Gate_Driver_M3:00000000 $d
+    {standard input}:52     .rodata.DIGITAL_IO_2:00000000 DIGITAL_IO_2
+    {standard input}:49     .rodata.DIGITAL_IO_2:00000000 $d
+    {standard input}:64     .rodata.DIGITAL_IO_3:00000000 DIGITAL_IO_3
+    {standard input}:61     .rodata.DIGITAL_IO_3:00000000 $d
+    {standard input}:78     .rodata.DIGITAL_IO_4:00000000 DIGITAL_IO_4
+    {standard input}:75     .rodata.DIGITAL_IO_4:00000000 $d
+    {standard input}:92     .rodata.DIGITAL_IO_5:00000000 DIGITAL_IO_5
+    {standard input}:89     .rodata.DIGITAL_IO_5:00000000 $d
+    {standard input}:106    .rodata.DIGITAL_IO_6:00000000 DIGITAL_IO_6
+    {standard input}:103    .rodata.DIGITAL_IO_6:00000000 $d
+    {standard input}:120    .rodata.DIGITAL_IO_7:00000000 DIGITAL_IO_7
+    {standard input}:117    .rodata.DIGITAL_IO_7:00000000 $d
+    {standard input}:132    .rodata.DIGITAL_IO_8:00000000 DIGITAL_IO_8
+    {standard input}:129    .rodata.DIGITAL_IO_8:00000000 $d
+    {standard input}:146    .rodata.DIGITAL_IO_9:00000000 DIGITAL_IO_9
+    {standard input}:143    .rodata.DIGITAL_IO_9:00000000 $d
+    {standard input}:160    .rodata.DIGITAL_IO_10:00000000 DIGITAL_IO_10
+    {standard input}:157    .rodata.DIGITAL_IO_10:00000000 $d
+    {standard input}:172    .rodata.DIGITAL_IO_11:00000000 DIGITAL_IO_11
+    {standard input}:169    .rodata.DIGITAL_IO_11:00000000 $d
+    {standard input}:184    .rodata.DIGITAL_IO_12:00000000 DIGITAL_IO_12
+    {standard input}:181    .rodata.DIGITAL_IO_12:00000000 $d
+    {standard input}:196    .rodata.DIGITAL_IO_13:00000000 DIGITAL_IO_13
+    {standard input}:193    .rodata.DIGITAL_IO_13:00000000 $d
+    {standard input}:208    .rodata.RS485_DIR:00000000 RS485_DIR
+    {standard input}:205    .rodata.RS485_DIR:00000000 $d
+    {standard input}:222    .rodata.DIGITAL_IO_15:00000000 DIGITAL_IO_15
+    {standard input}:219    .rodata.DIGITAL_IO_15:00000000 $d
+    {standard input}:234    .rodata.IO_Bit1_DIR:00000000 IO_Bit1_DIR
+    {standard input}:231    .rodata.IO_Bit1_DIR:00000000 $d
+    {standard input}:248    .rodata.IO_Bit0_DIR:00000000 IO_Bit0_DIR
+    {standard input}:245    .rodata.IO_Bit0_DIR:00000000 $d
+    {standard input}:262    .rodata.DIGITAL_IO_18:00000000 DIGITAL_IO_18
+    {standard input}:259    .rodata.DIGITAL_IO_18:00000000 $d
+    {standard input}:274    .rodata.IO_Bit3_DIR:00000000 IO_Bit3_DIR
+    {standard input}:271    .rodata.IO_Bit3_DIR:00000000 $d
+    {standard input}:288    .rodata.IO_Bit2_DIR:00000000 IO_Bit2_DIR
+    {standard input}:285    .rodata.IO_Bit2_DIR:00000000 $d
+    {standard input}:302    .rodata.IO_Bit2:00000000 IO_Bit2
+    {standard input}:299    .rodata.IO_Bit2:00000000 $d
+    {standard input}:316    .rodata.IO_Bit1:00000000 IO_Bit1
+    {standard input}:313    .rodata.IO_Bit1:00000000 $d
+    {standard input}:328    .rodata.IO_Bit0:00000000 IO_Bit0
+    {standard input}:325    .rodata.IO_Bit0:00000000 $d
+    {standard input}:340    .rodata.IO_Bit3:00000000 IO_Bit3
+    {standard input}:337    .rodata.IO_Bit3:00000000 $d
+    {standard input}:354    .rodata.Disable_Gate_Driver_M1_M2:00000000 Disable_Gate_Driver_M1_M2
+    {standard input}:351    .rodata.Disable_Gate_Driver_M1_M2:00000000 $d
+    {standard input}:368    .rodata.DIGITAL_IO_26:00000000 DIGITAL_IO_26
+    {standard input}:365    .rodata.DIGITAL_IO_26:00000000 $d
+    {standard input}:380    .rodata.DIGITAL_IO_27:00000000 DIGITAL_IO_27
+    {standard input}:377    .rodata.DIGITAL_IO_27:00000000 $d
+    {standard input}:392    .rodata.DIGITAL_IO_28:00000000 DIGITAL_IO_28
+    {standard input}:389    .rodata.DIGITAL_IO_28:00000000 $d
+    {standard input}:404    .rodata.DIGITAL_IO_29:00000000 DIGITAL_IO_29
+    {standard input}:401    .rodata.DIGITAL_IO_29:00000000 $d
+
+NO UNDEFINED SYMBOLS

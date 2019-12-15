@@ -1,0 +1,1002 @@
+   1              	 .syntax unified
+   2              	 .cpu cortex-m4
+   3              	 .eabi_attribute 27,3
+   4              	 .fpu fpv4-sp-d16
+   5              	 .eabi_attribute 20,1
+   6              	 .eabi_attribute 21,1
+   7              	 .eabi_attribute 23,3
+   8              	 .eabi_attribute 24,1
+   9              	 .eabi_attribute 25,1
+  10              	 .eabi_attribute 26,1
+  11              	 .eabi_attribute 30,6
+  12              	 .eabi_attribute 34,1
+  13              	 .eabi_attribute 18,4
+  14              	 .thumb
+  15              	 .file "acim_freq_ctrl_conf.c"
+  16              	 .text
+  17              	.Ltext0:
+  18              	 .cfi_sections .debug_frame
+  19              	 .global ACIM_FREQ_CTRL_0_STATES
+  20              	 .section .rodata
+  21              	 .align 2
+  22              	.LC0:
+  23 0000 6F666600 	 .ascii "off\000"
+  24              	 .align 2
+  25              	.LC1:
+  26 0004 656E6162 	 .ascii "enabled\000"
+  26      6C656400 
+  27              	 .align 2
+  28              	.LC2:
+  29 000c 6F6E00   	 .ascii "on\000"
+  30 000f 00       	 .align 2
+  31              	.LC3:
+  32 0010 6F706572 	 .ascii "operation\000"
+  32      6174696F 
+  32      6E00
+  33 001a 0000     	 .align 2
+  34              	.LC4:
+  35 001c 636F6173 	 .ascii "coast stop\000"
+  35      74207374 
+  35      6F7000
+  36 0027 00       	 .align 2
+  37              	.LC5:
+  38 0028 71756963 	 .ascii "quick stop\000"
+  38      6B207374 
+  38      6F7000
+  39 0033 00       	 .align 2
+  40              	.LC6:
+  41 0034 72616D70 	 .ascii "ramp down\000"
+  41      20646F77 
+  41      6E00
+  42 003e 0000     	 .align 2
+  43              	.LC7:
+  44 0040 6572726F 	 .ascii "error\000"
+  44      7200
+  45 0046 0000     	 .align 2
+  46              	.LC8:
+  47 0048 73616665 	 .ascii "safe\000"
+  47      00
+  48 004d 000000   	 .align 2
+  49              	.LC9:
+  50 0050 72657365 	 .ascii "reserve\000"
+  50      72766500 
+  51              	 .align 2
+  52              	.LC10:
+  53 0058 75736572 	 .ascii "user define\000"
+  53      20646566 
+  53      696E6500 
+  54              	 .align 2
+  55              	.LC11:
+  56 0064 74726F75 	 .ascii "trouble\000"
+  56      626C6500 
+  57              	 .section .rodata.ACIM_FREQ_CTRL_0_STATES,"a",%progbits
+  58              	 .align 2
+  61              	ACIM_FREQ_CTRL_0_STATES:
+  62 0000 00000000 	 .word .LC0
+  63 0004 00000000 	 .word ACIM_FREQ_CTRL_DSM_SwitchedOff_Entry
+  64 0008 00000000 	 .word ACIM_FREQ_CTRL_DSM_SwitchedOff_Action
+  65 000c 00000000 	 .word ACIM_FREQ_CTRL_DSM_SwitchedOff_Exit
+  66 0010 04000000 	 .word .LC1
+  67 0014 00000000 	 .word 0
+  68 0018 00000000 	 .word ACIM_FREQ_CTRL_DSM_Enabled_Action
+  69 001c 00000000 	 .word ACIM_FREQ_CTRL_DSM_Enabled_Exit
+  70 0020 0C000000 	 .word .LC2
+  71 0024 00000000 	 .word 0
+  72 0028 00000000 	 .word ACIM_FREQ_CTRL_DSM_Switched_On_Action
+  73 002c 00000000 	 .word 0
+  74 0030 10000000 	 .word .LC3
+  75 0034 00000000 	 .word ACIM_FREQ_CTRL_DSM_Operation_Entry
+  76 0038 00000000 	 .word ACIM_FREQ_CTRL_DSM_Operation_Action
+  77 003c 00000000 	 .word ACIM_FREQ_CTRL_DSM_Operation_Exit
+  78 0040 1C000000 	 .word .LC4
+  79 0044 00000000 	 .word ACIM_FREQ_CTRL_DSM_Coast_Stop_Entry
+  80 0048 00000000 	 .word ACIM_FREQ_CTRL_DSM_Coast_Stop_Action
+  81 004c 00000000 	 .word ACIM_FREQ_CTRL_DSM_Coast_Stop_Exit
+  82 0050 28000000 	 .word .LC5
+  83 0054 00000000 	 .word ACIM_FREQ_CTRL_DSM_Quick_Stop_Entry
+  84 0058 00000000 	 .word ACIM_FREQ_CTRL_DSM_Quick_Stop_Action
+  85 005c 00000000 	 .word ACIM_FREQ_CTRL_DSM_Quick_Stop_Exit
+  86 0060 34000000 	 .word .LC6
+  87 0064 00000000 	 .word ACIM_FREQ_CTRL_DSM_Rampdown_Entry
+  88 0068 00000000 	 .word ACIM_FREQ_CTRL_DSM_Rampdown_Action
+  89 006c 00000000 	 .word 0
+  90 0070 40000000 	 .word .LC7
+  91 0074 00000000 	 .word ACIM_FREQ_CTRL_DSM_Error_Entry
+  92 0078 00000000 	 .word ACIM_FREQ_CTRL_DSM_Error_Action
+  93 007c 00000000 	 .word ACIM_FREQ_CTRL_DSM_Error_Exit
+  94 0080 48000000 	 .word .LC8
+  95 0084 00000000 	 .word ACIM_FREQ_CTRL_DSM_Safe_Torque_Off_Entry
+  96 0088 00000000 	 .word ACIM_FREQ_CTRL_DSM_Safe_Torque_Off_Action
+  97 008c 00000000 	 .word ACIM_FREQ_CTRL_DSM_Safe_Torque_Off_Exit
+  98 0090 50000000 	 .word .LC9
+  99 0094 00000000 	 .word 0
+ 100 0098 00000000 	 .word 0
+ 101 009c 00000000 	 .word 0
+ 102 00a0 50000000 	 .word .LC9
+ 103 00a4 00000000 	 .word 0
+ 104 00a8 00000000 	 .word 0
+ 105 00ac 00000000 	 .word 0
+ 106 00b0 58000000 	 .word .LC10
+ 107 00b4 00000000 	 .word 0
+ 108 00b8 00000000 	 .word 0
+ 109 00bc 00000000 	 .word 0
+ 110 00c0 58000000 	 .word .LC10
+ 111 00c4 00000000 	 .word 0
+ 112 00c8 00000000 	 .word 0
+ 113 00cc 00000000 	 .word 0
+ 114 00d0 50000000 	 .word .LC9
+ 115 00d4 00000000 	 .word 0
+ 116 00d8 00000000 	 .word 0
+ 117 00dc 00000000 	 .word 0
+ 118 00e0 50000000 	 .word .LC9
+ 119 00e4 00000000 	 .word 0
+ 120 00e8 00000000 	 .word 0
+ 121 00ec 00000000 	 .word 0
+ 122 00f0 64000000 	 .word .LC11
+ 123 00f4 00000000 	 .word 0
+ 124 00f8 00000000 	 .word ACIM_FREQ_CTRL_DSM_Trouble_Action
+ 125 00fc 00000000 	 .word 0
+ 126              	 .global ACIM_FREQ_CTRL_0_DSM
+ 127              	 .section .data.ACIM_FREQ_CTRL_0_DSM,"aw",%progbits
+ 128              	 .align 2
+ 131              	ACIM_FREQ_CTRL_0_DSM:
+ 132 0000 00000000 	 .word ACIM_FREQ_CTRL_0_STATES
+ 133 0004 00000000 	 .word ACIM_FREQ_CTRL_0
+ 134 0008 00       	 .byte 0
+ 135 0009 00       	 .byte 0
+ 136 000a 00       	 .byte 0
+ 137 000b 00       	 .space 1
+ 138              	 .global ACIM_FREQ_CTRL_0_FCL_InterruptConfig
+ 139              	 .section .data.ACIM_FREQ_CTRL_0_FCL_InterruptConfig,"aw",%progbits
+ 140              	 .align 2
+ 143              	ACIM_FREQ_CTRL_0_FCL_InterruptConfig:
+ 144 0000 3F       	 .byte 63
+ 145 0001 3D       	 .byte 61
+ 146 0002 00       	 .byte 0
+ 147              	 .global ACIM_FREQ_CTRL_0_vf_control
+ 148 0003 00       	 .section .data.ACIM_FREQ_CTRL_0_vf_control,"aw",%progbits
+ 149              	 .align 2
+ 152              	ACIM_FREQ_CTRL_0_vf_control:
+ 153 0000 00040000 	 .word 1024
+ 154 0004 33030000 	 .word 819
+ 155 0008 00000000 	 .word 0
+ 156 000c 00000000 	 .word 0
+ 157 0010 00000000 	 .word 0
+ 158              	 .global ACIM_FREQ_CTRL_0_Config
+ 159              	 .section .rodata.ACIM_FREQ_CTRL_0_Config,"a",%progbits
+ 160              	 .align 2
+ 163              	ACIM_FREQ_CTRL_0_Config:
+ 164 0000 B80B0000 	 .word 3000
+ 165 0004 81670100 	 .word 92033
+ 166 0008 1800     	 .short 24
+ 167 000a 0000     	 .short 0
+ 168 000c 0000     	 .short 0
+ 169 000e FF3F     	 .short 16383
+ 170 0010 01       	 .byte 1
+ 171 0011 01       	 .byte 1
+ 172 0012 05       	 .byte 5
+ 173 0013 04       	 .byte 4
+ 174 0014 05       	 .byte 5
+ 175 0015 0F       	 .byte 15
+ 176 0016 19       	 .byte 25
+ 177 0017 31       	 .byte 49
+ 178 0018 00       	 .byte 0
+ 179 0019 000000   	 .space 3
+ 180              	 .global ACIM_FREQ_CTRL_0
+ 181              	 .section .data.ACIM_FREQ_CTRL_0,"aw",%progbits
+ 182              	 .align 2
+ 185              	ACIM_FREQ_CTRL_0:
+ 186 0000 00000000 	 .word ACIM_FREQ_CTRL_0_Config
+ 187 0004 00000000 	 .word PWM_SVM_0
+ 188 0008 00000000 	 .word ACIM_FREQ_CTRL_0_vf_control
+ 189 000c 00000000 	 .space 12
+ 189      00000000 
+ 189      00000000 
+ 190 0018 00000000 	 .word ACIM_FREQ_CTRL_0_PT_Entry
+ 191 001c 00000000 	 .word ACIM_FREQ_CTRL_0_ET_Entry
+ 192 0020 00000000 	 .word ACIM_FREQ_CTRL_0_FCL_InterruptConfig
+ 193 0024 00000000 	 .space 16
+ 193      00000000 
+ 193      00000000 
+ 193      00000000 
+ 194 0034 00000000 	 .word AUTOMATION_0
+ 195 0038 00000000 	 .word ACIM_FREQ_CTRL_0_FB
+ 196 003c 00000000 	 .word ACIM_FREQ_CTRL_0_DSM
+ 197 0040 00000000 	 .word ACIM_FREQ_CTRL_0_PrimaryControlLoop
+ 198 0044 00000000 	 .word ACIM_FREQ_CTRL_0_SetValueProcessing
+ 199 0048 00000000 	 .word AUTOMATION_SM_Handler
+ 200 004c 00       	 .byte 0
+ 201 004d 00       	 .byte 0
+ 202 004e 0000     	 .space 2
+ 203 0050 A0860100 	 .word 100000
+ 204 0054 00000000 	 .word 0
+ 205 0058 00000000 	 .word 0
+ 206 005c 00000000 	 .word 0
+ 207 0060 FE3F0000 	 .word 16382
+ 208 0064 C1030000 	 .word 961
+ 209 0068 FF1F0000 	 .word 8191
+ 210 006c 00000000 	 .space 4
+ 211 0070 68000000 	 .word ACIM_FREQ_CTRL_0+104
+ 212 0074 00000000 	 .space 4
+ 213 0078 00000000 	 .word 0
+ 214 007c 00000000 	 .word 0
+ 215 0080 00000000 	 .word 0
+ 216 0084 8F020000 	 .word 655
+ 217 0088 96000000 	 .word 150
+ 218 008c 96000000 	 .word 150
+ 219 0090 E8030000 	 .word 1000
+ 220 0094 96000000 	 .word 150
+ 221 0098 00000000 	 .word 0
+ 222 009c 0000     	 .short 0
+ 223 009e 0000     	 .short 0
+ 224 00a0 0000     	 .short 0
+ 225 00a2 0000     	 .space 2
+ 226 00a4 01       	 .byte 1
+ 227 00a5 00       	 .byte 0
+ 228 00a6 01       	 .byte 1
+ 229 00a7 01       	 .byte 1
+ 230 00a8 01       	 .byte 1
+ 231 00a9 0000     	 .space 2
+ 232 00ab 00       	 .byte 0
+ 233              	 .global ACIM_FREQ_CTRL_0_PT_Entry
+ 234              	 .section .data.ACIM_FREQ_CTRL_0_PT_Entry,"aw",%progbits
+ 235              	 .align 2
+ 238              	ACIM_FREQ_CTRL_0_PT_Entry:
+ 239 0000 4C000000 	 .word ACIM_FREQ_CTRL_0+76
+ 240 0004 00000000 	 .word 0
+ 241 0008 1F000000 	 .word 31
+ 242 000c FF7F0000 	 .word 32767
+ 243 0010 FF7F0000 	 .word 32767
+ 244 0014 00000000 	 .word ACIM_FREQ_CTRL_SetControlWordState
+ 245 0018 01       	 .byte 1
+ 246 0019 04       	 .byte 4
+ 247 001a 0000     	 .space 2
+ 248 001c 68000000 	 .word ACIM_FREQ_CTRL_0+104
+ 249 0020 C0F2FCFF 	 .word -200000
+ 250 0024 400D0300 	 .word 200000
+ 251 0028 70170000 	 .word 6000
+ 252 002c FCBA0200 	 .word 178940
+ 253 0030 00000000 	 .word 0
+ 254 0034 01       	 .byte 1
+ 255 0035 04       	 .byte 4
+ 256 0036 0000     	 .space 2
+ 257 0038 00000000 	 .word ACIM_FREQ_CTRL_0_vf_control
+ 258 003c 00000000 	 .word 0
+ 259 0040 409C0000 	 .word 40000
+ 260 0044 FF3B0000 	 .word 15359
+ 261 0048 0E110100 	 .word 69902
+ 262 004c 00000000 	 .word 0
+ 263 0050 01       	 .byte 1
+ 264 0051 04       	 .byte 4
+ 265 0052 0000     	 .space 2
+ 266 0054 04000000 	 .word ACIM_FREQ_CTRL_0_vf_control+4
+ 267 0058 00000000 	 .word 0
+ 268 005c 400D0300 	 .word 200000
+ 269 0060 81BB0000 	 .word 48001
+ 270 0064 5F570000 	 .word 22367
+ 271 0068 00000000 	 .word 0
+ 272 006c 01       	 .byte 1
+ 273 006d 04       	 .byte 4
+ 274 006e 0000     	 .space 2
+ 275 0070 A4000000 	 .word ACIM_FREQ_CTRL_0+164
+ 276 0074 00000000 	 .word 0
+ 277 0078 00000000 	 .word 0
+ 278 007c FF7F0000 	 .word 32767
+ 279 0080 FF7F0000 	 .word 32767
+ 280 0084 00000000 	 .word ACIM_FREQ_CTRL_SetMotorDirection
+ 281 0088 01       	 .byte 1
+ 282 0089 04       	 .byte 4
+ 283 008a 0000     	 .space 2
+ 284 008c 50000000 	 .word ACIM_FREQ_CTRL_0+80
+ 285 0090 64000000 	 .word 100
+ 286 0094 90D00300 	 .word 250000
+ 287 0098 FF7F0000 	 .word 32767
+ 288 009c FF7F0000 	 .word 32767
+ 289 00a0 00000000 	 .word ACIM_FREQ_CTRL_SetPWMFrequency
+ 290 00a4 01       	 .byte 1
+ 291 00a5 04       	 .byte 4
+ 292 00a6 0000     	 .space 2
+ 293 00a8 64000000 	 .word ACIM_FREQ_CTRL_0+100
+ 294 00ac 00000000 	 .word 0
+ 295 00b0 404B4C00 	 .word 5000000
+ 296 00b4 95420000 	 .word 17045
+ 297 00b8 0DF60000 	 .word 62989
+ 298 00bc 00000000 	 .word 0
+ 299 00c0 01       	 .byte 1
+ 300 00c1 04       	 .byte 4
+ 301 00c2 0000     	 .space 2
+ 302 00c4 60000000 	 .word ACIM_FREQ_CTRL_0+96
+ 303 00c8 00000000 	 .word 0
+ 304 00cc 64000000 	 .word 100
+ 305 00d0 C8000000 	 .word 200
+ 306 00d4 99E95100 	 .word 5368217
+ 307 00d8 00000000 	 .word 0
+ 308 00dc 01       	 .byte 1
+ 309 00dd 04       	 .byte 4
+ 310 00de 0000     	 .space 2
+ 311 00e0 00000000 	 .word 0
+ 312 00e4 00000000 	 .word 0
+ 313 00e8 FF7F0000 	 .word 32767
+ 314 00ec FF7F0000 	 .word 32767
+ 315 00f0 FF7F0000 	 .word 32767
+ 316 00f4 00000000 	 .word 0
+ 317 00f8 00       	 .byte 0
+ 318 00f9 04       	 .byte 4
+ 319 00fa 0000     	 .space 2
+ 320 00fc 00000000 	 .word 0
+ 321 0100 00000000 	 .word 0
+ 322 0104 FF7F0000 	 .word 32767
+ 323 0108 FF7F0000 	 .word 32767
+ 324 010c FF7F0000 	 .word 32767
+ 325 0110 00000000 	 .word 0
+ 326 0114 00       	 .byte 0
+ 327 0115 04       	 .byte 4
+ 328 0116 0000     	 .space 2
+ 329 0118 00000000 	 .word 0
+ 330 011c 00000000 	 .word 0
+ 331 0120 FF7F0000 	 .word 32767
+ 332 0124 FF7F0000 	 .word 32767
+ 333 0128 FF7F0000 	 .word 32767
+ 334 012c 00000000 	 .word 0
+ 335 0130 00       	 .byte 0
+ 336 0131 04       	 .byte 4
+ 337 0132 0000     	 .space 2
+ 338 0134 00000000 	 .word 0
+ 339 0138 00000000 	 .word 0
+ 340 013c FF7F0000 	 .word 32767
+ 341 0140 FF7F0000 	 .word 32767
+ 342 0144 FF7F0000 	 .word 32767
+ 343 0148 00000000 	 .word 0
+ 344 014c 00       	 .byte 0
+ 345 014d 04       	 .byte 4
+ 346 014e 0000     	 .space 2
+ 347 0150 00000000 	 .word 0
+ 348 0154 01000080 	 .word -2147483647
+ 349 0158 0000FF7F 	 .word 2147418112
+ 350 015c 01000000 	 .word 1
+ 351 0160 FF7F0000 	 .word 32767
+ 352 0164 00000000 	 .word 0
+ 353 0168 00       	 .byte 0
+ 354 0169 04       	 .byte 4
+ 355 016a 0000     	 .space 2
+ 356 016c 00000000 	 .word 0
+ 357 0170 00000000 	 .word 0
+ 358 0174 88130000 	 .word 5000
+ 359 0178 95420000 	 .word 17045
+ 360 017c 0DF60000 	 .word 62989
+ 361 0180 00000000 	 .word 0
+ 362 0184 00       	 .byte 0
+ 363 0185 04       	 .byte 4
+ 364 0186 0000     	 .space 2
+ 365 0188 00000000 	 .word 0
+ 366 018c 00000000 	 .word 0
+ 367 0190 88130000 	 .word 5000
+ 368 0194 FF7F0000 	 .word 32767
+ 369 0198 FF7F0000 	 .word 32767
+ 370 019c 00000000 	 .word 0
+ 371 01a0 00       	 .byte 0
+ 372 01a1 04       	 .byte 4
+ 373 01a2 0000     	 .space 2
+ 374 01a4 00000000 	 .word 0
+ 375 01a8 00000000 	 .word 0
+ 376 01ac 88130000 	 .word 5000
+ 377 01b0 FF7F0000 	 .word 32767
+ 378 01b4 FF7F0000 	 .word 32767
+ 379 01b8 00000000 	 .word 0
+ 380 01bc 00       	 .byte 0
+ 381 01bd 04       	 .byte 4
+ 382 01be 0000     	 .space 2
+ 383 01c0 58000000 	 .word ACIM_FREQ_CTRL_0+88
+ 384 01c4 00000000 	 .word 0
+ 385 01c8 68010000 	 .word 360
+ 386 01cc 68010000 	 .word 360
+ 387 01d0 0BB60000 	 .word 46603
+ 388 01d4 00000000 	 .word ACIM_FREQ_CTRL_SetAngleoffset
+ 389 01d8 01       	 .byte 1
+ 390 01d9 04       	 .byte 4
+ 391 01da 0000     	 .space 2
+ 392 01dc 5C000000 	 .word ACIM_FREQ_CTRL_0+92
+ 393 01e0 00000000 	 .word 0
+ 394 01e4 80BB0000 	 .word 48000
+ 395 01e8 81BB0000 	 .word 48001
+ 396 01ec 5F570000 	 .word 22367
+ 397 01f0 00000000 	 .word 0
+ 398 01f4 01       	 .byte 1
+ 399 01f5 04       	 .byte 4
+ 400 01f6 0000     	 .space 2
+ 401 01f8 00000000 	 .word 0
+ 402 01fc 01000080 	 .word -2147483647
+ 403 0200 0000FF7F 	 .word 2147418112
+ 404 0204 FF7F0000 	 .word 32767
+ 405 0208 FF7F0000 	 .word 32767
+ 406 020c 00000000 	 .word 0
+ 407 0210 00       	 .byte 0
+ 408 0211 04       	 .byte 4
+ 409 0212 0000     	 .space 2
+ 410 0214 00000000 	 .word 0
+ 411 0218 B03CFFFF 	 .word -50000
+ 412 021c 50C30000 	 .word 50000
+ 413 0220 70170000 	 .word 6000
+ 414 0224 FCBA0200 	 .word 178940
+ 415 0228 00000000 	 .word 0
+ 416 022c 00       	 .byte 0
+ 417 022d 04       	 .byte 4
+ 418 022e 0000     	 .space 2
+ 419              	 .global ACIM_FREQ_CTRL_0_ET_Entry
+ 420              	 .section .data.ACIM_FREQ_CTRL_0_ET_Entry,"aw",%progbits
+ 421              	 .align 2
+ 424              	ACIM_FREQ_CTRL_0_ET_Entry:
+ 425 0000 00000000 	 .word 0
+ 426 0004 00       	 .byte 0
+ 427 0005 00       	 .byte 0
+ 428 0006 02       	 .byte 2
+ 429 0007 00       	 .space 1
+ 430 0008 00000000 	 .word 0
+ 431 000c 01       	 .byte 1
+ 432 000d 00       	 .byte 0
+ 433 000e 02       	 .byte 2
+ 434 000f 00       	 .space 1
+ 435 0010 00000000 	 .word 0
+ 436 0014 02       	 .byte 2
+ 437 0015 00       	 .byte 0
+ 438 0016 02       	 .byte 2
+ 439 0017 00       	 .space 1
+ 440 0018 00000000 	 .word ACIM_FREQ_CTRL_MotorStop
+ 441 001c 03       	 .byte 3
+ 442 001d 00       	 .byte 0
+ 443 001e 03       	 .byte 3
+ 444 001f 00       	 .space 1
+ 445 0020 00000000 	 .word ACIM_FREQ_CTRL_MotorStop
+ 446 0024 04       	 .byte 4
+ 447 0025 00       	 .byte 0
+ 448 0026 03       	 .byte 3
+ 449 0027 00       	 .space 1
+ 450              	 .global ACIM_FREQ_CTRL_0_input_array
+ 451              	 .section .data.ACIM_FREQ_CTRL_0_input_array,"aw",%progbits
+ 452              	 .align 2
+ 455              	ACIM_FREQ_CTRL_0_input_array:
+ 456 0000 70000000 	 .word ACIM_FREQ_CTRL_0+112
+ 457              	 .global ACIM_FREQ_CTRL_0_output_array
+ 458              	 .section .data.ACIM_FREQ_CTRL_0_output_array,"aw",%progbits
+ 459              	 .align 2
+ 462              	ACIM_FREQ_CTRL_0_output_array:
+ 463 0000 68000000 	 .word ACIM_FREQ_CTRL_0+104
+ 464 0004 28000000 	 .word ACIM_FREQ_CTRL_0_PT_Entry+40
+ 465 0008 7C000000 	 .word ACIM_FREQ_CTRL_0+124
+ 466 000c 78000000 	 .word ACIM_FREQ_CTRL_0+120
+ 467              	 .global ACIM_FREQ_CTRL_0_FB
+ 468              	 .section .rodata
+ 469              	 .align 2
+ 470              	.LC12:
+ 471 006c 4143494D 	 .ascii "ACIM_FREQ_CTRL_0\000"
+ 471      5F465245 
+ 471      515F4354 
+ 471      524C5F30 
+ 471      00
+ 472              	 .section .data.ACIM_FREQ_CTRL_0_FB,"aw",%progbits
+ 473              	 .align 2
+ 476              	ACIM_FREQ_CTRL_0_FB:
+ 477 0000 00000000 	 .word ACIM_FREQ_CTRL_0_input_array
+ 478 0004 00000000 	 .word ACIM_FREQ_CTRL_0_output_array
+ 479 0008 00000000 	 .word ACIM_FREQ_CTRL_0
+ 480 000c 00000000 	 .word 0
+ 481 0010 6C000000 	 .word .LC12
+ 482              	 .global ACIM_FREQ_CTRL_1_STATES
+ 483              	 .section .rodata.ACIM_FREQ_CTRL_1_STATES,"a",%progbits
+ 484              	 .align 2
+ 487              	ACIM_FREQ_CTRL_1_STATES:
+ 488 0000 00000000 	 .word .LC0
+ 489 0004 00000000 	 .word ACIM_FREQ_CTRL_DSM_SwitchedOff_Entry
+ 490 0008 00000000 	 .word ACIM_FREQ_CTRL_DSM_SwitchedOff_Action
+ 491 000c 00000000 	 .word ACIM_FREQ_CTRL_DSM_SwitchedOff_Exit
+ 492 0010 04000000 	 .word .LC1
+ 493 0014 00000000 	 .word 0
+ 494 0018 00000000 	 .word ACIM_FREQ_CTRL_DSM_Enabled_Action
+ 495 001c 00000000 	 .word ACIM_FREQ_CTRL_DSM_Enabled_Exit
+ 496 0020 0C000000 	 .word .LC2
+ 497 0024 00000000 	 .word 0
+ 498 0028 00000000 	 .word ACIM_FREQ_CTRL_DSM_Switched_On_Action
+ 499 002c 00000000 	 .word 0
+ 500 0030 10000000 	 .word .LC3
+ 501 0034 00000000 	 .word ACIM_FREQ_CTRL_DSM_Operation_Entry
+ 502 0038 00000000 	 .word ACIM_FREQ_CTRL_DSM_Operation_Action
+ 503 003c 00000000 	 .word ACIM_FREQ_CTRL_DSM_Operation_Exit
+ 504 0040 1C000000 	 .word .LC4
+ 505 0044 00000000 	 .word ACIM_FREQ_CTRL_DSM_Coast_Stop_Entry
+ 506 0048 00000000 	 .word ACIM_FREQ_CTRL_DSM_Coast_Stop_Action
+ 507 004c 00000000 	 .word ACIM_FREQ_CTRL_DSM_Coast_Stop_Exit
+ 508 0050 28000000 	 .word .LC5
+ 509 0054 00000000 	 .word ACIM_FREQ_CTRL_DSM_Quick_Stop_Entry
+ 510 0058 00000000 	 .word ACIM_FREQ_CTRL_DSM_Quick_Stop_Action
+ 511 005c 00000000 	 .word ACIM_FREQ_CTRL_DSM_Quick_Stop_Exit
+ 512 0060 34000000 	 .word .LC6
+ 513 0064 00000000 	 .word ACIM_FREQ_CTRL_DSM_Rampdown_Entry
+ 514 0068 00000000 	 .word ACIM_FREQ_CTRL_DSM_Rampdown_Action
+ 515 006c 00000000 	 .word 0
+ 516 0070 40000000 	 .word .LC7
+ 517 0074 00000000 	 .word ACIM_FREQ_CTRL_DSM_Error_Entry
+ 518 0078 00000000 	 .word ACIM_FREQ_CTRL_DSM_Error_Action
+ 519 007c 00000000 	 .word ACIM_FREQ_CTRL_DSM_Error_Exit
+ 520 0080 48000000 	 .word .LC8
+ 521 0084 00000000 	 .word ACIM_FREQ_CTRL_DSM_Safe_Torque_Off_Entry
+ 522 0088 00000000 	 .word ACIM_FREQ_CTRL_DSM_Safe_Torque_Off_Action
+ 523 008c 00000000 	 .word ACIM_FREQ_CTRL_DSM_Safe_Torque_Off_Exit
+ 524 0090 50000000 	 .word .LC9
+ 525 0094 00000000 	 .word 0
+ 526 0098 00000000 	 .word 0
+ 527 009c 00000000 	 .word 0
+ 528 00a0 50000000 	 .word .LC9
+ 529 00a4 00000000 	 .word 0
+ 530 00a8 00000000 	 .word 0
+ 531 00ac 00000000 	 .word 0
+ 532 00b0 58000000 	 .word .LC10
+ 533 00b4 00000000 	 .word 0
+ 534 00b8 00000000 	 .word 0
+ 535 00bc 00000000 	 .word 0
+ 536 00c0 58000000 	 .word .LC10
+ 537 00c4 00000000 	 .word 0
+ 538 00c8 00000000 	 .word 0
+ 539 00cc 00000000 	 .word 0
+ 540 00d0 50000000 	 .word .LC9
+ 541 00d4 00000000 	 .word 0
+ 542 00d8 00000000 	 .word 0
+ 543 00dc 00000000 	 .word 0
+ 544 00e0 50000000 	 .word .LC9
+ 545 00e4 00000000 	 .word 0
+ 546 00e8 00000000 	 .word 0
+ 547 00ec 00000000 	 .word 0
+ 548 00f0 64000000 	 .word .LC11
+ 549 00f4 00000000 	 .word 0
+ 550 00f8 00000000 	 .word ACIM_FREQ_CTRL_DSM_Trouble_Action
+ 551 00fc 00000000 	 .word 0
+ 552              	 .global ACIM_FREQ_CTRL_1_DSM
+ 553              	 .section .data.ACIM_FREQ_CTRL_1_DSM,"aw",%progbits
+ 554              	 .align 2
+ 557              	ACIM_FREQ_CTRL_1_DSM:
+ 558 0000 00000000 	 .word ACIM_FREQ_CTRL_1_STATES
+ 559 0004 00000000 	 .word ACIM_FREQ_CTRL_1
+ 560 0008 00       	 .byte 0
+ 561 0009 00       	 .byte 0
+ 562 000a 00       	 .byte 0
+ 563 000b 00       	 .space 1
+ 564              	 .global ACIM_FREQ_CTRL_1_FCL_InterruptConfig
+ 565              	 .section .data.ACIM_FREQ_CTRL_1_FCL_InterruptConfig,"aw",%progbits
+ 566              	 .align 2
+ 569              	ACIM_FREQ_CTRL_1_FCL_InterruptConfig:
+ 570 0000 40       	 .byte 64
+ 571 0001 3D       	 .byte 61
+ 572 0002 00       	 .byte 0
+ 573              	 .global ACIM_FREQ_CTRL_1_vf_control
+ 574 0003 00       	 .section .data.ACIM_FREQ_CTRL_1_vf_control,"aw",%progbits
+ 575              	 .align 2
+ 578              	ACIM_FREQ_CTRL_1_vf_control:
+ 579 0000 00040000 	 .word 1024
+ 580 0004 33030000 	 .word 819
+ 581 0008 00000000 	 .word 0
+ 582 000c 00000000 	 .word 0
+ 583 0010 00000000 	 .word 0
+ 584              	 .global ACIM_FREQ_CTRL_1_Config
+ 585              	 .section .rodata.ACIM_FREQ_CTRL_1_Config,"a",%progbits
+ 586              	 .align 2
+ 589              	ACIM_FREQ_CTRL_1_Config:
+ 590 0000 B80B0000 	 .word 3000
+ 591 0004 81670100 	 .word 92033
+ 592 0008 1800     	 .short 24
+ 593 000a 0000     	 .short 0
+ 594 000c 0000     	 .short 0
+ 595 000e FF3F     	 .short 16383
+ 596 0010 01       	 .byte 1
+ 597 0011 01       	 .byte 1
+ 598 0012 05       	 .byte 5
+ 599 0013 04       	 .byte 4
+ 600 0014 0A       	 .byte 10
+ 601 0015 14       	 .byte 20
+ 602 0016 14       	 .byte 20
+ 603 0017 11       	 .byte 17
+ 604 0018 00       	 .byte 0
+ 605 0019 000000   	 .space 3
+ 606              	 .global ACIM_FREQ_CTRL_1
+ 607              	 .section .data.ACIM_FREQ_CTRL_1,"aw",%progbits
+ 608              	 .align 2
+ 611              	ACIM_FREQ_CTRL_1:
+ 612 0000 00000000 	 .word ACIM_FREQ_CTRL_1_Config
+ 613 0004 00000000 	 .word PWM_SVM_1
+ 614 0008 00000000 	 .word ACIM_FREQ_CTRL_1_vf_control
+ 615 000c 00000000 	 .space 12
+ 615      00000000 
+ 615      00000000 
+ 616 0018 00000000 	 .word ACIM_FREQ_CTRL_1_PT_Entry
+ 617 001c 00000000 	 .word ACIM_FREQ_CTRL_1_ET_Entry
+ 618 0020 00000000 	 .word ACIM_FREQ_CTRL_1_FCL_InterruptConfig
+ 619 0024 00000000 	 .space 16
+ 619      00000000 
+ 619      00000000 
+ 619      00000000 
+ 620 0034 00000000 	 .word AUTOMATION_0
+ 621 0038 00000000 	 .word ACIM_FREQ_CTRL_1_FB
+ 622 003c 00000000 	 .word ACIM_FREQ_CTRL_1_DSM
+ 623 0040 00000000 	 .word ACIM_FREQ_CTRL_1_PrimaryControlLoop
+ 624 0044 00000000 	 .word ACIM_FREQ_CTRL_1_SetValueProcessing
+ 625 0048 00000000 	 .word AUTOMATION_SM_Handler
+ 626 004c 00       	 .byte 0
+ 627 004d 00       	 .byte 0
+ 628 004e 0000     	 .space 2
+ 629 0050 A0860100 	 .word 100000
+ 630 0054 00000000 	 .word 0
+ 631 0058 00000000 	 .word 0
+ 632 005c 00000000 	 .word 0
+ 633 0060 FE3F0000 	 .word 16382
+ 634 0064 C1030000 	 .word 961
+ 635 0068 FF1F0000 	 .word 8191
+ 636 006c 00000000 	 .space 4
+ 637 0070 68000000 	 .word ACIM_FREQ_CTRL_1+104
+ 638 0074 00000000 	 .space 4
+ 639 0078 00000000 	 .word 0
+ 640 007c 00000000 	 .word 0
+ 641 0080 00000000 	 .word 0
+ 642 0084 1E050000 	 .word 1310
+ 643 0088 C8000000 	 .word 200
+ 644 008c C8000000 	 .word 200
+ 645 0090 E8030000 	 .word 1000
+ 646 0094 C8000000 	 .word 200
+ 647 0098 00000000 	 .word 0
+ 648 009c 0000     	 .short 0
+ 649 009e 0000     	 .short 0
+ 650 00a0 0000     	 .short 0
+ 651 00a2 0000     	 .space 2
+ 652 00a4 01       	 .byte 1
+ 653 00a5 00       	 .byte 0
+ 654 00a6 01       	 .byte 1
+ 655 00a7 01       	 .byte 1
+ 656 00a8 01       	 .byte 1
+ 657 00a9 0000     	 .space 2
+ 658 00ab 00       	 .byte 0
+ 659              	 .global ACIM_FREQ_CTRL_1_PT_Entry
+ 660              	 .section .data.ACIM_FREQ_CTRL_1_PT_Entry,"aw",%progbits
+ 661              	 .align 2
+ 664              	ACIM_FREQ_CTRL_1_PT_Entry:
+ 665 0000 4C000000 	 .word ACIM_FREQ_CTRL_1+76
+ 666 0004 00000000 	 .word 0
+ 667 0008 1F000000 	 .word 31
+ 668 000c FF7F0000 	 .word 32767
+ 669 0010 FF7F0000 	 .word 32767
+ 670 0014 00000000 	 .word ACIM_FREQ_CTRL_SetControlWordState
+ 671 0018 01       	 .byte 1
+ 672 0019 04       	 .byte 4
+ 673 001a 0000     	 .space 2
+ 674 001c 68000000 	 .word ACIM_FREQ_CTRL_1+104
+ 675 0020 C0F2FCFF 	 .word -200000
+ 676 0024 400D0300 	 .word 200000
+ 677 0028 70170000 	 .word 6000
+ 678 002c FCBA0200 	 .word 178940
+ 679 0030 00000000 	 .word 0
+ 680 0034 01       	 .byte 1
+ 681 0035 04       	 .byte 4
+ 682 0036 0000     	 .space 2
+ 683 0038 00000000 	 .word ACIM_FREQ_CTRL_1_vf_control
+ 684 003c 00000000 	 .word 0
+ 685 0040 409C0000 	 .word 40000
+ 686 0044 FF3B0000 	 .word 15359
+ 687 0048 0E110100 	 .word 69902
+ 688 004c 00000000 	 .word 0
+ 689 0050 01       	 .byte 1
+ 690 0051 04       	 .byte 4
+ 691 0052 0000     	 .space 2
+ 692 0054 04000000 	 .word ACIM_FREQ_CTRL_1_vf_control+4
+ 693 0058 00000000 	 .word 0
+ 694 005c 400D0300 	 .word 200000
+ 695 0060 81BB0000 	 .word 48001
+ 696 0064 5F570000 	 .word 22367
+ 697 0068 00000000 	 .word 0
+ 698 006c 01       	 .byte 1
+ 699 006d 04       	 .byte 4
+ 700 006e 0000     	 .space 2
+ 701 0070 A4000000 	 .word ACIM_FREQ_CTRL_1+164
+ 702 0074 00000000 	 .word 0
+ 703 0078 00000000 	 .word 0
+ 704 007c FF7F0000 	 .word 32767
+ 705 0080 FF7F0000 	 .word 32767
+ 706 0084 00000000 	 .word ACIM_FREQ_CTRL_SetMotorDirection
+ 707 0088 01       	 .byte 1
+ 708 0089 04       	 .byte 4
+ 709 008a 0000     	 .space 2
+ 710 008c 50000000 	 .word ACIM_FREQ_CTRL_1+80
+ 711 0090 64000000 	 .word 100
+ 712 0094 90D00300 	 .word 250000
+ 713 0098 FF7F0000 	 .word 32767
+ 714 009c FF7F0000 	 .word 32767
+ 715 00a0 00000000 	 .word ACIM_FREQ_CTRL_SetPWMFrequency
+ 716 00a4 01       	 .byte 1
+ 717 00a5 04       	 .byte 4
+ 718 00a6 0000     	 .space 2
+ 719 00a8 64000000 	 .word ACIM_FREQ_CTRL_1+100
+ 720 00ac 00000000 	 .word 0
+ 721 00b0 404B4C00 	 .word 5000000
+ 722 00b4 95420000 	 .word 17045
+ 723 00b8 0DF60000 	 .word 62989
+ 724 00bc 00000000 	 .word 0
+ 725 00c0 01       	 .byte 1
+ 726 00c1 04       	 .byte 4
+ 727 00c2 0000     	 .space 2
+ 728 00c4 60000000 	 .word ACIM_FREQ_CTRL_1+96
+ 729 00c8 00000000 	 .word 0
+ 730 00cc 64000000 	 .word 100
+ 731 00d0 C8000000 	 .word 200
+ 732 00d4 99E95100 	 .word 5368217
+ 733 00d8 00000000 	 .word 0
+ 734 00dc 01       	 .byte 1
+ 735 00dd 04       	 .byte 4
+ 736 00de 0000     	 .space 2
+ 737 00e0 00000000 	 .word 0
+ 738 00e4 00000000 	 .word 0
+ 739 00e8 FF7F0000 	 .word 32767
+ 740 00ec FF7F0000 	 .word 32767
+ 741 00f0 FF7F0000 	 .word 32767
+ 742 00f4 00000000 	 .word 0
+ 743 00f8 00       	 .byte 0
+ 744 00f9 04       	 .byte 4
+ 745 00fa 0000     	 .space 2
+ 746 00fc 00000000 	 .word 0
+ 747 0100 00000000 	 .word 0
+ 748 0104 FF7F0000 	 .word 32767
+ 749 0108 FF7F0000 	 .word 32767
+ 750 010c FF7F0000 	 .word 32767
+ 751 0110 00000000 	 .word 0
+ 752 0114 00       	 .byte 0
+ 753 0115 04       	 .byte 4
+ 754 0116 0000     	 .space 2
+ 755 0118 00000000 	 .word 0
+ 756 011c 00000000 	 .word 0
+ 757 0120 FF7F0000 	 .word 32767
+ 758 0124 FF7F0000 	 .word 32767
+ 759 0128 FF7F0000 	 .word 32767
+ 760 012c 00000000 	 .word 0
+ 761 0130 00       	 .byte 0
+ 762 0131 04       	 .byte 4
+ 763 0132 0000     	 .space 2
+ 764 0134 00000000 	 .word 0
+ 765 0138 00000000 	 .word 0
+ 766 013c FF7F0000 	 .word 32767
+ 767 0140 FF7F0000 	 .word 32767
+ 768 0144 FF7F0000 	 .word 32767
+ 769 0148 00000000 	 .word 0
+ 770 014c 00       	 .byte 0
+ 771 014d 04       	 .byte 4
+ 772 014e 0000     	 .space 2
+ 773 0150 00000000 	 .word 0
+ 774 0154 01000080 	 .word -2147483647
+ 775 0158 0000FF7F 	 .word 2147418112
+ 776 015c 01000000 	 .word 1
+ 777 0160 FF7F0000 	 .word 32767
+ 778 0164 00000000 	 .word 0
+ 779 0168 00       	 .byte 0
+ 780 0169 04       	 .byte 4
+ 781 016a 0000     	 .space 2
+ 782 016c 00000000 	 .word 0
+ 783 0170 00000000 	 .word 0
+ 784 0174 88130000 	 .word 5000
+ 785 0178 95420000 	 .word 17045
+ 786 017c 0DF60000 	 .word 62989
+ 787 0180 00000000 	 .word 0
+ 788 0184 00       	 .byte 0
+ 789 0185 04       	 .byte 4
+ 790 0186 0000     	 .space 2
+ 791 0188 00000000 	 .word 0
+ 792 018c 00000000 	 .word 0
+ 793 0190 88130000 	 .word 5000
+ 794 0194 FF7F0000 	 .word 32767
+ 795 0198 FF7F0000 	 .word 32767
+ 796 019c 00000000 	 .word 0
+ 797 01a0 00       	 .byte 0
+ 798 01a1 04       	 .byte 4
+ 799 01a2 0000     	 .space 2
+ 800 01a4 00000000 	 .word 0
+ 801 01a8 00000000 	 .word 0
+ 802 01ac 88130000 	 .word 5000
+ 803 01b0 FF7F0000 	 .word 32767
+ 804 01b4 FF7F0000 	 .word 32767
+ 805 01b8 00000000 	 .word 0
+ 806 01bc 00       	 .byte 0
+ 807 01bd 04       	 .byte 4
+ 808 01be 0000     	 .space 2
+ 809 01c0 58000000 	 .word ACIM_FREQ_CTRL_1+88
+ 810 01c4 00000000 	 .word 0
+ 811 01c8 68010000 	 .word 360
+ 812 01cc 68010000 	 .word 360
+ 813 01d0 0BB60000 	 .word 46603
+ 814 01d4 00000000 	 .word ACIM_FREQ_CTRL_SetAngleoffset
+ 815 01d8 01       	 .byte 1
+ 816 01d9 04       	 .byte 4
+ 817 01da 0000     	 .space 2
+ 818 01dc 5C000000 	 .word ACIM_FREQ_CTRL_1+92
+ 819 01e0 00000000 	 .word 0
+ 820 01e4 80BB0000 	 .word 48000
+ 821 01e8 81BB0000 	 .word 48001
+ 822 01ec 5F570000 	 .word 22367
+ 823 01f0 00000000 	 .word 0
+ 824 01f4 01       	 .byte 1
+ 825 01f5 04       	 .byte 4
+ 826 01f6 0000     	 .space 2
+ 827 01f8 00000000 	 .word 0
+ 828 01fc 01000080 	 .word -2147483647
+ 829 0200 0000FF7F 	 .word 2147418112
+ 830 0204 FF7F0000 	 .word 32767
+ 831 0208 FF7F0000 	 .word 32767
+ 832 020c 00000000 	 .word 0
+ 833 0210 00       	 .byte 0
+ 834 0211 04       	 .byte 4
+ 835 0212 0000     	 .space 2
+ 836 0214 00000000 	 .word 0
+ 837 0218 B03CFFFF 	 .word -50000
+ 838 021c 50C30000 	 .word 50000
+ 839 0220 70170000 	 .word 6000
+ 840 0224 FCBA0200 	 .word 178940
+ 841 0228 00000000 	 .word 0
+ 842 022c 00       	 .byte 0
+ 843 022d 04       	 .byte 4
+ 844 022e 0000     	 .space 2
+ 845              	 .global ACIM_FREQ_CTRL_1_ET_Entry
+ 846              	 .section .data.ACIM_FREQ_CTRL_1_ET_Entry,"aw",%progbits
+ 847              	 .align 2
+ 850              	ACIM_FREQ_CTRL_1_ET_Entry:
+ 851 0000 00000000 	 .word 0
+ 852 0004 00       	 .byte 0
+ 853 0005 00       	 .byte 0
+ 854 0006 02       	 .byte 2
+ 855 0007 00       	 .space 1
+ 856 0008 00000000 	 .word 0
+ 857 000c 01       	 .byte 1
+ 858 000d 00       	 .byte 0
+ 859 000e 02       	 .byte 2
+ 860 000f 00       	 .space 1
+ 861 0010 00000000 	 .word 0
+ 862 0014 02       	 .byte 2
+ 863 0015 00       	 .byte 0
+ 864 0016 02       	 .byte 2
+ 865 0017 00       	 .space 1
+ 866 0018 00000000 	 .word ACIM_FREQ_CTRL_MotorStop
+ 867 001c 03       	 .byte 3
+ 868 001d 00       	 .byte 0
+ 869 001e 03       	 .byte 3
+ 870 001f 00       	 .space 1
+ 871 0020 00000000 	 .word ACIM_FREQ_CTRL_MotorStop
+ 872 0024 04       	 .byte 4
+ 873 0025 00       	 .byte 0
+ 874 0026 03       	 .byte 3
+ 875 0027 00       	 .space 1
+ 876              	 .global ACIM_FREQ_CTRL_1_input_array
+ 877              	 .section .data.ACIM_FREQ_CTRL_1_input_array,"aw",%progbits
+ 878              	 .align 2
+ 881              	ACIM_FREQ_CTRL_1_input_array:
+ 882 0000 70000000 	 .word ACIM_FREQ_CTRL_1+112
+ 883              	 .global ACIM_FREQ_CTRL_1_output_array
+ 884              	 .section .data.ACIM_FREQ_CTRL_1_output_array,"aw",%progbits
+ 885              	 .align 2
+ 888              	ACIM_FREQ_CTRL_1_output_array:
+ 889 0000 68000000 	 .word ACIM_FREQ_CTRL_1+104
+ 890 0004 28000000 	 .word ACIM_FREQ_CTRL_1_PT_Entry+40
+ 891 0008 7C000000 	 .word ACIM_FREQ_CTRL_1+124
+ 892 000c 78000000 	 .word ACIM_FREQ_CTRL_1+120
+ 893              	 .global ACIM_FREQ_CTRL_1_FB
+ 894              	 .section .rodata
+ 895 007d 000000   	 .align 2
+ 896              	.LC13:
+ 897 0080 4143494D 	 .ascii "ACIM_FREQ_CTRL_1\000"
+ 897      5F465245 
+ 897      515F4354 
+ 897      524C5F31 
+ 897      00
+ 898 0091 000000   	 .section .data.ACIM_FREQ_CTRL_1_FB,"aw",%progbits
+ 899              	 .align 2
+ 902              	ACIM_FREQ_CTRL_1_FB:
+ 903 0000 00000000 	 .word ACIM_FREQ_CTRL_1_input_array
+ 904 0004 00000000 	 .word ACIM_FREQ_CTRL_1_output_array
+ 905 0008 00000000 	 .word ACIM_FREQ_CTRL_1
+ 906 000c 00000000 	 .word 0
+ 907 0010 80000000 	 .word .LC13
+ 908              	 .text
+ 909              	.Letext0:
+ 910              	 .file 1 "c:\\users\\pescatore\\switchdrive\\private\\konzept\\mcu for gate driver\\dave_4-4-2_64bit_2018-02-23\\dave-ide-4.4.2-64bit\\eclipse\\arm-gcc-49\\arm-none-eabi\\include\\machine\\_default_types.h"
+ 911              	 .file 2 "c:\\users\\pescatore\\switchdrive\\private\\konzept\\mcu for gate driver\\dave_4-4-2_64bit_2018-02-23\\dave-ide-4.4.2-64bit\\eclipse\\arm-gcc-49\\arm-none-eabi\\include\\stdint.h"
+ 912              	 .file 3 "F:/GitHub Projects/FH Luzern/BAT/BAT/Libraries/CMSIS/Infineon/XMC4400_series/Include/XMC4400.h"
+ 913              	 .file 4 "../Dave/Generated/ACIM_FREQ_CTRL/../MOTOR_LIB/motor_lib.h"
+ 914              	 .file 5 "F:/GitHub Projects/FH Luzern/BAT/BAT/Libraries/XMCLib/inc/xmc_ccu8.h"
+ 915              	 .file 6 "F:/GitHub Projects/FH Luzern/BAT/BAT/Libraries/XMCLib/inc/xmc4_scu.h"
+ 916              	 .file 7 "../Dave/Generated/ACIM_FREQ_CTRL/../PWM_SVM/../GLOBAL_CCU8/global_ccu8.h"
+ 917              	 .file 8 "F:/GitHub Projects/FH Luzern/BAT/BAT/Libraries/XMCLib/inc/xmc_gpio.h"
+ 918              	 .file 9 "F:/GitHub Projects/FH Luzern/BAT/BAT/Libraries/XMCLib/inc/xmc4_gpio.h"
+ 919              	 .file 10 "../Dave/Generated/ACIM_FREQ_CTRL/../PWM_SVM/pwm_svm.h"
+ 920              	 .file 11 "../Dave/Generated/ACIM_FREQ_CTRL/../AUTOMATION/../SYSTIMER/systimer.h"
+ 921              	 .file 12 "../Dave/Generated/ACIM_FREQ_CTRL/../AUTOMATION/automation.h"
+ 922              	 .file 13 "../Dave/Generated/ACIM_FREQ_CTRL/acim_freq_ctrl.h"
+ 923              	 .file 14 "F:/GitHub Projects/FH Luzern/BAT/BAT/Libraries/CMSIS/Include/core_cm4.h"
+ 924              	 .file 15 "F:/GitHub Projects/FH Luzern/BAT/BAT/Libraries/CMSIS/Infineon/XMC4400_series/Include/system_XMC4400.h"
+ 925              	 .file 16 "../Dave/Generated/ACIM_FREQ_CTRL/../PWM_SVM/pwm_svm_extern.h"
+ 926              	 .file 17 "../Dave/Generated/ACIM_FREQ_CTRL/../AUTOMATION/automation_extern.h"
+ 927              	 .file 18 "../Dave/Generated/ACIM_FREQ_CTRL/acim_freq_ctrl_conf.c"
+DEFINED SYMBOLS
+                            *ABS*:00000000 acim_freq_ctrl_conf.c
+    {standard input}:61     .rodata.ACIM_FREQ_CTRL_0_STATES:00000000 ACIM_FREQ_CTRL_0_STATES
+    {standard input}:21     .rodata:00000000 $d
+    {standard input}:58     .rodata.ACIM_FREQ_CTRL_0_STATES:00000000 $d
+    {standard input}:131    .data.ACIM_FREQ_CTRL_0_DSM:00000000 ACIM_FREQ_CTRL_0_DSM
+    {standard input}:128    .data.ACIM_FREQ_CTRL_0_DSM:00000000 $d
+    {standard input}:185    .data.ACIM_FREQ_CTRL_0:00000000 ACIM_FREQ_CTRL_0
+    {standard input}:143    .data.ACIM_FREQ_CTRL_0_FCL_InterruptConfig:00000000 ACIM_FREQ_CTRL_0_FCL_InterruptConfig
+    {standard input}:140    .data.ACIM_FREQ_CTRL_0_FCL_InterruptConfig:00000000 $d
+    {standard input}:152    .data.ACIM_FREQ_CTRL_0_vf_control:00000000 ACIM_FREQ_CTRL_0_vf_control
+    {standard input}:149    .data.ACIM_FREQ_CTRL_0_vf_control:00000000 $d
+    {standard input}:163    .rodata.ACIM_FREQ_CTRL_0_Config:00000000 ACIM_FREQ_CTRL_0_Config
+    {standard input}:160    .rodata.ACIM_FREQ_CTRL_0_Config:00000000 $d
+    {standard input}:182    .data.ACIM_FREQ_CTRL_0:00000000 $d
+    {standard input}:238    .data.ACIM_FREQ_CTRL_0_PT_Entry:00000000 ACIM_FREQ_CTRL_0_PT_Entry
+    {standard input}:424    .data.ACIM_FREQ_CTRL_0_ET_Entry:00000000 ACIM_FREQ_CTRL_0_ET_Entry
+    {standard input}:476    .data.ACIM_FREQ_CTRL_0_FB:00000000 ACIM_FREQ_CTRL_0_FB
+    {standard input}:235    .data.ACIM_FREQ_CTRL_0_PT_Entry:00000000 $d
+    {standard input}:421    .data.ACIM_FREQ_CTRL_0_ET_Entry:00000000 $d
+    {standard input}:455    .data.ACIM_FREQ_CTRL_0_input_array:00000000 ACIM_FREQ_CTRL_0_input_array
+    {standard input}:452    .data.ACIM_FREQ_CTRL_0_input_array:00000000 $d
+    {standard input}:462    .data.ACIM_FREQ_CTRL_0_output_array:00000000 ACIM_FREQ_CTRL_0_output_array
+    {standard input}:459    .data.ACIM_FREQ_CTRL_0_output_array:00000000 $d
+    {standard input}:473    .data.ACIM_FREQ_CTRL_0_FB:00000000 $d
+    {standard input}:487    .rodata.ACIM_FREQ_CTRL_1_STATES:00000000 ACIM_FREQ_CTRL_1_STATES
+    {standard input}:484    .rodata.ACIM_FREQ_CTRL_1_STATES:00000000 $d
+    {standard input}:557    .data.ACIM_FREQ_CTRL_1_DSM:00000000 ACIM_FREQ_CTRL_1_DSM
+    {standard input}:554    .data.ACIM_FREQ_CTRL_1_DSM:00000000 $d
+    {standard input}:611    .data.ACIM_FREQ_CTRL_1:00000000 ACIM_FREQ_CTRL_1
+    {standard input}:569    .data.ACIM_FREQ_CTRL_1_FCL_InterruptConfig:00000000 ACIM_FREQ_CTRL_1_FCL_InterruptConfig
+    {standard input}:566    .data.ACIM_FREQ_CTRL_1_FCL_InterruptConfig:00000000 $d
+    {standard input}:578    .data.ACIM_FREQ_CTRL_1_vf_control:00000000 ACIM_FREQ_CTRL_1_vf_control
+    {standard input}:575    .data.ACIM_FREQ_CTRL_1_vf_control:00000000 $d
+    {standard input}:589    .rodata.ACIM_FREQ_CTRL_1_Config:00000000 ACIM_FREQ_CTRL_1_Config
+    {standard input}:586    .rodata.ACIM_FREQ_CTRL_1_Config:00000000 $d
+    {standard input}:608    .data.ACIM_FREQ_CTRL_1:00000000 $d
+    {standard input}:664    .data.ACIM_FREQ_CTRL_1_PT_Entry:00000000 ACIM_FREQ_CTRL_1_PT_Entry
+    {standard input}:850    .data.ACIM_FREQ_CTRL_1_ET_Entry:00000000 ACIM_FREQ_CTRL_1_ET_Entry
+    {standard input}:902    .data.ACIM_FREQ_CTRL_1_FB:00000000 ACIM_FREQ_CTRL_1_FB
+    {standard input}:661    .data.ACIM_FREQ_CTRL_1_PT_Entry:00000000 $d
+    {standard input}:847    .data.ACIM_FREQ_CTRL_1_ET_Entry:00000000 $d
+    {standard input}:881    .data.ACIM_FREQ_CTRL_1_input_array:00000000 ACIM_FREQ_CTRL_1_input_array
+    {standard input}:878    .data.ACIM_FREQ_CTRL_1_input_array:00000000 $d
+    {standard input}:888    .data.ACIM_FREQ_CTRL_1_output_array:00000000 ACIM_FREQ_CTRL_1_output_array
+    {standard input}:885    .data.ACIM_FREQ_CTRL_1_output_array:00000000 $d
+    {standard input}:899    .data.ACIM_FREQ_CTRL_1_FB:00000000 $d
+
+UNDEFINED SYMBOLS
+ACIM_FREQ_CTRL_DSM_SwitchedOff_Entry
+ACIM_FREQ_CTRL_DSM_SwitchedOff_Action
+ACIM_FREQ_CTRL_DSM_SwitchedOff_Exit
+ACIM_FREQ_CTRL_DSM_Enabled_Action
+ACIM_FREQ_CTRL_DSM_Enabled_Exit
+ACIM_FREQ_CTRL_DSM_Switched_On_Action
+ACIM_FREQ_CTRL_DSM_Operation_Entry
+ACIM_FREQ_CTRL_DSM_Operation_Action
+ACIM_FREQ_CTRL_DSM_Operation_Exit
+ACIM_FREQ_CTRL_DSM_Coast_Stop_Entry
+ACIM_FREQ_CTRL_DSM_Coast_Stop_Action
+ACIM_FREQ_CTRL_DSM_Coast_Stop_Exit
+ACIM_FREQ_CTRL_DSM_Quick_Stop_Entry
+ACIM_FREQ_CTRL_DSM_Quick_Stop_Action
+ACIM_FREQ_CTRL_DSM_Quick_Stop_Exit
+ACIM_FREQ_CTRL_DSM_Rampdown_Entry
+ACIM_FREQ_CTRL_DSM_Rampdown_Action
+ACIM_FREQ_CTRL_DSM_Error_Entry
+ACIM_FREQ_CTRL_DSM_Error_Action
+ACIM_FREQ_CTRL_DSM_Error_Exit
+ACIM_FREQ_CTRL_DSM_Safe_Torque_Off_Entry
+ACIM_FREQ_CTRL_DSM_Safe_Torque_Off_Action
+ACIM_FREQ_CTRL_DSM_Safe_Torque_Off_Exit
+ACIM_FREQ_CTRL_DSM_Trouble_Action
+PWM_SVM_0
+AUTOMATION_0
+ACIM_FREQ_CTRL_0_PrimaryControlLoop
+ACIM_FREQ_CTRL_0_SetValueProcessing
+AUTOMATION_SM_Handler
+ACIM_FREQ_CTRL_SetControlWordState
+ACIM_FREQ_CTRL_SetMotorDirection
+ACIM_FREQ_CTRL_SetPWMFrequency
+ACIM_FREQ_CTRL_SetAngleoffset
+ACIM_FREQ_CTRL_MotorStop
+PWM_SVM_1
+ACIM_FREQ_CTRL_1_PrimaryControlLoop
+ACIM_FREQ_CTRL_1_SetValueProcessing

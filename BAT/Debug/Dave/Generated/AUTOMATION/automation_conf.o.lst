@@ -1,0 +1,250 @@
+   1              	 .syntax unified
+   2              	 .cpu cortex-m4
+   3              	 .eabi_attribute 27,3
+   4              	 .fpu fpv4-sp-d16
+   5              	 .eabi_attribute 20,1
+   6              	 .eabi_attribute 21,1
+   7              	 .eabi_attribute 23,3
+   8              	 .eabi_attribute 24,1
+   9              	 .eabi_attribute 25,1
+  10              	 .eabi_attribute 26,1
+  11              	 .eabi_attribute 30,6
+  12              	 .eabi_attribute 34,1
+  13              	 .eabi_attribute 18,4
+  14              	 .thumb
+  15              	 .file "automation_conf.c"
+  16              	 .text
+  17              	.Ltext0:
+  18              	 .cfi_sections .debug_frame
+  19              	 .comm AUTOMATION_App_Table,8,4
+  20              	 .comm AUTOMATION_Task_Table,72,4
+  21              	 .comm AUTOMATION_SM_Table,4,4
+  22              	 .comm AUTOMATION_PH_Param_Table,4,4
+  23              	 .comm AUTOMATION_PH_Parameter_Buf,16,4
+  24              	 .comm AUTOMATION_FB_Connect_Table,216,4
+  25              	 .comm AUTOMATION_FB_Table,12,4
+  26              	 .comm AUTOMATION_EH_LOGBOOK_DATA,160,4
+  27              	 .comm AUTOMATION_EH_APPBUFFER_DATA,40,4
+  28              	 .global AUTOMATION_EH_ErrorLogbook
+  29              	 .section .data.AUTOMATION_EH_ErrorLogbook,"aw",%progbits
+  30              	 .align 2
+  33              	AUTOMATION_EH_ErrorLogbook:
+  34 0000 00       	 .byte 0
+  35 0001 00       	 .byte 0
+  36 0002 00       	 .byte 0
+  37 0003 0A       	 .byte 10
+  38 0004 0A       	 .byte 10
+  39 0005 00       	 .byte 0
+  40 0006 0000     	 .space 2
+  41 0008 00000000 	 .word AUTOMATION_EH_LOGBOOK_DATA
+  42              	 .global AUTOMATION_EH_AppErrorBuf
+  43              	 .section .data.AUTOMATION_EH_AppErrorBuf,"aw",%progbits
+  44              	 .align 2
+  47              	AUTOMATION_EH_AppErrorBuf:
+  48 0000 00       	 .byte 0
+  49 0001 00       	 .byte 0
+  50 0002 00       	 .byte 0
+  51 0003 00       	 .space 1
+  52 0004 00000000 	 .word AUTOMATION_EH_APPBUFFER_DATA
+  53              	 .comm AUTOMATION_EH_BitErrorTable,384,4
+  54              	 .global AUTOMATION_FB_Ramp0_Config
+  55              	 .section .rodata.AUTOMATION_FB_Ramp0_Config,"a",%progbits
+  56              	 .align 2
+  59              	AUTOMATION_FB_Ramp0_Config:
+  60 0000 00000000 	 .word 0
+  61 0004 DC050000 	 .word 1500
+  62 0008 64000000 	 .word 100
+  63 000c 0A1A0000 	 .word 6666
+  64 0010 2C010000 	 .word 300
+  65 0014 B0040000 	 .word 1200
+  66 0018 9A020000 	 .word 666
+  67 001c C8000000 	 .word 200
+  68 0020 00       	 .byte 0
+  69 0021 00       	 .byte 0
+  70 0022 14       	 .byte 20
+  71 0023 00       	 .space 1
+  72              	 .global AUTOMATION_Ramp0_Handle
+  73              	 .section .data.AUTOMATION_Ramp0_Handle,"aw",%progbits
+  74              	 .align 2
+  77              	AUTOMATION_Ramp0_Handle:
+  78 0000 DC050000 	 .word 1500
+  79 0004 00000000 	 .word AUTOMATION_Ramp0_Handle
+  80 0008 00000000 	 .space 4
+  81 000c 00000000 	 .word 0
+  82 0010 00800000 	 .word 32768
+  83 0014 10000000 	 .word AUTOMATION_Ramp0_Handle+16
+  84 0018 42000000 	 .word 66
+  85 001c 00000000 	 .space 4
+  86 0020 00000000 	 .word 0
+  87 0024 DC050000 	 .word 1500
+  88 0028 C8000000 	 .word 200
+  89 002c 00000000 	 .word 0
+  90 0030 C8000000 	 .word 200
+  91 0034 00000000 	 .word 0
+  92 0038 00000000 	 .space 4
+  93 003c 00000000 	 .word 0
+  94 0040 2C010000 	 .word 300
+  95 0044 B0040000 	 .word 1200
+  96 0048 00000000 	 .space 4
+  97 004c 00000000 	 .word AUTOMATION_FB_Ramp0_Config
+  98              	 .global AUTOMATION_FB_RAMP0_INPUT
+  99              	 .section .data.AUTOMATION_FB_RAMP0_INPUT,"aw",%progbits
+ 100              	 .align 2
+ 103              	AUTOMATION_FB_RAMP0_INPUT:
+ 104 0000 04000000 	 .word AUTOMATION_Ramp0_Handle+4
+ 105 0004 14000000 	 .word AUTOMATION_Ramp0_Handle+20
+ 106              	 .global AUTOMATION_FB_RAMP0_OUTPUT
+ 107              	 .section .data.AUTOMATION_FB_RAMP0_OUTPUT,"aw",%progbits
+ 108              	 .align 2
+ 111              	AUTOMATION_FB_RAMP0_OUTPUT:
+ 112 0000 0C000000 	 .word AUTOMATION_Ramp0_Handle+12
+ 113              	 .global AUTOMATION_FB_RAMP_0
+ 114              	 .section .rodata
+ 115              	 .align 2
+ 116              	.LC0:
+ 117 0000 46425F52 	 .ascii "FB_RAMP_0\000"
+ 117      414D505F 
+ 117      3000
+ 118              	 .section .data.AUTOMATION_FB_RAMP_0,"aw",%progbits
+ 119              	 .align 2
+ 122              	AUTOMATION_FB_RAMP_0:
+ 123 0000 00000000 	 .word AUTOMATION_FB_RAMP0_INPUT
+ 124 0004 00000000 	 .word AUTOMATION_FB_RAMP0_OUTPUT
+ 125 0008 00000000 	 .word AUTOMATION_Ramp0_Handle
+ 126 000c 00000000 	 .word AUTOMATION_FB_LinearRamp
+ 127 0010 00000000 	 .word .LC0
+ 128              	 .global AUTOMATION_FB_Ramp1_Config
+ 129              	 .section .rodata.AUTOMATION_FB_Ramp1_Config,"a",%progbits
+ 130              	 .align 2
+ 133              	AUTOMATION_FB_Ramp1_Config:
+ 134 0000 00000000 	 .word 0
+ 135 0004 DC050000 	 .word 1500
+ 136 0008 64000000 	 .word 100
+ 137 000c 0A1A0000 	 .word 6666
+ 138 0010 2C010000 	 .word 300
+ 139 0014 B0040000 	 .word 1200
+ 140 0018 9A020000 	 .word 666
+ 141 001c C8000000 	 .word 200
+ 142 0020 00       	 .byte 0
+ 143 0021 00       	 .byte 0
+ 144 0022 14       	 .byte 20
+ 145 0023 00       	 .space 1
+ 146              	 .global AUTOMATION_Ramp1_Handle
+ 147              	 .section .data.AUTOMATION_Ramp1_Handle,"aw",%progbits
+ 148              	 .align 2
+ 151              	AUTOMATION_Ramp1_Handle:
+ 152 0000 DC050000 	 .word 1500
+ 153 0004 00000000 	 .word AUTOMATION_Ramp0_Handle
+ 154 0008 00000000 	 .space 4
+ 155 000c 00000000 	 .word 0
+ 156 0010 00800000 	 .word 32768
+ 157 0014 10000000 	 .word AUTOMATION_Ramp0_Handle+16
+ 158 0018 42000000 	 .word 66
+ 159 001c 00000000 	 .space 4
+ 160 0020 00000000 	 .word 0
+ 161 0024 DC050000 	 .word 1500
+ 162 0028 C8000000 	 .word 200
+ 163 002c 00000000 	 .word 0
+ 164 0030 C8000000 	 .word 200
+ 165 0034 00000000 	 .word 0
+ 166 0038 00000000 	 .space 4
+ 167 003c 00000000 	 .word 0
+ 168 0040 2C010000 	 .word 300
+ 169 0044 B0040000 	 .word 1200
+ 170 0048 00000000 	 .space 4
+ 171 004c 00000000 	 .word AUTOMATION_FB_Ramp1_Config
+ 172              	 .global AUTOMATION_FB_RAMP1_INPUT
+ 173              	 .section .data.AUTOMATION_FB_RAMP1_INPUT,"aw",%progbits
+ 174              	 .align 2
+ 177              	AUTOMATION_FB_RAMP1_INPUT:
+ 178 0000 04000000 	 .word AUTOMATION_Ramp1_Handle+4
+ 179 0004 14000000 	 .word AUTOMATION_Ramp1_Handle+20
+ 180              	 .global AUTOMATION_FB_RAMP1_OUTPUT
+ 181              	 .section .data.AUTOMATION_FB_RAMP1_OUTPUT,"aw",%progbits
+ 182              	 .align 2
+ 185              	AUTOMATION_FB_RAMP1_OUTPUT:
+ 186 0000 0C000000 	 .word AUTOMATION_Ramp1_Handle+12
+ 187              	 .global AUTOMATION_FB_RAMP_1
+ 188              	 .section .rodata
+ 189 000a 0000     	 .align 2
+ 190              	.LC1:
+ 191 000c 46425F52 	 .ascii "FB_RAMP_1\000"
+ 191      414D505F 
+ 191      3100
+ 192 0016 0000     	 .section .data.AUTOMATION_FB_RAMP_1,"aw",%progbits
+ 193              	 .align 2
+ 196              	AUTOMATION_FB_RAMP_1:
+ 197 0000 00000000 	 .word AUTOMATION_FB_RAMP1_INPUT
+ 198 0004 00000000 	 .word AUTOMATION_FB_RAMP1_OUTPUT
+ 199 0008 00000000 	 .word AUTOMATION_Ramp1_Handle
+ 200 000c 00000000 	 .word AUTOMATION_FB_LinearRamp
+ 201 0010 0C000000 	 .word .LC1
+ 202              	 .comm AUTOMATION_FB_ExecutionOrderList,4,4
+ 203              	 .global AUTOMATION_0
+ 204              	 .section .data.AUTOMATION_0,"aw",%progbits
+ 205              	 .align 2
+ 208              	AUTOMATION_0:
+ 209 0000 00000000 	 .word SYSTIMER_0
+ 210 0004 00000000 	 .word 0
+ 211 0008 00000000 	 .word 0
+ 212 000c 00       	 .byte 0
+ 213 000d 00       	 .byte 0
+ 214 000e 00       	 .byte 0
+ 215 000f 00       	 .byte 0
+ 216 0010 00       	 .byte 0
+ 217 0011 00       	 .byte 0
+ 218 0012 00       	 .byte 0
+ 219 0013 12       	 .byte 18
+ 220              	 .text
+ 221              	.Letext0:
+ 222              	 .file 1 "c:\\users\\pescatore\\switchdrive\\private\\konzept\\mcu for gate driver\\dave_4-4-2_64bit_2018-02-23\\dave-ide-4.4.2-64bit\\eclipse\\arm-gcc-49\\arm-none-eabi\\include\\machine\\_default_types.h"
+ 223              	 .file 2 "c:\\users\\pescatore\\switchdrive\\private\\konzept\\mcu for gate driver\\dave_4-4-2_64bit_2018-02-23\\dave-ide-4.4.2-64bit\\eclipse\\arm-gcc-49\\arm-none-eabi\\include\\stdint.h"
+ 224              	 .file 3 "../Dave/Generated/AUTOMATION/../SYSTIMER/systimer.h"
+ 225              	 .file 4 "../Dave/Generated/AUTOMATION/automation.h"
+ 226              	 .file 5 "F:/GitHub Projects/FH Luzern/BAT/BAT/Libraries/CMSIS/Include/core_cm4.h"
+ 227              	 .file 6 "../Dave/Generated/AUTOMATION/../SYSTIMER/systimer_extern.h"
+ 228              	 .file 7 "../Dave/Generated/AUTOMATION/automation_conf.c"
+DEFINED SYMBOLS
+                            *ABS*:00000000 automation_conf.c
+                            *COM*:00000008 AUTOMATION_App_Table
+                            *COM*:00000048 AUTOMATION_Task_Table
+                            *COM*:00000004 AUTOMATION_SM_Table
+                            *COM*:00000004 AUTOMATION_PH_Param_Table
+                            *COM*:00000010 AUTOMATION_PH_Parameter_Buf
+                            *COM*:000000d8 AUTOMATION_FB_Connect_Table
+                            *COM*:0000000c AUTOMATION_FB_Table
+                            *COM*:000000a0 AUTOMATION_EH_LOGBOOK_DATA
+                            *COM*:00000028 AUTOMATION_EH_APPBUFFER_DATA
+    {standard input}:33     .data.AUTOMATION_EH_ErrorLogbook:00000000 AUTOMATION_EH_ErrorLogbook
+    {standard input}:30     .data.AUTOMATION_EH_ErrorLogbook:00000000 $d
+    {standard input}:47     .data.AUTOMATION_EH_AppErrorBuf:00000000 AUTOMATION_EH_AppErrorBuf
+    {standard input}:44     .data.AUTOMATION_EH_AppErrorBuf:00000000 $d
+                            *COM*:00000180 AUTOMATION_EH_BitErrorTable
+    {standard input}:59     .rodata.AUTOMATION_FB_Ramp0_Config:00000000 AUTOMATION_FB_Ramp0_Config
+    {standard input}:56     .rodata.AUTOMATION_FB_Ramp0_Config:00000000 $d
+    {standard input}:77     .data.AUTOMATION_Ramp0_Handle:00000000 AUTOMATION_Ramp0_Handle
+    {standard input}:74     .data.AUTOMATION_Ramp0_Handle:00000000 $d
+    {standard input}:103    .data.AUTOMATION_FB_RAMP0_INPUT:00000000 AUTOMATION_FB_RAMP0_INPUT
+    {standard input}:100    .data.AUTOMATION_FB_RAMP0_INPUT:00000000 $d
+    {standard input}:111    .data.AUTOMATION_FB_RAMP0_OUTPUT:00000000 AUTOMATION_FB_RAMP0_OUTPUT
+    {standard input}:108    .data.AUTOMATION_FB_RAMP0_OUTPUT:00000000 $d
+    {standard input}:122    .data.AUTOMATION_FB_RAMP_0:00000000 AUTOMATION_FB_RAMP_0
+    {standard input}:115    .rodata:00000000 $d
+    {standard input}:119    .data.AUTOMATION_FB_RAMP_0:00000000 $d
+    {standard input}:133    .rodata.AUTOMATION_FB_Ramp1_Config:00000000 AUTOMATION_FB_Ramp1_Config
+    {standard input}:130    .rodata.AUTOMATION_FB_Ramp1_Config:00000000 $d
+    {standard input}:151    .data.AUTOMATION_Ramp1_Handle:00000000 AUTOMATION_Ramp1_Handle
+    {standard input}:148    .data.AUTOMATION_Ramp1_Handle:00000000 $d
+    {standard input}:177    .data.AUTOMATION_FB_RAMP1_INPUT:00000000 AUTOMATION_FB_RAMP1_INPUT
+    {standard input}:174    .data.AUTOMATION_FB_RAMP1_INPUT:00000000 $d
+    {standard input}:185    .data.AUTOMATION_FB_RAMP1_OUTPUT:00000000 AUTOMATION_FB_RAMP1_OUTPUT
+    {standard input}:182    .data.AUTOMATION_FB_RAMP1_OUTPUT:00000000 $d
+    {standard input}:196    .data.AUTOMATION_FB_RAMP_1:00000000 AUTOMATION_FB_RAMP_1
+    {standard input}:193    .data.AUTOMATION_FB_RAMP_1:00000000 $d
+                            *COM*:00000004 AUTOMATION_FB_ExecutionOrderList
+    {standard input}:208    .data.AUTOMATION_0:00000000 AUTOMATION_0
+    {standard input}:205    .data.AUTOMATION_0:00000000 $d
+
+UNDEFINED SYMBOLS
+AUTOMATION_FB_LinearRamp
+SYSTIMER_0
