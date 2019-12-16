@@ -168,8 +168,8 @@ DAVE_STATUS_t DAVE_Init(void)
    } 
   if (init_status == DAVE_STATUS_SUCCESS)
   {
-	 /**  Initialization of DIGITAL_IO APP instance DIGITAL_IO_18 */
-	 init_status = (DAVE_STATUS_t)DIGITAL_IO_Init(&DIGITAL_IO_18); 
+	 /**  Initialization of DIGITAL_IO APP instance HS_Overtemp */
+	 init_status = (DAVE_STATUS_t)DIGITAL_IO_Init(&HS_Overtemp); 
    } 
   if (init_status == DAVE_STATUS_SUCCESS)
   {

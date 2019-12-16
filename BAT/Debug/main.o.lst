@@ -1043,14 +1043,20 @@
  291              	 .cfi_endproc
  292              	.LFE242:
  294              	 .comm result,2,2
- 295 0022 00BF     	 .section .text.VADC0_C0_2_IRQHandler,"ax",%progbits
- 296              	 .align 2
- 297              	 .global VADC0_C0_2_IRQHandler
- 298              	 .thumb
- 299              	 .thumb_func
- 301              	VADC0_C0_2_IRQHandler:
- 302              	.LFB503:
- 303              	 .file 3 "../main.c"
+ 295              	 .global __aeabi_i2d
+ 296              	 .global __aeabi_ddiv
+ 297              	 .global __aeabi_dsub
+ 298              	 .global __aeabi_dmul
+ 299              	 .global __aeabi_d2f
+ 300              	 .global __aeabi_f2d
+ 301 0022 00BF     	 .section .text.VADC0_C0_2_IRQHandler,"ax",%progbits
+ 302              	 .align 2
+ 303              	 .global VADC0_C0_2_IRQHandler
+ 304              	 .thumb
+ 305              	 .thumb_func
+ 307              	VADC0_C0_2_IRQHandler:
+ 308              	.LFB503:
+ 309              	 .file 3 "../main.c"
    1:../main.c     **** /*
    2:../main.c     ****  * main.c
    3:../main.c     ****  *
@@ -1059,415 +1065,590 @@
    6:../main.c     ****  */
    7:../main.c     **** 
    8:../main.c     **** #include <DAVE.h>                 //Declarations from DAVE Code Generation (includes SFR declaratio
-   9:../main.c     **** 
-  10:../main.c     **** XMC_VADC_RESULT_SIZE_t result;
-  11:../main.c     **** void Adc_Measurement_Handler() {
- 304              	 .loc 3 11 0
- 305              	 .cfi_startproc
- 306              	 
- 307              	 
- 308 0000 80B5     	 push {r7,lr}
- 309              	.LCFI33:
- 310              	 .cfi_def_cfa_offset 8
- 311              	 .cfi_offset 7,-8
- 312              	 .cfi_offset 14,-4
- 313 0002 00AF     	 add r7,sp,#0
- 314              	.LCFI34:
- 315              	 .cfi_def_cfa_register 7
-  12:../main.c     **** #if(UC_SERIES != XMC11)
-  13:../main.c     **** 	result = ADC_MEASUREMENT_GetResult(&ADC_MEASUREMENT_Channel_A);
- 316              	 .loc 3 13 0
- 317 0004 0348     	 ldr r0,.L10
- 318 0006 FFF7FEFF 	 bl ADC_MEASUREMENT_GetResult
- 319 000a 0346     	 mov r3,r0
- 320 000c 1A46     	 mov r2,r3
- 321 000e 024B     	 ldr r3,.L10+4
- 322 0010 1A80     	 strh r2,[r3]
-  14:../main.c     **** #else
-  15:../main.c     **** 	result = ADC_MEASUREMENT_GetGlobalResult();
-  16:../main.c     **** #endif
-  17:../main.c     **** 
-  18:../main.c     **** 	if (result >= 2048) {
-  19:../main.c     **** 		//   DIGITAL_IO_SetOutputLow(&DIGITAL_IO_0);
-  20:../main.c     **** 	} else {
-  21:../main.c     **** 		// DIGITAL_IO_SetOutputHigh(&DIGITAL_IO_0);
-  22:../main.c     **** 	}
-  23:../main.c     **** }
- 323              	 .loc 3 23 0
- 324 0012 80BD     	 pop {r7,pc}
- 325              	.L11:
- 326              	 .align 2
- 327              	.L10:
- 328 0014 00000000 	 .word ADC_MEASUREMENT_Channel_A_handle
- 329 0018 00000000 	 .word result
- 330              	 .cfi_endproc
- 331              	.LFE503:
- 333              	 .global data
- 334              	 .section .data.data,"aw",%progbits
- 335              	 .align 2
- 338              	data:
- 339 0000 42444120 	 .ascii "BDA Andy Fischer\000"
- 339      416E6479 
- 339      20466973 
- 339      63686572 
- 339      00
- 340              	 .comm rec_data,10,4
- 341 0011 000000   	 .section .text.EndofTransmit,"ax",%progbits
- 342              	 .align 2
- 343              	 .global EndofTransmit
- 344              	 .thumb
- 345              	 .thumb_func
- 347              	EndofTransmit:
- 348              	.LFB504:
-  24:../main.c     **** 
-  25:../main.c     **** /**
-  26:../main.c     **** 
-  27:../main.c     ****  * @brief main() - Application entry point
-  28:../main.c     ****  *
-  29:../main.c     ****  * <b>Details of function</b><br>
-  30:../main.c     ****  * This routine is the application entry point. It is invoked by the device startup code. It is res
-  31:../main.c     ****  * invoking the APP initialization dispatcher routine - DAVE_Init() and hosting the place-holder fo
-  32:../main.c     ****  * code.
-  33:../main.c     ****  */
-  34:../main.c     **** 
-  35:../main.c     **** uint8_t data[] = "BDA Andy Fischer";
-  36:../main.c     **** 
-  37:../main.c     **** uint8_t rec_data[10];
-  38:../main.c     **** 
-  39:../main.c     **** 
-  40:../main.c     **** void EndofTransmit() //Callback function for "End of transmit" event.
-  41:../main.c     **** 
-  42:../main.c     **** {
- 349              	 .loc 3 42 0
- 350              	 .cfi_startproc
- 351              	 
- 352              	 
- 353 0000 80B5     	 push {r7,lr}
- 354              	.LCFI35:
- 355              	 .cfi_def_cfa_offset 8
- 356              	 .cfi_offset 7,-8
- 357              	 .cfi_offset 14,-4
- 358 0002 00AF     	 add r7,sp,#0
- 359              	.LCFI36:
- 360              	 .cfi_def_cfa_register 7
-  43:../main.c     **** 	UART_Receive(&UART_0, rec_data, sizeof(rec_data));
- 361              	 .loc 3 43 0
- 362 0004 0448     	 ldr r0,.L13
- 363 0006 0549     	 ldr r1,.L13+4
- 364 0008 0A22     	 movs r2,#10
- 365 000a FFF7FEFF 	 bl UART_Receive
-  44:../main.c     **** 	DIGITAL_IO_SetOutputLow(&RS485_DIR); // ready to receive
- 366              	 .loc 3 44 0
- 367 000e 0448     	 ldr r0,.L13+8
- 368 0010 FFF7FEFF 	 bl DIGITAL_IO_SetOutputLow
-  45:../main.c     **** }
- 369              	 .loc 3 45 0
- 370 0014 80BD     	 pop {r7,pc}
- 371              	.L14:
- 372 0016 00BF     	 .align 2
- 373              	.L13:
- 374 0018 00000000 	 .word UART_0
- 375 001c 00000000 	 .word rec_data
- 376 0020 00000000 	 .word RS485_DIR
- 377              	 .cfi_endproc
- 378              	.LFE504:
- 380              	 .section .text.EndofReceive,"ax",%progbits
- 381              	 .align 2
- 382              	 .global EndofReceive
- 383              	 .thumb
- 384              	 .thumb_func
- 386              	EndofReceive:
- 387              	.LFB505:
+   9:../main.c     **** #include <math.h>
+  10:../main.c     **** #include <stdio.h>
+  11:../main.c     **** XMC_VADC_RESULT_SIZE_t result;
+  12:../main.c     **** void Adc_Measurement_Handler() {
+ 310              	 .loc 3 12 0
+ 311              	 .cfi_startproc
+ 312              	 
+ 313              	 
+ 314 0000 80B5     	 push {r7,lr}
+ 315              	.LCFI33:
+ 316              	 .cfi_def_cfa_offset 8
+ 317              	 .cfi_offset 7,-8
+ 318              	 .cfi_offset 14,-4
+ 319 0002 2DED028B 	 fstmfdd sp!,{d8}
+ 320              	.LCFI34:
+ 321              	 .cfi_def_cfa_offset 16
+ 322              	 .cfi_offset 80,-16
+ 323              	 .cfi_offset 81,-12
+ 324 0006 84B0     	 sub sp,sp,#16
+ 325              	.LCFI35:
+ 326              	 .cfi_def_cfa_offset 32
+ 327 0008 00AF     	 add r7,sp,#0
+ 328              	.LCFI36:
+ 329              	 .cfi_def_cfa_register 7
+  13:../main.c     **** #if(UC_SERIES != XMC11)
+  14:../main.c     **** 	result = ADC_MEASUREMENT_GetResult(&ADC_MEASUREMENT_Channel_A);
+ 330              	 .loc 3 14 0
+ 331 000a 4948     	 ldr r0,.L10+24
+ 332 000c FFF7FEFF 	 bl ADC_MEASUREMENT_GetResult
+ 333 0010 0346     	 mov r3,r0
+ 334 0012 1A46     	 mov r2,r3
+ 335 0014 474B     	 ldr r3,.L10+28
+ 336 0016 1A80     	 strh r2,[r3]
+  15:../main.c     **** 	float resistor = 10000 * (pow(2, 12) / result - 1);
+ 337              	 .loc 3 15 0
+ 338 0018 464B     	 ldr r3,.L10+28
+ 339 001a 1B88     	 ldrh r3,[r3]
+ 340 001c 1846     	 mov r0,r3
+ 341 001e FFF7FEFF 	 bl __aeabi_i2d
+ 342 0022 0246     	 mov r2,r0
+ 343 0024 0B46     	 mov r3,r1
+ 344 0026 4FF00000 	 mov r0,#0
+ 345 002a 4349     	 ldr r1,.L10+32
+ 346 002c FFF7FEFF 	 bl __aeabi_ddiv
+ 347 0030 0246     	 mov r2,r0
+ 348 0032 0B46     	 mov r3,r1
+ 349 0034 1046     	 mov r0,r2
+ 350 0036 1946     	 mov r1,r3
+ 351 0038 4FF00002 	 mov r2,#0
+ 352 003c 3F4B     	 ldr r3,.L10+36
+ 353 003e FFF7FEFF 	 bl __aeabi_dsub
+ 354 0042 0246     	 mov r2,r0
+ 355 0044 0B46     	 mov r3,r1
+ 356 0046 1046     	 mov r0,r2
+ 357 0048 1946     	 mov r1,r3
+ 358 004a 33A3     	 adr r3,.L10
+ 359 004c D3E90023 	 ldrd r2,[r3]
+ 360 0050 FFF7FEFF 	 bl __aeabi_dmul
+ 361 0054 0246     	 mov r2,r0
+ 362 0056 0B46     	 mov r3,r1
+ 363 0058 1046     	 mov r0,r2
+ 364 005a 1946     	 mov r1,r3
+ 365 005c FFF7FEFF 	 bl __aeabi_d2f
+ 366 0060 0346     	 mov r3,r0
+ 367 0062 FB60     	 str r3,[r7,#12]
+  16:../main.c     **** 	float beta = 601.3;
+ 368              	 .loc 3 16 0
+ 369 0064 364B     	 ldr r3,.L10+40
+ 370 0066 BB60     	 str r3,[r7,#8]
+  17:../main.c     **** 	float T = (((float)(beta * 298.15)) / (((float)(298.15 * log(resistor / 10000))) + beta))-273.15;
+ 371              	 .loc 3 17 0
+ 372 0068 B868     	 ldr r0,[r7,#8]
+ 373 006a FFF7FEFF 	 bl __aeabi_f2d
+ 374 006e 0246     	 mov r2,r0
+ 375 0070 0B46     	 mov r3,r1
+ 376 0072 1046     	 mov r0,r2
+ 377 0074 1946     	 mov r1,r3
+ 378 0076 2AA3     	 adr r3,.L10+8
+ 379 0078 D3E90023 	 ldrd r2,[r3]
+ 380 007c FFF7FEFF 	 bl __aeabi_dmul
+ 381 0080 0246     	 mov r2,r0
+ 382 0082 0B46     	 mov r3,r1
+ 383 0084 1046     	 mov r0,r2
+ 384 0086 1946     	 mov r1,r3
+ 385 0088 FFF7FEFF 	 bl __aeabi_d2f
+ 386 008c 08EE100A 	 fmsr s16,r0
+ 387 0090 D7ED037A 	 flds s15,[r7,#12]
+ 388 0094 9FED2B7A 	 flds s14,.L10+44
+ 389 0098 C7EE877A 	 fdivs s15,s15,s14
+ 390 009c 17EE900A 	 fmrs r0,s15
+ 391 00a0 FFF7FEFF 	 bl __aeabi_f2d
+ 392 00a4 0246     	 mov r2,r0
+ 393 00a6 0B46     	 mov r3,r1
+ 394 00a8 1046     	 mov r0,r2
+ 395 00aa 1946     	 mov r1,r3
+ 396 00ac FFF7FEFF 	 bl log
+ 397 00b0 0246     	 mov r2,r0
+ 398 00b2 0B46     	 mov r3,r1
+ 399 00b4 1046     	 mov r0,r2
+ 400 00b6 1946     	 mov r1,r3
+ 401 00b8 19A3     	 adr r3,.L10+8
+ 402 00ba D3E90023 	 ldrd r2,[r3]
+ 403 00be FFF7FEFF 	 bl __aeabi_dmul
+ 404 00c2 0246     	 mov r2,r0
+ 405 00c4 0B46     	 mov r3,r1
+ 406 00c6 1046     	 mov r0,r2
+ 407 00c8 1946     	 mov r1,r3
+ 408 00ca FFF7FEFF 	 bl __aeabi_d2f
+ 409 00ce 07EE100A 	 fmsr s14,r0
+ 410 00d2 D7ED027A 	 flds s15,[r7,#8]
+ 411 00d6 77EE277A 	 fadds s15,s14,s15
+ 412 00da C8EE277A 	 fdivs s15,s16,s15
+ 413 00de 17EE900A 	 fmrs r0,s15
+ 414 00e2 FFF7FEFF 	 bl __aeabi_f2d
+ 415 00e6 0246     	 mov r2,r0
+ 416 00e8 0B46     	 mov r3,r1
+ 417 00ea 1046     	 mov r0,r2
+ 418 00ec 1946     	 mov r1,r3
+ 419 00ee 0EA3     	 adr r3,.L10+16
+ 420 00f0 D3E90023 	 ldrd r2,[r3]
+ 421 00f4 FFF7FEFF 	 bl __aeabi_dsub
+ 422 00f8 0246     	 mov r2,r0
+ 423 00fa 0B46     	 mov r3,r1
+ 424 00fc 1046     	 mov r0,r2
+ 425 00fe 1946     	 mov r1,r3
+ 426 0100 FFF7FEFF 	 bl __aeabi_d2f
+ 427 0104 0346     	 mov r3,r0
+ 428 0106 7B60     	 str r3,[r7,#4]
+  18:../main.c     **** 
+  19:../main.c     **** //	printf("T_Ambient is %f\n", T);
+  20:../main.c     **** #else
+  21:../main.c     **** 	result = ADC_MEASUREMENT_GetGlobalResult();
+  22:../main.c     **** #endif
+  23:../main.c     **** 
+  24:../main.c     **** 	if (result >= 2048) {
+  25:../main.c     **** 		//   DIGITAL_IO_SetOutputLow(&DIGITAL_IO_0);
+  26:../main.c     **** 	} else {
+  27:../main.c     **** 		// DIGITAL_IO_SetOutputHigh(&DIGITAL_IO_0);
+  28:../main.c     **** 	}
+  29:../main.c     **** }
+ 429              	 .loc 3 29 0
+ 430 0108 1037     	 adds r7,r7,#16
+ 431              	.LCFI37:
+ 432              	 .cfi_def_cfa_offset 16
+ 433 010a BD46     	 mov sp,r7
+ 434              	.LCFI38:
+ 435              	 .cfi_def_cfa_register 13
+ 436              	 
+ 437 010c BDEC028B 	 fldmfdd sp!,{d8}
+ 438              	.LCFI39:
+ 439              	 .cfi_restore 80
+ 440              	 .cfi_restore 81
+ 441              	 .cfi_def_cfa_offset 8
+ 442 0110 80BD     	 pop {r7,pc}
+ 443              	.L11:
+ 444 0112 00BFAFF3 	 .align 3
+ 444      0080
+ 445              	.L10:
+ 446 0118 00000000 	 .word 0
+ 447 011c 0088C340 	 .word 1086556160
+ 448 0120 66666666 	 .word 1717986918
+ 449 0124 66A27240 	 .word 1081254502
+ 450 0128 66666666 	 .word 1717986918
+ 451 012c 66127140 	 .word 1081152102
+ 452 0130 00000000 	 .word ADC_MEASUREMENT_Channel_A_handle
+ 453 0134 00000000 	 .word result
+ 454 0138 0000B040 	 .word 1085276160
+ 455 013c 0000F03F 	 .word 1072693248
+ 456 0140 33531644 	 .word 1142313779
+ 457 0144 00401C46 	 .word 1176256512
+ 458              	 .cfi_endproc
+ 459              	.LFE503:
+ 461              	 .global data
+ 462              	 .section .data.data,"aw",%progbits
+ 463              	 .align 2
+ 466              	data:
+ 467 0000 42444120 	 .ascii "BDA Andy Fischer\000"
+ 467      416E6479 
+ 467      20466973 
+ 467      63686572 
+ 467      00
+ 468              	 .comm rec_data,10,4
+ 469 0011 000000   	 .section .text.EndofTransmit,"ax",%progbits
+ 470              	 .align 2
+ 471              	 .global EndofTransmit
+ 472              	 .thumb
+ 473              	 .thumb_func
+ 475              	EndofTransmit:
+ 476              	.LFB504:
+  30:../main.c     **** 
+  31:../main.c     **** /**
+  32:../main.c     **** 
+  33:../main.c     ****  * @brief main() - Application entry point
+  34:../main.c     ****  *
+  35:../main.c     ****  * <b>Details of function</b><br>
+  36:../main.c     ****  * This routine is the application entry point. It is invoked by the device startup code. It is res
+  37:../main.c     ****  * invoking the APP initialization dispatcher routine - DAVE_Init() and hosting the place-holder fo
+  38:../main.c     ****  * code.
+  39:../main.c     ****  */
+  40:../main.c     **** 
+  41:../main.c     **** uint8_t data[] = "BDA Andy Fischer";
+  42:../main.c     **** 
+  43:../main.c     **** uint8_t rec_data[10];
+  44:../main.c     **** 
+  45:../main.c     **** void EndofTransmit() //Callback function for "End of transmit" event.
   46:../main.c     **** 
-  47:../main.c     **** void EndofReceive() //Callback function for "End of receive" event.
-  48:../main.c     **** 
-  49:../main.c     **** {
- 388              	 .loc 3 49 0
- 389              	 .cfi_startproc
- 390              	 
- 391              	 
- 392 0000 80B5     	 push {r7,lr}
- 393              	.LCFI37:
- 394              	 .cfi_def_cfa_offset 8
- 395              	 .cfi_offset 7,-8
- 396              	 .cfi_offset 14,-4
- 397 0002 82B0     	 sub sp,sp,#8
- 398              	.LCFI38:
- 399              	 .cfi_def_cfa_offset 16
- 400 0004 00AF     	 add r7,sp,#0
- 401              	.LCFI39:
- 402              	 .cfi_def_cfa_register 7
-  50:../main.c     **** 	DIGITAL_IO_SetOutputHigh(&RS485_DIR);
- 403              	 .loc 3 50 0
- 404 0006 0948     	 ldr r0,.L16
- 405 0008 FFF7FEFF 	 bl DIGITAL_IO_SetOutputHigh
-  51:../main.c     ****     char value = rec_data[0];
- 406              	 .loc 3 51 0
- 407 000c 084B     	 ldr r3,.L16+4
- 408 000e 1B78     	 ldrb r3,[r3]
- 409 0010 FB71     	 strb r3,[r7,#7]
-  52:../main.c     **** 	if(value='a'){
- 410              	 .loc 3 52 0
- 411 0012 6123     	 movs r3,#97
- 412 0014 FB71     	 strb r3,[r7,#7]
-  53:../main.c     ****     	DIGITAL_IO_SetOutputHigh(&IO_Bit2);
- 413              	 .loc 3 53 0
- 414 0016 0748     	 ldr r0,.L16+8
- 415 0018 FFF7FEFF 	 bl DIGITAL_IO_SetOutputHigh
-  54:../main.c     ****     }
-  55:../main.c     **** 	UART_Transmit(&UART_0, rec_data, sizeof(rec_data));
- 416              	 .loc 3 55 0
- 417 001c 0648     	 ldr r0,.L16+12
- 418 001e 0449     	 ldr r1,.L16+4
- 419 0020 0A22     	 movs r2,#10
- 420 0022 FFF7FEFF 	 bl UART_Transmit
-  56:../main.c     **** }
- 421              	 .loc 3 56 0
- 422 0026 0837     	 adds r7,r7,#8
- 423              	.LCFI40:
- 424              	 .cfi_def_cfa_offset 8
- 425 0028 BD46     	 mov sp,r7
- 426              	.LCFI41:
- 427              	 .cfi_def_cfa_register 13
- 428              	 
- 429 002a 80BD     	 pop {r7,pc}
- 430              	.L17:
- 431              	 .align 2
- 432              	.L16:
- 433 002c 00000000 	 .word RS485_DIR
- 434 0030 00000000 	 .word rec_data
- 435 0034 00000000 	 .word IO_Bit2
- 436 0038 00000000 	 .word UART_0
- 437              	 .cfi_endproc
- 438              	.LFE505:
- 440              	 .global fan_flag
- 441              	 .section .bss.fan_flag,"aw",%nobits
- 442              	 .align 2
- 445              	fan_flag:
- 446 0000 00000000 	 .space 4
- 447              	 .global io_status
- 448              	 .section .data.io_status,"aw",%progbits
- 449              	 .align 2
- 452              	io_status:
- 453 0000 FFFFFFFF 	 .word -1
- 454              	 .section .text.main,"ax",%progbits
- 455              	 .align 2
- 456              	 .global main
- 457              	 .thumb
- 458              	 .thumb_func
- 460              	main:
- 461              	.LFB506:
-  57:../main.c     **** 
-  58:../main.c     **** 
-  59:../main.c     **** int fan_flag = 0;
-  60:../main.c     **** int io_status = -1;
-  61:../main.c     **** int main(void) {
- 462              	 .loc 3 61 0
- 463              	 .cfi_startproc
- 464              	 
- 465              	 
- 466 0000 80B5     	 push {r7,lr}
- 467              	.LCFI42:
- 468              	 .cfi_def_cfa_offset 8
- 469              	 .cfi_offset 7,-8
- 470              	 .cfi_offset 14,-4
- 471 0002 82B0     	 sub sp,sp,#8
- 472              	.LCFI43:
- 473              	 .cfi_def_cfa_offset 16
- 474 0004 00AF     	 add r7,sp,#0
- 475              	.LCFI44:
- 476              	 .cfi_def_cfa_register 7
-  62:../main.c     **** 	DAVE_STATUS_t status;
-  63:../main.c     **** 	uint32_t pin_status;
-  64:../main.c     **** 	uint32_t delay_count;
-  65:../main.c     **** 
-  66:../main.c     **** 	status = DAVE_Init(); /* Initialization of DAVE APPs  */
- 477              	 .loc 3 66 0
- 478 0006 FFF7FEFF 	 bl DAVE_Init
- 479 000a 0346     	 mov r3,r0
- 480 000c FB71     	 strb r3,[r7,#7]
-  67:../main.c     **** 
-  68:../main.c     **** 	if (status != DAVE_STATUS_SUCCESS) {
- 481              	 .loc 3 68 0
- 482 000e FB79     	 ldrb r3,[r7,#7]
- 483 0010 002B     	 cmp r3,#0
- 484 0012 00D0     	 beq .L19
- 485              	.L20:
-  69:../main.c     **** 		/* Placeholder for error handler code. The while loop below can be replaced with an user error ha
-  70:../main.c     **** 		XMC_DEBUG("DAVE APPs initialization failed\n");
-  71:../main.c     **** 
-  72:../main.c     **** 		while (1U) {
-  73:../main.c     **** 
-  74:../main.c     **** 		}
- 486              	 .loc 3 74 0 discriminator 1
- 487 0014 FEE7     	 b .L20
- 488              	.L19:
-  75:../main.c     **** 	}
+  47:../main.c     **** {
+ 477              	 .loc 3 47 0
+ 478              	 .cfi_startproc
+ 479              	 
+ 480              	 
+ 481 0000 80B5     	 push {r7,lr}
+ 482              	.LCFI40:
+ 483              	 .cfi_def_cfa_offset 8
+ 484              	 .cfi_offset 7,-8
+ 485              	 .cfi_offset 14,-4
+ 486 0002 00AF     	 add r7,sp,#0
+ 487              	.LCFI41:
+ 488              	 .cfi_def_cfa_register 7
+  48:../main.c     **** 	UART_Receive(&UART_0, rec_data, sizeof(rec_data));
+ 489              	 .loc 3 48 0
+ 490 0004 0448     	 ldr r0,.L13
+ 491 0006 0549     	 ldr r1,.L13+4
+ 492 0008 0A22     	 movs r2,#10
+ 493 000a FFF7FEFF 	 bl UART_Receive
+  49:../main.c     **** 	DIGITAL_IO_SetOutputLow(&RS485_DIR); // ready to receive
+ 494              	 .loc 3 49 0
+ 495 000e 0448     	 ldr r0,.L13+8
+ 496 0010 FFF7FEFF 	 bl DIGITAL_IO_SetOutputLow
+  50:../main.c     **** }
+ 497              	 .loc 3 50 0
+ 498 0014 80BD     	 pop {r7,pc}
+ 499              	.L14:
+ 500 0016 00BF     	 .align 2
+ 501              	.L13:
+ 502 0018 00000000 	 .word UART_0
+ 503 001c 00000000 	 .word rec_data
+ 504 0020 00000000 	 .word RS485_DIR
+ 505              	 .cfi_endproc
+ 506              	.LFE504:
+ 508              	 .section .text.EndofReceive,"ax",%progbits
+ 509              	 .align 2
+ 510              	 .global EndofReceive
+ 511              	 .thumb
+ 512              	 .thumb_func
+ 514              	EndofReceive:
+ 515              	.LFB505:
+  51:../main.c     **** 
+  52:../main.c     **** void EndofReceive() //Callback function for "End of receive" event.
+  53:../main.c     **** 
+  54:../main.c     **** {
+ 516              	 .loc 3 54 0
+ 517              	 .cfi_startproc
+ 518              	 
+ 519              	 
+ 520 0000 80B5     	 push {r7,lr}
+ 521              	.LCFI42:
+ 522              	 .cfi_def_cfa_offset 8
+ 523              	 .cfi_offset 7,-8
+ 524              	 .cfi_offset 14,-4
+ 525 0002 82B0     	 sub sp,sp,#8
+ 526              	.LCFI43:
+ 527              	 .cfi_def_cfa_offset 16
+ 528 0004 00AF     	 add r7,sp,#0
+ 529              	.LCFI44:
+ 530              	 .cfi_def_cfa_register 7
+  55:../main.c     **** 	DIGITAL_IO_SetOutputHigh(&RS485_DIR);
+ 531              	 .loc 3 55 0
+ 532 0006 0948     	 ldr r0,.L16
+ 533 0008 FFF7FEFF 	 bl DIGITAL_IO_SetOutputHigh
+  56:../main.c     **** 	char value = rec_data[0];
+ 534              	 .loc 3 56 0
+ 535 000c 084B     	 ldr r3,.L16+4
+ 536 000e 1B78     	 ldrb r3,[r3]
+ 537 0010 FB71     	 strb r3,[r7,#7]
+  57:../main.c     **** 	if (value = 'a') {
+ 538              	 .loc 3 57 0
+ 539 0012 6123     	 movs r3,#97
+ 540 0014 FB71     	 strb r3,[r7,#7]
+  58:../main.c     **** 		DIGITAL_IO_SetOutputHigh(&IO_Bit2);
+ 541              	 .loc 3 58 0
+ 542 0016 0748     	 ldr r0,.L16+8
+ 543 0018 FFF7FEFF 	 bl DIGITAL_IO_SetOutputHigh
+  59:../main.c     **** 	}
+  60:../main.c     **** 	UART_Transmit(&UART_0, rec_data, sizeof(rec_data));
+ 544              	 .loc 3 60 0
+ 545 001c 0648     	 ldr r0,.L16+12
+ 546 001e 0449     	 ldr r1,.L16+4
+ 547 0020 0A22     	 movs r2,#10
+ 548 0022 FFF7FEFF 	 bl UART_Transmit
+  61:../main.c     **** }
+ 549              	 .loc 3 61 0
+ 550 0026 0837     	 adds r7,r7,#8
+ 551              	.LCFI45:
+ 552              	 .cfi_def_cfa_offset 8
+ 553 0028 BD46     	 mov sp,r7
+ 554              	.LCFI46:
+ 555              	 .cfi_def_cfa_register 13
+ 556              	 
+ 557 002a 80BD     	 pop {r7,pc}
+ 558              	.L17:
+ 559              	 .align 2
+ 560              	.L16:
+ 561 002c 00000000 	 .word RS485_DIR
+ 562 0030 00000000 	 .word rec_data
+ 563 0034 00000000 	 .word IO_Bit2
+ 564 0038 00000000 	 .word UART_0
+ 565              	 .cfi_endproc
+ 566              	.LFE505:
+ 568              	 .section .text.calculate_T_Amb,"ax",%progbits
+ 569              	 .align 2
+ 570              	 .global calculate_T_Amb
+ 571              	 .thumb
+ 572              	 .thumb_func
+ 574              	calculate_T_Amb:
+ 575              	.LFB506:
+  62:../main.c     **** 
+  63:../main.c     **** float calculate_T_Amb() {
+ 576              	 .loc 3 63 0
+ 577              	 .cfi_startproc
+ 578              	 
+ 579              	 
+ 580              	 
+ 581 0000 80B4     	 push {r7}
+ 582              	.LCFI47:
+ 583              	 .cfi_def_cfa_offset 4
+ 584              	 .cfi_offset 7,-4
+ 585 0002 00AF     	 add r7,sp,#0
+ 586              	.LCFI48:
+ 587              	 .cfi_def_cfa_register 7
+  64:../main.c     **** 
+  65:../main.c     **** }
+ 588              	 .loc 3 65 0
+ 589 0004 1846     	 mov r0,r3
+ 590 0006 BD46     	 mov sp,r7
+ 591              	.LCFI49:
+ 592              	 .cfi_def_cfa_register 13
+ 593              	 
+ 594 0008 5DF8047B 	 ldr r7,[sp],#4
+ 595              	.LCFI50:
+ 596              	 .cfi_restore 7
+ 597              	 .cfi_def_cfa_offset 0
+ 598 000c 7047     	 bx lr
+ 599              	 .cfi_endproc
+ 600              	.LFE506:
+ 602              	 .comm temp,4,4
+ 603              	 .global fan_flag
+ 604 000e 00BF     	 .section .bss.fan_flag,"aw",%nobits
+ 605              	 .align 2
+ 608              	fan_flag:
+ 609 0000 00000000 	 .space 4
+ 610              	 .global io_status
+ 611              	 .section .data.io_status,"aw",%progbits
+ 612              	 .align 2
+ 615              	io_status:
+ 616 0000 FFFFFFFF 	 .word -1
+ 617              	 .section .text.main,"ax",%progbits
+ 618              	 .align 2
+ 619              	 .global main
+ 620              	 .thumb
+ 621              	 .thumb_func
+ 623              	main:
+ 624              	.LFB507:
+  66:../main.c     **** 
+  67:../main.c     **** float temp;
+  68:../main.c     **** int fan_flag = 0;
+  69:../main.c     **** int io_status = -1;
+  70:../main.c     **** int main(void) {
+ 625              	 .loc 3 70 0
+ 626              	 .cfi_startproc
+ 627              	 
+ 628              	 
+ 629 0000 80B5     	 push {r7,lr}
+ 630              	.LCFI51:
+ 631              	 .cfi_def_cfa_offset 8
+ 632              	 .cfi_offset 7,-8
+ 633              	 .cfi_offset 14,-4
+ 634 0002 82B0     	 sub sp,sp,#8
+ 635              	.LCFI52:
+ 636              	 .cfi_def_cfa_offset 16
+ 637 0004 00AF     	 add r7,sp,#0
+ 638              	.LCFI53:
+ 639              	 .cfi_def_cfa_register 7
+  71:../main.c     **** 	DAVE_STATUS_t status;
+  72:../main.c     **** 	uint32_t pin_status;
+  73:../main.c     **** 	uint32_t delay_count;
+  74:../main.c     **** 
+  75:../main.c     **** 	status = DAVE_Init(); /* Initialization of DAVE APPs  */
+ 640              	 .loc 3 75 0
+ 641 0006 FFF7FEFF 	 bl DAVE_Init
+ 642 000a 0346     	 mov r3,r0
+ 643 000c FB71     	 strb r3,[r7,#7]
   76:../main.c     **** 
-  77:../main.c     **** 
-  78:../main.c     **** DIGITAL_IO_SetOutputHigh(&DIGITAL_IO_6); // Enable RS485 Pin
- 489              	 .loc 3 78 0
- 490 0016 1E48     	 ldr r0,.L24
- 491 0018 FFF7FEFF 	 bl DIGITAL_IO_SetOutputHigh
-  79:../main.c     **** DIGITAL_IO_SetOutputHigh(&RS485_DIR); // Direction RS485 Pin set to High to indicate that MCU wants
- 492              	 .loc 3 79 0
- 493 001c 1D48     	 ldr r0,.L24+4
- 494 001e FFF7FEFF 	 bl DIGITAL_IO_SetOutputHigh
-  80:../main.c     **** //UART_Transmit(&UART_0, data, sizeof(data) - 1); //Transmit the string "Infineon Technologies".
-  81:../main.c     **** 
+  77:../main.c     **** 	if (status != DAVE_STATUS_SUCCESS) {
+ 644              	 .loc 3 77 0
+ 645 000e FB79     	 ldrb r3,[r7,#7]
+ 646 0010 002B     	 cmp r3,#0
+ 647 0012 00D0     	 beq .L20
+ 648              	.L21:
+  78:../main.c     **** 		/* Placeholder for error handler code. The while loop below can be replaced with an user error ha
+  79:../main.c     **** 		XMC_DEBUG("DAVE APPs initialization failed\n");
+  80:../main.c     **** 
+  81:../main.c     **** 		while (1U) {
   82:../main.c     **** 
-  83:../main.c     **** 
-  84:../main.c     **** //DIGITAL_IO_SetOutputHigh(&DIGITAL_IO_4); // Power up Main heating
-  85:../main.c     **** //DIGITAL_IO_SetOutputHigh(&DIGITAL_IO_5); // Power up aux heating
-  86:../main.c     **** 
-  87:../main.c     **** DIGITAL_IO_SetOutputLow(&IO_Bit0_DIR);// Set Input enable for IO Pin 0
- 495              	 .loc 3 87 0
- 496 0022 1D48     	 ldr r0,.L24+8
- 497 0024 FFF7FEFF 	 bl DIGITAL_IO_SetOutputLow
-  88:../main.c     **** DIGITAL_IO_SetOutputLow(&IO_Bit1_DIR);// Set Input enable for IO Pin 1
- 498              	 .loc 3 88 0
- 499 0028 1C48     	 ldr r0,.L24+12
- 500 002a FFF7FEFF 	 bl DIGITAL_IO_SetOutputLow
-  89:../main.c     **** DIGITAL_IO_SetOutputLow(&IO_Bit3_DIR);// Set Input enable for IO Pin 3
- 501              	 .loc 3 89 0
- 502 002e 1C48     	 ldr r0,.L24+16
- 503 0030 FFF7FEFF 	 bl DIGITAL_IO_SetOutputLow
-  90:../main.c     **** DIGITAL_IO_SetOutputLow(&IO_Bit2_DIR);// Set Input enable for IO Pin 2
- 504              	 .loc 3 90 0
- 505 0034 1B48     	 ldr r0,.L24+20
- 506 0036 FFF7FEFF 	 bl DIGITAL_IO_SetOutputLow
-  91:../main.c     **** 
-  92:../main.c     **** //DIGITAL_IO_SetOutputHigh(&DIGITAL_IO_23);// Set Output Pin 0 high
-  93:../main.c     **** //DIGITAL_IO_SetOutputHigh(&DIGITAL_IO_22); // Set Output Pin 1 high
-  94:../main.c     **** //DIGITAL_IO_SetOutputHigh(&DIGITAL_IO_21); // Set Output Pin 2 high
-  95:../main.c     **** //DIGITAL_IO_SetOutputHigh(&DIGITAL_IO_24); // Set Output Pin 3 high
-  96:../main.c     **** 
+  83:../main.c     **** 		}
+ 649              	 .loc 3 83 0 discriminator 1
+ 650 0014 FEE7     	 b .L21
+ 651              	.L20:
+  84:../main.c     **** 	}
+  85:../main.c     **** 
+  86:../main.c     **** 	DIGITAL_IO_SetOutputHigh(&DIGITAL_IO_6); // Enable RS485 Pin
+ 652              	 .loc 3 86 0
+ 653 0016 2148     	 ldr r0,.L27
+ 654 0018 FFF7FEFF 	 bl DIGITAL_IO_SetOutputHigh
+  87:../main.c     **** 	DIGITAL_IO_SetOutputHigh(&RS485_DIR); // Direction RS485 Pin set to High to indicate that MCU want
+ 655              	 .loc 3 87 0
+ 656 001c 2048     	 ldr r0,.L27+4
+ 657 001e FFF7FEFF 	 bl DIGITAL_IO_SetOutputHigh
+  88:../main.c     **** //UART_Transmit(&UART_0, data, sizeof(data) - 1); //Transmit the string "Infineon Technologies".
+  89:../main.c     **** 
+  90:../main.c     **** //DIGITAL_IO_SetOutputHigh(&DIGITAL_IO_4); // Power up Main heating
+  91:../main.c     **** //DIGITAL_IO_SetOutputHigh(&DIGITAL_IO_5); // Power up aux heating
+  92:../main.c     **** 
+  93:../main.c     **** 	DIGITAL_IO_SetOutputLow(&IO_Bit0_DIR); // Set Input enable for IO Pin 0
+ 658              	 .loc 3 93 0
+ 659 0022 2048     	 ldr r0,.L27+8
+ 660 0024 FFF7FEFF 	 bl DIGITAL_IO_SetOutputLow
+  94:../main.c     **** 	DIGITAL_IO_SetOutputLow(&IO_Bit1_DIR); // Set Input enable for IO Pin 1
+ 661              	 .loc 3 94 0
+ 662 0028 1F48     	 ldr r0,.L27+12
+ 663 002a FFF7FEFF 	 bl DIGITAL_IO_SetOutputLow
+  95:../main.c     **** 	DIGITAL_IO_SetOutputLow(&IO_Bit3_DIR); // Set Input enable for IO Pin 3
+ 664              	 .loc 3 95 0
+ 665 002e 1F48     	 ldr r0,.L27+16
+ 666 0030 FFF7FEFF 	 bl DIGITAL_IO_SetOutputLow
+  96:../main.c     **** 	DIGITAL_IO_SetOutputLow(&IO_Bit2_DIR); // Set Input enable for IO Pin 2
+ 667              	 .loc 3 96 0
+ 668 0034 1E48     	 ldr r0,.L27+20
+ 669 0036 FFF7FEFF 	 bl DIGITAL_IO_SetOutputLow
   97:../main.c     **** 
-  98:../main.c     **** delay_count = 0;
- 507              	 .loc 3 98 0
- 508 003a 0023     	 movs r3,#0
- 509 003c 3B60     	 str r3,[r7]
-  99:../main.c     **** 
- 100:../main.c     **** //ACIM_FREQ_CTRL_MotorStart(&ACIM_FREQ_CTRL_1);
- 101:../main.c     **** 
- 102:../main.c     **** /* Placeholder for user application code. The while loop below can be replaced with user applicatio
- 103:../main.c     **** 
- 104:../main.c     **** DIGITAL_IO_SetOutputHigh(&Disable_Gate_Driver_M1_M2);// Set Output Pin 0 high
- 510              	 .loc 3 104 0
- 511 003e 1A48     	 ldr r0,.L24+24
- 512 0040 FFF7FEFF 	 bl DIGITAL_IO_SetOutputHigh
- 105:../main.c     **** DIGITAL_IO_SetOutputHigh(&Disable_Gate_Driver_M3);// Set Output Pin 0 high
- 513              	 .loc 3 105 0
- 514 0044 1948     	 ldr r0,.L24+28
- 515 0046 FFF7FEFF 	 bl DIGITAL_IO_SetOutputHigh
- 516              	.L23:
+  98:../main.c     **** //DIGITAL_IO_SetOutputHigh(&DIGITAL_IO_23);// Set Output Pin 0 high
+  99:../main.c     **** //DIGITAL_IO_SetOutputHigh(&DIGITAL_IO_22); // Set Output Pin 1 high
+ 100:../main.c     **** //DIGITAL_IO_SetOutputHigh(&DIGITAL_IO_21); // Set Output Pin 2 high
+ 101:../main.c     **** //DIGITAL_IO_SetOutputHigh(&DIGITAL_IO_24); // Set Output Pin 3 high
+ 102:../main.c     **** 
+ 103:../main.c     **** 	delay_count = 0;
+ 670              	 .loc 3 103 0
+ 671 003a 0023     	 movs r3,#0
+ 672 003c 3B60     	 str r3,[r7]
+ 104:../main.c     **** 
+ 105:../main.c     **** //ACIM_FREQ_CTRL_MotorStart(&ACIM_FREQ_CTRL_1);
  106:../main.c     **** 
- 107:../main.c     **** //ACIM_FREQ_CTRL_MotorStart(&ACIM_FREQ_CTRL_0);
+ 107:../main.c     **** 	/* Placeholder for user application code. The while loop below can be replaced with user applicati
  108:../main.c     **** 
- 109:../main.c     **** while(1U)
- 110:../main.c     **** {
+ 109:../main.c     **** 	DIGITAL_IO_SetOutputHigh(&Disable_Gate_Driver_M1_M2); // Set Output Pin 0 high
+ 673              	 .loc 3 109 0
+ 674 003e 1D48     	 ldr r0,.L27+24
+ 675 0040 FFF7FEFF 	 bl DIGITAL_IO_SetOutputHigh
+ 110:../main.c     **** 	DIGITAL_IO_SetOutputHigh(&Disable_Gate_Driver_M3); // Set Output Pin 0 high
+ 676              	 .loc 3 110 0
+ 677 0044 1C48     	 ldr r0,.L27+28
+ 678 0046 FFF7FEFF 	 bl DIGITAL_IO_SetOutputHigh
+ 679              	.L26:
  111:../main.c     **** 
- 112:../main.c     **** 	// DIGITAL_IO_ToggleOutput(&DIGITAL_IO_0);
- 113:../main.c     **** 	// for(delay_count = 0;delay_count<0xfffff;delay_count++);
- 114:../main.c     **** 	//    delay_count = delay_count + 10;
- 115:../main.c     **** 	// pin_status = DIGITAL_IO_GetInput(&DIGITAL_IO_23);
+ 112:../main.c     **** 
+ 113:../main.c     **** 
+ 114:../main.c     **** 
+ 115:../main.c     **** //ACIM_FREQ_CTRL_MotorStart(&ACIM_FREQ_CTRL_0);
  116:../main.c     **** 
- 117:../main.c     **** 	if((!fan_flag) && DIGITAL_IO_GetInput(&IO_Bit0)){
- 517              	 .loc 3 117 0
- 518 004a 194B     	 ldr r3,.L24+32
- 519 004c 1B68     	 ldr r3,[r3]
- 520 004e 002B     	 cmp r3,#0
- 521 0050 0CD1     	 bne .L21
- 522              	 .loc 3 117 0 is_stmt 0 discriminator 1
- 523 0052 1848     	 ldr r0,.L24+36
- 524 0054 FFF7FEFF 	 bl DIGITAL_IO_GetInput
- 525 0058 0346     	 mov r3,r0
- 526 005a 002B     	 cmp r3,#0
- 527 005c 06D0     	 beq .L21
- 118:../main.c     **** 		fan_flag=1;
- 528              	 .loc 3 118 0 is_stmt 1
- 529 005e 144B     	 ldr r3,.L24+32
- 530 0060 0122     	 movs r2,#1
- 531 0062 1A60     	 str r2,[r3]
- 119:../main.c     **** 		DIGITAL_IO_SetOutputHigh(&Cooling_FAN); // Power up cooling fan
- 532              	 .loc 3 119 0
- 533 0064 1448     	 ldr r0,.L24+40
- 534 0066 FFF7FEFF 	 bl DIGITAL_IO_SetOutputHigh
- 535 006a 0FE0     	 b .L22
- 536              	.L21:
- 120:../main.c     **** 	}
- 121:../main.c     **** 
- 122:../main.c     **** 	else if(fan_flag && DIGITAL_IO_GetInput(&IO_Bit1)){
- 537              	 .loc 3 122 0
- 538 006c 104B     	 ldr r3,.L24+32
- 539 006e 1B68     	 ldr r3,[r3]
- 540 0070 002B     	 cmp r3,#0
- 541 0072 0BD0     	 beq .L22
- 542              	 .loc 3 122 0 is_stmt 0 discriminator 1
- 543 0074 1148     	 ldr r0,.L24+44
- 544 0076 FFF7FEFF 	 bl DIGITAL_IO_GetInput
- 545 007a 0346     	 mov r3,r0
- 546 007c 002B     	 cmp r3,#0
- 547 007e 05D0     	 beq .L22
- 123:../main.c     **** 		fan_flag=0;
- 548              	 .loc 3 123 0 is_stmt 1
- 549 0080 0B4B     	 ldr r3,.L24+32
- 550 0082 0022     	 movs r2,#0
- 551 0084 1A60     	 str r2,[r3]
- 124:../main.c     **** 		DIGITAL_IO_SetOutputLow(&Cooling_FAN); // Power down cooling fan
- 552              	 .loc 3 124 0
- 553 0086 0C48     	 ldr r0,.L24+40
- 554 0088 FFF7FEFF 	 bl DIGITAL_IO_SetOutputLow
- 555              	.L22:
- 125:../main.c     **** 	}
- 126:../main.c     **** 
- 127:../main.c     **** 
+ 117:../main.c     **** 	while (1U) {
+ 118:../main.c     **** 
+ 119:../main.c     **** 		// DIGITAL_IO_ToggleOutput(&DIGITAL_IO_0);
+ 120:../main.c     **** 		// for(delay_count = 0;delay_count<0xfffff;delay_count++);
+ 121:../main.c     **** 		//    delay_count = delay_count + 10;
+ 122:../main.c     **** 		// pin_status = DIGITAL_IO_GetInput(&DIGITAL_IO_23);
+ 123:../main.c     **** 
+ 124:../main.c     **** 		if (((!fan_flag) && DIGITAL_IO_GetInput(&IO_Bit0))||(DIGITAL_IO_GetInput(&HS_Overtemp))) {
+ 680              	 .loc 3 124 0
+ 681 004a 1C4B     	 ldr r3,.L27+32
+ 682 004c 1B68     	 ldr r3,[r3]
+ 683 004e 002B     	 cmp r3,#0
+ 684 0050 05D1     	 bne .L22
+ 685              	 .loc 3 124 0 is_stmt 0 discriminator 1
+ 686 0052 1B48     	 ldr r0,.L27+36
+ 687 0054 FFF7FEFF 	 bl DIGITAL_IO_GetInput
+ 688 0058 0346     	 mov r3,r0
+ 689 005a 002B     	 cmp r3,#0
+ 690 005c 05D1     	 bne .L23
+ 691              	.L22:
+ 692              	 .loc 3 124 0 discriminator 3
+ 693 005e 1948     	 ldr r0,.L27+40
+ 694 0060 FFF7FEFF 	 bl DIGITAL_IO_GetInput
+ 695 0064 0346     	 mov r3,r0
+ 696 0066 002B     	 cmp r3,#0
+ 697 0068 06D0     	 beq .L24
+ 698              	.L23:
+ 125:../main.c     **** 			fan_flag = 1;
+ 699              	 .loc 3 125 0 is_stmt 1
+ 700 006a 144B     	 ldr r3,.L27+32
+ 701 006c 0122     	 movs r2,#1
+ 702 006e 1A60     	 str r2,[r3]
+ 126:../main.c     **** 			DIGITAL_IO_SetOutputHigh(&Cooling_FAN); // Power up cooling fan
+ 703              	 .loc 3 126 0
+ 704 0070 1548     	 ldr r0,.L27+44
+ 705 0072 FFF7FEFF 	 bl DIGITAL_IO_SetOutputHigh
+ 706 0076 0FE0     	 b .L25
+ 707              	.L24:
+ 127:../main.c     **** 		}
  128:../main.c     **** 
- 129:../main.c     **** 
- 130:../main.c     **** 	// DIGITAL_IO_ToggleOutput(&DIGITAL_IO_23); // toggle PIN 0
- 131:../main.c     **** 	// DIGITAL_IO_ToggleOutput(&DIGITAL_IO_22); // toggle PIN 1
- 132:../main.c     **** 	// DIGITAL_IO_ToggleOutput(&DIGITAL_IO_21); // toggle PIN 2
- 133:../main.c     **** 	// DIGITAL_IO_ToggleOutput(&DIGITAL_IO_24); // toggle PIN 3
+ 129:../main.c     **** 		else if (fan_flag && DIGITAL_IO_GetInput(&IO_Bit1)) {
+ 708              	 .loc 3 129 0
+ 709 0078 104B     	 ldr r3,.L27+32
+ 710 007a 1B68     	 ldr r3,[r3]
+ 711 007c 002B     	 cmp r3,#0
+ 712 007e 0BD0     	 beq .L25
+ 713              	 .loc 3 129 0 is_stmt 0 discriminator 1
+ 714 0080 1248     	 ldr r0,.L27+48
+ 715 0082 FFF7FEFF 	 bl DIGITAL_IO_GetInput
+ 716 0086 0346     	 mov r3,r0
+ 717 0088 002B     	 cmp r3,#0
+ 718 008a 05D0     	 beq .L25
+ 130:../main.c     **** 			fan_flag = 0;
+ 719              	 .loc 3 130 0 is_stmt 1
+ 720 008c 0B4B     	 ldr r3,.L27+32
+ 721 008e 0022     	 movs r2,#0
+ 722 0090 1A60     	 str r2,[r3]
+ 131:../main.c     **** 			DIGITAL_IO_SetOutputLow(&Cooling_FAN); // Power down cooling fan
+ 723              	 .loc 3 131 0
+ 724 0092 0D48     	 ldr r0,.L27+44
+ 725 0094 FFF7FEFF 	 bl DIGITAL_IO_SetOutputLow
+ 726              	.L25:
+ 132:../main.c     **** 		}
+ 133:../main.c     **** 
  134:../main.c     **** 
- 135:../main.c     **** }
- 556              	 .loc 3 135 0
- 557 008c DDE7     	 b .L23
- 558              	.L25:
- 559 008e 00BF     	 .align 2
- 560              	.L24:
- 561 0090 00000000 	 .word DIGITAL_IO_6
- 562 0094 00000000 	 .word RS485_DIR
- 563 0098 00000000 	 .word IO_Bit0_DIR
- 564 009c 00000000 	 .word IO_Bit1_DIR
- 565 00a0 00000000 	 .word IO_Bit3_DIR
- 566 00a4 00000000 	 .word IO_Bit2_DIR
- 567 00a8 00000000 	 .word Disable_Gate_Driver_M1_M2
- 568 00ac 00000000 	 .word Disable_Gate_Driver_M3
- 569 00b0 00000000 	 .word fan_flag
- 570 00b4 00000000 	 .word IO_Bit0
- 571 00b8 00000000 	 .word Cooling_FAN
- 572 00bc 00000000 	 .word IO_Bit1
- 573              	 .cfi_endproc
- 574              	.LFE506:
- 576              	 .text
- 577              	.Letext0:
- 578              	 .file 4 "c:\\users\\pescatore\\switchdrive\\private\\konzept\\mcu for gate driver\\dave_4-4-2_64bit_2018-02-23\\dave-ide-4.4.2-64bit\\eclipse\\arm-gcc-49\\arm-none-eabi\\include\\machine\\_default_types.h"
- 579              	 .file 5 "c:\\users\\pescatore\\switchdrive\\private\\konzept\\mcu for gate driver\\dave_4-4-2_64bit_2018-02-23\\dave-ide-4.4.2-64bit\\eclipse\\arm-gcc-49\\arm-none-eabi\\include\\stdint.h"
- 580              	 .file 6 "F:/GitHub Projects/FH Luzern/BAT/BAT/Libraries/CMSIS/Infineon/XMC4400_series/Include/XMC4400.h"
- 581              	 .file 7 "F:/GitHub Projects/FH Luzern/BAT/BAT/Libraries/XMCLib/inc/xmc4_gpio.h"
- 582              	 .file 8 "F:/GitHub Projects/FH Luzern/BAT/BAT/Dave/Generated/ACIM_FREQ_CTRL/acim_freq_ctrl.h"
- 583              	 .file 9 "F:/GitHub Projects/FH Luzern/BAT/BAT/Libraries/XMCLib/inc/xmc_usic.h"
- 584              	 .file 10 "F:/GitHub Projects/FH Luzern/BAT/BAT/Libraries/XMCLib/inc/xmc_uart.h"
- 585              	 .file 11 "F:/GitHub Projects/FH Luzern/BAT/BAT/Dave/Generated/UART/uart.h"
- 586              	 .file 12 "F:/GitHub Projects/FH Luzern/BAT/BAT/Libraries/XMCLib/inc/xmc_vadc.h"
- 587              	 .file 13 "F:/GitHub Projects/FH Luzern/BAT/BAT/Dave/Generated/ANALOG_IO/analog_io.h"
- 588              	 .file 14 "F:/GitHub Projects/FH Luzern/BAT/BAT/Dave/Generated/ADC_MEASUREMENT/adc_measurement.h"
- 589              	 .file 15 "F:/GitHub Projects/FH Luzern/BAT/BAT/Dave/Generated/DAVE.h"
- 590              	 .file 16 "F:/GitHub Projects/FH Luzern/BAT/BAT/Libraries/CMSIS/Include/core_cm4.h"
- 591              	 .file 17 "F:/GitHub Projects/FH Luzern/BAT/BAT/Libraries/CMSIS/Infineon/XMC4400_series/Include/system_XMC4400.h"
- 592              	 .file 18 "F:/GitHub Projects/FH Luzern/BAT/BAT/Dave/Generated/DIGITAL_IO/digital_io_extern.h"
- 593              	 .file 19 "F:/GitHub Projects/FH Luzern/BAT/BAT/Dave/Generated/UART/uart_extern.h"
- 594              	 .file 20 "F:/GitHub Projects/FH Luzern/BAT/BAT/Dave/Generated/ADC_MEASUREMENT/ADC_MEASUREMENT_Extern.h"
+ 135:../main.c     **** 		// DIGITAL_IO_ToggleOutput(&DIGITAL_IO_23); // toggle PIN 0
+ 136:../main.c     **** 		// DIGITAL_IO_ToggleOutput(&DIGITAL_IO_22); // toggle PIN 1
+ 137:../main.c     **** 		// DIGITAL_IO_ToggleOutput(&DIGITAL_IO_21); // toggle PIN 2
+ 138:../main.c     **** 		// DIGITAL_IO_ToggleOutput(&DIGITAL_IO_24); // toggle PIN 3
+ 139:../main.c     **** 
+ 140:../main.c     **** 
+ 141:../main.c     **** 		//ADC_MEASUREMENT_StartConversion(&ADC_MEASUREMENT_0);
+ 142:../main.c     **** 
+ 143:../main.c     **** 		//temp = calculate_T_Amb();
+ 144:../main.c     **** 
+ 145:../main.c     **** 	}
+ 727              	 .loc 3 145 0
+ 728 0098 D7E7     	 b .L26
+ 729              	.L28:
+ 730 009a 00BF     	 .align 2
+ 731              	.L27:
+ 732 009c 00000000 	 .word DIGITAL_IO_6
+ 733 00a0 00000000 	 .word RS485_DIR
+ 734 00a4 00000000 	 .word IO_Bit0_DIR
+ 735 00a8 00000000 	 .word IO_Bit1_DIR
+ 736 00ac 00000000 	 .word IO_Bit3_DIR
+ 737 00b0 00000000 	 .word IO_Bit2_DIR
+ 738 00b4 00000000 	 .word Disable_Gate_Driver_M1_M2
+ 739 00b8 00000000 	 .word Disable_Gate_Driver_M3
+ 740 00bc 00000000 	 .word fan_flag
+ 741 00c0 00000000 	 .word IO_Bit0
+ 742 00c4 00000000 	 .word HS_Overtemp
+ 743 00c8 00000000 	 .word Cooling_FAN
+ 744 00cc 00000000 	 .word IO_Bit1
+ 745              	 .cfi_endproc
+ 746              	.LFE507:
+ 748              	 .text
+ 749              	.Letext0:
+ 750              	 .file 4 "c:\\users\\pescatore\\switchdrive\\private\\konzept\\mcu for gate driver\\dave_4-4-2_64bit_2018-02-23\\dave-ide-4.4.2-64bit\\eclipse\\arm-gcc-49\\arm-none-eabi\\include\\machine\\_default_types.h"
+ 751              	 .file 5 "c:\\users\\pescatore\\switchdrive\\private\\konzept\\mcu for gate driver\\dave_4-4-2_64bit_2018-02-23\\dave-ide-4.4.2-64bit\\eclipse\\arm-gcc-49\\arm-none-eabi\\include\\stdint.h"
+ 752              	 .file 6 "F:/GitHub Projects/FH Luzern/BAT/BAT/Libraries/CMSIS/Infineon/XMC4400_series/Include/XMC4400.h"
+ 753              	 .file 7 "F:/GitHub Projects/FH Luzern/BAT/BAT/Libraries/XMCLib/inc/xmc4_gpio.h"
+ 754              	 .file 8 "F:/GitHub Projects/FH Luzern/BAT/BAT/Dave/Generated/ACIM_FREQ_CTRL/acim_freq_ctrl.h"
+ 755              	 .file 9 "F:/GitHub Projects/FH Luzern/BAT/BAT/Libraries/XMCLib/inc/xmc_usic.h"
+ 756              	 .file 10 "F:/GitHub Projects/FH Luzern/BAT/BAT/Libraries/XMCLib/inc/xmc_uart.h"
+ 757              	 .file 11 "F:/GitHub Projects/FH Luzern/BAT/BAT/Dave/Generated/UART/uart.h"
+ 758              	 .file 12 "F:/GitHub Projects/FH Luzern/BAT/BAT/Libraries/XMCLib/inc/xmc_vadc.h"
+ 759              	 .file 13 "F:/GitHub Projects/FH Luzern/BAT/BAT/Dave/Generated/ANALOG_IO/analog_io.h"
+ 760              	 .file 14 "F:/GitHub Projects/FH Luzern/BAT/BAT/Dave/Generated/ADC_MEASUREMENT/adc_measurement.h"
+ 761              	 .file 15 "F:/GitHub Projects/FH Luzern/BAT/BAT/Dave/Generated/DAVE.h"
+ 762              	 .file 16 "F:/GitHub Projects/FH Luzern/BAT/BAT/Libraries/CMSIS/Include/core_cm4.h"
+ 763              	 .file 17 "F:/GitHub Projects/FH Luzern/BAT/BAT/Libraries/CMSIS/Infineon/XMC4400_series/Include/system_XMC4400.h"
+ 764              	 .file 18 "F:/GitHub Projects/FH Luzern/BAT/BAT/Dave/Generated/DIGITAL_IO/digital_io_extern.h"
+ 765              	 .file 19 "F:/GitHub Projects/FH Luzern/BAT/BAT/Dave/Generated/UART/uart_extern.h"
+ 766              	 .file 20 "F:/GitHub Projects/FH Luzern/BAT/BAT/Dave/Generated/ADC_MEASUREMENT/ADC_MEASUREMENT_Extern.h"
 DEFINED SYMBOLS
                             *ABS*:00000000 main.c
     {standard input}:20     .text.XMC_GPIO_SetOutputHigh:00000000 $t
@@ -1483,29 +1664,39 @@ DEFINED SYMBOLS
     {standard input}:250    .text.DIGITAL_IO_GetInput:00000000 $t
     {standard input}:254    .text.DIGITAL_IO_GetInput:00000000 DIGITAL_IO_GetInput
                             *COM*:00000002 result
-    {standard input}:296    .text.VADC0_C0_2_IRQHandler:00000000 $t
-    {standard input}:301    .text.VADC0_C0_2_IRQHandler:00000000 VADC0_C0_2_IRQHandler
-    {standard input}:328    .text.VADC0_C0_2_IRQHandler:00000014 $d
-    {standard input}:338    .data.data:00000000 data
-    {standard input}:335    .data.data:00000000 $d
+    {standard input}:302    .text.VADC0_C0_2_IRQHandler:00000000 $t
+    {standard input}:307    .text.VADC0_C0_2_IRQHandler:00000000 VADC0_C0_2_IRQHandler
+    {standard input}:446    .text.VADC0_C0_2_IRQHandler:00000118 $d
+    {standard input}:466    .data.data:00000000 data
+    {standard input}:463    .data.data:00000000 $d
                             *COM*:0000000a rec_data
-    {standard input}:342    .text.EndofTransmit:00000000 $t
-    {standard input}:347    .text.EndofTransmit:00000000 EndofTransmit
-    {standard input}:374    .text.EndofTransmit:00000018 $d
-    {standard input}:381    .text.EndofReceive:00000000 $t
-    {standard input}:386    .text.EndofReceive:00000000 EndofReceive
-    {standard input}:433    .text.EndofReceive:0000002c $d
-    {standard input}:445    .bss.fan_flag:00000000 fan_flag
-    {standard input}:442    .bss.fan_flag:00000000 $d
-    {standard input}:452    .data.io_status:00000000 io_status
-    {standard input}:449    .data.io_status:00000000 $d
-    {standard input}:455    .text.main:00000000 $t
-    {standard input}:460    .text.main:00000000 main
-    {standard input}:561    .text.main:00000090 $d
+    {standard input}:470    .text.EndofTransmit:00000000 $t
+    {standard input}:475    .text.EndofTransmit:00000000 EndofTransmit
+    {standard input}:502    .text.EndofTransmit:00000018 $d
+    {standard input}:509    .text.EndofReceive:00000000 $t
+    {standard input}:514    .text.EndofReceive:00000000 EndofReceive
+    {standard input}:561    .text.EndofReceive:0000002c $d
+    {standard input}:569    .text.calculate_T_Amb:00000000 $t
+    {standard input}:574    .text.calculate_T_Amb:00000000 calculate_T_Amb
+                            *COM*:00000004 temp
+    {standard input}:608    .bss.fan_flag:00000000 fan_flag
+    {standard input}:605    .bss.fan_flag:00000000 $d
+    {standard input}:615    .data.io_status:00000000 io_status
+    {standard input}:612    .data.io_status:00000000 $d
+    {standard input}:618    .text.main:00000000 $t
+    {standard input}:623    .text.main:00000000 main
+    {standard input}:732    .text.main:0000009c $d
                      .debug_frame:00000010 $d
 
 UNDEFINED SYMBOLS
+__aeabi_i2d
+__aeabi_ddiv
+__aeabi_dsub
+__aeabi_dmul
+__aeabi_d2f
+__aeabi_f2d
 ADC_MEASUREMENT_GetResult
+log
 ADC_MEASUREMENT_Channel_A_handle
 UART_Receive
 UART_0
@@ -1521,5 +1712,6 @@ IO_Bit2_DIR
 Disable_Gate_Driver_M1_M2
 Disable_Gate_Driver_M3
 IO_Bit0
+HS_Overtemp
 Cooling_FAN
 IO_Bit1

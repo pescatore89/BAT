@@ -421,8 +421,8 @@
  253 0156 002B     	 cmp r3,#0
  254 0158 04D1     	 bne .L22
  170:../Dave/Generated/DAVE.c ****   {
- 171:../Dave/Generated/DAVE.c **** 	 /**  Initialization of DIGITAL_IO APP instance DIGITAL_IO_18 */
- 172:../Dave/Generated/DAVE.c **** 	 init_status = (DAVE_STATUS_t)DIGITAL_IO_Init(&DIGITAL_IO_18); 
+ 171:../Dave/Generated/DAVE.c **** 	 /**  Initialization of DIGITAL_IO APP instance HS_Overtemp */
+ 172:../Dave/Generated/DAVE.c **** 	 init_status = (DAVE_STATUS_t)DIGITAL_IO_Init(&HS_Overtemp); 
  255              	 .loc 1 172 0
  256 015a 6A48     	 ldr r0,.L44+84
  257 015c FFF7FEFF 	 bl DIGITAL_IO_Init
@@ -768,7 +768,7 @@
  494 02f8 00000000 	 .word DIGITAL_IO_15
  495 02fc 00000000 	 .word IO_Bit1_DIR
  496 0300 00000000 	 .word IO_Bit0_DIR
- 497 0304 00000000 	 .word DIGITAL_IO_18
+ 497 0304 00000000 	 .word HS_Overtemp
  498 0308 00000000 	 .word IO_Bit3_DIR
  499 030c 00000000 	 .word IO_Bit2_DIR
  500 0310 00000000 	 .word IO_Bit2
@@ -874,7 +874,7 @@ RS485_DIR
 DIGITAL_IO_15
 IO_Bit1_DIR
 IO_Bit0_DIR
-DIGITAL_IO_18
+HS_Overtemp
 IO_Bit3_DIR
 IO_Bit2_DIR
 IO_Bit2

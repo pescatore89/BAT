@@ -232,10 +232,10 @@
  254 0010 04       	 .byte 4
  255 0011 00       	 .byte 0
  256 0012 0000     	 .space 2
- 257              	 .global DIGITAL_IO_18
- 258              	 .section .rodata.DIGITAL_IO_18,"a",%progbits
+ 257              	 .global HS_Overtemp
+ 258              	 .section .rodata.HS_Overtemp,"a",%progbits
  259              	 .align 2
- 262              	DIGITAL_IO_18:
+ 262              	HS_Overtemp:
  263 0000 00830248 	 .word 1208124160
  264 0004 00       	 .byte 0
  265 0005 00000000 	 .space 11
@@ -423,8 +423,8 @@ DEFINED SYMBOLS
     {standard input}:231    .rodata.IO_Bit1_DIR:00000000 $d
     {standard input}:248    .rodata.IO_Bit0_DIR:00000000 IO_Bit0_DIR
     {standard input}:245    .rodata.IO_Bit0_DIR:00000000 $d
-    {standard input}:262    .rodata.DIGITAL_IO_18:00000000 DIGITAL_IO_18
-    {standard input}:259    .rodata.DIGITAL_IO_18:00000000 $d
+    {standard input}:262    .rodata.HS_Overtemp:00000000 HS_Overtemp
+    {standard input}:259    .rodata.HS_Overtemp:00000000 $d
     {standard input}:274    .rodata.IO_Bit3_DIR:00000000 IO_Bit3_DIR
     {standard input}:271    .rodata.IO_Bit3_DIR:00000000 $d
     {standard input}:288    .rodata.IO_Bit2_DIR:00000000 IO_Bit2_DIR

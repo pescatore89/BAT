@@ -263,7 +263,7 @@ const DIGITAL_IO_t IO_Bit0_DIR =
   .hwctrl = XMC_GPIO_HWCTRL_DISABLED
 };
 		
-const DIGITAL_IO_t DIGITAL_IO_18 =
+const DIGITAL_IO_t HS_Overtemp =
 {
   .gpio_port = XMC_GPIO_PORT3,
   .gpio_pin = 5U,

@@ -101,7 +101,7 @@ extern const DIGITAL_IO_t IO_Bit1_DIR;
 	
 extern const DIGITAL_IO_t IO_Bit0_DIR; 
 	
-extern const DIGITAL_IO_t DIGITAL_IO_18; 
+extern const DIGITAL_IO_t HS_Overtemp; 
 	
 extern const DIGITAL_IO_t IO_Bit3_DIR; 
 	
