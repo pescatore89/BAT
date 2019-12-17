@@ -115,7 +115,7 @@
   46 000c FB72     	 strb r3,[r7,#11]
   71:../Libraries/XMCLib/src/xmc4_gpio.c ****   XMC_ASSERT("XMC_GPIO_Init: Invalid port", XMC_GPIO_CHECK_PORT(port));
   72:../Libraries/XMCLib/src/xmc4_gpio.c ****   XMC_ASSERT("XMC_GPIO_Init: Invalid mode", XMC_GPIO_IsModeValid(config->mode));
-  73:../Libraries/XMCLib/src/xmc4_gpio.c ****  
+  73:../Libraries/XMCLib/src/xmc4_gpio.c **** 
   74:../Libraries/XMCLib/src/xmc4_gpio.c ****   /* Switch to input */
   75:../Libraries/XMCLib/src/xmc4_gpio.c ****   port->IOCR[pin >> 2U] &= (uint32_t)~(PORT_IOCR_PC_Msk << (PORT_IOCR_PC_Size * (pin & 0x3U)));
   47              	 .loc 1 75 0

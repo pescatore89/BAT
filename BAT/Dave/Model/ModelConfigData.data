@@ -202,12 +202,6 @@
     <resource xsi:type="ResourceModel:App" href="APPS/CCU8_SLICE_CONFIG/v4_0_22/CCU8_SLICE_CONFIG_0.app#/"/>
   </nodes>
   <nodes xsi:type="ApplicationModel:AppNode">
-    <resource xsi:type="ResourceModel:App" href="APPS/GLOBAL_CCU4/v4_1_12/GLOBAL_CCU4_0.app#/"/>
-  </nodes>
-  <nodes xsi:type="ApplicationModel:AppNode">
-    <resource xsi:type="ResourceModel:App" href="APPS/PWM_CCU4/v4_1_26/PWM_CCU4_0.app#/"/>
-  </nodes>
-  <nodes xsi:type="ApplicationModel:AppNode">
     <resource xsi:type="ResourceModel:App" href="APPS/GLOBAL_CCU4/v4_1_12/GLOBAL_CCU4_2.app#/"/>
   </nodes>
   <nodes xsi:type="ApplicationModel:AppNode">
@@ -249,14 +243,12 @@
   <connections xsi:type="ApplicationModel:NodeConnection" source="//@nodes.67" target="//@nodes.3"/>
   <connections xsi:type="ApplicationModel:NodeConnection" source="//@nodes.68" target="//@nodes.67"/>
   <connections xsi:type="ApplicationModel:NodeConnection" source="//@nodes.69" target="//@nodes.3"/>
-  <connections xsi:type="ApplicationModel:NodeConnection" source="//@nodes.70" target="//@nodes.69"/>
-  <connections xsi:type="ApplicationModel:NodeConnection" source="//@nodes.71" target="//@nodes.3"/>
-  <connections xsi:type="ApplicationModel:NodeConnection" source="//@nodes.71" target="//@nodes.0"/>
-  <connections xsi:type="ApplicationModel:NodeConnection" source="//@nodes.24" target="//@nodes.73"/>
-  <connections xsi:type="ApplicationModel:NodeConnection" source="//@nodes.73" target="//@nodes.74"/>
-  <connections xsi:type="ApplicationModel:NodeConnection" source="//@nodes.74" target="//@nodes.3"/>
-  <connections xsi:type="ApplicationModel:NodeConnection" source="//@nodes.74" target="//@nodes.0"/>
-  <connections xsi:type="ApplicationModel:NodeConnection" source="//@nodes.5" target="//@nodes.73"/>
+  <connections xsi:type="ApplicationModel:NodeConnection" source="//@nodes.69" target="//@nodes.0"/>
+  <connections xsi:type="ApplicationModel:NodeConnection" source="//@nodes.24" target="//@nodes.71"/>
+  <connections xsi:type="ApplicationModel:NodeConnection" source="//@nodes.71" target="//@nodes.72"/>
+  <connections xsi:type="ApplicationModel:NodeConnection" source="//@nodes.72" target="//@nodes.3"/>
+  <connections xsi:type="ApplicationModel:NodeConnection" source="//@nodes.72" target="//@nodes.0"/>
+  <connections xsi:type="ApplicationModel:NodeConnection" source="//@nodes.5" target="//@nodes.71"/>
   <hwConnections href="APPS/CPU_CTRL_XMC4/v4_0_14/CPU_CTRL_XMC4_0.app#//@connections.7"/>
   <hwConnections href="APPS/CPU_CTRL_XMC4/v4_0_14/CPU_CTRL_XMC4_0.app#//@connections.8"/>
   <hwConnections href="APPS/CPU_CTRL_XMC4/v4_0_14/CPU_CTRL_XMC4_0.app#//@connections.9"/>
@@ -482,13 +474,6 @@
   <hwConnections href="APPS/ANALOG_IO/v4_0_10/ANALOG_IO_1.app#//@connections.0"/>
   <hwConnections href="APPS/ANALOG_IO/v4_0_10/ANALOG_IO_1.app#//@connections.1"/>
   <hwConnections href="APPS/CCU8_SLICE_CONFIG/v4_0_22/CCU8_SLICE_CONFIG_0.app#//@connections.0"/>
-  <hwConnections href="APPS/GLOBAL_CCU4/v4_1_12/GLOBAL_CCU4_0.app#//@connections.0"/>
-  <hwConnections href="APPS/PWM_CCU4/v4_1_26/PWM_CCU4_0.app#//@connections.0"/>
-  <hwConnections href="APPS/PWM_CCU4/v4_1_26/PWM_CCU4_0.app#//@connections.5"/>
-  <hwConnections href="APPS/PWM_CCU4/v4_1_26/PWM_CCU4_0.app#//@connections.6"/>
-  <hwConnections href="APPS/PWM_CCU4/v4_1_26/PWM_CCU4_0.app#//@connections.4"/>
-  <hwConnections href="APPS/GLOBAL_CCU4/v4_1_12/GLOBAL_CCU4_2.app#//@connections.0"/>
-  <hwConnections href="APPS/PWM_CCU4/v4_1_26/PWM_CCU4_2.app#//@connections.0"/>
   <hwConnections href="APPS/PWM_CCU4/v4_1_26/PWM_CCU4_2.app#//@connections.5"/>
   <hwConnections href="APPS/PWM_CCU4/v4_1_26/PWM_CCU4_2.app#//@connections.6"/>
   <hwConnections href="APPS/PWM_CCU4/v4_1_26/PWM_CCU4_2.app#//@connections.4"/>
