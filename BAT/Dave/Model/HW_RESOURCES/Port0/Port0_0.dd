@@ -527,6 +527,7 @@
     <enumValues xsi:type="ResourceModel:RegEnumValue" value="0b11" description="Reserved."/>
   </provided>
   <provided xsi:type="ResourceModel:ResourceGroup" name="P0.12 / #94" URI="http://resources/0.4.1/port/p/0/pad/12">
+    <upwardMapList xsi:type="ResourceModel:HWResource" href="../../APPS/PWM_CCU4/v4_1_26/PWM_CCU4_3.app#//@hwResources.1"/>
     <resourcesList name="out_p" requiredResourceUri="http://resources/0.4.1/port/p/0/out/p12"/>
     <resourcesList name="omr_ps" requiredResourceUri="http://resources/0.4.1/port/p/0/omr/ps12"/>
     <resourcesList name="omr_pr" requiredResourceUri="http://resources/0.4.1/port/p/0/omr/pr12"/>

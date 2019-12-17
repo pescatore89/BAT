@@ -93,7 +93,7 @@ const XMC_CCU4_SLICE_COMPARE_CONFIG_t CCU4_SLICE_CONFIG_0_compare_config     =
   .dither_timer_period   = false,
   .dither_duty_cycle     = false,
   .prescaler_mode        = (uint32_t)XMC_CCU4_SLICE_PRESCALER_MODE_NORMAL,  
-  .mcm_enable            = false,        
+  .mcm_enable            = true,        
   .prescaler_initval     = XMC_CCU4_SLICE_PRESCALER_1,
   .float_limit           = XMC_CCU4_SLICE_PRESCALER_32768,
   .dither_limit          = 0,
@@ -148,6 +148,86 @@ CCU4_SLICE_CONFIG_STATUS_t CCU4_SLICE_CONFIG_0_lInit(void)
   XMC_CCU4_EnableClock(CCU43, (uint8_t)3);	
   /* Set initial value of timer */
   XMC_CCU4_SLICE_SetTimerValue(CCU43_CC43, (uint16_t)0U);
+  /* Start the timer */
+  XMC_CCU4_SLICE_StartTimer(CCU43_CC43);
+  return CCU4_SLICE_CONFIG_STATUS_SUCCESS;
+}
+	
+static CCU4_SLICE_CONFIG_STATUS_t CCU4_SLICE_CONFIG_1_lInit(void);
+        
+const CCU4_SLICE_CONFIG_t CCU4_SLICE_CONFIG_1 =
+{
+  .init = CCU4_SLICE_CONFIG_1_lInit,
+  .global = &GLOBAL_CCU4_0,
+  .slice_ptr = CCU40_CC41,
+  .slice_num = (uint8_t)1
+};
+        
+const XMC_CCU4_SLICE_COMPARE_CONFIG_t CCU4_SLICE_CONFIG_1_compare_config     =
+{
+  .timer_mode            = (uint32_t)XMC_CCU4_SLICE_TIMER_COUNT_MODE_EA,
+  .monoshot              = (uint32_t)XMC_CCU4_SLICE_TIMER_REPEAT_MODE_REPEAT,
+  .shadow_xfer_clear     = false,
+  .dither_timer_period   = false,
+  .dither_duty_cycle     = false,
+  .prescaler_mode        = (uint32_t)XMC_CCU4_SLICE_PRESCALER_MODE_NORMAL,  
+  .mcm_enable            = true,        
+  .prescaler_initval     = XMC_CCU4_SLICE_PRESCALER_1,
+  .float_limit           = XMC_CCU4_SLICE_PRESCALER_32768,
+  .dither_limit          = 0,
+  .passive_level         = XMC_CCU4_SLICE_OUTPUT_PASSIVE_LEVEL_LOW,  
+  .timer_concatenation   = false
+};
+            
+const XMC_CCU4_SLICE_EVENT_CONFIG_t CCU4_SLICE_CONFIG_1_event0_config = 
+{
+  .mapped_input        = XMC_CCU4_SLICE_INPUT_A,
+  .edge                = XMC_CCU4_SLICE_EVENT_EDGE_SENSITIVITY_NONE,
+  .level               = XMC_CCU4_SLICE_EVENT_LEVEL_SENSITIVITY_ACTIVE_HIGH,
+  .duration            = XMC_CCU4_SLICE_EVENT_FILTER_DISABLED                               
+ };
+            
+const XMC_CCU4_SLICE_EVENT_CONFIG_t CCU4_SLICE_CONFIG_1_event1_config = 
+{
+  .mapped_input        = XMC_CCU4_SLICE_INPUT_A,
+  .edge                = XMC_CCU4_SLICE_EVENT_EDGE_SENSITIVITY_NONE,
+  .level               = XMC_CCU4_SLICE_EVENT_LEVEL_SENSITIVITY_ACTIVE_HIGH,
+  .duration            = XMC_CCU4_SLICE_EVENT_FILTER_DISABLED                               
+ };
+            
+const XMC_CCU4_SLICE_EVENT_CONFIG_t CCU4_SLICE_CONFIG_1_event2_config = 
+{
+  .mapped_input        = XMC_CCU4_SLICE_INPUT_A,
+  .edge                = XMC_CCU4_SLICE_EVENT_EDGE_SENSITIVITY_NONE,
+  .level               = XMC_CCU4_SLICE_EVENT_LEVEL_SENSITIVITY_ACTIVE_HIGH,
+  .duration            = XMC_CCU4_SLICE_EVENT_FILTER_DISABLED                               
+ };
+            /* Channel initialization function */
+CCU4_SLICE_CONFIG_STATUS_t CCU4_SLICE_CONFIG_1_lInit(void)
+{
+  GLOBAL_CCU4_Init(&GLOBAL_CCU4_0);
+  /* Configure CCU4x_CC4y slice as timer unit */
+  XMC_CCU4_SLICE_CompareInit(CCU40_CC41, &CCU4_SLICE_CONFIG_1_compare_config);
+  /* Set timer compare register value */
+  XMC_CCU4_SLICE_SetTimerCompareMatch(CCU40_CC41, (uint16_t)32768U);
+  /* Set timer period register value */
+  XMC_CCU4_SLICE_SetTimerPeriodMatch(CCU40_CC41, (uint16_t)65535U);	
+  /* Register value update settings */
+  XMC_CCU4_SetMultiChannelShadowTransferMode(CCU40, (uint32_t)XMC_CCU4_MULTI_CHANNEL_SHADOW_TRANSFER_SW_SLICE1);
+  /* Transfer value from shadow registers to actual timer registers */
+  XMC_CCU4_EnableShadowTransfer(CCU40, (uint32_t)XMC_CCU4_SHADOW_TRANSFER_SLICE_1 |
+                                               (uint32_t)XMC_CCU4_SHADOW_TRANSFER_DITHER_SLICE_1 |
+                                               (uint32_t)XMC_CCU4_SHADOW_TRANSFER_PRESCALER_SLICE_1);
+  /* Events and function settings */
+  XMC_CCU4_SLICE_ConfigureEvent(CCU40_CC41, XMC_CCU4_SLICE_EVENT_0, &CCU4_SLICE_CONFIG_1_event0_config);
+  XMC_CCU4_SLICE_ConfigureEvent(CCU40_CC41, XMC_CCU4_SLICE_EVENT_1, &CCU4_SLICE_CONFIG_1_event1_config);
+  XMC_CCU4_SLICE_ConfigureEvent(CCU40_CC41, XMC_CCU4_SLICE_EVENT_2, &CCU4_SLICE_CONFIG_1_event2_config);
+  /* clear IDLE mode for the slice*/
+  XMC_CCU4_EnableClock(CCU40, (uint8_t)1);	
+  /* Set initial value of timer */
+  XMC_CCU4_SLICE_SetTimerValue(CCU40_CC41, (uint16_t)0U);
+  /* Start the timer */
+  XMC_CCU4_SLICE_StartTimer(CCU40_CC41);
   return CCU4_SLICE_CONFIG_STATUS_SUCCESS;
 }
 	

@@ -18,7 +18,17 @@
 #define SLICE0_NUMBER (0U)
 #define SLICE0_OUTPUT P3_0
 
+#define MODULE1_PTR CCU40
+#define MODULE1_NUMBER (0U)
+#define SLICE1_PTR CCU40_CC43
+#define SLICE1_NUMBER (3U)
+#define SLICE1_OUTPUT P0_12
+
 volatile uint32_t count = 0;
+volatile uint32_t count1 = 0;
+
+
+
 const uint16_t comparevalue[100000] = /* sine table for duty cycle*/
 { 300,300,300,300,300,300,300,300,300,300,300,300,300,300,300,300,300,300,300,300,300,300,300,300,300,300,300,300,300,300,300,300,300,300,300,300,300,300,300,300,300,300,300,300,300,300,300,300,300,300,300,300,300,300,301,301,301,301,301,301,301,301,301,301,301,301,301,301,301,301,301,301,301,301,301,301,301,301,301,301,301,301,301,301,301,301,301,301,301,301,301,301,301,301,301,301,301,301,301,301,
 		301,301,301,301,301,301,301,302,302,302,302,302,302,302,302,302,302,302,302,302,302,302,302,302,302,302,302,302,302,302,302,302,302,302,302,302,302,302,302,302,302,302,302,302,302,302,302,302,302,302,302,302,302,302,302,302,302,302,302,302,303,303,303,303,303,303,303,303,303,303,303,303,303,303,303,303,303,303,303,303,303,303,303,303,303,303,303,303,303,303,303,303,303,303,303,303,303,303,303,303,
@@ -1047,8 +1057,8 @@ void CCU42_0_IRQHandler(void) {
 	XMC_CCU4_SLICE_ClearEvent(SLICE0_PTR,
 			XMC_CCU4_SLICE_IRQ_ID_COMPARE_MATCH_UP);
 	/* Set new duty cycle value */
-	float Modulationsgrad = 81;
-	uint16_t frequenz = 10000;
+	float Modulationsgrad = 100;
+	uint16_t frequenz = 20;
 	//uint16_t value = 2400;
 	int32_t temp1 =(int32_t)(comparevalue[count]-300);
 	int32_t temp2 =  (temp1*Modulationsgrad)/100;
@@ -1059,13 +1069,40 @@ void CCU42_0_IRQHandler(void) {
 	//(Modulationsgrad*comparevalue[count]);
 	XMC_CCU4_SLICE_SetTimerCompareMatch(SLICE0_PTR, value);
 	count = count + frequenz;
-	if (count == 100000) {
+	if (count >= 100000) {
 		count = 0;
-		DIGITAL_IO_ToggleOutput(&IO_Bit3);
 		DIGITAL_IO_ToggleOutput(&IO_Bit2);
 	}
 	/* Enable shadow transfer for the new PWM value update */
 	XMC_CCU4_EnableShadowTransfer(MODULE_PTR, XMC_CCU4_SHADOW_TRANSFER_SLICE_0);
+}
+
+
+
+void CCU40_3_IRQHandler(void) {
+	/* Clear pending interrupt */
+	XMC_CCU4_SLICE_ClearEvent(SLICE1_PTR,
+			XMC_CCU4_SLICE_IRQ_ID_COMPARE_MATCH_UP);
+	/* Set new duty cycle value */
+	float Modulationsgrad = 100;
+	uint16_t frequenz = 10;
+	//uint16_t value = 2400;
+	int32_t temp1 =(int32_t)(comparevalue[count1]-300);
+	int32_t temp2 =  (temp1*Modulationsgrad)/100;
+	int32_t value = temp2 +300;
+
+
+
+	//(Modulationsgrad*comparevalue[count]);
+	XMC_CCU4_SLICE_SetTimerCompareMatch(SLICE1_PTR, value);
+	count1 = count1 + frequenz;
+	if (count1 >= 100000) {
+		count1 = 0;
+		DIGITAL_IO_ToggleOutput(&IO_Bit3);
+	}
+	/* Enable shadow transfer for the new PWM value update */
+	XMC_CCU4_EnableShadowTransfer(MODULE1_PTR, XMC_CCU4_SHADOW_TRANSFER_SLICE_3);
+
 }
 
 XMC_VADC_RESULT_SIZE_t result;
@@ -1170,6 +1207,9 @@ int main(void) {
 	DIGITAL_IO_SetOutputHigh(&Disable_Gate_Driver_M1_M2); // Set Output Pin 0 high
 	DIGITAL_IO_SetOutputHigh(&Disable_Gate_Driver_M3); // Set Output Pin 0 high
 
+
+
+
 	XMC_CCU4_SLICE_EnableEvent(SLICE0_PTR, XMC_CCU4_SLICE_IRQ_ID_PERIOD_MATCH);
 	/* Connect compare match event to SR0 */
 	XMC_CCU4_SLICE_SetInterruptNode(SLICE0_PTR,
@@ -1179,6 +1219,21 @@ int main(void) {
 	NVIC_SetPriority(CCU42_0_IRQn, 3U);
 	/* Enable IRQ */
 	NVIC_EnableIRQ(CCU42_0_IRQn);
+
+
+
+
+
+
+	XMC_CCU4_SLICE_EnableEvent(SLICE1_PTR, XMC_CCU4_SLICE_IRQ_ID_PERIOD_MATCH);
+	/* Connect compare match event to SR0 */
+	XMC_CCU4_SLICE_SetInterruptNode(SLICE1_PTR,
+			XMC_CCU4_SLICE_IRQ_ID_PERIOD_MATCH, XMC_CCU4_SLICE_SR_ID_3);
+
+	/* Set NVIC priority */
+	NVIC_SetPriority(CCU40_3_IRQn, 3U);
+	/* Enable IRQ */
+	NVIC_EnableIRQ(CCU40_3_IRQn);
 
 	/* Enable CCU4 PWM output */
 	//XMC_GPIO_Init((XMC_GPIO_PORT_t *) PORT0_BASE,12U, &SLICE0_OUTPUT_config);

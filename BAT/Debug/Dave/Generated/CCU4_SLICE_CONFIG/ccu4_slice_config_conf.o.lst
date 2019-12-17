@@ -1020,12 +1020,12 @@
   66 0026 7047     	 bx lr
   67              	 .cfi_endproc
   68              	.LFE141:
-  70              	 .section .text.XMC_CCU4_SLICE_SetTimerPeriodMatch,"ax",%progbits
+  70              	 .section .text.XMC_CCU4_SLICE_StartTimer,"ax",%progbits
   71              	 .align 2
   72              	 .thumb
   73              	 .thumb_func
-  75              	XMC_CCU4_SLICE_SetTimerPeriodMatch:
-  76              	.LFB155:
+  75              	XMC_CCU4_SLICE_StartTimer:
+  76              	.LFB148:
  956:F:/GitHub Projects/FH Luzern/BAT/BAT/Libraries/XMCLib/inc\xmc_ccu4.h **** 
  957:F:/GitHub Projects/FH Luzern/BAT/BAT/Libraries/XMCLib/inc\xmc_ccu4.h **** /**
  958:F:/GitHub Projects/FH Luzern/BAT/BAT/Libraries/XMCLib/inc\xmc_ccu4.h ****  * @param module Constant pointer to CCU4 module
@@ -1510,9 +1510,50 @@
 1437:F:/GitHub Projects/FH Luzern/BAT/BAT/Libraries/XMCLib/inc\xmc_ccu4.h ****  */
 1438:F:/GitHub Projects/FH Luzern/BAT/BAT/Libraries/XMCLib/inc\xmc_ccu4.h **** __STATIC_INLINE void XMC_CCU4_SLICE_StartTimer(XMC_CCU4_SLICE_t *const slice)
 1439:F:/GitHub Projects/FH Luzern/BAT/BAT/Libraries/XMCLib/inc\xmc_ccu4.h **** {
+  77              	 .loc 1 1439 0
+  78              	 .cfi_startproc
+  79              	 
+  80              	 
+  81              	 
+  82 0000 80B4     	 push {r7}
+  83              	.LCFI6:
+  84              	 .cfi_def_cfa_offset 4
+  85              	 .cfi_offset 7,-4
+  86 0002 83B0     	 sub sp,sp,#12
+  87              	.LCFI7:
+  88              	 .cfi_def_cfa_offset 16
+  89 0004 00AF     	 add r7,sp,#0
+  90              	.LCFI8:
+  91              	 .cfi_def_cfa_register 7
+  92 0006 7860     	 str r0,[r7,#4]
 1440:F:/GitHub Projects/FH Luzern/BAT/BAT/Libraries/XMCLib/inc\xmc_ccu4.h ****   XMC_ASSERT("XMC_CCU4_SLICE_StartTimer:Invalid Slice Pointer", XMC_CCU4_IsValidSlice(slice));
 1441:F:/GitHub Projects/FH Luzern/BAT/BAT/Libraries/XMCLib/inc\xmc_ccu4.h ****   slice->TCSET = CCU4_CC4_TCSET_TRBS_Msk;
+  93              	 .loc 1 1441 0
+  94 0008 7B68     	 ldr r3,[r7,#4]
+  95 000a 0122     	 movs r2,#1
+  96 000c DA60     	 str r2,[r3,#12]
 1442:F:/GitHub Projects/FH Luzern/BAT/BAT/Libraries/XMCLib/inc\xmc_ccu4.h **** }
+  97              	 .loc 1 1442 0
+  98 000e 0C37     	 adds r7,r7,#12
+  99              	.LCFI9:
+ 100              	 .cfi_def_cfa_offset 4
+ 101 0010 BD46     	 mov sp,r7
+ 102              	.LCFI10:
+ 103              	 .cfi_def_cfa_register 13
+ 104              	 
+ 105 0012 5DF8047B 	 ldr r7,[sp],#4
+ 106              	.LCFI11:
+ 107              	 .cfi_restore 7
+ 108              	 .cfi_def_cfa_offset 0
+ 109 0016 7047     	 bx lr
+ 110              	 .cfi_endproc
+ 111              	.LFE148:
+ 113              	 .section .text.XMC_CCU4_SLICE_SetTimerPeriodMatch,"ax",%progbits
+ 114              	 .align 2
+ 115              	 .thumb
+ 116              	 .thumb_func
+ 118              	XMC_CCU4_SLICE_SetTimerPeriodMatch:
+ 119              	.LFB155:
 1443:F:/GitHub Projects/FH Luzern/BAT/BAT/Libraries/XMCLib/inc\xmc_ccu4.h **** 
 1444:F:/GitHub Projects/FH Luzern/BAT/BAT/Libraries/XMCLib/inc\xmc_ccu4.h **** /**
 1445:F:/GitHub Projects/FH Luzern/BAT/BAT/Libraries/XMCLib/inc\xmc_ccu4.h ****  * @param slice Constant pointer to CC4 Slice
@@ -1682,52 +1723,52 @@
 1609:F:/GitHub Projects/FH Luzern/BAT/BAT/Libraries/XMCLib/inc\xmc_ccu4.h ****  */
 1610:F:/GitHub Projects/FH Luzern/BAT/BAT/Libraries/XMCLib/inc\xmc_ccu4.h **** __STATIC_INLINE void XMC_CCU4_SLICE_SetTimerPeriodMatch(XMC_CCU4_SLICE_t *const slice, const uint16
 1611:F:/GitHub Projects/FH Luzern/BAT/BAT/Libraries/XMCLib/inc\xmc_ccu4.h **** {
-  77              	 .loc 1 1611 0
-  78              	 .cfi_startproc
-  79              	 
-  80              	 
-  81              	 
-  82 0000 80B4     	 push {r7}
-  83              	.LCFI6:
-  84              	 .cfi_def_cfa_offset 4
-  85              	 .cfi_offset 7,-4
-  86 0002 83B0     	 sub sp,sp,#12
-  87              	.LCFI7:
-  88              	 .cfi_def_cfa_offset 16
-  89 0004 00AF     	 add r7,sp,#0
-  90              	.LCFI8:
-  91              	 .cfi_def_cfa_register 7
-  92 0006 7860     	 str r0,[r7,#4]
-  93 0008 0B46     	 mov r3,r1
-  94 000a 7B80     	 strh r3,[r7,#2]
+ 120              	 .loc 1 1611 0
+ 121              	 .cfi_startproc
+ 122              	 
+ 123              	 
+ 124              	 
+ 125 0000 80B4     	 push {r7}
+ 126              	.LCFI12:
+ 127              	 .cfi_def_cfa_offset 4
+ 128              	 .cfi_offset 7,-4
+ 129 0002 83B0     	 sub sp,sp,#12
+ 130              	.LCFI13:
+ 131              	 .cfi_def_cfa_offset 16
+ 132 0004 00AF     	 add r7,sp,#0
+ 133              	.LCFI14:
+ 134              	 .cfi_def_cfa_register 7
+ 135 0006 7860     	 str r0,[r7,#4]
+ 136 0008 0B46     	 mov r3,r1
+ 137 000a 7B80     	 strh r3,[r7,#2]
 1612:F:/GitHub Projects/FH Luzern/BAT/BAT/Libraries/XMCLib/inc\xmc_ccu4.h ****   XMC_ASSERT("XMC_CCU4_SLICE_SetTimerPeriodMatch:Invalid Slice Pointer", XMC_CCU4_IsValidSlice(slic
 1613:F:/GitHub Projects/FH Luzern/BAT/BAT/Libraries/XMCLib/inc\xmc_ccu4.h ****   slice->PRS = (uint32_t) period_val;
-  95              	 .loc 1 1613 0
-  96 000c 7A88     	 ldrh r2,[r7,#2]
-  97 000e 7B68     	 ldr r3,[r7,#4]
-  98 0010 5A63     	 str r2,[r3,#52]
+ 138              	 .loc 1 1613 0
+ 139 000c 7A88     	 ldrh r2,[r7,#2]
+ 140 000e 7B68     	 ldr r3,[r7,#4]
+ 141 0010 5A63     	 str r2,[r3,#52]
 1614:F:/GitHub Projects/FH Luzern/BAT/BAT/Libraries/XMCLib/inc\xmc_ccu4.h **** }
-  99              	 .loc 1 1614 0
- 100 0012 0C37     	 adds r7,r7,#12
- 101              	.LCFI9:
- 102              	 .cfi_def_cfa_offset 4
- 103 0014 BD46     	 mov sp,r7
- 104              	.LCFI10:
- 105              	 .cfi_def_cfa_register 13
- 106              	 
- 107 0016 5DF8047B 	 ldr r7,[sp],#4
- 108              	.LCFI11:
- 109              	 .cfi_restore 7
- 110              	 .cfi_def_cfa_offset 0
- 111 001a 7047     	 bx lr
- 112              	 .cfi_endproc
- 113              	.LFE155:
- 115              	 .section .text.XMC_CCU4_SLICE_SetTimerCompareMatch,"ax",%progbits
- 116              	 .align 2
- 117              	 .thumb
- 118              	 .thumb_func
- 120              	XMC_CCU4_SLICE_SetTimerCompareMatch:
- 121              	.LFB157:
+ 142              	 .loc 1 1614 0
+ 143 0012 0C37     	 adds r7,r7,#12
+ 144              	.LCFI15:
+ 145              	 .cfi_def_cfa_offset 4
+ 146 0014 BD46     	 mov sp,r7
+ 147              	.LCFI16:
+ 148              	 .cfi_def_cfa_register 13
+ 149              	 
+ 150 0016 5DF8047B 	 ldr r7,[sp],#4
+ 151              	.LCFI17:
+ 152              	 .cfi_restore 7
+ 153              	 .cfi_def_cfa_offset 0
+ 154 001a 7047     	 bx lr
+ 155              	 .cfi_endproc
+ 156              	.LFE155:
+ 158              	 .section .text.XMC_CCU4_SLICE_SetTimerCompareMatch,"ax",%progbits
+ 159              	 .align 2
+ 160              	 .thumb
+ 161              	 .thumb_func
+ 163              	XMC_CCU4_SLICE_SetTimerCompareMatch:
+ 164              	.LFB157:
 1615:F:/GitHub Projects/FH Luzern/BAT/BAT/Libraries/XMCLib/inc\xmc_ccu4.h **** 
 1616:F:/GitHub Projects/FH Luzern/BAT/BAT/Libraries/XMCLib/inc\xmc_ccu4.h **** /**
 1617:F:/GitHub Projects/FH Luzern/BAT/BAT/Libraries/XMCLib/inc\xmc_ccu4.h ****  * @param slice Constant pointer to CC4 Slice
@@ -1773,52 +1814,52 @@
 1657:F:/GitHub Projects/FH Luzern/BAT/BAT/Libraries/XMCLib/inc\xmc_ccu4.h ****  */
 1658:F:/GitHub Projects/FH Luzern/BAT/BAT/Libraries/XMCLib/inc\xmc_ccu4.h **** __STATIC_INLINE void XMC_CCU4_SLICE_SetTimerCompareMatch(XMC_CCU4_SLICE_t *const slice, const uint1
 1659:F:/GitHub Projects/FH Luzern/BAT/BAT/Libraries/XMCLib/inc\xmc_ccu4.h **** {
- 122              	 .loc 1 1659 0
- 123              	 .cfi_startproc
- 124              	 
- 125              	 
- 126              	 
- 127 0000 80B4     	 push {r7}
- 128              	.LCFI12:
- 129              	 .cfi_def_cfa_offset 4
- 130              	 .cfi_offset 7,-4
- 131 0002 83B0     	 sub sp,sp,#12
- 132              	.LCFI13:
- 133              	 .cfi_def_cfa_offset 16
- 134 0004 00AF     	 add r7,sp,#0
- 135              	.LCFI14:
- 136              	 .cfi_def_cfa_register 7
- 137 0006 7860     	 str r0,[r7,#4]
- 138 0008 0B46     	 mov r3,r1
- 139 000a 7B80     	 strh r3,[r7,#2]
+ 165              	 .loc 1 1659 0
+ 166              	 .cfi_startproc
+ 167              	 
+ 168              	 
+ 169              	 
+ 170 0000 80B4     	 push {r7}
+ 171              	.LCFI18:
+ 172              	 .cfi_def_cfa_offset 4
+ 173              	 .cfi_offset 7,-4
+ 174 0002 83B0     	 sub sp,sp,#12
+ 175              	.LCFI19:
+ 176              	 .cfi_def_cfa_offset 16
+ 177 0004 00AF     	 add r7,sp,#0
+ 178              	.LCFI20:
+ 179              	 .cfi_def_cfa_register 7
+ 180 0006 7860     	 str r0,[r7,#4]
+ 181 0008 0B46     	 mov r3,r1
+ 182 000a 7B80     	 strh r3,[r7,#2]
 1660:F:/GitHub Projects/FH Luzern/BAT/BAT/Libraries/XMCLib/inc\xmc_ccu4.h ****   XMC_ASSERT("XMC_CCU4_SLICE_SetTimerCompareMatch:Invalid Slice Pointer", XMC_CCU4_IsValidSlice(sli
 1661:F:/GitHub Projects/FH Luzern/BAT/BAT/Libraries/XMCLib/inc\xmc_ccu4.h ****   slice->CRS = (uint32_t) compare_val;
- 140              	 .loc 1 1661 0
- 141 000c 7A88     	 ldrh r2,[r7,#2]
- 142 000e 7B68     	 ldr r3,[r7,#4]
- 143 0010 DA63     	 str r2,[r3,#60]
+ 183              	 .loc 1 1661 0
+ 184 000c 7A88     	 ldrh r2,[r7,#2]
+ 185 000e 7B68     	 ldr r3,[r7,#4]
+ 186 0010 DA63     	 str r2,[r3,#60]
 1662:F:/GitHub Projects/FH Luzern/BAT/BAT/Libraries/XMCLib/inc\xmc_ccu4.h **** }
- 144              	 .loc 1 1662 0
- 145 0012 0C37     	 adds r7,r7,#12
- 146              	.LCFI15:
- 147              	 .cfi_def_cfa_offset 4
- 148 0014 BD46     	 mov sp,r7
- 149              	.LCFI16:
- 150              	 .cfi_def_cfa_register 13
- 151              	 
- 152 0016 5DF8047B 	 ldr r7,[sp],#4
- 153              	.LCFI17:
- 154              	 .cfi_restore 7
- 155              	 .cfi_def_cfa_offset 0
- 156 001a 7047     	 bx lr
- 157              	 .cfi_endproc
- 158              	.LFE157:
- 160              	 .section .text.XMC_CCU4_EnableShadowTransfer,"ax",%progbits
- 161              	 .align 2
- 162              	 .thumb
- 163              	 .thumb_func
- 165              	XMC_CCU4_EnableShadowTransfer:
- 166              	.LFB159:
+ 187              	 .loc 1 1662 0
+ 188 0012 0C37     	 adds r7,r7,#12
+ 189              	.LCFI21:
+ 190              	 .cfi_def_cfa_offset 4
+ 191 0014 BD46     	 mov sp,r7
+ 192              	.LCFI22:
+ 193              	 .cfi_def_cfa_register 13
+ 194              	 
+ 195 0016 5DF8047B 	 ldr r7,[sp],#4
+ 196              	.LCFI23:
+ 197              	 .cfi_restore 7
+ 198              	 .cfi_def_cfa_offset 0
+ 199 001a 7047     	 bx lr
+ 200              	 .cfi_endproc
+ 201              	.LFE157:
+ 203              	 .section .text.XMC_CCU4_EnableShadowTransfer,"ax",%progbits
+ 204              	 .align 2
+ 205              	 .thumb
+ 206              	 .thumb_func
+ 208              	XMC_CCU4_EnableShadowTransfer:
+ 209              	.LFB159:
 1663:F:/GitHub Projects/FH Luzern/BAT/BAT/Libraries/XMCLib/inc\xmc_ccu4.h **** 
 1664:F:/GitHub Projects/FH Luzern/BAT/BAT/Libraries/XMCLib/inc\xmc_ccu4.h **** /**
 1665:F:/GitHub Projects/FH Luzern/BAT/BAT/Libraries/XMCLib/inc\xmc_ccu4.h ****  * @param slice Constant pointer to CC4 Slice
@@ -1870,51 +1911,51 @@
 1711:F:/GitHub Projects/FH Luzern/BAT/BAT/Libraries/XMCLib/inc\xmc_ccu4.h ****  */
 1712:F:/GitHub Projects/FH Luzern/BAT/BAT/Libraries/XMCLib/inc\xmc_ccu4.h **** __STATIC_INLINE void XMC_CCU4_EnableShadowTransfer(XMC_CCU4_MODULE_t *const module, const uint32_t 
 1713:F:/GitHub Projects/FH Luzern/BAT/BAT/Libraries/XMCLib/inc\xmc_ccu4.h **** {
- 167              	 .loc 1 1713 0
- 168              	 .cfi_startproc
- 169              	 
- 170              	 
- 171              	 
- 172 0000 80B4     	 push {r7}
- 173              	.LCFI18:
- 174              	 .cfi_def_cfa_offset 4
- 175              	 .cfi_offset 7,-4
- 176 0002 83B0     	 sub sp,sp,#12
- 177              	.LCFI19:
- 178              	 .cfi_def_cfa_offset 16
- 179 0004 00AF     	 add r7,sp,#0
- 180              	.LCFI20:
- 181              	 .cfi_def_cfa_register 7
- 182 0006 7860     	 str r0,[r7,#4]
- 183 0008 3960     	 str r1,[r7]
+ 210              	 .loc 1 1713 0
+ 211              	 .cfi_startproc
+ 212              	 
+ 213              	 
+ 214              	 
+ 215 0000 80B4     	 push {r7}
+ 216              	.LCFI24:
+ 217              	 .cfi_def_cfa_offset 4
+ 218              	 .cfi_offset 7,-4
+ 219 0002 83B0     	 sub sp,sp,#12
+ 220              	.LCFI25:
+ 221              	 .cfi_def_cfa_offset 16
+ 222 0004 00AF     	 add r7,sp,#0
+ 223              	.LCFI26:
+ 224              	 .cfi_def_cfa_register 7
+ 225 0006 7860     	 str r0,[r7,#4]
+ 226 0008 3960     	 str r1,[r7]
 1714:F:/GitHub Projects/FH Luzern/BAT/BAT/Libraries/XMCLib/inc\xmc_ccu4.h ****   XMC_ASSERT("XMC_CCU4_EnableShadowTransfer:Invalid Slice Pointer", XMC_CCU4_IsValidModule(module))
 1715:F:/GitHub Projects/FH Luzern/BAT/BAT/Libraries/XMCLib/inc\xmc_ccu4.h ****   module->GCSS = (uint32_t)shadow_transfer_msk;  
- 184              	 .loc 1 1715 0
- 185 000a 7B68     	 ldr r3,[r7,#4]
- 186 000c 3A68     	 ldr r2,[r7]
- 187 000e 1A61     	 str r2,[r3,#16]
+ 227              	 .loc 1 1715 0
+ 228 000a 7B68     	 ldr r3,[r7,#4]
+ 229 000c 3A68     	 ldr r2,[r7]
+ 230 000e 1A61     	 str r2,[r3,#16]
 1716:F:/GitHub Projects/FH Luzern/BAT/BAT/Libraries/XMCLib/inc\xmc_ccu4.h **** }
- 188              	 .loc 1 1716 0
- 189 0010 0C37     	 adds r7,r7,#12
- 190              	.LCFI21:
- 191              	 .cfi_def_cfa_offset 4
- 192 0012 BD46     	 mov sp,r7
- 193              	.LCFI22:
- 194              	 .cfi_def_cfa_register 13
- 195              	 
- 196 0014 5DF8047B 	 ldr r7,[sp],#4
- 197              	.LCFI23:
- 198              	 .cfi_restore 7
- 199              	 .cfi_def_cfa_offset 0
- 200 0018 7047     	 bx lr
- 201              	 .cfi_endproc
- 202              	.LFE159:
- 204 001a 00BF     	 .section .text.XMC_CCU4_SLICE_SetTimerValue,"ax",%progbits
- 205              	 .align 2
- 206              	 .thumb
- 207              	 .thumb_func
- 209              	XMC_CCU4_SLICE_SetTimerValue:
- 210              	.LFB161:
+ 231              	 .loc 1 1716 0
+ 232 0010 0C37     	 adds r7,r7,#12
+ 233              	.LCFI27:
+ 234              	 .cfi_def_cfa_offset 4
+ 235 0012 BD46     	 mov sp,r7
+ 236              	.LCFI28:
+ 237              	 .cfi_def_cfa_register 13
+ 238              	 
+ 239 0014 5DF8047B 	 ldr r7,[sp],#4
+ 240              	.LCFI29:
+ 241              	 .cfi_restore 7
+ 242              	 .cfi_def_cfa_offset 0
+ 243 0018 7047     	 bx lr
+ 244              	 .cfi_endproc
+ 245              	.LFE159:
+ 247 001a 00BF     	 .section .text.XMC_CCU4_SLICE_SetTimerValue,"ax",%progbits
+ 248              	 .align 2
+ 249              	 .thumb
+ 250              	 .thumb_func
+ 252              	XMC_CCU4_SLICE_SetTimerValue:
+ 253              	.LFB161:
 1717:F:/GitHub Projects/FH Luzern/BAT/BAT/Libraries/XMCLib/inc\xmc_ccu4.h **** 
 1718:F:/GitHub Projects/FH Luzern/BAT/BAT/Libraries/XMCLib/inc\xmc_ccu4.h **** /**
 1719:F:/GitHub Projects/FH Luzern/BAT/BAT/Libraries/XMCLib/inc\xmc_ccu4.h ****  * @param slice Constant pointer to CC4 Slice
@@ -1951,88 +1992,88 @@
 1750:F:/GitHub Projects/FH Luzern/BAT/BAT/Libraries/XMCLib/inc\xmc_ccu4.h ****  */
 1751:F:/GitHub Projects/FH Luzern/BAT/BAT/Libraries/XMCLib/inc\xmc_ccu4.h **** __STATIC_INLINE void XMC_CCU4_SLICE_SetTimerValue(XMC_CCU4_SLICE_t *const slice, const uint16_t tim
 1752:F:/GitHub Projects/FH Luzern/BAT/BAT/Libraries/XMCLib/inc\xmc_ccu4.h **** {
- 211              	 .loc 1 1752 0
- 212              	 .cfi_startproc
- 213              	 
- 214              	 
- 215              	 
- 216 0000 80B4     	 push {r7}
- 217              	.LCFI24:
- 218              	 .cfi_def_cfa_offset 4
- 219              	 .cfi_offset 7,-4
- 220 0002 83B0     	 sub sp,sp,#12
- 221              	.LCFI25:
- 222              	 .cfi_def_cfa_offset 16
- 223 0004 00AF     	 add r7,sp,#0
- 224              	.LCFI26:
- 225              	 .cfi_def_cfa_register 7
- 226 0006 7860     	 str r0,[r7,#4]
- 227 0008 0B46     	 mov r3,r1
- 228 000a 7B80     	 strh r3,[r7,#2]
+ 254              	 .loc 1 1752 0
+ 255              	 .cfi_startproc
+ 256              	 
+ 257              	 
+ 258              	 
+ 259 0000 80B4     	 push {r7}
+ 260              	.LCFI30:
+ 261              	 .cfi_def_cfa_offset 4
+ 262              	 .cfi_offset 7,-4
+ 263 0002 83B0     	 sub sp,sp,#12
+ 264              	.LCFI31:
+ 265              	 .cfi_def_cfa_offset 16
+ 266 0004 00AF     	 add r7,sp,#0
+ 267              	.LCFI32:
+ 268              	 .cfi_def_cfa_register 7
+ 269 0006 7860     	 str r0,[r7,#4]
+ 270 0008 0B46     	 mov r3,r1
+ 271 000a 7B80     	 strh r3,[r7,#2]
 1753:F:/GitHub Projects/FH Luzern/BAT/BAT/Libraries/XMCLib/inc\xmc_ccu4.h ****   XMC_ASSERT("XMC_CCU4_SLICE_SetTimerValue:Invalid Slice Pointer", XMC_CCU4_IsValidSlice(slice));
 1754:F:/GitHub Projects/FH Luzern/BAT/BAT/Libraries/XMCLib/inc\xmc_ccu4.h ****   slice->TIMER = (uint32_t) timer_val;
- 229              	 .loc 1 1754 0
- 230 000c 7A88     	 ldrh r2,[r7,#2]
- 231 000e 7B68     	 ldr r3,[r7,#4]
- 232 0010 1A67     	 str r2,[r3,#112]
+ 272              	 .loc 1 1754 0
+ 273 000c 7A88     	 ldrh r2,[r7,#2]
+ 274 000e 7B68     	 ldr r3,[r7,#4]
+ 275 0010 1A67     	 str r2,[r3,#112]
 1755:F:/GitHub Projects/FH Luzern/BAT/BAT/Libraries/XMCLib/inc\xmc_ccu4.h **** }
- 233              	 .loc 1 1755 0
- 234 0012 0C37     	 adds r7,r7,#12
- 235              	.LCFI27:
- 236              	 .cfi_def_cfa_offset 4
- 237 0014 BD46     	 mov sp,r7
- 238              	.LCFI28:
- 239              	 .cfi_def_cfa_register 13
- 240              	 
- 241 0016 5DF8047B 	 ldr r7,[sp],#4
- 242              	.LCFI29:
- 243              	 .cfi_restore 7
- 244              	 .cfi_def_cfa_offset 0
- 245 001a 7047     	 bx lr
- 246              	 .cfi_endproc
- 247              	.LFE161:
- 249              	 .global CCU4_SLICE_CONFIG_0
- 250              	 .section .rodata.CCU4_SLICE_CONFIG_0,"a",%progbits
- 251              	 .align 2
- 254              	CCU4_SLICE_CONFIG_0:
- 255 0000 00000000 	 .word CCU4_SLICE_CONFIG_0_lInit
- 256 0004 00000000 	 .word GLOBAL_CCU4_2
- 257 0008 00440048 	 .word 1207976960
- 258 000c 03       	 .byte 3
- 259 000d 000000   	 .space 3
- 260              	 .global CCU4_SLICE_CONFIG_0_compare_config
- 261              	 .section .rodata.CCU4_SLICE_CONFIG_0_compare_config,"a",%progbits
- 262              	 .align 2
- 265              	CCU4_SLICE_CONFIG_0_compare_config:
- 266 0000 00       	 .byte 0
- 267 0001 00       	 .byte 0
- 268 0002 00       	 .byte 0
- 269 0003 00       	 .byte 0
- 270 0004 F0       	 .byte 240
- 271 0005 00       	 .byte 0
- 272 0006 0000     	 .space 2
- 273              	 .global CCU4_SLICE_CONFIG_0_event0_config
- 274              	 .section .rodata.CCU4_SLICE_CONFIG_0_event0_config,"a",%progbits
- 275              	 .align 2
- 278              	CCU4_SLICE_CONFIG_0_event0_config:
- 279 0000 00000000 	 .space 4
- 280              	 .global CCU4_SLICE_CONFIG_0_event1_config
- 281              	 .section .rodata.CCU4_SLICE_CONFIG_0_event1_config,"a",%progbits
- 282              	 .align 2
- 285              	CCU4_SLICE_CONFIG_0_event1_config:
- 286 0000 00000000 	 .space 4
- 287              	 .global CCU4_SLICE_CONFIG_0_event2_config
- 288              	 .section .rodata.CCU4_SLICE_CONFIG_0_event2_config,"a",%progbits
- 289              	 .align 2
- 292              	CCU4_SLICE_CONFIG_0_event2_config:
- 293 0000 00000000 	 .space 4
- 294              	 .section .text.CCU4_SLICE_CONFIG_0_lInit,"ax",%progbits
- 295              	 .align 2
- 296              	 .thumb
- 297              	 .thumb_func
- 299              	CCU4_SLICE_CONFIG_0_lInit:
- 300              	.LFB211:
- 301              	 .file 2 "../Dave/Generated/CCU4_SLICE_CONFIG/ccu4_slice_config_conf.c"
+ 276              	 .loc 1 1755 0
+ 277 0012 0C37     	 adds r7,r7,#12
+ 278              	.LCFI33:
+ 279              	 .cfi_def_cfa_offset 4
+ 280 0014 BD46     	 mov sp,r7
+ 281              	.LCFI34:
+ 282              	 .cfi_def_cfa_register 13
+ 283              	 
+ 284 0016 5DF8047B 	 ldr r7,[sp],#4
+ 285              	.LCFI35:
+ 286              	 .cfi_restore 7
+ 287              	 .cfi_def_cfa_offset 0
+ 288 001a 7047     	 bx lr
+ 289              	 .cfi_endproc
+ 290              	.LFE161:
+ 292              	 .global CCU4_SLICE_CONFIG_0
+ 293              	 .section .rodata.CCU4_SLICE_CONFIG_0,"a",%progbits
+ 294              	 .align 2
+ 297              	CCU4_SLICE_CONFIG_0:
+ 298 0000 00000000 	 .word CCU4_SLICE_CONFIG_0_lInit
+ 299 0004 00000000 	 .word GLOBAL_CCU4_2
+ 300 0008 00440048 	 .word 1207976960
+ 301 000c 03       	 .byte 3
+ 302 000d 000000   	 .space 3
+ 303              	 .global CCU4_SLICE_CONFIG_0_compare_config
+ 304              	 .section .rodata.CCU4_SLICE_CONFIG_0_compare_config,"a",%progbits
+ 305              	 .align 2
+ 308              	CCU4_SLICE_CONFIG_0_compare_config:
+ 309 0000 00       	 .byte 0
+ 310 0001 00       	 .byte 0
+ 311 0002 00       	 .byte 0
+ 312 0003 02       	 .byte 2
+ 313 0004 F0       	 .byte 240
+ 314 0005 00       	 .byte 0
+ 315 0006 0000     	 .space 2
+ 316              	 .global CCU4_SLICE_CONFIG_0_event0_config
+ 317              	 .section .rodata.CCU4_SLICE_CONFIG_0_event0_config,"a",%progbits
+ 318              	 .align 2
+ 321              	CCU4_SLICE_CONFIG_0_event0_config:
+ 322 0000 00000000 	 .space 4
+ 323              	 .global CCU4_SLICE_CONFIG_0_event1_config
+ 324              	 .section .rodata.CCU4_SLICE_CONFIG_0_event1_config,"a",%progbits
+ 325              	 .align 2
+ 328              	CCU4_SLICE_CONFIG_0_event1_config:
+ 329 0000 00000000 	 .space 4
+ 330              	 .global CCU4_SLICE_CONFIG_0_event2_config
+ 331              	 .section .rodata.CCU4_SLICE_CONFIG_0_event2_config,"a",%progbits
+ 332              	 .align 2
+ 335              	CCU4_SLICE_CONFIG_0_event2_config:
+ 336 0000 00000000 	 .space 4
+ 337              	 .section .text.CCU4_SLICE_CONFIG_0_lInit,"ax",%progbits
+ 338              	 .align 2
+ 339              	 .thumb
+ 340              	 .thumb_func
+ 342              	CCU4_SLICE_CONFIG_0_lInit:
+ 343              	.LFB211:
+ 344              	 .file 2 "../Dave/Generated/CCU4_SLICE_CONFIG/ccu4_slice_config_conf.c"
    1:../Dave/Generated/CCU4_SLICE_CONFIG/ccu4_slice_config_conf.c **** /**************************************************************************************************
    2:../Dave/Generated/CCU4_SLICE_CONFIG/ccu4_slice_config_conf.c **** * DAVE APP Name : CCU4_SLICE_CONFIG       APP Version: 4.0.20
    3:../Dave/Generated/CCU4_SLICE_CONFIG/ccu4_slice_config_conf.c **** *
@@ -2128,7 +2169,7 @@
   93:../Dave/Generated/CCU4_SLICE_CONFIG/ccu4_slice_config_conf.c ****   .dither_timer_period   = false,
   94:../Dave/Generated/CCU4_SLICE_CONFIG/ccu4_slice_config_conf.c ****   .dither_duty_cycle     = false,
   95:../Dave/Generated/CCU4_SLICE_CONFIG/ccu4_slice_config_conf.c ****   .prescaler_mode        = (uint32_t)XMC_CCU4_SLICE_PRESCALER_MODE_NORMAL,  
-  96:../Dave/Generated/CCU4_SLICE_CONFIG/ccu4_slice_config_conf.c ****   .mcm_enable            = false,        
+  96:../Dave/Generated/CCU4_SLICE_CONFIG/ccu4_slice_config_conf.c ****   .mcm_enable            = true,        
   97:../Dave/Generated/CCU4_SLICE_CONFIG/ccu4_slice_config_conf.c ****   .prescaler_initval     = XMC_CCU4_SLICE_PRESCALER_1,
   98:../Dave/Generated/CCU4_SLICE_CONFIG/ccu4_slice_config_conf.c ****   .float_limit           = XMC_CCU4_SLICE_PRESCALER_32768,
   99:../Dave/Generated/CCU4_SLICE_CONFIG/ccu4_slice_config_conf.c ****   .dither_limit          = 0,
@@ -2162,140 +2203,357 @@
  127:../Dave/Generated/CCU4_SLICE_CONFIG/ccu4_slice_config_conf.c ****             /* Channel initialization function */
  128:../Dave/Generated/CCU4_SLICE_CONFIG/ccu4_slice_config_conf.c **** CCU4_SLICE_CONFIG_STATUS_t CCU4_SLICE_CONFIG_0_lInit(void)
  129:../Dave/Generated/CCU4_SLICE_CONFIG/ccu4_slice_config_conf.c **** {
- 302              	 .loc 2 129 0
- 303              	 .cfi_startproc
- 304              	 
- 305              	 
- 306 0000 80B5     	 push {r7,lr}
- 307              	.LCFI30:
- 308              	 .cfi_def_cfa_offset 8
- 309              	 .cfi_offset 7,-8
- 310              	 .cfi_offset 14,-4
- 311 0002 00AF     	 add r7,sp,#0
- 312              	.LCFI31:
- 313              	 .cfi_def_cfa_register 7
+ 345              	 .loc 2 129 0
+ 346              	 .cfi_startproc
+ 347              	 
+ 348              	 
+ 349 0000 80B5     	 push {r7,lr}
+ 350              	.LCFI36:
+ 351              	 .cfi_def_cfa_offset 8
+ 352              	 .cfi_offset 7,-8
+ 353              	 .cfi_offset 14,-4
+ 354 0002 00AF     	 add r7,sp,#0
+ 355              	.LCFI37:
+ 356              	 .cfi_def_cfa_register 7
  130:../Dave/Generated/CCU4_SLICE_CONFIG/ccu4_slice_config_conf.c ****   GLOBAL_CCU4_Init(&GLOBAL_CCU4_2);
- 314              	 .loc 2 130 0
- 315 0004 1A48     	 ldr r0,.L8
- 316 0006 FFF7FEFF 	 bl GLOBAL_CCU4_Init
+ 357              	 .loc 2 130 0
+ 358 0004 1B48     	 ldr r0,.L9
+ 359 0006 FFF7FEFF 	 bl GLOBAL_CCU4_Init
  131:../Dave/Generated/CCU4_SLICE_CONFIG/ccu4_slice_config_conf.c ****   /* Configure CCU4x_CC4y slice as timer unit */
  132:../Dave/Generated/CCU4_SLICE_CONFIG/ccu4_slice_config_conf.c ****   XMC_CCU4_SLICE_CompareInit(CCU43_CC43, &CCU4_SLICE_CONFIG_0_compare_config);
- 317              	 .loc 2 132 0
- 318 000a 1A48     	 ldr r0,.L8+4
- 319 000c 1A49     	 ldr r1,.L8+8
- 320 000e FFF7FEFF 	 bl XMC_CCU4_SLICE_CompareInit
+ 360              	 .loc 2 132 0
+ 361 000a 1B48     	 ldr r0,.L9+4
+ 362 000c 1B49     	 ldr r1,.L9+8
+ 363 000e FFF7FEFF 	 bl XMC_CCU4_SLICE_CompareInit
  133:../Dave/Generated/CCU4_SLICE_CONFIG/ccu4_slice_config_conf.c ****   /* Set timer compare register value */
  134:../Dave/Generated/CCU4_SLICE_CONFIG/ccu4_slice_config_conf.c ****   XMC_CCU4_SLICE_SetTimerCompareMatch(CCU43_CC43, (uint16_t)32768U);
- 321              	 .loc 2 134 0
- 322 0012 1848     	 ldr r0,.L8+4
- 323 0014 4FF40041 	 mov r1,#32768
- 324 0018 FFF7FEFF 	 bl XMC_CCU4_SLICE_SetTimerCompareMatch
+ 364              	 .loc 2 134 0
+ 365 0012 1948     	 ldr r0,.L9+4
+ 366 0014 4FF40041 	 mov r1,#32768
+ 367 0018 FFF7FEFF 	 bl XMC_CCU4_SLICE_SetTimerCompareMatch
  135:../Dave/Generated/CCU4_SLICE_CONFIG/ccu4_slice_config_conf.c ****   /* Set timer period register value */
  136:../Dave/Generated/CCU4_SLICE_CONFIG/ccu4_slice_config_conf.c ****   XMC_CCU4_SLICE_SetTimerPeriodMatch(CCU43_CC43, (uint16_t)65535U);	
- 325              	 .loc 2 136 0
- 326 001c 1548     	 ldr r0,.L8+4
- 327 001e 4FF6FF71 	 movw r1,#65535
- 328 0022 FFF7FEFF 	 bl XMC_CCU4_SLICE_SetTimerPeriodMatch
+ 368              	 .loc 2 136 0
+ 369 001c 1648     	 ldr r0,.L9+4
+ 370 001e 4FF6FF71 	 movw r1,#65535
+ 371 0022 FFF7FEFF 	 bl XMC_CCU4_SLICE_SetTimerPeriodMatch
  137:../Dave/Generated/CCU4_SLICE_CONFIG/ccu4_slice_config_conf.c ****   /* Register value update settings */
  138:../Dave/Generated/CCU4_SLICE_CONFIG/ccu4_slice_config_conf.c ****   XMC_CCU4_SetMultiChannelShadowTransferMode(CCU43, (uint32_t)XMC_CCU4_MULTI_CHANNEL_SHADOW_TRANSFE
- 329              	 .loc 2 138 0
- 330 0026 1548     	 ldr r0,.L8+12
- 331 0028 4FF00051 	 mov r1,#536870912
- 332 002c FFF7FEFF 	 bl XMC_CCU4_SetMultiChannelShadowTransferMode
+ 372              	 .loc 2 138 0
+ 373 0026 1648     	 ldr r0,.L9+12
+ 374 0028 4FF00051 	 mov r1,#536870912
+ 375 002c FFF7FEFF 	 bl XMC_CCU4_SetMultiChannelShadowTransferMode
  139:../Dave/Generated/CCU4_SLICE_CONFIG/ccu4_slice_config_conf.c ****   /* Transfer value from shadow registers to actual timer registers */
  140:../Dave/Generated/CCU4_SLICE_CONFIG/ccu4_slice_config_conf.c ****   XMC_CCU4_EnableShadowTransfer(CCU43, (uint32_t)XMC_CCU4_SHADOW_TRANSFER_SLICE_3 |
- 333              	 .loc 2 140 0
- 334 0030 1248     	 ldr r0,.L8+12
- 335 0032 4FF4E041 	 mov r1,#28672
- 336 0036 FFF7FEFF 	 bl XMC_CCU4_EnableShadowTransfer
+ 376              	 .loc 2 140 0
+ 377 0030 1348     	 ldr r0,.L9+12
+ 378 0032 4FF4E041 	 mov r1,#28672
+ 379 0036 FFF7FEFF 	 bl XMC_CCU4_EnableShadowTransfer
  141:../Dave/Generated/CCU4_SLICE_CONFIG/ccu4_slice_config_conf.c ****                                                (uint32_t)XMC_CCU4_SHADOW_TRANSFER_DITHER_SLICE_3 |
  142:../Dave/Generated/CCU4_SLICE_CONFIG/ccu4_slice_config_conf.c ****                                                (uint32_t)XMC_CCU4_SHADOW_TRANSFER_PRESCALER_SLICE_3
  143:../Dave/Generated/CCU4_SLICE_CONFIG/ccu4_slice_config_conf.c ****   /* Events and function settings */
  144:../Dave/Generated/CCU4_SLICE_CONFIG/ccu4_slice_config_conf.c ****   XMC_CCU4_SLICE_ConfigureEvent(CCU43_CC43, XMC_CCU4_SLICE_EVENT_0, &CCU4_SLICE_CONFIG_0_event0_con
- 337              	 .loc 2 144 0
- 338 003a 0E48     	 ldr r0,.L8+4
- 339 003c 0121     	 movs r1,#1
- 340 003e 104A     	 ldr r2,.L8+16
- 341 0040 FFF7FEFF 	 bl XMC_CCU4_SLICE_ConfigureEvent
+ 380              	 .loc 2 144 0
+ 381 003a 0F48     	 ldr r0,.L9+4
+ 382 003c 0121     	 movs r1,#1
+ 383 003e 114A     	 ldr r2,.L9+16
+ 384 0040 FFF7FEFF 	 bl XMC_CCU4_SLICE_ConfigureEvent
  145:../Dave/Generated/CCU4_SLICE_CONFIG/ccu4_slice_config_conf.c ****   XMC_CCU4_SLICE_ConfigureEvent(CCU43_CC43, XMC_CCU4_SLICE_EVENT_1, &CCU4_SLICE_CONFIG_0_event1_con
- 342              	 .loc 2 145 0
- 343 0044 0B48     	 ldr r0,.L8+4
- 344 0046 0221     	 movs r1,#2
- 345 0048 0E4A     	 ldr r2,.L8+20
- 346 004a FFF7FEFF 	 bl XMC_CCU4_SLICE_ConfigureEvent
+ 385              	 .loc 2 145 0
+ 386 0044 0C48     	 ldr r0,.L9+4
+ 387 0046 0221     	 movs r1,#2
+ 388 0048 0F4A     	 ldr r2,.L9+20
+ 389 004a FFF7FEFF 	 bl XMC_CCU4_SLICE_ConfigureEvent
  146:../Dave/Generated/CCU4_SLICE_CONFIG/ccu4_slice_config_conf.c ****   XMC_CCU4_SLICE_ConfigureEvent(CCU43_CC43, XMC_CCU4_SLICE_EVENT_2, &CCU4_SLICE_CONFIG_0_event2_con
- 347              	 .loc 2 146 0
- 348 004e 0948     	 ldr r0,.L8+4
- 349 0050 0321     	 movs r1,#3
- 350 0052 0D4A     	 ldr r2,.L8+24
- 351 0054 FFF7FEFF 	 bl XMC_CCU4_SLICE_ConfigureEvent
+ 390              	 .loc 2 146 0
+ 391 004e 0A48     	 ldr r0,.L9+4
+ 392 0050 0321     	 movs r1,#3
+ 393 0052 0E4A     	 ldr r2,.L9+24
+ 394 0054 FFF7FEFF 	 bl XMC_CCU4_SLICE_ConfigureEvent
  147:../Dave/Generated/CCU4_SLICE_CONFIG/ccu4_slice_config_conf.c ****   /* clear IDLE mode for the slice*/
  148:../Dave/Generated/CCU4_SLICE_CONFIG/ccu4_slice_config_conf.c ****   XMC_CCU4_EnableClock(CCU43, (uint8_t)3);	
- 352              	 .loc 2 148 0
- 353 0058 0848     	 ldr r0,.L8+12
- 354 005a 0321     	 movs r1,#3
- 355 005c FFF7FEFF 	 bl XMC_CCU4_EnableClock
+ 395              	 .loc 2 148 0
+ 396 0058 0948     	 ldr r0,.L9+12
+ 397 005a 0321     	 movs r1,#3
+ 398 005c FFF7FEFF 	 bl XMC_CCU4_EnableClock
  149:../Dave/Generated/CCU4_SLICE_CONFIG/ccu4_slice_config_conf.c ****   /* Set initial value of timer */
  150:../Dave/Generated/CCU4_SLICE_CONFIG/ccu4_slice_config_conf.c ****   XMC_CCU4_SLICE_SetTimerValue(CCU43_CC43, (uint16_t)0U);
- 356              	 .loc 2 150 0
- 357 0060 0448     	 ldr r0,.L8+4
- 358 0062 0021     	 movs r1,#0
- 359 0064 FFF7FEFF 	 bl XMC_CCU4_SLICE_SetTimerValue
- 151:../Dave/Generated/CCU4_SLICE_CONFIG/ccu4_slice_config_conf.c ****   return CCU4_SLICE_CONFIG_STATUS_SUCCESS;
- 360              	 .loc 2 151 0
- 361 0068 0023     	 movs r3,#0
- 152:../Dave/Generated/CCU4_SLICE_CONFIG/ccu4_slice_config_conf.c **** }
- 362              	 .loc 2 152 0
- 363 006a 1846     	 mov r0,r3
- 364 006c 80BD     	 pop {r7,pc}
- 365              	.L9:
- 366 006e 00BF     	 .align 2
- 367              	.L8:
- 368 0070 00000000 	 .word GLOBAL_CCU4_2
- 369 0074 00440048 	 .word 1207976960
- 370 0078 00000000 	 .word CCU4_SLICE_CONFIG_0_compare_config
- 371 007c 00400048 	 .word 1207975936
- 372 0080 00000000 	 .word CCU4_SLICE_CONFIG_0_event0_config
- 373 0084 00000000 	 .word CCU4_SLICE_CONFIG_0_event1_config
- 374 0088 00000000 	 .word CCU4_SLICE_CONFIG_0_event2_config
- 375              	 .cfi_endproc
- 376              	.LFE211:
- 378              	 .text
- 379              	.Letext0:
- 380              	 .file 3 "c:\\users\\pescatore\\switchdrive\\private\\konzept\\mcu for gate driver\\dave_4-4-2_64bit_2018-02-23\\dave-ide-4.4.2-64bit\\eclipse\\arm-gcc-49\\arm-none-eabi\\include\\machine\\_default_types.h"
- 381              	 .file 4 "c:\\users\\pescatore\\switchdrive\\private\\konzept\\mcu for gate driver\\dave_4-4-2_64bit_2018-02-23\\dave-ide-4.4.2-64bit\\eclipse\\arm-gcc-49\\arm-none-eabi\\include\\stdint.h"
- 382              	 .file 5 "F:/GitHub Projects/FH Luzern/BAT/BAT/Libraries/CMSIS/Infineon/XMC4400_series/Include/XMC4400.h"
- 383              	 .file 6 "F:/GitHub Projects/FH Luzern/BAT/BAT/Libraries/XMCLib/inc/xmc4_scu.h"
- 384              	 .file 7 "../Dave/Generated/CCU4_SLICE_CONFIG/../GLOBAL_CCU4/global_ccu4.h"
- 385              	 .file 8 "../Dave/Generated/CCU4_SLICE_CONFIG/ccu4_slice_config.h"
- 386              	 .file 9 "F:/GitHub Projects/FH Luzern/BAT/BAT/Libraries/CMSIS/Include/core_cm4.h"
- 387              	 .file 10 "F:/GitHub Projects/FH Luzern/BAT/BAT/Libraries/CMSIS/Infineon/XMC4400_series/Include/system_XMC4400.h"
- 388              	 .file 11 "../Dave/Generated/CCU4_SLICE_CONFIG/../GLOBAL_CCU4/global_ccu4_extern.h"
+ 399              	 .loc 2 150 0
+ 400 0060 0548     	 ldr r0,.L9+4
+ 401 0062 0021     	 movs r1,#0
+ 402 0064 FFF7FEFF 	 bl XMC_CCU4_SLICE_SetTimerValue
+ 151:../Dave/Generated/CCU4_SLICE_CONFIG/ccu4_slice_config_conf.c ****   /* Start the timer */
+ 152:../Dave/Generated/CCU4_SLICE_CONFIG/ccu4_slice_config_conf.c ****   XMC_CCU4_SLICE_StartTimer(CCU43_CC43);
+ 403              	 .loc 2 152 0
+ 404 0068 0348     	 ldr r0,.L9+4
+ 405 006a FFF7FEFF 	 bl XMC_CCU4_SLICE_StartTimer
+ 153:../Dave/Generated/CCU4_SLICE_CONFIG/ccu4_slice_config_conf.c ****   return CCU4_SLICE_CONFIG_STATUS_SUCCESS;
+ 406              	 .loc 2 153 0
+ 407 006e 0023     	 movs r3,#0
+ 154:../Dave/Generated/CCU4_SLICE_CONFIG/ccu4_slice_config_conf.c **** }
+ 408              	 .loc 2 154 0
+ 409 0070 1846     	 mov r0,r3
+ 410 0072 80BD     	 pop {r7,pc}
+ 411              	.L10:
+ 412              	 .align 2
+ 413              	.L9:
+ 414 0074 00000000 	 .word GLOBAL_CCU4_2
+ 415 0078 00440048 	 .word 1207976960
+ 416 007c 00000000 	 .word CCU4_SLICE_CONFIG_0_compare_config
+ 417 0080 00400048 	 .word 1207975936
+ 418 0084 00000000 	 .word CCU4_SLICE_CONFIG_0_event0_config
+ 419 0088 00000000 	 .word CCU4_SLICE_CONFIG_0_event1_config
+ 420 008c 00000000 	 .word CCU4_SLICE_CONFIG_0_event2_config
+ 421              	 .cfi_endproc
+ 422              	.LFE211:
+ 424              	 .global CCU4_SLICE_CONFIG_1
+ 425              	 .section .rodata.CCU4_SLICE_CONFIG_1,"a",%progbits
+ 426              	 .align 2
+ 429              	CCU4_SLICE_CONFIG_1:
+ 430 0000 00000000 	 .word CCU4_SLICE_CONFIG_1_lInit
+ 431 0004 00000000 	 .word GLOBAL_CCU4_0
+ 432 0008 00C20040 	 .word 1073791488
+ 433 000c 01       	 .byte 1
+ 434 000d 000000   	 .space 3
+ 435              	 .global CCU4_SLICE_CONFIG_1_compare_config
+ 436              	 .section .rodata.CCU4_SLICE_CONFIG_1_compare_config,"a",%progbits
+ 437              	 .align 2
+ 440              	CCU4_SLICE_CONFIG_1_compare_config:
+ 441 0000 00       	 .byte 0
+ 442 0001 00       	 .byte 0
+ 443 0002 00       	 .byte 0
+ 444 0003 02       	 .byte 2
+ 445 0004 F0       	 .byte 240
+ 446 0005 00       	 .byte 0
+ 447 0006 0000     	 .space 2
+ 448              	 .global CCU4_SLICE_CONFIG_1_event0_config
+ 449              	 .section .rodata.CCU4_SLICE_CONFIG_1_event0_config,"a",%progbits
+ 450              	 .align 2
+ 453              	CCU4_SLICE_CONFIG_1_event0_config:
+ 454 0000 00000000 	 .space 4
+ 455              	 .global CCU4_SLICE_CONFIG_1_event1_config
+ 456              	 .section .rodata.CCU4_SLICE_CONFIG_1_event1_config,"a",%progbits
+ 457              	 .align 2
+ 460              	CCU4_SLICE_CONFIG_1_event1_config:
+ 461 0000 00000000 	 .space 4
+ 462              	 .global CCU4_SLICE_CONFIG_1_event2_config
+ 463              	 .section .rodata.CCU4_SLICE_CONFIG_1_event2_config,"a",%progbits
+ 464              	 .align 2
+ 467              	CCU4_SLICE_CONFIG_1_event2_config:
+ 468 0000 00000000 	 .space 4
+ 469              	 .section .text.CCU4_SLICE_CONFIG_1_lInit,"ax",%progbits
+ 470              	 .align 2
+ 471              	 .thumb
+ 472              	 .thumb_func
+ 474              	CCU4_SLICE_CONFIG_1_lInit:
+ 475              	.LFB212:
+ 155:../Dave/Generated/CCU4_SLICE_CONFIG/ccu4_slice_config_conf.c **** 	
+ 156:../Dave/Generated/CCU4_SLICE_CONFIG/ccu4_slice_config_conf.c **** static CCU4_SLICE_CONFIG_STATUS_t CCU4_SLICE_CONFIG_1_lInit(void);
+ 157:../Dave/Generated/CCU4_SLICE_CONFIG/ccu4_slice_config_conf.c ****         
+ 158:../Dave/Generated/CCU4_SLICE_CONFIG/ccu4_slice_config_conf.c **** const CCU4_SLICE_CONFIG_t CCU4_SLICE_CONFIG_1 =
+ 159:../Dave/Generated/CCU4_SLICE_CONFIG/ccu4_slice_config_conf.c **** {
+ 160:../Dave/Generated/CCU4_SLICE_CONFIG/ccu4_slice_config_conf.c ****   .init = CCU4_SLICE_CONFIG_1_lInit,
+ 161:../Dave/Generated/CCU4_SLICE_CONFIG/ccu4_slice_config_conf.c ****   .global = &GLOBAL_CCU4_0,
+ 162:../Dave/Generated/CCU4_SLICE_CONFIG/ccu4_slice_config_conf.c ****   .slice_ptr = CCU40_CC41,
+ 163:../Dave/Generated/CCU4_SLICE_CONFIG/ccu4_slice_config_conf.c ****   .slice_num = (uint8_t)1
+ 164:../Dave/Generated/CCU4_SLICE_CONFIG/ccu4_slice_config_conf.c **** };
+ 165:../Dave/Generated/CCU4_SLICE_CONFIG/ccu4_slice_config_conf.c ****         
+ 166:../Dave/Generated/CCU4_SLICE_CONFIG/ccu4_slice_config_conf.c **** const XMC_CCU4_SLICE_COMPARE_CONFIG_t CCU4_SLICE_CONFIG_1_compare_config     =
+ 167:../Dave/Generated/CCU4_SLICE_CONFIG/ccu4_slice_config_conf.c **** {
+ 168:../Dave/Generated/CCU4_SLICE_CONFIG/ccu4_slice_config_conf.c ****   .timer_mode            = (uint32_t)XMC_CCU4_SLICE_TIMER_COUNT_MODE_EA,
+ 169:../Dave/Generated/CCU4_SLICE_CONFIG/ccu4_slice_config_conf.c ****   .monoshot              = (uint32_t)XMC_CCU4_SLICE_TIMER_REPEAT_MODE_REPEAT,
+ 170:../Dave/Generated/CCU4_SLICE_CONFIG/ccu4_slice_config_conf.c ****   .shadow_xfer_clear     = false,
+ 171:../Dave/Generated/CCU4_SLICE_CONFIG/ccu4_slice_config_conf.c ****   .dither_timer_period   = false,
+ 172:../Dave/Generated/CCU4_SLICE_CONFIG/ccu4_slice_config_conf.c ****   .dither_duty_cycle     = false,
+ 173:../Dave/Generated/CCU4_SLICE_CONFIG/ccu4_slice_config_conf.c ****   .prescaler_mode        = (uint32_t)XMC_CCU4_SLICE_PRESCALER_MODE_NORMAL,  
+ 174:../Dave/Generated/CCU4_SLICE_CONFIG/ccu4_slice_config_conf.c ****   .mcm_enable            = true,        
+ 175:../Dave/Generated/CCU4_SLICE_CONFIG/ccu4_slice_config_conf.c ****   .prescaler_initval     = XMC_CCU4_SLICE_PRESCALER_1,
+ 176:../Dave/Generated/CCU4_SLICE_CONFIG/ccu4_slice_config_conf.c ****   .float_limit           = XMC_CCU4_SLICE_PRESCALER_32768,
+ 177:../Dave/Generated/CCU4_SLICE_CONFIG/ccu4_slice_config_conf.c ****   .dither_limit          = 0,
+ 178:../Dave/Generated/CCU4_SLICE_CONFIG/ccu4_slice_config_conf.c ****   .passive_level         = XMC_CCU4_SLICE_OUTPUT_PASSIVE_LEVEL_LOW,  
+ 179:../Dave/Generated/CCU4_SLICE_CONFIG/ccu4_slice_config_conf.c ****   .timer_concatenation   = false
+ 180:../Dave/Generated/CCU4_SLICE_CONFIG/ccu4_slice_config_conf.c **** };
+ 181:../Dave/Generated/CCU4_SLICE_CONFIG/ccu4_slice_config_conf.c ****             
+ 182:../Dave/Generated/CCU4_SLICE_CONFIG/ccu4_slice_config_conf.c **** const XMC_CCU4_SLICE_EVENT_CONFIG_t CCU4_SLICE_CONFIG_1_event0_config = 
+ 183:../Dave/Generated/CCU4_SLICE_CONFIG/ccu4_slice_config_conf.c **** {
+ 184:../Dave/Generated/CCU4_SLICE_CONFIG/ccu4_slice_config_conf.c ****   .mapped_input        = XMC_CCU4_SLICE_INPUT_A,
+ 185:../Dave/Generated/CCU4_SLICE_CONFIG/ccu4_slice_config_conf.c ****   .edge                = XMC_CCU4_SLICE_EVENT_EDGE_SENSITIVITY_NONE,
+ 186:../Dave/Generated/CCU4_SLICE_CONFIG/ccu4_slice_config_conf.c ****   .level               = XMC_CCU4_SLICE_EVENT_LEVEL_SENSITIVITY_ACTIVE_HIGH,
+ 187:../Dave/Generated/CCU4_SLICE_CONFIG/ccu4_slice_config_conf.c ****   .duration            = XMC_CCU4_SLICE_EVENT_FILTER_DISABLED                               
+ 188:../Dave/Generated/CCU4_SLICE_CONFIG/ccu4_slice_config_conf.c ****  };
+ 189:../Dave/Generated/CCU4_SLICE_CONFIG/ccu4_slice_config_conf.c ****             
+ 190:../Dave/Generated/CCU4_SLICE_CONFIG/ccu4_slice_config_conf.c **** const XMC_CCU4_SLICE_EVENT_CONFIG_t CCU4_SLICE_CONFIG_1_event1_config = 
+ 191:../Dave/Generated/CCU4_SLICE_CONFIG/ccu4_slice_config_conf.c **** {
+ 192:../Dave/Generated/CCU4_SLICE_CONFIG/ccu4_slice_config_conf.c ****   .mapped_input        = XMC_CCU4_SLICE_INPUT_A,
+ 193:../Dave/Generated/CCU4_SLICE_CONFIG/ccu4_slice_config_conf.c ****   .edge                = XMC_CCU4_SLICE_EVENT_EDGE_SENSITIVITY_NONE,
+ 194:../Dave/Generated/CCU4_SLICE_CONFIG/ccu4_slice_config_conf.c ****   .level               = XMC_CCU4_SLICE_EVENT_LEVEL_SENSITIVITY_ACTIVE_HIGH,
+ 195:../Dave/Generated/CCU4_SLICE_CONFIG/ccu4_slice_config_conf.c ****   .duration            = XMC_CCU4_SLICE_EVENT_FILTER_DISABLED                               
+ 196:../Dave/Generated/CCU4_SLICE_CONFIG/ccu4_slice_config_conf.c ****  };
+ 197:../Dave/Generated/CCU4_SLICE_CONFIG/ccu4_slice_config_conf.c ****             
+ 198:../Dave/Generated/CCU4_SLICE_CONFIG/ccu4_slice_config_conf.c **** const XMC_CCU4_SLICE_EVENT_CONFIG_t CCU4_SLICE_CONFIG_1_event2_config = 
+ 199:../Dave/Generated/CCU4_SLICE_CONFIG/ccu4_slice_config_conf.c **** {
+ 200:../Dave/Generated/CCU4_SLICE_CONFIG/ccu4_slice_config_conf.c ****   .mapped_input        = XMC_CCU4_SLICE_INPUT_A,
+ 201:../Dave/Generated/CCU4_SLICE_CONFIG/ccu4_slice_config_conf.c ****   .edge                = XMC_CCU4_SLICE_EVENT_EDGE_SENSITIVITY_NONE,
+ 202:../Dave/Generated/CCU4_SLICE_CONFIG/ccu4_slice_config_conf.c ****   .level               = XMC_CCU4_SLICE_EVENT_LEVEL_SENSITIVITY_ACTIVE_HIGH,
+ 203:../Dave/Generated/CCU4_SLICE_CONFIG/ccu4_slice_config_conf.c ****   .duration            = XMC_CCU4_SLICE_EVENT_FILTER_DISABLED                               
+ 204:../Dave/Generated/CCU4_SLICE_CONFIG/ccu4_slice_config_conf.c ****  };
+ 205:../Dave/Generated/CCU4_SLICE_CONFIG/ccu4_slice_config_conf.c ****             /* Channel initialization function */
+ 206:../Dave/Generated/CCU4_SLICE_CONFIG/ccu4_slice_config_conf.c **** CCU4_SLICE_CONFIG_STATUS_t CCU4_SLICE_CONFIG_1_lInit(void)
+ 207:../Dave/Generated/CCU4_SLICE_CONFIG/ccu4_slice_config_conf.c **** {
+ 476              	 .loc 2 207 0
+ 477              	 .cfi_startproc
+ 478              	 
+ 479              	 
+ 480 0000 80B5     	 push {r7,lr}
+ 481              	.LCFI38:
+ 482              	 .cfi_def_cfa_offset 8
+ 483              	 .cfi_offset 7,-8
+ 484              	 .cfi_offset 14,-4
+ 485 0002 00AF     	 add r7,sp,#0
+ 486              	.LCFI39:
+ 487              	 .cfi_def_cfa_register 7
+ 208:../Dave/Generated/CCU4_SLICE_CONFIG/ccu4_slice_config_conf.c ****   GLOBAL_CCU4_Init(&GLOBAL_CCU4_0);
+ 488              	 .loc 2 208 0
+ 489 0004 1B48     	 ldr r0,.L13
+ 490 0006 FFF7FEFF 	 bl GLOBAL_CCU4_Init
+ 209:../Dave/Generated/CCU4_SLICE_CONFIG/ccu4_slice_config_conf.c ****   /* Configure CCU4x_CC4y slice as timer unit */
+ 210:../Dave/Generated/CCU4_SLICE_CONFIG/ccu4_slice_config_conf.c ****   XMC_CCU4_SLICE_CompareInit(CCU40_CC41, &CCU4_SLICE_CONFIG_1_compare_config);
+ 491              	 .loc 2 210 0
+ 492 000a 1B48     	 ldr r0,.L13+4
+ 493 000c 1B49     	 ldr r1,.L13+8
+ 494 000e FFF7FEFF 	 bl XMC_CCU4_SLICE_CompareInit
+ 211:../Dave/Generated/CCU4_SLICE_CONFIG/ccu4_slice_config_conf.c ****   /* Set timer compare register value */
+ 212:../Dave/Generated/CCU4_SLICE_CONFIG/ccu4_slice_config_conf.c ****   XMC_CCU4_SLICE_SetTimerCompareMatch(CCU40_CC41, (uint16_t)32768U);
+ 495              	 .loc 2 212 0
+ 496 0012 1948     	 ldr r0,.L13+4
+ 497 0014 4FF40041 	 mov r1,#32768
+ 498 0018 FFF7FEFF 	 bl XMC_CCU4_SLICE_SetTimerCompareMatch
+ 213:../Dave/Generated/CCU4_SLICE_CONFIG/ccu4_slice_config_conf.c ****   /* Set timer period register value */
+ 214:../Dave/Generated/CCU4_SLICE_CONFIG/ccu4_slice_config_conf.c ****   XMC_CCU4_SLICE_SetTimerPeriodMatch(CCU40_CC41, (uint16_t)65535U);	
+ 499              	 .loc 2 214 0
+ 500 001c 1648     	 ldr r0,.L13+4
+ 501 001e 4FF6FF71 	 movw r1,#65535
+ 502 0022 FFF7FEFF 	 bl XMC_CCU4_SLICE_SetTimerPeriodMatch
+ 215:../Dave/Generated/CCU4_SLICE_CONFIG/ccu4_slice_config_conf.c ****   /* Register value update settings */
+ 216:../Dave/Generated/CCU4_SLICE_CONFIG/ccu4_slice_config_conf.c ****   XMC_CCU4_SetMultiChannelShadowTransferMode(CCU40, (uint32_t)XMC_CCU4_MULTI_CHANNEL_SHADOW_TRANSFE
+ 503              	 .loc 2 216 0
+ 504 0026 1648     	 ldr r0,.L13+12
+ 505 0028 4FF00061 	 mov r1,#134217728
+ 506 002c FFF7FEFF 	 bl XMC_CCU4_SetMultiChannelShadowTransferMode
+ 217:../Dave/Generated/CCU4_SLICE_CONFIG/ccu4_slice_config_conf.c ****   /* Transfer value from shadow registers to actual timer registers */
+ 218:../Dave/Generated/CCU4_SLICE_CONFIG/ccu4_slice_config_conf.c ****   XMC_CCU4_EnableShadowTransfer(CCU40, (uint32_t)XMC_CCU4_SHADOW_TRANSFER_SLICE_1 |
+ 507              	 .loc 2 218 0
+ 508 0030 1348     	 ldr r0,.L13+12
+ 509 0032 7021     	 movs r1,#112
+ 510 0034 FFF7FEFF 	 bl XMC_CCU4_EnableShadowTransfer
+ 219:../Dave/Generated/CCU4_SLICE_CONFIG/ccu4_slice_config_conf.c ****                                                (uint32_t)XMC_CCU4_SHADOW_TRANSFER_DITHER_SLICE_1 |
+ 220:../Dave/Generated/CCU4_SLICE_CONFIG/ccu4_slice_config_conf.c ****                                                (uint32_t)XMC_CCU4_SHADOW_TRANSFER_PRESCALER_SLICE_1
+ 221:../Dave/Generated/CCU4_SLICE_CONFIG/ccu4_slice_config_conf.c ****   /* Events and function settings */
+ 222:../Dave/Generated/CCU4_SLICE_CONFIG/ccu4_slice_config_conf.c ****   XMC_CCU4_SLICE_ConfigureEvent(CCU40_CC41, XMC_CCU4_SLICE_EVENT_0, &CCU4_SLICE_CONFIG_1_event0_con
+ 511              	 .loc 2 222 0
+ 512 0038 0F48     	 ldr r0,.L13+4
+ 513 003a 0121     	 movs r1,#1
+ 514 003c 114A     	 ldr r2,.L13+16
+ 515 003e FFF7FEFF 	 bl XMC_CCU4_SLICE_ConfigureEvent
+ 223:../Dave/Generated/CCU4_SLICE_CONFIG/ccu4_slice_config_conf.c ****   XMC_CCU4_SLICE_ConfigureEvent(CCU40_CC41, XMC_CCU4_SLICE_EVENT_1, &CCU4_SLICE_CONFIG_1_event1_con
+ 516              	 .loc 2 223 0
+ 517 0042 0D48     	 ldr r0,.L13+4
+ 518 0044 0221     	 movs r1,#2
+ 519 0046 104A     	 ldr r2,.L13+20
+ 520 0048 FFF7FEFF 	 bl XMC_CCU4_SLICE_ConfigureEvent
+ 224:../Dave/Generated/CCU4_SLICE_CONFIG/ccu4_slice_config_conf.c ****   XMC_CCU4_SLICE_ConfigureEvent(CCU40_CC41, XMC_CCU4_SLICE_EVENT_2, &CCU4_SLICE_CONFIG_1_event2_con
+ 521              	 .loc 2 224 0
+ 522 004c 0A48     	 ldr r0,.L13+4
+ 523 004e 0321     	 movs r1,#3
+ 524 0050 0E4A     	 ldr r2,.L13+24
+ 525 0052 FFF7FEFF 	 bl XMC_CCU4_SLICE_ConfigureEvent
+ 225:../Dave/Generated/CCU4_SLICE_CONFIG/ccu4_slice_config_conf.c ****   /* clear IDLE mode for the slice*/
+ 226:../Dave/Generated/CCU4_SLICE_CONFIG/ccu4_slice_config_conf.c ****   XMC_CCU4_EnableClock(CCU40, (uint8_t)1);	
+ 526              	 .loc 2 226 0
+ 527 0056 0A48     	 ldr r0,.L13+12
+ 528 0058 0121     	 movs r1,#1
+ 529 005a FFF7FEFF 	 bl XMC_CCU4_EnableClock
+ 227:../Dave/Generated/CCU4_SLICE_CONFIG/ccu4_slice_config_conf.c ****   /* Set initial value of timer */
+ 228:../Dave/Generated/CCU4_SLICE_CONFIG/ccu4_slice_config_conf.c ****   XMC_CCU4_SLICE_SetTimerValue(CCU40_CC41, (uint16_t)0U);
+ 530              	 .loc 2 228 0
+ 531 005e 0648     	 ldr r0,.L13+4
+ 532 0060 0021     	 movs r1,#0
+ 533 0062 FFF7FEFF 	 bl XMC_CCU4_SLICE_SetTimerValue
+ 229:../Dave/Generated/CCU4_SLICE_CONFIG/ccu4_slice_config_conf.c ****   /* Start the timer */
+ 230:../Dave/Generated/CCU4_SLICE_CONFIG/ccu4_slice_config_conf.c ****   XMC_CCU4_SLICE_StartTimer(CCU40_CC41);
+ 534              	 .loc 2 230 0
+ 535 0066 0448     	 ldr r0,.L13+4
+ 536 0068 FFF7FEFF 	 bl XMC_CCU4_SLICE_StartTimer
+ 231:../Dave/Generated/CCU4_SLICE_CONFIG/ccu4_slice_config_conf.c ****   return CCU4_SLICE_CONFIG_STATUS_SUCCESS;
+ 537              	 .loc 2 231 0
+ 538 006c 0023     	 movs r3,#0
+ 232:../Dave/Generated/CCU4_SLICE_CONFIG/ccu4_slice_config_conf.c **** }
+ 539              	 .loc 2 232 0
+ 540 006e 1846     	 mov r0,r3
+ 541 0070 80BD     	 pop {r7,pc}
+ 542              	.L14:
+ 543 0072 00BF     	 .align 2
+ 544              	.L13:
+ 545 0074 00000000 	 .word GLOBAL_CCU4_0
+ 546 0078 00C20040 	 .word 1073791488
+ 547 007c 00000000 	 .word CCU4_SLICE_CONFIG_1_compare_config
+ 548 0080 00C00040 	 .word 1073790976
+ 549 0084 00000000 	 .word CCU4_SLICE_CONFIG_1_event0_config
+ 550 0088 00000000 	 .word CCU4_SLICE_CONFIG_1_event1_config
+ 551 008c 00000000 	 .word CCU4_SLICE_CONFIG_1_event2_config
+ 552              	 .cfi_endproc
+ 553              	.LFE212:
+ 555              	 .text
+ 556              	.Letext0:
+ 557              	 .file 3 "c:\\users\\pescatore\\switchdrive\\private\\konzept\\mcu for gate driver\\dave_4-4-2_64bit_2018-02-23\\dave-ide-4.4.2-64bit\\eclipse\\arm-gcc-49\\arm-none-eabi\\include\\machine\\_default_types.h"
+ 558              	 .file 4 "c:\\users\\pescatore\\switchdrive\\private\\konzept\\mcu for gate driver\\dave_4-4-2_64bit_2018-02-23\\dave-ide-4.4.2-64bit\\eclipse\\arm-gcc-49\\arm-none-eabi\\include\\stdint.h"
+ 559              	 .file 5 "F:/GitHub Projects/FH Luzern/BAT/BAT/Libraries/CMSIS/Infineon/XMC4400_series/Include/XMC4400.h"
+ 560              	 .file 6 "F:/GitHub Projects/FH Luzern/BAT/BAT/Libraries/XMCLib/inc/xmc4_scu.h"
+ 561              	 .file 7 "../Dave/Generated/CCU4_SLICE_CONFIG/../GLOBAL_CCU4/global_ccu4.h"
+ 562              	 .file 8 "../Dave/Generated/CCU4_SLICE_CONFIG/ccu4_slice_config.h"
+ 563              	 .file 9 "F:/GitHub Projects/FH Luzern/BAT/BAT/Libraries/CMSIS/Include/core_cm4.h"
+ 564              	 .file 10 "F:/GitHub Projects/FH Luzern/BAT/BAT/Libraries/CMSIS/Infineon/XMC4400_series/Include/system_XMC4400.h"
+ 565              	 .file 11 "../Dave/Generated/CCU4_SLICE_CONFIG/../GLOBAL_CCU4/global_ccu4_extern.h"
 DEFINED SYMBOLS
                             *ABS*:00000000 ccu4_slice_config_conf.c
     {standard input}:20     .text.XMC_CCU4_EnableClock:00000000 $t
     {standard input}:24     .text.XMC_CCU4_EnableClock:00000000 XMC_CCU4_EnableClock
-    {standard input}:71     .text.XMC_CCU4_SLICE_SetTimerPeriodMatch:00000000 $t
-    {standard input}:75     .text.XMC_CCU4_SLICE_SetTimerPeriodMatch:00000000 XMC_CCU4_SLICE_SetTimerPeriodMatch
-    {standard input}:116    .text.XMC_CCU4_SLICE_SetTimerCompareMatch:00000000 $t
-    {standard input}:120    .text.XMC_CCU4_SLICE_SetTimerCompareMatch:00000000 XMC_CCU4_SLICE_SetTimerCompareMatch
-    {standard input}:161    .text.XMC_CCU4_EnableShadowTransfer:00000000 $t
-    {standard input}:165    .text.XMC_CCU4_EnableShadowTransfer:00000000 XMC_CCU4_EnableShadowTransfer
-    {standard input}:205    .text.XMC_CCU4_SLICE_SetTimerValue:00000000 $t
-    {standard input}:209    .text.XMC_CCU4_SLICE_SetTimerValue:00000000 XMC_CCU4_SLICE_SetTimerValue
-    {standard input}:254    .rodata.CCU4_SLICE_CONFIG_0:00000000 CCU4_SLICE_CONFIG_0
-    {standard input}:251    .rodata.CCU4_SLICE_CONFIG_0:00000000 $d
-    {standard input}:299    .text.CCU4_SLICE_CONFIG_0_lInit:00000000 CCU4_SLICE_CONFIG_0_lInit
-    {standard input}:265    .rodata.CCU4_SLICE_CONFIG_0_compare_config:00000000 CCU4_SLICE_CONFIG_0_compare_config
-    {standard input}:262    .rodata.CCU4_SLICE_CONFIG_0_compare_config:00000000 $d
-    {standard input}:278    .rodata.CCU4_SLICE_CONFIG_0_event0_config:00000000 CCU4_SLICE_CONFIG_0_event0_config
-    {standard input}:275    .rodata.CCU4_SLICE_CONFIG_0_event0_config:00000000 $d
-    {standard input}:285    .rodata.CCU4_SLICE_CONFIG_0_event1_config:00000000 CCU4_SLICE_CONFIG_0_event1_config
-    {standard input}:282    .rodata.CCU4_SLICE_CONFIG_0_event1_config:00000000 $d
-    {standard input}:292    .rodata.CCU4_SLICE_CONFIG_0_event2_config:00000000 CCU4_SLICE_CONFIG_0_event2_config
-    {standard input}:289    .rodata.CCU4_SLICE_CONFIG_0_event2_config:00000000 $d
-    {standard input}:295    .text.CCU4_SLICE_CONFIG_0_lInit:00000000 $t
-    {standard input}:368    .text.CCU4_SLICE_CONFIG_0_lInit:00000070 $d
+    {standard input}:71     .text.XMC_CCU4_SLICE_StartTimer:00000000 $t
+    {standard input}:75     .text.XMC_CCU4_SLICE_StartTimer:00000000 XMC_CCU4_SLICE_StartTimer
+    {standard input}:114    .text.XMC_CCU4_SLICE_SetTimerPeriodMatch:00000000 $t
+    {standard input}:118    .text.XMC_CCU4_SLICE_SetTimerPeriodMatch:00000000 XMC_CCU4_SLICE_SetTimerPeriodMatch
+    {standard input}:159    .text.XMC_CCU4_SLICE_SetTimerCompareMatch:00000000 $t
+    {standard input}:163    .text.XMC_CCU4_SLICE_SetTimerCompareMatch:00000000 XMC_CCU4_SLICE_SetTimerCompareMatch
+    {standard input}:204    .text.XMC_CCU4_EnableShadowTransfer:00000000 $t
+    {standard input}:208    .text.XMC_CCU4_EnableShadowTransfer:00000000 XMC_CCU4_EnableShadowTransfer
+    {standard input}:248    .text.XMC_CCU4_SLICE_SetTimerValue:00000000 $t
+    {standard input}:252    .text.XMC_CCU4_SLICE_SetTimerValue:00000000 XMC_CCU4_SLICE_SetTimerValue
+    {standard input}:297    .rodata.CCU4_SLICE_CONFIG_0:00000000 CCU4_SLICE_CONFIG_0
+    {standard input}:294    .rodata.CCU4_SLICE_CONFIG_0:00000000 $d
+    {standard input}:342    .text.CCU4_SLICE_CONFIG_0_lInit:00000000 CCU4_SLICE_CONFIG_0_lInit
+    {standard input}:308    .rodata.CCU4_SLICE_CONFIG_0_compare_config:00000000 CCU4_SLICE_CONFIG_0_compare_config
+    {standard input}:305    .rodata.CCU4_SLICE_CONFIG_0_compare_config:00000000 $d
+    {standard input}:321    .rodata.CCU4_SLICE_CONFIG_0_event0_config:00000000 CCU4_SLICE_CONFIG_0_event0_config
+    {standard input}:318    .rodata.CCU4_SLICE_CONFIG_0_event0_config:00000000 $d
+    {standard input}:328    .rodata.CCU4_SLICE_CONFIG_0_event1_config:00000000 CCU4_SLICE_CONFIG_0_event1_config
+    {standard input}:325    .rodata.CCU4_SLICE_CONFIG_0_event1_config:00000000 $d
+    {standard input}:335    .rodata.CCU4_SLICE_CONFIG_0_event2_config:00000000 CCU4_SLICE_CONFIG_0_event2_config
+    {standard input}:332    .rodata.CCU4_SLICE_CONFIG_0_event2_config:00000000 $d
+    {standard input}:338    .text.CCU4_SLICE_CONFIG_0_lInit:00000000 $t
+    {standard input}:414    .text.CCU4_SLICE_CONFIG_0_lInit:00000074 $d
+    {standard input}:429    .rodata.CCU4_SLICE_CONFIG_1:00000000 CCU4_SLICE_CONFIG_1
+    {standard input}:426    .rodata.CCU4_SLICE_CONFIG_1:00000000 $d
+    {standard input}:474    .text.CCU4_SLICE_CONFIG_1_lInit:00000000 CCU4_SLICE_CONFIG_1_lInit
+    {standard input}:440    .rodata.CCU4_SLICE_CONFIG_1_compare_config:00000000 CCU4_SLICE_CONFIG_1_compare_config
+    {standard input}:437    .rodata.CCU4_SLICE_CONFIG_1_compare_config:00000000 $d
+    {standard input}:453    .rodata.CCU4_SLICE_CONFIG_1_event0_config:00000000 CCU4_SLICE_CONFIG_1_event0_config
+    {standard input}:450    .rodata.CCU4_SLICE_CONFIG_1_event0_config:00000000 $d
+    {standard input}:460    .rodata.CCU4_SLICE_CONFIG_1_event1_config:00000000 CCU4_SLICE_CONFIG_1_event1_config
+    {standard input}:457    .rodata.CCU4_SLICE_CONFIG_1_event1_config:00000000 $d
+    {standard input}:467    .rodata.CCU4_SLICE_CONFIG_1_event2_config:00000000 CCU4_SLICE_CONFIG_1_event2_config
+    {standard input}:464    .rodata.CCU4_SLICE_CONFIG_1_event2_config:00000000 $d
+    {standard input}:470    .text.CCU4_SLICE_CONFIG_1_lInit:00000000 $t
+    {standard input}:545    .text.CCU4_SLICE_CONFIG_1_lInit:00000074 $d
                      .debug_frame:00000010 $d
 
 UNDEFINED SYMBOLS
@@ -2304,3 +2562,4 @@ GLOBAL_CCU4_Init
 XMC_CCU4_SLICE_CompareInit
 XMC_CCU4_SetMultiChannelShadowTransferMode
 XMC_CCU4_SLICE_ConfigureEvent
+GLOBAL_CCU4_0

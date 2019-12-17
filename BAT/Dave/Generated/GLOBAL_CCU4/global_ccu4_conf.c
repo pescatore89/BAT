@@ -68,4 +68,15 @@ GLOBAL_CCU4_t GLOBAL_CCU4_2 =
   .is_initialized = false
 };
 
+   
+/**< Configuration for HandleGLOBAL_CCU4_0 */
+GLOBAL_CCU4_t GLOBAL_CCU4_0 =
+{
+  .module_frequency = 120000000U,  /**< CCU4 input clock frequency */
+  .syncstart_trigger_msk = XMC_SCU_CCU_TRIGGER_CCU40, 
+  .module_ptr = (XMC_CCU4_MODULE_t*) CCU40,      /**< CCU4 Module Pointer */
+  .mcs_action = (XMC_CCU4_SLICE_MCMS_ACTION_t)XMC_CCU4_SLICE_MCMS_ACTION_TRANSFER_PR_CR,
+  .is_initialized = false
+};
+
 

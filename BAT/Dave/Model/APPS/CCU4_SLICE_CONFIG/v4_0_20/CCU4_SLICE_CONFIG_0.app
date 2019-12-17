@@ -18,7 +18,7 @@
   <virtualSignals name="gp2" URI="http://resources/4.0.20/app/CCU4_SLICE_CONFIG/0/vs_ccu4_cc4_gp2" hwSignal="gp2" hwResource="//@hwResources.0" visible="true"/>
   <virtualSignals name="link_out" URI="http://resources/4.0.20/app/CCU4_SLICE_CONFIG/0/vs_ccu4_concat_bus_out" hwSignal="concat_bus_out" hwResource="//@hwResources.0" visible="true"/>
   <virtualSignals name="link_in" URI="http://resources/4.0.20/app/CCU4_SLICE_CONFIG/0/vs_ccu4_concat_bus_in" hwSignal="concat_bus_in" hwResource="//@hwResources.0" visible="true"/>
-  <virtualSignals name="mci" URI="http://resources/4.0.20/app/CCU4_SLICE_CONFIG/0/vs_ccu4_cc4_mci" hwSignal="mci" hwResource="//@hwResources.0"/>
+  <virtualSignals name="mci" URI="http://resources/4.0.20/app/CCU4_SLICE_CONFIG/0/vs_ccu4_cc4_mci" hwSignal="mci" hwResource="//@hwResources.0" visible="true"/>
   <virtualSignals name="mcss" URI="http://resources/4.0.20/app/CCU4_SLICE_CONFIG/0/vs_ccu4_cc4_mcss" hwSignal="mcss" hwResource="//@hwResources.0"/>
   <requiredApps URI="http://resources/4.0.20/app/CCU4_SLICE_CONFIG/0/app_global_ccu4" requiredAppName="GLOBAL_CCU4" requiringMode="SHARABLE">
     <downwardMapList xsi:type="ResourceModel:App" href="../../GLOBAL_CCU4/v4_1_12/GLOBAL_CCU4_2.app#/"/>

@@ -8,12 +8,14 @@
   <upwardMapList xsi:type="ResourceModel:RequiredApp" href="../../GLOBAL_CCU4/v4_1_12/GLOBAL_CCU4_2.app#//@requiredApps.0"/>
   <upwardMapList xsi:type="ResourceModel:RequiredApp" href="../../I2C_MASTER/v4_1_30/I2C_MASTER_0.app#//@requiredApps.0"/>
   <upwardMapList xsi:type="ResourceModel:RequiredApp" href="../../SYSTIMER/v4_1_16/SYSTIMER_0.app#//@requiredApps.0"/>
+  <upwardMapList xsi:type="ResourceModel:RequiredApp" href="../../GLOBAL_CCU4/v4_1_12/GLOBAL_CCU4_3.app#//@requiredApps.0"/>
   <properties singleton="true" provideInit="true" sharable="true"/>
   <virtualSignals name="clk_perbridge_output" URI="http://resources/4.0.22/app/CLOCK_XMC4/0/vs_fpb" hwSignal="fpb" hwResource="//@hwResources.3" visible="true"/>
   <virtualSignals name="clk_ccu_output" URI="http://resources/4.0.22/app/CLOCK_XMC4/0/vs_fccu" hwSignal="fccu" hwResource="//@hwResources.4" visible="true">
     <upwardMapList xsi:type="ResourceModel:Connections" href="../../GLOBAL_CCU8/v4_1_12/GLOBAL_CCU8_0.app#/0/@connections.0"/>
     <upwardMapList xsi:type="ResourceModel:Connections" href="../../GLOBAL_CCU8/v4_1_12/GLOBAL_CCU8_1.app#//@connections.0"/>
     <upwardMapList xsi:type="ResourceModel:Connections" href="../../GLOBAL_CCU4/v4_1_12/GLOBAL_CCU4_2.app#//@connections.0"/>
+    <upwardMapList xsi:type="ResourceModel:Connections" href="../../GLOBAL_CCU4/v4_1_12/GLOBAL_CCU4_3.app#//@connections.0"/>
   </virtualSignals>
   <virtualSignals name="clk_external_output" URI="http://resources/4.0.22/app/CLOCK_XMC4/0/vs_extclk" hwSignal="extclk" hwResource="//@hwResources.7" required="false"/>
   <virtualSignals name="external_clock_pin" URI="http://resources/4.0.22/app/CLOCK_XMC4/0/vs_extclkpin" hwSignal="pad" hwResource="//@hwResources.10" required="false"/>

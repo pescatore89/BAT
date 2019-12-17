@@ -74,6 +74,8 @@ extern "C" {
 
 extern const CCU4_SLICE_CONFIG_t CCU4_SLICE_CONFIG_0; 
     
+extern const CCU4_SLICE_CONFIG_t CCU4_SLICE_CONFIG_1; 
+    
 #ifdef __cplusplus
 }
 #endif
