@@ -25,7 +25,7 @@
 #define SLICE1_OUTPUT P0_12
 
 volatile uint32_t count = 0;
-volatile uint32_t count1 = 0;
+volatile int32_t count1 = 99999;
 
 
 
@@ -1031,44 +1031,25 @@ const uint16_t comparevalue[100000] = /* sine table for duty cycle*/
 		296,296,296,296,296,296,296,296,296,296,296,296,296,296,296,296,296,296,296,296,296,296,296,296,296,296,296,296,296,296,296,296,296,296,296,296,296,296,296,296,296,297,297,297,297,297,297,297,297,297,297,297,297,297,297,297,297,297,297,297,297,297,297,297,297,297,297,297,297,297,297,297,297,297,297,297,297,297,297,297,297,297,297,297,297,297,297,297,297,297,297,297,297,297,298,298,298,298,298,298,
 		298,298,298,298,298,298,298,298,298,298,298,298,298,298,298,298,298,298,298,298,298,298,298,298,298,298,298,298,298,298,298,298,298,298,298,298,298,298,298,298,298,298,298,298,298,298,298,299,299,299,299,299,299,299,299,299,299,299,299,299,299,299,299,299,299,299,299,299,299,299,299,299,299,299,299,299,299,299,299,299,299,299,299,299,299,299,299,299,299,299,299,299,299,299,299,299,299,299,299,299, };
 
-XMC_CCU4_SLICE_COMPARE_CONFIG_t SLICE0_config = { .timer_mode =
-		(uint32_t) XMC_CCU4_SLICE_TIMER_COUNT_MODE_EA, .monoshot =
-		(uint32_t) false, .shadow_xfer_clear = (uint32_t) 0,
-		.dither_timer_period = (uint32_t) 0, .dither_duty_cycle = (uint32_t) 0,
-		.prescaler_mode = (uint32_t) XMC_CCU4_SLICE_PRESCALER_MODE_NORMAL,
-		.mcm_enable = (uint32_t) 0, .prescaler_initval = (uint32_t) 0, /* in this case, prescaler = 2^0 = 1 */
-		.float_limit = (uint32_t) 0, .dither_limit = (uint32_t) 0,
-		.passive_level = (uint32_t) XMC_CCU4_SLICE_OUTPUT_PASSIVE_LEVEL_LOW,
-		.timer_concatenation = (uint32_t) 0 };
 
-XMC_CCU4_SLICE_EVENT_CONFIG_t SLICE0_event0_config = { .mapped_input =
-XMC_CCU4_SLICE_INPUT_I, /* mapped to SCU.GSC40 */
-.edge = XMC_CCU4_SLICE_EVENT_EDGE_SENSITIVITY_RISING_EDGE, .level =
-		XMC_CCU4_SLICE_EVENT_LEVEL_SENSITIVITY_ACTIVE_HIGH, .duration =
-		XMC_CCU4_SLICE_EVENT_FILTER_3_CYCLES };
+#define FREQUENZ 10
+#define MODULATIONSGRAD 81
 
-XMC_GPIO_CONFIG_t SLICE0_OUTPUT_config = { .mode =
-		XMC_GPIO_MODE_OUTPUT_PUSH_PULL_ALT3, .output_level =
-		XMC_GPIO_OUTPUT_LEVEL_LOW, .output_strength =
-		XMC_GPIO_OUTPUT_STRENGTH_MEDIUM };
 
 void CCU42_0_IRQHandler(void) {
 	/* Clear pending interrupt */
 	XMC_CCU4_SLICE_ClearEvent(SLICE0_PTR,
 			XMC_CCU4_SLICE_IRQ_ID_COMPARE_MATCH_UP);
 	/* Set new duty cycle value */
-	float Modulationsgrad = 100;
-	uint16_t frequenz = 20;
+
 	//uint16_t value = 2400;
 	int32_t temp1 =(int32_t)(comparevalue[count]-300);
-	int32_t temp2 =  (temp1*Modulationsgrad)/100;
+	int32_t temp2 =  (temp1*MODULATIONSGRAD)/100;
 	int32_t value = temp2 +300;
-
-
 
 	//(Modulationsgrad*comparevalue[count]);
 	XMC_CCU4_SLICE_SetTimerCompareMatch(SLICE0_PTR, value);
-	count = count + frequenz;
+	count = count + FREQUENZ;
 	if (count >= 100000) {
 		count = 0;
 		DIGITAL_IO_ToggleOutput(&IO_Bit2);
@@ -1084,20 +1065,18 @@ void CCU40_3_IRQHandler(void) {
 	XMC_CCU4_SLICE_ClearEvent(SLICE1_PTR,
 			XMC_CCU4_SLICE_IRQ_ID_COMPARE_MATCH_UP);
 	/* Set new duty cycle value */
-	float Modulationsgrad = 100;
-	uint16_t frequenz = 10;
 	//uint16_t value = 2400;
 	int32_t temp1 =(int32_t)(comparevalue[count1]-300);
-	int32_t temp2 =  (temp1*Modulationsgrad)/100;
+	int32_t temp2 =  (temp1*MODULATIONSGRAD)/100;
 	int32_t value = temp2 +300;
 
 
 
 	//(Modulationsgrad*comparevalue[count]);
 	XMC_CCU4_SLICE_SetTimerCompareMatch(SLICE1_PTR, value);
-	count1 = count1 + frequenz;
-	if (count1 >= 100000) {
-		count1 = 0;
+	count1 = count1 - FREQUENZ;
+	if (count1 <= 0) {
+		count1 = 99999;
 		DIGITAL_IO_ToggleOutput(&IO_Bit3);
 	}
 	/* Enable shadow transfer for the new PWM value update */
@@ -1216,7 +1195,7 @@ int main(void) {
 			XMC_CCU4_SLICE_IRQ_ID_PERIOD_MATCH, XMC_CCU4_SLICE_SR_ID_0);
 
 	/* Set NVIC priority */
-	NVIC_SetPriority(CCU42_0_IRQn, 3U);
+	NVIC_SetPriority(CCU42_0_IRQn, 2U);
 	/* Enable IRQ */
 	NVIC_EnableIRQ(CCU42_0_IRQn);
 
@@ -1231,7 +1210,7 @@ int main(void) {
 			XMC_CCU4_SLICE_IRQ_ID_PERIOD_MATCH, XMC_CCU4_SLICE_SR_ID_3);
 
 	/* Set NVIC priority */
-	NVIC_SetPriority(CCU40_3_IRQn, 3U);
+	NVIC_SetPriority(CCU40_3_IRQn, 2U);
 	/* Enable IRQ */
 	NVIC_EnableIRQ(CCU40_3_IRQn);
 
