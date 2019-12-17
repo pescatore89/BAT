@@ -110,7 +110,7 @@
   66:../Dave/Generated/DAVE.c ****      /** @Initialization of APPs Init Functions */
   67:../Dave/Generated/DAVE.c ****      init_status = (DAVE_STATUS_t)CLOCK_XMC4_Init(&CLOCK_XMC4_0);
   46              	 .loc 1 67 0
-  47 000a A548     	 ldr r0,.L43
+  47 000a A948     	 ldr r0,.L44
   48 000c FFF7FEFF 	 bl CLOCK_XMC4_Init
   49 0010 0346     	 mov r3,r0
   50 0012 FB71     	 strb r3,[r7,#7]
@@ -124,7 +124,7 @@
   71:../Dave/Generated/DAVE.c **** 	 /**  Initialization of ACIM_FREQ_CTRL APP instance ACIM_FREQ_CTRL_0 */
   72:../Dave/Generated/DAVE.c **** 	 init_status = (DAVE_STATUS_t)ACIM_FREQ_CTRL_Init(&ACIM_FREQ_CTRL_0); 
   55              	 .loc 1 72 0
-  56 001a A248     	 ldr r0,.L43+4
+  56 001a A648     	 ldr r0,.L44+4
   57 001c FFF7FEFF 	 bl ACIM_FREQ_CTRL_Init
   58 0020 0346     	 mov r3,r0
   59 0022 FB71     	 strb r3,[r7,#7]
@@ -139,7 +139,7 @@
   76:../Dave/Generated/DAVE.c **** 	 /**  Initialization of ACIM_FREQ_CTRL APP instance ACIM_FREQ_CTRL_1 */
   77:../Dave/Generated/DAVE.c **** 	 init_status = (DAVE_STATUS_t)ACIM_FREQ_CTRL_Init(&ACIM_FREQ_CTRL_1); 
   65              	 .loc 1 77 0
-  66 002a 9F48     	 ldr r0,.L43+8
+  66 002a A348     	 ldr r0,.L44+8
   67 002c FFF7FEFF 	 bl ACIM_FREQ_CTRL_Init
   68 0030 0346     	 mov r3,r0
   69 0032 FB71     	 strb r3,[r7,#7]
@@ -154,7 +154,7 @@
   81:../Dave/Generated/DAVE.c **** 	 /**  Initialization of DIGITAL_IO APP instance Cooling_FAN */
   82:../Dave/Generated/DAVE.c **** 	 init_status = (DAVE_STATUS_t)DIGITAL_IO_Init(&Cooling_FAN); 
   75              	 .loc 1 82 0
-  76 003a 9C48     	 ldr r0,.L43+12
+  76 003a A048     	 ldr r0,.L44+12
   77 003c FFF7FEFF 	 bl DIGITAL_IO_Init
   78 0040 0346     	 mov r3,r0
   79 0042 FB71     	 strb r3,[r7,#7]
@@ -169,7 +169,7 @@
   86:../Dave/Generated/DAVE.c **** 	 /**  Initialization of DIGITAL_IO APP instance Disable_Gate_Driver_M3 */
   87:../Dave/Generated/DAVE.c **** 	 init_status = (DAVE_STATUS_t)DIGITAL_IO_Init(&Disable_Gate_Driver_M3); 
   85              	 .loc 1 87 0
-  86 004a 9948     	 ldr r0,.L43+16
+  86 004a 9D48     	 ldr r0,.L44+16
   87 004c FFF7FEFF 	 bl DIGITAL_IO_Init
   88 0050 0346     	 mov r3,r0
   89 0052 FB71     	 strb r3,[r7,#7]
@@ -184,7 +184,7 @@
   91:../Dave/Generated/DAVE.c **** 	 /**  Initialization of DIGITAL_IO APP instance DIGITAL_IO_2 */
   92:../Dave/Generated/DAVE.c **** 	 init_status = (DAVE_STATUS_t)DIGITAL_IO_Init(&DIGITAL_IO_2); 
   95              	 .loc 1 92 0
-  96 005a 9648     	 ldr r0,.L43+20
+  96 005a 9A48     	 ldr r0,.L44+20
   97 005c FFF7FEFF 	 bl DIGITAL_IO_Init
   98 0060 0346     	 mov r3,r0
   99 0062 FB71     	 strb r3,[r7,#7]
@@ -199,7 +199,7 @@
   96:../Dave/Generated/DAVE.c **** 	 /**  Initialization of DIGITAL_IO APP instance DIGITAL_IO_3 */
   97:../Dave/Generated/DAVE.c **** 	 init_status = (DAVE_STATUS_t)DIGITAL_IO_Init(&DIGITAL_IO_3); 
  105              	 .loc 1 97 0
- 106 006a 9348     	 ldr r0,.L43+24
+ 106 006a 9748     	 ldr r0,.L44+24
  107 006c FFF7FEFF 	 bl DIGITAL_IO_Init
  108 0070 0346     	 mov r3,r0
  109 0072 FB71     	 strb r3,[r7,#7]
@@ -214,7 +214,7 @@
  101:../Dave/Generated/DAVE.c **** 	 /**  Initialization of DIGITAL_IO APP instance DIGITAL_IO_4 */
  102:../Dave/Generated/DAVE.c **** 	 init_status = (DAVE_STATUS_t)DIGITAL_IO_Init(&DIGITAL_IO_4); 
  115              	 .loc 1 102 0
- 116 007a 9048     	 ldr r0,.L43+28
+ 116 007a 9448     	 ldr r0,.L44+28
  117 007c FFF7FEFF 	 bl DIGITAL_IO_Init
  118 0080 0346     	 mov r3,r0
  119 0082 FB71     	 strb r3,[r7,#7]
@@ -229,7 +229,7 @@
  106:../Dave/Generated/DAVE.c **** 	 /**  Initialization of DIGITAL_IO APP instance DIGITAL_IO_5 */
  107:../Dave/Generated/DAVE.c **** 	 init_status = (DAVE_STATUS_t)DIGITAL_IO_Init(&DIGITAL_IO_5); 
  125              	 .loc 1 107 0
- 126 008a 8D48     	 ldr r0,.L43+32
+ 126 008a 9148     	 ldr r0,.L44+32
  127 008c FFF7FEFF 	 bl DIGITAL_IO_Init
  128 0090 0346     	 mov r3,r0
  129 0092 FB71     	 strb r3,[r7,#7]
@@ -244,7 +244,7 @@
  111:../Dave/Generated/DAVE.c **** 	 /**  Initialization of DIGITAL_IO APP instance DIGITAL_IO_6 */
  112:../Dave/Generated/DAVE.c **** 	 init_status = (DAVE_STATUS_t)DIGITAL_IO_Init(&DIGITAL_IO_6); 
  135              	 .loc 1 112 0
- 136 009a 8A48     	 ldr r0,.L43+36
+ 136 009a 8E48     	 ldr r0,.L44+36
  137 009c FFF7FEFF 	 bl DIGITAL_IO_Init
  138 00a0 0346     	 mov r3,r0
  139 00a2 FB71     	 strb r3,[r7,#7]
@@ -259,7 +259,7 @@
  116:../Dave/Generated/DAVE.c **** 	 /**  Initialization of DIGITAL_IO APP instance DIGITAL_IO_7 */
  117:../Dave/Generated/DAVE.c **** 	 init_status = (DAVE_STATUS_t)DIGITAL_IO_Init(&DIGITAL_IO_7); 
  145              	 .loc 1 117 0
- 146 00aa 8748     	 ldr r0,.L43+40
+ 146 00aa 8B48     	 ldr r0,.L44+40
  147 00ac FFF7FEFF 	 bl DIGITAL_IO_Init
  148 00b0 0346     	 mov r3,r0
  149 00b2 FB71     	 strb r3,[r7,#7]
@@ -274,7 +274,7 @@
  121:../Dave/Generated/DAVE.c **** 	 /**  Initialization of DIGITAL_IO APP instance DIGITAL_IO_8 */
  122:../Dave/Generated/DAVE.c **** 	 init_status = (DAVE_STATUS_t)DIGITAL_IO_Init(&DIGITAL_IO_8); 
  155              	 .loc 1 122 0
- 156 00ba 8448     	 ldr r0,.L43+44
+ 156 00ba 8848     	 ldr r0,.L44+44
  157 00bc FFF7FEFF 	 bl DIGITAL_IO_Init
  158 00c0 0346     	 mov r3,r0
  159 00c2 FB71     	 strb r3,[r7,#7]
@@ -289,7 +289,7 @@
  126:../Dave/Generated/DAVE.c **** 	 /**  Initialization of DIGITAL_IO APP instance DIGITAL_IO_9 */
  127:../Dave/Generated/DAVE.c **** 	 init_status = (DAVE_STATUS_t)DIGITAL_IO_Init(&DIGITAL_IO_9); 
  165              	 .loc 1 127 0
- 166 00ca 8148     	 ldr r0,.L43+48
+ 166 00ca 8548     	 ldr r0,.L44+48
  167 00cc FFF7FEFF 	 bl DIGITAL_IO_Init
  168 00d0 0346     	 mov r3,r0
  169 00d2 FB71     	 strb r3,[r7,#7]
@@ -304,7 +304,7 @@
  131:../Dave/Generated/DAVE.c **** 	 /**  Initialization of DIGITAL_IO APP instance DIGITAL_IO_10 */
  132:../Dave/Generated/DAVE.c **** 	 init_status = (DAVE_STATUS_t)DIGITAL_IO_Init(&DIGITAL_IO_10); 
  175              	 .loc 1 132 0
- 176 00da 7E48     	 ldr r0,.L43+52
+ 176 00da 8248     	 ldr r0,.L44+52
  177 00dc FFF7FEFF 	 bl DIGITAL_IO_Init
  178 00e0 0346     	 mov r3,r0
  179 00e2 FB71     	 strb r3,[r7,#7]
@@ -319,7 +319,7 @@
  136:../Dave/Generated/DAVE.c **** 	 /**  Initialization of DIGITAL_IO APP instance DIGITAL_IO_11 */
  137:../Dave/Generated/DAVE.c **** 	 init_status = (DAVE_STATUS_t)DIGITAL_IO_Init(&DIGITAL_IO_11); 
  185              	 .loc 1 137 0
- 186 00ea 7B48     	 ldr r0,.L43+56
+ 186 00ea 7F48     	 ldr r0,.L44+56
  187 00ec FFF7FEFF 	 bl DIGITAL_IO_Init
  188 00f0 0346     	 mov r3,r0
  189 00f2 FB71     	 strb r3,[r7,#7]
@@ -334,7 +334,7 @@
  141:../Dave/Generated/DAVE.c **** 	 /**  Initialization of DIGITAL_IO APP instance DIGITAL_IO_12 */
  142:../Dave/Generated/DAVE.c **** 	 init_status = (DAVE_STATUS_t)DIGITAL_IO_Init(&DIGITAL_IO_12); 
  195              	 .loc 1 142 0
- 196 00fa 7848     	 ldr r0,.L43+60
+ 196 00fa 7C48     	 ldr r0,.L44+60
  197 00fc FFF7FEFF 	 bl DIGITAL_IO_Init
  198 0100 0346     	 mov r3,r0
  199 0102 FB71     	 strb r3,[r7,#7]
@@ -349,7 +349,7 @@
  146:../Dave/Generated/DAVE.c **** 	 /**  Initialization of DIGITAL_IO APP instance DIGITAL_IO_13 */
  147:../Dave/Generated/DAVE.c **** 	 init_status = (DAVE_STATUS_t)DIGITAL_IO_Init(&DIGITAL_IO_13); 
  205              	 .loc 1 147 0
- 206 010a 7548     	 ldr r0,.L43+64
+ 206 010a 7948     	 ldr r0,.L44+64
  207 010c FFF7FEFF 	 bl DIGITAL_IO_Init
  208 0110 0346     	 mov r3,r0
  209 0112 FB71     	 strb r3,[r7,#7]
@@ -364,7 +364,7 @@
  151:../Dave/Generated/DAVE.c **** 	 /**  Initialization of DIGITAL_IO APP instance RS485_DIR */
  152:../Dave/Generated/DAVE.c **** 	 init_status = (DAVE_STATUS_t)DIGITAL_IO_Init(&RS485_DIR); 
  215              	 .loc 1 152 0
- 216 011a 7248     	 ldr r0,.L43+68
+ 216 011a 7648     	 ldr r0,.L44+68
  217 011c FFF7FEFF 	 bl DIGITAL_IO_Init
  218 0120 0346     	 mov r3,r0
  219 0122 FB71     	 strb r3,[r7,#7]
@@ -379,7 +379,7 @@
  156:../Dave/Generated/DAVE.c **** 	 /**  Initialization of DIGITAL_IO APP instance DIGITAL_IO_15 */
  157:../Dave/Generated/DAVE.c **** 	 init_status = (DAVE_STATUS_t)DIGITAL_IO_Init(&DIGITAL_IO_15); 
  225              	 .loc 1 157 0
- 226 012a 6F48     	 ldr r0,.L43+72
+ 226 012a 7348     	 ldr r0,.L44+72
  227 012c FFF7FEFF 	 bl DIGITAL_IO_Init
  228 0130 0346     	 mov r3,r0
  229 0132 FB71     	 strb r3,[r7,#7]
@@ -394,7 +394,7 @@
  161:../Dave/Generated/DAVE.c **** 	 /**  Initialization of DIGITAL_IO APP instance IO_Bit1_DIR */
  162:../Dave/Generated/DAVE.c **** 	 init_status = (DAVE_STATUS_t)DIGITAL_IO_Init(&IO_Bit1_DIR); 
  235              	 .loc 1 162 0
- 236 013a 6C48     	 ldr r0,.L43+76
+ 236 013a 7048     	 ldr r0,.L44+76
  237 013c FFF7FEFF 	 bl DIGITAL_IO_Init
  238 0140 0346     	 mov r3,r0
  239 0142 FB71     	 strb r3,[r7,#7]
@@ -409,7 +409,7 @@
  166:../Dave/Generated/DAVE.c **** 	 /**  Initialization of DIGITAL_IO APP instance IO_Bit0_DIR */
  167:../Dave/Generated/DAVE.c **** 	 init_status = (DAVE_STATUS_t)DIGITAL_IO_Init(&IO_Bit0_DIR); 
  245              	 .loc 1 167 0
- 246 014a 6948     	 ldr r0,.L43+80
+ 246 014a 6D48     	 ldr r0,.L44+80
  247 014c FFF7FEFF 	 bl DIGITAL_IO_Init
  248 0150 0346     	 mov r3,r0
  249 0152 FB71     	 strb r3,[r7,#7]
@@ -424,7 +424,7 @@
  171:../Dave/Generated/DAVE.c **** 	 /**  Initialization of DIGITAL_IO APP instance HS_Overtemp */
  172:../Dave/Generated/DAVE.c **** 	 init_status = (DAVE_STATUS_t)DIGITAL_IO_Init(&HS_Overtemp); 
  255              	 .loc 1 172 0
- 256 015a 6648     	 ldr r0,.L43+84
+ 256 015a 6A48     	 ldr r0,.L44+84
  257 015c FFF7FEFF 	 bl DIGITAL_IO_Init
  258 0160 0346     	 mov r3,r0
  259 0162 FB71     	 strb r3,[r7,#7]
@@ -439,7 +439,7 @@
  176:../Dave/Generated/DAVE.c **** 	 /**  Initialization of DIGITAL_IO APP instance IO_Bit3_DIR */
  177:../Dave/Generated/DAVE.c **** 	 init_status = (DAVE_STATUS_t)DIGITAL_IO_Init(&IO_Bit3_DIR); 
  265              	 .loc 1 177 0
- 266 016a 6348     	 ldr r0,.L43+88
+ 266 016a 6748     	 ldr r0,.L44+88
  267 016c FFF7FEFF 	 bl DIGITAL_IO_Init
  268 0170 0346     	 mov r3,r0
  269 0172 FB71     	 strb r3,[r7,#7]
@@ -454,7 +454,7 @@
  181:../Dave/Generated/DAVE.c **** 	 /**  Initialization of DIGITAL_IO APP instance IO_Bit2_DIR */
  182:../Dave/Generated/DAVE.c **** 	 init_status = (DAVE_STATUS_t)DIGITAL_IO_Init(&IO_Bit2_DIR); 
  275              	 .loc 1 182 0
- 276 017a 6048     	 ldr r0,.L43+92
+ 276 017a 6448     	 ldr r0,.L44+92
  277 017c FFF7FEFF 	 bl DIGITAL_IO_Init
  278 0180 0346     	 mov r3,r0
  279 0182 FB71     	 strb r3,[r7,#7]
@@ -469,7 +469,7 @@
  186:../Dave/Generated/DAVE.c **** 	 /**  Initialization of DIGITAL_IO APP instance IO_Bit2 */
  187:../Dave/Generated/DAVE.c **** 	 init_status = (DAVE_STATUS_t)DIGITAL_IO_Init(&IO_Bit2); 
  285              	 .loc 1 187 0
- 286 018a 5D48     	 ldr r0,.L43+96
+ 286 018a 6148     	 ldr r0,.L44+96
  287 018c FFF7FEFF 	 bl DIGITAL_IO_Init
  288 0190 0346     	 mov r3,r0
  289 0192 FB71     	 strb r3,[r7,#7]
@@ -484,7 +484,7 @@
  191:../Dave/Generated/DAVE.c **** 	 /**  Initialization of DIGITAL_IO APP instance IO_Bit1 */
  192:../Dave/Generated/DAVE.c **** 	 init_status = (DAVE_STATUS_t)DIGITAL_IO_Init(&IO_Bit1); 
  295              	 .loc 1 192 0
- 296 019a 5A48     	 ldr r0,.L43+100
+ 296 019a 5E48     	 ldr r0,.L44+100
  297 019c FFF7FEFF 	 bl DIGITAL_IO_Init
  298 01a0 0346     	 mov r3,r0
  299 01a2 FB71     	 strb r3,[r7,#7]
@@ -499,7 +499,7 @@
  196:../Dave/Generated/DAVE.c **** 	 /**  Initialization of DIGITAL_IO APP instance IO_Bit0 */
  197:../Dave/Generated/DAVE.c **** 	 init_status = (DAVE_STATUS_t)DIGITAL_IO_Init(&IO_Bit0); 
  305              	 .loc 1 197 0
- 306 01aa 5748     	 ldr r0,.L43+104
+ 306 01aa 5B48     	 ldr r0,.L44+104
  307 01ac FFF7FEFF 	 bl DIGITAL_IO_Init
  308 01b0 0346     	 mov r3,r0
  309 01b2 FB71     	 strb r3,[r7,#7]
@@ -514,7 +514,7 @@
  201:../Dave/Generated/DAVE.c **** 	 /**  Initialization of DIGITAL_IO APP instance IO_Bit3 */
  202:../Dave/Generated/DAVE.c **** 	 init_status = (DAVE_STATUS_t)DIGITAL_IO_Init(&IO_Bit3); 
  315              	 .loc 1 202 0
- 316 01ba 5448     	 ldr r0,.L43+108
+ 316 01ba 5848     	 ldr r0,.L44+108
  317 01bc FFF7FEFF 	 bl DIGITAL_IO_Init
  318 01c0 0346     	 mov r3,r0
  319 01c2 FB71     	 strb r3,[r7,#7]
@@ -529,7 +529,7 @@
  206:../Dave/Generated/DAVE.c **** 	 /**  Initialization of DIGITAL_IO APP instance Disable_Gate_Driver_M1_M2 */
  207:../Dave/Generated/DAVE.c **** 	 init_status = (DAVE_STATUS_t)DIGITAL_IO_Init(&Disable_Gate_Driver_M1_M2); 
  325              	 .loc 1 207 0
- 326 01ca 5148     	 ldr r0,.L43+112
+ 326 01ca 5548     	 ldr r0,.L44+112
  327 01cc FFF7FEFF 	 bl DIGITAL_IO_Init
  328 01d0 0346     	 mov r3,r0
  329 01d2 FB71     	 strb r3,[r7,#7]
@@ -544,7 +544,7 @@
  211:../Dave/Generated/DAVE.c **** 	 /**  Initialization of DIGITAL_IO APP instance DIGITAL_IO_26 */
  212:../Dave/Generated/DAVE.c **** 	 init_status = (DAVE_STATUS_t)DIGITAL_IO_Init(&DIGITAL_IO_26); 
  335              	 .loc 1 212 0
- 336 01da 4E48     	 ldr r0,.L43+116
+ 336 01da 5248     	 ldr r0,.L44+116
  337 01dc FFF7FEFF 	 bl DIGITAL_IO_Init
  338 01e0 0346     	 mov r3,r0
  339 01e2 FB71     	 strb r3,[r7,#7]
@@ -559,7 +559,7 @@
  216:../Dave/Generated/DAVE.c **** 	 /**  Initialization of DIGITAL_IO APP instance DIGITAL_IO_27 */
  217:../Dave/Generated/DAVE.c **** 	 init_status = (DAVE_STATUS_t)DIGITAL_IO_Init(&DIGITAL_IO_27); 
  345              	 .loc 1 217 0
- 346 01ea 4B48     	 ldr r0,.L43+120
+ 346 01ea 4F48     	 ldr r0,.L44+120
  347 01ec FFF7FEFF 	 bl DIGITAL_IO_Init
  348 01f0 0346     	 mov r3,r0
  349 01f2 FB71     	 strb r3,[r7,#7]
@@ -574,7 +574,7 @@
  221:../Dave/Generated/DAVE.c **** 	 /**  Initialization of DIGITAL_IO APP instance DIGITAL_IO_28 */
  222:../Dave/Generated/DAVE.c **** 	 init_status = (DAVE_STATUS_t)DIGITAL_IO_Init(&DIGITAL_IO_28); 
  355              	 .loc 1 222 0
- 356 01fa 4848     	 ldr r0,.L43+124
+ 356 01fa 4C48     	 ldr r0,.L44+124
  357 01fc FFF7FEFF 	 bl DIGITAL_IO_Init
  358 0200 0346     	 mov r3,r0
  359 0202 FB71     	 strb r3,[r7,#7]
@@ -589,7 +589,7 @@
  226:../Dave/Generated/DAVE.c **** 	 /**  Initialization of DIGITAL_IO APP instance DIGITAL_IO_29 */
  227:../Dave/Generated/DAVE.c **** 	 init_status = (DAVE_STATUS_t)DIGITAL_IO_Init(&DIGITAL_IO_29); 
  365              	 .loc 1 227 0
- 366 020a 4548     	 ldr r0,.L43+128
+ 366 020a 4948     	 ldr r0,.L44+128
  367 020c FFF7FEFF 	 bl DIGITAL_IO_Init
  368 0210 0346     	 mov r3,r0
  369 0212 FB71     	 strb r3,[r7,#7]
@@ -604,7 +604,7 @@
  231:../Dave/Generated/DAVE.c **** 	 /**  Initialization of UART APP instance UART_0 */
  232:../Dave/Generated/DAVE.c **** 	 init_status = (DAVE_STATUS_t)UART_Init(&UART_0); 
  375              	 .loc 1 232 0
- 376 021a 4248     	 ldr r0,.L43+132
+ 376 021a 4648     	 ldr r0,.L44+132
  377 021c FFF7FEFF 	 bl UART_Init
  378 0220 0346     	 mov r3,r0
  379 0222 FB71     	 strb r3,[r7,#7]
@@ -619,7 +619,7 @@
  236:../Dave/Generated/DAVE.c **** 	 /**  Initialization of ADC_MEASUREMENT APP instance ADC_MEASUREMENT_0 */
  237:../Dave/Generated/DAVE.c **** 	 init_status = (DAVE_STATUS_t)ADC_MEASUREMENT_Init(&ADC_MEASUREMENT_0); 
  385              	 .loc 1 237 0
- 386 022a 3F48     	 ldr r0,.L43+136
+ 386 022a 4348     	 ldr r0,.L44+136
  387 022c FFF7FEFF 	 bl ADC_MEASUREMENT_Init
  388 0230 0346     	 mov r3,r0
  389 0232 FB71     	 strb r3,[r7,#7]
@@ -634,7 +634,7 @@
  241:../Dave/Generated/DAVE.c **** 	 /**  Initialization of ANALOG_IO APP instance ANALOG_IO_1 */
  242:../Dave/Generated/DAVE.c **** 	 init_status = (DAVE_STATUS_t)ANALOG_IO_Init(&ANALOG_IO_1); 
  395              	 .loc 1 242 0
- 396 023a 3C48     	 ldr r0,.L43+140
+ 396 023a 4048     	 ldr r0,.L44+140
  397 023c FFF7FEFF 	 bl ANALOG_IO_Init
  398 0240 0346     	 mov r3,r0
  399 0242 FB71     	 strb r3,[r7,#7]
@@ -649,7 +649,7 @@
  246:../Dave/Generated/DAVE.c **** 	 /**  Initialization of UART_CONFIG APP instance UART_CONFIG_0 */
  247:../Dave/Generated/DAVE.c **** 	 init_status = (DAVE_STATUS_t)UART_CONFIG_Init(&UART_CONFIG_0); 
  405              	 .loc 1 247 0
- 406 024a 3948     	 ldr r0,.L43+144
+ 406 024a 3D48     	 ldr r0,.L44+144
  407 024c FFF7FEFF 	 bl UART_CONFIG_Init
  408 0250 0346     	 mov r3,r0
  409 0252 FB71     	 strb r3,[r7,#7]
@@ -664,7 +664,7 @@
  251:../Dave/Generated/DAVE.c **** 	 /**  Initialization of CCU8_SLICE_CONFIG APP instance CCU8_SLICE_CONFIG_0 */
  252:../Dave/Generated/DAVE.c **** 	 init_status = (DAVE_STATUS_t)CCU8_SLICE_CONFIG_Init(&CCU8_SLICE_CONFIG_0); 
  415              	 .loc 1 252 0
- 416 025a 3648     	 ldr r0,.L43+148
+ 416 025a 3A48     	 ldr r0,.L44+148
  417 025c FFF7FEFF 	 bl CCU8_SLICE_CONFIG_Init
  418 0260 0346     	 mov r3,r0
  419 0262 FB71     	 strb r3,[r7,#7]
@@ -679,7 +679,7 @@
  256:../Dave/Generated/DAVE.c **** 	 /**  Initialization of PWM_CCU4 APP instance PWM_CCU4_2 */
  257:../Dave/Generated/DAVE.c **** 	 init_status = (DAVE_STATUS_t)PWM_CCU4_Init(&PWM_CCU4_2); 
  425              	 .loc 1 257 0
- 426 026a 3348     	 ldr r0,.L43+152
+ 426 026a 3748     	 ldr r0,.L44+152
  427 026c FFF7FEFF 	 bl PWM_CCU4_Init
  428 0270 0346     	 mov r3,r0
  429 0272 FB71     	 strb r3,[r7,#7]
@@ -694,7 +694,7 @@
  261:../Dave/Generated/DAVE.c **** 	 /**  Initialization of I2C_MASTER APP instance I2C_MASTER_0 */
  262:../Dave/Generated/DAVE.c **** 	 init_status = (DAVE_STATUS_t)I2C_MASTER_Init(&I2C_MASTER_0); 
  435              	 .loc 1 262 0
- 436 027a 3048     	 ldr r0,.L43+156
+ 436 027a 3448     	 ldr r0,.L44+156
  437 027c FFF7FEFF 	 bl I2C_MASTER_Init
  438 0280 0346     	 mov r3,r0
  439 0282 FB71     	 strb r3,[r7,#7]
@@ -709,121 +709,139 @@
  266:../Dave/Generated/DAVE.c **** 	 /**  Initialization of ANALOG_IO APP instance ANALOG_IO_2 */
  267:../Dave/Generated/DAVE.c **** 	 init_status = (DAVE_STATUS_t)ANALOG_IO_Init(&ANALOG_IO_2); 
  445              	 .loc 1 267 0
- 446 028a 2D48     	 ldr r0,.L43+160
+ 446 028a 3148     	 ldr r0,.L44+160
  447 028c FFF7FEFF 	 bl ANALOG_IO_Init
  448 0290 0346     	 mov r3,r0
  449 0292 FB71     	 strb r3,[r7,#7]
  450              	.L41:
- 268:../Dave/Generated/DAVE.c ****    }  
- 269:../Dave/Generated/DAVE.c ****   return init_status;
+ 268:../Dave/Generated/DAVE.c ****    } 
+ 269:../Dave/Generated/DAVE.c ****   if (init_status == DAVE_STATUS_SUCCESS)
  451              	 .loc 1 269 0
  452 0294 FB79     	 ldrb r3,[r7,#7]
- 270:../Dave/Generated/DAVE.c **** } /**  End of function DAVE_Init */
- 453              	 .loc 1 270 0
- 454 0296 1846     	 mov r0,r3
- 455 0298 0837     	 adds r7,r7,#8
- 456              	.LCFI3:
- 457              	 .cfi_def_cfa_offset 8
- 458 029a BD46     	 mov sp,r7
- 459              	.LCFI4:
- 460              	 .cfi_def_cfa_register 13
- 461              	 
- 462 029c 80BD     	 pop {r7,pc}
- 463              	.L44:
- 464 029e 00BF     	 .align 2
- 465              	.L43:
- 466 02a0 00000000 	 .word CLOCK_XMC4_0
- 467 02a4 00000000 	 .word ACIM_FREQ_CTRL_0
- 468 02a8 00000000 	 .word ACIM_FREQ_CTRL_1
- 469 02ac 00000000 	 .word Cooling_FAN
- 470 02b0 00000000 	 .word Disable_Gate_Driver_M3
- 471 02b4 00000000 	 .word DIGITAL_IO_2
- 472 02b8 00000000 	 .word DIGITAL_IO_3
- 473 02bc 00000000 	 .word DIGITAL_IO_4
- 474 02c0 00000000 	 .word DIGITAL_IO_5
- 475 02c4 00000000 	 .word DIGITAL_IO_6
- 476 02c8 00000000 	 .word DIGITAL_IO_7
- 477 02cc 00000000 	 .word DIGITAL_IO_8
- 478 02d0 00000000 	 .word DIGITAL_IO_9
- 479 02d4 00000000 	 .word DIGITAL_IO_10
- 480 02d8 00000000 	 .word DIGITAL_IO_11
- 481 02dc 00000000 	 .word DIGITAL_IO_12
- 482 02e0 00000000 	 .word DIGITAL_IO_13
- 483 02e4 00000000 	 .word RS485_DIR
- 484 02e8 00000000 	 .word DIGITAL_IO_15
- 485 02ec 00000000 	 .word IO_Bit1_DIR
- 486 02f0 00000000 	 .word IO_Bit0_DIR
- 487 02f4 00000000 	 .word HS_Overtemp
- 488 02f8 00000000 	 .word IO_Bit3_DIR
- 489 02fc 00000000 	 .word IO_Bit2_DIR
- 490 0300 00000000 	 .word IO_Bit2
- 491 0304 00000000 	 .word IO_Bit1
- 492 0308 00000000 	 .word IO_Bit0
- 493 030c 00000000 	 .word IO_Bit3
- 494 0310 00000000 	 .word Disable_Gate_Driver_M1_M2
- 495 0314 00000000 	 .word DIGITAL_IO_26
- 496 0318 00000000 	 .word DIGITAL_IO_27
- 497 031c 00000000 	 .word DIGITAL_IO_28
- 498 0320 00000000 	 .word DIGITAL_IO_29
- 499 0324 00000000 	 .word UART_0
- 500 0328 00000000 	 .word ADC_MEASUREMENT_0
- 501 032c 00000000 	 .word ANALOG_IO_1
- 502 0330 00000000 	 .word UART_CONFIG_0
- 503 0334 00000000 	 .word CCU8_SLICE_CONFIG_0
- 504 0338 00000000 	 .word PWM_CCU4_2
- 505 033c 00000000 	 .word I2C_MASTER_0
- 506 0340 00000000 	 .word ANALOG_IO_2
- 507              	 .cfi_endproc
- 508              	.LFE503:
- 510              	 .text
- 511              	.Letext0:
- 512              	 .file 2 "c:\\users\\pescatore\\switchdrive\\private\\konzept\\mcu for gate driver\\dave_4-4-2_64bit_2018-02-23\\dave-ide-4.4.2-64bit\\eclipse\\arm-gcc-49\\arm-none-eabi\\include\\machine\\_default_types.h"
- 513              	 .file 3 "c:\\users\\pescatore\\switchdrive\\private\\konzept\\mcu for gate driver\\dave_4-4-2_64bit_2018-02-23\\dave-ide-4.4.2-64bit\\eclipse\\arm-gcc-49\\arm-none-eabi\\include\\stdint.h"
- 514              	 .file 4 "F:/GitHub Projects/FH Luzern/BAT/BAT/Libraries/CMSIS/Infineon/XMC4400_series/Include/XMC4400.h"
- 515              	 .file 5 "F:/GitHub Projects/FH Luzern/BAT/BAT/Libraries/XMCLib/inc/xmc4_scu.h"
- 516              	 .file 6 "F:/GitHub Projects/FH Luzern/BAT/BAT/Libraries/XMCLib/inc/xmc_gpio.h"
- 517              	 .file 7 "F:/GitHub Projects/FH Luzern/BAT/BAT/Libraries/XMCLib/inc/xmc4_gpio.h"
- 518              	 .file 8 "../Dave/Generated/CLOCK_XMC4/clock_xmc4.h"
- 519              	 .file 9 "F:/GitHub Projects/FH Luzern/BAT/BAT/Libraries/XMCLib/inc/xmc_ccu8.h"
- 520              	 .file 10 "../Dave/Generated/GLOBAL_CCU8/global_ccu8.h"
- 521              	 .file 11 "../Dave/Generated/PWM_SVM/pwm_svm.h"
- 522              	 .file 12 "../Dave/Generated/MOTOR_LIB/motor_lib.h"
- 523              	 .file 13 "../Dave/Generated/SYSTIMER/systimer.h"
- 524              	 .file 14 "../Dave/Generated/AUTOMATION/automation.h"
- 525              	 .file 15 "../Dave/Generated/ACIM_FREQ_CTRL/acim_freq_ctrl.h"
- 526              	 .file 16 "../Dave/Generated/DIGITAL_IO/digital_io.h"
- 527              	 .file 17 "F:/GitHub Projects/FH Luzern/BAT/BAT/Libraries/XMCLib/inc/xmc_usic.h"
- 528              	 .file 18 "F:/GitHub Projects/FH Luzern/BAT/BAT/Libraries/XMCLib/inc/xmc_uart.h"
- 529              	 .file 19 "../Dave/Generated/UART/uart.h"
- 530              	 .file 20 "F:/GitHub Projects/FH Luzern/BAT/BAT/Libraries/XMCLib/inc/xmc_vadc.h"
- 531              	 .file 21 "../Dave/Generated/GLOBAL_ADC/global_adc.h"
- 532              	 .file 22 "../Dave/Generated/ANALOG_IO/analog_io.h"
- 533              	 .file 23 "../Dave/Generated/ADC_MEASUREMENT/adc_measurement.h"
- 534              	 .file 24 "../Dave/Generated/UART_CONFIG/uart_config.h"
- 535              	 .file 25 "../Dave/Generated/CCU8_SLICE_CONFIG/ccu8_slice_config.h"
- 536              	 .file 26 "F:/GitHub Projects/FH Luzern/BAT/BAT/Libraries/XMCLib/inc/xmc_ccu4.h"
- 537              	 .file 27 "../Dave/Generated/GLOBAL_CCU4/global_ccu4.h"
- 538              	 .file 28 "../Dave/Generated/PWM_CCU4/pwm_ccu4.h"
- 539              	 .file 29 "F:/GitHub Projects/FH Luzern/BAT/BAT/Libraries/XMCLib/inc/xmc_i2c.h"
- 540              	 .file 30 "../Dave/Generated/I2C_MASTER/i2c_master.h"
- 541              	 .file 31 "../Dave/Generated/DAVE.h"
- 542              	 .file 32 "F:/GitHub Projects/FH Luzern/BAT/BAT/Libraries/CMSIS/Include/core_cm4.h"
- 543              	 .file 33 "F:/GitHub Projects/FH Luzern/BAT/BAT/Libraries/CMSIS/Infineon/XMC4400_series/Include/system_XMC4400.h"
- 544              	 .file 34 "../Dave/Generated/CLOCK_XMC4/clock_xmc4_extern.h"
- 545              	 .file 35 "../Dave/Generated/ACIM_FREQ_CTRL/acim_freq_ctrl_extern.h"
- 546              	 .file 36 "../Dave/Generated/DIGITAL_IO/digital_io_extern.h"
- 547              	 .file 37 "../Dave/Generated/UART/uart_extern.h"
- 548              	 .file 38 "../Dave/Generated/ANALOG_IO/analog_io_extern.h"
- 549              	 .file 39 "../Dave/Generated/ADC_MEASUREMENT/ADC_MEASUREMENT_Extern.h"
- 550              	 .file 40 "../Dave/Generated/UART_CONFIG/uart_config_extern.h"
- 551              	 .file 41 "../Dave/Generated/CCU8_SLICE_CONFIG/ccu8_slice_config_extern.h"
- 552              	 .file 42 "../Dave/Generated/PWM_CCU4/pwm_ccu4_extern.h"
- 553              	 .file 43 "../Dave/Generated/I2C_MASTER/i2c_master_extern.h"
+ 453 0296 002B     	 cmp r3,#0
+ 454 0298 04D1     	 bne .L42
+ 270:../Dave/Generated/DAVE.c ****   {
+ 271:../Dave/Generated/DAVE.c **** 	 /**  Initialization of CCU4_SLICE_CONFIG APP instance CCU4_SLICE_CONFIG_0 */
+ 272:../Dave/Generated/DAVE.c **** 	 init_status = (DAVE_STATUS_t)CCU4_SLICE_CONFIG_Init(&CCU4_SLICE_CONFIG_0); 
+ 455              	 .loc 1 272 0
+ 456 029a 2E48     	 ldr r0,.L44+164
+ 457 029c FFF7FEFF 	 bl CCU4_SLICE_CONFIG_Init
+ 458 02a0 0346     	 mov r3,r0
+ 459 02a2 FB71     	 strb r3,[r7,#7]
+ 460              	.L42:
+ 273:../Dave/Generated/DAVE.c ****    }  
+ 274:../Dave/Generated/DAVE.c ****   return init_status;
+ 461              	 .loc 1 274 0
+ 462 02a4 FB79     	 ldrb r3,[r7,#7]
+ 275:../Dave/Generated/DAVE.c **** } /**  End of function DAVE_Init */
+ 463              	 .loc 1 275 0
+ 464 02a6 1846     	 mov r0,r3
+ 465 02a8 0837     	 adds r7,r7,#8
+ 466              	.LCFI3:
+ 467              	 .cfi_def_cfa_offset 8
+ 468 02aa BD46     	 mov sp,r7
+ 469              	.LCFI4:
+ 470              	 .cfi_def_cfa_register 13
+ 471              	 
+ 472 02ac 80BD     	 pop {r7,pc}
+ 473              	.L45:
+ 474 02ae 00BF     	 .align 2
+ 475              	.L44:
+ 476 02b0 00000000 	 .word CLOCK_XMC4_0
+ 477 02b4 00000000 	 .word ACIM_FREQ_CTRL_0
+ 478 02b8 00000000 	 .word ACIM_FREQ_CTRL_1
+ 479 02bc 00000000 	 .word Cooling_FAN
+ 480 02c0 00000000 	 .word Disable_Gate_Driver_M3
+ 481 02c4 00000000 	 .word DIGITAL_IO_2
+ 482 02c8 00000000 	 .word DIGITAL_IO_3
+ 483 02cc 00000000 	 .word DIGITAL_IO_4
+ 484 02d0 00000000 	 .word DIGITAL_IO_5
+ 485 02d4 00000000 	 .word DIGITAL_IO_6
+ 486 02d8 00000000 	 .word DIGITAL_IO_7
+ 487 02dc 00000000 	 .word DIGITAL_IO_8
+ 488 02e0 00000000 	 .word DIGITAL_IO_9
+ 489 02e4 00000000 	 .word DIGITAL_IO_10
+ 490 02e8 00000000 	 .word DIGITAL_IO_11
+ 491 02ec 00000000 	 .word DIGITAL_IO_12
+ 492 02f0 00000000 	 .word DIGITAL_IO_13
+ 493 02f4 00000000 	 .word RS485_DIR
+ 494 02f8 00000000 	 .word DIGITAL_IO_15
+ 495 02fc 00000000 	 .word IO_Bit1_DIR
+ 496 0300 00000000 	 .word IO_Bit0_DIR
+ 497 0304 00000000 	 .word HS_Overtemp
+ 498 0308 00000000 	 .word IO_Bit3_DIR
+ 499 030c 00000000 	 .word IO_Bit2_DIR
+ 500 0310 00000000 	 .word IO_Bit2
+ 501 0314 00000000 	 .word IO_Bit1
+ 502 0318 00000000 	 .word IO_Bit0
+ 503 031c 00000000 	 .word IO_Bit3
+ 504 0320 00000000 	 .word Disable_Gate_Driver_M1_M2
+ 505 0324 00000000 	 .word DIGITAL_IO_26
+ 506 0328 00000000 	 .word DIGITAL_IO_27
+ 507 032c 00000000 	 .word DIGITAL_IO_28
+ 508 0330 00000000 	 .word DIGITAL_IO_29
+ 509 0334 00000000 	 .word UART_0
+ 510 0338 00000000 	 .word ADC_MEASUREMENT_0
+ 511 033c 00000000 	 .word ANALOG_IO_1
+ 512 0340 00000000 	 .word UART_CONFIG_0
+ 513 0344 00000000 	 .word CCU8_SLICE_CONFIG_0
+ 514 0348 00000000 	 .word PWM_CCU4_2
+ 515 034c 00000000 	 .word I2C_MASTER_0
+ 516 0350 00000000 	 .word ANALOG_IO_2
+ 517 0354 00000000 	 .word CCU4_SLICE_CONFIG_0
+ 518              	 .cfi_endproc
+ 519              	.LFE503:
+ 521              	 .text
+ 522              	.Letext0:
+ 523              	 .file 2 "c:\\users\\pescatore\\switchdrive\\private\\konzept\\mcu for gate driver\\dave_4-4-2_64bit_2018-02-23\\dave-ide-4.4.2-64bit\\eclipse\\arm-gcc-49\\arm-none-eabi\\include\\machine\\_default_types.h"
+ 524              	 .file 3 "c:\\users\\pescatore\\switchdrive\\private\\konzept\\mcu for gate driver\\dave_4-4-2_64bit_2018-02-23\\dave-ide-4.4.2-64bit\\eclipse\\arm-gcc-49\\arm-none-eabi\\include\\stdint.h"
+ 525              	 .file 4 "F:/GitHub Projects/FH Luzern/BAT/BAT/Libraries/CMSIS/Infineon/XMC4400_series/Include/XMC4400.h"
+ 526              	 .file 5 "F:/GitHub Projects/FH Luzern/BAT/BAT/Libraries/XMCLib/inc/xmc4_scu.h"
+ 527              	 .file 6 "F:/GitHub Projects/FH Luzern/BAT/BAT/Libraries/XMCLib/inc/xmc_gpio.h"
+ 528              	 .file 7 "F:/GitHub Projects/FH Luzern/BAT/BAT/Libraries/XMCLib/inc/xmc4_gpio.h"
+ 529              	 .file 8 "../Dave/Generated/CLOCK_XMC4/clock_xmc4.h"
+ 530              	 .file 9 "F:/GitHub Projects/FH Luzern/BAT/BAT/Libraries/XMCLib/inc/xmc_ccu8.h"
+ 531              	 .file 10 "../Dave/Generated/GLOBAL_CCU8/global_ccu8.h"
+ 532              	 .file 11 "../Dave/Generated/PWM_SVM/pwm_svm.h"
+ 533              	 .file 12 "../Dave/Generated/MOTOR_LIB/motor_lib.h"
+ 534              	 .file 13 "../Dave/Generated/SYSTIMER/systimer.h"
+ 535              	 .file 14 "../Dave/Generated/AUTOMATION/automation.h"
+ 536              	 .file 15 "../Dave/Generated/ACIM_FREQ_CTRL/acim_freq_ctrl.h"
+ 537              	 .file 16 "../Dave/Generated/DIGITAL_IO/digital_io.h"
+ 538              	 .file 17 "F:/GitHub Projects/FH Luzern/BAT/BAT/Libraries/XMCLib/inc/xmc_usic.h"
+ 539              	 .file 18 "F:/GitHub Projects/FH Luzern/BAT/BAT/Libraries/XMCLib/inc/xmc_uart.h"
+ 540              	 .file 19 "../Dave/Generated/UART/uart.h"
+ 541              	 .file 20 "F:/GitHub Projects/FH Luzern/BAT/BAT/Libraries/XMCLib/inc/xmc_vadc.h"
+ 542              	 .file 21 "../Dave/Generated/GLOBAL_ADC/global_adc.h"
+ 543              	 .file 22 "../Dave/Generated/ANALOG_IO/analog_io.h"
+ 544              	 .file 23 "../Dave/Generated/ADC_MEASUREMENT/adc_measurement.h"
+ 545              	 .file 24 "../Dave/Generated/UART_CONFIG/uart_config.h"
+ 546              	 .file 25 "../Dave/Generated/CCU8_SLICE_CONFIG/ccu8_slice_config.h"
+ 547              	 .file 26 "F:/GitHub Projects/FH Luzern/BAT/BAT/Libraries/XMCLib/inc/xmc_ccu4.h"
+ 548              	 .file 27 "../Dave/Generated/GLOBAL_CCU4/global_ccu4.h"
+ 549              	 .file 28 "../Dave/Generated/PWM_CCU4/pwm_ccu4.h"
+ 550              	 .file 29 "F:/GitHub Projects/FH Luzern/BAT/BAT/Libraries/XMCLib/inc/xmc_i2c.h"
+ 551              	 .file 30 "../Dave/Generated/I2C_MASTER/i2c_master.h"
+ 552              	 .file 31 "../Dave/Generated/CCU4_SLICE_CONFIG/ccu4_slice_config.h"
+ 553              	 .file 32 "../Dave/Generated/DAVE.h"
+ 554              	 .file 33 "F:/GitHub Projects/FH Luzern/BAT/BAT/Libraries/CMSIS/Include/core_cm4.h"
+ 555              	 .file 34 "F:/GitHub Projects/FH Luzern/BAT/BAT/Libraries/CMSIS/Infineon/XMC4400_series/Include/system_XMC4400.h"
+ 556              	 .file 35 "../Dave/Generated/CLOCK_XMC4/clock_xmc4_extern.h"
+ 557              	 .file 36 "../Dave/Generated/ACIM_FREQ_CTRL/acim_freq_ctrl_extern.h"
+ 558              	 .file 37 "../Dave/Generated/DIGITAL_IO/digital_io_extern.h"
+ 559              	 .file 38 "../Dave/Generated/UART/uart_extern.h"
+ 560              	 .file 39 "../Dave/Generated/ANALOG_IO/analog_io_extern.h"
+ 561              	 .file 40 "../Dave/Generated/ADC_MEASUREMENT/ADC_MEASUREMENT_Extern.h"
+ 562              	 .file 41 "../Dave/Generated/UART_CONFIG/uart_config_extern.h"
+ 563              	 .file 42 "../Dave/Generated/CCU8_SLICE_CONFIG/ccu8_slice_config_extern.h"
+ 564              	 .file 43 "../Dave/Generated/PWM_CCU4/pwm_ccu4_extern.h"
+ 565              	 .file 44 "../Dave/Generated/I2C_MASTER/i2c_master_extern.h"
+ 566              	 .file 45 "../Dave/Generated/CCU4_SLICE_CONFIG/ccu4_slice_config_extern.h"
 DEFINED SYMBOLS
                             *ABS*:00000000 DAVE.c
     {standard input}:20     .text.DAVE_Init:00000000 $t
     {standard input}:25     .text.DAVE_Init:00000000 DAVE_Init
-    {standard input}:466    .text.DAVE_Init:000002a0 $d
+    {standard input}:476    .text.DAVE_Init:000002b0 $d
                      .debug_frame:00000010 $d
 
 UNDEFINED SYMBOLS
@@ -837,6 +855,7 @@ UART_CONFIG_Init
 CCU8_SLICE_CONFIG_Init
 PWM_CCU4_Init
 I2C_MASTER_Init
+CCU4_SLICE_CONFIG_Init
 CLOCK_XMC4_0
 ACIM_FREQ_CTRL_0
 ACIM_FREQ_CTRL_1
@@ -878,3 +897,4 @@ CCU8_SLICE_CONFIG_0
 PWM_CCU4_2
 I2C_MASTER_0
 ANALOG_IO_2
+CCU4_SLICE_CONFIG_0

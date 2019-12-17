@@ -90,7 +90,11 @@ main.o main.d main.o: ../main.c \
  F:/GitHub\ Projects/FH\ Luzern/BAT/BAT/Dave/Generated/I2C_MASTER/i2c_master.h \
  F:/GitHub\ Projects/FH\ Luzern/BAT/BAT/Libraries/XMCLib/inc/xmc_i2c.h \
  F:/GitHub\ Projects/FH\ Luzern/BAT/BAT/Dave/Generated/I2C_MASTER/i2c_master_conf.h \
- F:/GitHub\ Projects/FH\ Luzern/BAT/BAT/Dave/Generated/I2C_MASTER/i2c_master_extern.h
+ F:/GitHub\ Projects/FH\ Luzern/BAT/BAT/Dave/Generated/I2C_MASTER/i2c_master_extern.h \
+ F:/GitHub\ Projects/FH\ Luzern/BAT/BAT/Dave/Generated/CCU4_SLICE_CONFIG/ccu4_slice_config.h \
+ F:/GitHub\ Projects/FH\ Luzern/BAT/BAT/Dave/Generated/CCU4_SLICE_CONFIG/ccu4_slice_config_conf.h \
+ f:\github\ projects\fh\ luzern\bat\bat\dave\generated\global_ccu4\global_ccu4.h \
+ F:/GitHub\ Projects/FH\ Luzern/BAT/BAT/Dave/Generated/CCU4_SLICE_CONFIG/ccu4_slice_config_extern.h
 
 F:/GitHub\ Projects/FH\ Luzern/BAT/BAT/Dave/Generated/DAVE.h:
 
@@ -275,3 +279,11 @@ F:/GitHub\ Projects/FH\ Luzern/BAT/BAT/Libraries/XMCLib/inc/xmc_i2c.h:
 F:/GitHub\ Projects/FH\ Luzern/BAT/BAT/Dave/Generated/I2C_MASTER/i2c_master_conf.h:
 
 F:/GitHub\ Projects/FH\ Luzern/BAT/BAT/Dave/Generated/I2C_MASTER/i2c_master_extern.h:
+
+F:/GitHub\ Projects/FH\ Luzern/BAT/BAT/Dave/Generated/CCU4_SLICE_CONFIG/ccu4_slice_config.h:
+
+F:/GitHub\ Projects/FH\ Luzern/BAT/BAT/Dave/Generated/CCU4_SLICE_CONFIG/ccu4_slice_config_conf.h:
+
+f:\github\ projects\fh\ luzern\bat\bat\dave\generated\global_ccu4\global_ccu4.h:
+
+F:/GitHub\ Projects/FH\ Luzern/BAT/BAT/Dave/Generated/CCU4_SLICE_CONFIG/ccu4_slice_config_extern.h:

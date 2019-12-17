@@ -23,6 +23,7 @@ Dave/Generated/ACIM_FREQ_CTRL \
 Dave/Generated/ADC_MEASUREMENT \
 Dave/Generated/ANALOG_IO \
 Dave/Generated/AUTOMATION \
+Dave/Generated/CCU4_SLICE_CONFIG \
 Dave/Generated/CCU8_SLICE_CONFIG \
 Dave/Generated/CLOCK_XMC4 \
 Dave/Generated/CPU_CTRL_XMC4 \

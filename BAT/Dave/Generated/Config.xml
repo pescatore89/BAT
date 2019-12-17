@@ -57,6 +57,16 @@
                 <Type>C File</Type>
             </Source_File>
             <Source_File>
+                <File_Name>ccu4_slice_config.c</File_Name>
+                <Path>\Dave\Generated\CCU4_SLICE_CONFIG\ccu4_slice_config.c</Path>
+                <Type>C File</Type>
+            </Source_File>
+            <Source_File>
+                <File_Name>ccu4_slice_config_conf.c</File_Name>
+                <Path>\Dave\Generated\CCU4_SLICE_CONFIG\ccu4_slice_config_conf.c</Path>
+                <Type>C File</Type>
+            </Source_File>
+            <Source_File>
                 <File_Name>ccu8_slice_config.c</File_Name>
                 <Path>\Dave\Generated\CCU8_SLICE_CONFIG\ccu8_slice_config.c</Path>
                 <Type>C File</Type>
@@ -261,6 +271,21 @@
             <Header_File>
                 <File_Name>automation_extern.h</File_Name>
                 <Path>\Dave\Generated\AUTOMATION\automation_extern.h</Path>
+                <Type>H File</Type>
+            </Header_File>
+            <Header_File>
+                <File_Name>ccu4_slice_config.h</File_Name>
+                <Path>\Dave\Generated\CCU4_SLICE_CONFIG\ccu4_slice_config.h</Path>
+                <Type>H File</Type>
+            </Header_File>
+            <Header_File>
+                <File_Name>ccu4_slice_config_conf.h</File_Name>
+                <Path>\Dave\Generated\CCU4_SLICE_CONFIG\ccu4_slice_config_conf.h</Path>
+                <Type>H File</Type>
+            </Header_File>
+            <Header_File>
+                <File_Name>ccu4_slice_config_extern.h</File_Name>
+                <Path>\Dave\Generated\CCU4_SLICE_CONFIG\ccu4_slice_config_extern.h</Path>
                 <Type>H File</Type>
             </Header_File>
             <Header_File>

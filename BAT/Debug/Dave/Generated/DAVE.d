@@ -89,7 +89,11 @@ Dave/Generated/DAVE.o Dave/Generated/DAVE.d Dave/Generated/DAVE.o: \
  ../Dave/Generated/I2C_MASTER/i2c_master.h \
  F:/GitHub\ Projects/FH\ Luzern/BAT/BAT/Libraries/XMCLib/inc/xmc_i2c.h \
  ../Dave/Generated/I2C_MASTER/i2c_master_conf.h \
- ../Dave/Generated/I2C_MASTER/i2c_master_extern.h
+ ../Dave/Generated/I2C_MASTER/i2c_master_extern.h \
+ ../Dave/Generated/CCU4_SLICE_CONFIG/ccu4_slice_config.h \
+ ../Dave/Generated/CCU4_SLICE_CONFIG/ccu4_slice_config_conf.h \
+ ../Dave/Generated/CCU4_SLICE_CONFIG/../GLOBAL_CCU4/global_ccu4.h \
+ ../Dave/Generated/CCU4_SLICE_CONFIG/ccu4_slice_config_extern.h
 
 ../Dave/Generated/DAVE.h:
 
@@ -274,3 +278,11 @@ F:/GitHub\ Projects/FH\ Luzern/BAT/BAT/Libraries/XMCLib/inc/xmc_i2c.h:
 ../Dave/Generated/I2C_MASTER/i2c_master_conf.h:
 
 ../Dave/Generated/I2C_MASTER/i2c_master_extern.h:
+
+../Dave/Generated/CCU4_SLICE_CONFIG/ccu4_slice_config.h:
+
+../Dave/Generated/CCU4_SLICE_CONFIG/ccu4_slice_config_conf.h:
+
+../Dave/Generated/CCU4_SLICE_CONFIG/../GLOBAL_CCU4/global_ccu4.h:
+
+../Dave/Generated/CCU4_SLICE_CONFIG/ccu4_slice_config_extern.h:

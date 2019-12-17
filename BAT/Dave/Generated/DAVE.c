@@ -265,6 +265,11 @@ DAVE_STATUS_t DAVE_Init(void)
   {
 	 /**  Initialization of ANALOG_IO APP instance ANALOG_IO_2 */
 	 init_status = (DAVE_STATUS_t)ANALOG_IO_Init(&ANALOG_IO_2); 
+   } 
+  if (init_status == DAVE_STATUS_SUCCESS)
+  {
+	 /**  Initialization of CCU4_SLICE_CONFIG APP instance CCU4_SLICE_CONFIG_0 */
+	 init_status = (DAVE_STATUS_t)CCU4_SLICE_CONFIG_Init(&CCU4_SLICE_CONFIG_0); 
    }  
   return init_status;
 } /**  End of function DAVE_Init */

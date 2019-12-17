@@ -2096,6 +2096,16 @@ Discarded input sections
  .data          0x00000000        0x0 ./Dave/Generated/CCU8_SLICE_CONFIG/ccu8_slice_config_conf.o
  .bss           0x00000000        0x0 ./Dave/Generated/CCU8_SLICE_CONFIG/ccu8_slice_config_conf.o
  .comment       0x00000000       0x71 ./Dave/Generated/CCU8_SLICE_CONFIG/ccu8_slice_config_conf.o
+ .text          0x00000000        0x0 ./Dave/Generated/CCU4_SLICE_CONFIG/ccu4_slice_config.o
+ .data          0x00000000        0x0 ./Dave/Generated/CCU4_SLICE_CONFIG/ccu4_slice_config.o
+ .bss           0x00000000        0x0 ./Dave/Generated/CCU4_SLICE_CONFIG/ccu4_slice_config.o
+ .text.CCU4_SLICE_CONFIG_GetAppVersion
+                0x00000000       0x44 ./Dave/Generated/CCU4_SLICE_CONFIG/ccu4_slice_config.o
+ .comment       0x00000000       0x71 ./Dave/Generated/CCU4_SLICE_CONFIG/ccu4_slice_config.o
+ .text          0x00000000        0x0 ./Dave/Generated/CCU4_SLICE_CONFIG/ccu4_slice_config_conf.o
+ .data          0x00000000        0x0 ./Dave/Generated/CCU4_SLICE_CONFIG/ccu4_slice_config_conf.o
+ .bss           0x00000000        0x0 ./Dave/Generated/CCU4_SLICE_CONFIG/ccu4_slice_config_conf.o
+ .comment       0x00000000       0x71 ./Dave/Generated/CCU4_SLICE_CONFIG/ccu4_slice_config_conf.o
  .text          0x00000000        0x0 ./Dave/Generated/AUTOMATION/automation.o
  .data          0x00000000        0x0 ./Dave/Generated/AUTOMATION/automation.o
  .bss           0x00000000        0x0 ./Dave/Generated/AUTOMATION/automation.o
@@ -2430,6 +2440,8 @@ LOAD ./Dave/Generated/CLOCK_XMC4/clock_xmc4.o
 LOAD ./Dave/Generated/CLOCK_XMC4/clock_xmc4_conf.o
 LOAD ./Dave/Generated/CCU8_SLICE_CONFIG/ccu8_slice_config.o
 LOAD ./Dave/Generated/CCU8_SLICE_CONFIG/ccu8_slice_config_conf.o
+LOAD ./Dave/Generated/CCU4_SLICE_CONFIG/ccu4_slice_config.o
+LOAD ./Dave/Generated/CCU4_SLICE_CONFIG/ccu4_slice_config_conf.o
 LOAD ./Dave/Generated/AUTOMATION/automation.o
 LOAD ./Dave/Generated/AUTOMATION/automation_conf.o
 LOAD ./Dave/Generated/ANALOG_IO/analog_io.o
@@ -2460,7 +2472,7 @@ END GROUP
                 0x00000800                stack_size = DEFINED (stack_size)?stack_size:0x800
                 0x00000040                no_init_size = 0x40
 
-.text           0x08000000     0xab64 load address 0x0c000000
+.text           0x08000000     0xad40 load address 0x0c000000
                 0x08000000                sText = .
  *(.reset)
  .reset         0x08000000      0x29c ./Startup/startup_XMC4400.o
@@ -3210,381 +3222,397 @@ END GROUP
                 0x08005748       0x24 ./Dave/Generated/CCU8_SLICE_CONFIG/ccu8_slice_config_conf.o
  .text.CCU8_SLICE_CONFIG_0_lInit
                 0x0800576c       0xa4 ./Dave/Generated/CCU8_SLICE_CONFIG/ccu8_slice_config_conf.o
- .text.AUTOMATION_WriteBit
-                0x08005810       0x44 ./Dave/Generated/AUTOMATION/automation.o
- .text.AUTOMATION_Init
-                0x08005854       0x88 ./Dave/Generated/AUTOMATION/automation.o
-                0x08005854                AUTOMATION_Init
- .text.AUTOMATION_RegisterApp
-                0x080058dc       0x64 ./Dave/Generated/AUTOMATION/automation.o
-                0x080058dc                AUTOMATION_RegisterApp
- .text.AUTOMATION_RegisterTask
-                0x08005940       0xc8 ./Dave/Generated/AUTOMATION/automation.o
-                0x08005940                AUTOMATION_RegisterTask
- .text.AUTOMATION_DeregisterTask
-                0x08005a08      0x128 ./Dave/Generated/AUTOMATION/automation.o
-                0x08005a08                AUTOMATION_DeregisterTask
- .text.AUTOMATION_PH_RegisterParamTable
-                0x08005b30       0x38 ./Dave/Generated/AUTOMATION/automation.o
-                0x08005b30                AUTOMATION_PH_RegisterParamTable
- .text.AUTOMATION_AppInterface_ReadReportedErrors
-                0x08005b68       0x84 ./Dave/Generated/AUTOMATION/automation.o
- .text.AUTOMATION_EH_ProcessError
-                0x08005bec       0x44 ./Dave/Generated/AUTOMATION/automation.o
- .text.AUTOMATION_EH_ErrorSequencer
-                0x08005c30      0x188 ./Dave/Generated/AUTOMATION/automation.o
-                0x08005c30                AUTOMATION_EH_ErrorSequencer
- .text.AUTOMATION_EH_AppInterface_ReportError
-                0x08005db8       0xd0 ./Dave/Generated/AUTOMATION/automation.o
-                0x08005db8                AUTOMATION_EH_AppInterface_ReportError
- .text.AUTOMATION_EH_WriteLogbook
-                0x08005e88       0xdc ./Dave/Generated/AUTOMATION/automation.o
-                0x08005e88                AUTOMATION_EH_WriteLogbook
- .text.AUTOMATION_FB_RegisterFunctionBlock
-                0x08005f64       0x48 ./Dave/Generated/AUTOMATION/automation.o
-                0x08005f64                AUTOMATION_FB_RegisterFunctionBlock
- .text.AUTOMATION_FB_AddConnectionEntry
-                0x08005fac       0xc0 ./Dave/Generated/AUTOMATION/automation.o
-                0x08005fac                AUTOMATION_FB_AddConnectionEntry
- .text.AUTOMATION_FB_Connect
-                0x0800606c       0xa0 ./Dave/Generated/AUTOMATION/automation.o
-                0x0800606c                AUTOMATION_FB_Connect
- .text.AUTOMATION_FB_RampInit
-                0x0800610c       0x20 ./Dave/Generated/AUTOMATION/automation.o
-                0x0800610c                AUTOMATION_FB_RampInit
- .text.AUTOMATION_FB_LinearRamp
-                0x0800612c       0x74 ./Dave/Generated/AUTOMATION/automation.o
-                0x0800612c                AUTOMATION_FB_LinearRamp
- .text.AUTOMATION_SM_RegisterStateMachine
-                0x080061a0       0x38 ./Dave/Generated/AUTOMATION/automation.o
-                0x080061a0                AUTOMATION_SM_RegisterStateMachine
- .text.AUTOMATION_SM_RequestState
-                0x080061d8       0x28 ./Dave/Generated/AUTOMATION/automation.o
-                0x080061d8                AUTOMATION_SM_RequestState
- .text.AUTOMATION_SM_Handler
-                0x08006200       0xf4 ./Dave/Generated/AUTOMATION/automation.o
-                0x08006200                AUTOMATION_SM_Handler
- .text.ANALOG_IO_Init
-                0x080062f4       0x34 ./Dave/Generated/ANALOG_IO/analog_io.o
-                0x080062f4                ANALOG_IO_Init
- .text.__NVIC_GetPriorityGrouping
-                0x08006328       0x1c ./Dave/Generated/ADC_MEASUREMENT/adc_measurement.o
- .text.__NVIC_EnableIRQ
-                0x08006344       0x38 ./Dave/Generated/ADC_MEASUREMENT/adc_measurement.o
- .text.__NVIC_SetPriority
-                0x0800637c       0x54 ./Dave/Generated/ADC_MEASUREMENT/adc_measurement.o
- .text.NVIC_EncodePriority
-                0x080063d0       0x64 ./Dave/Generated/ADC_MEASUREMENT/adc_measurement.o
- .text.XMC_VADC_GLOBAL_BackgroundTriggerConversion
-                0x08006434       0x24 ./Dave/Generated/ADC_MEASUREMENT/adc_measurement.o
- .text.XMC_VADC_GLOBAL_BackgroundAddChannelToSequence
-                0x08006458       0x38 ./Dave/Generated/ADC_MEASUREMENT/adc_measurement.o
- .text.XMC_VADC_GROUP_ResultInit
-                0x08006490       0x24 ./Dave/Generated/ADC_MEASUREMENT/adc_measurement.o
- .text.XMC_VADC_GROUP_GetResult
-                0x080064b4       0x24 ./Dave/Generated/ADC_MEASUREMENT/adc_measurement.o
- .text.ADC_MEASUREMENT_Init
-                0x080064d8      0x16c ./Dave/Generated/ADC_MEASUREMENT/adc_measurement.o
-                0x080064d8                ADC_MEASUREMENT_Init
- .text.ADC_MEASUREMENT_GetResult
-                0x08006644       0x30 ./Dave/Generated/ADC_MEASUREMENT/adc_measurement.o
-                0x08006644                ADC_MEASUREMENT_GetResult
- .text.__NVIC_GetPriorityGrouping
-                0x08006674       0x1c ./Dave/Generated/ACIM_FREQ_CTRL/acim_freq_ctrl.o
- .text.__NVIC_EnableIRQ
-                0x08006690       0x38 ./Dave/Generated/ACIM_FREQ_CTRL/acim_freq_ctrl.o
- .text.__NVIC_SetPriority
-                0x080066c8       0x54 ./Dave/Generated/ACIM_FREQ_CTRL/acim_freq_ctrl.o
- .text.NVIC_EncodePriority
-                0x0800671c       0x64 ./Dave/Generated/ACIM_FREQ_CTRL/acim_freq_ctrl.o
- .text.XMC_CCU8_EnableShadowTransfer
-                0x08006780       0x1c ./Dave/Generated/ACIM_FREQ_CTRL/acim_freq_ctrl.o
- .text.XMC_SCU_SetCcuTriggerHigh
-                0x0800679c       0x24 ./Dave/Generated/ACIM_FREQ_CTRL/acim_freq_ctrl.o
- .text.XMC_SCU_SetCcuTriggerLow
-                0x080067c0       0x24 ./Dave/Generated/ACIM_FREQ_CTRL/acim_freq_ctrl.o
- .text.ACIM_FREQ_CTRL_lInitializeVarAfterInit
-                0x080067e4       0x58 ./Dave/Generated/ACIM_FREQ_CTRL/acim_freq_ctrl.o
-                0x080067e4                ACIM_FREQ_CTRL_lInitializeVarAfterInit
- .text.ACIM_FREQ_CTRL_lISRInit
-                0x0800683c       0x2c ./Dave/Generated/ACIM_FREQ_CTRL/acim_freq_ctrl.o
-                0x0800683c                ACIM_FREQ_CTRL_lISRInit
- .text.ACIM_FREQ_CTRL_ISRInit
-                0x08006868       0x48 ./Dave/Generated/ACIM_FREQ_CTRL/acim_freq_ctrl.o
- .text.ACIM_FREQ_CTRL_MotorParamInit
-                0x080068b0       0x94 ./Dave/Generated/ACIM_FREQ_CTRL/acim_freq_ctrl.o
- .text.ACIM_FREQ_CTRL_Automation_Init
-                0x08006944      0x14c ./Dave/Generated/ACIM_FREQ_CTRL/acim_freq_ctrl.o
- .text.ACIM_FREQ_CTRL_Init
-                0x08006a90       0x78 ./Dave/Generated/ACIM_FREQ_CTRL/acim_freq_ctrl.o
-                0x08006a90                ACIM_FREQ_CTRL_Init
- .text.ACIM_FREQ_CTRL_UpdateError
-                0x08006b08       0x54 ./Dave/Generated/ACIM_FREQ_CTRL/acim_freq_ctrl.o
-                0x08006b08                ACIM_FREQ_CTRL_UpdateError
- .text.ACIM_FREQ_CTRL_lTaskSchedulerRegisteration
-                0x08006b5c       0x50 ./Dave/Generated/ACIM_FREQ_CTRL/acim_freq_ctrl.o
-                0x08006b5c                ACIM_FREQ_CTRL_lTaskSchedulerRegisteration
- .text.ACIM_FREQ_CTRL_MotorStart
-                0x08006bac       0xb0 ./Dave/Generated/ACIM_FREQ_CTRL/acim_freq_ctrl.o
-                0x08006bac                ACIM_FREQ_CTRL_MotorStart
- .text.ACIM_FREQ_CTRL_MotorStop
-                0x08006c5c       0xc8 ./Dave/Generated/ACIM_FREQ_CTRL/acim_freq_ctrl.o
-                0x08006c5c                ACIM_FREQ_CTRL_MotorStop
- .text.ACIM_FREQ_CTRL_SetParameter
-                0x08006d24       0x98 ./Dave/Generated/ACIM_FREQ_CTRL/acim_freq_ctrl.o
-                0x08006d24                ACIM_FREQ_CTRL_SetParameter
- .text.ACIM_FREQ_CTRL_SetSpeed
-                0x08006dbc       0x3c ./Dave/Generated/ACIM_FREQ_CTRL/acim_freq_ctrl.o
-                0x08006dbc                ACIM_FREQ_CTRL_SetSpeed
- .text.ACIM_FREQ_CTRL_SetMotorDirection
-                0x08006df8       0x94 ./Dave/Generated/ACIM_FREQ_CTRL/acim_freq_ctrl.o
-                0x08006df8                ACIM_FREQ_CTRL_SetMotorDirection
- .text.ACIM_FREQ_CTRL_SetControlWordState
-                0x08006e8c       0x58 ./Dave/Generated/ACIM_FREQ_CTRL/acim_freq_ctrl.o
-                0x08006e8c                ACIM_FREQ_CTRL_SetControlWordState
- .text.ACIM_FREQ_CTRL_lTaskSchedulerTimeUpdate
-                0x08006ee4       0xa0 ./Dave/Generated/ACIM_FREQ_CTRL/acim_freq_ctrl.o
-                0x08006ee4                ACIM_FREQ_CTRL_lTaskSchedulerTimeUpdate
- .text.ACIM_FREQ_CTRL_SetPWMFrequency
-                0x08006f84       0xd8 ./Dave/Generated/ACIM_FREQ_CTRL/acim_freq_ctrl.o
-                0x08006f84                ACIM_FREQ_CTRL_SetPWMFrequency
- .text.ACIM_FREQ_CTRL_SetAngleoffset
-                0x0800705c       0x60 ./Dave/Generated/ACIM_FREQ_CTRL/acim_freq_ctrl.o
-                0x0800705c                ACIM_FREQ_CTRL_SetAngleoffset
- .text.ACIM_FREQ_CTRL_Amplitude_Calculation
-                0x080070bc       0x58 ./Dave/Generated/ACIM_FREQ_CTRL/acim_freq_ctrl.o
-                0x080070bc                ACIM_FREQ_CTRL_Amplitude_Calculation
- .text.ACIM_FREQ_CTRL_AngleRamp
-                0x08007114       0x3c ./Dave/Generated/ACIM_FREQ_CTRL/acim_freq_ctrl.o
-                0x08007114                ACIM_FREQ_CTRL_AngleRamp
- .text.ACIM_FREQ_CTRL_BootStrapConfiguration
-                0x08007150       0x78 ./Dave/Generated/ACIM_FREQ_CTRL/acim_freq_ctrl.o
-                0x08007150                ACIM_FREQ_CTRL_BootStrapConfiguration
- .text.ACIM_FREQ_CTRL_StartPWMTimer
-                0x080071c8       0x84 ./Dave/Generated/ACIM_FREQ_CTRL/acim_freq_ctrl.o
-                0x080071c8                ACIM_FREQ_CTRL_StartPWMTimer
- .text.ACIM_FREQ_CTRL_StopPWMTimer
-                0x0800724c       0x1c ./Dave/Generated/ACIM_FREQ_CTRL/acim_freq_ctrl.o
-                0x0800724c                ACIM_FREQ_CTRL_StopPWMTimer
- .text.ACIM_FREQ_CTRL_MSM
-                0x08007268      0x10c ./Dave/Generated/ACIM_FREQ_CTRL/acim_freq_ctrl.o
-                0x08007268                ACIM_FREQ_CTRL_MSM
- .text.ACIM_FREQ_CTRL_ReportError
-                0x08007374       0x60 ./Dave/Generated/ACIM_FREQ_CTRL/acim_freq_ctrl.o
-                0x08007374                ACIM_FREQ_CTRL_ReportError
- .text.ACIM_FREQ_CTRL_BootStrap
-                0x080073d4      0x148 ./Dave/Generated/ACIM_FREQ_CTRL/acim_freq_ctrl.o
-                0x080073d4                ACIM_FREQ_CTRL_BootStrap
- .text.ACIM_FREQ_CTRL_ClearErrorState
-                0x0800751c       0x7c ./Dave/Generated/ACIM_FREQ_CTRL/acim_freq_ctrl.o
-                0x0800751c                ACIM_FREQ_CTRL_ClearErrorState
- .text.ACIM_FREQ_CTRL_DSM_SwitchedOff_Entry
-                0x08007598       0x14 ./Dave/Generated/ACIM_FREQ_CTRL/acim_freq_ctrl.o
-                0x08007598                ACIM_FREQ_CTRL_DSM_SwitchedOff_Entry
- .text.ACIM_FREQ_CTRL_DSM_SwitchedOff_Action
-                0x080075ac       0x38 ./Dave/Generated/ACIM_FREQ_CTRL/acim_freq_ctrl.o
-                0x080075ac                ACIM_FREQ_CTRL_DSM_SwitchedOff_Action
- .text.ACIM_FREQ_CTRL_DSM_SwitchedOff_Exit
-                0x080075e4       0x38 ./Dave/Generated/ACIM_FREQ_CTRL/acim_freq_ctrl.o
-                0x080075e4                ACIM_FREQ_CTRL_DSM_SwitchedOff_Exit
- .text.ACIM_FREQ_CTRL_DSM_Safe_Torque_Off_Entry
-                0x0800761c       0x14 ./Dave/Generated/ACIM_FREQ_CTRL/acim_freq_ctrl.o
-                0x0800761c                ACIM_FREQ_CTRL_DSM_Safe_Torque_Off_Entry
- .text.ACIM_FREQ_CTRL_DSM_Safe_Torque_Off_Action
-                0x08007630       0x28 ./Dave/Generated/ACIM_FREQ_CTRL/acim_freq_ctrl.o
-                0x08007630                ACIM_FREQ_CTRL_DSM_Safe_Torque_Off_Action
- .text.ACIM_FREQ_CTRL_DSM_Safe_Torque_Off_Exit
-                0x08007658       0x38 ./Dave/Generated/ACIM_FREQ_CTRL/acim_freq_ctrl.o
-                0x08007658                ACIM_FREQ_CTRL_DSM_Safe_Torque_Off_Exit
- .text.ACIM_FREQ_CTRL_DSM_Enabled_Action
-                0x08007690       0x34 ./Dave/Generated/ACIM_FREQ_CTRL/acim_freq_ctrl.o
-                0x08007690                ACIM_FREQ_CTRL_DSM_Enabled_Action
- .text.ACIM_FREQ_CTRL_DSM_Enabled_Exit
-                0x080076c4       0x2c ./Dave/Generated/ACIM_FREQ_CTRL/acim_freq_ctrl.o
-                0x080076c4                ACIM_FREQ_CTRL_DSM_Enabled_Exit
- .text.ACIM_FREQ_CTRL_DSM_Switched_On_Action
-                0x080076f0       0x34 ./Dave/Generated/ACIM_FREQ_CTRL/acim_freq_ctrl.o
-                0x080076f0                ACIM_FREQ_CTRL_DSM_Switched_On_Action
- .text.ACIM_FREQ_CTRL_DSM_Operation_Entry
-                0x08007724       0x14 ./Dave/Generated/ACIM_FREQ_CTRL/acim_freq_ctrl.o
-                0x08007724                ACIM_FREQ_CTRL_DSM_Operation_Entry
- .text.ACIM_FREQ_CTRL_DSM_Operation_Action
-                0x08007738       0x70 ./Dave/Generated/ACIM_FREQ_CTRL/acim_freq_ctrl.o
-                0x08007738                ACIM_FREQ_CTRL_DSM_Operation_Action
- .text.ACIM_FREQ_CTRL_DSM_Operation_Exit
-                0x080077a8       0x38 ./Dave/Generated/ACIM_FREQ_CTRL/acim_freq_ctrl.o
-                0x080077a8                ACIM_FREQ_CTRL_DSM_Operation_Exit
- .text.ACIM_FREQ_CTRL_DSM_Coast_Stop_Entry
-                0x080077e0       0x14 ./Dave/Generated/ACIM_FREQ_CTRL/acim_freq_ctrl.o
-                0x080077e0                ACIM_FREQ_CTRL_DSM_Coast_Stop_Entry
- .text.ACIM_FREQ_CTRL_DSM_Coast_Stop_Action
-                0x080077f4       0x28 ./Dave/Generated/ACIM_FREQ_CTRL/acim_freq_ctrl.o
-                0x080077f4                ACIM_FREQ_CTRL_DSM_Coast_Stop_Action
- .text.ACIM_FREQ_CTRL_DSM_Coast_Stop_Exit
-                0x0800781c       0x40 ./Dave/Generated/ACIM_FREQ_CTRL/acim_freq_ctrl.o
-                0x0800781c                ACIM_FREQ_CTRL_DSM_Coast_Stop_Exit
- .text.ACIM_FREQ_CTRL_DSM_Quick_Stop_Entry
-                0x0800785c       0x14 ./Dave/Generated/ACIM_FREQ_CTRL/acim_freq_ctrl.o
-                0x0800785c                ACIM_FREQ_CTRL_DSM_Quick_Stop_Entry
- .text.ACIM_FREQ_CTRL_DSM_Quick_Stop_Action
-                0x08007870       0x28 ./Dave/Generated/ACIM_FREQ_CTRL/acim_freq_ctrl.o
-                0x08007870                ACIM_FREQ_CTRL_DSM_Quick_Stop_Action
- .text.ACIM_FREQ_CTRL_DSM_Quick_Stop_Exit
-                0x08007898       0x40 ./Dave/Generated/ACIM_FREQ_CTRL/acim_freq_ctrl.o
-                0x08007898                ACIM_FREQ_CTRL_DSM_Quick_Stop_Exit
- .text.ACIM_FREQ_CTRL_DSM_Rampdown_Entry
-                0x080078d8       0x30 ./Dave/Generated/ACIM_FREQ_CTRL/acim_freq_ctrl.o
-                0x080078d8                ACIM_FREQ_CTRL_DSM_Rampdown_Entry
- .text.ACIM_FREQ_CTRL_DSM_Rampdown_Action
-                0x08007908       0x28 ./Dave/Generated/ACIM_FREQ_CTRL/acim_freq_ctrl.o
-                0x08007908                ACIM_FREQ_CTRL_DSM_Rampdown_Action
- .text.ACIM_FREQ_CTRL_DSM_Error_Entry
-                0x08007930       0x14 ./Dave/Generated/ACIM_FREQ_CTRL/acim_freq_ctrl.o
-                0x08007930                ACIM_FREQ_CTRL_DSM_Error_Entry
- .text.ACIM_FREQ_CTRL_DSM_Error_Action
-                0x08007944       0x30 ./Dave/Generated/ACIM_FREQ_CTRL/acim_freq_ctrl.o
-                0x08007944                ACIM_FREQ_CTRL_DSM_Error_Action
- .text.ACIM_FREQ_CTRL_DSM_Error_Exit
-                0x08007974       0x58 ./Dave/Generated/ACIM_FREQ_CTRL/acim_freq_ctrl.o
-                0x08007974                ACIM_FREQ_CTRL_DSM_Error_Exit
- .text.ACIM_FREQ_CTRL_DSM_Trouble_Action
-                0x080079cc       0x70 ./Dave/Generated/ACIM_FREQ_CTRL/acim_freq_ctrl.o
-                0x080079cc                ACIM_FREQ_CTRL_DSM_Trouble_Action
- .text.CCU80_3_IRQHandler
-                0x08007a3c       0xe0 ./Dave/Generated/ACIM_FREQ_CTRL/acim_freq_ctrl_control.o
-                0x08007a3c                CCU80_3_IRQHandler
- .text.ACIM_FREQ_CTRL_0_PrimaryControlLoop
-                0x08007b1c       0x14 ./Dave/Generated/ACIM_FREQ_CTRL/acim_freq_ctrl_control.o
-                0x08007b1c                ACIM_FREQ_CTRL_0_PrimaryControlLoop
- .text.ACIM_FREQ_CTRL_0_SetValueProcessing
-                0x08007b30       0x14 ./Dave/Generated/ACIM_FREQ_CTRL/acim_freq_ctrl_control.o
-                0x08007b30                ACIM_FREQ_CTRL_0_SetValueProcessing
- .text.CCU81_0_IRQHandler
-                0x08007b44       0xe0 ./Dave/Generated/ACIM_FREQ_CTRL/acim_freq_ctrl_control.o
-                0x08007b44                CCU81_0_IRQHandler
- .text.ACIM_FREQ_CTRL_1_PrimaryControlLoop
-                0x08007c24       0x14 ./Dave/Generated/ACIM_FREQ_CTRL/acim_freq_ctrl_control.o
-                0x08007c24                ACIM_FREQ_CTRL_1_PrimaryControlLoop
- .text.ACIM_FREQ_CTRL_1_SetValueProcessing
-                0x08007c38       0x14 ./Dave/Generated/ACIM_FREQ_CTRL/acim_freq_ctrl_control.o
-                0x08007c38                ACIM_FREQ_CTRL_1_SetValueProcessing
- .text.DAVE_Init
-                0x08007c4c      0x344 ./Dave/Generated/DAVE.o
-                0x08007c4c                DAVE_Init
- .text.__NVIC_EnableIRQ
-                0x08007f90       0x38 ./main.o
- .text.__NVIC_SetPriority
-                0x08007fc8       0x54 ./main.o
- .text.XMC_GPIO_SetOutputHigh
-                0x0800801c       0x20 ./main.o
- .text.XMC_GPIO_SetOutputLow
-                0x0800803c       0x24 ./main.o
- .text.XMC_GPIO_ToggleOutput
-                0x08008060       0x24 ./main.o
- .text.XMC_GPIO_GetInput
-                0x08008084       0x28 ./main.o
- .text.DIGITAL_IO_SetOutputHigh
-                0x080080ac       0x20 ./main.o
- .text.DIGITAL_IO_SetOutputLow
-                0x080080cc       0x20 ./main.o
- .text.DIGITAL_IO_ToggleOutput
-                0x080080ec       0x20 ./main.o
- .text.DIGITAL_IO_GetInput
-                0x0800810c       0x24 ./main.o
+ .text.CCU4_SLICE_CONFIG_Init
+                0x08005810       0x18 ./Dave/Generated/CCU4_SLICE_CONFIG/ccu4_slice_config.o
+                0x08005810                CCU4_SLICE_CONFIG_Init
+ .text.XMC_CCU4_EnableClock
+                0x08005828       0x28 ./Dave/Generated/CCU4_SLICE_CONFIG/ccu4_slice_config_conf.o
+ .text.XMC_CCU4_SLICE_SetTimerPeriodMatch
+                0x08005850       0x1c ./Dave/Generated/CCU4_SLICE_CONFIG/ccu4_slice_config_conf.o
  .text.XMC_CCU4_SLICE_SetTimerCompareMatch
-                0x08008130       0x1c ./main.o
+                0x0800586c       0x1c ./Dave/Generated/CCU4_SLICE_CONFIG/ccu4_slice_config_conf.o
  .text.XMC_CCU4_EnableShadowTransfer
-                0x0800814c       0x1c ./main.o
+                0x08005888       0x1c ./Dave/Generated/CCU4_SLICE_CONFIG/ccu4_slice_config_conf.o
+ .text.XMC_CCU4_SLICE_SetTimerValue
+                0x080058a4       0x1c ./Dave/Generated/CCU4_SLICE_CONFIG/ccu4_slice_config_conf.o
+ .text.CCU4_SLICE_CONFIG_0_lInit
+                0x080058c0       0x8c ./Dave/Generated/CCU4_SLICE_CONFIG/ccu4_slice_config_conf.o
+ .text.AUTOMATION_WriteBit
+                0x0800594c       0x44 ./Dave/Generated/AUTOMATION/automation.o
+ .text.AUTOMATION_Init
+                0x08005990       0x88 ./Dave/Generated/AUTOMATION/automation.o
+                0x08005990                AUTOMATION_Init
+ .text.AUTOMATION_RegisterApp
+                0x08005a18       0x64 ./Dave/Generated/AUTOMATION/automation.o
+                0x08005a18                AUTOMATION_RegisterApp
+ .text.AUTOMATION_RegisterTask
+                0x08005a7c       0xc8 ./Dave/Generated/AUTOMATION/automation.o
+                0x08005a7c                AUTOMATION_RegisterTask
+ .text.AUTOMATION_DeregisterTask
+                0x08005b44      0x128 ./Dave/Generated/AUTOMATION/automation.o
+                0x08005b44                AUTOMATION_DeregisterTask
+ .text.AUTOMATION_PH_RegisterParamTable
+                0x08005c6c       0x38 ./Dave/Generated/AUTOMATION/automation.o
+                0x08005c6c                AUTOMATION_PH_RegisterParamTable
+ .text.AUTOMATION_AppInterface_ReadReportedErrors
+                0x08005ca4       0x84 ./Dave/Generated/AUTOMATION/automation.o
+ .text.AUTOMATION_EH_ProcessError
+                0x08005d28       0x44 ./Dave/Generated/AUTOMATION/automation.o
+ .text.AUTOMATION_EH_ErrorSequencer
+                0x08005d6c      0x188 ./Dave/Generated/AUTOMATION/automation.o
+                0x08005d6c                AUTOMATION_EH_ErrorSequencer
+ .text.AUTOMATION_EH_AppInterface_ReportError
+                0x08005ef4       0xd0 ./Dave/Generated/AUTOMATION/automation.o
+                0x08005ef4                AUTOMATION_EH_AppInterface_ReportError
+ .text.AUTOMATION_EH_WriteLogbook
+                0x08005fc4       0xdc ./Dave/Generated/AUTOMATION/automation.o
+                0x08005fc4                AUTOMATION_EH_WriteLogbook
+ .text.AUTOMATION_FB_RegisterFunctionBlock
+                0x080060a0       0x48 ./Dave/Generated/AUTOMATION/automation.o
+                0x080060a0                AUTOMATION_FB_RegisterFunctionBlock
+ .text.AUTOMATION_FB_AddConnectionEntry
+                0x080060e8       0xc0 ./Dave/Generated/AUTOMATION/automation.o
+                0x080060e8                AUTOMATION_FB_AddConnectionEntry
+ .text.AUTOMATION_FB_Connect
+                0x080061a8       0xa0 ./Dave/Generated/AUTOMATION/automation.o
+                0x080061a8                AUTOMATION_FB_Connect
+ .text.AUTOMATION_FB_RampInit
+                0x08006248       0x20 ./Dave/Generated/AUTOMATION/automation.o
+                0x08006248                AUTOMATION_FB_RampInit
+ .text.AUTOMATION_FB_LinearRamp
+                0x08006268       0x74 ./Dave/Generated/AUTOMATION/automation.o
+                0x08006268                AUTOMATION_FB_LinearRamp
+ .text.AUTOMATION_SM_RegisterStateMachine
+                0x080062dc       0x38 ./Dave/Generated/AUTOMATION/automation.o
+                0x080062dc                AUTOMATION_SM_RegisterStateMachine
+ .text.AUTOMATION_SM_RequestState
+                0x08006314       0x28 ./Dave/Generated/AUTOMATION/automation.o
+                0x08006314                AUTOMATION_SM_RequestState
+ .text.AUTOMATION_SM_Handler
+                0x0800633c       0xf4 ./Dave/Generated/AUTOMATION/automation.o
+                0x0800633c                AUTOMATION_SM_Handler
+ .text.ANALOG_IO_Init
+                0x08006430       0x34 ./Dave/Generated/ANALOG_IO/analog_io.o
+                0x08006430                ANALOG_IO_Init
+ .text.__NVIC_GetPriorityGrouping
+                0x08006464       0x1c ./Dave/Generated/ADC_MEASUREMENT/adc_measurement.o
+ .text.__NVIC_EnableIRQ
+                0x08006480       0x38 ./Dave/Generated/ADC_MEASUREMENT/adc_measurement.o
+ .text.__NVIC_SetPriority
+                0x080064b8       0x54 ./Dave/Generated/ADC_MEASUREMENT/adc_measurement.o
+ .text.NVIC_EncodePriority
+                0x0800650c       0x64 ./Dave/Generated/ADC_MEASUREMENT/adc_measurement.o
+ .text.XMC_VADC_GLOBAL_BackgroundTriggerConversion
+                0x08006570       0x24 ./Dave/Generated/ADC_MEASUREMENT/adc_measurement.o
+ .text.XMC_VADC_GLOBAL_BackgroundAddChannelToSequence
+                0x08006594       0x38 ./Dave/Generated/ADC_MEASUREMENT/adc_measurement.o
+ .text.XMC_VADC_GROUP_ResultInit
+                0x080065cc       0x24 ./Dave/Generated/ADC_MEASUREMENT/adc_measurement.o
+ .text.XMC_VADC_GROUP_GetResult
+                0x080065f0       0x24 ./Dave/Generated/ADC_MEASUREMENT/adc_measurement.o
+ .text.ADC_MEASUREMENT_Init
+                0x08006614      0x16c ./Dave/Generated/ADC_MEASUREMENT/adc_measurement.o
+                0x08006614                ADC_MEASUREMENT_Init
+ .text.ADC_MEASUREMENT_GetResult
+                0x08006780       0x30 ./Dave/Generated/ADC_MEASUREMENT/adc_measurement.o
+                0x08006780                ADC_MEASUREMENT_GetResult
+ .text.__NVIC_GetPriorityGrouping
+                0x080067b0       0x1c ./Dave/Generated/ACIM_FREQ_CTRL/acim_freq_ctrl.o
+ .text.__NVIC_EnableIRQ
+                0x080067cc       0x38 ./Dave/Generated/ACIM_FREQ_CTRL/acim_freq_ctrl.o
+ .text.__NVIC_SetPriority
+                0x08006804       0x54 ./Dave/Generated/ACIM_FREQ_CTRL/acim_freq_ctrl.o
+ .text.NVIC_EncodePriority
+                0x08006858       0x64 ./Dave/Generated/ACIM_FREQ_CTRL/acim_freq_ctrl.o
+ .text.XMC_CCU8_EnableShadowTransfer
+                0x080068bc       0x1c ./Dave/Generated/ACIM_FREQ_CTRL/acim_freq_ctrl.o
+ .text.XMC_SCU_SetCcuTriggerHigh
+                0x080068d8       0x24 ./Dave/Generated/ACIM_FREQ_CTRL/acim_freq_ctrl.o
+ .text.XMC_SCU_SetCcuTriggerLow
+                0x080068fc       0x24 ./Dave/Generated/ACIM_FREQ_CTRL/acim_freq_ctrl.o
+ .text.ACIM_FREQ_CTRL_lInitializeVarAfterInit
+                0x08006920       0x58 ./Dave/Generated/ACIM_FREQ_CTRL/acim_freq_ctrl.o
+                0x08006920                ACIM_FREQ_CTRL_lInitializeVarAfterInit
+ .text.ACIM_FREQ_CTRL_lISRInit
+                0x08006978       0x2c ./Dave/Generated/ACIM_FREQ_CTRL/acim_freq_ctrl.o
+                0x08006978                ACIM_FREQ_CTRL_lISRInit
+ .text.ACIM_FREQ_CTRL_ISRInit
+                0x080069a4       0x48 ./Dave/Generated/ACIM_FREQ_CTRL/acim_freq_ctrl.o
+ .text.ACIM_FREQ_CTRL_MotorParamInit
+                0x080069ec       0x94 ./Dave/Generated/ACIM_FREQ_CTRL/acim_freq_ctrl.o
+ .text.ACIM_FREQ_CTRL_Automation_Init
+                0x08006a80      0x14c ./Dave/Generated/ACIM_FREQ_CTRL/acim_freq_ctrl.o
+ .text.ACIM_FREQ_CTRL_Init
+                0x08006bcc       0x78 ./Dave/Generated/ACIM_FREQ_CTRL/acim_freq_ctrl.o
+                0x08006bcc                ACIM_FREQ_CTRL_Init
+ .text.ACIM_FREQ_CTRL_UpdateError
+                0x08006c44       0x54 ./Dave/Generated/ACIM_FREQ_CTRL/acim_freq_ctrl.o
+                0x08006c44                ACIM_FREQ_CTRL_UpdateError
+ .text.ACIM_FREQ_CTRL_lTaskSchedulerRegisteration
+                0x08006c98       0x50 ./Dave/Generated/ACIM_FREQ_CTRL/acim_freq_ctrl.o
+                0x08006c98                ACIM_FREQ_CTRL_lTaskSchedulerRegisteration
+ .text.ACIM_FREQ_CTRL_MotorStart
+                0x08006ce8       0xb0 ./Dave/Generated/ACIM_FREQ_CTRL/acim_freq_ctrl.o
+                0x08006ce8                ACIM_FREQ_CTRL_MotorStart
+ .text.ACIM_FREQ_CTRL_MotorStop
+                0x08006d98       0xc8 ./Dave/Generated/ACIM_FREQ_CTRL/acim_freq_ctrl.o
+                0x08006d98                ACIM_FREQ_CTRL_MotorStop
+ .text.ACIM_FREQ_CTRL_SetParameter
+                0x08006e60       0x98 ./Dave/Generated/ACIM_FREQ_CTRL/acim_freq_ctrl.o
+                0x08006e60                ACIM_FREQ_CTRL_SetParameter
+ .text.ACIM_FREQ_CTRL_SetSpeed
+                0x08006ef8       0x3c ./Dave/Generated/ACIM_FREQ_CTRL/acim_freq_ctrl.o
+                0x08006ef8                ACIM_FREQ_CTRL_SetSpeed
+ .text.ACIM_FREQ_CTRL_SetMotorDirection
+                0x08006f34       0x94 ./Dave/Generated/ACIM_FREQ_CTRL/acim_freq_ctrl.o
+                0x08006f34                ACIM_FREQ_CTRL_SetMotorDirection
+ .text.ACIM_FREQ_CTRL_SetControlWordState
+                0x08006fc8       0x58 ./Dave/Generated/ACIM_FREQ_CTRL/acim_freq_ctrl.o
+                0x08006fc8                ACIM_FREQ_CTRL_SetControlWordState
+ .text.ACIM_FREQ_CTRL_lTaskSchedulerTimeUpdate
+                0x08007020       0xa0 ./Dave/Generated/ACIM_FREQ_CTRL/acim_freq_ctrl.o
+                0x08007020                ACIM_FREQ_CTRL_lTaskSchedulerTimeUpdate
+ .text.ACIM_FREQ_CTRL_SetPWMFrequency
+                0x080070c0       0xd8 ./Dave/Generated/ACIM_FREQ_CTRL/acim_freq_ctrl.o
+                0x080070c0                ACIM_FREQ_CTRL_SetPWMFrequency
+ .text.ACIM_FREQ_CTRL_SetAngleoffset
+                0x08007198       0x60 ./Dave/Generated/ACIM_FREQ_CTRL/acim_freq_ctrl.o
+                0x08007198                ACIM_FREQ_CTRL_SetAngleoffset
+ .text.ACIM_FREQ_CTRL_Amplitude_Calculation
+                0x080071f8       0x58 ./Dave/Generated/ACIM_FREQ_CTRL/acim_freq_ctrl.o
+                0x080071f8                ACIM_FREQ_CTRL_Amplitude_Calculation
+ .text.ACIM_FREQ_CTRL_AngleRamp
+                0x08007250       0x3c ./Dave/Generated/ACIM_FREQ_CTRL/acim_freq_ctrl.o
+                0x08007250                ACIM_FREQ_CTRL_AngleRamp
+ .text.ACIM_FREQ_CTRL_BootStrapConfiguration
+                0x0800728c       0x78 ./Dave/Generated/ACIM_FREQ_CTRL/acim_freq_ctrl.o
+                0x0800728c                ACIM_FREQ_CTRL_BootStrapConfiguration
+ .text.ACIM_FREQ_CTRL_StartPWMTimer
+                0x08007304       0x84 ./Dave/Generated/ACIM_FREQ_CTRL/acim_freq_ctrl.o
+                0x08007304                ACIM_FREQ_CTRL_StartPWMTimer
+ .text.ACIM_FREQ_CTRL_StopPWMTimer
+                0x08007388       0x1c ./Dave/Generated/ACIM_FREQ_CTRL/acim_freq_ctrl.o
+                0x08007388                ACIM_FREQ_CTRL_StopPWMTimer
+ .text.ACIM_FREQ_CTRL_MSM
+                0x080073a4      0x10c ./Dave/Generated/ACIM_FREQ_CTRL/acim_freq_ctrl.o
+                0x080073a4                ACIM_FREQ_CTRL_MSM
+ .text.ACIM_FREQ_CTRL_ReportError
+                0x080074b0       0x60 ./Dave/Generated/ACIM_FREQ_CTRL/acim_freq_ctrl.o
+                0x080074b0                ACIM_FREQ_CTRL_ReportError
+ .text.ACIM_FREQ_CTRL_BootStrap
+                0x08007510      0x148 ./Dave/Generated/ACIM_FREQ_CTRL/acim_freq_ctrl.o
+                0x08007510                ACIM_FREQ_CTRL_BootStrap
+ .text.ACIM_FREQ_CTRL_ClearErrorState
+                0x08007658       0x7c ./Dave/Generated/ACIM_FREQ_CTRL/acim_freq_ctrl.o
+                0x08007658                ACIM_FREQ_CTRL_ClearErrorState
+ .text.ACIM_FREQ_CTRL_DSM_SwitchedOff_Entry
+                0x080076d4       0x14 ./Dave/Generated/ACIM_FREQ_CTRL/acim_freq_ctrl.o
+                0x080076d4                ACIM_FREQ_CTRL_DSM_SwitchedOff_Entry
+ .text.ACIM_FREQ_CTRL_DSM_SwitchedOff_Action
+                0x080076e8       0x38 ./Dave/Generated/ACIM_FREQ_CTRL/acim_freq_ctrl.o
+                0x080076e8                ACIM_FREQ_CTRL_DSM_SwitchedOff_Action
+ .text.ACIM_FREQ_CTRL_DSM_SwitchedOff_Exit
+                0x08007720       0x38 ./Dave/Generated/ACIM_FREQ_CTRL/acim_freq_ctrl.o
+                0x08007720                ACIM_FREQ_CTRL_DSM_SwitchedOff_Exit
+ .text.ACIM_FREQ_CTRL_DSM_Safe_Torque_Off_Entry
+                0x08007758       0x14 ./Dave/Generated/ACIM_FREQ_CTRL/acim_freq_ctrl.o
+                0x08007758                ACIM_FREQ_CTRL_DSM_Safe_Torque_Off_Entry
+ .text.ACIM_FREQ_CTRL_DSM_Safe_Torque_Off_Action
+                0x0800776c       0x28 ./Dave/Generated/ACIM_FREQ_CTRL/acim_freq_ctrl.o
+                0x0800776c                ACIM_FREQ_CTRL_DSM_Safe_Torque_Off_Action
+ .text.ACIM_FREQ_CTRL_DSM_Safe_Torque_Off_Exit
+                0x08007794       0x38 ./Dave/Generated/ACIM_FREQ_CTRL/acim_freq_ctrl.o
+                0x08007794                ACIM_FREQ_CTRL_DSM_Safe_Torque_Off_Exit
+ .text.ACIM_FREQ_CTRL_DSM_Enabled_Action
+                0x080077cc       0x34 ./Dave/Generated/ACIM_FREQ_CTRL/acim_freq_ctrl.o
+                0x080077cc                ACIM_FREQ_CTRL_DSM_Enabled_Action
+ .text.ACIM_FREQ_CTRL_DSM_Enabled_Exit
+                0x08007800       0x2c ./Dave/Generated/ACIM_FREQ_CTRL/acim_freq_ctrl.o
+                0x08007800                ACIM_FREQ_CTRL_DSM_Enabled_Exit
+ .text.ACIM_FREQ_CTRL_DSM_Switched_On_Action
+                0x0800782c       0x34 ./Dave/Generated/ACIM_FREQ_CTRL/acim_freq_ctrl.o
+                0x0800782c                ACIM_FREQ_CTRL_DSM_Switched_On_Action
+ .text.ACIM_FREQ_CTRL_DSM_Operation_Entry
+                0x08007860       0x14 ./Dave/Generated/ACIM_FREQ_CTRL/acim_freq_ctrl.o
+                0x08007860                ACIM_FREQ_CTRL_DSM_Operation_Entry
+ .text.ACIM_FREQ_CTRL_DSM_Operation_Action
+                0x08007874       0x70 ./Dave/Generated/ACIM_FREQ_CTRL/acim_freq_ctrl.o
+                0x08007874                ACIM_FREQ_CTRL_DSM_Operation_Action
+ .text.ACIM_FREQ_CTRL_DSM_Operation_Exit
+                0x080078e4       0x38 ./Dave/Generated/ACIM_FREQ_CTRL/acim_freq_ctrl.o
+                0x080078e4                ACIM_FREQ_CTRL_DSM_Operation_Exit
+ .text.ACIM_FREQ_CTRL_DSM_Coast_Stop_Entry
+                0x0800791c       0x14 ./Dave/Generated/ACIM_FREQ_CTRL/acim_freq_ctrl.o
+                0x0800791c                ACIM_FREQ_CTRL_DSM_Coast_Stop_Entry
+ .text.ACIM_FREQ_CTRL_DSM_Coast_Stop_Action
+                0x08007930       0x28 ./Dave/Generated/ACIM_FREQ_CTRL/acim_freq_ctrl.o
+                0x08007930                ACIM_FREQ_CTRL_DSM_Coast_Stop_Action
+ .text.ACIM_FREQ_CTRL_DSM_Coast_Stop_Exit
+                0x08007958       0x40 ./Dave/Generated/ACIM_FREQ_CTRL/acim_freq_ctrl.o
+                0x08007958                ACIM_FREQ_CTRL_DSM_Coast_Stop_Exit
+ .text.ACIM_FREQ_CTRL_DSM_Quick_Stop_Entry
+                0x08007998       0x14 ./Dave/Generated/ACIM_FREQ_CTRL/acim_freq_ctrl.o
+                0x08007998                ACIM_FREQ_CTRL_DSM_Quick_Stop_Entry
+ .text.ACIM_FREQ_CTRL_DSM_Quick_Stop_Action
+                0x080079ac       0x28 ./Dave/Generated/ACIM_FREQ_CTRL/acim_freq_ctrl.o
+                0x080079ac                ACIM_FREQ_CTRL_DSM_Quick_Stop_Action
+ .text.ACIM_FREQ_CTRL_DSM_Quick_Stop_Exit
+                0x080079d4       0x40 ./Dave/Generated/ACIM_FREQ_CTRL/acim_freq_ctrl.o
+                0x080079d4                ACIM_FREQ_CTRL_DSM_Quick_Stop_Exit
+ .text.ACIM_FREQ_CTRL_DSM_Rampdown_Entry
+                0x08007a14       0x30 ./Dave/Generated/ACIM_FREQ_CTRL/acim_freq_ctrl.o
+                0x08007a14                ACIM_FREQ_CTRL_DSM_Rampdown_Entry
+ .text.ACIM_FREQ_CTRL_DSM_Rampdown_Action
+                0x08007a44       0x28 ./Dave/Generated/ACIM_FREQ_CTRL/acim_freq_ctrl.o
+                0x08007a44                ACIM_FREQ_CTRL_DSM_Rampdown_Action
+ .text.ACIM_FREQ_CTRL_DSM_Error_Entry
+                0x08007a6c       0x14 ./Dave/Generated/ACIM_FREQ_CTRL/acim_freq_ctrl.o
+                0x08007a6c                ACIM_FREQ_CTRL_DSM_Error_Entry
+ .text.ACIM_FREQ_CTRL_DSM_Error_Action
+                0x08007a80       0x30 ./Dave/Generated/ACIM_FREQ_CTRL/acim_freq_ctrl.o
+                0x08007a80                ACIM_FREQ_CTRL_DSM_Error_Action
+ .text.ACIM_FREQ_CTRL_DSM_Error_Exit
+                0x08007ab0       0x58 ./Dave/Generated/ACIM_FREQ_CTRL/acim_freq_ctrl.o
+                0x08007ab0                ACIM_FREQ_CTRL_DSM_Error_Exit
+ .text.ACIM_FREQ_CTRL_DSM_Trouble_Action
+                0x08007b08       0x70 ./Dave/Generated/ACIM_FREQ_CTRL/acim_freq_ctrl.o
+                0x08007b08                ACIM_FREQ_CTRL_DSM_Trouble_Action
+ .text.CCU80_3_IRQHandler
+                0x08007b78       0xe0 ./Dave/Generated/ACIM_FREQ_CTRL/acim_freq_ctrl_control.o
+                0x08007b78                CCU80_3_IRQHandler
+ .text.ACIM_FREQ_CTRL_0_PrimaryControlLoop
+                0x08007c58       0x14 ./Dave/Generated/ACIM_FREQ_CTRL/acim_freq_ctrl_control.o
+                0x08007c58                ACIM_FREQ_CTRL_0_PrimaryControlLoop
+ .text.ACIM_FREQ_CTRL_0_SetValueProcessing
+                0x08007c6c       0x14 ./Dave/Generated/ACIM_FREQ_CTRL/acim_freq_ctrl_control.o
+                0x08007c6c                ACIM_FREQ_CTRL_0_SetValueProcessing
+ .text.CCU81_0_IRQHandler
+                0x08007c80       0xe0 ./Dave/Generated/ACIM_FREQ_CTRL/acim_freq_ctrl_control.o
+                0x08007c80                CCU81_0_IRQHandler
+ .text.ACIM_FREQ_CTRL_1_PrimaryControlLoop
+                0x08007d60       0x14 ./Dave/Generated/ACIM_FREQ_CTRL/acim_freq_ctrl_control.o
+                0x08007d60                ACIM_FREQ_CTRL_1_PrimaryControlLoop
+ .text.ACIM_FREQ_CTRL_1_SetValueProcessing
+                0x08007d74       0x14 ./Dave/Generated/ACIM_FREQ_CTRL/acim_freq_ctrl_control.o
+                0x08007d74                ACIM_FREQ_CTRL_1_SetValueProcessing
+ .text.DAVE_Init
+                0x08007d88      0x358 ./Dave/Generated/DAVE.o
+                0x08007d88                DAVE_Init
+ .text.__NVIC_EnableIRQ
+                0x080080e0       0x38 ./main.o
+ .text.__NVIC_SetPriority
+                0x08008118       0x54 ./main.o
+ .text.XMC_GPIO_SetOutputHigh
+                0x0800816c       0x20 ./main.o
+ .text.XMC_GPIO_SetOutputLow
+                0x0800818c       0x24 ./main.o
+ .text.XMC_GPIO_ToggleOutput
+                0x080081b0       0x24 ./main.o
+ .text.XMC_GPIO_GetInput
+                0x080081d4       0x28 ./main.o
+ .text.DIGITAL_IO_SetOutputHigh
+                0x080081fc       0x20 ./main.o
+ .text.DIGITAL_IO_SetOutputLow
+                0x0800821c       0x20 ./main.o
+ .text.DIGITAL_IO_ToggleOutput
+                0x0800823c       0x20 ./main.o
+ .text.DIGITAL_IO_GetInput
+                0x0800825c       0x24 ./main.o
+ .text.XMC_CCU4_SLICE_SetTimerCompareMatch
+                0x08008280       0x1c ./main.o
+ .text.XMC_CCU4_EnableShadowTransfer
+                0x0800829c       0x1c ./main.o
  .text.XMC_CCU4_SLICE_EnableEvent
-                0x08008168       0x2c ./main.o
+                0x080082b8       0x2c ./main.o
  .text.XMC_CCU4_SLICE_ClearEvent
-                0x08008194       0x2c ./main.o
+                0x080082e4       0x2c ./main.o
  .text.CCU42_0_IRQHandler
-                0x080081c0       0x70 ./main.o
-                0x080081c0                CCU42_0_IRQHandler
+                0x08008310       0xd4 ./main.o
+                0x08008310                CCU42_0_IRQHandler
+ *fill*         0x080083e4        0x4 
  .text.VADC0_C0_2_IRQHandler
-                0x08008230      0x148 ./main.o
-                0x08008230                VADC0_C0_2_IRQHandler
+                0x080083e8      0x148 ./main.o
+                0x080083e8                VADC0_C0_2_IRQHandler
  .text.EndofTransmit
-                0x08008378       0x24 ./main.o
-                0x08008378                EndofTransmit
+                0x08008530       0x24 ./main.o
+                0x08008530                EndofTransmit
  .text.EndofReceive
-                0x0800839c       0x3c ./main.o
-                0x0800839c                EndofReceive
- .text.main     0x080083d8       0xf4 ./main.o
-                0x080083d8                main
- .text.log      0x080084cc      0x100 c:/users/pescatore/switchdrive/private/konzept/mcu for gate driver/dave_4-4-2_64bit_2018-02-23/dave-ide-4.4.2-64bit/eclipse/arm-gcc-49/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/softfp\libm.a(lib_a-w_log.o)
-                0x080084cc                log
- *fill*         0x080085cc        0x4 
+                0x08008554       0x3c ./main.o
+                0x08008554                EndofReceive
+ .text.main     0x08008590       0xf4 ./main.o
+                0x08008590                main
+ .text.log      0x08008684      0x100 c:/users/pescatore/switchdrive/private/konzept/mcu for gate driver/dave_4-4-2_64bit_2018-02-23/dave-ide-4.4.2-64bit/eclipse/arm-gcc-49/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/softfp\libm.a(lib_a-w_log.o)
+                0x08008684                log
+ *fill*         0x08008784        0x4 
  .text.__ieee754_log
-                0x080085d0      0x3d0 c:/users/pescatore/switchdrive/private/konzept/mcu for gate driver/dave_4-4-2_64bit_2018-02-23/dave-ide-4.4.2-64bit/eclipse/arm-gcc-49/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/softfp\libm.a(lib_a-e_log.o)
-                0x080085d0                __ieee754_log
+                0x08008788      0x3d0 c:/users/pescatore/switchdrive/private/konzept/mcu for gate driver/dave_4-4-2_64bit_2018-02-23/dave-ide-4.4.2-64bit/eclipse/arm-gcc-49/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/softfp\libm.a(lib_a-e_log.o)
+                0x08008788                __ieee754_log
  .text.__fpclassifyd
-                0x080089a0       0x58 c:/users/pescatore/switchdrive/private/konzept/mcu for gate driver/dave_4-4-2_64bit_2018-02-23/dave-ide-4.4.2-64bit/eclipse/arm-gcc-49/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/softfp\libm.a(lib_a-s_fpclassify.o)
-                0x080089a0                __fpclassifyd
- .text.matherr  0x080089f8        0x4 c:/users/pescatore/switchdrive/private/konzept/mcu for gate driver/dave_4-4-2_64bit_2018-02-23/dave-ide-4.4.2-64bit/eclipse/arm-gcc-49/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/softfp\libm.a(lib_a-s_matherr.o)
-                0x080089f8                matherr
- .text.nan      0x080089fc        0xc c:/users/pescatore/switchdrive/private/konzept/mcu for gate driver/dave_4-4-2_64bit_2018-02-23/dave-ide-4.4.2-64bit/eclipse/arm-gcc-49/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/softfp\libm.a(lib_a-s_nan.o)
-                0x080089fc                nan
- .text          0x08008a08      0x370 c:/users/pescatore/switchdrive/private/konzept/mcu for gate driver/dave_4-4-2_64bit_2018-02-23/dave-ide-4.4.2-64bit/eclipse/arm-gcc-49/bin/../lib/gcc/arm-none-eabi/4.9.3/armv7e-m/softfp\libgcc.a(_arm_addsubdf3.o)
-                0x08008a08                __aeabi_drsub
-                0x08008a10                __aeabi_dsub
-                0x08008a10                __subdf3
-                0x08008a14                __aeabi_dadd
-                0x08008a14                __adddf3
-                0x08008c8c                __floatunsidf
-                0x08008c8c                __aeabi_ui2d
-                0x08008cac                __floatsidf
-                0x08008cac                __aeabi_i2d
-                0x08008cd0                __aeabi_f2d
-                0x08008cd0                __extendsfdf2
-                0x08008d0c                __floatundidf
-                0x08008d0c                __aeabi_ul2d
-                0x08008d1c                __floatdidf
-                0x08008d1c                __aeabi_l2d
- .text          0x08008d78      0x424 c:/users/pescatore/switchdrive/private/konzept/mcu for gate driver/dave_4-4-2_64bit_2018-02-23/dave-ide-4.4.2-64bit/eclipse/arm-gcc-49/bin/../lib/gcc/arm-none-eabi/4.9.3/armv7e-m/softfp\libgcc.a(_arm_muldivdf3.o)
-                0x08008d78                __aeabi_dmul
-                0x08008d78                __muldf3
-                0x08008fcc                __divdf3
-                0x08008fcc                __aeabi_ddiv
- .text          0x0800919c      0x110 c:/users/pescatore/switchdrive/private/konzept/mcu for gate driver/dave_4-4-2_64bit_2018-02-23/dave-ide-4.4.2-64bit/eclipse/arm-gcc-49/bin/../lib/gcc/arm-none-eabi/4.9.3/armv7e-m/softfp\libgcc.a(_arm_cmpdf2.o)
-                0x0800919c                __gtdf2
-                0x0800919c                __gedf2
-                0x080091a4                __ltdf2
-                0x080091a4                __ledf2
-                0x080091ac                __nedf2
-                0x080091ac                __eqdf2
-                0x080091ac                __cmpdf2
-                0x08009228                __aeabi_cdrcmple
-                0x08009238                __aeabi_cdcmpeq
-                0x08009238                __aeabi_cdcmple
-                0x08009248                __aeabi_dcmpeq
-                0x0800925c                __aeabi_dcmplt
-                0x08009270                __aeabi_dcmple
-                0x08009284                __aeabi_dcmpge
-                0x08009298                __aeabi_dcmpgt
- .text          0x080092ac       0xa0 c:/users/pescatore/switchdrive/private/konzept/mcu for gate driver/dave_4-4-2_64bit_2018-02-23/dave-ide-4.4.2-64bit/eclipse/arm-gcc-49/bin/../lib/gcc/arm-none-eabi/4.9.3/armv7e-m/softfp\libgcc.a(_arm_truncdfsf2.o)
-                0x080092ac                __truncdfsf2
-                0x080092ac                __aeabi_d2f
- .text          0x0800934c       0x38 c:/users/pescatore/switchdrive/private/konzept/mcu for gate driver/dave_4-4-2_64bit_2018-02-23/dave-ide-4.4.2-64bit/eclipse/arm-gcc-49/bin/../lib/gcc/arm-none-eabi/4.9.3/armv7e-m/softfp\libgcc.a(_aeabi_ldivmod.o)
-                0x0800934c                __aeabi_ldivmod
- .text          0x08009384       0x60 c:/users/pescatore/switchdrive/private/konzept/mcu for gate driver/dave_4-4-2_64bit_2018-02-23/dave-ide-4.4.2-64bit/eclipse/arm-gcc-49/bin/../lib/gcc/arm-none-eabi/4.9.3/armv7e-m/softfp\libgcc.a(bpabi.o)
-                0x08009384                __gnu_ldivmod_helper
-                0x080093b4                __gnu_uldivmod_helper
- .text          0x080093e4        0x4 c:/users/pescatore/switchdrive/private/konzept/mcu for gate driver/dave_4-4-2_64bit_2018-02-23/dave-ide-4.4.2-64bit/eclipse/arm-gcc-49/bin/../lib/gcc/arm-none-eabi/4.9.3/armv7e-m/softfp\libgcc.a(_dvmd_tls.o)
-                0x080093e4                __aeabi_idiv0
-                0x080093e4                __aeabi_ldiv0
- .text          0x080093e8      0x29c c:/users/pescatore/switchdrive/private/konzept/mcu for gate driver/dave_4-4-2_64bit_2018-02-23/dave-ide-4.4.2-64bit/eclipse/arm-gcc-49/bin/../lib/gcc/arm-none-eabi/4.9.3/armv7e-m/softfp\libgcc.a(_divdi3.o)
-                0x080093e8                __divdi3
- .text          0x08009684      0x26c c:/users/pescatore/switchdrive/private/konzept/mcu for gate driver/dave_4-4-2_64bit_2018-02-23/dave-ide-4.4.2-64bit/eclipse/arm-gcc-49/bin/../lib/gcc/arm-none-eabi/4.9.3/armv7e-m/softfp\libgcc.a(_udivdi3.o)
-                0x08009684                __udivdi3
- .text.__errno  0x080098f0        0xc c:/users/pescatore/switchdrive/private/konzept/mcu for gate driver/dave_4-4-2_64bit_2018-02-23/dave-ide-4.4.2-64bit/eclipse/arm-gcc-49/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/softfp\libg_nano.a(lib_a-errno.o)
-                0x080098f0                __errno
+                0x08008b58       0x58 c:/users/pescatore/switchdrive/private/konzept/mcu for gate driver/dave_4-4-2_64bit_2018-02-23/dave-ide-4.4.2-64bit/eclipse/arm-gcc-49/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/softfp\libm.a(lib_a-s_fpclassify.o)
+                0x08008b58                __fpclassifyd
+ .text.matherr  0x08008bb0        0x4 c:/users/pescatore/switchdrive/private/konzept/mcu for gate driver/dave_4-4-2_64bit_2018-02-23/dave-ide-4.4.2-64bit/eclipse/arm-gcc-49/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/softfp\libm.a(lib_a-s_matherr.o)
+                0x08008bb0                matherr
+ .text.nan      0x08008bb4        0xc c:/users/pescatore/switchdrive/private/konzept/mcu for gate driver/dave_4-4-2_64bit_2018-02-23/dave-ide-4.4.2-64bit/eclipse/arm-gcc-49/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/softfp\libm.a(lib_a-s_nan.o)
+                0x08008bb4                nan
+ .text          0x08008bc0      0x370 c:/users/pescatore/switchdrive/private/konzept/mcu for gate driver/dave_4-4-2_64bit_2018-02-23/dave-ide-4.4.2-64bit/eclipse/arm-gcc-49/bin/../lib/gcc/arm-none-eabi/4.9.3/armv7e-m/softfp\libgcc.a(_arm_addsubdf3.o)
+                0x08008bc0                __aeabi_drsub
+                0x08008bc8                __aeabi_dsub
+                0x08008bc8                __subdf3
+                0x08008bcc                __aeabi_dadd
+                0x08008bcc                __adddf3
+                0x08008e44                __floatunsidf
+                0x08008e44                __aeabi_ui2d
+                0x08008e64                __floatsidf
+                0x08008e64                __aeabi_i2d
+                0x08008e88                __aeabi_f2d
+                0x08008e88                __extendsfdf2
+                0x08008ec4                __floatundidf
+                0x08008ec4                __aeabi_ul2d
+                0x08008ed4                __floatdidf
+                0x08008ed4                __aeabi_l2d
+ .text          0x08008f30      0x424 c:/users/pescatore/switchdrive/private/konzept/mcu for gate driver/dave_4-4-2_64bit_2018-02-23/dave-ide-4.4.2-64bit/eclipse/arm-gcc-49/bin/../lib/gcc/arm-none-eabi/4.9.3/armv7e-m/softfp\libgcc.a(_arm_muldivdf3.o)
+                0x08008f30                __aeabi_dmul
+                0x08008f30                __muldf3
+                0x08009184                __divdf3
+                0x08009184                __aeabi_ddiv
+ .text          0x08009354      0x110 c:/users/pescatore/switchdrive/private/konzept/mcu for gate driver/dave_4-4-2_64bit_2018-02-23/dave-ide-4.4.2-64bit/eclipse/arm-gcc-49/bin/../lib/gcc/arm-none-eabi/4.9.3/armv7e-m/softfp\libgcc.a(_arm_cmpdf2.o)
+                0x08009354                __gtdf2
+                0x08009354                __gedf2
+                0x0800935c                __ltdf2
+                0x0800935c                __ledf2
+                0x08009364                __nedf2
+                0x08009364                __eqdf2
+                0x08009364                __cmpdf2
+                0x080093e0                __aeabi_cdrcmple
+                0x080093f0                __aeabi_cdcmpeq
+                0x080093f0                __aeabi_cdcmple
+                0x08009400                __aeabi_dcmpeq
+                0x08009414                __aeabi_dcmplt
+                0x08009428                __aeabi_dcmple
+                0x0800943c                __aeabi_dcmpge
+                0x08009450                __aeabi_dcmpgt
+ .text          0x08009464       0xa0 c:/users/pescatore/switchdrive/private/konzept/mcu for gate driver/dave_4-4-2_64bit_2018-02-23/dave-ide-4.4.2-64bit/eclipse/arm-gcc-49/bin/../lib/gcc/arm-none-eabi/4.9.3/armv7e-m/softfp\libgcc.a(_arm_truncdfsf2.o)
+                0x08009464                __truncdfsf2
+                0x08009464                __aeabi_d2f
+ .text          0x08009504       0x38 c:/users/pescatore/switchdrive/private/konzept/mcu for gate driver/dave_4-4-2_64bit_2018-02-23/dave-ide-4.4.2-64bit/eclipse/arm-gcc-49/bin/../lib/gcc/arm-none-eabi/4.9.3/armv7e-m/softfp\libgcc.a(_aeabi_ldivmod.o)
+                0x08009504                __aeabi_ldivmod
+ .text          0x0800953c       0x60 c:/users/pescatore/switchdrive/private/konzept/mcu for gate driver/dave_4-4-2_64bit_2018-02-23/dave-ide-4.4.2-64bit/eclipse/arm-gcc-49/bin/../lib/gcc/arm-none-eabi/4.9.3/armv7e-m/softfp\libgcc.a(bpabi.o)
+                0x0800953c                __gnu_ldivmod_helper
+                0x0800956c                __gnu_uldivmod_helper
+ .text          0x0800959c        0x4 c:/users/pescatore/switchdrive/private/konzept/mcu for gate driver/dave_4-4-2_64bit_2018-02-23/dave-ide-4.4.2-64bit/eclipse/arm-gcc-49/bin/../lib/gcc/arm-none-eabi/4.9.3/armv7e-m/softfp\libgcc.a(_dvmd_tls.o)
+                0x0800959c                __aeabi_idiv0
+                0x0800959c                __aeabi_ldiv0
+ .text          0x080095a0      0x29c c:/users/pescatore/switchdrive/private/konzept/mcu for gate driver/dave_4-4-2_64bit_2018-02-23/dave-ide-4.4.2-64bit/eclipse/arm-gcc-49/bin/../lib/gcc/arm-none-eabi/4.9.3/armv7e-m/softfp\libgcc.a(_divdi3.o)
+                0x080095a0                __divdi3
+ .text          0x0800983c      0x26c c:/users/pescatore/switchdrive/private/konzept/mcu for gate driver/dave_4-4-2_64bit_2018-02-23/dave-ide-4.4.2-64bit/eclipse/arm-gcc-49/bin/../lib/gcc/arm-none-eabi/4.9.3/armv7e-m/softfp\libgcc.a(_udivdi3.o)
+                0x0800983c                __udivdi3
+ .text.__errno  0x08009aa8        0xc c:/users/pescatore/switchdrive/private/konzept/mcu for gate driver/dave_4-4-2_64bit_2018-02-23/dave-ide-4.4.2-64bit/eclipse/arm-gcc-49/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/softfp\libg_nano.a(lib_a-errno.o)
+                0x08009aa8                __errno
  .text.__libc_init_array
-                0x080098fc       0x4c c:/users/pescatore/switchdrive/private/konzept/mcu for gate driver/dave_4-4-2_64bit_2018-02-23/dave-ide-4.4.2-64bit/eclipse/arm-gcc-49/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/softfp\libg_nano.a(lib_a-init.o)
-                0x080098fc                __libc_init_array
+                0x08009ab4       0x4c c:/users/pescatore/switchdrive/private/konzept/mcu for gate driver/dave_4-4-2_64bit_2018-02-23/dave-ide-4.4.2-64bit/eclipse/arm-gcc-49/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/softfp\libg_nano.a(lib_a-init.o)
+                0x08009ab4                __libc_init_array
  .text.__libc_init_array.__stub
-                0x08009948       0x10 linker stubs
+                0x08009b00       0x10 linker stubs
  *(.init)
  *(.fini)
  *crtbegin.o(.ctors)
@@ -3599,372 +3627,387 @@ END GROUP
  *(.dtors)
  *(.rodata .rodata.*)
  .rodata.g_xmc_vadc_group_array
-                0x08009958       0x10 ./Libraries/XMCLib/src/xmc_vadc.o
+                0x08009b10       0x10 ./Libraries/XMCLib/src/xmc_vadc.o
  .rodata.UART_CONFIG_0_channel_config
-                0x08009968        0xc ./Dave/Generated/UART_CONFIG/uart_config_conf.o
-                0x08009968                UART_CONFIG_0_channel_config
+                0x08009b20        0xc ./Dave/Generated/UART_CONFIG/uart_config_conf.o
+                0x08009b20                UART_CONFIG_0_channel_config
  .rodata.UART_CONFIG_0_config
-                0x08009974       0x14 ./Dave/Generated/UART_CONFIG/uart_config_conf.o
-                0x08009974                UART_CONFIG_0_config
+                0x08009b2c       0x14 ./Dave/Generated/UART_CONFIG/uart_config_conf.o
+                0x08009b2c                UART_CONFIG_0_config
  .rodata.UART_0_channel_config
-                0x08009988        0xc ./Dave/Generated/UART/uart_conf.o
-                0x08009988                UART_0_channel_config
+                0x08009b40        0xc ./Dave/Generated/UART/uart_conf.o
+                0x08009b40                UART_0_channel_config
  .rodata.UART_0_tx_pin_config
-                0x08009994        0xc ./Dave/Generated/UART/uart_conf.o
-                0x08009994                UART_0_tx_pin_config
+                0x08009b4c        0xc ./Dave/Generated/UART/uart_conf.o
+                0x08009b4c                UART_0_tx_pin_config
  .rodata.UART_0_tx_pin
-                0x080099a0        0xc ./Dave/Generated/UART/uart_conf.o
-                0x080099a0                UART_0_tx_pin
+                0x08009b58        0xc ./Dave/Generated/UART/uart_conf.o
+                0x08009b58                UART_0_tx_pin
  .rodata.UART_0_config
-                0x080099ac       0x30 ./Dave/Generated/UART/uart_conf.o
-                0x080099ac                UART_0_config
+                0x08009b64       0x30 ./Dave/Generated/UART/uart_conf.o
+                0x08009b64                UART_0_config
  .rodata.UART_0_rx_pin_config
-                0x080099dc        0xc ./Dave/Generated/UART/uart_conf.o
-                0x080099dc                UART_0_rx_pin_config
+                0x08009b94        0xc ./Dave/Generated/UART/uart_conf.o
+                0x08009b94                UART_0_rx_pin_config
  .rodata.PWM_SVM_0_PhUHighPin
-                0x080099e8        0x8 ./Dave/Generated/PWM_SVM/pwm_svm_conf.o
-                0x080099e8                PWM_SVM_0_PhUHighPin
- .rodata.PWM_SVM_0_PhULowPin
-                0x080099f0        0x8 ./Dave/Generated/PWM_SVM/pwm_svm_conf.o
-                0x080099f0                PWM_SVM_0_PhULowPin
- .rodata.PWM_SVM_0_PhVHighPin
-                0x080099f8        0x8 ./Dave/Generated/PWM_SVM/pwm_svm_conf.o
-                0x080099f8                PWM_SVM_0_PhVHighPin
- .rodata.PWM_SVM_0_PhVLowPin
-                0x08009a00        0x8 ./Dave/Generated/PWM_SVM/pwm_svm_conf.o
-                0x08009a00                PWM_SVM_0_PhVLowPin
- .rodata.PWM_SVM_0_PhWHighPin
-                0x08009a08        0x8 ./Dave/Generated/PWM_SVM/pwm_svm_conf.o
-                0x08009a08                PWM_SVM_0_PhWHighPin
- .rodata.PWM_SVM_0_PhWLowPin
-                0x08009a10        0x8 ./Dave/Generated/PWM_SVM/pwm_svm_conf.o
-                0x08009a10                PWM_SVM_0_PhWLowPin
- .rodata.PWM_SVM_0_PhUHiOutPinConf
-                0x08009a18        0xc ./Dave/Generated/PWM_SVM/pwm_svm_conf.o
-                0x08009a18                PWM_SVM_0_PhUHiOutPinConf
- .rodata.PWM_SVM_0_PhULoOutPinConf
-                0x08009a24        0xc ./Dave/Generated/PWM_SVM/pwm_svm_conf.o
-                0x08009a24                PWM_SVM_0_PhULoOutPinConf
- .rodata.PWM_SVM_0_PhVHiOutPinConf
-                0x08009a30        0xc ./Dave/Generated/PWM_SVM/pwm_svm_conf.o
-                0x08009a30                PWM_SVM_0_PhVHiOutPinConf
- .rodata.PWM_SVM_0_PhVLoOutPinConf
-                0x08009a3c        0xc ./Dave/Generated/PWM_SVM/pwm_svm_conf.o
-                0x08009a3c                PWM_SVM_0_PhVLoOutPinConf
- .rodata.PWM_SVM_0_PhWHiOutPinConf
-                0x08009a48        0xc ./Dave/Generated/PWM_SVM/pwm_svm_conf.o
-                0x08009a48                PWM_SVM_0_PhWHiOutPinConf
- .rodata.PWM_SVM_0_PhWLoOutPinConf
-                0x08009a54        0xc ./Dave/Generated/PWM_SVM/pwm_svm_conf.o
-                0x08009a54                PWM_SVM_0_PhWLoOutPinConf
- .rodata.PWM_SVM_0_InverterPin
-                0x08009a60        0x8 ./Dave/Generated/PWM_SVM/pwm_svm_conf.o
-                0x08009a60                PWM_SVM_0_InverterPin
- .rodata.PWM_SVM_0_InvPinConf
-                0x08009a68        0xc ./Dave/Generated/PWM_SVM/pwm_svm_conf.o
-                0x08009a68                PWM_SVM_0_InvPinConf
- .rodata.PWM_SVM_0_PhU
-                0x08009a74        0x8 ./Dave/Generated/PWM_SVM/pwm_svm_conf.o
-                0x08009a74                PWM_SVM_0_PhU
- .rodata.PWM_SVM_0_PhV
-                0x08009a7c        0x8 ./Dave/Generated/PWM_SVM/pwm_svm_conf.o
-                0x08009a7c                PWM_SVM_0_PhV
- .rodata.PWM_SVM_0_PhW
-                0x08009a84        0x8 ./Dave/Generated/PWM_SVM/pwm_svm_conf.o
-                0x08009a84                PWM_SVM_0_PhW
- .rodata.PWM_SVM_0_CurrentTrig
-                0x08009a8c        0x8 ./Dave/Generated/PWM_SVM/pwm_svm_conf.o
-                0x08009a8c                PWM_SVM_0_CurrentTrig
- .rodata.PWM_SVM_0_StartConfig
-                0x08009a94        0x4 ./Dave/Generated/PWM_SVM/pwm_svm_conf.o
-                0x08009a94                PWM_SVM_0_StartConfig
- .rodata.PWM_SVM_0_TimerInitHandle
-                0x08009a98       0x10 ./Dave/Generated/PWM_SVM/pwm_svm_conf.o
-                0x08009a98                PWM_SVM_0_TimerInitHandle
- .rodata.PWM_SVM_0_TimerInit_CurrentTrig
-                0x08009aa8       0x10 ./Dave/Generated/PWM_SVM/pwm_svm_conf.o
-                0x08009aa8                PWM_SVM_0_TimerInit_CurrentTrig
- .rodata.PWM_SVM_0_AppConfig
-                0x08009ab8       0x4c ./Dave/Generated/PWM_SVM/pwm_svm_conf.o
-                0x08009ab8                PWM_SVM_0_AppConfig
- .rodata.PWM_SVM_1_PhUHighPin
-                0x08009b04        0x8 ./Dave/Generated/PWM_SVM/pwm_svm_conf.o
-                0x08009b04                PWM_SVM_1_PhUHighPin
- .rodata.PWM_SVM_1_PhULowPin
-                0x08009b0c        0x8 ./Dave/Generated/PWM_SVM/pwm_svm_conf.o
-                0x08009b0c                PWM_SVM_1_PhULowPin
- .rodata.PWM_SVM_1_PhVHighPin
-                0x08009b14        0x8 ./Dave/Generated/PWM_SVM/pwm_svm_conf.o
-                0x08009b14                PWM_SVM_1_PhVHighPin
- .rodata.PWM_SVM_1_PhVLowPin
-                0x08009b1c        0x8 ./Dave/Generated/PWM_SVM/pwm_svm_conf.o
-                0x08009b1c                PWM_SVM_1_PhVLowPin
- .rodata.PWM_SVM_1_PhWHighPin
-                0x08009b24        0x8 ./Dave/Generated/PWM_SVM/pwm_svm_conf.o
-                0x08009b24                PWM_SVM_1_PhWHighPin
- .rodata.PWM_SVM_1_PhWLowPin
-                0x08009b2c        0x8 ./Dave/Generated/PWM_SVM/pwm_svm_conf.o
-                0x08009b2c                PWM_SVM_1_PhWLowPin
- .rodata.PWM_SVM_1_PhUHiOutPinConf
-                0x08009b34        0xc ./Dave/Generated/PWM_SVM/pwm_svm_conf.o
-                0x08009b34                PWM_SVM_1_PhUHiOutPinConf
- .rodata.PWM_SVM_1_PhULoOutPinConf
-                0x08009b40        0xc ./Dave/Generated/PWM_SVM/pwm_svm_conf.o
-                0x08009b40                PWM_SVM_1_PhULoOutPinConf
- .rodata.PWM_SVM_1_PhVHiOutPinConf
-                0x08009b4c        0xc ./Dave/Generated/PWM_SVM/pwm_svm_conf.o
-                0x08009b4c                PWM_SVM_1_PhVHiOutPinConf
- .rodata.PWM_SVM_1_PhVLoOutPinConf
-                0x08009b58        0xc ./Dave/Generated/PWM_SVM/pwm_svm_conf.o
-                0x08009b58                PWM_SVM_1_PhVLoOutPinConf
- .rodata.PWM_SVM_1_PhWHiOutPinConf
-                0x08009b64        0xc ./Dave/Generated/PWM_SVM/pwm_svm_conf.o
-                0x08009b64                PWM_SVM_1_PhWHiOutPinConf
- .rodata.PWM_SVM_1_PhWLoOutPinConf
-                0x08009b70        0xc ./Dave/Generated/PWM_SVM/pwm_svm_conf.o
-                0x08009b70                PWM_SVM_1_PhWLoOutPinConf
- .rodata.PWM_SVM_1_InverterPin
-                0x08009b7c        0x8 ./Dave/Generated/PWM_SVM/pwm_svm_conf.o
-                0x08009b7c                PWM_SVM_1_InverterPin
- .rodata.PWM_SVM_1_InvPinConf
-                0x08009b84        0xc ./Dave/Generated/PWM_SVM/pwm_svm_conf.o
-                0x08009b84                PWM_SVM_1_InvPinConf
- .rodata.PWM_SVM_1_PhU
-                0x08009b90        0x8 ./Dave/Generated/PWM_SVM/pwm_svm_conf.o
-                0x08009b90                PWM_SVM_1_PhU
- .rodata.PWM_SVM_1_PhV
-                0x08009b98        0x8 ./Dave/Generated/PWM_SVM/pwm_svm_conf.o
-                0x08009b98                PWM_SVM_1_PhV
- .rodata.PWM_SVM_1_PhW
                 0x08009ba0        0x8 ./Dave/Generated/PWM_SVM/pwm_svm_conf.o
-                0x08009ba0                PWM_SVM_1_PhW
- .rodata.PWM_SVM_1_CurrentTrig
+                0x08009ba0                PWM_SVM_0_PhUHighPin
+ .rodata.PWM_SVM_0_PhULowPin
                 0x08009ba8        0x8 ./Dave/Generated/PWM_SVM/pwm_svm_conf.o
-                0x08009ba8                PWM_SVM_1_CurrentTrig
+                0x08009ba8                PWM_SVM_0_PhULowPin
+ .rodata.PWM_SVM_0_PhVHighPin
+                0x08009bb0        0x8 ./Dave/Generated/PWM_SVM/pwm_svm_conf.o
+                0x08009bb0                PWM_SVM_0_PhVHighPin
+ .rodata.PWM_SVM_0_PhVLowPin
+                0x08009bb8        0x8 ./Dave/Generated/PWM_SVM/pwm_svm_conf.o
+                0x08009bb8                PWM_SVM_0_PhVLowPin
+ .rodata.PWM_SVM_0_PhWHighPin
+                0x08009bc0        0x8 ./Dave/Generated/PWM_SVM/pwm_svm_conf.o
+                0x08009bc0                PWM_SVM_0_PhWHighPin
+ .rodata.PWM_SVM_0_PhWLowPin
+                0x08009bc8        0x8 ./Dave/Generated/PWM_SVM/pwm_svm_conf.o
+                0x08009bc8                PWM_SVM_0_PhWLowPin
+ .rodata.PWM_SVM_0_PhUHiOutPinConf
+                0x08009bd0        0xc ./Dave/Generated/PWM_SVM/pwm_svm_conf.o
+                0x08009bd0                PWM_SVM_0_PhUHiOutPinConf
+ .rodata.PWM_SVM_0_PhULoOutPinConf
+                0x08009bdc        0xc ./Dave/Generated/PWM_SVM/pwm_svm_conf.o
+                0x08009bdc                PWM_SVM_0_PhULoOutPinConf
+ .rodata.PWM_SVM_0_PhVHiOutPinConf
+                0x08009be8        0xc ./Dave/Generated/PWM_SVM/pwm_svm_conf.o
+                0x08009be8                PWM_SVM_0_PhVHiOutPinConf
+ .rodata.PWM_SVM_0_PhVLoOutPinConf
+                0x08009bf4        0xc ./Dave/Generated/PWM_SVM/pwm_svm_conf.o
+                0x08009bf4                PWM_SVM_0_PhVLoOutPinConf
+ .rodata.PWM_SVM_0_PhWHiOutPinConf
+                0x08009c00        0xc ./Dave/Generated/PWM_SVM/pwm_svm_conf.o
+                0x08009c00                PWM_SVM_0_PhWHiOutPinConf
+ .rodata.PWM_SVM_0_PhWLoOutPinConf
+                0x08009c0c        0xc ./Dave/Generated/PWM_SVM/pwm_svm_conf.o
+                0x08009c0c                PWM_SVM_0_PhWLoOutPinConf
+ .rodata.PWM_SVM_0_InverterPin
+                0x08009c18        0x8 ./Dave/Generated/PWM_SVM/pwm_svm_conf.o
+                0x08009c18                PWM_SVM_0_InverterPin
+ .rodata.PWM_SVM_0_InvPinConf
+                0x08009c20        0xc ./Dave/Generated/PWM_SVM/pwm_svm_conf.o
+                0x08009c20                PWM_SVM_0_InvPinConf
+ .rodata.PWM_SVM_0_PhU
+                0x08009c2c        0x8 ./Dave/Generated/PWM_SVM/pwm_svm_conf.o
+                0x08009c2c                PWM_SVM_0_PhU
+ .rodata.PWM_SVM_0_PhV
+                0x08009c34        0x8 ./Dave/Generated/PWM_SVM/pwm_svm_conf.o
+                0x08009c34                PWM_SVM_0_PhV
+ .rodata.PWM_SVM_0_PhW
+                0x08009c3c        0x8 ./Dave/Generated/PWM_SVM/pwm_svm_conf.o
+                0x08009c3c                PWM_SVM_0_PhW
+ .rodata.PWM_SVM_0_CurrentTrig
+                0x08009c44        0x8 ./Dave/Generated/PWM_SVM/pwm_svm_conf.o
+                0x08009c44                PWM_SVM_0_CurrentTrig
+ .rodata.PWM_SVM_0_StartConfig
+                0x08009c4c        0x4 ./Dave/Generated/PWM_SVM/pwm_svm_conf.o
+                0x08009c4c                PWM_SVM_0_StartConfig
+ .rodata.PWM_SVM_0_TimerInitHandle
+                0x08009c50       0x10 ./Dave/Generated/PWM_SVM/pwm_svm_conf.o
+                0x08009c50                PWM_SVM_0_TimerInitHandle
+ .rodata.PWM_SVM_0_TimerInit_CurrentTrig
+                0x08009c60       0x10 ./Dave/Generated/PWM_SVM/pwm_svm_conf.o
+                0x08009c60                PWM_SVM_0_TimerInit_CurrentTrig
+ .rodata.PWM_SVM_0_AppConfig
+                0x08009c70       0x4c ./Dave/Generated/PWM_SVM/pwm_svm_conf.o
+                0x08009c70                PWM_SVM_0_AppConfig
+ .rodata.PWM_SVM_1_PhUHighPin
+                0x08009cbc        0x8 ./Dave/Generated/PWM_SVM/pwm_svm_conf.o
+                0x08009cbc                PWM_SVM_1_PhUHighPin
+ .rodata.PWM_SVM_1_PhULowPin
+                0x08009cc4        0x8 ./Dave/Generated/PWM_SVM/pwm_svm_conf.o
+                0x08009cc4                PWM_SVM_1_PhULowPin
+ .rodata.PWM_SVM_1_PhVHighPin
+                0x08009ccc        0x8 ./Dave/Generated/PWM_SVM/pwm_svm_conf.o
+                0x08009ccc                PWM_SVM_1_PhVHighPin
+ .rodata.PWM_SVM_1_PhVLowPin
+                0x08009cd4        0x8 ./Dave/Generated/PWM_SVM/pwm_svm_conf.o
+                0x08009cd4                PWM_SVM_1_PhVLowPin
+ .rodata.PWM_SVM_1_PhWHighPin
+                0x08009cdc        0x8 ./Dave/Generated/PWM_SVM/pwm_svm_conf.o
+                0x08009cdc                PWM_SVM_1_PhWHighPin
+ .rodata.PWM_SVM_1_PhWLowPin
+                0x08009ce4        0x8 ./Dave/Generated/PWM_SVM/pwm_svm_conf.o
+                0x08009ce4                PWM_SVM_1_PhWLowPin
+ .rodata.PWM_SVM_1_PhUHiOutPinConf
+                0x08009cec        0xc ./Dave/Generated/PWM_SVM/pwm_svm_conf.o
+                0x08009cec                PWM_SVM_1_PhUHiOutPinConf
+ .rodata.PWM_SVM_1_PhULoOutPinConf
+                0x08009cf8        0xc ./Dave/Generated/PWM_SVM/pwm_svm_conf.o
+                0x08009cf8                PWM_SVM_1_PhULoOutPinConf
+ .rodata.PWM_SVM_1_PhVHiOutPinConf
+                0x08009d04        0xc ./Dave/Generated/PWM_SVM/pwm_svm_conf.o
+                0x08009d04                PWM_SVM_1_PhVHiOutPinConf
+ .rodata.PWM_SVM_1_PhVLoOutPinConf
+                0x08009d10        0xc ./Dave/Generated/PWM_SVM/pwm_svm_conf.o
+                0x08009d10                PWM_SVM_1_PhVLoOutPinConf
+ .rodata.PWM_SVM_1_PhWHiOutPinConf
+                0x08009d1c        0xc ./Dave/Generated/PWM_SVM/pwm_svm_conf.o
+                0x08009d1c                PWM_SVM_1_PhWHiOutPinConf
+ .rodata.PWM_SVM_1_PhWLoOutPinConf
+                0x08009d28        0xc ./Dave/Generated/PWM_SVM/pwm_svm_conf.o
+                0x08009d28                PWM_SVM_1_PhWLoOutPinConf
+ .rodata.PWM_SVM_1_InverterPin
+                0x08009d34        0x8 ./Dave/Generated/PWM_SVM/pwm_svm_conf.o
+                0x08009d34                PWM_SVM_1_InverterPin
+ .rodata.PWM_SVM_1_InvPinConf
+                0x08009d3c        0xc ./Dave/Generated/PWM_SVM/pwm_svm_conf.o
+                0x08009d3c                PWM_SVM_1_InvPinConf
+ .rodata.PWM_SVM_1_PhU
+                0x08009d48        0x8 ./Dave/Generated/PWM_SVM/pwm_svm_conf.o
+                0x08009d48                PWM_SVM_1_PhU
+ .rodata.PWM_SVM_1_PhV
+                0x08009d50        0x8 ./Dave/Generated/PWM_SVM/pwm_svm_conf.o
+                0x08009d50                PWM_SVM_1_PhV
+ .rodata.PWM_SVM_1_PhW
+                0x08009d58        0x8 ./Dave/Generated/PWM_SVM/pwm_svm_conf.o
+                0x08009d58                PWM_SVM_1_PhW
+ .rodata.PWM_SVM_1_CurrentTrig
+                0x08009d60        0x8 ./Dave/Generated/PWM_SVM/pwm_svm_conf.o
+                0x08009d60                PWM_SVM_1_CurrentTrig
  .rodata.PWM_SVM_1_StartConfig
-                0x08009bb0        0x4 ./Dave/Generated/PWM_SVM/pwm_svm_conf.o
-                0x08009bb0                PWM_SVM_1_StartConfig
+                0x08009d68        0x4 ./Dave/Generated/PWM_SVM/pwm_svm_conf.o
+                0x08009d68                PWM_SVM_1_StartConfig
  .rodata.PWM_SVM_1_TimerInitHandle
-                0x08009bb4       0x10 ./Dave/Generated/PWM_SVM/pwm_svm_conf.o
-                0x08009bb4                PWM_SVM_1_TimerInitHandle
+                0x08009d6c       0x10 ./Dave/Generated/PWM_SVM/pwm_svm_conf.o
+                0x08009d6c                PWM_SVM_1_TimerInitHandle
  .rodata.PWM_SVM_1_TimerInit_CurrentTrig
-                0x08009bc4       0x10 ./Dave/Generated/PWM_SVM/pwm_svm_conf.o
-                0x08009bc4                PWM_SVM_1_TimerInit_CurrentTrig
+                0x08009d7c       0x10 ./Dave/Generated/PWM_SVM/pwm_svm_conf.o
+                0x08009d7c                PWM_SVM_1_TimerInit_CurrentTrig
  .rodata.PWM_SVM_1_AppConfig
-                0x08009bd4       0x4c ./Dave/Generated/PWM_SVM/pwm_svm_conf.o
-                0x08009bd4                PWM_SVM_1_AppConfig
+                0x08009d8c       0x4c ./Dave/Generated/PWM_SVM/pwm_svm_conf.o
+                0x08009d8c                PWM_SVM_1_AppConfig
  .rodata.Sinus60_tab
-                0x08009c20      0x804 ./Dave/Generated/PWM_SVM/pwm_svm_table.o
-                0x08009c20                Sinus60_tab
+                0x08009dd8      0x804 ./Dave/Generated/PWM_SVM/pwm_svm_table.o
+                0x08009dd8                Sinus60_tab
  .rodata.PWM_CCU4_2_timer_handle
-                0x0800a424        0x8 ./Dave/Generated/PWM_CCU4/pwm_ccu4_conf.o
-                0x0800a424                PWM_CCU4_2_timer_handle
+                0x0800a5dc        0x8 ./Dave/Generated/PWM_CCU4/pwm_ccu4_conf.o
+                0x0800a5dc                PWM_CCU4_2_timer_handle
  .rodata.PWM_CCU4_2_event0_config
-                0x0800a42c        0x4 ./Dave/Generated/PWM_CCU4/pwm_ccu4_conf.o
-                0x0800a42c                PWM_CCU4_2_event0_config
+                0x0800a5e4        0x4 ./Dave/Generated/PWM_CCU4/pwm_ccu4_conf.o
+                0x0800a5e4                PWM_CCU4_2_event0_config
  .rodata.PWM_CCU4_2_event1_config
-                0x0800a430        0x4 ./Dave/Generated/PWM_CCU4/pwm_ccu4_conf.o
-                0x0800a430                PWM_CCU4_2_event1_config
+                0x0800a5e8        0x4 ./Dave/Generated/PWM_CCU4/pwm_ccu4_conf.o
+                0x0800a5e8                PWM_CCU4_2_event1_config
  .rodata.PWM_CCU4_2_event2_config
-                0x0800a434        0x4 ./Dave/Generated/PWM_CCU4/pwm_ccu4_conf.o
-                0x0800a434                PWM_CCU4_2_event2_config
+                0x0800a5ec        0x4 ./Dave/Generated/PWM_CCU4/pwm_ccu4_conf.o
+                0x0800a5ec                PWM_CCU4_2_event2_config
  .rodata.PWM_CCU4_2_ch1_out0_config
-                0x0800a438        0xc ./Dave/Generated/PWM_CCU4/pwm_ccu4_conf.o
-                0x0800a438                PWM_CCU4_2_ch1_out0_config
+                0x0800a5f0        0xc ./Dave/Generated/PWM_CCU4/pwm_ccu4_conf.o
+                0x0800a5f0                PWM_CCU4_2_ch1_out0_config
  .rodata.PWM_CCU4_2_config_handle
-                0x0800a444       0x50 ./Dave/Generated/PWM_CCU4/pwm_ccu4_conf.o
-                0x0800a444                PWM_CCU4_2_config_handle
+                0x0800a5fc       0x50 ./Dave/Generated/PWM_CCU4/pwm_ccu4_conf.o
+                0x0800a5fc                PWM_CCU4_2_config_handle
  .rodata.I2C_MASTER_0_sda_pin_config
-                0x0800a494        0xc ./Dave/Generated/I2C_MASTER/i2c_master_conf.o
+                0x0800a64c        0xc ./Dave/Generated/I2C_MASTER/i2c_master_conf.o
  .rodata.I2C_MASTER_0_scl_pin_config
-                0x0800a4a0        0xc ./Dave/Generated/I2C_MASTER/i2c_master_conf.o
+                0x0800a658        0xc ./Dave/Generated/I2C_MASTER/i2c_master_conf.o
  .rodata.I2C_MASTER_0_channel_config
-                0x0800a4ac        0x8 ./Dave/Generated/I2C_MASTER/i2c_master_conf.o
-                0x0800a4ac                I2C_MASTER_0_channel_config
+                0x0800a664        0x8 ./Dave/Generated/I2C_MASTER/i2c_master_conf.o
+                0x0800a664                I2C_MASTER_0_channel_config
  .rodata.I2C_MASTER_0_config
-                0x0800a4b4       0x2c ./Dave/Generated/I2C_MASTER/i2c_master_conf.o
-                0x0800a4b4                I2C_MASTER_0_config
+                0x0800a66c       0x2c ./Dave/Generated/I2C_MASTER/i2c_master_conf.o
+                0x0800a66c                I2C_MASTER_0_config
  .rodata.group_init_handle0
-                0x0800a4e0       0x14 ./Dave/Generated/GLOBAL_ADC/global_adc_conf.o
-                0x0800a4e0                group_init_handle0
+                0x0800a698       0x14 ./Dave/Generated/GLOBAL_ADC/global_adc_conf.o
+                0x0800a698                group_init_handle0
  .rodata.group_init_handle1
-                0x0800a4f4       0x14 ./Dave/Generated/GLOBAL_ADC/global_adc_conf.o
-                0x0800a4f4                group_init_handle1
+                0x0800a6ac       0x14 ./Dave/Generated/GLOBAL_ADC/global_adc_conf.o
+                0x0800a6ac                group_init_handle1
  .rodata.group_init_handle2
-                0x0800a508       0x14 ./Dave/Generated/GLOBAL_ADC/global_adc_conf.o
-                0x0800a508                group_init_handle2
+                0x0800a6c0       0x14 ./Dave/Generated/GLOBAL_ADC/global_adc_conf.o
+                0x0800a6c0                group_init_handle2
  .rodata.group_init_handle3
-                0x0800a51c       0x14 ./Dave/Generated/GLOBAL_ADC/global_adc_conf.o
-                0x0800a51c                group_init_handle3
+                0x0800a6d4       0x14 ./Dave/Generated/GLOBAL_ADC/global_adc_conf.o
+                0x0800a6d4                group_init_handle3
  .rodata.global_config
-                0x0800a530       0x18 ./Dave/Generated/GLOBAL_ADC/global_adc_conf.o
-                0x0800a530                global_config
+                0x0800a6e8       0x18 ./Dave/Generated/GLOBAL_ADC/global_adc_conf.o
+                0x0800a6e8                global_config
  .rodata.Cooling_FAN
-                0x0800a548       0x14 ./Dave/Generated/DIGITAL_IO/digital_io_conf.o
-                0x0800a548                Cooling_FAN
- .rodata.Disable_Gate_Driver_M3
-                0x0800a55c       0x14 ./Dave/Generated/DIGITAL_IO/digital_io_conf.o
-                0x0800a55c                Disable_Gate_Driver_M3
- .rodata.DIGITAL_IO_2
-                0x0800a570       0x14 ./Dave/Generated/DIGITAL_IO/digital_io_conf.o
-                0x0800a570                DIGITAL_IO_2
- .rodata.DIGITAL_IO_3
-                0x0800a584       0x14 ./Dave/Generated/DIGITAL_IO/digital_io_conf.o
-                0x0800a584                DIGITAL_IO_3
- .rodata.DIGITAL_IO_4
-                0x0800a598       0x14 ./Dave/Generated/DIGITAL_IO/digital_io_conf.o
-                0x0800a598                DIGITAL_IO_4
- .rodata.DIGITAL_IO_5
-                0x0800a5ac       0x14 ./Dave/Generated/DIGITAL_IO/digital_io_conf.o
-                0x0800a5ac                DIGITAL_IO_5
- .rodata.DIGITAL_IO_6
-                0x0800a5c0       0x14 ./Dave/Generated/DIGITAL_IO/digital_io_conf.o
-                0x0800a5c0                DIGITAL_IO_6
- .rodata.DIGITAL_IO_7
-                0x0800a5d4       0x14 ./Dave/Generated/DIGITAL_IO/digital_io_conf.o
-                0x0800a5d4                DIGITAL_IO_7
- .rodata.DIGITAL_IO_8
-                0x0800a5e8       0x14 ./Dave/Generated/DIGITAL_IO/digital_io_conf.o
-                0x0800a5e8                DIGITAL_IO_8
- .rodata.DIGITAL_IO_9
-                0x0800a5fc       0x14 ./Dave/Generated/DIGITAL_IO/digital_io_conf.o
-                0x0800a5fc                DIGITAL_IO_9
- .rodata.DIGITAL_IO_10
-                0x0800a610       0x14 ./Dave/Generated/DIGITAL_IO/digital_io_conf.o
-                0x0800a610                DIGITAL_IO_10
- .rodata.DIGITAL_IO_11
-                0x0800a624       0x14 ./Dave/Generated/DIGITAL_IO/digital_io_conf.o
-                0x0800a624                DIGITAL_IO_11
- .rodata.DIGITAL_IO_12
-                0x0800a638       0x14 ./Dave/Generated/DIGITAL_IO/digital_io_conf.o
-                0x0800a638                DIGITAL_IO_12
- .rodata.DIGITAL_IO_13
-                0x0800a64c       0x14 ./Dave/Generated/DIGITAL_IO/digital_io_conf.o
-                0x0800a64c                DIGITAL_IO_13
- .rodata.RS485_DIR
-                0x0800a660       0x14 ./Dave/Generated/DIGITAL_IO/digital_io_conf.o
-                0x0800a660                RS485_DIR
- .rodata.DIGITAL_IO_15
-                0x0800a674       0x14 ./Dave/Generated/DIGITAL_IO/digital_io_conf.o
-                0x0800a674                DIGITAL_IO_15
- .rodata.IO_Bit1_DIR
-                0x0800a688       0x14 ./Dave/Generated/DIGITAL_IO/digital_io_conf.o
-                0x0800a688                IO_Bit1_DIR
- .rodata.IO_Bit0_DIR
-                0x0800a69c       0x14 ./Dave/Generated/DIGITAL_IO/digital_io_conf.o
-                0x0800a69c                IO_Bit0_DIR
- .rodata.HS_Overtemp
-                0x0800a6b0       0x14 ./Dave/Generated/DIGITAL_IO/digital_io_conf.o
-                0x0800a6b0                HS_Overtemp
- .rodata.IO_Bit3_DIR
-                0x0800a6c4       0x14 ./Dave/Generated/DIGITAL_IO/digital_io_conf.o
-                0x0800a6c4                IO_Bit3_DIR
- .rodata.IO_Bit2_DIR
-                0x0800a6d8       0x14 ./Dave/Generated/DIGITAL_IO/digital_io_conf.o
-                0x0800a6d8                IO_Bit2_DIR
- .rodata.IO_Bit2
-                0x0800a6ec       0x14 ./Dave/Generated/DIGITAL_IO/digital_io_conf.o
-                0x0800a6ec                IO_Bit2
- .rodata.IO_Bit1
                 0x0800a700       0x14 ./Dave/Generated/DIGITAL_IO/digital_io_conf.o
-                0x0800a700                IO_Bit1
- .rodata.IO_Bit0
+                0x0800a700                Cooling_FAN
+ .rodata.Disable_Gate_Driver_M3
                 0x0800a714       0x14 ./Dave/Generated/DIGITAL_IO/digital_io_conf.o
-                0x0800a714                IO_Bit0
- .rodata.IO_Bit3
+                0x0800a714                Disable_Gate_Driver_M3
+ .rodata.DIGITAL_IO_2
                 0x0800a728       0x14 ./Dave/Generated/DIGITAL_IO/digital_io_conf.o
-                0x0800a728                IO_Bit3
- .rodata.Disable_Gate_Driver_M1_M2
+                0x0800a728                DIGITAL_IO_2
+ .rodata.DIGITAL_IO_3
                 0x0800a73c       0x14 ./Dave/Generated/DIGITAL_IO/digital_io_conf.o
-                0x0800a73c                Disable_Gate_Driver_M1_M2
- .rodata.DIGITAL_IO_26
+                0x0800a73c                DIGITAL_IO_3
+ .rodata.DIGITAL_IO_4
                 0x0800a750       0x14 ./Dave/Generated/DIGITAL_IO/digital_io_conf.o
-                0x0800a750                DIGITAL_IO_26
- .rodata.DIGITAL_IO_27
+                0x0800a750                DIGITAL_IO_4
+ .rodata.DIGITAL_IO_5
                 0x0800a764       0x14 ./Dave/Generated/DIGITAL_IO/digital_io_conf.o
-                0x0800a764                DIGITAL_IO_27
- .rodata.DIGITAL_IO_28
+                0x0800a764                DIGITAL_IO_5
+ .rodata.DIGITAL_IO_6
                 0x0800a778       0x14 ./Dave/Generated/DIGITAL_IO/digital_io_conf.o
-                0x0800a778                DIGITAL_IO_28
- .rodata.DIGITAL_IO_29
+                0x0800a778                DIGITAL_IO_6
+ .rodata.DIGITAL_IO_7
                 0x0800a78c       0x14 ./Dave/Generated/DIGITAL_IO/digital_io_conf.o
-                0x0800a78c                DIGITAL_IO_29
- .rodata        0x0800a7a0       0x14 ./Dave/Generated/CLOCK_XMC4/clock_xmc4_conf.o
+                0x0800a78c                DIGITAL_IO_7
+ .rodata.DIGITAL_IO_8
+                0x0800a7a0       0x14 ./Dave/Generated/DIGITAL_IO/digital_io_conf.o
+                0x0800a7a0                DIGITAL_IO_8
+ .rodata.DIGITAL_IO_9
+                0x0800a7b4       0x14 ./Dave/Generated/DIGITAL_IO/digital_io_conf.o
+                0x0800a7b4                DIGITAL_IO_9
+ .rodata.DIGITAL_IO_10
+                0x0800a7c8       0x14 ./Dave/Generated/DIGITAL_IO/digital_io_conf.o
+                0x0800a7c8                DIGITAL_IO_10
+ .rodata.DIGITAL_IO_11
+                0x0800a7dc       0x14 ./Dave/Generated/DIGITAL_IO/digital_io_conf.o
+                0x0800a7dc                DIGITAL_IO_11
+ .rodata.DIGITAL_IO_12
+                0x0800a7f0       0x14 ./Dave/Generated/DIGITAL_IO/digital_io_conf.o
+                0x0800a7f0                DIGITAL_IO_12
+ .rodata.DIGITAL_IO_13
+                0x0800a804       0x14 ./Dave/Generated/DIGITAL_IO/digital_io_conf.o
+                0x0800a804                DIGITAL_IO_13
+ .rodata.RS485_DIR
+                0x0800a818       0x14 ./Dave/Generated/DIGITAL_IO/digital_io_conf.o
+                0x0800a818                RS485_DIR
+ .rodata.DIGITAL_IO_15
+                0x0800a82c       0x14 ./Dave/Generated/DIGITAL_IO/digital_io_conf.o
+                0x0800a82c                DIGITAL_IO_15
+ .rodata.IO_Bit1_DIR
+                0x0800a840       0x14 ./Dave/Generated/DIGITAL_IO/digital_io_conf.o
+                0x0800a840                IO_Bit1_DIR
+ .rodata.IO_Bit0_DIR
+                0x0800a854       0x14 ./Dave/Generated/DIGITAL_IO/digital_io_conf.o
+                0x0800a854                IO_Bit0_DIR
+ .rodata.HS_Overtemp
+                0x0800a868       0x14 ./Dave/Generated/DIGITAL_IO/digital_io_conf.o
+                0x0800a868                HS_Overtemp
+ .rodata.IO_Bit3_DIR
+                0x0800a87c       0x14 ./Dave/Generated/DIGITAL_IO/digital_io_conf.o
+                0x0800a87c                IO_Bit3_DIR
+ .rodata.IO_Bit2_DIR
+                0x0800a890       0x14 ./Dave/Generated/DIGITAL_IO/digital_io_conf.o
+                0x0800a890                IO_Bit2_DIR
+ .rodata.IO_Bit2
+                0x0800a8a4       0x14 ./Dave/Generated/DIGITAL_IO/digital_io_conf.o
+                0x0800a8a4                IO_Bit2
+ .rodata.IO_Bit1
+                0x0800a8b8       0x14 ./Dave/Generated/DIGITAL_IO/digital_io_conf.o
+                0x0800a8b8                IO_Bit1
+ .rodata.IO_Bit0
+                0x0800a8cc       0x14 ./Dave/Generated/DIGITAL_IO/digital_io_conf.o
+                0x0800a8cc                IO_Bit0
+ .rodata.IO_Bit3
+                0x0800a8e0       0x14 ./Dave/Generated/DIGITAL_IO/digital_io_conf.o
+                0x0800a8e0                IO_Bit3
+ .rodata.Disable_Gate_Driver_M1_M2
+                0x0800a8f4       0x14 ./Dave/Generated/DIGITAL_IO/digital_io_conf.o
+                0x0800a8f4                Disable_Gate_Driver_M1_M2
+ .rodata.DIGITAL_IO_26
+                0x0800a908       0x14 ./Dave/Generated/DIGITAL_IO/digital_io_conf.o
+                0x0800a908                DIGITAL_IO_26
+ .rodata.DIGITAL_IO_27
+                0x0800a91c       0x14 ./Dave/Generated/DIGITAL_IO/digital_io_conf.o
+                0x0800a91c                DIGITAL_IO_27
+ .rodata.DIGITAL_IO_28
+                0x0800a930       0x14 ./Dave/Generated/DIGITAL_IO/digital_io_conf.o
+                0x0800a930                DIGITAL_IO_28
+ .rodata.DIGITAL_IO_29
+                0x0800a944       0x14 ./Dave/Generated/DIGITAL_IO/digital_io_conf.o
+                0x0800a944                DIGITAL_IO_29
+ .rodata        0x0800a958       0x14 ./Dave/Generated/CLOCK_XMC4/clock_xmc4_conf.o
  .rodata.CCU8_SLICE_CONFIG_0
-                0x0800a7b4       0x10 ./Dave/Generated/CCU8_SLICE_CONFIG/ccu8_slice_config_conf.o
-                0x0800a7b4                CCU8_SLICE_CONFIG_0
+                0x0800a96c       0x10 ./Dave/Generated/CCU8_SLICE_CONFIG/ccu8_slice_config_conf.o
+                0x0800a96c                CCU8_SLICE_CONFIG_0
  .rodata.CCU8_SLICE_CONFIG_0_compare_config
-                0x0800a7c4       0x10 ./Dave/Generated/CCU8_SLICE_CONFIG/ccu8_slice_config_conf.o
-                0x0800a7c4                CCU8_SLICE_CONFIG_0_compare_config
+                0x0800a97c       0x10 ./Dave/Generated/CCU8_SLICE_CONFIG/ccu8_slice_config_conf.o
+                0x0800a97c                CCU8_SLICE_CONFIG_0_compare_config
  .rodata.CCU8_SLICE_CONFIG_0_event0_config
-                0x0800a7d4        0x4 ./Dave/Generated/CCU8_SLICE_CONFIG/ccu8_slice_config_conf.o
-                0x0800a7d4                CCU8_SLICE_CONFIG_0_event0_config
+                0x0800a98c        0x4 ./Dave/Generated/CCU8_SLICE_CONFIG/ccu8_slice_config_conf.o
+                0x0800a98c                CCU8_SLICE_CONFIG_0_event0_config
  .rodata.CCU8_SLICE_CONFIG_0_event1_config
-                0x0800a7d8        0x4 ./Dave/Generated/CCU8_SLICE_CONFIG/ccu8_slice_config_conf.o
-                0x0800a7d8                CCU8_SLICE_CONFIG_0_event1_config
+                0x0800a990        0x4 ./Dave/Generated/CCU8_SLICE_CONFIG/ccu8_slice_config_conf.o
+                0x0800a990                CCU8_SLICE_CONFIG_0_event1_config
  .rodata.CCU8_SLICE_CONFIG_0_event2_config
-                0x0800a7dc        0x4 ./Dave/Generated/CCU8_SLICE_CONFIG/ccu8_slice_config_conf.o
-                0x0800a7dc                CCU8_SLICE_CONFIG_0_event2_config
+                0x0800a994        0x4 ./Dave/Generated/CCU8_SLICE_CONFIG/ccu8_slice_config_conf.o
+                0x0800a994                CCU8_SLICE_CONFIG_0_event2_config
+ .rodata.CCU4_SLICE_CONFIG_0
+                0x0800a998       0x10 ./Dave/Generated/CCU4_SLICE_CONFIG/ccu4_slice_config_conf.o
+                0x0800a998                CCU4_SLICE_CONFIG_0
+ .rodata.CCU4_SLICE_CONFIG_0_compare_config
+                0x0800a9a8        0x8 ./Dave/Generated/CCU4_SLICE_CONFIG/ccu4_slice_config_conf.o
+                0x0800a9a8                CCU4_SLICE_CONFIG_0_compare_config
+ .rodata.CCU4_SLICE_CONFIG_0_event0_config
+                0x0800a9b0        0x4 ./Dave/Generated/CCU4_SLICE_CONFIG/ccu4_slice_config_conf.o
+                0x0800a9b0                CCU4_SLICE_CONFIG_0_event0_config
+ .rodata.CCU4_SLICE_CONFIG_0_event1_config
+                0x0800a9b4        0x4 ./Dave/Generated/CCU4_SLICE_CONFIG/ccu4_slice_config_conf.o
+                0x0800a9b4                CCU4_SLICE_CONFIG_0_event1_config
+ .rodata.CCU4_SLICE_CONFIG_0_event2_config
+                0x0800a9b8        0x4 ./Dave/Generated/CCU4_SLICE_CONFIG/ccu4_slice_config_conf.o
+                0x0800a9b8                CCU4_SLICE_CONFIG_0_event2_config
  .rodata.AUTOMATION_FB_Ramp0_Config
-                0x0800a7e0       0x24 ./Dave/Generated/AUTOMATION/automation_conf.o
-                0x0800a7e0                AUTOMATION_FB_Ramp0_Config
- .rodata        0x0800a804       0x18 ./Dave/Generated/AUTOMATION/automation_conf.o
+                0x0800a9bc       0x24 ./Dave/Generated/AUTOMATION/automation_conf.o
+                0x0800a9bc                AUTOMATION_FB_Ramp0_Config
+ .rodata        0x0800a9e0       0x18 ./Dave/Generated/AUTOMATION/automation_conf.o
  .rodata.AUTOMATION_FB_Ramp1_Config
-                0x0800a81c       0x24 ./Dave/Generated/AUTOMATION/automation_conf.o
-                0x0800a81c                AUTOMATION_FB_Ramp1_Config
+                0x0800a9f8       0x24 ./Dave/Generated/AUTOMATION/automation_conf.o
+                0x0800a9f8                AUTOMATION_FB_Ramp1_Config
  .rodata.ANALOG_IO_0
-                0x0800a840       0x10 ./Dave/Generated/ANALOG_IO/analog_io_conf.o
-                0x0800a840                ANALOG_IO_0
+                0x0800aa1c       0x10 ./Dave/Generated/ANALOG_IO/analog_io_conf.o
+                0x0800aa1c                ANALOG_IO_0
  .rodata.ANALOG_IO_1
-                0x0800a850       0x10 ./Dave/Generated/ANALOG_IO/analog_io_conf.o
-                0x0800a850                ANALOG_IO_1
+                0x0800aa2c       0x10 ./Dave/Generated/ANALOG_IO/analog_io_conf.o
+                0x0800aa2c                ANALOG_IO_1
  .rodata.ANALOG_IO_2
-                0x0800a860       0x10 ./Dave/Generated/ANALOG_IO/analog_io_conf.o
-                0x0800a860                ANALOG_IO_2
+                0x0800aa3c       0x10 ./Dave/Generated/ANALOG_IO/analog_io_conf.o
+                0x0800aa3c                ANALOG_IO_2
  .rodata.global_iclass_config
-                0x0800a870        0x4 ./Dave/Generated/ADC_MEASUREMENT/adc_measurement_conf.o
-                0x0800a870                global_iclass_config
+                0x0800aa4c        0x4 ./Dave/Generated/ADC_MEASUREMENT/adc_measurement_conf.o
+                0x0800aa4c                global_iclass_config
  .rodata.backgnd_rs_intr_handle
-                0x0800a874        0xc ./Dave/Generated/ADC_MEASUREMENT/adc_measurement_conf.o
-                0x0800a874                backgnd_rs_intr_handle
+                0x0800aa50        0xc ./Dave/Generated/ADC_MEASUREMENT/adc_measurement_conf.o
+                0x0800aa50                backgnd_rs_intr_handle
  .rodata.backgnd_config
-                0x0800a880        0xc ./Dave/Generated/ADC_MEASUREMENT/adc_measurement_conf.o
-                0x0800a880                backgnd_config
- .rodata        0x0800a88c       0x94 ./Dave/Generated/ACIM_FREQ_CTRL/acim_freq_ctrl_conf.o
+                0x0800aa5c        0xc ./Dave/Generated/ADC_MEASUREMENT/adc_measurement_conf.o
+                0x0800aa5c                backgnd_config
+ .rodata        0x0800aa68       0x94 ./Dave/Generated/ACIM_FREQ_CTRL/acim_freq_ctrl_conf.o
  .rodata.ACIM_FREQ_CTRL_0_STATES
-                0x0800a920      0x100 ./Dave/Generated/ACIM_FREQ_CTRL/acim_freq_ctrl_conf.o
-                0x0800a920                ACIM_FREQ_CTRL_0_STATES
+                0x0800aafc      0x100 ./Dave/Generated/ACIM_FREQ_CTRL/acim_freq_ctrl_conf.o
+                0x0800aafc                ACIM_FREQ_CTRL_0_STATES
  .rodata.ACIM_FREQ_CTRL_0_Config
-                0x0800aa20       0x1c ./Dave/Generated/ACIM_FREQ_CTRL/acim_freq_ctrl_conf.o
-                0x0800aa20                ACIM_FREQ_CTRL_0_Config
+                0x0800abfc       0x1c ./Dave/Generated/ACIM_FREQ_CTRL/acim_freq_ctrl_conf.o
+                0x0800abfc                ACIM_FREQ_CTRL_0_Config
  .rodata.ACIM_FREQ_CTRL_1_STATES
-                0x0800aa3c      0x100 ./Dave/Generated/ACIM_FREQ_CTRL/acim_freq_ctrl_conf.o
-                0x0800aa3c                ACIM_FREQ_CTRL_1_STATES
+                0x0800ac18      0x100 ./Dave/Generated/ACIM_FREQ_CTRL/acim_freq_ctrl_conf.o
+                0x0800ac18                ACIM_FREQ_CTRL_1_STATES
  .rodata.ACIM_FREQ_CTRL_1_Config
-                0x0800ab3c       0x1c ./Dave/Generated/ACIM_FREQ_CTRL/acim_freq_ctrl_conf.o
-                0x0800ab3c                ACIM_FREQ_CTRL_1_Config
+                0x0800ad18       0x1c ./Dave/Generated/ACIM_FREQ_CTRL/acim_freq_ctrl_conf.o
+                0x0800ad18                ACIM_FREQ_CTRL_1_Config
  .rodata.str1.4
-                0x0800ab58        0x8 c:/users/pescatore/switchdrive/private/konzept/mcu for gate driver/dave_4-4-2_64bit_2018-02-23/dave-ide-4.4.2-64bit/eclipse/arm-gcc-49/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/softfp\libm.a(lib_a-w_log.o)
+                0x0800ad34        0x8 c:/users/pescatore/switchdrive/private/konzept/mcu for gate driver/dave_4-4-2_64bit_2018-02-23/dave-ide-4.4.2-64bit/eclipse/arm-gcc-49/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/softfp\libm.a(lib_a-w_log.o)
  .rodata.str1.1
-                0x0800ab60        0x2 c:/users/pescatore/switchdrive/private/konzept/mcu for gate driver/dave_4-4-2_64bit_2018-02-23/dave-ide-4.4.2-64bit/eclipse/arm-gcc-49/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/softfp\libg_nano.a(lib_a-impure.o)
+                0x0800ad3c        0x2 c:/users/pescatore/switchdrive/private/konzept/mcu for gate driver/dave_4-4-2_64bit_2018-02-23/dave-ide-4.4.2-64bit/eclipse/arm-gcc-49/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/softfp\libg_nano.a(lib_a-impure.o)
  *(.gnu.linkonce.r*)
  *(vtable)
-                0x0800ab64                . = ALIGN (0x4)
- *fill*         0x0800ab62        0x2 
+                0x0800ad40                . = ALIGN (0x4)
+ *fill*         0x0800ad3e        0x2 
 
-.glue_7         0x0800ab64        0x0 load address 0x0c00ab64
+.glue_7         0x0800ad40        0x0 load address 0x0c00ad40
  .glue_7        0x00000000        0x0 linker stubs
 
-.glue_7t        0x0800ab64        0x0 load address 0x0c00ab64
+.glue_7t        0x0800ad40        0x0 load address 0x0c00ad40
  .glue_7t       0x00000000        0x0 linker stubs
 
-.vfp11_veneer   0x0800ab64        0x0 load address 0x0c00ab64
+.vfp11_veneer   0x0800ad40        0x0 load address 0x0c00ad40
  .vfp11_veneer  0x00000000        0x0 linker stubs
 
-.v4_bx          0x0800ab64        0x0 load address 0x0c00ab64
+.v4_bx          0x0800ad40        0x0 load address 0x0c00ad40
  .v4_bx         0x00000000        0x0 linker stubs
 
-.iplt           0x0800ab64        0x0 load address 0x0c00ab64
+.iplt           0x0800ad40        0x0 load address 0x0c00ad40
  .iplt          0x00000000        0x0 ./Startup/startup_XMC4400.o
 
 .eh_frame_hdr
@@ -3975,16 +4018,16 @@ END GROUP
 
 .ARM.extab
  *(.ARM.extab* .gnu.linkonce.armextab.*)
-                0x0800ab64                . = ALIGN (0x4)
-                0x0800ab64                __exidx_start = .
+                0x0800ad40                . = ALIGN (0x4)
+                0x0800ad40                __exidx_start = .
 
-.ARM.exidx      0x0800ab64        0x8 load address 0x0c00ab64
+.ARM.exidx      0x0800ad40        0x8 load address 0x0c00ad40
  *(.ARM.exidx* .gnu.linkonce.armexidx.*)
- .ARM.exidx     0x0800ab64        0x8 c:/users/pescatore/switchdrive/private/konzept/mcu for gate driver/dave_4-4-2_64bit_2018-02-23/dave-ide-4.4.2-64bit/eclipse/arm-gcc-49/bin/../lib/gcc/arm-none-eabi/4.9.3/armv7e-m/softfp\libgcc.a(_divdi3.o)
- .ARM.exidx     0x0800ab6c        0x0 c:/users/pescatore/switchdrive/private/konzept/mcu for gate driver/dave_4-4-2_64bit_2018-02-23/dave-ide-4.4.2-64bit/eclipse/arm-gcc-49/bin/../lib/gcc/arm-none-eabi/4.9.3/armv7e-m/softfp\libgcc.a(_udivdi3.o)
+ .ARM.exidx     0x0800ad40        0x8 c:/users/pescatore/switchdrive/private/konzept/mcu for gate driver/dave_4-4-2_64bit_2018-02-23/dave-ide-4.4.2-64bit/eclipse/arm-gcc-49/bin/../lib/gcc/arm-none-eabi/4.9.3/armv7e-m/softfp\libgcc.a(_divdi3.o)
+ .ARM.exidx     0x0800ad48        0x0 c:/users/pescatore/switchdrive/private/konzept/mcu for gate driver/dave_4-4-2_64bit_2018-02-23/dave-ide-4.4.2-64bit/eclipse/arm-gcc-49/bin/../lib/gcc/arm-none-eabi/4.9.3/armv7e-m/softfp\libgcc.a(_udivdi3.o)
                                   0x8 (size before relaxing)
-                0x0800ab6c                __exidx_end = .
-                0x0800ab6c                . = ALIGN (0x4)
+                0x0800ad48                __exidx_end = .
+                0x0800ad48                . = ALIGN (0x4)
 
 Stack           0x1fffc000      0x800
                 0x1fffc000                __stack_start = .
@@ -3993,7 +4036,7 @@ Stack           0x1fffc000      0x800
                 0x1fffc800                __stack_end = .
                 0x1fffc800                __initial_sp = .
 
-.ram_code       0x1fffc800      0x448 load address 0x0c00ab6c
+.ram_code       0x1fffc800      0x448 load address 0x0c00ad48
                 0x1fffc800                . = ALIGN (0x4)
                 0x1fffc800                __ram_code_start = .
  *(.ram_code)
@@ -4004,13 +4047,13 @@ Stack           0x1fffc000      0x800
                 0x1fffcc00                PWM_SVM_SVMUpdate
                 0x1fffcc48                . = ALIGN (0x4)
                 0x1fffcc48                __ram_code_end = .
-                0x0c00ab6c                __ram_code_load = LOADADDR (.ram_code)
+                0x0c00ad48                __ram_code_load = LOADADDR (.ram_code)
                 0x00000448                __ram_code_size = (__ram_code_end - __ram_code_start)
 
-.rel.dyn        0x1fffcc48        0x0 load address 0x0c00afb4
+.rel.dyn        0x1fffcc48        0x0 load address 0x0c00b190
  .rel.iplt      0x00000000        0x0 ./Startup/startup_XMC4400.o
 
-.data           0x1fffcc48      0xb24 load address 0x0c00afb4
+.data           0x1fffcc48     0xc674 load address 0x0c00b190
                 0x1fffcc48                . = ALIGN (0x4)
                 0x1fffcc48                __data_start = .
  *(.data)
@@ -4165,127 +4208,127 @@ Stack           0x1fffc000      0x800
                 0x1fffd6c0       0x14 ./Dave/Generated/ACIM_FREQ_CTRL/acim_freq_ctrl_conf.o
                 0x1fffd6c0                ACIM_FREQ_CTRL_1_FB
  .data.comparevalue
-                0x1fffd6d4       0x30 ./main.o
+                0x1fffd6d4     0xbb80 ./main.o
                 0x1fffd6d4                comparevalue
  .data.__fdlib_version
-                0x1fffd704        0x1 c:/users/pescatore/switchdrive/private/konzept/mcu for gate driver/dave_4-4-2_64bit_2018-02-23/dave-ide-4.4.2-64bit/eclipse/arm-gcc-49/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/softfp\libm.a(lib_a-s_lib_ver.o)
-                0x1fffd704                __fdlib_version
- *fill*         0x1fffd705        0x3 
+                0x20009254        0x1 c:/users/pescatore/switchdrive/private/konzept/mcu for gate driver/dave_4-4-2_64bit_2018-02-23/dave-ide-4.4.2-64bit/eclipse/arm-gcc-49/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/softfp\libm.a(lib_a-s_lib_ver.o)
+                0x20009254                __fdlib_version
+ *fill*         0x20009255        0x3 
  .data.impure_data
-                0x1fffd708       0x60 c:/users/pescatore/switchdrive/private/konzept/mcu for gate driver/dave_4-4-2_64bit_2018-02-23/dave-ide-4.4.2-64bit/eclipse/arm-gcc-49/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/softfp\libg_nano.a(lib_a-impure.o)
+                0x20009258       0x60 c:/users/pescatore/switchdrive/private/konzept/mcu for gate driver/dave_4-4-2_64bit_2018-02-23/dave-ide-4.4.2-64bit/eclipse/arm-gcc-49/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/softfp\libg_nano.a(lib_a-impure.o)
  .data._impure_ptr
-                0x1fffd768        0x4 c:/users/pescatore/switchdrive/private/konzept/mcu for gate driver/dave_4-4-2_64bit_2018-02-23/dave-ide-4.4.2-64bit/eclipse/arm-gcc-49/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/softfp\libg_nano.a(lib_a-impure.o)
-                0x1fffd768                _impure_ptr
+                0x200092b8        0x4 c:/users/pescatore/switchdrive/private/konzept/mcu for gate driver/dave_4-4-2_64bit_2018-02-23/dave-ide-4.4.2-64bit/eclipse/arm-gcc-49/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/softfp\libg_nano.a(lib_a-impure.o)
+                0x200092b8                _impure_ptr
  *(*.data)
  *(.gnu.linkonce.d*)
-                0x1fffd76c                . = ALIGN (0x4)
-                0x1fffd76c                PROVIDE (__preinit_array_start, .)
+                0x200092bc                . = ALIGN (0x4)
+                0x200092bc                PROVIDE (__preinit_array_start, .)
  *(.preinit_array)
-                0x1fffd76c                PROVIDE (__preinit_array_end, .)
-                0x1fffd76c                . = ALIGN (0x4)
-                0x1fffd76c                PROVIDE (__init_array_start, .)
+                0x200092bc                PROVIDE (__preinit_array_end, .)
+                0x200092bc                . = ALIGN (0x4)
+                0x200092bc                PROVIDE (__init_array_start, .)
  *(SORT(.init_array.*))
  *(.init_array)
-                0x1fffd76c                PROVIDE (__init_array_end, .)
-                0x1fffd76c                . = ALIGN (0x4)
-                0x1fffd76c                PROVIDE (__fini_array_start, .)
+                0x200092bc                PROVIDE (__init_array_end, .)
+                0x200092bc                . = ALIGN (0x4)
+                0x200092bc                PROVIDE (__fini_array_start, .)
  *(SORT(.fini_array.*))
  *(.fini_array)
-                0x1fffd76c                PROVIDE (__fini_array_end, .)
-                0x1fffd76c                . = ALIGN (0x4)
-                0x1fffd76c                __data_end = .
-                0x0c00afb4                __data_load = LOADADDR (.data)
-                0x00000b24                __data_size = (__data_end - __data_start)
-                0x0000bad8                __text_size = (((__exidx_end - sText) + __data_size) + __ram_code_size)
-                0x0800bad8                eText = (sText + __text_size)
+                0x200092bc                PROVIDE (__fini_array_end, .)
+                0x200092bc                . = ALIGN (0x4)
+                0x200092bc                __data_end = .
+                0x0c00b190                __data_load = LOADADDR (.data)
+                0x0000c674                __data_size = (__data_end - __data_start)
+                0x00017804                __text_size = (((__exidx_end - sText) + __data_size) + __ram_code_size)
+                0x08017804                eText = (sText + __text_size)
 
-.igot.plt       0x1fffd76c        0x0 load address 0x0c00bad8
+.igot.plt       0x200092bc        0x0 load address 0x0c017804
  .igot.plt      0x00000000        0x0 ./Startup/startup_XMC4400.o
 
-.bss            0x1fffd76c      0x51c load address 0x0c00bad8
-                0x1fffd76c                . = ALIGN (0x4)
-                0x1fffd76c                __bss_start = .
+.bss            0x200092bc      0x51c load address 0x0c017804
+                0x200092bc                . = ALIGN (0x4)
+                0x200092bc                __bss_start = .
  *(.bss)
  *(.bss*)
  .bss.UART_0_runtime
-                0x1fffd76c       0x1c ./Dave/Generated/UART/uart_conf.o
-                0x1fffd76c                UART_0_runtime
+                0x200092bc       0x1c ./Dave/Generated/UART/uart_conf.o
+                0x200092bc                UART_0_runtime
  .bss.g_timer_list
-                0x1fffd788        0x4 ./Dave/Generated/SYSTIMER/systimer.o
-                0x1fffd788                g_timer_list
+                0x200092d8        0x4 ./Dave/Generated/SYSTIMER/systimer.o
+                0x200092d8                g_timer_list
  .bss.g_timer_tracker
-                0x1fffd78c        0x4 ./Dave/Generated/SYSTIMER/systimer.o
-                0x1fffd78c                g_timer_tracker
+                0x200092dc        0x4 ./Dave/Generated/SYSTIMER/systimer.o
+                0x200092dc                g_timer_tracker
  .bss.g_systick_count
-                0x1fffd790        0x4 ./Dave/Generated/SYSTIMER/systimer.o
-                0x1fffd790                g_systick_count
+                0x200092e0        0x4 ./Dave/Generated/SYSTIMER/systimer.o
+                0x200092e0                g_systick_count
  .bss.SYSTIMER_0
-                0x1fffd794        0x4 ./Dave/Generated/SYSTIMER/systimer_conf.o
-                0x1fffd794                SYSTIMER_0
+                0x200092e4        0x4 ./Dave/Generated/SYSTIMER/systimer_conf.o
+                0x200092e4                SYSTIMER_0
  .bss.CLOCK_XMC4_0
-                0x1fffd798        0x4 ./Dave/Generated/CLOCK_XMC4/clock_xmc4_conf.o
-                0x1fffd798                CLOCK_XMC4_0
+                0x200092e8        0x4 ./Dave/Generated/CLOCK_XMC4/clock_xmc4_conf.o
+                0x200092e8                CLOCK_XMC4_0
  .bss.AUTOMATION_EH_BitInterface_Word
-                0x1fffd79c        0x8 ./Dave/Generated/AUTOMATION/automation.o
+                0x200092ec        0x8 ./Dave/Generated/AUTOMATION/automation.o
  .bss.AUTOMATION_EH_ReportingInterface
-                0x1fffd7a4        0x8 ./Dave/Generated/AUTOMATION/automation.o
+                0x200092f4        0x8 ./Dave/Generated/AUTOMATION/automation.o
  .bss.ANALOG_IO_0_state
-                0x1fffd7ac        0x1 ./Dave/Generated/ANALOG_IO/analog_io_conf.o
+                0x200092fc        0x1 ./Dave/Generated/ANALOG_IO/analog_io_conf.o
  .bss.ANALOG_IO_1_state
-                0x1fffd7ad        0x1 ./Dave/Generated/ANALOG_IO/analog_io_conf.o
+                0x200092fd        0x1 ./Dave/Generated/ANALOG_IO/analog_io_conf.o
  .bss.ANALOG_IO_2_state
-                0x1fffd7ae        0x1 ./Dave/Generated/ANALOG_IO/analog_io_conf.o
- *fill*         0x1fffd7af        0x1 
+                0x200092fe        0x1 ./Dave/Generated/ANALOG_IO/analog_io_conf.o
+ *fill*         0x200092ff        0x1 
  .bss.Channel_A_res_config
-                0x1fffd7b0        0x4 ./Dave/Generated/ADC_MEASUREMENT/adc_measurement_conf.o
-                0x1fffd7b0                Channel_A_res_config
- .bss.count     0x1fffd7b4        0x1 ./main.o
-                0x1fffd7b4                count
- *fill*         0x1fffd7b5        0x3 
- .bss.fan_flag  0x1fffd7b8        0x4 ./main.o
-                0x1fffd7b8                fan_flag
+                0x20009300        0x4 ./Dave/Generated/ADC_MEASUREMENT/adc_measurement_conf.o
+                0x20009300                Channel_A_res_config
+ .bss.count     0x20009304        0x2 ./main.o
+                0x20009304                count
+ *fill*         0x20009306        0x2 
+ .bss.fan_flag  0x20009308        0x4 ./main.o
+                0x20009308                fan_flag
  *(COMMON)
- COMMON         0x1fffd7bc      0x120 ./Dave/Generated/SYSTIMER/systimer.o
-                0x1fffd7bc                g_timer_tbl
- COMMON         0x1fffd8dc      0x398 ./Dave/Generated/AUTOMATION/automation_conf.o
-                0x1fffd8dc                AUTOMATION_FB_Table
-                0x1fffd8e8                AUTOMATION_SM_Table
-                0x1fffd8ec                AUTOMATION_EH_BitErrorTable
-                0x1fffda6c                AUTOMATION_App_Table
-                0x1fffda74                AUTOMATION_PH_Parameter_Buf
-                0x1fffda84                AUTOMATION_EH_APPBUFFER_DATA
-                0x1fffdaac                AUTOMATION_PH_Param_Table
-                0x1fffdab0                AUTOMATION_EH_LOGBOOK_DATA
-                0x1fffdb50                AUTOMATION_FB_ExecutionOrderList
-                0x1fffdb54                AUTOMATION_FB_Connect_Table
-                0x1fffdc2c                AUTOMATION_Task_Table
- COMMON         0x1fffdc74       0x12 ./main.o
-                0x1fffdc74                temp
-                0x1fffdc78                result
-                0x1fffdc7c                rec_data
+ COMMON         0x2000930c      0x120 ./Dave/Generated/SYSTIMER/systimer.o
+                0x2000930c                g_timer_tbl
+ COMMON         0x2000942c      0x398 ./Dave/Generated/AUTOMATION/automation_conf.o
+                0x2000942c                AUTOMATION_FB_Table
+                0x20009438                AUTOMATION_SM_Table
+                0x2000943c                AUTOMATION_EH_BitErrorTable
+                0x200095bc                AUTOMATION_App_Table
+                0x200095c4                AUTOMATION_PH_Parameter_Buf
+                0x200095d4                AUTOMATION_EH_APPBUFFER_DATA
+                0x200095fc                AUTOMATION_PH_Param_Table
+                0x20009600                AUTOMATION_EH_LOGBOOK_DATA
+                0x200096a0                AUTOMATION_FB_ExecutionOrderList
+                0x200096a4                AUTOMATION_FB_Connect_Table
+                0x2000977c                AUTOMATION_Task_Table
+ COMMON         0x200097c4       0x12 ./main.o
+                0x200097c4                temp
+                0x200097c8                result
+                0x200097cc                rec_data
  *(.gnu.linkonce.b*)
-                0x1fffdc88                . = ALIGN (0x4)
- *fill*         0x1fffdc86        0x2 
-                0x1fffdc88                __bss_end = .
+                0x200097d8                . = ALIGN (0x4)
+ *fill*         0x200097d6        0x2 
+                0x200097d8                __bss_end = .
                 0x0000051c                __bss_size = (__bss_end - __bss_start)
-                0x00002378                __shift_loc = (__bss_end >= ORIGIN (DSRAM_1_system))?0x0:(ORIGIN (DSRAM_1_system) - __bss_end)
+                0x00000000                __shift_loc = (__bss_end >= ORIGIN (DSRAM_1_system))?0x0:(ORIGIN (DSRAM_1_system) - __bss_end)
 
-USB_RAM         0x20000000        0x0
-                0x20000000                . = ALIGN (0x4)
-                0x20000000                USB_RAM_start = .
+USB_RAM         0x200097d8        0x0
+                0x200097d8                . = ALIGN (0x4)
+                0x200097d8                USB_RAM_start = .
  *(USB_RAM)
-                0x20000000                . = ALIGN (0x4)
-                0x20000000                USB_RAM_end = .
+                0x200097d8                . = ALIGN (0x4)
+                0x200097d8                USB_RAM_end = .
                 0x00000000                USB_RAM_size = (USB_RAM_end - USB_RAM_start)
 
-ETH_RAM         0x20000000        0x0
-                0x20000000                . = ALIGN (0x4)
-                0x20000000                ETH_RAM_start = .
+ETH_RAM         0x200097d8        0x0
+                0x200097d8                . = ALIGN (0x4)
+                0x200097d8                ETH_RAM_start = .
  *(ETH_RAM)
-                0x20000000                . = ALIGN (0x4)
-                0x20000000                ETH_RAM_end = .
-                0x20000000                . = ALIGN (0x8)
-                0x20000000                Heap_Bank1_Start = .
+                0x200097d8                . = ALIGN (0x4)
+                0x200097d8                ETH_RAM_end = .
+                0x200097d8                . = ALIGN (0x8)
+                0x200097d8                Heap_Bank1_Start = .
                 0x00000000                ETH_RAM_size = (ETH_RAM_end - ETH_RAM_start)
 
 .no_init        0x2000ffc0       0x20
@@ -4295,7 +4338,7 @@ ETH_RAM         0x20000000        0x0
                 0x2000ffc0                SystemCoreClock
                 0x2000ffc4                g_chipid
                 0x2000ffd4                g_hrpwm_char_data
-                0x0000ffc0                Heap_Bank1_Size = (Heap_Bank1_End - Heap_Bank1_Start)
+                0x000067e8                Heap_Bank1_Size = (Heap_Bank1_End - Heap_Bank1_Start)
                 0x00000001                ASSERT ((Heap_Bank1_Start <= Heap_Bank1_End), region SRAM_combined overflowed no_init section)
 
 /DISCARD/
@@ -4319,7 +4362,7 @@ ETH_RAM         0x20000000        0x0
 .debug_sfnames
  *(.debug_sfnames)
 
-.debug_aranges  0x00000000     0x1c80
+.debug_aranges  0x00000000     0x1cf0
  *(.debug_aranges)
  .debug_aranges
                 0x00000000       0x20 ./Startup/startup_XMC4400.o
@@ -4398,27 +4441,31 @@ ETH_RAM         0x20000000        0x0
  .debug_aranges
                 0x00001578       0x50 ./Dave/Generated/CCU8_SLICE_CONFIG/ccu8_slice_config_conf.o
  .debug_aranges
-                0x000015c8      0x158 ./Dave/Generated/AUTOMATION/automation.o
+                0x000015c8       0x28 ./Dave/Generated/CCU4_SLICE_CONFIG/ccu4_slice_config.o
  .debug_aranges
-                0x00001720       0x18 ./Dave/Generated/AUTOMATION/automation_conf.o
+                0x000015f0       0x48 ./Dave/Generated/CCU4_SLICE_CONFIG/ccu4_slice_config_conf.o
  .debug_aranges
-                0x00001738       0x28 ./Dave/Generated/ANALOG_IO/analog_io.o
+                0x00001638      0x158 ./Dave/Generated/AUTOMATION/automation.o
  .debug_aranges
-                0x00001760       0x18 ./Dave/Generated/ANALOG_IO/analog_io_conf.o
+                0x00001790       0x18 ./Dave/Generated/AUTOMATION/automation_conf.o
  .debug_aranges
-                0x00001778       0x88 ./Dave/Generated/ADC_MEASUREMENT/adc_measurement.o
+                0x000017a8       0x28 ./Dave/Generated/ANALOG_IO/analog_io.o
  .debug_aranges
-                0x00001800       0x18 ./Dave/Generated/ADC_MEASUREMENT/adc_measurement_conf.o
+                0x000017d0       0x18 ./Dave/Generated/ANALOG_IO/analog_io_conf.o
  .debug_aranges
-                0x00001818      0x330 ./Dave/Generated/ACIM_FREQ_CTRL/acim_freq_ctrl.o
+                0x000017e8       0x88 ./Dave/Generated/ADC_MEASUREMENT/adc_measurement.o
  .debug_aranges
-                0x00001b48       0x18 ./Dave/Generated/ACIM_FREQ_CTRL/acim_freq_ctrl_conf.o
+                0x00001870       0x18 ./Dave/Generated/ADC_MEASUREMENT/adc_measurement_conf.o
  .debug_aranges
-                0x00001b60       0x48 ./Dave/Generated/ACIM_FREQ_CTRL/acim_freq_ctrl_control.o
+                0x00001888      0x330 ./Dave/Generated/ACIM_FREQ_CTRL/acim_freq_ctrl.o
  .debug_aranges
-                0x00001ba8       0x20 ./Dave/Generated/DAVE.o
+                0x00001bb8       0x18 ./Dave/Generated/ACIM_FREQ_CTRL/acim_freq_ctrl_conf.o
  .debug_aranges
-                0x00001bc8       0xb8 ./main.o
+                0x00001bd0       0x48 ./Dave/Generated/ACIM_FREQ_CTRL/acim_freq_ctrl_control.o
+ .debug_aranges
+                0x00001c18       0x20 ./Dave/Generated/DAVE.o
+ .debug_aranges
+                0x00001c38       0xb8 ./main.o
 
 .debug_pubnames
  *(.debug_pubnames)
@@ -4426,7 +4473,7 @@ ETH_RAM         0x20000000        0x0
 .debug_pubtypes
  *(.debug_pubtypes)
 
-.debug_info     0x00000000    0x35f38
+.debug_info     0x00000000    0x37122
  *(.debug_info .gnu.linkonce.wi.*)
  .debug_info    0x00000000       0x70 ./Startup/startup_XMC4400.o
  .debug_info    0x00000070      0x94d ./Startup/system_XMC4400.o
@@ -4466,19 +4513,21 @@ ETH_RAM         0x20000000        0x0
  .debug_info    0x0001d873      0x385 ./Dave/Generated/CLOCK_XMC4/clock_xmc4_conf.o
  .debug_info    0x0001dbf8      0x668 ./Dave/Generated/CCU8_SLICE_CONFIG/ccu8_slice_config.o
  .debug_info    0x0001e260      0xcb1 ./Dave/Generated/CCU8_SLICE_CONFIG/ccu8_slice_config_conf.o
- .debug_info    0x0001ef11     0x197d ./Dave/Generated/AUTOMATION/automation.o
- .debug_info    0x0002088e      0xcae ./Dave/Generated/AUTOMATION/automation_conf.o
- .debug_info    0x0002153c      0x38c ./Dave/Generated/ANALOG_IO/analog_io.o
- .debug_info    0x000218c8      0x31e ./Dave/Generated/ANALOG_IO/analog_io_conf.o
- .debug_info    0x00021be6     0x20b2 ./Dave/Generated/ADC_MEASUREMENT/adc_measurement.o
- .debug_info    0x00023c98     0x1a67 ./Dave/Generated/ADC_MEASUREMENT/adc_measurement_conf.o
- .debug_info    0x000256ff     0x44f0 ./Dave/Generated/ACIM_FREQ_CTRL/acim_freq_ctrl.o
- .debug_info    0x00029bef     0x267b ./Dave/Generated/ACIM_FREQ_CTRL/acim_freq_ctrl_conf.o
- .debug_info    0x0002c26a     0x239f ./Dave/Generated/ACIM_FREQ_CTRL/acim_freq_ctrl_control.o
- .debug_info    0x0002e609     0x528f ./Dave/Generated/DAVE.o
- .debug_info    0x00033898     0x26a0 ./main.o
+ .debug_info    0x0001ef11      0x5ee ./Dave/Generated/CCU4_SLICE_CONFIG/ccu4_slice_config.o
+ .debug_info    0x0001f4ff      0xadd ./Dave/Generated/CCU4_SLICE_CONFIG/ccu4_slice_config_conf.o
+ .debug_info    0x0001ffdc     0x197d ./Dave/Generated/AUTOMATION/automation.o
+ .debug_info    0x00021959      0xcae ./Dave/Generated/AUTOMATION/automation_conf.o
+ .debug_info    0x00022607      0x38c ./Dave/Generated/ANALOG_IO/analog_io.o
+ .debug_info    0x00022993      0x31e ./Dave/Generated/ANALOG_IO/analog_io_conf.o
+ .debug_info    0x00022cb1     0x20b2 ./Dave/Generated/ADC_MEASUREMENT/adc_measurement.o
+ .debug_info    0x00024d63     0x1a67 ./Dave/Generated/ADC_MEASUREMENT/adc_measurement_conf.o
+ .debug_info    0x000267ca     0x44f0 ./Dave/Generated/ACIM_FREQ_CTRL/acim_freq_ctrl.o
+ .debug_info    0x0002acba     0x267b ./Dave/Generated/ACIM_FREQ_CTRL/acim_freq_ctrl_conf.o
+ .debug_info    0x0002d335     0x239f ./Dave/Generated/ACIM_FREQ_CTRL/acim_freq_ctrl_control.o
+ .debug_info    0x0002f6d4     0x5321 ./Dave/Generated/DAVE.o
+ .debug_info    0x000349f5     0x272d ./main.o
 
-.debug_abbrev   0x00000000     0x5406
+.debug_abbrev   0x00000000     0x5728
  *(.debug_abbrev)
  .debug_abbrev  0x00000000       0x14 ./Startup/startup_XMC4400.o
  .debug_abbrev  0x00000014      0x1a1 ./Startup/system_XMC4400.o
@@ -4518,19 +4567,21 @@ ETH_RAM         0x20000000        0x0
  .debug_abbrev  0x00003a47      0x104 ./Dave/Generated/CLOCK_XMC4/clock_xmc4_conf.o
  .debug_abbrev  0x00003b4b      0x160 ./Dave/Generated/CCU8_SLICE_CONFIG/ccu8_slice_config.o
  .debug_abbrev  0x00003cab      0x1a8 ./Dave/Generated/CCU8_SLICE_CONFIG/ccu8_slice_config_conf.o
- .debug_abbrev  0x00003e53      0x24d ./Dave/Generated/AUTOMATION/automation.o
- .debug_abbrev  0x000040a0      0x12c ./Dave/Generated/AUTOMATION/automation_conf.o
- .debug_abbrev  0x000041cc      0x140 ./Dave/Generated/ANALOG_IO/analog_io.o
- .debug_abbrev  0x0000430c      0x104 ./Dave/Generated/ANALOG_IO/analog_io_conf.o
- .debug_abbrev  0x00004410      0x27c ./Dave/Generated/ADC_MEASUREMENT/adc_measurement.o
- .debug_abbrev  0x0000468c      0x18a ./Dave/Generated/ADC_MEASUREMENT/adc_measurement_conf.o
- .debug_abbrev  0x00004816      0x349 ./Dave/Generated/ACIM_FREQ_CTRL/acim_freq_ctrl.o
- .debug_abbrev  0x00004b5f      0x1b8 ./Dave/Generated/ACIM_FREQ_CTRL/acim_freq_ctrl_conf.o
- .debug_abbrev  0x00004d17      0x206 ./Dave/Generated/ACIM_FREQ_CTRL/acim_freq_ctrl_control.o
- .debug_abbrev  0x00004f1d      0x200 ./Dave/Generated/DAVE.o
- .debug_abbrev  0x0000511d      0x2e9 ./main.o
+ .debug_abbrev  0x00003e53      0x160 ./Dave/Generated/CCU4_SLICE_CONFIG/ccu4_slice_config.o
+ .debug_abbrev  0x00003fb3      0x1a8 ./Dave/Generated/CCU4_SLICE_CONFIG/ccu4_slice_config_conf.o
+ .debug_abbrev  0x0000415b      0x24d ./Dave/Generated/AUTOMATION/automation.o
+ .debug_abbrev  0x000043a8      0x12c ./Dave/Generated/AUTOMATION/automation_conf.o
+ .debug_abbrev  0x000044d4      0x140 ./Dave/Generated/ANALOG_IO/analog_io.o
+ .debug_abbrev  0x00004614      0x104 ./Dave/Generated/ANALOG_IO/analog_io_conf.o
+ .debug_abbrev  0x00004718      0x27c ./Dave/Generated/ADC_MEASUREMENT/adc_measurement.o
+ .debug_abbrev  0x00004994      0x18a ./Dave/Generated/ADC_MEASUREMENT/adc_measurement_conf.o
+ .debug_abbrev  0x00004b1e      0x349 ./Dave/Generated/ACIM_FREQ_CTRL/acim_freq_ctrl.o
+ .debug_abbrev  0x00004e67      0x1b8 ./Dave/Generated/ACIM_FREQ_CTRL/acim_freq_ctrl_conf.o
+ .debug_abbrev  0x0000501f      0x206 ./Dave/Generated/ACIM_FREQ_CTRL/acim_freq_ctrl_control.o
+ .debug_abbrev  0x00005225      0x200 ./Dave/Generated/DAVE.o
+ .debug_abbrev  0x00005425      0x303 ./main.o
 
-.debug_line     0x00000000     0xe3d9
+.debug_line     0x00000000     0xeb98
  *(.debug_line)
  .debug_line    0x00000000       0x87 ./Startup/startup_XMC4400.o
  .debug_line    0x00000087      0x36d ./Startup/system_XMC4400.o
@@ -4570,19 +4621,21 @@ ETH_RAM         0x20000000        0x0
  .debug_line    0x00009af0      0x2d8 ./Dave/Generated/CLOCK_XMC4/clock_xmc4_conf.o
  .debug_line    0x00009dc8      0x399 ./Dave/Generated/CCU8_SLICE_CONFIG/ccu8_slice_config.o
  .debug_line    0x0000a161      0x3d8 ./Dave/Generated/CCU8_SLICE_CONFIG/ccu8_slice_config_conf.o
- .debug_line    0x0000a539      0x7bc ./Dave/Generated/AUTOMATION/automation.o
- .debug_line    0x0000acf5      0x258 ./Dave/Generated/AUTOMATION/automation_conf.o
- .debug_line    0x0000af4d      0x2be ./Dave/Generated/ANALOG_IO/analog_io.o
- .debug_line    0x0000b20b      0x252 ./Dave/Generated/ANALOG_IO/analog_io_conf.o
- .debug_line    0x0000b45d      0x53c ./Dave/Generated/ADC_MEASUREMENT/adc_measurement.o
- .debug_line    0x0000b999      0x3b1 ./Dave/Generated/ADC_MEASUREMENT/adc_measurement_conf.o
- .debug_line    0x0000bd4a      0xef5 ./Dave/Generated/ACIM_FREQ_CTRL/acim_freq_ctrl.o
- .debug_line    0x0000cc3f      0x476 ./Dave/Generated/ACIM_FREQ_CTRL/acim_freq_ctrl_conf.o
- .debug_line    0x0000d0b5      0x4f2 ./Dave/Generated/ACIM_FREQ_CTRL/acim_freq_ctrl_control.o
- .debug_line    0x0000d5a7      0x774 ./Dave/Generated/DAVE.o
- .debug_line    0x0000dd1b      0x6be ./main.o
+ .debug_line    0x0000a539      0x399 ./Dave/Generated/CCU4_SLICE_CONFIG/ccu4_slice_config.o
+ .debug_line    0x0000a8d2      0x3c1 ./Dave/Generated/CCU4_SLICE_CONFIG/ccu4_slice_config_conf.o
+ .debug_line    0x0000ac93      0x7bc ./Dave/Generated/AUTOMATION/automation.o
+ .debug_line    0x0000b44f      0x258 ./Dave/Generated/AUTOMATION/automation_conf.o
+ .debug_line    0x0000b6a7      0x2be ./Dave/Generated/ANALOG_IO/analog_io.o
+ .debug_line    0x0000b965      0x252 ./Dave/Generated/ANALOG_IO/analog_io_conf.o
+ .debug_line    0x0000bbb7      0x53c ./Dave/Generated/ADC_MEASUREMENT/adc_measurement.o
+ .debug_line    0x0000c0f3      0x3b1 ./Dave/Generated/ADC_MEASUREMENT/adc_measurement_conf.o
+ .debug_line    0x0000c4a4      0xef5 ./Dave/Generated/ACIM_FREQ_CTRL/acim_freq_ctrl.o
+ .debug_line    0x0000d399      0x476 ./Dave/Generated/ACIM_FREQ_CTRL/acim_freq_ctrl_conf.o
+ .debug_line    0x0000d80f      0x4f2 ./Dave/Generated/ACIM_FREQ_CTRL/acim_freq_ctrl_control.o
+ .debug_line    0x0000dd01      0x7cf ./Dave/Generated/DAVE.o
+ .debug_line    0x0000e4d0      0x6c8 ./main.o
 
-.debug_frame    0x00000000     0x7ae8
+.debug_frame    0x00000000     0x7c48
  *(.debug_frame)
  .debug_frame   0x00000000       0xec ./Startup/system_XMC4400.o
  .debug_frame   0x000000ec       0x60 ./Libraries/XMCLib/src/xmc4_gpio.o
@@ -4613,26 +4666,28 @@ ETH_RAM         0x20000000        0x0
  .debug_frame   0x000059ac       0x3c ./Dave/Generated/CLOCK_XMC4/clock_xmc4_conf.o
  .debug_frame   0x000059e8       0x60 ./Dave/Generated/CCU8_SLICE_CONFIG/ccu8_slice_config.o
  .debug_frame   0x00005a48      0x11c ./Dave/Generated/CCU8_SLICE_CONFIG/ccu8_slice_config_conf.o
- .debug_frame   0x00005b64      0x668 ./Dave/Generated/AUTOMATION/automation.o
- .debug_frame   0x000061cc       0x60 ./Dave/Generated/ANALOG_IO/analog_io.o
- .debug_frame   0x0000622c      0x240 ./Dave/Generated/ADC_MEASUREMENT/adc_measurement.o
- .debug_frame   0x0000646c      0xff4 ./Dave/Generated/ACIM_FREQ_CTRL/acim_freq_ctrl.o
- .debug_frame   0x00007460      0x100 ./Dave/Generated/ACIM_FREQ_CTRL/acim_freq_ctrl_control.o
- .debug_frame   0x00007560       0x38 ./Dave/Generated/DAVE.o
- .debug_frame   0x00007598      0x320 ./main.o
- .debug_frame   0x000078b8       0x40 c:/users/pescatore/switchdrive/private/konzept/mcu for gate driver/dave_4-4-2_64bit_2018-02-23/dave-ide-4.4.2-64bit/eclipse/arm-gcc-49/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/softfp\libm.a(lib_a-w_log.o)
- .debug_frame   0x000078f8       0x54 c:/users/pescatore/switchdrive/private/konzept/mcu for gate driver/dave_4-4-2_64bit_2018-02-23/dave-ide-4.4.2-64bit/eclipse/arm-gcc-49/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/softfp\libm.a(lib_a-e_log.o)
- .debug_frame   0x0000794c       0x34 c:/users/pescatore/switchdrive/private/konzept/mcu for gate driver/dave_4-4-2_64bit_2018-02-23/dave-ide-4.4.2-64bit/eclipse/arm-gcc-49/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/softfp\libm.a(lib_a-s_fpclassify.o)
- .debug_frame   0x00007980       0x20 c:/users/pescatore/switchdrive/private/konzept/mcu for gate driver/dave_4-4-2_64bit_2018-02-23/dave-ide-4.4.2-64bit/eclipse/arm-gcc-49/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/softfp\libm.a(lib_a-s_matherr.o)
- .debug_frame   0x000079a0       0x20 c:/users/pescatore/switchdrive/private/konzept/mcu for gate driver/dave_4-4-2_64bit_2018-02-23/dave-ide-4.4.2-64bit/eclipse/arm-gcc-49/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/softfp\libm.a(lib_a-s_nan.o)
- .debug_frame   0x000079c0       0x28 c:/users/pescatore/switchdrive/private/konzept/mcu for gate driver/dave_4-4-2_64bit_2018-02-23/dave-ide-4.4.2-64bit/eclipse/arm-gcc-49/bin/../lib/gcc/arm-none-eabi/4.9.3/armv7e-m/softfp\libgcc.a(_aeabi_ldivmod.o)
- .debug_frame   0x000079e8       0x50 c:/users/pescatore/switchdrive/private/konzept/mcu for gate driver/dave_4-4-2_64bit_2018-02-23/dave-ide-4.4.2-64bit/eclipse/arm-gcc-49/bin/../lib/gcc/arm-none-eabi/4.9.3/armv7e-m/softfp\libgcc.a(bpabi.o)
- .debug_frame   0x00007a38       0x34 c:/users/pescatore/switchdrive/private/konzept/mcu for gate driver/dave_4-4-2_64bit_2018-02-23/dave-ide-4.4.2-64bit/eclipse/arm-gcc-49/bin/../lib/gcc/arm-none-eabi/4.9.3/armv7e-m/softfp\libgcc.a(_divdi3.o)
- .debug_frame   0x00007a6c       0x30 c:/users/pescatore/switchdrive/private/konzept/mcu for gate driver/dave_4-4-2_64bit_2018-02-23/dave-ide-4.4.2-64bit/eclipse/arm-gcc-49/bin/../lib/gcc/arm-none-eabi/4.9.3/armv7e-m/softfp\libgcc.a(_udivdi3.o)
- .debug_frame   0x00007a9c       0x20 c:/users/pescatore/switchdrive/private/konzept/mcu for gate driver/dave_4-4-2_64bit_2018-02-23/dave-ide-4.4.2-64bit/eclipse/arm-gcc-49/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/softfp\libg_nano.a(lib_a-errno.o)
- .debug_frame   0x00007abc       0x2c c:/users/pescatore/switchdrive/private/konzept/mcu for gate driver/dave_4-4-2_64bit_2018-02-23/dave-ide-4.4.2-64bit/eclipse/arm-gcc-49/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/softfp\libg_nano.a(lib_a-init.o)
+ .debug_frame   0x00005b64       0x60 ./Dave/Generated/CCU4_SLICE_CONFIG/ccu4_slice_config.o
+ .debug_frame   0x00005bc4       0xf4 ./Dave/Generated/CCU4_SLICE_CONFIG/ccu4_slice_config_conf.o
+ .debug_frame   0x00005cb8      0x668 ./Dave/Generated/AUTOMATION/automation.o
+ .debug_frame   0x00006320       0x60 ./Dave/Generated/ANALOG_IO/analog_io.o
+ .debug_frame   0x00006380      0x240 ./Dave/Generated/ADC_MEASUREMENT/adc_measurement.o
+ .debug_frame   0x000065c0      0xff4 ./Dave/Generated/ACIM_FREQ_CTRL/acim_freq_ctrl.o
+ .debug_frame   0x000075b4      0x100 ./Dave/Generated/ACIM_FREQ_CTRL/acim_freq_ctrl_control.o
+ .debug_frame   0x000076b4       0x38 ./Dave/Generated/DAVE.o
+ .debug_frame   0x000076ec      0x32c ./main.o
+ .debug_frame   0x00007a18       0x40 c:/users/pescatore/switchdrive/private/konzept/mcu for gate driver/dave_4-4-2_64bit_2018-02-23/dave-ide-4.4.2-64bit/eclipse/arm-gcc-49/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/softfp\libm.a(lib_a-w_log.o)
+ .debug_frame   0x00007a58       0x54 c:/users/pescatore/switchdrive/private/konzept/mcu for gate driver/dave_4-4-2_64bit_2018-02-23/dave-ide-4.4.2-64bit/eclipse/arm-gcc-49/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/softfp\libm.a(lib_a-e_log.o)
+ .debug_frame   0x00007aac       0x34 c:/users/pescatore/switchdrive/private/konzept/mcu for gate driver/dave_4-4-2_64bit_2018-02-23/dave-ide-4.4.2-64bit/eclipse/arm-gcc-49/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/softfp\libm.a(lib_a-s_fpclassify.o)
+ .debug_frame   0x00007ae0       0x20 c:/users/pescatore/switchdrive/private/konzept/mcu for gate driver/dave_4-4-2_64bit_2018-02-23/dave-ide-4.4.2-64bit/eclipse/arm-gcc-49/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/softfp\libm.a(lib_a-s_matherr.o)
+ .debug_frame   0x00007b00       0x20 c:/users/pescatore/switchdrive/private/konzept/mcu for gate driver/dave_4-4-2_64bit_2018-02-23/dave-ide-4.4.2-64bit/eclipse/arm-gcc-49/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/softfp\libm.a(lib_a-s_nan.o)
+ .debug_frame   0x00007b20       0x28 c:/users/pescatore/switchdrive/private/konzept/mcu for gate driver/dave_4-4-2_64bit_2018-02-23/dave-ide-4.4.2-64bit/eclipse/arm-gcc-49/bin/../lib/gcc/arm-none-eabi/4.9.3/armv7e-m/softfp\libgcc.a(_aeabi_ldivmod.o)
+ .debug_frame   0x00007b48       0x50 c:/users/pescatore/switchdrive/private/konzept/mcu for gate driver/dave_4-4-2_64bit_2018-02-23/dave-ide-4.4.2-64bit/eclipse/arm-gcc-49/bin/../lib/gcc/arm-none-eabi/4.9.3/armv7e-m/softfp\libgcc.a(bpabi.o)
+ .debug_frame   0x00007b98       0x34 c:/users/pescatore/switchdrive/private/konzept/mcu for gate driver/dave_4-4-2_64bit_2018-02-23/dave-ide-4.4.2-64bit/eclipse/arm-gcc-49/bin/../lib/gcc/arm-none-eabi/4.9.3/armv7e-m/softfp\libgcc.a(_divdi3.o)
+ .debug_frame   0x00007bcc       0x30 c:/users/pescatore/switchdrive/private/konzept/mcu for gate driver/dave_4-4-2_64bit_2018-02-23/dave-ide-4.4.2-64bit/eclipse/arm-gcc-49/bin/../lib/gcc/arm-none-eabi/4.9.3/armv7e-m/softfp\libgcc.a(_udivdi3.o)
+ .debug_frame   0x00007bfc       0x20 c:/users/pescatore/switchdrive/private/konzept/mcu for gate driver/dave_4-4-2_64bit_2018-02-23/dave-ide-4.4.2-64bit/eclipse/arm-gcc-49/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/softfp\libg_nano.a(lib_a-errno.o)
+ .debug_frame   0x00007c1c       0x2c c:/users/pescatore/switchdrive/private/konzept/mcu for gate driver/dave_4-4-2_64bit_2018-02-23/dave-ide-4.4.2-64bit/eclipse/arm-gcc-49/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/softfp\libg_nano.a(lib_a-init.o)
 
-.debug_str      0x00000000    0x13e6e
+.debug_str      0x00000000    0x140b5
  *(.debug_str)
  .debug_str     0x00000000      0x52e ./Startup/system_XMC4400.o
                                 0x5b4 (size before relaxing)
@@ -4708,30 +4763,34 @@ ETH_RAM         0x20000000        0x0
                                 0x626 (size before relaxing)
  .debug_str     0x0000ef0b      0x525 ./Dave/Generated/CCU8_SLICE_CONFIG/ccu8_slice_config_conf.o
                                0x14d2 (size before relaxing)
- .debug_str     0x0000f430     0x169e ./Dave/Generated/AUTOMATION/automation.o
+ .debug_str     0x0000f430      0x10b ./Dave/Generated/CCU4_SLICE_CONFIG/ccu4_slice_config.o
+                                0x60c (size before relaxing)
+ .debug_str     0x0000f53b      0x111 ./Dave/Generated/CCU4_SLICE_CONFIG/ccu4_slice_config_conf.o
+                               0x136c (size before relaxing)
+ .debug_str     0x0000f64c     0x169e ./Dave/Generated/AUTOMATION/automation.o
                                0x1a2b (size before relaxing)
- .debug_str     0x00010ace      0x137 ./Dave/Generated/AUTOMATION/automation_conf.o
+ .debug_str     0x00010cea      0x137 ./Dave/Generated/AUTOMATION/automation_conf.o
                                 0xebe (size before relaxing)
- .debug_str     0x00010c05      0x12b ./Dave/Generated/ANALOG_IO/analog_io.o
+ .debug_str     0x00010e21      0x12b ./Dave/Generated/ANALOG_IO/analog_io.o
                                 0x3c2 (size before relaxing)
- .debug_str     0x00010d30       0x87 ./Dave/Generated/ANALOG_IO/analog_io_conf.o
+ .debug_str     0x00010f4c       0x87 ./Dave/Generated/ANALOG_IO/analog_io_conf.o
                                 0x364 (size before relaxing)
- .debug_str     0x00010db7      0x3f0 ./Dave/Generated/ADC_MEASUREMENT/adc_measurement.o
+ .debug_str     0x00010fd3      0x3f0 ./Dave/Generated/ADC_MEASUREMENT/adc_measurement.o
                                0x19d0 (size before relaxing)
- .debug_str     0x000111a7      0x2c8 ./Dave/Generated/ADC_MEASUREMENT/adc_measurement_conf.o
+ .debug_str     0x000113c3      0x2c8 ./Dave/Generated/ADC_MEASUREMENT/adc_measurement_conf.o
                                0x1982 (size before relaxing)
- .debug_str     0x0001146f     0x2443 ./Dave/Generated/ACIM_FREQ_CTRL/acim_freq_ctrl.o
+ .debug_str     0x0001168b     0x2443 ./Dave/Generated/ACIM_FREQ_CTRL/acim_freq_ctrl.o
                                0x4d47 (size before relaxing)
- .debug_str     0x000138b2      0x2f3 ./Dave/Generated/ACIM_FREQ_CTRL/acim_freq_ctrl_conf.o
+ .debug_str     0x00013ace      0x2f3 ./Dave/Generated/ACIM_FREQ_CTRL/acim_freq_ctrl_conf.o
                                0x347f (size before relaxing)
- .debug_str     0x00013ba5       0xfb ./Dave/Generated/ACIM_FREQ_CTRL/acim_freq_ctrl_control.o
+ .debug_str     0x00013dc1       0xfb ./Dave/Generated/ACIM_FREQ_CTRL/acim_freq_ctrl_control.o
                                0x2b10 (size before relaxing)
- .debug_str     0x00013ca0       0x65 ./Dave/Generated/DAVE.o
-                               0x5866 (size before relaxing)
- .debug_str     0x00013d05      0x169 ./main.o
-                               0x2caf (size before relaxing)
+ .debug_str     0x00013ebc       0x65 ./Dave/Generated/DAVE.o
+                               0x5916 (size before relaxing)
+ .debug_str     0x00013f21      0x194 ./main.o
+                               0x2cda (size before relaxing)
 
-.debug_loc      0x00000000     0xfd86
+.debug_loc      0x00000000    0x1004e
  *(.debug_loc)
  .debug_loc     0x00000000      0x1a4 ./Startup/system_XMC4400.o
  .debug_loc     0x000001a4       0xb8 ./Libraries/XMCLib/src/xmc4_gpio.o
@@ -4762,18 +4821,20 @@ ETH_RAM         0x20000000        0x0
  .debug_loc     0x0000be1a       0x50 ./Dave/Generated/CLOCK_XMC4/clock_xmc4_conf.o
  .debug_loc     0x0000be6a       0xac ./Dave/Generated/CCU8_SLICE_CONFIG/ccu8_slice_config.o
  .debug_loc     0x0000bf16      0x254 ./Dave/Generated/CCU8_SLICE_CONFIG/ccu8_slice_config_conf.o
- .debug_loc     0x0000c16a      0xdc4 ./Dave/Generated/AUTOMATION/automation.o
- .debug_loc     0x0000cf2e       0xac ./Dave/Generated/ANALOG_IO/analog_io.o
- .debug_loc     0x0000cfda      0x4c0 ./Dave/Generated/ADC_MEASUREMENT/adc_measurement.o
- .debug_loc     0x0000d49a     0x2040 ./Dave/Generated/ACIM_FREQ_CTRL/acim_freq_ctrl.o
- .debug_loc     0x0000f4da      0x1f8 ./Dave/Generated/ACIM_FREQ_CTRL/acim_freq_ctrl_control.o
- .debug_loc     0x0000f6d2       0x50 ./Dave/Generated/DAVE.o
- .debug_loc     0x0000f722      0x664 ./main.o
+ .debug_loc     0x0000c16a       0xac ./Dave/Generated/CCU4_SLICE_CONFIG/ccu4_slice_config.o
+ .debug_loc     0x0000c216      0x1f8 ./Dave/Generated/CCU4_SLICE_CONFIG/ccu4_slice_config_conf.o
+ .debug_loc     0x0000c40e      0xdc4 ./Dave/Generated/AUTOMATION/automation.o
+ .debug_loc     0x0000d1d2       0xac ./Dave/Generated/ANALOG_IO/analog_io.o
+ .debug_loc     0x0000d27e      0x4c0 ./Dave/Generated/ADC_MEASUREMENT/adc_measurement.o
+ .debug_loc     0x0000d73e     0x2040 ./Dave/Generated/ACIM_FREQ_CTRL/acim_freq_ctrl.o
+ .debug_loc     0x0000f77e      0x1f8 ./Dave/Generated/ACIM_FREQ_CTRL/acim_freq_ctrl_control.o
+ .debug_loc     0x0000f976       0x50 ./Dave/Generated/DAVE.o
+ .debug_loc     0x0000f9c6      0x688 ./main.o
 
 .debug_macinfo
  *(.debug_macinfo)
 
-.debug_ranges   0x00000000     0x1900
+.debug_ranges   0x00000000     0x1950
  *(.debug_ranges)
  .debug_ranges  0x00000000       0x38 ./Startup/system_XMC4400.o
  .debug_ranges  0x00000038       0x18 ./Libraries/XMCLib/src/xmc4_gpio.o
@@ -4804,13 +4865,15 @@ ETH_RAM         0x20000000        0x0
  .debug_ranges  0x000012b0       0x10 ./Dave/Generated/CLOCK_XMC4/clock_xmc4_conf.o
  .debug_ranges  0x000012c0       0x18 ./Dave/Generated/CCU8_SLICE_CONFIG/ccu8_slice_config.o
  .debug_ranges  0x000012d8       0x40 ./Dave/Generated/CCU8_SLICE_CONFIG/ccu8_slice_config_conf.o
- .debug_ranges  0x00001318      0x148 ./Dave/Generated/AUTOMATION/automation.o
- .debug_ranges  0x00001460       0x18 ./Dave/Generated/ANALOG_IO/analog_io.o
- .debug_ranges  0x00001478       0x78 ./Dave/Generated/ADC_MEASUREMENT/adc_measurement.o
- .debug_ranges  0x000014f0      0x320 ./Dave/Generated/ACIM_FREQ_CTRL/acim_freq_ctrl.o
- .debug_ranges  0x00001810       0x38 ./Dave/Generated/ACIM_FREQ_CTRL/acim_freq_ctrl_control.o
- .debug_ranges  0x00001848       0x10 ./Dave/Generated/DAVE.o
- .debug_ranges  0x00001858       0xa8 ./main.o
+ .debug_ranges  0x00001318       0x18 ./Dave/Generated/CCU4_SLICE_CONFIG/ccu4_slice_config.o
+ .debug_ranges  0x00001330       0x38 ./Dave/Generated/CCU4_SLICE_CONFIG/ccu4_slice_config_conf.o
+ .debug_ranges  0x00001368      0x148 ./Dave/Generated/AUTOMATION/automation.o
+ .debug_ranges  0x000014b0       0x18 ./Dave/Generated/ANALOG_IO/analog_io.o
+ .debug_ranges  0x000014c8       0x78 ./Dave/Generated/ADC_MEASUREMENT/adc_measurement.o
+ .debug_ranges  0x00001540      0x320 ./Dave/Generated/ACIM_FREQ_CTRL/acim_freq_ctrl.o
+ .debug_ranges  0x00001860       0x38 ./Dave/Generated/ACIM_FREQ_CTRL/acim_freq_ctrl_control.o
+ .debug_ranges  0x00001898       0x10 ./Dave/Generated/DAVE.o
+ .debug_ranges  0x000018a8       0xa8 ./main.o
 
 .debug_weaknames
  *(.debug_weaknames)
@@ -4825,7 +4888,7 @@ ETH_RAM         0x20000000        0x0
  *(.debug_varnames)
 
 .build_attributes
-                0x00000000      0xd99
+                0x00000000      0xe07
  *(.ARM.attributes)
  .ARM.attributes
                 0x00000000       0x25 ./Startup/startup_XMC4400.o
@@ -4904,61 +4967,65 @@ ETH_RAM         0x20000000        0x0
  .ARM.attributes
                 0x000007e1       0x37 ./Dave/Generated/CCU8_SLICE_CONFIG/ccu8_slice_config_conf.o
  .ARM.attributes
-                0x00000818       0x37 ./Dave/Generated/AUTOMATION/automation.o
+                0x00000818       0x37 ./Dave/Generated/CCU4_SLICE_CONFIG/ccu4_slice_config.o
  .ARM.attributes
-                0x0000084f       0x37 ./Dave/Generated/AUTOMATION/automation_conf.o
+                0x0000084f       0x37 ./Dave/Generated/CCU4_SLICE_CONFIG/ccu4_slice_config_conf.o
  .ARM.attributes
-                0x00000886       0x37 ./Dave/Generated/ANALOG_IO/analog_io.o
+                0x00000886       0x37 ./Dave/Generated/AUTOMATION/automation.o
  .ARM.attributes
-                0x000008bd       0x37 ./Dave/Generated/ANALOG_IO/analog_io_conf.o
+                0x000008bd       0x37 ./Dave/Generated/AUTOMATION/automation_conf.o
  .ARM.attributes
-                0x000008f4       0x37 ./Dave/Generated/ADC_MEASUREMENT/adc_measurement.o
+                0x000008f4       0x37 ./Dave/Generated/ANALOG_IO/analog_io.o
  .ARM.attributes
-                0x0000092b       0x37 ./Dave/Generated/ADC_MEASUREMENT/adc_measurement_conf.o
+                0x0000092b       0x37 ./Dave/Generated/ANALOG_IO/analog_io_conf.o
  .ARM.attributes
-                0x00000962       0x37 ./Dave/Generated/ACIM_FREQ_CTRL/acim_freq_ctrl.o
+                0x00000962       0x37 ./Dave/Generated/ADC_MEASUREMENT/adc_measurement.o
  .ARM.attributes
-                0x00000999       0x37 ./Dave/Generated/ACIM_FREQ_CTRL/acim_freq_ctrl_conf.o
+                0x00000999       0x37 ./Dave/Generated/ADC_MEASUREMENT/adc_measurement_conf.o
  .ARM.attributes
-                0x000009d0       0x37 ./Dave/Generated/ACIM_FREQ_CTRL/acim_freq_ctrl_control.o
+                0x000009d0       0x37 ./Dave/Generated/ACIM_FREQ_CTRL/acim_freq_ctrl.o
  .ARM.attributes
-                0x00000a07       0x37 ./Dave/Generated/DAVE.o
+                0x00000a07       0x37 ./Dave/Generated/ACIM_FREQ_CTRL/acim_freq_ctrl_conf.o
  .ARM.attributes
-                0x00000a3e       0x37 ./main.o
+                0x00000a3e       0x37 ./Dave/Generated/ACIM_FREQ_CTRL/acim_freq_ctrl_control.o
  .ARM.attributes
-                0x00000a75       0x32 c:/users/pescatore/switchdrive/private/konzept/mcu for gate driver/dave_4-4-2_64bit_2018-02-23/dave-ide-4.4.2-64bit/eclipse/arm-gcc-49/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/softfp\libm.a(lib_a-w_log.o)
+                0x00000a75       0x37 ./Dave/Generated/DAVE.o
  .ARM.attributes
-                0x00000aa7       0x32 c:/users/pescatore/switchdrive/private/konzept/mcu for gate driver/dave_4-4-2_64bit_2018-02-23/dave-ide-4.4.2-64bit/eclipse/arm-gcc-49/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/softfp\libm.a(lib_a-e_log.o)
+                0x00000aac       0x37 ./main.o
  .ARM.attributes
-                0x00000ad9       0x32 c:/users/pescatore/switchdrive/private/konzept/mcu for gate driver/dave_4-4-2_64bit_2018-02-23/dave-ide-4.4.2-64bit/eclipse/arm-gcc-49/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/softfp\libm.a(lib_a-s_fpclassify.o)
+                0x00000ae3       0x32 c:/users/pescatore/switchdrive/private/konzept/mcu for gate driver/dave_4-4-2_64bit_2018-02-23/dave-ide-4.4.2-64bit/eclipse/arm-gcc-49/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/softfp\libm.a(lib_a-w_log.o)
  .ARM.attributes
-                0x00000b0b       0x32 c:/users/pescatore/switchdrive/private/konzept/mcu for gate driver/dave_4-4-2_64bit_2018-02-23/dave-ide-4.4.2-64bit/eclipse/arm-gcc-49/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/softfp\libm.a(lib_a-s_lib_ver.o)
+                0x00000b15       0x32 c:/users/pescatore/switchdrive/private/konzept/mcu for gate driver/dave_4-4-2_64bit_2018-02-23/dave-ide-4.4.2-64bit/eclipse/arm-gcc-49/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/softfp\libm.a(lib_a-e_log.o)
  .ARM.attributes
-                0x00000b3d       0x32 c:/users/pescatore/switchdrive/private/konzept/mcu for gate driver/dave_4-4-2_64bit_2018-02-23/dave-ide-4.4.2-64bit/eclipse/arm-gcc-49/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/softfp\libm.a(lib_a-s_matherr.o)
+                0x00000b47       0x32 c:/users/pescatore/switchdrive/private/konzept/mcu for gate driver/dave_4-4-2_64bit_2018-02-23/dave-ide-4.4.2-64bit/eclipse/arm-gcc-49/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/softfp\libm.a(lib_a-s_fpclassify.o)
  .ARM.attributes
-                0x00000b6f       0x32 c:/users/pescatore/switchdrive/private/konzept/mcu for gate driver/dave_4-4-2_64bit_2018-02-23/dave-ide-4.4.2-64bit/eclipse/arm-gcc-49/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/softfp\libm.a(lib_a-s_nan.o)
+                0x00000b79       0x32 c:/users/pescatore/switchdrive/private/konzept/mcu for gate driver/dave_4-4-2_64bit_2018-02-23/dave-ide-4.4.2-64bit/eclipse/arm-gcc-49/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/softfp\libm.a(lib_a-s_lib_ver.o)
  .ARM.attributes
-                0x00000ba1       0x22 c:/users/pescatore/switchdrive/private/konzept/mcu for gate driver/dave_4-4-2_64bit_2018-02-23/dave-ide-4.4.2-64bit/eclipse/arm-gcc-49/bin/../lib/gcc/arm-none-eabi/4.9.3/armv7e-m/softfp\libgcc.a(_arm_addsubdf3.o)
+                0x00000bab       0x32 c:/users/pescatore/switchdrive/private/konzept/mcu for gate driver/dave_4-4-2_64bit_2018-02-23/dave-ide-4.4.2-64bit/eclipse/arm-gcc-49/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/softfp\libm.a(lib_a-s_matherr.o)
  .ARM.attributes
-                0x00000bc3       0x22 c:/users/pescatore/switchdrive/private/konzept/mcu for gate driver/dave_4-4-2_64bit_2018-02-23/dave-ide-4.4.2-64bit/eclipse/arm-gcc-49/bin/../lib/gcc/arm-none-eabi/4.9.3/armv7e-m/softfp\libgcc.a(_arm_muldivdf3.o)
+                0x00000bdd       0x32 c:/users/pescatore/switchdrive/private/konzept/mcu for gate driver/dave_4-4-2_64bit_2018-02-23/dave-ide-4.4.2-64bit/eclipse/arm-gcc-49/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/softfp\libm.a(lib_a-s_nan.o)
  .ARM.attributes
-                0x00000be5       0x22 c:/users/pescatore/switchdrive/private/konzept/mcu for gate driver/dave_4-4-2_64bit_2018-02-23/dave-ide-4.4.2-64bit/eclipse/arm-gcc-49/bin/../lib/gcc/arm-none-eabi/4.9.3/armv7e-m/softfp\libgcc.a(_arm_cmpdf2.o)
+                0x00000c0f       0x22 c:/users/pescatore/switchdrive/private/konzept/mcu for gate driver/dave_4-4-2_64bit_2018-02-23/dave-ide-4.4.2-64bit/eclipse/arm-gcc-49/bin/../lib/gcc/arm-none-eabi/4.9.3/armv7e-m/softfp\libgcc.a(_arm_addsubdf3.o)
  .ARM.attributes
-                0x00000c07       0x22 c:/users/pescatore/switchdrive/private/konzept/mcu for gate driver/dave_4-4-2_64bit_2018-02-23/dave-ide-4.4.2-64bit/eclipse/arm-gcc-49/bin/../lib/gcc/arm-none-eabi/4.9.3/armv7e-m/softfp\libgcc.a(_arm_truncdfsf2.o)
+                0x00000c31       0x22 c:/users/pescatore/switchdrive/private/konzept/mcu for gate driver/dave_4-4-2_64bit_2018-02-23/dave-ide-4.4.2-64bit/eclipse/arm-gcc-49/bin/../lib/gcc/arm-none-eabi/4.9.3/armv7e-m/softfp\libgcc.a(_arm_muldivdf3.o)
  .ARM.attributes
-                0x00000c29       0x22 c:/users/pescatore/switchdrive/private/konzept/mcu for gate driver/dave_4-4-2_64bit_2018-02-23/dave-ide-4.4.2-64bit/eclipse/arm-gcc-49/bin/../lib/gcc/arm-none-eabi/4.9.3/armv7e-m/softfp\libgcc.a(_aeabi_ldivmod.o)
+                0x00000c53       0x22 c:/users/pescatore/switchdrive/private/konzept/mcu for gate driver/dave_4-4-2_64bit_2018-02-23/dave-ide-4.4.2-64bit/eclipse/arm-gcc-49/bin/../lib/gcc/arm-none-eabi/4.9.3/armv7e-m/softfp\libgcc.a(_arm_cmpdf2.o)
  .ARM.attributes
-                0x00000c4b       0x32 c:/users/pescatore/switchdrive/private/konzept/mcu for gate driver/dave_4-4-2_64bit_2018-02-23/dave-ide-4.4.2-64bit/eclipse/arm-gcc-49/bin/../lib/gcc/arm-none-eabi/4.9.3/armv7e-m/softfp\libgcc.a(bpabi.o)
+                0x00000c75       0x22 c:/users/pescatore/switchdrive/private/konzept/mcu for gate driver/dave_4-4-2_64bit_2018-02-23/dave-ide-4.4.2-64bit/eclipse/arm-gcc-49/bin/../lib/gcc/arm-none-eabi/4.9.3/armv7e-m/softfp\libgcc.a(_arm_truncdfsf2.o)
  .ARM.attributes
-                0x00000c7d       0x22 c:/users/pescatore/switchdrive/private/konzept/mcu for gate driver/dave_4-4-2_64bit_2018-02-23/dave-ide-4.4.2-64bit/eclipse/arm-gcc-49/bin/../lib/gcc/arm-none-eabi/4.9.3/armv7e-m/softfp\libgcc.a(_dvmd_tls.o)
+                0x00000c97       0x22 c:/users/pescatore/switchdrive/private/konzept/mcu for gate driver/dave_4-4-2_64bit_2018-02-23/dave-ide-4.4.2-64bit/eclipse/arm-gcc-49/bin/../lib/gcc/arm-none-eabi/4.9.3/armv7e-m/softfp\libgcc.a(_aeabi_ldivmod.o)
  .ARM.attributes
-                0x00000c9f       0x32 c:/users/pescatore/switchdrive/private/konzept/mcu for gate driver/dave_4-4-2_64bit_2018-02-23/dave-ide-4.4.2-64bit/eclipse/arm-gcc-49/bin/../lib/gcc/arm-none-eabi/4.9.3/armv7e-m/softfp\libgcc.a(_divdi3.o)
+                0x00000cb9       0x32 c:/users/pescatore/switchdrive/private/konzept/mcu for gate driver/dave_4-4-2_64bit_2018-02-23/dave-ide-4.4.2-64bit/eclipse/arm-gcc-49/bin/../lib/gcc/arm-none-eabi/4.9.3/armv7e-m/softfp\libgcc.a(bpabi.o)
  .ARM.attributes
-                0x00000cd1       0x32 c:/users/pescatore/switchdrive/private/konzept/mcu for gate driver/dave_4-4-2_64bit_2018-02-23/dave-ide-4.4.2-64bit/eclipse/arm-gcc-49/bin/../lib/gcc/arm-none-eabi/4.9.3/armv7e-m/softfp\libgcc.a(_udivdi3.o)
+                0x00000ceb       0x22 c:/users/pescatore/switchdrive/private/konzept/mcu for gate driver/dave_4-4-2_64bit_2018-02-23/dave-ide-4.4.2-64bit/eclipse/arm-gcc-49/bin/../lib/gcc/arm-none-eabi/4.9.3/armv7e-m/softfp\libgcc.a(_dvmd_tls.o)
  .ARM.attributes
-                0x00000d03       0x32 c:/users/pescatore/switchdrive/private/konzept/mcu for gate driver/dave_4-4-2_64bit_2018-02-23/dave-ide-4.4.2-64bit/eclipse/arm-gcc-49/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/softfp\libg_nano.a(lib_a-errno.o)
+                0x00000d0d       0x32 c:/users/pescatore/switchdrive/private/konzept/mcu for gate driver/dave_4-4-2_64bit_2018-02-23/dave-ide-4.4.2-64bit/eclipse/arm-gcc-49/bin/../lib/gcc/arm-none-eabi/4.9.3/armv7e-m/softfp\libgcc.a(_divdi3.o)
  .ARM.attributes
-                0x00000d35       0x32 c:/users/pescatore/switchdrive/private/konzept/mcu for gate driver/dave_4-4-2_64bit_2018-02-23/dave-ide-4.4.2-64bit/eclipse/arm-gcc-49/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/softfp\libg_nano.a(lib_a-impure.o)
+                0x00000d3f       0x32 c:/users/pescatore/switchdrive/private/konzept/mcu for gate driver/dave_4-4-2_64bit_2018-02-23/dave-ide-4.4.2-64bit/eclipse/arm-gcc-49/bin/../lib/gcc/arm-none-eabi/4.9.3/armv7e-m/softfp\libgcc.a(_udivdi3.o)
  .ARM.attributes
-                0x00000d67       0x32 c:/users/pescatore/switchdrive/private/konzept/mcu for gate driver/dave_4-4-2_64bit_2018-02-23/dave-ide-4.4.2-64bit/eclipse/arm-gcc-49/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/softfp\libg_nano.a(lib_a-init.o)
+                0x00000d71       0x32 c:/users/pescatore/switchdrive/private/konzept/mcu for gate driver/dave_4-4-2_64bit_2018-02-23/dave-ide-4.4.2-64bit/eclipse/arm-gcc-49/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/softfp\libg_nano.a(lib_a-errno.o)
+ .ARM.attributes
+                0x00000da3       0x32 c:/users/pescatore/switchdrive/private/konzept/mcu for gate driver/dave_4-4-2_64bit_2018-02-23/dave-ide-4.4.2-64bit/eclipse/arm-gcc-49/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/softfp\libg_nano.a(lib_a-impure.o)
+ .ARM.attributes
+                0x00000dd5       0x32 c:/users/pescatore/switchdrive/private/konzept/mcu for gate driver/dave_4-4-2_64bit_2018-02-23/dave-ide-4.4.2-64bit/eclipse/arm-gcc-49/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/softfp\libg_nano.a(lib_a-init.o)
 OUTPUT(BAT.elf elf32-littlearm)
