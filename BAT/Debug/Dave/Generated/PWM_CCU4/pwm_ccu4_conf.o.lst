@@ -66,8 +66,8 @@
   78              	PWM_CCU4_2_config_handle:
   79 0000 01       	 .byte 1
   80 0001 00       	 .space 1
-  81 0002 C309     	 .short 2499
-  82 0004 E204     	 .short 1250
+  81 0002 5702     	 .short 599
+  82 0004 2C01     	 .short 300
   83 0006 00       	 .byte 0
   84 0007 00       	 .byte 0
   85 0008 00       	 .byte 0
